@@ -85,6 +85,7 @@ static inline UIImagePickerControllerCameraDevice cameraDeviceForMediaCaptureTyp
     return mediaCaptureType == WebCore::MediaCaptureType::MediaCaptureTypeUser ? UIImagePickerControllerCameraDeviceFront : UIImagePickerControllerCameraDeviceRear;
 }
 
+#if (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 110000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
 static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, UTType *conformToUTType)
 {
     for (NSString *uti in typeIdentifiers) {
@@ -94,15 +95,38 @@ static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, UTT
     }
     return false;
 }
+#endif
+
+static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, CFStringRef conformToUTI)
+{
+    for (NSString *uti in typeIdentifiers) {
+        if (UTTypeConformsTo((__bridge CFStringRef)uti, conformToUTI)) {
+            return true;
+        }
+    }
+    return false;
+}
 
 #if HAVE(PHOTOS_UI)
 
+#if (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 110000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
 static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, UTType *conformToUTType)
 {
     for (NSString *uti in typeIdentifiers) {
         UTType *type = [UTType typeWithIdentifier:uti];
         if ([type conformsToType:conformToUTType])
             return uti;
+    }
+    return nil;
+}
+#endif
+
+static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, CFStringRef conformToUTI)
+{
+    for (NSString *uti in typeIdentifiers) {
+        if (UTTypeConformsTo((__bridge CFStringRef)uti, conformToUTI)) {
+            return uti;
+        }
     }
     return nil;
 }
