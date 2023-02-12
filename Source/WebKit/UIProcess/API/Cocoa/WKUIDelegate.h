@@ -255,6 +255,7 @@ typedef NS_ENUM(NSInteger, WKDialogResult) {
  */
 - (void)webView:(WKWebView *)webView showLockdownModeFirstUseMessage:(NSString *)message completionHandler:(void (^)(WKDialogResult))completionHandler WK_API_AVAILABLE(ios(13.0));
 
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
 /**
  * @abstract Called when the web view is about to present its edit menu.
  *
@@ -270,7 +271,7 @@ typedef NS_ENUM(NSInteger, WKDialogResult) {
  * @param animator Dismissal animator. Add animations to this object to run them alongside the dismissal transition.
  */
 - (void)webView:(WKWebView *)webView willDismissEditMenuWithAnimator:(id<UIEditMenuInteractionAnimating>)animator WK_API_AVAILABLE(ios(WK_IOS_TBA));
-
+#endif
 #endif // TARGET_OS_IOS
 
 #if !TARGET_OS_IPHONE

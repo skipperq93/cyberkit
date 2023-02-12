@@ -586,8 +586,13 @@ static const float GroupOptionTextColorAlpha = 0.5;
         optionIndex++;
         currentIndex++;
     }
+    
+    UIMenuOptions o = (UIMenuOptions)UIMenuOptionsPrivateRemoveLineLimitForChildren;
+    if (@available(iOS 15.0, *)) {
+        o = o | UIMenuOptionsSingleSelection;
+    }
 
-    return [UIMenu menuWithTitle:@"" image:nil identifier:nil options:(UIMenuOptionsSingleSelection | (UIMenuOptions)UIMenuOptionsPrivateRemoveLineLimitForChildren) children:items];
+    return [UIMenu menuWithTitle:@"" image:nil identifier:nil options:o children:items];
 }
 
 - (UIAction *)actionForOptionItem:(const OptionItem&)option withIndex:(NSInteger)optionIndex

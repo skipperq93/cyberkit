@@ -653,8 +653,12 @@ The uniform type identifier kUTTypeWebArchive can be used get the related pasteb
 /*! @abstract Enables the web view's built-in find interaction. */
 @property (nonatomic, readwrite, getter=isFindInteractionEnabled) BOOL findInteractionEnabled WK_API_AVAILABLE(ios(16.0));
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
+
 /*! @abstract If  @link findInteractionEnabled @/link is set to true, returns this web view's built-in find interaction. Otherwise, nil. */
 @property (nonatomic, nullable, readonly) UIFindInteraction *findInteraction WK_API_AVAILABLE(ios(16.0));
+
+#endif
 
 #endif
 
