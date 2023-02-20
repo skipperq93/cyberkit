@@ -28,7 +28,7 @@
 
 int main(int argc, char * argv[])
 {
-    [WKProcessPool _setLinkedOnOrAfterEverythingForTesting];
+    //[WKProcessPool _setLinkedOnOrAfterEverythingForTesting];
     
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
