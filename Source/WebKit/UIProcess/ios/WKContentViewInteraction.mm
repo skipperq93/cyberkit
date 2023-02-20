@@ -4743,7 +4743,7 @@ static void selectionChangedWithTouch(WKContentView *view, const WebCore::IntPoi
     });
 }
 
-#if HAVE(UI_EDIT_MENU_INTERACTION) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
+#if HAVE(UI_EDIT_MENU_INTERACTION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
 
 - (void)requestPreferredArrowDirectionForEditMenuWithCompletionHandler:(void(^)(UIEditMenuArrowDirection))completion
 {
@@ -10359,7 +10359,7 @@ static BOOL applicationIsKnownToIgnoreMouseEvents(const char* &warningVersion)
 
     if (self.webView._editable) {
         if (_positionInformation.shouldNotUseIBeamInEditableContent)
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
             return [UIPointerStyle systemPointerStyle];
 #else
         {
@@ -10374,7 +10374,7 @@ static BOOL applicationIsKnownToIgnoreMouseEvents(const char* &warningVersion)
         WebCore::Cursor::Type cursorType = _positionInformation.cursor->type();
 
         if (cursorType == WebCore::Cursor::Hand)
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
             return [UIPointerStyle systemPointerStyle];
 #else
         {
@@ -10387,7 +10387,7 @@ static BOOL applicationIsKnownToIgnoreMouseEvents(const char* &warningVersion)
             return iBeamCursor();
     }
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     return [UIPointerStyle systemPointerStyle];
 #else
     {
@@ -11521,7 +11521,7 @@ constexpr auto analysisTypesForFullscreenVideo = VKAnalysisTypeAll & ~VKAnalysis
     return _page && _page->editorState().selectionIsRangeInsideImageOverlay;
 }
 
-#if HAVE(UI_EDIT_MENU_INTERACTION) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
+#if HAVE(UI_EDIT_MENU_INTERACTION) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
 
 - (void)willPresentEditMenuWithAnimator:(id<UIEditMenuInteractionAnimating>)animator
 {

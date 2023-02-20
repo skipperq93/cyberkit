@@ -81,7 +81,7 @@ static std::unique_ptr<PushMessageForTesting> pushMessageFromArguments(NSEnumera
     return makeUniqueWithoutFastMallocCheck<PushMessageForTesting>(WTFMove(pushMessage));
 }
 
-#if HAVE(OS_LAUNCHD_JOB) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(OS_LAUNCHD_JOB) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 static bool registerDaemonWithLaunchD(WebPushTool::PreferTestService preferTestService)
 {
     // For now webpushtool only knows how to host webpushd when they're in the same directory
@@ -183,7 +183,7 @@ int main(int, const char **)
     if (!action && !pushMessage)
         printUsageAndTerminate(@"No action provided");
 
-#if HAVE(OS_LAUNCHD_JOB) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(OS_LAUNCHD_JOB) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     if (host && !registerDaemonWithLaunchD(preferTestService))
         printUsageAndTerminate(@"Unable to install plist to host the service");
 #endif

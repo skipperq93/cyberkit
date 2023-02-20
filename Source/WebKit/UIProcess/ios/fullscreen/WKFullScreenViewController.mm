@@ -488,7 +488,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     [_pipButton addTarget:self action:@selector(_togglePiPAction:) forControlEvents:UIControlEventTouchUpInside];
 
     if (alternateFullScreenControlDesignEnabled) {
-#if (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
         UIButtonConfiguration *cancelButtonConfiguration = [UIButtonConfiguration filledButtonConfiguration];
         // FIXME: this color specification should not be necessary.
         cancelButtonConfiguration.baseBackgroundColor = [UIColor colorWithWhite:1.0 alpha:0.15];
