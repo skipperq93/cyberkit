@@ -380,7 +380,7 @@ void WebPaymentCoordinatorProxy::platformCompletePaymentMethodSelection(std::opt
     m_authorizationPresenter->completePaymentMethodSelection(WTFMove(update));
 }
 
-#if ENABLE(APPLE_PAY_COUPON_CODE)
+#if ENABLE(APPLE_PAY_COUPON_CODE) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
 void WebPaymentCoordinatorProxy::platformCompleteCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&& update)
 {
