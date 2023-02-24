@@ -29,7 +29,7 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 
 TEST(WebKit, IOKitOpenSandboxAccessForDeviceWithAGXCompilerService)
 {

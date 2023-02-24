@@ -23,13 +23,13 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKDragDestinationAction.h>
-#import <WebKit/WKSecurityOrigin.h>
-#import <WebKit/WKUIDelegate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKActivatedElementInfo.h>
-#import <WebKit/_WKTapHandlingResult.h>
-#import <WebKit/_WKWebAuthenticationPanel.h>
+#import <CyberKit/WKDragDestinationAction.h>
+#import <CyberKit/WKSecurityOrigin.h>
+#import <CyberKit/WKUIDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKActivatedElementInfo.h>
+#import <CyberKit/_WKTapHandlingResult.h>
+#import <CyberKit/_WKWebAuthenticationPanel.h>
 
 @class NSData;
 @class UIScrollView;

@@ -26,13 +26,13 @@
 #ifndef WKContext_h
 #define WKContext_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKContextConnectionClient.h>
-#include <WebKit/WKContextDownloadClient.h>
-#include <WebKit/WKContextHistoryClient.h>
-#include <WebKit/WKContextInjectedBundleClient.h>
-#include <WebKit/WKDeprecated.h>
-#include <WebKit/WKProcessTerminationReason.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKContextConnectionClient.h>
+#include <CyberKit/WKContextDownloadClient.h>
+#include <CyberKit/WKContextHistoryClient.h>
+#include <CyberKit/WKContextInjectedBundleClient.h>
+#include <CyberKit/WKDeprecated.h>
+#include <CyberKit/WKProcessTerminationReason.h>
 
 #if defined(WIN32) || defined(_WIN32)
 typedef int WKProcessID;

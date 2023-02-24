@@ -29,16 +29,16 @@
 #import "SettingsController.h"
 #import "WK1BrowserWindowController.h"
 #import "WK2BrowserWindowController.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKExperimentalFeature.h>
-#import <WebKit/_WKInternalDebugFeature.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/_WKExperimentalFeature.h>
+#import <CyberKit/_WKInternalDebugFeature.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 
 static const NSString * const kURLArgumentString = @"--url";
 

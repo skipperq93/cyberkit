@@ -25,7 +25,7 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 #import <Foundation/Foundation.h>
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 /*! A WKPreferences object encapsulates the preference settings for a web
  view. The preferences object associated with a web view is specified by

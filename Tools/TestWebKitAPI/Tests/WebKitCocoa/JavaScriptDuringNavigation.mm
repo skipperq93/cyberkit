@@ -27,7 +27,7 @@
 
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/RetainPtr.h>
 
 static bool navigationComplete;

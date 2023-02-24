@@ -27,9 +27,9 @@
 
 #import "AppDelegate.h"
 #import "BrowserWindowController.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/_WKExperimentalFeature.h>
-#import <WebKit/_WKInternalDebugFeature.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/_WKExperimentalFeature.h>
+#import <CyberKit/_WKInternalDebugFeature.h>
 
 NSString * const kUserAgentChangedNotificationName = @"UserAgentChangedNotification";
 

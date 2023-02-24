@@ -33,8 +33,8 @@
 #import "TestBrowsingContextLoadDelegate.h"
 #import <JavaScriptCore/JSRetainPtr.h>
 #import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WKSerializedScriptValue.h>
-#import <WebKit/WKViewPrivate.h>
+#import <CyberKit/WKSerializedScriptValue.h>
+#import <CyberKit/WKViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool testFinished = false;

@@ -27,7 +27,7 @@
 
 #if WK_HAVE_C_SPI
 
-#include <WebKit/WKImageCG.h>
+#include <CyberKit/WKImageCG.h>
 
 namespace TestWebKitAPI {
 

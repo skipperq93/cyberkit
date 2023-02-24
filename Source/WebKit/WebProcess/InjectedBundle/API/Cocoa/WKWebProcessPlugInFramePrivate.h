@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKWebProcessPlugInFrame.h>
+#import <CyberKit/WKWebProcessPlugInFrame.h>
 
 @class JSContext;
 @class JSValue;

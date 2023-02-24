@@ -25,9 +25,9 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebDocumentPrivate.h>
-#import <WebKit/DOMHTMLVideoElement.h>
-#import <WebKit/DOMPrivate.h>
+#import <CyberKit/WebDocumentPrivate.h>
+#import <CyberKit/DOMHTMLVideoElement.h>
+#import <CyberKit/DOMPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface VideoWrapperFrameLoadDelegate : NSObject <WebFrameLoadDelegate> {

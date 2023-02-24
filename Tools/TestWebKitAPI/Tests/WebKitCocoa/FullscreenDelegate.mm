@@ -29,13 +29,13 @@
 
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WKPagePrivateMac.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKView.h>
-#import <WebKit/WKViewPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFullscreenDelegate.h>
+#import <CyberKit/WKPagePrivateMac.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKView.h>
+#import <CyberKit/WKViewPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFullscreenDelegate.h>
 #import <wtf/RetainPtr.h>
 
 static bool receivedWillEnterFullscreenMessage;

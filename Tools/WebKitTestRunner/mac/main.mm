@@ -29,7 +29,7 @@
 
 #import "PlatformWebView.h"
 #import "TestController.h"
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 
 static void setDefaultsToConsistentValuesForTesting()
 {

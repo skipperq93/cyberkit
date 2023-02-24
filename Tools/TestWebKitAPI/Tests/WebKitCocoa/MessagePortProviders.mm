@@ -30,8 +30,8 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebFrame.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebFrame.h>
 #import <wtf/RetainPtr.h>
 
 @interface MessagePortFrameLoadDelegate : NSObject <WebFrameLoadDelegate> {

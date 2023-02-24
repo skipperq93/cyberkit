@@ -117,7 +117,7 @@ case "${INPUT_FILE_PATH}" in
         UNIFDEF_OPTIONS+=(-D$featureDefine=$?)
     done
 
-    SED_OPTIONS+=(-e "s/\<WebKitLegacy/\<WebKit/")
+    SED_OPTIONS+=(-e "s/\<WebKitLegacy/\<CyberKit/")
     if [[ "${SOURCE_FILE}" != */WebKitAvailability.h ]] && [ ${WK_PLATFORM_NAME} != macosx ]; then
         SED_OPTIONS+=(-e "s/ *WEBKIT_((CLASS_|ENUM_)?(AVAILABLE|DEPRECATED))_MAC\([^)]+\)//g")
     fi

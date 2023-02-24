@@ -37,9 +37,9 @@
 #import "InjectedBundlePage.h"
 #import "JSBasics.h"
 #import <JavaScriptCore/JSStringRefCF.h>
-#import <WebKit/WKBundle.h>
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKBundlePagePrivate.h>
+#import <CyberKit/WKBundle.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePagePrivate.h>
 
 #if ENABLE(ACCESSIBILITY_ISOLATED_TREE)
 #import <pal/spi/cocoa/AccessibilitySupportSPI.h>

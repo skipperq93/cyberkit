@@ -27,7 +27,7 @@
 
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebView.h>
+#import <CyberKit/WebView.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(MAC)

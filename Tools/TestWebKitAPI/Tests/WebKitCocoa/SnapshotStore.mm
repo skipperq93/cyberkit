@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if PLATFORM(MAC)
 
@@ -32,11 +32,11 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKBackForwardListItemPrivate.h>
-#import <WebKit/WKPage.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKBackForwardListItemPrivate.h>
+#import <CyberKit/WKPage.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
 static bool didForceRepaint;

@@ -31,8 +31,8 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFindDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFindDelegate.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 

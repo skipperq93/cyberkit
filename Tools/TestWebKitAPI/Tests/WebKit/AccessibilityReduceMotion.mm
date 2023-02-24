@@ -30,9 +30,9 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/PreferenceObserver.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/PreferenceObserver.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 
 #if PLATFORM(MAC)
 #import <pal/spi/mac/HIServicesSPI.h>

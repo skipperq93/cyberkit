@@ -26,8 +26,8 @@
 #ifndef WKPreferencesPrivate_h
 #define WKPreferencesPrivate_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKDeprecated.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKDeprecated.h>
 
 #ifdef __cplusplus
 extern "C" {

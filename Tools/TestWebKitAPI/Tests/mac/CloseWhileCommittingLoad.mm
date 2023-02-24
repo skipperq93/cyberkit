@@ -25,8 +25,8 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebFrameLoadDelegate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebFrameLoadDelegate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool didCloseWhileCommittingLoad;

@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKDOMRange.h>
-#import <WebKit/WKBase.h>
+#import <CyberKit/WKDOMRange.h>
+#import <CyberKit/WKBase.h>
 
 @interface WKDOMRange (WKPrivate)
 

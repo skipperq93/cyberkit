@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKWebProcessPlugInBrowserContextController.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextController.h>
 
-#import <WebKit/WKBase.h>
+#import <CyberKit/WKBase.h>
 
 @class WKBrowsingContextHandle;
 @class _WKRemoteObjectRegistry;

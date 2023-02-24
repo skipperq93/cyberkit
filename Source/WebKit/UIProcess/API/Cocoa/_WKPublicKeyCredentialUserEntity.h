@@ -25,7 +25,7 @@
 
 #pragma once
 
-#import <WebKit/_WKPublicKeyCredentialEntity.h>
+#import <CyberKit/_WKPublicKeyCredentialEntity.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

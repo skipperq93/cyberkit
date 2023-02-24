@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 WK_CLASS_AVAILABLE(macos(10.15), ios(13.0))
 @interface _WKTextInputContext : NSObject <NSCopying>

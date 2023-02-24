@@ -28,12 +28,12 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKContextPrivate.h>
-#import <WebKit/WKProcessGroupPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKContextPrivate.h>
+#import <CyberKit/WKProcessGroupPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WebKit.h>
 #import <wtf/RetainPtr.h>
 
 static bool loadedOrCrashed = false;

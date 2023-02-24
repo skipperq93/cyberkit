@@ -39,24 +39,24 @@
 #import "DumpRenderTreePasteboard.h"
 #import "ModifierKeys.h"
 #import "WebCoreTestSupport.h"
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <functional>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 
 #if !PLATFORM(IOS_FAMILY)
 #import <Carbon/Carbon.h> // for GetCurrentEventTime()
-#import <WebKit/WebHTMLView.h>
-#import <WebKit/WebHTMLViewPrivate.h>
+#import <CyberKit/WebHTMLView.h>
+#import <CyberKit/WebHTMLViewPrivate.h>
 #import <objc/runtime.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)
 #import <UIKit/UIKit.h>
-#import <WebKit/KeyEventCodesIOS.h>
-#import <WebKit/WAKWindow.h>
-#import <WebKit/WebEvent.h>
+#import <CyberKit/KeyEventCodesIOS.h>
+#import <CyberKit/WAKWindow.h>
+#import <CyberKit/WebEvent.h>
 #import <pal/spi/ios/GraphicsServicesSPI.h> // for GSCurrentEventTimestamp()
 #endif
 

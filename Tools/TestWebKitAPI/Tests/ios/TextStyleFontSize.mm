@@ -29,9 +29,9 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import <WebCore/FontCacheCoreText.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKPreferencesRef.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesRef.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 #if PLATFORM(IOS_FAMILY)
 

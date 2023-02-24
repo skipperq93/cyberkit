@@ -31,10 +31,10 @@
 #include "PlatformWebView.h"
 #include "Test.h"
 #include <JavaScriptCore/JavaScriptCore.h>
-#include <WebKit/WKSerializedScriptValue.h>
-#include <WebKit/WKPagePrivate.h>
-#include <WebKit/WKPreferencesRef.h>
-#include <WebKit/WKPreferencesRefPrivate.h>
+#include <CyberKit/WKSerializedScriptValue.h>
+#include <CyberKit/WKPagePrivate.h>
+#include <CyberKit/WKPreferencesRef.h>
+#include <CyberKit/WKPreferencesRefPrivate.h>
 
 // This test loads file-with-video.html. It first checks to make sure WKPageIsPlayingAudio() returns
 // false for the page. Then it calls a JavaScript method to play the video, waits for

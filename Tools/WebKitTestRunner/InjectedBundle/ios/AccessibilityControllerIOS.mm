@@ -32,9 +32,9 @@
 
 #import <JavaScriptCore/JSStringRefCF.h>
 #import <UIKit/UIAccessibility.h>
-#import <WebKit/WKBundle.h>
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKBundlePagePrivate.h>
+#import <CyberKit/WKBundle.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePagePrivate.h>
 
 namespace WTR {
 

@@ -25,7 +25,7 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebFramePrivate.h>
+#import <CyberKit/WebFramePrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface ElementAtPointFrameLoadDelegate : NSObject <WebFrameLoadDelegate>

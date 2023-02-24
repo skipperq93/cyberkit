@@ -25,9 +25,9 @@
 
 #import "config.h"
 #import "PasteboardUtilities.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKPreferencesRefPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesRefPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 
 #import "TestWKWebView.h"
 

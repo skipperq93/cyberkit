@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
-#import <WebKit/_WKInspectorExtensionHost.h>
-#import <WebKit/_WKInspectorIBActions.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/_WKInspectorExtensionHost.h>
+#import <CyberKit/_WKInspectorIBActions.h>
 
 #if !TARGET_OS_IPHONE
 

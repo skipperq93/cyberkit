@@ -26,7 +26,7 @@
 #ifndef WKArray_h
 #define WKArray_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #include <stddef.h>
 

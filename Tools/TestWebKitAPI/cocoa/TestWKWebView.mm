@@ -31,14 +31,14 @@
 #import "TestNavigationDelegate.h"
 #import "Utilities.h"
 
-#import <WebKit/WKContentWorld.h>
-#import <WebKit/WKUIDelegate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WebKitPrivate.h>
-#import <WebKit/_WKActivatedElementInfo.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKTextInputContext.h>
+#import <CyberKit/WKContentWorld.h>
+#import <CyberKit/WKUIDelegate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WebKitPrivate.h>
+#import <CyberKit/_WKActivatedElementInfo.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKTextInputContext.h>
 #import <objc/runtime.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>

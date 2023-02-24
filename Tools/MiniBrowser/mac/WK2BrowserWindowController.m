@@ -29,22 +29,22 @@
 #import "SettingsController.h"
 #import <SecurityInterface/SFCertificateTrustPanel.h>
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
-#import <WebKit/WKFrameInfo.h>
-#import <WebKit/WKNavigationActionPrivate.h>
-#import <WebKit/WKNavigationDelegate.h>
-#import <WebKit/WKOpenPanelParametersPrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebNSURLExtras.h>
-#import <WebKit/_WKIconLoadingDelegate.h>
-#import <WebKit/_WKInspector.h>
-#import <WebKit/_WKLinkIconParameters.h>
-#import <WebKit/_WKUserInitiatedAction.h>
+#import <CyberKit/WKFrameInfo.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKNavigationDelegate.h>
+#import <CyberKit/WKOpenPanelParametersPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WebNSURLExtras.h>
+#import <CyberKit/_WKIconLoadingDelegate.h>
+#import <CyberKit/_WKInspector.h>
+#import <CyberKit/_WKLinkIconParameters.h>
+#import <CyberKit/_WKUserInitiatedAction.h>
 
 static void* keyValueObservingContext = &keyValueObservingContext;
 static const int testHeaderBannerHeight = 42;

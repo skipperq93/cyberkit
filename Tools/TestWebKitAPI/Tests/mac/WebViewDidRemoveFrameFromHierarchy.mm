@@ -25,7 +25,7 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebFrameLoadDelegatePrivate.h>
+#import <CyberKit/WebFrameLoadDelegatePrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface DidRemoveFrameFromHierarchyFrameLoadDelegate : NSObject <WebFrameLoadDelegate>

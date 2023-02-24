@@ -31,10 +31,10 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "TestProtocol.h"
-#import <WebKit/WKNavigationActionPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/_WKHitTestResult.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/_WKHitTestResult.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 

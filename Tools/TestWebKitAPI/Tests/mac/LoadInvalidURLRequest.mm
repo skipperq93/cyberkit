@@ -26,8 +26,8 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKNavigationPrivate.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKNavigationPrivate.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/NSURLExtras.h>
 

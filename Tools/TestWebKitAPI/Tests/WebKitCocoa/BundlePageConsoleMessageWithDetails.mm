@@ -28,12 +28,12 @@
 #if PLATFORM(MAC)
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKBundlePageUIClient.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKStringCF.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePageUIClient.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKStringCF.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
 
 static NSArray<NSString *> *stringsArrayFromWKArrayRef(WKArrayRef wkArray)
 {

@@ -31,7 +31,7 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/Vector.h>
 
 @interface ScrollViewDelegate : NSObject<UIScrollViewDelegate> {

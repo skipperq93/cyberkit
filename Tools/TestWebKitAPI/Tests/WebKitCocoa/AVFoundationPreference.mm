@@ -31,10 +31,10 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 
 @interface PreferenceTestMessageHandler : NSObject <WKScriptMessageHandler>
 @end

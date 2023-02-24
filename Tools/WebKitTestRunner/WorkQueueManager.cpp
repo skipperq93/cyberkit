@@ -29,9 +29,9 @@
 #include "PlatformWebView.h"
 #include "StringFunctions.h"
 #include "TestController.h"
-#include <WebKit/WKPage.h>
-#include <WebKit/WKPagePrivate.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKPage.h>
+#include <CyberKit/WKPagePrivate.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <stdio.h>
 #include <wtf/text/CString.h>
 

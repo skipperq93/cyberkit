@@ -34,7 +34,7 @@
 #import "TestFontOptions.h"
 #import "TestInspectorBar.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 @interface WKWebView (NSTextInputClient_Async) <NSTextInputClient_Async, NSTextInputClient_Async_Staging_44648564, NSInspectorBarClient>
 @end

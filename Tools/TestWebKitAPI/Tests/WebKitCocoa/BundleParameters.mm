@@ -29,7 +29,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 #import <wtf/RetainPtr.h>
 
 TEST(WebKit, BundleParameters)

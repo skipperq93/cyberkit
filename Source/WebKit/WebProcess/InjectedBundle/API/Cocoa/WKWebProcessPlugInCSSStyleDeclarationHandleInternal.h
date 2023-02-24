@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKWebProcessPlugInCSSStyleDeclarationHandle.h>
+#import <CyberKit/WKWebProcessPlugInCSSStyleDeclarationHandle.h>
 
 #import "InjectedBundleCSSStyleDeclarationHandle.h"
 #import "WKObject.h"

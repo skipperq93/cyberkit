@@ -30,9 +30,9 @@
 #import "InjectedBundleTest.h"
 
 #import "WebCoreTestSupport.h"
-#import <WebKit/WKBundle.h>
-#import <WebKit/WKBundleFrame.h>
-#import <WebKit/WKBundlePage.h>
+#import <CyberKit/WKBundle.h>
+#import <CyberKit/WKBundleFrame.h>
+#import <CyberKit/WKBundlePage.h>
 
 namespace TestWebKitAPI {
 

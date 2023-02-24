@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFrameInfo.h>
+#import <CyberKit/WKFrameInfo.h>
 
 @class _WKFrameHandle;
 

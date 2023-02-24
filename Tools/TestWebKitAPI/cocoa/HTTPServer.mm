@@ -27,8 +27,8 @@
 #import "HTTPServer.h"
 
 #import "Utilities.h"
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/CallbackAggregator.h>
 #import <wtf/CompletionHandler.h>

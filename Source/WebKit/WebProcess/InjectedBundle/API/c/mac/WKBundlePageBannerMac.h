@@ -26,11 +26,11 @@
 #ifndef WKBundlePageBannerMac_h
 #define WKBundlePageBannerMac_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #if !TARGET_OS_IPHONE
 
-#include <WebKit/WKBundlePageBanner.h>
+#include <CyberKit/WKBundlePageBanner.h>
 
 @class CALayer;
 

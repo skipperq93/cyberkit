@@ -31,9 +31,9 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 
-#include <WebKit/WKContext.h>
-#include <WebKit/WKFrame.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKContext.h>
+#include <CyberKit/WKFrame.h>
+#include <CyberKit/WKRetainPtr.h>
 
 namespace TestWebKitAPI {
 

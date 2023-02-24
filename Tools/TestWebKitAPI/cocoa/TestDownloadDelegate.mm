@@ -26,7 +26,7 @@
 #import "config.h"
 #import "TestDownloadDelegate.h"
 
-#import <WebKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
 
 @implementation TestDownloadDelegate {
     Vector<DownloadCallback> _callbackRecord;

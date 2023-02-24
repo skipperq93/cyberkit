@@ -33,8 +33,8 @@
 #import "TestRunner.h"
 #import <JavaScriptCore/RegularExpression.h>
 #import <WebCore/ProtectionSpaceCocoa.h>
-#import <WebKit/WebDataSourcePrivate.h>
-#import <WebKit/WebKitLegacy.h>
+#import <CyberKit/WebDataSourcePrivate.h>
+#import <CyberKit/WebKitLegacy.h>
 #import <wtf/Assertions.h>
 
 using namespace std;

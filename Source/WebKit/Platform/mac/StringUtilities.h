@@ -25,7 +25,7 @@
 
 #pragma once
 
-#import <WebKit/WKDeclarationSpecifiers.h>
+#import <CyberKit/WKDeclarationSpecifiers.h>
 #import <wtf/Forward.h>
 
 namespace WebKit {

@@ -30,8 +30,8 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKContextPrivate.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKContextPrivate.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <string.h>
 #include <vector>
 

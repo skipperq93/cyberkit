@@ -28,7 +28,7 @@
 #import "TestCocoa.h"
 #import "TestWKWebView.h"
 #import <WebCore/ColorCocoa.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #define EXPECT_IN_RANGE(actual, min, max) \

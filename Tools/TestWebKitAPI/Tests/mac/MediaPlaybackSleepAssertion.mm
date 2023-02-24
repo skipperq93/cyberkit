@@ -34,7 +34,7 @@
 #import <JavaScriptCore/JSCConfig.h>
 #import <JavaScriptCore/JSContext.h>
 #import <WebCore/Settings.h>
-#import <WebKit/WebKitLegacy.h>
+#import <CyberKit/WebKitLegacy.h>
 #import <wtf/RetainPtr.h>
 
 static bool didFinishLoad = false;

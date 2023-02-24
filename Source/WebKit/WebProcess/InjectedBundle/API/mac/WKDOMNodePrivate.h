@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKDOMNode.h>
-#import <WebKit/WKBase.h>
+#import <CyberKit/WKDOMNode.h>
+#import <CyberKit/WKBase.h>
 
 @interface WKDOMNode (WKPrivate)
 

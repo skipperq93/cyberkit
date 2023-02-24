@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebsiteDataStore.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebsiteDataStore.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

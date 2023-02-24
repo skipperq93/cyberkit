@@ -29,10 +29,10 @@
 #import "Test.h"
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKContentWorld.h>
-#import <WebKit/WKFrameInfo.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKContentWorld.h>
+#import <CyberKit/WKFrameInfo.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 namespace TestWebKitAPI {
 

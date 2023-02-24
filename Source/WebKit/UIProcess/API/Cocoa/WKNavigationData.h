@@ -25,11 +25,11 @@
 
 #pragma once
 
-#include <WebKit/WKNavigationDataRef.h>
+#include <CyberKit/WKNavigationDataRef.h>
 
 #ifdef __OBJC__
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
 

@@ -31,14 +31,14 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WKBackForwardListItemRef.h>
-#import <WebKit/WKBackForwardListRef.h>
-#import <WebKit/WKData.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKSessionStateRef.h>
-#import <WebKit/WKURL.h>
-#import <WebKit/WKURLCF.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKBackForwardListItemRef.h>
+#import <CyberKit/WKBackForwardListRef.h>
+#import <CyberKit/WKData.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKSessionStateRef.h>
+#import <CyberKit/WKURL.h>
+#import <CyberKit/WKURLCF.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface WKWebView ()

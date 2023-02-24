@@ -28,8 +28,8 @@
 
 #import "OffscreenWindow.h"
 #import <Carbon/Carbon.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKViewPrivate.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKViewPrivate.h>
 
 namespace TestWebKitAPI {
 

@@ -34,9 +34,9 @@
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WKMenuItemIdentifiersPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKMenuItemIdentifiersPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/BlockPtr.h>
 
 @interface PopoverNotificationListener : NSObject

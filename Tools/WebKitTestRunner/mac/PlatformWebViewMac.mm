@@ -30,11 +30,11 @@
 #import "TestRunnerWKWebView.h"
 #import "WebKitTestRunnerDraggingInfo.h"
 #import "WebKitTestRunnerWindow.h"
-#import <WebKit/WKImageCG.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKImageCG.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 

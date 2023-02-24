@@ -26,10 +26,10 @@
 #ifndef WKPageLoaderClient_h
 #define WKPageLoaderClient_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKErrorRef.h>
-#include <WebKit/WKPageLoadTypes.h>
-#include <WebKit/WKPluginLoadPolicy.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKErrorRef.h>
+#include <CyberKit/WKPageLoadTypes.h>
+#include <CyberKit/WKPluginLoadPolicy.h>
 
 #ifdef __cplusplus
 extern "C" {

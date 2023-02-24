@@ -33,15 +33,15 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WKPagePrivateMac.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKSerializedScriptValue.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKURLCF.h>
-#import <WebKit/WKView.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKPagePrivateMac.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKSerializedScriptValue.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKURLCF.h>
+#import <CyberKit/WKView.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Seconds.h>
 

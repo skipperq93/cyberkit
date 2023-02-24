@@ -26,8 +26,8 @@
 #ifndef WKContextPrivate_h
 #define WKContextPrivate_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKContext.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKContext.h>
 
 #ifdef __cplusplus
 extern "C" {

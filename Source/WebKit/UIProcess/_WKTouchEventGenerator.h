@@ -26,7 +26,7 @@
 #if TARGET_OS_IPHONE
 
 #import <CoreGraphics/CGGeometry.h>
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

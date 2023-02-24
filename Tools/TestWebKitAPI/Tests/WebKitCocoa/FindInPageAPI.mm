@@ -28,17 +28,17 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKFindConfiguration.h>
-#import <WebKit/WKFindResult.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/_WKFindDelegate.h>
+#import <CyberKit/WKFindConfiguration.h>
+#import <CyberKit/WKFindResult.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/_WKFindDelegate.h>
 #import <wtf/RetainPtr.h>
 
 #if ENABLE(IMAGE_ANALYSIS)
 #import "ImageAnalysisTestingUtilities.h"
 #import "InstanceMethodSwizzler.h"
-#import <WebKit/_WKInternalDebugFeature.h>
+#import <CyberKit/_WKInternalDebugFeature.h>
 #import <pal/cocoa/VisionKitCoreSoftLink.h>
 #endif
 

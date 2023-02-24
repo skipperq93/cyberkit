@@ -26,7 +26,7 @@
 #ifndef WKPageFindClient_h
 #define WKPageFindClient_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifdef __cplusplus
 extern "C" {

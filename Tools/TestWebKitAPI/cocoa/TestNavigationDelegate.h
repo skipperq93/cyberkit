@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WebKit.h>
 
 @class _WKContentRuleListAction;
 

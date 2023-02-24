@@ -29,7 +29,7 @@
 #import "TestNavigationDelegate.h"
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Seconds.h>
 

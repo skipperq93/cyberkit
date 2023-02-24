@@ -23,10 +23,10 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFrameInfo.h>
-#import <WebKit/WKNavigationDelegate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKSameDocumentNavigationType.h>
+#import <CyberKit/WKFrameInfo.h>
+#import <CyberKit/WKNavigationDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKSameDocumentNavigationType.h>
 
 @class _WKContentRuleListAction;
 

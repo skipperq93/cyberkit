@@ -24,8 +24,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKBase.h>
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKBase.h>
+#import <CyberKit/WKFoundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

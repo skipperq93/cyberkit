@@ -25,8 +25,8 @@
 
 #pragma once
 
-#import <WebKit/WKFoundation.h>
-#import <WebKit/_WKAuthenticatorAttachment.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/_WKAuthenticatorAttachment.h>
 
 #import <Foundation/Foundation.h>
 

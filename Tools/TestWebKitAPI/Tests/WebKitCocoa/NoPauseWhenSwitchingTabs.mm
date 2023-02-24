@@ -28,10 +28,10 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/_WKFullscreenDelegate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/_WKFullscreenDelegate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Seconds.h>
 

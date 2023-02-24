@@ -30,8 +30,8 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include <CoreFoundation/CoreFoundation.h>
-#include <WebKit/WKURLCF.h>
-#include <WebKit/WKContextPrivate.h>
+#include <CyberKit/WKURLCF.h>
+#include <CyberKit/WKContextPrivate.h>
 #include <wtf/RetainPtr.h>
 
 namespace TestWebKitAPI {

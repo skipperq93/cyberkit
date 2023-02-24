@@ -26,8 +26,8 @@
 #ifndef WKPagePrivate_h
 #define WKPagePrivate_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKPage.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKPage.h>
 
 #if defined(WIN32) || defined(_WIN32)
 typedef int WKProcessID;

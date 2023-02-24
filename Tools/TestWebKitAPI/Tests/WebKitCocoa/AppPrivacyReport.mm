@@ -32,10 +32,10 @@
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
 #import <Foundation/NSURLRequest.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKSessionState.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKSessionState.h>
 #import <WebCore/ResourceRequest.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/RunLoop.h>

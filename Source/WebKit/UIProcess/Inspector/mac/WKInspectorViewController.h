@@ -25,7 +25,7 @@
 
 #if PLATFORM(MAC)
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 #import <wtf/NakedPtr.h>
 
 OBJC_CLASS WKWebView;

@@ -29,7 +29,7 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import <Carbon/Carbon.h>
-#import <WebKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
 
 static bool contextMenuShown = false;
 

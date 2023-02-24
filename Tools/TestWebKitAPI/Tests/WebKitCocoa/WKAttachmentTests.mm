@@ -39,12 +39,12 @@
 #import <Contacts/Contacts.h>
 #import <MapKit/MapKit.h>
 #import <QuickLookThumbnailing/QLThumbnailGenerator.h>
-#import <WebKit/WKPreferencesRefPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WebArchive.h>
-#import <WebKit/WebKitPrivate.h>
-#import <WebKit/_WKUserStyleSheet.h>
+#import <CyberKit/WKPreferencesRefPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WebArchive.h>
+#import <CyberKit/WebKitPrivate.h>
+#import <CyberKit/_WKUserStyleSheet.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SoftLinking.h>
 

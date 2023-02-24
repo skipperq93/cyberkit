@@ -35,15 +35,15 @@
 #import "MockWebNotificationProvider.h"
 #import "TestRunner.h"
 
-#import <WebKit/WebApplicationCache.h>
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebHTMLViewPrivate.h>
-#import <WebKit/WebDatabaseManagerPrivate.h>
-#import <WebKit/WebQuotaManager.h>
-#import <WebKit/WebSecurityOriginPrivate.h>
-#import <WebKit/WebUIDelegatePrivate.h>
-#import <WebKit/WebView.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebApplicationCache.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/WebHTMLViewPrivate.h>
+#import <CyberKit/WebDatabaseManagerPrivate.h>
+#import <CyberKit/WebQuotaManager.h>
+#import <CyberKit/WebSecurityOriginPrivate.h>
+#import <CyberKit/WebUIDelegatePrivate.h>
+#import <CyberKit/WebView.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/Assertions.h>
 #import <wtf/cocoa/VectorCocoa.h>
 

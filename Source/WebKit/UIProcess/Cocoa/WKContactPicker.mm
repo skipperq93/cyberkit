@@ -32,7 +32,7 @@
 #import <Contacts/Contacts.h>
 #import <WebCore/ContactInfo.h>
 #import <WebCore/ContactsRequestData.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/CompletionHandler.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SoftLinking.h>

@@ -27,11 +27,11 @@
 #import "HTTPServer.h"
 #import "TestNavigationDelegate.h"
 #import "Utilities.h"
-#import <WebKit/WKFrameInfoPrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKExperimentalFeature.h>
-#import <WebKit/_WKFrameTreeNode.h>
+#import <CyberKit/WKFrameInfoPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKExperimentalFeature.h>
+#import <CyberKit/_WKFrameTreeNode.h>
 
 namespace TestWebKitAPI {
 

@@ -27,7 +27,7 @@
 #import "TestUIDelegate.h"
 
 #import "Utilities.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
 @implementation TestUIDelegate {

@@ -36,9 +36,9 @@
 #import <UIKit/UIDragItem.h>
 #import <UIKit/UIDropInteraction.h>
 #import <UIKit/UIInteraction.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKFocusedElementInfo.h>
-#import <WebKit/_WKFormInputSession.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKFocusedElementInfo.h>
+#import <CyberKit/_WKFormInputSession.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SoftLinking.h>
 

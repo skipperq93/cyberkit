@@ -29,7 +29,7 @@
 #import "config.h"
 #import "MockWebNotificationProvider.h"
 
-#import <WebKit/WebSecurityOriginPrivate.h>
+#import <CyberKit/WebSecurityOriginPrivate.h>
 #import <wtf/UUID.h>
 #import <wtf/text/StringHash.h>
 

@@ -32,16 +32,16 @@
 #import "TestInvocation.h"
 #import "TestRunnerWKWebView.h"
 #import "WebKitTestRunnerPasteboard.h"
-#import <WebKit/WKContextPrivate.h>
-#import <WebKit/WKPageGroup.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKStringCF.h>
-#import <WebKit/WKURLCF.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKContextPrivate.h>
+#import <CyberKit/WKPageGroup.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKStringCF.h>
+#import <CyberKit/WKURLCF.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <mach-o/dyld.h>
 
 @interface NSSound ()

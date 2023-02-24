@@ -29,8 +29,8 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 #import <wtf/cocoa/NSURLExtras.h>

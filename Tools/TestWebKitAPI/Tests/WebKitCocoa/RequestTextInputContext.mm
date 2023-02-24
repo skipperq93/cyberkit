@@ -33,10 +33,10 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "UserInterfaceSwizzler.h"
-#import <WebKit/WKPreferencesRefPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKTextInputContext.h>
+#import <CyberKit/WKPreferencesRefPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKTextInputContext.h>
 #import <wtf/RetainPtr.h>
 
 namespace TestWebKitAPI {

@@ -23,11 +23,11 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKSecurityOrigin.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKSecurityOrigin.h>
+#import <CyberKit/WKWebView.h>
 
 /*! A WKFrameInfo object contains information about a frame on a webpage.
  @discussion An instance of this class is a transient, data-only object;

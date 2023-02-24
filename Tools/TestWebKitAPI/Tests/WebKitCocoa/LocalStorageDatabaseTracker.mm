@@ -28,10 +28,10 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKWebsiteDataRecordPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKWebsiteDataRecordPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/text/WTFString.h>
 
 @interface LocalStorageUIDelegate : NSObject <WKUIDelegate> {

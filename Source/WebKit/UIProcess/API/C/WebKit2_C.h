@@ -26,48 +26,48 @@
 #ifndef WebKit2_C_h
 #define WebKit2_C_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKType.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKType.h>
 
-#include <WebKit/WKArray.h>
-#include <WebKit/WKBackForwardListRef.h>
-#include <WebKit/WKBackForwardListItemRef.h>
-#include <WebKit/WKConnectionRef.h>
-#include <WebKit/WKContext.h>
-#include <WebKit/WKData.h>
-#include <WebKit/WKDictionary.h>
-#include <WebKit/WKErrorRef.h>
-#include <WebKit/WKExperimentalFeature.h>
-#include <WebKit/WKFormSubmissionListener.h>
-#include <WebKit/WKFrame.h>
-#include <WebKit/WKFramePolicyListener.h>
-#include <WebKit/WKGeolocationManager.h>
-#include <WebKit/WKGeolocationPermissionRequest.h>
-#include <WebKit/WKGeolocationPosition.h>
-#include <WebKit/WKHitTestResult.h>
-#include <WebKit/WKInternalDebugFeature.h>
-#include <WebKit/WKMutableArray.h>
-#include <WebKit/WKMutableDictionary.h>
-#include <WebKit/WKNavigationDataRef.h>
-#include <WebKit/WKNumber.h>
-#include <WebKit/WKOpenPanelParametersRef.h>
-#include <WebKit/WKOpenPanelResultListener.h>
-#include <WebKit/WKPage.h>
-#include <WebKit/WKPageConfigurationRef.h>
-#include <WebKit/WKPageGroup.h>
-#include <WebKit/WKPreferencesRef.h>
-#include <WebKit/WKString.h>
-#include <WebKit/WKURL.h>
-#include <WebKit/WKURLRequest.h>
-#include <WebKit/WKURLResponse.h>
-#include <WebKit/WKUserContentControllerRef.h>
-#include <WebKit/WKUserMediaPermissionRequest.h>
-#include <WebKit/WKUserScriptRef.h>
+#include <CyberKit/WKArray.h>
+#include <CyberKit/WKBackForwardListRef.h>
+#include <CyberKit/WKBackForwardListItemRef.h>
+#include <CyberKit/WKConnectionRef.h>
+#include <CyberKit/WKContext.h>
+#include <CyberKit/WKData.h>
+#include <CyberKit/WKDictionary.h>
+#include <CyberKit/WKErrorRef.h>
+#include <CyberKit/WKExperimentalFeature.h>
+#include <CyberKit/WKFormSubmissionListener.h>
+#include <CyberKit/WKFrame.h>
+#include <CyberKit/WKFramePolicyListener.h>
+#include <CyberKit/WKGeolocationManager.h>
+#include <CyberKit/WKGeolocationPermissionRequest.h>
+#include <CyberKit/WKGeolocationPosition.h>
+#include <CyberKit/WKHitTestResult.h>
+#include <CyberKit/WKInternalDebugFeature.h>
+#include <CyberKit/WKMutableArray.h>
+#include <CyberKit/WKMutableDictionary.h>
+#include <CyberKit/WKNavigationDataRef.h>
+#include <CyberKit/WKNumber.h>
+#include <CyberKit/WKOpenPanelParametersRef.h>
+#include <CyberKit/WKOpenPanelResultListener.h>
+#include <CyberKit/WKPage.h>
+#include <CyberKit/WKPageConfigurationRef.h>
+#include <CyberKit/WKPageGroup.h>
+#include <CyberKit/WKPreferencesRef.h>
+#include <CyberKit/WKString.h>
+#include <CyberKit/WKURL.h>
+#include <CyberKit/WKURLRequest.h>
+#include <CyberKit/WKURLResponse.h>
+#include <CyberKit/WKUserContentControllerRef.h>
+#include <CyberKit/WKUserMediaPermissionRequest.h>
+#include <CyberKit/WKUserScriptRef.h>
 
 #if defined(__OBJC__) && __OBJC__
-#import <WebKit/WKView.h>
+#import <CyberKit/WKView.h>
 #elif !(defined(__APPLE__) && __APPLE__)
-#include <WebKit/WKView.h>
+#include <CyberKit/WKView.h>
 #endif
 
 #endif /* WebKit2_C_h */

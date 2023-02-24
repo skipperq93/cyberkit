@@ -27,10 +27,10 @@
 
 #import "PlatformUtilities.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKNavigationDelegate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKNavigationDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebKit.h>
 #import <wtf/RetainPtr.h>
 
 const char* successfulResult = "Pass: A cross partition resource was blocked from loading";

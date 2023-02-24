@@ -33,8 +33,8 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JSStringRefCF.h>
 #import <WebCore/TextGranularity.h>
-#import <WebKit/WebFrame.h>
-#import <WebKit/WebHTMLView.h>
+#import <CyberKit/WebFrame.h>
+#import <CyberKit/WebHTMLView.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 

@@ -32,9 +32,9 @@
 #import "TestWKWebView.h"
 #import "WebCoreTestSupport.h"
 #import <JavaScriptCore/JSContext.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/_WKFullscreenDelegate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/_WKFullscreenDelegate.h>
 #import <wtf/RetainPtr.h>
 
 class PreferredAudioBufferSize : public testing::Test {

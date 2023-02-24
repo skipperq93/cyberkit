@@ -27,8 +27,8 @@
 
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
 
 namespace TestWebKitAPI {
 

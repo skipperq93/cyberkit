@@ -27,7 +27,7 @@
 #define WKFrameMac_h
 
 #include <Security/SecTrust.h>
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifdef __cplusplus
 extern "C" {

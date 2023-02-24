@@ -28,8 +28,8 @@
 #import "JavaScriptTest.h"
 #import "Test.h"
 #import "WebKitAgnosticTest.h"
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/WKViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/WKViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool isWaitingForPageSignalToContinue = false;

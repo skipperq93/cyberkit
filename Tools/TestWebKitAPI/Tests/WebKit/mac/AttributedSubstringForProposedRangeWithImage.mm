@@ -26,8 +26,8 @@
 #import "config.h"
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/WKContextPrivate.h>
-#import <WebKit/WKRetainPtr.h>
+#import <CyberKit/WKContextPrivate.h>
+#import <CyberKit/WKRetainPtr.h>
 
 @interface WKView ()
 - (void)attributedSubstringForProposedRange:(NSRange)nsRange completionHandler:(void(^)(NSAttributedString *attrString, NSRange actualRange))completionHandlerPtr;

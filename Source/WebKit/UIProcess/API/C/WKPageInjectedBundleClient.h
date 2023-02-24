@@ -26,7 +26,7 @@
 #ifndef WKPageInjectedBundleClient_h
 #define WKPageInjectedBundleClient_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 typedef void (*WKPageDidReceiveMessageFromInjectedBundleCallback)(WKPageRef page, WKStringRef messageName, WKTypeRef messageBody, const void *clientInfo);
 typedef void (*WKPageDidReceiveSynchronousMessageFromInjectedBundleCallback)(WKPageRef page, WKStringRef messageName, WKTypeRef messageBody, WKTypeRef* returnData, const void *clientInfo);

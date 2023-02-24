@@ -33,11 +33,11 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import <CoreLocation/CLLocation.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WebAllowDenyPolicyListener.h>
-#import <WebKit/_WKGeolocationCoreLocationProvider.h>
-#import <WebKit/_WKGeolocationPosition.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WebAllowDenyPolicyListener.h>
+#import <CyberKit/_WKGeolocationCoreLocationProvider.h>
+#import <CyberKit/_WKGeolocationPosition.h>
 #import <wtf/MainThread.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>

@@ -42,8 +42,8 @@
 #import <JavaScriptCore/JSValue.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <JavaScriptCore/OpaqueJSString.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <mach/mach_time.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/WorkQueue.h>

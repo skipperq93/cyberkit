@@ -28,11 +28,11 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferences.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferences.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @class ModalAlertsUIDelegate;

@@ -29,9 +29,9 @@
 #import "HTTPServer.h"
 #import "Test.h"
 #import "Utilities.h"
-#import <WebKit/WKNavigationResponsePrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKNavigationResponsePrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WebKit.h>
 #import <wtf/RetainPtr.h>
 
 @interface WKNavigationResponseTestNavigationDelegate : NSObject <WKNavigationDelegate>

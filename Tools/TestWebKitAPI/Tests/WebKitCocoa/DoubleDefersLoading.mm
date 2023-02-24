@@ -29,11 +29,11 @@
 #import "PlatformUtilities.h"
 #import "Utilities.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 @interface DoubleDefersNavigationDelegate : NSObject <WKNavigationDelegate>

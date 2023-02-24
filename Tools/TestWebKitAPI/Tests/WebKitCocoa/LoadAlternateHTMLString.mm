@@ -30,8 +30,8 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/NSURLExtras.h>
 

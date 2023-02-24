@@ -29,12 +29,12 @@
 #import "InstanceMethodSwizzler.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebsiteDataStore.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebsiteDataStore.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 @interface LocalStorageClearMessageHandler : NSObject <WKScriptMessageHandler>

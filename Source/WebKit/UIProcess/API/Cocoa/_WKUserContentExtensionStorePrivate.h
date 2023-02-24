@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/_WKUserContentExtensionStore.h>
+#import <CyberKit/_WKUserContentExtensionStore.h>
 
 @class WKContentRuleListStore;
 

@@ -51,7 +51,7 @@
 #import <wtf/URL.h>
 
 // FIXME: Remove use of WebKit1 from WebKit2
-#import <WebKit/WebAllowDenyPolicyListener.h>
+#import <CyberKit/WebAllowDenyPolicyListener.h>
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 

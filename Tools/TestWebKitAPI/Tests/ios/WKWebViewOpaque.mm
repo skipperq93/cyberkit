@@ -29,7 +29,7 @@
 
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 
 @interface OpaqueTestWKWebView : TestWKWebView
 @end

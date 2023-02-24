@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/WebKit.h>
+#import <CyberKit/WebKit.h>
 
 #import "DeprecatedGlobalValues.h"
 #import "HTTPServer.h"
@@ -32,14 +32,14 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKURLSchemeHandler.h>
-#import <WebKit/WKURLSchemeTaskPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WKWebsiteDataStoreRef.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKURLSchemeHandler.h>
+#import <CyberKit/WKURLSchemeTaskPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WKWebsiteDataStoreRef.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/HashMap.h>
 #import <wtf/RetainPtr.h>

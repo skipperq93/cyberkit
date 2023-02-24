@@ -36,7 +36,7 @@
 #import <WebCore/KeyboardScroll.h>
 #import <WebCore/RectEdges.h>
 #import <WebCore/WebEvent.h>
-#import <WebKit/UIKitSPI.h>
+#import <CyberKit/UIKitSPI.h>
 #import <algorithm>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>

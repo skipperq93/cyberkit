@@ -46,12 +46,12 @@
 #import "WorkQueueItem.h"
 #import <Foundation/NSNotification.h>
 #import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebHTMLViewPrivate.h>
-#import <WebKit/WebNSURLExtras.h>
-#import <WebKit/WebScriptWorld.h>
-#import <WebKit/WebSecurityOriginPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/WebHTMLViewPrivate.h>
+#import <CyberKit/WebNSURLExtras.h>
+#import <CyberKit/WebScriptWorld.h>
+#import <CyberKit/WebSecurityOriginPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/Assertions.h>
 
 #if !PLATFORM(IOS_FAMILY)
@@ -59,7 +59,7 @@
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebKit/WebCoreThreadMessage.h>
+#import <CyberKit/WebCoreThreadMessage.h>
 #endif
 
 #ifndef NSEC_PER_MSEC

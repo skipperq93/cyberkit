@@ -34,7 +34,7 @@
 #import "TestWKWebView.h"
 #import "VirtualGamepad.h"
 #import <WebCore/GameControllerSoftLink.h>
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 
 @interface GamepadMessageHandler : NSObject <WKScriptMessageHandler>
 @property (readonly, nonatomic) Vector<RetainPtr<NSString>> messages;

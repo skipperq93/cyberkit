@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WebFeature.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WebFeature.h>
 
 #import <Foundation/Foundation.h>
 

@@ -28,11 +28,11 @@
 #include "TestCocoa.h"
 #include "Utilities.h"
 #include "WTFTestUtilities.h"
-#include <WebKit/_WKWebExtensionContextPrivate.h>
-#include <WebKit/_WKWebExtensionControllerConfigurationPrivate.h>
-#include <WebKit/_WKWebExtensionControllerDelegatePrivate.h>
-#include <WebKit/_WKWebExtensionControllerPrivate.h>
-#include <WebKit/_WKWebExtensionPrivate.h>
+#include <CyberKit/_WKWebExtensionContextPrivate.h>
+#include <CyberKit/_WKWebExtensionControllerConfigurationPrivate.h>
+#include <CyberKit/_WKWebExtensionControllerDelegatePrivate.h>
+#include <CyberKit/_WKWebExtensionControllerPrivate.h>
+#include <CyberKit/_WKWebExtensionPrivate.h>
 
 #ifdef __OBJC__
 

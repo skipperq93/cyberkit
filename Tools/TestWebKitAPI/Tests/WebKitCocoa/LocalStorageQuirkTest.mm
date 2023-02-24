@@ -28,12 +28,12 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKUserStyleSheet.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKUserStyleSheet.h>
 #import <wtf/RetainPtr.h>
 
 @interface LocalStorageQuirkMessageHandler : NSObject <WKScriptMessageHandler>

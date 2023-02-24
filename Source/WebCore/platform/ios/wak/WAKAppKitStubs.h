@@ -65,7 +65,7 @@
 #define NSScrollView WAKScrollView
 #endif
 #endif // WAK_APPKIT_API_AVAILABLE_MACCATALYST
-// There is no <WebKit/WebDynamicScrollBarsView.h> in Mac Catalyst.
+// There is no <CyberKit/WebDynamicScrollBarsView.h> in Mac Catalyst.
 #ifndef WebDynamicScrollBarsView
 #define WebDynamicScrollBarsView WAKScrollView
 #endif

@@ -34,16 +34,16 @@
 #import "TestWKWebView.h"
 #import <CoreServices/CoreServices.h>
 #import <WebCore/WebCoreThread.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WebDataSourcePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/WebPreferencesPrivate.h>
-#import <WebKit/WebUIKitSupport.h>
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/_WKDownload.h>
-#import <WebKit/_WKDownloadDelegate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WebDataSourcePrivate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/WebPreferencesPrivate.h>
+#import <CyberKit/WebUIKitSupport.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/_WKDownload.h>
+#import <CyberKit/_WKDownloadDelegate.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 

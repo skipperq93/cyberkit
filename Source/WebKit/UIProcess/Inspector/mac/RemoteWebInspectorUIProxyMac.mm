@@ -31,10 +31,10 @@
 #import "GlobalFindInPageState.h"
 #import "RemoteWebInspectorUIMessages.h"
 #import "RemoteWebInspectorUIProxyMessages.h"
-#import <WebKit/WKFrameInfo.h>
+#import <CyberKit/WKFrameInfo.h>
 #import "WKInspectorViewController.h"
-#import <WebKit/WKNavigationAction.h>
-#import <WebKit/WKNavigationDelegate.h>
+#import <CyberKit/WKNavigationAction.h>
+#import <CyberKit/WKNavigationDelegate.h>
 #import "WKWebViewInternal.h"
 #import "WebInspectorUIProxy.h"
 #import "WebPageGroup.h"

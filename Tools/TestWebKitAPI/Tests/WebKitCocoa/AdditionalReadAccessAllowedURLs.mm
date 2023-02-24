@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if !PLATFORM(IOS_FAMILY_SIMULATOR)
 
@@ -33,12 +33,12 @@
 #import "PlatformUtilities.h"
 #import "Utilities.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/NSAttributedStringPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/NSAttributedStringPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
 static std::pair<RetainPtr<NSURL>, RetainPtr<NSURL>> readableAndUnreadableDirectories()

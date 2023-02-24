@@ -30,8 +30,8 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import <UIKit/UIKit.h>
-#import <WebKit/DOMHTMLMediaElement.h>
-#import <WebKit/WebFramePrivate.h>
+#import <CyberKit/DOMHTMLMediaElement.h>
+#import <CyberKit/WebFramePrivate.h>
 #import <WebKitLegacy/WebPreferencesPrivate.h>
 #import <wtf/MainThread.h>
 #import <wtf/RetainPtr.h>

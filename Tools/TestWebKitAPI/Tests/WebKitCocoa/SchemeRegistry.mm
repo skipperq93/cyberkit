@@ -29,15 +29,15 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKBrowsingContextController.h>
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKBrowsingContextController.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #if WK_HAVE_C_SPI
 #import "PlatformWebView.h"
-#import <WebKit/WKBrowsingContextLoadDelegate.h>
-#import <WebKit/WKContextPrivate.h>
-#import <WebKit/WKPageUIClient.h>
+#import <CyberKit/WKBrowsingContextLoadDelegate.h>
+#import <CyberKit/WKContextPrivate.h>
+#import <CyberKit/WKPageUIClient.h>
 #endif
 
 static NSString * const echoScheme = @"echo";

@@ -26,9 +26,9 @@
 #ifndef WKContextPrivateMac_h
 #define WKContextPrivateMac_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKDeprecated.h>
-#include <WebKit/WKPluginLoadPolicy.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKDeprecated.h>
+#include <CyberKit/WKPluginLoadPolicy.h>
 
 #ifdef __cplusplus
 extern "C" {

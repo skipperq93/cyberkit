@@ -35,8 +35,8 @@
 #import <wtf/text/WTFString.h>
 
 // FIXME: Remove use of WebKit1 from WebKit2
-#import <WebKit/WebAllowDenyPolicyListener.h>
-#import <WebKit/WebSecurityOriginPrivate.h>
+#import <CyberKit/WebAllowDenyPolicyListener.h>
+#import <CyberKit/WebSecurityOriginPrivate.h>
 
 @interface WebSecurityOrigin (WebInternal)
 - (id)_initWithWebCoreSecurityOrigin:(WebCore::SecurityOrigin *)origin;

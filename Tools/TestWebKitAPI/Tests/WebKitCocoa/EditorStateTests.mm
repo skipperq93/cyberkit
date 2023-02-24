@@ -31,7 +31,7 @@
 #import "TestInputDelegate.h"
 #import "TestWKWebView.h"
 #import "UserInterfaceSwizzler.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/Vector.h>
 
 #if PLATFORM(IOS_FAMILY)

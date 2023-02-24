@@ -30,9 +30,9 @@
 #include "JavaScriptTest.h"
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKPreferencesRefPrivate.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKSerializedScriptValue.h>
+#include <CyberKit/WKPreferencesRefPrivate.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKSerializedScriptValue.h>
 
 namespace TestWebKitAPI {
 

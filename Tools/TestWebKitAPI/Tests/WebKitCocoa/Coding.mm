@@ -25,7 +25,7 @@
 
 #import "config.h"
 
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 #import <wtf/RetainPtr.h>
 
 template<typename T>

@@ -26,8 +26,8 @@
 #ifndef WKHTTPCookieStoreRef_h
 #define WKHTTPCookieStoreRef_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKCookieManager.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKCookieManager.h>
 
 #ifdef __cplusplus
 extern "C" {

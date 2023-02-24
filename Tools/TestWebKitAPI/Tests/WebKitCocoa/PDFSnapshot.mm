@@ -32,8 +32,8 @@
 #import "TestPDFDocument.h"
 #import "TestWKWebView.h"
 #import <WebCore/Color.h>
-#import <WebKit/WKPDFConfiguration.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPDFConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 namespace TestWebKitAPI {
 

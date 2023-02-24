@@ -30,7 +30,7 @@
 #import "config.h"
 #import "GCController.h"
 
-#import <WebKit/WebCoreStatistics.h>
+#import <CyberKit/WebCoreStatistics.h>
 
 
 void GCController::collect() const

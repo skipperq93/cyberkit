@@ -28,10 +28,10 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 TEST(WKWebView, LoadFileWithLoadRequest)

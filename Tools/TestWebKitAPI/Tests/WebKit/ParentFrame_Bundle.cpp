@@ -30,9 +30,9 @@
 #include "InjectedBundleTest.h"
 
 #include "PlatformUtilities.h"
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundleFrame.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundleFrame.h>
+#include <CyberKit/WKRetainPtr.h>
 
 namespace TestWebKitAPI {
 

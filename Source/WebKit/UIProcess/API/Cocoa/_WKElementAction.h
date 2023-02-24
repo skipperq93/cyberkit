@@ -23,11 +23,11 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if TARGET_OS_IPHONE
 
-#import <WebKit/_WKActivatedElementInfo.h>
+#import <CyberKit/_WKActivatedElementInfo.h>
 
 @class UIAction;
 @class UIImage;

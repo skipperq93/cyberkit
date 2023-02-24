@@ -30,7 +30,7 @@
 #include <wtf/text/WTFString.h>
 
 #if PLATFORM(COCOA) && !defined(BUILDING_GTK__)
-#include <WebKit/WKFoundation.h>
+#include <CyberKit/WKFoundation.h>
 #include <wtf/RetainPtr.h>
 OBJC_CLASS NSView;
 OBJC_CLASS UIView;

@@ -25,9 +25,9 @@
 
 #import "config.h"
 
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextController.h>
-#import <WebKit/WKWebProcessPlugInLoadDelegate.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextController.h>
+#import <CyberKit/WKWebProcessPlugInLoadDelegate.h>
 
 @interface SchemeChangingPlugIn : NSObject <WKWebProcessPlugIn, WKWebProcessPlugInLoadDelegate>
 @end

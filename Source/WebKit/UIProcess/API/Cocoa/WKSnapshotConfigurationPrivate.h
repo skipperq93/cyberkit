@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKSnapshotConfiguration.h>
+#import <CyberKit/WKSnapshotConfiguration.h>
 
 #if !TARGET_OS_IPHONE
 

@@ -33,11 +33,11 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/WebKit.h>
 #import <wtf/text/WTFString.h>
 
 namespace TestWebKitAPI {

@@ -24,14 +24,14 @@
  */
 
 #import "config.h"
-#import <WebKit/WebKit.h>
+#import <CyberKit/WebKit.h>
 
 #import "PlatformUtilities.h"
 #import "Utilities.h"
-#import <WebKit/WKPreferencesRef.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKInputDelegate.h>
+#import <CyberKit/WKPreferencesRef.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKInputDelegate.h>
 #import <wtf/RetainPtr.h>
 
 using namespace TestWebKitAPI;

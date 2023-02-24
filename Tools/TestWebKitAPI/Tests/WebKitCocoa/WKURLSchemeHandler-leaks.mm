@@ -29,14 +29,14 @@
 
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKTestingSupport.h>
-#import <WebKit/WKURLSchemeHandler.h>
-#import <WebKit/WKURLSchemeTaskPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKTestingSupport.h>
+#import <CyberKit/WKURLSchemeHandler.h>
+#import <CyberKit/WKURLSchemeTaskPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WebKit.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 

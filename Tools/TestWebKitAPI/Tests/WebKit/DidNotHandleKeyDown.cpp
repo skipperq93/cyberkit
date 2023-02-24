@@ -31,7 +31,7 @@
 #include "JavaScriptTest.h"
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 
 namespace TestWebKitAPI {
 

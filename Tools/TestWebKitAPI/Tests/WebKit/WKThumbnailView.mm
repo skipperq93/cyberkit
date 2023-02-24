@@ -33,8 +33,8 @@
 #import "PlatformWebView.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKViewPrivate.h>
-#import <WebKit/_WKThumbnailView.h>
+#import <CyberKit/WKViewPrivate.h>
+#import <CyberKit/_WKThumbnailView.h>
 #import <wtf/RetainPtr.h>
 
 static bool didFinishLoad;

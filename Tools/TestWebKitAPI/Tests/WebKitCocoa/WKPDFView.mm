@@ -33,10 +33,10 @@
 #import "TestUIDelegate.h"
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(MAC)

@@ -36,8 +36,8 @@
 #import <JavaScriptCore/JSStringRefCF.h>
 #import <JavaScriptCore/JSValue.h>
 #import <JavaScriptCore/OpaqueJSString.h>
-#import <WebKit/WebPreferences.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebPreferences.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <mach/mach_time.h>
 #import <pal/spi/mac/NSTextInputContextSPI.h>
 #import <wtf/WorkQueue.h>

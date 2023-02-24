@@ -11,8 +11,8 @@
 
 #import "DumpRenderTree.h"
 #import "TestRunner.h"
-#import <WebKit/WebPolicyDelegatePrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebPolicyDelegatePrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 
 @implementation DefaultPolicyDelegate
 

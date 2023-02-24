@@ -30,8 +30,8 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKPagePrivate.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKPagePrivate.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <signal.h>
 
 namespace TestWebKitAPI {

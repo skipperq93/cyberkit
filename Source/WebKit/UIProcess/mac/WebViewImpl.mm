@@ -68,12 +68,12 @@
 #import "WKQuickLookPreviewController.h"
 #import "WKRevealItemPresenter.h"
 #import "WKSafeBrowsingWarning.h"
-#import <WebKit/WKShareSheet.h>
+#import <CyberKit/WKShareSheet.h>
 #import "WKTextInputWindowController.h"
 #import "WKViewLayoutStrategy.h"
 #import "WKWebViewInternal.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebBackForwardList.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebBackForwardList.h>
 #import "WebBackForwardList.h"
 #import "WebEditCommandProxy.h"
 #import "WebEventFactory.h"

@@ -29,12 +29,12 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKExperimentalFeature.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKExperimentalFeature.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/HashSet.h>
 #import <wtf/RetainPtr.h>

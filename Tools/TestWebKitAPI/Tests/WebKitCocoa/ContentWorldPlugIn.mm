@@ -25,11 +25,11 @@
 
 #import "config.h"
 
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextController.h>
-#import <WebKit/WKWebProcessPlugInFrame.h>
-#import <WebKit/WKWebProcessPlugInLoadDelegate.h>
-#import <WebKit/WKWebProcessPlugInScriptWorld.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextController.h>
+#import <CyberKit/WKWebProcessPlugInFrame.h>
+#import <CyberKit/WKWebProcessPlugInLoadDelegate.h>
+#import <CyberKit/WKWebProcessPlugInScriptWorld.h>
 
 @interface ContentWorldPlugIn : NSObject <WKWebProcessPlugIn, WKWebProcessPlugInLoadDelegate>
 @end

@@ -26,7 +26,7 @@
 #import "config.h"
 #import "TestProtocol.h"
 
-#import <WebKit/WKBrowsingContextController.h>
+#import <CyberKit/WKBrowsingContextController.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 

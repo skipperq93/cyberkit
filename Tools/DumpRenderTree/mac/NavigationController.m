@@ -29,8 +29,8 @@
 #import "config.h"
 #import "NavigationController.h"
 
-#import <WebKit/WebFrame.h>
-#import <WebKit/WebScriptObject.h>
+#import <CyberKit/WebFrame.h>
+#import <CyberKit/WebScriptObject.h>
 
 
 @implementation NavigationController
