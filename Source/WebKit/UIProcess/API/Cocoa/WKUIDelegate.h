@@ -255,7 +255,7 @@ typedef NS_ENUM(NSInteger, WKDialogResult) {
  */
 - (void)webView:(WKWebView *)webView showLockdownModeFirstUseMessage:(NSString *)message completionHandler:(void (^)(WKDialogResult))completionHandler WK_API_AVAILABLE(ios(13.0));
 
-#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000
+#if (!TARGET_OS_IOS || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 /**
  * @abstract Called when the web view is about to present its edit menu.
  *
