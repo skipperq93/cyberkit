@@ -1016,7 +1016,7 @@
 		9391F273121B38BD00EBF7E8 /* WebFrameNetworkingContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebFrameNetworkingContext.h; sourceTree = "<group>"; };
 		9391F274121B38BD00EBF7E8 /* WebFrameNetworkingContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebFrameNetworkingContext.mm; sourceTree = "<group>"; };
 		939811320824BF01008DF038 /* Info.plist */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mac/Info.plist; sourceTree = SOURCE_ROOT; tabWidth = 8; usesTabs = 1; };
-		939811330824BF01008DF038 /* WebKitLegacy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WebKitLegacy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		939811330824BF01008DF038 /* CyberKitLegacy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CyberKitLegacy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93AEB17D032C1735008635CE /* WebKitLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = WebKitLogging.h; sourceTree = "<group>"; tabWidth = 8; usesTabs = 0; };
 		93AEB17E032C1735008635CE /* WebKitLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = WebKitLogging.m; sourceTree = "<group>"; tabWidth = 8; usesTabs = 0; };
 		93C6F14507920B93002449CD /* WebFrameViewPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = WebFrameViewPrivate.h; sourceTree = "<group>"; tabWidth = 8; usesTabs = 0; };
@@ -1572,7 +1572,7 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				939811330824BF01008DF038 /* WebKitLegacy.framework */,
+				939811330824BF01008DF038 /* CyberKitLegacy.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3148,9 +3148,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		9398100A0824BF01008DF038 /* WebKitLegacy */ = {
+		9398100A0824BF01008DF038 /* CyberKitLegacy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 149C282D08902B0F008A9EFC /* Build configuration list for PBXNativeTarget "WebKitLegacy" */;
+			buildConfigurationList = 149C282D08902B0F008A9EFC /* Build configuration list for PBXNativeTarget "CyberKitLegacy" */;
 			buildPhases = (
 				5D2F7DB70C687A5A00B5B72B /* Update Info.plist with version information */,
 				7C02321B251B9A8A00BA7BB6 /* Generate Preferences */,
@@ -3173,10 +3173,10 @@
 			dependencies = (
 				5C9D925622D7E841008E9266 /* PBXTargetDependency */,
 			);
-			name = WebKitLegacy;
+			name = CyberKitLegacy;
 			productInstallPath = /System/Library/Frameworks;
 			productName = WebKitLegacy;
-			productReference = 939811330824BF01008DF038 /* WebKitLegacy.framework */;
+			productReference = 939811330824BF01008DF038 /* CyberKitLegacy.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -3197,7 +3197,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 149C283208902B0F008A9EFC /* Build configuration list for PBXProject "WebKitLegacy" */;
+			buildConfigurationList = 149C283208902B0F008A9EFC /* Build configuration list for PBXProject "CyberKitLegacy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
@@ -3216,7 +3216,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9398100A0824BF01008DF038 /* WebKitLegacy */,
+				9398100A0824BF01008DF038 /* CyberKitLegacy */,
 				5C9D925022D7E835008E9266 /* Generate Unified Sources */,
 				537CF83D22EFC4C900C6EBB3 /* Apply Configuration to XCFileLists */,
 			);
@@ -3656,6 +3656,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C904FD20BA9DD0F0081E9D0 /* WebKitLegacy.xcconfig */;
 			buildSettings = {
+				PRODUCT_NAME = CyberKitLegacy;
 			};
 			name = Debug;
 		};
@@ -3663,6 +3664,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C904FD20BA9DD0F0081E9D0 /* WebKitLegacy.xcconfig */;
 			buildSettings = {
+				PRODUCT_NAME = CyberKitLegacy;
 			};
 			name = Release;
 		};
@@ -3670,6 +3672,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C904FD20BA9DD0F0081E9D0 /* WebKitLegacy.xcconfig */;
 			buildSettings = {
+				PRODUCT_NAME = CyberKitLegacy;
 			};
 			name = Production;
 		};
@@ -3749,7 +3752,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		149C282D08902B0F008A9EFC /* Build configuration list for PBXNativeTarget "WebKitLegacy" */ = {
+		149C282D08902B0F008A9EFC /* Build configuration list for PBXNativeTarget "CyberKitLegacy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				149C282E08902B0F008A9EFC /* Debug */,
@@ -3759,7 +3762,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Production;
 		};
-		149C283208902B0F008A9EFC /* Build configuration list for PBXProject "WebKitLegacy" */ = {
+		149C283208902B0F008A9EFC /* Build configuration list for PBXProject "CyberKitLegacy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				149C283308902B0F008A9EFC /* Debug */,
