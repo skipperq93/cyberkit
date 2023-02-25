@@ -31,8 +31,8 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "UserInterfaceSwizzler.h"
-#import <WebKit/WKWebpagePreferences.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/WKWebpagePreferences.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/text/WTFString.h>
 

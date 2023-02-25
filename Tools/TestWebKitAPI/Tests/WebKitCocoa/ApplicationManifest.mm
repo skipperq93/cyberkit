@@ -33,9 +33,9 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import <WebCore/ApplicationManifest.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKApplicationManifest.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKApplicationManifest.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 namespace TestWebKitAPI {

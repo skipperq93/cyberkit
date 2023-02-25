@@ -136,7 +136,7 @@
 #import <WebCore/WebEvent.h>
 #import <WebCore/WebTextIndicatorLayer.h>
 #import <WebCore/WritingDirection.h>
-#import <WebKit/WebSelectionRect.h> // FIXME: WebKit should not include WebKitLegacy headers!
+#import <CyberKit/WebSelectionRect.h> // FIXME: WebKit should not include WebKitLegacy headers!
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <pal/spi/cocoa/DataDetectorsCoreSPI.h>
 #import <pal/spi/cocoa/LaunchServicesSPI.h>

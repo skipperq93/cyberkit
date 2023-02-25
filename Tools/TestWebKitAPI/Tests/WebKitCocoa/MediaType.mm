@@ -28,9 +28,9 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKFindConfiguration.h>
-#import <WebKit/WKFindResult.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKFindConfiguration.h>
+#import <CyberKit/WKFindResult.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/RetainPtr.h>
 
 NSString *testPage = @"<style>\n"

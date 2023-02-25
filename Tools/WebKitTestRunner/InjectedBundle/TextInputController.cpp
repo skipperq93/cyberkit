@@ -31,8 +31,8 @@
 #include "InjectedBundlePage.h"
 #include "JSTextInputController.h"
 #include "StringFunctions.h"
-#include <WebKit/WKBundleFrame.h>
-#include <WebKit/WKBundlePagePrivate.h>
+#include <CyberKit/WKBundleFrame.h>
+#include <CyberKit/WKBundlePagePrivate.h>
 
 namespace WTR {
 

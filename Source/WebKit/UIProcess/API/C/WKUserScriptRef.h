@@ -26,8 +26,8 @@
 #ifndef WKUserScriptRef_h
 #define WKUserScriptRef_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKUserScriptInjectionTime.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKUserScriptInjectionTime.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -24,7 +24,7 @@
  */
 
 #import "TestWKWebView.h"
-#import <WebKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
 
 @interface EditingTestHarness : NSObject<WKUIDelegatePrivate> {
     RetainPtr<NSMutableArray<NSDictionary *>> _editorStateHistory;

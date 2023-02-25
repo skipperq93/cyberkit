@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 namespace WebKit {
 

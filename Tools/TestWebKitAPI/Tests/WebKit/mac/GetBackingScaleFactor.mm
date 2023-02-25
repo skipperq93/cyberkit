@@ -28,8 +28,8 @@
 #import "PlatformUtilities.h"
 #import "SyntheticBackingScaleFactorWindow.h"
 #import "Test.h"
-#import <WebKit/WKBrowsingContextController.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKBrowsingContextController.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 namespace TestWebKitAPI {

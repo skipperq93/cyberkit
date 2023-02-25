@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKHTTPCookieStore.h>
+#import <CyberKit/WKHTTPCookieStore.h>
 
 @interface WKHTTPCookieStore (WKPrivate)
 - (void)_getCookiesForURL:(NSURL *)url completionHandler:(void (^)(NSArray<NSHTTPCookie *> *))completionHandler WK_API_AVAILABLE(macos(11.0), ios(14.0));

@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/NSAttributedString.h>
+#import <CyberKit/NSAttributedString.h>
 
 @class WKNavigation;
 @class WKWebView;

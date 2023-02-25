@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKPreferences.h>
-#import <WebKit/WKPreferencesRefPrivate.h>
+#import <CyberKit/WKPreferences.h>
+#import <CyberKit/WKPreferencesRefPrivate.h>
 
 typedef NS_ENUM(NSInteger, _WKStorageBlockingPolicy) {
     _WKStorageBlockingPolicyAllowAll,

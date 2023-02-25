@@ -25,7 +25,7 @@
 
 #import "config.h"
 
-#import <WebKit/WebView.h>
+#import <CyberKit/WebView.h>
 #import <wtf/RetainPtr.h>
 
 @interface EarlyKVOCrashResponder : NSResponder {

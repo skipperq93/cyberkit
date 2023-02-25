@@ -31,7 +31,7 @@
 #import "AppKitSPI.h"
 #import "WKSafeBrowsingWarning.h"
 #import "WKTextFinderClient.h"
-#import <WebKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
 #import "WebBackForwardList.h"
 #import "WebPageProxy.h"
 #import "WebProcessProxy.h"

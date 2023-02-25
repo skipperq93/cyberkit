@@ -27,7 +27,7 @@
 
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/WebBackForwardList.h>
+#import <CyberKit/WebBackForwardList.h>
 #import <wtf/RetainPtr.h>
 
 @interface BackForwardListTest : NSObject <WebFrameLoadDelegate> {

@@ -25,8 +25,8 @@
 
 #import <WebCore/Node.h>
 #import <WebCore/Range.h>
-#import <WebKit/WKDOMNode.h>
-#import <WebKit/WKDOMRange.h>
+#import <CyberKit/WKDOMNode.h>
+#import <CyberKit/WKDOMRange.h>
 #import <wtf/HashMap.h>
 
 namespace WebCore {

@@ -24,7 +24,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 /*! @enum WKContentMode
  @abstract A content mode represents the type of content to load, as well as

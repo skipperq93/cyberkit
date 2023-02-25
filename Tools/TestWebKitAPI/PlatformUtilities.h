@@ -28,8 +28,8 @@
 #ifndef PlatformUtilities_h
 #define PlatformUtilities_h
 
-#include <WebKit/WKNativeEvent.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKNativeEvent.h>
+#include <CyberKit/WKRetainPtr.h>
 
 #include "Utilities.h"
 #include <string>

@@ -24,8 +24,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WebFeature.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WebFeature.h>
 
 WK_CLASS_AVAILABLE(macos(WK_MAC_TBA), ios(WK_IOS_TBA))
 @interface _WKFeature : NSObject

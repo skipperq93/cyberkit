@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKWebpagePreferences.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKWebpagePreferences.h>
 
 typedef NS_ENUM(NSInteger, _WKWebsiteAutoplayPolicy) {
     _WKWebsiteAutoplayPolicyDefault,

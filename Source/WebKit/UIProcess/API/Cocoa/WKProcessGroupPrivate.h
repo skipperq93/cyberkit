@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKProcessGroup.h>
+#import <CyberKit/WKProcessGroup.h>
 
-#import <WebKit/WKBase.h>
+#import <CyberKit/WKBase.h>
 
 #if TARGET_OS_IPHONE
 @class WKGeolocationProviderIOS;

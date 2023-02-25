@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKBrowsingContextGroup.h>
+#import <CyberKit/WKBrowsingContextGroup.h>
 
 #import "WKObject.h"
 #import "WebPageGroup.h"

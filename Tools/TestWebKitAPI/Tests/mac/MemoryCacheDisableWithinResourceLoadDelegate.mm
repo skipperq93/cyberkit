@@ -25,7 +25,7 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebCache.h>
+#import <CyberKit/WebCache.h>
 #import <wtf/RetainPtr.h>
 
 @interface MemoryCacheDisableTestResourceLoadDelegate : NSObject <WebResourceLoadDelegate> {

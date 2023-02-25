@@ -33,9 +33,9 @@
 #import "TestPDFDocument.h"
 #import "TestWKWebView.h"
 #import "WebCore/Color.h"
-#import <WebKit/WebKit.h>
-#import <WebKit/WebKitPrivate.h>
-#import <WebKit/_WKWebViewPrintFormatter.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/WebKitPrivate.h>
+#import <CyberKit/_WKWebViewPrintFormatter.h>
 #import <wtf/RetainPtr.h>
 
 @interface UIPrintFormatter ()

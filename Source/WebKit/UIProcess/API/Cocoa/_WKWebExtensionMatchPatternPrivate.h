@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/_WKWebExtensionMatchPattern.h>
+#import <CyberKit/_WKWebExtensionMatchPattern.h>
 
 @interface _WKWebExtensionMatchPattern ()
 

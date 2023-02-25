@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKSecurityOrigin.h>
+#import <CyberKit/WKSecurityOrigin.h>
 
 #import "APISecurityOrigin.h"
 

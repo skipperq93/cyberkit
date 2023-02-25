@@ -29,8 +29,8 @@
 #import "PlatformWebView.h"
 #import "Test.h"
 #import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
 #import <notify.h>
 
 // This test loads file-with-video.html. Then it calls a JavaScript method to create a source buffer and play the video,

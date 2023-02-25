@@ -26,7 +26,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import <Foundation/NSObject.h>
-#import <WebKit/WKBase.h>
+#import <CyberKit/WKBase.h>
 #import <wtf/Function.h>
 
 namespace WebKit {

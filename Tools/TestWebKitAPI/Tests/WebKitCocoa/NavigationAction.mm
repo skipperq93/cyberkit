@@ -30,7 +30,7 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface NavigationActionTestDelegate : NSObject <WKNavigationDelegate>

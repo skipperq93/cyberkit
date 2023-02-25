@@ -23,11 +23,11 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WKImage.h>
+#import <CyberKit/WKImage.h>
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIImage.h>

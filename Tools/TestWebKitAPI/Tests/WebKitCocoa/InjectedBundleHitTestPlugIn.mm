@@ -26,16 +26,16 @@
 #import "config.h"
 #import "InjectedBundleHitTestProtocol.h"
 #import "WebCoreTestSupport.h"
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKBundlePageResourceLoadClient.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
-#import <WebKit/WKWebProcessPlugInFrame.h>
-#import <WebKit/WKWebProcessPlugInHitTestResult.h>
-#import <WebKit/WKWebProcessPlugInLoadDelegate.h>
-#import <WebKit/WKWebProcessPlugInNodeHandle.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePageResourceLoadClient.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKWebProcessPlugInFrame.h>
+#import <CyberKit/WKWebProcessPlugInHitTestResult.h>
+#import <CyberKit/WKWebProcessPlugInLoadDelegate.h>
+#import <CyberKit/WKWebProcessPlugInNodeHandle.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
 @interface InjectedBundleHitTestPlugIn : NSObject<WKWebProcessPlugIn, WKWebProcessPlugInLoadDelegate, InjectedBundleHitTestProtocol>

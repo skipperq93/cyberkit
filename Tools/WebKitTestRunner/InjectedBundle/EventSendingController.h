@@ -26,8 +26,8 @@
 #pragma once
 
 #include "JSWrappable.h"
-#include <WebKit/WKEvent.h>
-#include <WebKit/WKGeometry.h>
+#include <CyberKit/WKEvent.h>
+#include <CyberKit/WKGeometry.h>
 #include <wtf/Ref.h>
 
 typedef const struct OpaqueJSContext* JSContextRef;

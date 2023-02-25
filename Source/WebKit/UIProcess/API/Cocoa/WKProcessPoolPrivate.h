@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKBase.h>
-#import <WebKit/WKProcessPool.h>
-#import <WebKit/WKSecurityOrigin.h>
+#import <CyberKit/WKBase.h>
+#import <CyberKit/WKProcessPool.h>
+#import <CyberKit/WKSecurityOrigin.h>
 
 @class WKWebView;
 @class WKWebsiteDataStore;

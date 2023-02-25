@@ -26,7 +26,7 @@
 #ifndef WKWebArchiveResource_h
 #define WKWebArchiveResource_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #include <stddef.h>
 

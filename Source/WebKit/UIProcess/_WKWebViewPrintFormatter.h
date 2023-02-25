@@ -26,7 +26,7 @@
 #if TARGET_OS_IPHONE
 
 #import <UIKit/UIPrintFormatter.h>
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 @class _WKFrameHandle;
 

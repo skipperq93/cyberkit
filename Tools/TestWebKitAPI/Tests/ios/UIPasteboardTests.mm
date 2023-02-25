@@ -35,8 +35,8 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <UIKit/UIPasteboard.h>
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <pal/ios/ManagedConfigurationSoftLink.h>
 
 typedef void (^DataLoadCompletionBlock)(NSData *, NSError *);

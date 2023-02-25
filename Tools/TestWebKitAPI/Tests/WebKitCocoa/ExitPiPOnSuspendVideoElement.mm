@@ -33,8 +33,8 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import <WebCore/PictureInPictureSupport.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Seconds.h>
 

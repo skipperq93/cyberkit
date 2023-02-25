@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/_WKInspectorWindow.h>
+#import <CyberKit/_WKInspectorWindow.h>
 
 #if !TARGET_OS_IPHONE
 

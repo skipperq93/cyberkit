@@ -29,8 +29,8 @@
 #import "InstanceMethodSwizzler.h"
 #import "PlatformUtilities.h"
 #import <WebCore/PasteboardCustomData.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 #if ENABLE(DRAG_SUPPORT) && PLATFORM(MAC)
 

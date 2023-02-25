@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKWindowFeatures.h>
+#import <CyberKit/WKWindowFeatures.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

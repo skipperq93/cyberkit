@@ -29,10 +29,10 @@
 #if HAVE(APP_SSO)
 
 #import "APINavigationAction.h"
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import "WKWebViewInternal.h"
 #import "WebPageProxy.h"
 #import <WebCore/ResourceResponse.h>

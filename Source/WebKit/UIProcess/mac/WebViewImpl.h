@@ -37,8 +37,8 @@
 #include <WebCore/ScrollTypes.h>
 #include <WebCore/TextIndicatorWindow.h>
 #include <WebCore/UserInterfaceLayoutDirection.h>
-#include <WebKit/WKDragDestinationAction.h>
-#include <WebKit/_WKOverlayScrollbarStyle.h>
+#include <CyberKit/WKDragDestinationAction.h>
+#include <CyberKit/_WKOverlayScrollbarStyle.h>
 #include <pal/spi/cocoa/AVKitSPI.h>
 #include <wtf/BlockPtr.h>
 #include <wtf/CompletionHandler.h>

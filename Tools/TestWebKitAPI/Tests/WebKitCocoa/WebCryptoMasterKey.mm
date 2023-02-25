@@ -27,7 +27,7 @@
 
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
 #import <wtf/text/WTFString.h>
 
 static bool receivedMessage = false;

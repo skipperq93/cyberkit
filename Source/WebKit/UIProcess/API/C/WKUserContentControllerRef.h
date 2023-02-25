@@ -26,7 +26,7 @@
 #ifndef WKUserContentControllerRef_h
 #define WKUserContentControllerRef_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifdef __cplusplus
 extern "C" {

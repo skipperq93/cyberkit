@@ -31,9 +31,9 @@
 
 #import "PlatformUtilities.h"
 #import <JavaScriptCore/JSRetainPtr.h>
-#import <WebKit/WKBundleFrame.h>
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKBundlePagePrivate.h>
+#import <CyberKit/WKBundleFrame.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePagePrivate.h>
 #import <wtf/UniqueArray.h>
 
 namespace TestWebKitAPI {

@@ -29,9 +29,9 @@
 
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/WebDocumentPrivate.h>
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WKImage.h>
+#import <CyberKit/WebDocumentPrivate.h>
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/WKImage.h>
 #import <wtf/RetainPtr.h>
 
 @interface FindMatchesWK1FrameLoadDelegate : NSObject <WebFrameLoadDelegate> {

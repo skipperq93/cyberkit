@@ -41,7 +41,7 @@
 #import <WebCore/SubresourceLoader.h>
 #import <WebCore/WebCoreNSURLSession.h>
 #import <WebCore/ResourceLoader.h>
-#import <WebKit/WebView.h>
+#import <CyberKit/WebView.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SchedulePair.h>
 

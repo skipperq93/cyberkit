@@ -32,7 +32,7 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/PreferenceObserver.h>
+#import <CyberKit/PreferenceObserver.h>
 
 #import <wtf/ObjCRuntimeExtras.h>
 

@@ -27,9 +27,9 @@
 #import "JavaScriptTest.h"
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKPage.h>
-#import <WebKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKPage.h>
+#import <CyberKit/WKPreferencesPrivate.h>
 #import <wtf/RetainPtr.h>
 
 namespace TestWebKitAPI {

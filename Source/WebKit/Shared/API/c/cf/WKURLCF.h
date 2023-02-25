@@ -27,7 +27,7 @@
 #define WKURLCF_h
 
 #include <CoreFoundation/CoreFoundation.h>
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifdef __cplusplus
 extern "C" {

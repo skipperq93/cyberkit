@@ -25,7 +25,7 @@
 
 #if PLATFORM(MAC)
 
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKWebView.h>
 
 @protocol WKInspectorWKWebViewDelegate;
 

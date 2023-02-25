@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/_WKWebExtensionController.h>
+#import <CyberKit/_WKWebExtensionController.h>
 
 @interface _WKWebExtensionController ()
 

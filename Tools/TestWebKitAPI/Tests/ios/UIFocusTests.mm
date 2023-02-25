@@ -28,7 +28,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "TestWKWebView.h"
-#import <WebKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface UIFocusDelegate : NSObject<WKUIDelegatePrivate>

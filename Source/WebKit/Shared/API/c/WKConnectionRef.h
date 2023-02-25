@@ -26,7 +26,7 @@
 #ifndef WKConnectionRef_h
 #define WKConnectionRef_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifdef __cplusplus
 extern "C" {

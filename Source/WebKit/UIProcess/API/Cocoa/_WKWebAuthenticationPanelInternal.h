@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/_WKWebAuthenticationPanel.h>
+#import <CyberKit/_WKWebAuthenticationPanel.h>
 
 #if ENABLE(WEB_AUTHN)
 

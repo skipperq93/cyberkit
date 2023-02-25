@@ -29,7 +29,7 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WKRetainPtr.h>
+#import <CyberKit/WKRetainPtr.h>
 #import <wtf/RetainPtr.h>
 
 namespace TestWebKitAPI {

@@ -27,8 +27,8 @@
 
 #ifdef __OBJC__
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKBundlePage.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKBundlePage.h>
 
 @class PDFDocument;
 

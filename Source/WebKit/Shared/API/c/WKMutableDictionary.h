@@ -26,7 +26,7 @@
 #ifndef WKMutableDictionary_h
 #define WKMutableDictionary_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>

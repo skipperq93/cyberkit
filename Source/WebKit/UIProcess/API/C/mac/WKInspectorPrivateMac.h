@@ -28,8 +28,8 @@
 #if !TARGET_OS_IPHONE
 
 #import <AppKit/NSWindow.h>
-#import <WebKit/WKDeclarationSpecifiers.h>
-#import <WebKit/WKInspector.h>
+#import <CyberKit/WKDeclarationSpecifiers.h>
+#import <CyberKit/WKInspector.h>
 
 @class _WKInspector;
 

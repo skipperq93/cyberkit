@@ -28,5 +28,5 @@
 
 #include <JavaScriptCore/JSExportMacros.h>
 #include <WebCore/PlatformExportMacros.h>
-#include <WebKit/WebKit2_C.h>
+#include <CyberKit/WebKit2_C.h>
 #include <pal/ExportMacros.h>

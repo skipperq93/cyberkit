@@ -24,11 +24,11 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if WK_HAVE_C_SPI
 
-#import <WebKit/WKMutableDictionary.h>
+#import <CyberKit/WKMutableDictionary.h>
 
 namespace TestWebKitAPI {
 

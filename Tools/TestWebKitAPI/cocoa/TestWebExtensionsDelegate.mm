@@ -28,9 +28,9 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-#import <WebKit/_WKWebExtensionController.h>
-#import <WebKit/_WKWebExtensionMatchPattern.h>
-#import <WebKit/_WKWebExtensionPermission.h>
+#import <CyberKit/_WKWebExtensionController.h>
+#import <CyberKit/_WKWebExtensionMatchPattern.h>
+#import <CyberKit/_WKWebExtensionPermission.h>
 
 @implementation TestWebExtensionsDelegate
 

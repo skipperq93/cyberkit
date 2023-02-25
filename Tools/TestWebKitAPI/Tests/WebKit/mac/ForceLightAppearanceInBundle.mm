@@ -30,7 +30,7 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WKContextPrivate.h>
+#import <CyberKit/WKContextPrivate.h>
 
 namespace TestWebKitAPI {
 

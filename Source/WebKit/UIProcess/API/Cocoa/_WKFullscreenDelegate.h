@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 WK_API_AVAILABLE(macos(10.13), ios(11.3))
 @protocol _WKFullscreenDelegate <NSObject>

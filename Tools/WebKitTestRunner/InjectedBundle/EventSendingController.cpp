@@ -30,13 +30,13 @@
 #include "InjectedBundle.h"
 #include "InjectedBundlePage.h"
 #include "JSEventSendingController.h"
-#include <WebKit/WKBundle.h>
-#include <WebKit/WKBundleFrame.h>
-#include <WebKit/WKBundlePagePrivate.h>
-#include <WebKit/WKBundlePrivate.h>
-#include <WebKit/WKContextMenuItem.h>
-#include <WebKit/WKMutableDictionary.h>
-#include <WebKit/WKNumber.h>
+#include <CyberKit/WKBundle.h>
+#include <CyberKit/WKBundleFrame.h>
+#include <CyberKit/WKBundlePagePrivate.h>
+#include <CyberKit/WKBundlePrivate.h>
+#include <CyberKit/WKContextMenuItem.h>
+#include <CyberKit/WKMutableDictionary.h>
+#include <CyberKit/WKNumber.h>
 #include <wtf/StdLibExtras.h>
 
 namespace WTR {

@@ -23,11 +23,11 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
-#import <WebKit/WKWebProcessPlugInBrowserContextController.h>
-#import <WebKit/WKWebProcessPlugInNodeHandle.h>
-#import <WebKit/WKWebProcessPlugInRangeHandle.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextController.h>
+#import <CyberKit/WKWebProcessPlugInNodeHandle.h>
+#import <CyberKit/WKWebProcessPlugInRangeHandle.h>
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>

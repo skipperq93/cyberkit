@@ -31,11 +31,11 @@
 #import "TestCocoa.h"
 #import "TestNavigationDelegate.h"
 #import "WebExtensionUtilities.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/_WKWebExtensionContextPrivate.h>
-#import <WebKit/_WKWebExtensionControllerPrivate.h>
-#import <WebKit/_WKWebExtensionPrivate.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/_WKWebExtensionContextPrivate.h>
+#import <CyberKit/_WKWebExtensionControllerPrivate.h>
+#import <CyberKit/_WKWebExtensionPrivate.h>
 
 namespace TestWebKitAPI {
 

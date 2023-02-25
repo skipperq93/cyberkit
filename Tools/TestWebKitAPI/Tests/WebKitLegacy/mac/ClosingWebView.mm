@@ -30,8 +30,8 @@
 #import <Carbon/Carbon.h>
 #import <JavaScriptCore/JSContext.h>
 #import <JavaScriptCore/JSExport.h>
-#import <WebKit/WebHTMLView.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebHTMLView.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #if JSC_OBJC_API_ENABLED

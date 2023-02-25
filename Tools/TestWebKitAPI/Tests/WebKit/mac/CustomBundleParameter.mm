@@ -31,9 +31,9 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKWebViewConfiguration.h>
 #import <cmath>
 #import <wtf/RetainPtr.h>
 

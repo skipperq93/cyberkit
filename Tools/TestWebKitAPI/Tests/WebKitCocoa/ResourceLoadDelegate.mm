@@ -30,11 +30,11 @@
 #import "TestNavigationDelegate.h"
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKFrameHandle.h>
-#import <WebKit/_WKResourceLoadDelegate.h>
-#import <WebKit/_WKResourceLoadInfo.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/_WKFrameHandle.h>
+#import <CyberKit/_WKResourceLoadDelegate.h>
+#import <CyberKit/_WKResourceLoadInfo.h>
 #import <wtf/RetainPtr.h>
 
 @interface TestResourceLoadDelegate : NSObject <_WKResourceLoadDelegate>

@@ -25,8 +25,8 @@
 
 #pragma once
 
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKURLSchemeHandler.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKURLSchemeHandler.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

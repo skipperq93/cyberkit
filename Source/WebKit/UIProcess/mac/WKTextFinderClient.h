@@ -26,7 +26,7 @@
 #ifndef WKTextFinderClient_h
 #define WKTextFinderClient_h
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 #import <wtf/NakedRef.h>
 
 #if PLATFORM(MAC)

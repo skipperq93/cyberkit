@@ -24,7 +24,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 WK_CLASS_AVAILABLE(macos(13.0), ios(16.0))
 @interface _WKSystemPreferences : NSObject

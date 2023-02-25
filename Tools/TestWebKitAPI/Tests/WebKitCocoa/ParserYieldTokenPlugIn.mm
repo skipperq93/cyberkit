@@ -27,12 +27,12 @@
 #import "config.h"
 
 #import "ParserYieldTokenTests.h"
-#import <WebKit/WKDOMDocument.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
-#import <WebKit/WKWebProcessPlugInLoadDelegate.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKDOMDocument.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKWebProcessPlugInLoadDelegate.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
 @interface ParserYieldTokenPlugIn : NSObject <WKWebProcessPlugIn, WKWebProcessPlugInLoadDelegate, ParserYieldTokenTestBundle>

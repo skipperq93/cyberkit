@@ -29,7 +29,7 @@
 
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/_WKNSFileManagerExtras.h>
+#import <CyberKit/_WKNSFileManagerExtras.h>
 #import <pal/spi/cocoa/NSFileManagerSPI.h>
 
 static void expectAttributes(NSDictionary *attributes, NSNumber *expectedPermissions, NSString *expectedFileType)

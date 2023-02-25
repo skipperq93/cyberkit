@@ -26,7 +26,7 @@
 #ifndef WKContextInjectedBundleClient_h
 #define WKContextInjectedBundleClient_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 // Injected Bundle Client
 typedef void (*WKContextDidReceiveMessageFromInjectedBundleCallback)(WKContextRef context, WKStringRef messageName, WKTypeRef messageBody, const void *clientInfo);

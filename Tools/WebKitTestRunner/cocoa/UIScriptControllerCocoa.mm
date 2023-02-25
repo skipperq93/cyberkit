@@ -32,9 +32,9 @@
 #import "TestRunnerWKWebView.h"
 #import "UIScriptContext.h"
 #import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WKURLCF.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKURLCF.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/BlockPtr.h>
 
 @interface WKWebView (WKWebViewInternal)

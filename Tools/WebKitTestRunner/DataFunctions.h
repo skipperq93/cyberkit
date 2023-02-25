@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebKit/WKData.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKData.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <wtf/UUID.h>
 
 namespace WTR {

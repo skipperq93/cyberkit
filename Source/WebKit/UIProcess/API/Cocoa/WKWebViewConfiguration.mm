@@ -29,12 +29,12 @@
 #import "APIPageConfiguration.h"
 #import "CSPExtensionUtilities.h"
 #import "UserInterfaceIdiom.h"
-#import <WebKit/WKPreferences.h>
-#import <WebKit/WKProcessPool.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKUserContentController.h>
+#import <CyberKit/WKPreferences.h>
+#import <CyberKit/WKProcessPool.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKUserContentController.h>
 #import "WKWebpagePreferencesInternal.h"
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKWebView.h>
 #import "WKWebViewContentProviderRegistry.h"
 #import "WebKit2Initialize.h"
 #import "WebPreferencesDefaultValues.h"

@@ -27,8 +27,8 @@
 #import "WebNotificationProvider.h"
 
 #import "TestController.h"
-#import <WebKit/WKNotificationPrivateMac.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WKNotificationPrivateMac.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
 #import <wtf/RetainPtr.h>
 
 namespace WTR {

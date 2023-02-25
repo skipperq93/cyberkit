@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
-#import <WebKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
 
 @protocol BaseRemoteObjectProtocol <NSObject>
 

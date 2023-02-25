@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WebPolicyDelegate.h>
+#import <CyberKit/WebPolicyDelegate.h>
 
 class TestRunner;
 

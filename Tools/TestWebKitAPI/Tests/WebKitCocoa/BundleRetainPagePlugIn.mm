@@ -25,8 +25,8 @@
 
 #import "config.h"
 
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface BundleRetainPagePlugIn : NSObject <WKWebProcessPlugIn>

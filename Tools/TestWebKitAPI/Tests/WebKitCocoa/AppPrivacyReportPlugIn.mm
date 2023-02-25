@@ -26,8 +26,8 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInLoadDelegate.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInLoadDelegate.h>
 #import <wtf/RetainPtr.h>
 
 @interface AppPrivacyReportPlugIn : NSObject <WKWebProcessPlugIn, WKWebProcessPlugInLoadDelegate>

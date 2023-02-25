@@ -30,7 +30,7 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 @interface TestWKWebView (TextAlternatives)
 - (NSUInteger)dictationAlternativesMarkerCount:(NSString *)evaluateNodeExpression;

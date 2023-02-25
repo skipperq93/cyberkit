@@ -30,7 +30,7 @@
 #import "StringFunctions.h"
 #import "TestController.h"
 #import <wtf/RetainPtr.h>
-#import <WebKit/WKString.h>
+#import <CyberKit/WKString.h>
 
 namespace WTR {
 

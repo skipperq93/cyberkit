@@ -25,7 +25,7 @@
 
 #import "config.h"
 
-#import <WebKit/_WKVisitedLinkStore.h>
+#import <CyberKit/_WKVisitedLinkStore.h>
 #import <wtf/RetainPtr.h>
 
 namespace TestWebKitAPI {

@@ -32,9 +32,9 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import "UserInterfaceSwizzler.h"
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
 @interface TestWKWebView (UIWKInteractionViewTesting)

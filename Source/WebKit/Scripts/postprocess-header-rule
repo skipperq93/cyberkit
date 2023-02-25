@@ -103,7 +103,7 @@ case "${INPUT_FILE_PATH}" in
     ;;
 */WebKitLegacy.framework/*)
     if [ "${WK_PLATFORM_NAME}" = macosx ]; then
-        SED_OPTIONS+=(-e "s/\<WebKitLegacy/\<WebKit/")
+        SED_OPTIONS+=(-e "s/\<WebKitLegacy/\<CyberKit/")
     else
         echo "#import <WebKitLegacy/${INPUT_FILE_NAME}>" > "${SCRIPT_OUTPUT_FILE_0}"
         exit 0

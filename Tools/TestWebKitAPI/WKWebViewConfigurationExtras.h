@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfiguration.h>
 
 @interface WKWebViewConfiguration (TestWebKitAPIExtras)
 + (instancetype)_test_configurationWithTestPlugInClassName:(NSString *)className;

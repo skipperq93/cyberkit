@@ -26,7 +26,7 @@
 #if PLATFORM(IOS_FAMILY)
 #import "InteractionInformationAtPosition.h"
 #endif
-#import <WebKit/_WKActivatedElementInfo.h>
+#import <CyberKit/_WKActivatedElementInfo.h>
 
 #import <WebCore/IntPoint.h>
 

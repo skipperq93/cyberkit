@@ -25,7 +25,7 @@
 
 #pragma once
 
-#import <WebKit/_WKAuthenticatorResponse.h>
+#import <CyberKit/_WKAuthenticatorResponse.h>
 #import <wtf/RetainPtr.h>
 
 NS_ASSUME_NONNULL_BEGIN

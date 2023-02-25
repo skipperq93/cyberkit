@@ -23,12 +23,12 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if !TARGET_OS_IPHONE
 
 #import <Cocoa/Cocoa.h>
-#import <WebKit/WKDeclarationSpecifiers.h>
+#import <CyberKit/WKDeclarationSpecifiers.h>
 
 #if !defined(WK_UNUSED_INSTANCE_VARIABLE)
 #define WK_UNUSED_INSTANCE_VARIABLE

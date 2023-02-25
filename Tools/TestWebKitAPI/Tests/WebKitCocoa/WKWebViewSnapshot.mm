@@ -29,7 +29,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKSnapshotConfigurationPrivate.h>
+#import <CyberKit/WKSnapshotConfigurationPrivate.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 

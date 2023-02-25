@@ -39,10 +39,10 @@
 #import "WebExtensionController.h"
 #import "WebExtensionMatchPattern.h"
 #import "_WKWebExtensionControllerInternal.h"
-#import <WebKit/_WKWebExtensionContext.h>
-#import <WebKit/_WKWebExtensionControllerDelegate.h>
-#import <WebKit/_WKWebExtensionMatchPattern.h>
-#import <WebKit/_WKWebExtensionPermission.h>
+#import <CyberKit/_WKWebExtensionContext.h>
+#import <CyberKit/_WKWebExtensionControllerDelegate.h>
+#import <CyberKit/_WKWebExtensionMatchPattern.h>
+#import <CyberKit/_WKWebExtensionPermission.h>
 
 namespace WebKit {
 

@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
-#import <WebKit/WKDOMNode.h>
+#import <CyberKit/WKDOMNode.h>
 
 WK_CLASS_AVAILABLE(macos(10.10), ios(8.0))
 @interface WKDOMElement : WKDOMNode

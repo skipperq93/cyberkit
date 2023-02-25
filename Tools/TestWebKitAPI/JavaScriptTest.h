@@ -29,7 +29,7 @@
 OBJC_CLASS WebView;
 OBJC_CLASS WKWebView;
 #endif
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 namespace TestWebKitAPI {
 

@@ -27,7 +27,7 @@
 
 #if WK_HAVE_C_SPI
 
-#include <WebKit/WKStringPrivate.h>
+#include <CyberKit/WKStringPrivate.h>
 #include <JavaScriptCore/JSStringRef.h>
 
 namespace TestWebKitAPI {

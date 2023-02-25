@@ -32,8 +32,8 @@
 #import "Test.h"
 #import "TestURLSchemeHandler.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WebArchive.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WebArchive.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(IOS_FAMILY)

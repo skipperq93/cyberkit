@@ -23,10 +23,10 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKUserScriptInjectionTime.h>
+#import <CyberKit/WKUserScriptInjectionTime.h>
 
 WK_CLASS_DEPRECATED_WITH_REPLACEMENT("WKUserContentController and WKPreferences", macos(10.10, 10.14.4), ios(8.0, 12.2))
 @interface WKBrowsingContextGroup : NSObject

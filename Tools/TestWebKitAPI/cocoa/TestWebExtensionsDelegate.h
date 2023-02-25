@@ -25,12 +25,12 @@
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 
-#import <WebKit/WebKit.h>
+#import <CyberKit/WebKit.h>
 
-#import <WebKit/_WKWebExtensionControllerDelegate.h>
-#import <WebKit/_WKWebExtensionMatchPattern.h>
-#import <WebKit/_WKWebExtensionPermission.h>
-#import <WebKit/_WKWebExtensionTab.h>
+#import <CyberKit/_WKWebExtensionControllerDelegate.h>
+#import <CyberKit/_WKWebExtensionMatchPattern.h>
+#import <CyberKit/_WKWebExtensionPermission.h>
+#import <CyberKit/_WKWebExtensionTab.h>
 
 @interface TestWebExtensionsDelegate : NSObject <_WKWebExtensionControllerDelegate>
 

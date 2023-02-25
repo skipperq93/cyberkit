@@ -27,7 +27,7 @@
 
 #import "TestCocoa.h"
 #import "TestWKWebView.h"
-#import <WebKit/NSAttributedString.h>
+#import <CyberKit/NSAttributedString.h>
 #import <wtf/RetainPtr.h>
 
 TEST(NSAttributedStringWebKitAdditions, DefaultFontSize)

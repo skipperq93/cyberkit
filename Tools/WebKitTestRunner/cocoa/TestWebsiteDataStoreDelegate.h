@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/_WKWebsiteDataStoreDelegate.h>
+#import <CyberKit/_WKWebsiteDataStoreDelegate.h>
 
 @interface TestWebsiteDataStoreDelegate: NSObject <_WKWebsiteDataStoreDelegate> {
 @private

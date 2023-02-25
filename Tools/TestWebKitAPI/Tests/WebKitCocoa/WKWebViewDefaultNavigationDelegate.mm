@@ -31,7 +31,7 @@
 #import "InstanceMethodSwizzler.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKWebView.h>
 
 static NSString *nonHTTPURLString = @"notreal:/hello";
 

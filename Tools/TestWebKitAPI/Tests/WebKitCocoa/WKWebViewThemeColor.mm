@@ -27,10 +27,10 @@
 
 #import "TestCocoa.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKApplicationManifest.h>
-#import <WebKit/_WKFeature.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKApplicationManifest.h>
+#import <CyberKit/_WKFeature.h>
 #import <wtf/RetainPtr.h>
 
 #define EXPECT_NSSTRING_EQ(expected, actual) \
