@@ -129,7 +129,7 @@
                BlueprintIdentifier = "1A50DB38110A3C13000D3FE5"
                BuildableName = "Framework, XPC Services, and daemons"
                BlueprintName = "Framework, XPC Services, and daemons"
-               ReferencedContainer = "container:Source/WebKit/WebKit.xcodeproj">
+               ReferencedContainer = "container:Source/WebKit/CyberKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
