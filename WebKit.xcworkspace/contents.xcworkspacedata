@@ -32,7 +32,7 @@
       location = "group:Source/WebKitLegacy/WebKitLegacy.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Source/WebKit/WebKit.xcodeproj">
+      location = "group:Source/WebKit/CyberKit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Tools/DumpRenderTree/DumpRenderTree.xcodeproj">
