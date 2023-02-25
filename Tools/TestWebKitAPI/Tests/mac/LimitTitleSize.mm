@@ -27,8 +27,8 @@
 
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface LimitTitleSizeTest : NSObject <WebFrameLoadDelegate>

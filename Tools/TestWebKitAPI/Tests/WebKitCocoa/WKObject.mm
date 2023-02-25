@@ -25,11 +25,11 @@
 
 #import "config.h"
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if WK_HAVE_C_SPI
 
-#import <WebKit/WKString.h>
+#import <CyberKit/WKString.h>
 #import <objc/runtime.h>
 #import <wtf/RetainPtr.h>
 

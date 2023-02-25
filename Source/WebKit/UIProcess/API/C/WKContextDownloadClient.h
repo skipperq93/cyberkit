@@ -26,7 +26,7 @@
 #ifndef WKContextDownloadClient_h
 #define WKContextDownloadClient_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 typedef void (*WKContextDownloadDidStartCallback)(WKContextRef context, WKDownloadRef download, const void *clientInfo);
 typedef void (*WKContextDownloadDidReceiveAuthenticationChallengeCallback)(WKContextRef context, WKDownloadRef download, WKAuthenticationChallengeRef authenticationChallenge, const void *clientInfo);

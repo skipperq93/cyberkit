@@ -26,16 +26,16 @@
 #ifndef WKBundlePrivate_h
 #define WKBundlePrivate_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif
 
 #include <JavaScriptCore/JSBase.h>
-#include <WebKit/WKDeprecated.h>
-#include <WebKit/WKUserContentInjectedFrames.h>
-#include <WebKit/WKUserScriptInjectionTime.h>
+#include <CyberKit/WKDeprecated.h>
+#include <CyberKit/WKUserContentInjectedFrames.h>
+#include <CyberKit/WKUserScriptInjectionTime.h>
 
 #ifdef __cplusplus
 extern "C" {

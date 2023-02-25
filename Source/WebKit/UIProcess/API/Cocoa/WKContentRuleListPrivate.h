@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKContentRuleList.h>
+#import <CyberKit/WKContentRuleList.h>
 
 @interface WKContentRuleList (WKPrivate)
 

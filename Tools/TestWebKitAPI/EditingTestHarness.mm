@@ -28,7 +28,7 @@
 #import "EditingTestHarness.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 
 @implementation EditingTestHarness
 

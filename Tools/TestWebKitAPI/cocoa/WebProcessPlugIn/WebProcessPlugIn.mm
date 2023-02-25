@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
 #import <wtf/RetainPtr.h>
 
 @interface WebProcessPlugIn : NSObject <WKWebProcessPlugIn>

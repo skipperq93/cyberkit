@@ -28,7 +28,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfiguration.h>
 
 TEST(VisibilityState, InitialHiddenState)
 {

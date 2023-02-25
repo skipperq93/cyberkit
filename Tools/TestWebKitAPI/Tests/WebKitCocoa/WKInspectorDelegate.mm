@@ -28,16 +28,16 @@
 #import "DeprecatedGlobalValues.h"
 #import "Test.h"
 #import "Utilities.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKURLSchemeHandler.h>
-#import <WebKit/WKURLSchemeTask.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKInspector.h>
-#import <WebKit/_WKInspectorConfiguration.h>
-#import <WebKit/_WKInspectorDebuggableInfo.h>
-#import <WebKit/_WKInspectorDelegate.h>
-#import <WebKit/_WKInspectorPrivateForTesting.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKURLSchemeHandler.h>
+#import <CyberKit/WKURLSchemeTask.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKInspector.h>
+#import <CyberKit/_WKInspectorConfiguration.h>
+#import <CyberKit/_WKInspectorDebuggableInfo.h>
+#import <CyberKit/_WKInspectorDelegate.h>
+#import <CyberKit/_WKInspectorPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SetForScope.h>
 

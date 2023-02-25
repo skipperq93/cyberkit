@@ -25,9 +25,9 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-#import <WebKit/_WKFocusedElementInfo.h>
-#import <WebKit/_WKFormInputSession.h>
-#import <WebKit/_WKInputDelegate.h>
+#import <CyberKit/_WKFocusedElementInfo.h>
+#import <CyberKit/_WKFormInputSession.h>
+#import <CyberKit/_WKInputDelegate.h>
 
 @class WKWebView;
 

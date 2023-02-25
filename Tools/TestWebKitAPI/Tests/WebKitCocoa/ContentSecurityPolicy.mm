@@ -26,8 +26,8 @@
 #import "config.h"
 
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 TEST(WKWebView, DISABLED_SetOverrideContentSecurityPolicyWithEmptyStringForPageWithCSP)

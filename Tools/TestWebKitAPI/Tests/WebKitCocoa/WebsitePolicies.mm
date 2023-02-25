@@ -32,22 +32,22 @@
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKContentRuleListStorePrivate.h>
-#import <WebKit/WKMutableDictionary.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKPreferencesRefPrivate.h>
-#import <WebKit/WKString.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKURLSchemeTaskPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WKWebsitePolicies.h>
-#import <WebKit/_WKCustomHeaderFields.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKContentRuleListStorePrivate.h>
+#import <CyberKit/WKMutableDictionary.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesRefPrivate.h>
+#import <CyberKit/WKString.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKURLSchemeTaskPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WKWebsitePolicies.h>
+#import <CyberKit/_WKCustomHeaderFields.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/Function.h>
 #import <wtf/HashMap.h>
 #import <wtf/MainThread.h>
@@ -56,7 +56,7 @@
 #import <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 #endif
 
 @interface WKWebView ()

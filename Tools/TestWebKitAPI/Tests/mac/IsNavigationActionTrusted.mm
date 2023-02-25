@@ -26,8 +26,8 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WebKitLegacy.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WebKitLegacy.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/RetainPtr.h>
 
 static bool didFinishTest;

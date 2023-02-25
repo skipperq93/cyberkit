@@ -24,14 +24,14 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if PLATFORM(COCOA)
 
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static void runTest(NSArray<NSString *> *additionalSupportedImageTypes, NSString *imageURL, NSString *imageExtension, CGFloat imageWidth)

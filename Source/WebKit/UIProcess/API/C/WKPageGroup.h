@@ -26,9 +26,9 @@
 #ifndef WKPageGroup_h
 #define WKPageGroup_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKUserContentInjectedFrames.h>
-#include <WebKit/WKUserScriptInjectionTime.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKUserContentInjectedFrames.h>
+#include <CyberKit/WKUserScriptInjectionTime.h>
 
 #ifdef __cplusplus
 extern "C" {

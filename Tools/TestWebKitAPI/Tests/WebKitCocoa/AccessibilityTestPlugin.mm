@@ -25,13 +25,13 @@
 
 #import "config.h"
 #import "AccessibilityTestSupportProtocol.h"
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKBundlePageResourceLoadClient.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
-#import <WebKit/WKWebProcessPlugInLoadDelegate.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePageResourceLoadClient.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKWebProcessPlugInLoadDelegate.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
 @interface AccessibilityTestPlugin : NSObject<WKWebProcessPlugIn, WKWebProcessPlugInLoadDelegate, AccessibilityTestSupportProtocol>

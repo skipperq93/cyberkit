@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
-#import <WebKit/WKDOMNode.h>
+#import <CyberKit/WKDOMNode.h>
 
 @class WKDOMElement;
 @class WKDOMText;

@@ -34,14 +34,14 @@
 #import "DumpRenderTreeMac.h"
 #import <AppKit/NSInputManager.h>
 #import <AppKit/NSTextAlternatives.h>
-#import <WebKit/WebDocument.h>
-#import <WebKit/WebFrame.h>
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebFrameView.h>
-#import <WebKit/WebHTMLViewPrivate.h>
-#import <WebKit/WebScriptObject.h>
-#import <WebKit/WebView.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebDocument.h>
+#import <CyberKit/WebFrame.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/WebFrameView.h>
+#import <CyberKit/WebHTMLViewPrivate.h>
+#import <CyberKit/WebScriptObject.h>
+#import <CyberKit/WebView.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <pal/spi/mac/NSTextInputContextSPI.h>
 
 @interface TextInputController (DumpRenderTreeInputMethodHandler)

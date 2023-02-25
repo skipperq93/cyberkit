@@ -32,11 +32,11 @@
 #import "TestAwakener.h"
 #import "TestNavigationDelegate.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RefCounted.h>
 #import <wtf/RetainPtr.h>

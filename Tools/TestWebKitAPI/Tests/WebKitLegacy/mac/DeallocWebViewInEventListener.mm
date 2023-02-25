@@ -28,7 +28,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import <Carbon/Carbon.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 extern "C" void JSSynchronousGarbageCollectForDebugging(JSContextRef);

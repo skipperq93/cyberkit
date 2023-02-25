@@ -26,12 +26,12 @@
 #ifndef WKBundlePagePrivate_h
 #define WKBundlePagePrivate_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKDeprecated.h>
-#include <WebKit/WKEvent.h>
-#include <WebKit/WKGeometry.h>
-#include <WebKit/WKUserContentInjectedFrames.h>
-#include <WebKit/WKUserScriptInjectionTime.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKDeprecated.h>
+#include <CyberKit/WKEvent.h>
+#include <CyberKit/WKGeometry.h>
+#include <CyberKit/WKUserContentInjectedFrames.h>
+#include <CyberKit/WKUserScriptInjectionTime.h>
 
 #ifdef __cplusplus
 extern "C" {

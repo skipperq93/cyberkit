@@ -24,7 +24,7 @@
  */
 
 #import <MobileMiniBrowser/MobileMiniBrowser.h>
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 
 int main(int argc, char * argv[])
 {

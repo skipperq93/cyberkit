@@ -27,9 +27,9 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKSecurityOriginRef.h>
-#import <WebKit/WKString.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKSecurityOriginRef.h>
+#import <CyberKit/WKString.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/text/StringBuilder.h>
 
 static unsigned clientPermissionRequestCount;

@@ -31,8 +31,8 @@
 #import "TestUIDelegate.h"
 #import "Utilities.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/RetainPtr.h>
 

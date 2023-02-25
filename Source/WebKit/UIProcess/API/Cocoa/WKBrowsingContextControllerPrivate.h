@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKBrowsingContextController.h>
+#import <CyberKit/WKBrowsingContextController.h>
 
-#import <WebKit/WKBase.h>
+#import <CyberKit/WKBase.h>
 
 typedef NS_ENUM(NSUInteger, WKBrowsingContextPaginationMode) {
     WKPaginationModeUnpaginated,

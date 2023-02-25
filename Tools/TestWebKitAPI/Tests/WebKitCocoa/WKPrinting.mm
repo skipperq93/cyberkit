@@ -28,8 +28,8 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKFrameHandle.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKFrameHandle.h>
 #import <wtf/RetainPtr.h>
 
 typedef void (^CallCompletionBlock)();

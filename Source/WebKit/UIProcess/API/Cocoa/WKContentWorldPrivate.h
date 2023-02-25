@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKContentWorld.h>
+#import <CyberKit/WKContentWorld.h>
 
 @class _WKUserContentWorld;
 

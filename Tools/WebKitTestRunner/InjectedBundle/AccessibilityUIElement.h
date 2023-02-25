@@ -33,8 +33,8 @@
 
 #include <JavaScriptCore/JSObjectRef.h>
 #include <JavaScriptCore/JSRetainPtr.h>
-#include <WebKit/WKBundleFrame.h>
-#include <WebKit/WKBundlePage.h>
+#include <CyberKit/WKBundleFrame.h>
+#include <CyberKit/WKBundlePage.h>
 #include <wtf/Platform.h>
 #include <wtf/Vector.h>
 

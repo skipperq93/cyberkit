@@ -31,8 +31,8 @@
 #import "TestCocoa.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKTextInputContext.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKTextInputContext.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 

@@ -41,7 +41,7 @@
 @class NSURLResponse;
 
 #ifndef WebDownload_h
-/* Also defined in <WebKit/WebDownload.h>. */
+/* Also defined in <CyberKit/WebDownload.h>. */
 @interface NSURLDownload : NSObject
 @end
 #endif

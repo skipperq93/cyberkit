@@ -30,7 +30,7 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 
 @interface WKWebView (AnimationTesting)
 - (void)_pauseAllAnimationsWithCompletionHandler:(void(^_Nullable)(void))completionHandler;

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebKit/WKType.h>
+#include <CyberKit/WKType.h>
 #include <algorithm>
 #include <wtf/HashTraits.h>
 

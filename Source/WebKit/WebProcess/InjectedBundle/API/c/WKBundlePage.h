@@ -27,18 +27,18 @@
 #define WKBundlePage_h
 
 #include <JavaScriptCore/JavaScript.h>
-#include <WebKit/WKBase.h>
-#include <WebKit/WKBundlePageContextMenuClient.h>
-#include <WebKit/WKBundlePageEditorClient.h>
-#include <WebKit/WKBundlePageFormClient.h>
-#include <WebKit/WKBundlePageFullScreenClient.h>
-#include <WebKit/WKBundlePageLoaderClient.h>
-#include <WebKit/WKBundlePagePolicyClient.h>
-#include <WebKit/WKBundlePageResourceLoadClient.h>
-#include <WebKit/WKBundlePageUIClient.h>
-#include <WebKit/WKDeprecated.h>
-#include <WebKit/WKFindOptions.h>
-#include <WebKit/WKImage.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKBundlePageContextMenuClient.h>
+#include <CyberKit/WKBundlePageEditorClient.h>
+#include <CyberKit/WKBundlePageFormClient.h>
+#include <CyberKit/WKBundlePageFullScreenClient.h>
+#include <CyberKit/WKBundlePageLoaderClient.h>
+#include <CyberKit/WKBundlePagePolicyClient.h>
+#include <CyberKit/WKBundlePageResourceLoadClient.h>
+#include <CyberKit/WKBundlePageUIClient.h>
+#include <CyberKit/WKDeprecated.h>
+#include <CyberKit/WKFindOptions.h>
+#include <CyberKit/WKImage.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>

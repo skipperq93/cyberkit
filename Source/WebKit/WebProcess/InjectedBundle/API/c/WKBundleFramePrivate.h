@@ -27,8 +27,8 @@
 #define WKBundleFramePrivate_h
 
 #include <JavaScriptCore/JavaScript.h>
-#include <WebKit/WKBase.h>
-#include <WebKit/WKGeometry.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKGeometry.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>

@@ -29,11 +29,11 @@
 #import <WebCore/SQLiteDatabase.h>
 #import <WebCore/SQLiteStatement.h>
 #import <WebCore/SQLiteTransaction.h>
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 static RetainPtr<WKWebView> webViewWithResourceLoadStatisticsEnabledInNetworkProcess()

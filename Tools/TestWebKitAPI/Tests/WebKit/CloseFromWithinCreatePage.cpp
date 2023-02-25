@@ -29,7 +29,7 @@
 
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKPreferencesRefPrivate.h>
+#include <CyberKit/WKPreferencesRefPrivate.h>
 
 namespace TestWebKitAPI {
 

@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
 
 @interface WKWebProcessPlugInController (Private)
 

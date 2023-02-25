@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKSecurityOrigin.h>
+#import <CyberKit/WKSecurityOrigin.h>
 
 @interface WKSecurityOrigin (WKPrivate)
 -(BOOL)isSameSiteAsOrigin:(WKSecurityOrigin *)origin WK_API_AVAILABLE(macos(13.3), ios(16.4));

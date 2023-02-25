@@ -31,10 +31,10 @@
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WKHTTPCookieStorePrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKHTTPCookieStorePrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/StringConcatenateNumbers.h>

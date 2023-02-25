@@ -31,10 +31,10 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 
 #import <wtf/SoftLinking.h>
 

@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/_WKUserContentFilter.h>
+#import <CyberKit/_WKUserContentFilter.h>
 
 @class WKContentRuleList;
 @class WKUserContentRuleList;

@@ -27,7 +27,7 @@
 
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
 #import <wtf/RetainPtr.h>
 
 namespace TestWebKitAPI {

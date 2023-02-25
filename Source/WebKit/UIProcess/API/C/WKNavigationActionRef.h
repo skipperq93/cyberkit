@@ -26,8 +26,8 @@
 #ifndef WKNavigationActionRef_h
 #define WKNavigationActionRef_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKPageLoadTypes.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKPageLoadTypes.h>
 
 #ifdef __cplusplus
 extern "C" {

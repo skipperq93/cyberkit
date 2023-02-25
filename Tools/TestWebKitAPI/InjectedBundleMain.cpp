@@ -28,7 +28,7 @@
 #if WK_HAVE_C_SPI
 
 #include "InjectedBundleController.h"
-#include <WebKit/WKBundleInitialize.h>
+#include <CyberKit/WKBundleInitialize.h>
 
 extern "C" WTF_EXPORT_DECLARATION
 void WKBundleInitialize(WKBundleRef bundle, WKTypeRef initializationUserData)

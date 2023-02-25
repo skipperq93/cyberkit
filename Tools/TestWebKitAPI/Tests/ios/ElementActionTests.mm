@@ -30,7 +30,7 @@
 
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 
 namespace TestWebKitAPI {
 

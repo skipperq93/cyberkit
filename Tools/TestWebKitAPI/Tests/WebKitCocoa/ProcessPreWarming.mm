@@ -28,8 +28,8 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 static NSString *loadableURL = @"data:text/html,no%20error%20A";

@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKConnection.h>
+#import <CyberKit/WKConnection.h>
 
 #import "WKObject.h"
 #import "WebConnection.h"

@@ -27,12 +27,12 @@
 
 #import "PlatformUtilities.h"
 #import "RemoteObjectRegistry.h"
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
-#import <WebKit/WKWebProcessPlugInFrame.h>
-#import <WebKit/WKWebProcessPlugInScriptWorld.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKWebProcessPlugInFrame.h>
+#import <CyberKit/WKWebProcessPlugInScriptWorld.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
 @interface RemoteObjectRegistryPlugIn : NSObject <RemoteObjectProtocol, WKWebProcessPlugIn>

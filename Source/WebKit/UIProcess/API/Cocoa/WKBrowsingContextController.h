@@ -24,9 +24,9 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKBrowsingContextGroup.h>
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKProcessGroup.h>
+#import <CyberKit/WKBrowsingContextGroup.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKProcessGroup.h>
 
 @class WKBackForwardList;
 @class WKBackForwardListItem;

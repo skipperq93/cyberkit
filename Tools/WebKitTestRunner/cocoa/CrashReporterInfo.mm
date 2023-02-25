@@ -27,7 +27,7 @@
 #import "CrashReporterInfo.h"
 
 #import "StringFunctions.h"
-#import <WebKit/WKURLCF.h>
+#import <CyberKit/WKURLCF.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/CrashReporter.h>
 

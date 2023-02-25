@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKNavigation.h>
+#import <CyberKit/WKNavigation.h>
 
 @interface WKNavigation (WKPrivate)
 @property (nonatomic, readonly, copy) NSURLRequest *_request;

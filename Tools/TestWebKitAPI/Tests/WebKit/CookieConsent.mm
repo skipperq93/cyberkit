@@ -26,9 +26,9 @@
 #import "config.h"
 
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WebKitPrivate.h>
-#import <WebKit/_WKFeature.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WebKitPrivate.h>
+#import <CyberKit/_WKFeature.h>
 
 @interface CookieConsentDelegate : NSObject<WKUIDelegatePrivate>
 @property (nonatomic) BOOL decision;

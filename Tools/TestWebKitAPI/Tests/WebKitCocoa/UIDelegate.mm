@@ -33,16 +33,16 @@
 #import "TestWKWebView.h"
 #import "Utilities.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKContext.h>
-#import <WebKit/WKContextPrivateMac.h>
-#import <WebKit/WKGeolocationManager.h>
-#import <WebKit/WKGeolocationPosition.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKHitTestResult.h>
+#import <CyberKit/WKContext.h>
+#import <CyberKit/WKContextPrivateMac.h>
+#import <CyberKit/WKGeolocationManager.h>
+#import <CyberKit/WKGeolocationPosition.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKHitTestResult.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 

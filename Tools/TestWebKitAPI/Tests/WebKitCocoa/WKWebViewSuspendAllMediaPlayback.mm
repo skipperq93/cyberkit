@@ -27,8 +27,8 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 TEST(WKWebViewSuspendAllMediaPlayback, BeforeLoading)
 {

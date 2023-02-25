@@ -29,10 +29,10 @@
 #import "Test.h"
 #import "WebKitAgnosticTest.h"
 #import <Carbon/Carbon.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/WebPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/WebPreferencesPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface NSWindowController (WebKitFullScreenAdditions)

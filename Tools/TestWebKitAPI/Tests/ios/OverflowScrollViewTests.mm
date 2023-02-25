@@ -32,7 +32,7 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 // FIXME: Likely we can remove this special case for watchOS and tvOS.
 #if !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)

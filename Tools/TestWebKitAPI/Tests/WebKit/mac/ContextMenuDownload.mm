@@ -27,14 +27,14 @@
 #import "JavaScriptTest.h"
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/WKContextMenuItem.h>
-#import <WebKit/WKDownloadClient.h>
-#import <WebKit/WKDownloadRef.h>
-#import <WebKit/WKPage.h>
-#import <WebKit/WKPageContextMenuClient.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/_WKDownload.h>
+#import <CyberKit/WKContextMenuItem.h>
+#import <CyberKit/WKDownloadClient.h>
+#import <CyberKit/WKDownloadRef.h>
+#import <CyberKit/WKPage.h>
+#import <CyberKit/WKPageContextMenuClient.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/_WKDownload.h>
 
 namespace TestWebKitAPI {
 

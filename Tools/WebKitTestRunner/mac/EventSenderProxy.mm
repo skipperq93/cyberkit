@@ -35,11 +35,11 @@
 #import "TestRunnerWKWebView.h"
 #import "WebKitTestRunnerWindow.h"
 #import <Carbon/Carbon.h>
-#import <WebKit/WKString.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKString.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <pal/spi/cocoa/IOKitSPI.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>

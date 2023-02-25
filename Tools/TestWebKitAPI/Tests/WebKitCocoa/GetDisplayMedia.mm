@@ -31,11 +31,11 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 
 static bool shouldDeny = false;
 static _WKCaptureDevices requestedDevices = 0;

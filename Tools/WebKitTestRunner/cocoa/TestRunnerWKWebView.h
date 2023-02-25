@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKInputDelegate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/_WKInputDelegate.h>
 
 @class UIEditMenuInteraction;
 @class UITextEffectsWindow;

@@ -27,19 +27,19 @@
 #ifndef WKBase_h
 #define WKBase_h
 
-#include <WebKit/WKDeclarationSpecifiers.h>
+#include <CyberKit/WKDeclarationSpecifiers.h>
 #include <stdint.h>
 
 #if defined(BUILDING_GTK__)
-#include <WebKit/WKBaseGtk.h>
+#include <CyberKit/WKBaseGtk.h>
 #elif defined(BUILDING_WPE__)
-#include <WebKit/WKBaseWPE.h>
+#include <CyberKit/WKBaseWPE.h>
 #elif defined(__APPLE__)
-#include <WebKit/WKBaseMac.h>
+#include <CyberKit/WKBaseMac.h>
 #elif defined(_WIN32)
-#include <WebKit/WKBaseWin.h>
+#include <CyberKit/WKBaseWin.h>
 #elif defined(__SCE__)
-#include <WebKit/WKBasePlayStation.h>
+#include <CyberKit/WKBasePlayStation.h>
 #endif
 
 /* WebKit2 shared types */

@@ -33,11 +33,11 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKNavigationActionPrivate.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKNavigationPrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKNavigationPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <pal/cocoa/AppSSOSoftLink.h>
 #import <pal/spi/cocoa/AuthKitSPI.h>
 #import <wtf/BlockPtr.h>

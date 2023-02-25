@@ -26,12 +26,12 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKBundlePageOverlay.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
-#import <WebKit/WKWebProcessPlugInFrame.h>
-#import <WebKit/WKWebProcessPlugInLoadDelegate.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePageOverlay.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKWebProcessPlugInFrame.h>
+#import <CyberKit/WKWebProcessPlugInLoadDelegate.h>
 #import <wtf/RetainPtr.h>
 
 @interface PageOverlayPlugIn : NSObject <WKWebProcessPlugIn>

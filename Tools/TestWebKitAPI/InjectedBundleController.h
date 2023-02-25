@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebKit/WKBundle.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundle.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <map>
 #include <string>
 

@@ -29,10 +29,10 @@
 #import "PlatformUtilities.h"
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
 #import <wtf/RetainPtr.h>
 
 enum class ShouldSessionBeCloned : bool { No, Yes };

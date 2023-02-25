@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKBrowsingContextGroup.h>
+#import <CyberKit/WKBrowsingContextGroup.h>
 
-#import <WebKit/WKBase.h>
+#import <CyberKit/WKBase.h>
 
 @interface WKBrowsingContextGroup (Private)
 

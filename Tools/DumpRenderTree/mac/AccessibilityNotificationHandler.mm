@@ -36,7 +36,7 @@
 #import "DumpRenderTree.h"
 #import <JavaScriptCore/JSRetainPtr.h>
 #import <JavaScriptCore/JSStringRefCF.h>
-#import <WebKit/WebFrame.h>
+#import <CyberKit/WebFrame.h>
 #import <objc/runtime.h>
 
 @interface NSObject (WebAccessibilityObjectWrapperAdditions)

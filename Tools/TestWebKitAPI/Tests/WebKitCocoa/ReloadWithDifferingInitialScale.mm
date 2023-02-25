@@ -33,7 +33,7 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 namespace TestWebKitAPI {

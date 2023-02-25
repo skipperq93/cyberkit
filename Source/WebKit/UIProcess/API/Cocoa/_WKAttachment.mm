@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/_WKAttachment.h>
+#import <CyberKit/_WKAttachment.h>
 
 #import "APIAttachment.h"
 #import "WKErrorPrivate.h"

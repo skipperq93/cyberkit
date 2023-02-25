@@ -32,8 +32,8 @@
 #import "TestNavigationDelegate.h"
 #import "TestProtocol.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <pal/spi/mac/NSTextInputContextSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>

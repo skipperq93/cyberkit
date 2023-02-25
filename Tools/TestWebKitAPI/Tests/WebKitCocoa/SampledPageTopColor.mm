@@ -29,10 +29,10 @@
 #import "TestWKWebView.h"
 #import "Utilities.h"
 #import <WebCore/Color.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFeature.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFeature.h>
 #import <wtf/Function.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/StringBuilder.h>

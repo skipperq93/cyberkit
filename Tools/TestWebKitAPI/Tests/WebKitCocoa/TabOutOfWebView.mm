@@ -31,7 +31,7 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import <Carbon/Carbon.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 enum class TabDirection : uint8_t {

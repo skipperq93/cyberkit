@@ -32,9 +32,9 @@
 #import "TestWebExtensionsDelegate.h"
 #import "WebExtensionUtilities.h"
 #import <WebCore/UserGestureIndicator.h>
-#import <WebKit/WKFoundation.h>
-#import <WebKit/_WKWebExtensionContextPrivate.h>
-#import <WebKit/_WKWebExtensionControllerDelegate.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/_WKWebExtensionContextPrivate.h>
+#import <CyberKit/_WKWebExtensionControllerDelegate.h>
 
 namespace TestWebKitAPI {
 

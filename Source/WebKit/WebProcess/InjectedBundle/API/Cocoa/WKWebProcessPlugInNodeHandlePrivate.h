@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKWebProcessPlugInNodeHandle.h>
+#import <CyberKit/WKWebProcessPlugInNodeHandle.h>
 
 typedef NS_ENUM(NSInteger, _WKAutoFillButtonType) {
     _WKAutoFillButtonTypeNone,

@@ -30,7 +30,7 @@
 #import "AppKitSPI.h"
 #import "InstanceMethodSwizzler.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <pal/spi/mac/NSTextInputContextSPI.h>
 #import <wtf/RetainPtr.h>
 

@@ -26,9 +26,9 @@
 #import "config.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/Threading.h>
 
 #if WK_HAVE_C_SPI

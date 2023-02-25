@@ -26,7 +26,7 @@
 #ifndef WKGeolocationPosition_h
 #define WKGeolocationPosition_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifdef __cplusplus
 extern "C" {

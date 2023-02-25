@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKError.h>
+#import <CyberKit/WKError.h>
 
 WK_EXTERN NSString * const _WKLegacyErrorDomain WK_API_AVAILABLE(macos(10.11), ios(8.3));
 

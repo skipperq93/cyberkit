@@ -24,7 +24,7 @@
  */
 
 #import "_WKErrorRecoveryAttempting.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 #import <wtf/Forward.h>
 
 @class WKWebView;

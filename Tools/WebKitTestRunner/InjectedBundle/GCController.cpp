@@ -28,7 +28,7 @@
 
 #include "InjectedBundle.h"
 #include "JSGCController.h"
-#include <WebKit/WKBundlePrivate.h>
+#include <CyberKit/WKBundlePrivate.h>
 
 namespace WTR {
 

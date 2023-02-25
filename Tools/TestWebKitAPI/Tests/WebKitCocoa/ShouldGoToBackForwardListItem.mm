@@ -28,7 +28,7 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WKString.h>
+#import <CyberKit/WKString.h>
 #import <wtf/RetainPtr.h>
 
 static bool finished = false;

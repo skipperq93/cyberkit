@@ -25,10 +25,10 @@
 
 #if !TARGET_OS_IPHONE
 
-#import <WebKit/WKBase.h>
-#import <WebKit/WKLayoutMode.h>
-#import <WebKit/WKView.h>
-#import <WebKit/_WKOverlayScrollbarStyle.h>
+#import <CyberKit/WKBase.h>
+#import <CyberKit/WKLayoutMode.h>
+#import <CyberKit/WKView.h>
+#import <CyberKit/_WKOverlayScrollbarStyle.h>
 
 @class _WKLinkIconParameters;
 

@@ -29,12 +29,12 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKBackForwardListPrivate.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKNavigationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKSessionState.h>
+#import <CyberKit/WKBackForwardListPrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKNavigationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKSessionState.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 

@@ -29,8 +29,8 @@
 #include "StringFunctions.h"
 #include "WhatToDump.h"
 #include <JavaScriptCore/JSRetainPtr.h>
-#include <WebKit/WKBundleScriptWorld.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundleScriptWorld.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <string>
 #include <wtf/Ref.h>
 #include <wtf/Seconds.h>

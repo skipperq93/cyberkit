@@ -29,10 +29,10 @@
 
 #import "ContentFiltering.h"
 #import <WebCore/MockContentFilterSettings.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <mach-o/dyld.h>
 
 using MockContentFilterSettings = WebCore::MockContentFilterSettings;

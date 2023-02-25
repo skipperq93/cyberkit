@@ -23,11 +23,11 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKBrowsingContextController.h>
-#import <WebKit/WKNavigationData.h>
+#import <CyberKit/WKBrowsingContextController.h>
+#import <CyberKit/WKNavigationData.h>
 
 WK_CLASS_DEPRECATED_WITH_REPLACEMENT("WKBackForwardList", macos(10.10, 10.14.4), ios(8.0, 12.2))
 @protocol WKBrowsingContextHistoryDelegate <NSObject>

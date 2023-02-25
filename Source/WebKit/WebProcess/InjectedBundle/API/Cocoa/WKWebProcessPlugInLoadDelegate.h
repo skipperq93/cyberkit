@@ -24,8 +24,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/_WKRenderingProgressEvents.h>
-#import <WebKit/_WKSameDocumentNavigationType.h>
+#import <CyberKit/_WKRenderingProgressEvents.h>
+#import <CyberKit/_WKSameDocumentNavigationType.h>
 
 @class WKWebProcessPlugInBrowserContextController;
 @class WKWebProcessPlugInFrame;

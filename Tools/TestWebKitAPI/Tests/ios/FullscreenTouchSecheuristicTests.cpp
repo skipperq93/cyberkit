@@ -27,7 +27,7 @@
 
 #include "Test.h"
 #include <CoreGraphics/CGGeometry.h>
-#include <WebKit/FullscreenTouchSecheuristic.h>
+#include <CyberKit/FullscreenTouchSecheuristic.h>
 
 namespace WebKit {
 

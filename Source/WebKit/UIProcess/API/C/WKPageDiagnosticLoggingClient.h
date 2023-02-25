@@ -26,8 +26,8 @@
 #ifndef WKPageDiagnosticLoggingClient_h
 #define WKPageDiagnosticLoggingClient_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKDiagnosticLoggingResultType.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKDiagnosticLoggingResultType.h>
 
 #ifdef __cplusplus
 extern "C" {

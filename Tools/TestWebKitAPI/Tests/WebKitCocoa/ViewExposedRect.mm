@@ -28,9 +28,9 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPage.h>
-#import <WebKit/WKPagePrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPage.h>
+#import <CyberKit/WKPagePrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(MAC)

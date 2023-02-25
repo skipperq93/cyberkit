@@ -30,7 +30,7 @@
 #import "config.h"
 #import "CocoaHelpers.h"
 #import "WebExtensionAPINamespace.h"
-#import <WebKit/_WKWebExtensionPermission.h>
+#import <CyberKit/_WKWebExtensionPermission.h>
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 

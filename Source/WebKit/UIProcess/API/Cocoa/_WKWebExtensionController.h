@@ -23,11 +23,11 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
 
-#import <WebKit/_WKWebExtensionControllerDelegate.h>
+#import <CyberKit/_WKWebExtensionControllerDelegate.h>
 
 @class _WKWebExtension;
 @class _WKWebExtensionContext;

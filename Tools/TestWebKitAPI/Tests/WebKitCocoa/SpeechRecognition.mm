@@ -28,11 +28,11 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool shouldGrantPermissionRequest = true;

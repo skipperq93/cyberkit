@@ -26,8 +26,8 @@
 #import "config.h"
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/DOM.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
     
 @interface DOMNodeTest : NSObject <WebFrameLoadDelegate> {

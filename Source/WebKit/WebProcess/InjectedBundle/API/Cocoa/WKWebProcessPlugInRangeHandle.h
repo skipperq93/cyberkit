@@ -23,11 +23,11 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WKDataDetectorTypes.h>
+#import <CyberKit/WKDataDetectorTypes.h>
 
 @class WKWebProcessPlugInFrame;
 

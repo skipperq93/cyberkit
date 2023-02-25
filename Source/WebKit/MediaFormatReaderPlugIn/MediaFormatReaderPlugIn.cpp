@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <WebKit/WKMediaFormatReader.h>
+#include <CyberKit/WKMediaFormatReader.h>
 
 extern "C" WK_EXPORT OSStatus CreateMediaFormatReaderInstance(MTPluginByteSourceRef, CFAllocatorRef, CFDictionaryRef, MTPluginFormatReaderRef*);
 

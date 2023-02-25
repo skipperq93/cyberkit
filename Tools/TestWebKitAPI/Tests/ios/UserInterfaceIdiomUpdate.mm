@@ -31,7 +31,7 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import "UserInterfaceSwizzler.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 namespace TestWebKitAPI {
 

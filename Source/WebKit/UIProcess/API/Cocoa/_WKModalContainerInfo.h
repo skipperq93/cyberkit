@@ -24,7 +24,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 typedef NS_OPTIONS(NSUInteger, _WKModalContainerControlTypes) {
     _WKModalContainerControlTypeNeutral = 1 << 0,

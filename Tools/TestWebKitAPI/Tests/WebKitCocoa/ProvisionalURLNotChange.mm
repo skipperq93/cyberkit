@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"

@@ -28,8 +28,8 @@
 
 #import "WKWebViewInternal.h"
 #import <WebCore/AlternativeTextUIController.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/Vector.h>
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/WTFString.h>

@@ -31,12 +31,12 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import "UserMediaCaptureUIDelegate.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 
 @interface GetUserMediaRepromptTestView : TestWKWebView
 - (BOOL)haveStream:(BOOL)expected;

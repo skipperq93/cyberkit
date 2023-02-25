@@ -27,7 +27,7 @@
 
 #if PLATFORM(MAC)
 
-#import <WebKit/WebHTMLView.h>
+#import <CyberKit/WebHTMLView.h>
 
 @interface WebHTMLView (TestingSupportMac)
 @property (nonatomic, readonly) BOOL _secureEventInputEnabledForTesting;

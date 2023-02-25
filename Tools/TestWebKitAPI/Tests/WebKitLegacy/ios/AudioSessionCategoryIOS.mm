@@ -31,7 +31,7 @@
 #import <AVFoundation/AVAudioSession.h>
 #import <UIKit/UIKit.h>
 #import <WebCore/DeprecatedGlobalSettings.h>
-#import <WebKit/WebKitLegacy.h>
+#import <CyberKit/WebKitLegacy.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SoftLinking.h>
 

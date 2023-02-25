@@ -28,13 +28,13 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebsiteDataRecordPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebsiteDataRecordPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/text/WTFString.h>
 
 namespace TestWebKitAPI {

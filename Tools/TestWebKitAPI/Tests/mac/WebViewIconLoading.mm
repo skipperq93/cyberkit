@@ -26,8 +26,8 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebFrameLoadDelegate.h>
-#import <WebKit/WebView.h>
+#import <CyberKit/WebFrameLoadDelegate.h>
+#import <CyberKit/WebView.h>
 #import <wtf/RetainPtr.h>
 
 static NSString *MainFrameIconKeyPath = @"mainFrameIcon";

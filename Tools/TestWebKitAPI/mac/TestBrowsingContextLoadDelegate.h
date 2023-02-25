@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKBrowsingContextController.h>
-#import <WebKit/WKBrowsingContextLoadDelegate.h>
+#import <CyberKit/WKBrowsingContextController.h>
+#import <CyberKit/WKBrowsingContextLoadDelegate.h>
 
 #if PLATFORM(MAC)
 

@@ -28,7 +28,7 @@
 
 #import <CoreFoundation/CoreFoundation.h>
 #import <CoreText/CTFontManager.h>
-#import <WebKit/WKStringCF.h>
+#import <CyberKit/WKStringCF.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>

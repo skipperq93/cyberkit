@@ -25,11 +25,11 @@
 
 #pragma once
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
-#import <WebKit/_WKAuthenticatorAttachment.h>
-#import <WebKit/_WKUserVerificationRequirement.h>
+#import <CyberKit/_WKAuthenticatorAttachment.h>
+#import <CyberKit/_WKUserVerificationRequirement.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

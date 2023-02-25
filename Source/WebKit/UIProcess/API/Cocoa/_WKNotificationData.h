@@ -22,7 +22,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 WK_CLASS_AVAILABLE(macos(13.3), ios(16.4))
 @interface _WKNotificationData : NSObject

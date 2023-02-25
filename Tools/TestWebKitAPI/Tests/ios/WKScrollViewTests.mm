@@ -30,7 +30,7 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 constexpr CGFloat blackColorComponents[4] = { 0, 0, 0, 1 };
 constexpr CGFloat whiteColorComponents[4] = { 1, 1, 1, 1 };

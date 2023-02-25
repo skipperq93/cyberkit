@@ -31,8 +31,8 @@
 #import "TestWKWebView.h"
 #import "TestWKWebViewController.h"
 #import "Utilities.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WebKit.h>
 
 static bool contextMenuRequested;
 static bool contextMenuSPIRequested;

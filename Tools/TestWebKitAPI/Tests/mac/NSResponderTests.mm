@@ -27,7 +27,7 @@
 
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 namespace TestWebKitAPI {
 

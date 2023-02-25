@@ -26,9 +26,9 @@
 #ifndef WKBundlePageOverlay_h
 #define WKBundlePageOverlay_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKEvent.h>
-#include <WebKit/WKGeometry.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKEvent.h>
+#include <CyberKit/WKGeometry.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>

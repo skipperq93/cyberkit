@@ -30,7 +30,7 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "TestBrowsingContextLoadDelegate.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool testFinished = false;

@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
-#import <WebKit/WKWebProcessPlugInFormDelegatePrivate.h>
+#import <CyberKit/WKWebProcessPlugInFormDelegatePrivate.h>
 
 @protocol BundleFormDelegateProtocol <NSObject>
 

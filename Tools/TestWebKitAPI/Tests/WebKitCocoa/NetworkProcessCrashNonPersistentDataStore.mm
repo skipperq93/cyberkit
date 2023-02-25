@@ -29,9 +29,9 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 @interface CrashDelegate : NSObject <WKNavigationDelegate>

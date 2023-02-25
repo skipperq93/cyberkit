@@ -33,8 +33,8 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import <Carbon/Carbon.h> // for GetCurrentEventTime()
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 enum ArrowDirection {

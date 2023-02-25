@@ -26,7 +26,7 @@
 #ifndef WKInspector_h
 #define WKInspector_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #if !TARGET_OS_IPHONE
 

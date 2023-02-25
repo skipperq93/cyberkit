@@ -29,7 +29,7 @@
 
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
-#import <WebKit/WebKitNSStringExtras.h>
+#import <CyberKit/WebKitNSStringExtras.h>
 
 TEST(WebKitLegacyStringWidth, ThaiWidthForWeb)
 {

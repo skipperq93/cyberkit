@@ -28,10 +28,10 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/Function.h>
 
 TEST(ProcessSuspension, CancelWebProcessSuspension)

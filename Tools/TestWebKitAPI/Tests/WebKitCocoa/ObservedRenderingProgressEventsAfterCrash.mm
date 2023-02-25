@@ -27,8 +27,8 @@
 
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(MAC)

@@ -24,9 +24,9 @@
  */
 
 #import "PDFPluginIdentifier.h"
-#import <WebKit/WKShareSheet.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKShareSheet.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import "_WKAttachmentInternal.h"
 #import "_WKWebViewPrintFormatterInternal.h"
 #import <variant>

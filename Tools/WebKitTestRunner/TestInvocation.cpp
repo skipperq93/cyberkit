@@ -33,14 +33,14 @@
 #include "TestController.h"
 #include "UIScriptController.h"
 #include "WebCoreTestSupport.h"
-#include <WebKit/WKContextPrivate.h>
-#include <WebKit/WKData.h>
-#include <WebKit/WKDictionary.h>
-#include <WebKit/WKHTTPCookieStoreRef.h>
-#include <WebKit/WKInspector.h>
-#include <WebKit/WKPagePrivate.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKWebsiteDataStoreRef.h>
+#include <CyberKit/WKContextPrivate.h>
+#include <CyberKit/WKData.h>
+#include <CyberKit/WKDictionary.h>
+#include <CyberKit/WKHTTPCookieStoreRef.h>
+#include <CyberKit/WKInspector.h>
+#include <CyberKit/WKPagePrivate.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKWebsiteDataStoreRef.h>
 #include <climits>
 #include <cstdio>
 #include <wtf/StdLibExtras.h>
@@ -51,7 +51,7 @@
 #endif
 
 #if PLATFORM(COCOA)
-#include <WebKit/WKPagePrivateMac.h>
+#include <CyberKit/WKPagePrivateMac.h>
 #endif
 
 #if PLATFORM(WIN)

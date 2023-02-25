@@ -31,10 +31,10 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKAppHighlight.h>
-#import <WebKit/_WKAppHighlightDelegate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKAppHighlight.h>
+#import <CyberKit/_WKAppHighlightDelegate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 

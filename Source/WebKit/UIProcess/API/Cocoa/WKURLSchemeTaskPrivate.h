@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKURLSchemeTask.h>
+#import <CyberKit/WKURLSchemeTask.h>
 
 @class WKFrameInfo;
 

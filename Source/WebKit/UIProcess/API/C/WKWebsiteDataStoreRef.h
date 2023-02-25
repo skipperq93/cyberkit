@@ -26,8 +26,8 @@
 #ifndef WKWebsiteDataStoreRef_h
 #define WKWebsiteDataStoreRef_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKDeprecated.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKDeprecated.h>
 
 #if defined(WIN32) || defined(_WIN32)
 typedef int WKProcessID;

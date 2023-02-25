@@ -26,8 +26,8 @@
 #ifndef WKBundlePageFormClient_h
 #define WKBundlePageFormClient_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKBundlePageEditorClient.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKBundlePageEditorClient.h>
 
 typedef void (*WKBundlePageTextFieldDidBeginEditingCallback)(WKBundlePageRef page, WKBundleNodeHandleRef htmlInputElementHandle, WKBundleFrameRef frame, const void* clientInfo);
 typedef void (*WKBundlePageTextFieldDidEndEditingCallback)(WKBundlePageRef page, WKBundleNodeHandleRef htmlInputElementHandle, WKBundleFrameRef frame, const void* clientInfo);

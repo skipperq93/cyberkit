@@ -33,8 +33,8 @@
 #import "TestProtocol.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WebKit.h>
 
 static NSString * const userScriptSource = @"window.wkUserScriptInjected = true";
 

@@ -35,16 +35,16 @@
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
 #import <WebCore/RegistrationDatabase.h>
-#import <WebKit/WKNotificationProvider.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKSecurityOriginPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKNotificationData.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
-#import <WebKit/_WKWebsiteDataStoreDelegate.h>
+#import <CyberKit/WKNotificationProvider.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKSecurityOriginPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKNotificationData.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/_WKWebsiteDataStoreDelegate.h>
 #import <wtf/HexNumber.h>
 
 static constexpr auto simpleMainBytes = R"SWRESOURCE(

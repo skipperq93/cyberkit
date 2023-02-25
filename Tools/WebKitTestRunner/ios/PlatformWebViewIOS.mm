@@ -29,11 +29,11 @@
 #import "TestController.h"
 #import "TestRunnerWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKImageCG.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKSnapshotConfiguration.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKImageCG.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKSnapshotConfiguration.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/BlockPtr.h>

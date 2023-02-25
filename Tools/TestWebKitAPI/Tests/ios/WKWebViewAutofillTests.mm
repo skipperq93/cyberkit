@@ -32,7 +32,7 @@
 #import "TestInputDelegate.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/BlockPtr.h>
 
 @protocol WKTextInputSuggestionDelegate <UITextInputSuggestionDelegate>

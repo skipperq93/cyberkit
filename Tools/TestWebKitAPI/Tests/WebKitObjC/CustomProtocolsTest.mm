@@ -32,10 +32,10 @@
 #import "Test.h"
 #import "TestBrowsingContextLoadDelegate.h"
 #import "TestProtocol.h"
-#import <WebKit/WKContextPrivate.h>
-#import <WebKit/WKProcessGroupPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebsiteDataStoreRef.h>
+#import <CyberKit/WKContextPrivate.h>
+#import <CyberKit/WKProcessGroupPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebsiteDataStoreRef.h>
 #import <wtf/RetainPtr.h>
 
 static bool testFinished;

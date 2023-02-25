@@ -28,9 +28,9 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 @interface ResponsivenessTimerDelegate : NSObject <WKNavigationDelegate>

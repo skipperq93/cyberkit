@@ -28,11 +28,11 @@
 
 #include "DataFunctions.h"
 #include "StringFunctions.h"
-#include <WebKit/WKMutableArray.h>
-#include <WebKit/WKNotification.h>
-#include <WebKit/WKNotificationManager.h>
-#include <WebKit/WKNumber.h>
-#include <WebKit/WKSecurityOriginRef.h>
+#include <CyberKit/WKMutableArray.h>
+#include <CyberKit/WKNotification.h>
+#include <CyberKit/WKNotificationManager.h>
+#include <CyberKit/WKNumber.h>
+#include <CyberKit/WKSecurityOriginRef.h>
 #include <wtf/Assertions.h>
 
 namespace WTR {

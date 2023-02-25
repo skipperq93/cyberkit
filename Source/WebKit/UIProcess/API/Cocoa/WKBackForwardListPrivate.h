@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKBackForwardList.h>
+#import <CyberKit/WKBackForwardList.h>
 
 @interface WKBackForwardList (WKPrivate)
 

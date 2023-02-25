@@ -26,7 +26,7 @@
 #ifndef WKBundlePagePolicyClient_h
 #define WKBundlePagePolicyClient_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 enum {
     WKBundlePagePolicyActionPassThrough,

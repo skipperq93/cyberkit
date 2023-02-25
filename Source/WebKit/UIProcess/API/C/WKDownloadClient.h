@@ -26,7 +26,7 @@
 #ifndef WKDownloadClient_h
 #define WKDownloadClient_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 typedef bool (*WKDownloadWillPerformHTTPRedirection)(WKDownloadRef download, WKURLResponseRef response, WKURLRequestRef newRequest, const void* clientInfo);
 typedef void (*WKDownloadDidReceiveAuthenticationChallenge)(WKDownloadRef download, WKAuthenticationChallengeRef challenge, const void* clientInfo);

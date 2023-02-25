@@ -23,10 +23,10 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKPreviewActionItem.h>
+#import <CyberKit/WKPreviewActionItem.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

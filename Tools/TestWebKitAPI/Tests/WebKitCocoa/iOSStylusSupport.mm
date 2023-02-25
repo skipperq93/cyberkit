@@ -31,8 +31,8 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WebKit.h>
 
 #if HAVE(STYLUS_DEVICE_OBSERVATION)
 
