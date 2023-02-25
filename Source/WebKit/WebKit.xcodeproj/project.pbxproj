@@ -17516,6 +17516,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D9FB22A237523FB0049F936 /* GPUService.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.GPU;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -17523,6 +17528,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D9FB22A237523FB0049F936 /* GPUService.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.GPU;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -17537,6 +17547,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 372EBB4A2017E76000085064 /* WebContentService.Development.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.WebContent.Development;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -17544,6 +17559,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 372EBB4A2017E76000085064 /* WebContentService.Development.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.WebContent.Development;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -17683,11 +17703,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 65DC53C528CA5D07008DABD5 /* WebContentService.Crashy.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "615.1.4+";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				MARKETING_VERSION = "615+";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.WebContent.Crashy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -17695,10 +17720,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 65DC53C528CA5D07008DABD5 /* WebContentService.Crashy.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = "615.1.4+";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
 				MARKETING_VERSION = "615+";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.WebContent.Crashy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -17715,6 +17745,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A7E8DFA2748399300DCC97A /* WebContentService.CaptivePortal.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.WebContent.CaptivePortal;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -17722,6 +17757,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A7E8DFA2748399300DCC97A /* WebContentService.CaptivePortal.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.WebContent.CaptivePortal;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -17823,6 +17863,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BCACC40E16B0B8A800B6E092 /* WebContentService.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.WebContent;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -17830,6 +17875,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BCACC40E16B0B8A800B6E092 /* WebContentService.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ape.WebKit.WebContent;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -17844,6 +17894,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC8283AB16B4BEAD00A278FE /* NetworkService.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.Networking;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -17851,6 +17906,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC8283AB16B4BEAD00A278FE /* NetworkService.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJ87WGCZM7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewbenedict.WebKit.Networking;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
