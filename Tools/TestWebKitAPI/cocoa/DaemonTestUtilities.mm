@@ -106,6 +106,7 @@ static RetainPtr<xpc_object_t> convertDictionaryToXPC(NSDictionary<NSString *, i
 }
 #endif
 
+#if HAVE(OS_LAUNCHD_JOB) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 void registerPlistWithLaunchD(NSDictionary<NSString *, id> *plist, NSURL *tempDir)
 {
     NSError *error = nil;
@@ -127,6 +128,7 @@ void registerPlistWithLaunchD(NSDictionary<NSString *, id> *plist, NSURL *tempDi
     EXPECT_FALSE(error);
 #endif
 }
+#endif
 
 static int pidOfFirstDaemonInstance(NSString *daemonExecutableName)
 {

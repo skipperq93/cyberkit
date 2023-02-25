@@ -10376,7 +10376,10 @@ static BOOL applicationIsKnownToIgnoreMouseEvents(const char* &warningVersion)
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
             return [UIPointerStyle systemPointerStyle];
 #else
-        return [UIPointerStyle styleWithEffect:UIPointerHoverEffect shape:nil];
+        {
+            UITargetedPreview* p = [[UITargetedPreview alloc] initWithView:interaction.view];
+            return [UIPointerStyle styleWithEffect:[UIPointerEffect effectWithPreview:p] shape:nil];
+        }
 #endif
         return iBeamCursor();
     }
@@ -10388,7 +10391,10 @@ static BOOL applicationIsKnownToIgnoreMouseEvents(const char* &warningVersion)
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
             return [UIPointerStyle systemPointerStyle];
 #else
-            return [UIPointerStyle styleWithEffect:UIPointerHoverEffect shape:nil];
+        {
+            UITargetedPreview* p = [[UITargetedPreview alloc] initWithView:interaction.view];
+            return [UIPointerStyle styleWithEffect:[UIPointerEffect effectWithPreview:p] shape:nil];
+        }
 #endif
 
         if (cursorType == WebCore::Cursor::IBeam && _positionInformation.lineCaretExtent.contains(_positionInformation.request.point))
@@ -10398,7 +10404,10 @@ static BOOL applicationIsKnownToIgnoreMouseEvents(const char* &warningVersion)
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
     return [UIPointerStyle systemPointerStyle];
 #else
-    return [UIPointerStyle styleWithEffect:UIPointerHoverEffect shape:nil];
+    {
+        UITargetedPreview* p = [[UITargetedPreview alloc] initWithView:interaction.view];
+        return [UIPointerStyle styleWithEffect:[UIPointerEffect effectWithPreview:p] shape:nil];
+    }
 #endif
 }
 
