@@ -1924,7 +1924,7 @@ void NetworkSessionCocoa::dataTaskWithRequest(WebPageProxyIdentifier pageID, Web
     auto session = sessionWrapperForTask(pageID, request, WebCore::StoredCredentialsPolicy::Use, std::nullopt).session;
     auto task = [session dataTaskWithRequest:nsRequest];
     auto delegate = adoptNS([[WKURLSessionTaskDelegate alloc] initWithIdentifier:identifier session:*this]);
-#if HAVE(NSURLSESSION_TASK_DELEGATE)
+#if HAVE(NSURLSESSION_TASK_DELEGATE) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     task.delegate = delegate.get();
 #endif
     auto addResult = m_dataTasksForAPI.add(identifier, task);
