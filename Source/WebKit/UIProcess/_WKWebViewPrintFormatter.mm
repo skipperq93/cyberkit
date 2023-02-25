@@ -73,8 +73,10 @@
 
 - (CGPDFDocumentRef)_printedDocument
 {
-    if (self.requiresMainThread)
-        return _printedDocument.get();
+    if (@available(iOS 16, *)) {
+        if (self.requiresMainThread)
+            return _printedDocument.get();
+    }
 
     Locker locker { _printLock };
     return _printedDocument.get();
@@ -82,9 +84,11 @@
 
 - (void)_setPrintedDocument:(CGPDFDocumentRef)printedDocument
 {
-    if (self.requiresMainThread) {
-        _printedDocument = printedDocument;
-        return;
+    if (@available(iOS 16, *)) {
+        if (self.requiresMainThread) {
+            _printedDocument = printedDocument;
+            return;
+        }
     }
 
     Locker locker { _printLock };

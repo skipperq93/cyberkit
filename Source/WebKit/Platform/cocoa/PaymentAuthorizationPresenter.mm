@@ -105,10 +105,17 @@ static PKPaymentErrorCode toPKPaymentErrorCode(WebCore::ApplePayErrorCode code)
 
 #if ENABLE(APPLE_PAY_COUPON_CODE)
     case WebCore::ApplePayErrorCode::CouponCodeInvalid:
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
         return PKPaymentCouponCodeInvalidError;
-
+#else
+            break;
+#endif
     case WebCore::ApplePayErrorCode::CouponCodeExpired:
+#if PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000
         return PKPaymentCouponCodeExpiredError;
+#else
+            break;
+#endif
 #endif
     }
 
@@ -326,7 +333,7 @@ void PaymentAuthorizationPresenter::completeShippingMethodSelection(std::optiona
     [platformDelegate() completeShippingMethodSelection:shippingMethodUpdate.get()];
 }
 
-#if HAVE(PASSKIT_COUPON_CODE)
+#if HAVE(PASSKIT_COUPON_CODE) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
 void PaymentAuthorizationPresenter::completeCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&& update)
 {
