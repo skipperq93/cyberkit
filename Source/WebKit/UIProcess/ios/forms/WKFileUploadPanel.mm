@@ -25,6 +25,7 @@
 
 #import "config.h"
 #import "WKFileUploadPanel.h"
+//@import UTTypeExtensions;
 
 #if PLATFORM(IOS_FAMILY)
 
@@ -97,15 +98,14 @@ static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, UTT
 }
 #endif
 
-static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, CFStringRef conformToUTI)
+/*static bool setContainsUTIThatConformsTo(NSSet<NSString *> *typeIdentifiers, CFStringRef conformToUTI)
 {
     for (NSString *uti in typeIdentifiers) {
-        if (UTTypeConformsTo((__bridge CFStringRef)uti, conformToUTI)) {
+        if ([UTTypeConformance conforms:(__bridge CFStringRef)uti :conformToUTI])
             return true;
-        }
     }
     return false;
-}
+}*/
 
 #if HAVE(PHOTOS_UI)
 
@@ -121,15 +121,14 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
 }
 #endif
 
-static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, CFStringRef conformToUTI)
+/*static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, CFStringRef conformToUTI)
 {
     for (NSString *uti in typeIdentifiers) {
-        if (UTTypeConformsTo((__bridge CFStringRef)uti, conformToUTI)) {
+        if ([UTTypeConformance conforms:(__bridge CFStringRef)uti :conformToUTI])
             return uti;
-        }
     }
     return nil;
-}
+}*/
 
 #endif
 
