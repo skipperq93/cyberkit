@@ -28,7 +28,7 @@
 #if PLATFORM(IOS_FAMILY) && !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
 
 #define DEFINE_INSTALL_NAME(major, minor) \
-    extern __attribute__((visibility ("default"))) const char install_name_ ##major## _ ##minor __asm("$ld$install_name$os" #major "." #minor "$/System/Library/PrivateFrameworks/WebKit.framework/WebKit"); \
+    extern __attribute__((visibility ("default"))) const char install_name_ ##major## _ ##minor __asm("$ld$install_name$os" #major "." #minor "$/System/Library/PrivateFrameworks/CyberKit.framework/WebKit"); \
     const char install_name_ ##major## _ ##minor = 0;
 
 DEFINE_INSTALL_NAME(4, 3);

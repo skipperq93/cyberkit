@@ -51,7 +51,7 @@ public:
     {
     }
 
-    // Loads and returns an HRTFElevation with the given HRTF database subject name and elevation from browser (or WebKit.framework) resources.
+    // Loads and returns an HRTFElevation with the given HRTF database subject name and elevation from browser (or CyberKit.framework) resources.
     // Normally, there will only be a single HRTF database set, but this API supports the possibility of multiple ones with different names.
     // Interpolated azimuths will be generated based on InterpolationFactor.
     // Valid values for elevation are -45 -> +90 in 15 degree increments.

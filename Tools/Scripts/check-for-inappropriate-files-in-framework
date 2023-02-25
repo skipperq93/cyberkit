@@ -39,7 +39,7 @@ $INAPPROPRIATE_FILES = {
     "PrivateHeaders" => ["*.tmp"],
     "Resources" => ["*.txt", "*.in", "*.idl", "*.h"],
   },
-  "WebKit" => {
+  "CyberKit" => {
     "Headers" => ["*.tmp"],
     "Resources" => ["*.txt", "*.in", "*.idl", "*.h"],
   },

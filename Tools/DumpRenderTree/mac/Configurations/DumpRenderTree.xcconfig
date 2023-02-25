@@ -34,7 +34,7 @@ PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKit.DumpRenderTree;
 
 SKIP_INSTALL[sdk=embedded*] = YES;
 
-INSTALL_PATH = $(PRODUCTION_PUBLIC_FRAMEWORKS_DIR)/WebKit.framework/Versions/A/Resources;
+INSTALL_PATH = $(PRODUCTION_PUBLIC_FRAMEWORKS_DIR)/CyberKit.framework/Versions/A/Resources;
 
 CODE_SIGN_ENTITLEMENTS[sdk=macosx*] = mac/Configurations/DumpRenderTree.entitlements;
 
