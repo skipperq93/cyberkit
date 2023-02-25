@@ -304,8 +304,12 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 static bool shouldTreatAsAttachmentByDefault(const String& typeIdentifier)
 {
-    auto type = [UTType typeWithIdentifier:typeIdentifier];
-    return [type conformsToType:UTTypeVCard] || [type conformsToType:UTTypePDF];
+    if (@available(iOS 14.0, *)) {
+        auto type = [UTType typeWithIdentifier:typeIdentifier];
+        return [type conformsToType:UTTypeVCard] || [type conformsToType:UTTypePDF];
+    } else {
+        return false;
+    }
 }
 
 static bool prefersAttachmentRepresentation(const PasteboardItemInfo& info)
