@@ -1924,7 +1924,7 @@ void NetworkSessionCocoa::dataTaskWithRequest(WebPageProxyIdentifier pageID, Web
     auto session = sessionWrapperForTask(pageID, request, WebCore::StoredCredentialsPolicy::Use, std::nullopt).session;
     auto task = [session dataTaskWithRequest:nsRequest];
     auto delegate = adoptNS([[WKURLSessionTaskDelegate alloc] initWithIdentifier:identifier session:*this]);
-#if HAVE(NSURLSESSION_TASK_DELEGATE) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if HAVE(NSURLSESSION_TASK_DELEGATE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     task.delegate = delegate.get();
 #endif
     auto addResult = m_dataTasksForAPI.add(identifier, task);
@@ -1976,7 +1976,7 @@ Vector<WebCore::SecurityOriginData> NetworkSessionCocoa::hostNamesWithAlternativ
 
 void NetworkSessionCocoa::donateToSKAdNetwork(WebCore::PrivateClickMeasurement&& pcm)
 {
-#if HAVE(SKADNETWORK_v4) && (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
+#if HAVE(SKADNETWORK_v4) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 160000)
     auto config = adoptNS([ASDInstallWebAttributionParamsConfig new]);
     config.get().appAdamId = @(*pcm.adamID());
     config.get().adNetworkRegistrableDomain = pcm.destinationSite().registrableDomain.string();

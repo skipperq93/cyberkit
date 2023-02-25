@@ -178,7 +178,7 @@ void WebPaymentCoordinatorProxy::completeCouponCodeChange(std::optional<WebCore:
 
     MESSAGE_CHECK(m_state == State::CouponCodeChanged);
 
-#if (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
+#if (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
     platformCompleteCouponCodeChange(WTFMove(update));
 #endif
     m_state = State::Active;
