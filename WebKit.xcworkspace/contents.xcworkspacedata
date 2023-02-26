@@ -23,7 +23,7 @@
       location = "group:Source/WebGPU/WebGPU.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Source/WebCore/WebCore.xcodeproj">
+      location = "group:/Users/matthewbenedict/Documents/git/WebKit/Source/WebCore/CyberCore.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Source/WebInspectorUI/WebInspectorUI.xcodeproj">
