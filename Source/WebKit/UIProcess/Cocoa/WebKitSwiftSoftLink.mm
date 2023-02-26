@@ -38,7 +38,7 @@ void* WebKitSwiftLibrary(bool isOptional)
         if ((library = dlopen("libWebKitSwift.dylib", RTLD_NOW)))
             return;
 
-        // Then search in the Frameworks/ directory of the currently loaded version of WebKit.framework:
+        // Then search in the Frameworks/ directory of the currently loaded version of CyberKit.framework:
         Dl_info info { };
         if (dladdr((const void*)&WebKitSwiftLibrary, &info) && strlen(info.dli_fname)) {
             auto dliPath = String::fromUTF8(info.dli_fname);

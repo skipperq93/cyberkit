@@ -765,7 +765,7 @@ class WebKitGenerator(BaseGenerator):
 
     @util.LogEntryExit
     def _get_project_file_path(self):
-        return os.path.join(self.application.get_opensource_dir(), "Source", "WebKit", "WebKit.xcodeproj")
+        return os.path.join(self.application.get_opensource_dir(), "Source", "WebKit", "CyberKit.xcodeproj")
 
     @util.LogEntryExit
     def _get_derived_sources_dir(self):
