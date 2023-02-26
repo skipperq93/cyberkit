@@ -26,9 +26,9 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMCore.h>
-#import <WebKitLegacy/DOMHTML.h>
-#import <WebKitLegacy/DOMRange.h>
+#import <CyberKitLegacy/DOMCore.h>
+#import <CyberKitLegacy/DOMHTML.h>
+#import <CyberKitLegacy/DOMRange.h>
 
 @class WebArchive;
 @class WebFrame;

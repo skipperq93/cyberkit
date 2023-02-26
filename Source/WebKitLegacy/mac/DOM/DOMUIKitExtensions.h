@@ -26,13 +26,13 @@
 
 #if TARGET_OS_IPHONE
 
-#import <WebKitLegacy/DOMElement.h>
-#import <WebKitLegacy/DOMExtensions.h>
-#import <WebKitLegacy/DOMHTMLAreaElement.h>
-#import <WebKitLegacy/DOMHTMLImageElement.h>
-#import <WebKitLegacy/DOMHTMLSelectElement.h>
-#import <WebKitLegacy/DOMNode.h>
-#import <WebKitLegacy/DOMRange.h>
+#import <CyberKitLegacy/DOMElement.h>
+#import <CyberKitLegacy/DOMExtensions.h>
+#import <CyberKitLegacy/DOMHTMLAreaElement.h>
+#import <CyberKitLegacy/DOMHTMLImageElement.h>
+#import <CyberKitLegacy/DOMHTMLSelectElement.h>
+#import <CyberKitLegacy/DOMNode.h>
+#import <CyberKitLegacy/DOMRange.h>
 
 typedef enum { 
     // The first four match SelectionDirection.  The last two don't have WebKit counterparts because

@@ -24,7 +24,7 @@
  */
 
 
-#import <WebKitLegacy/DOMWheelEvent.h>
+#import <CyberKitLegacy/DOMWheelEvent.h>
 
 namespace WebCore {
 class WheelEvent;

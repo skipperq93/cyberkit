@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebDocumentPrivate.h>
+#import <CyberKitLegacy/WebDocumentPrivate.h>
 
 @interface WebPDFView : WAKView <WebPDFDocumentView, WebPDFDocumentRepresentation>
 

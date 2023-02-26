@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMAttr.h>
+#import <CyberKitLegacy/DOMAttr.h>
 
 namespace WebCore {
 class Attr;

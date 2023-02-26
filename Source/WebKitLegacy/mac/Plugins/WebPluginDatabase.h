@@ -29,7 +29,7 @@
 #import <Foundation/Foundation.h>
 
 #if TARGET_OS_IPHONE
-#import <WebKitLegacy/WAKAppKitStubs.h>
+#import <CyberKitLegacy/WAKAppKitStubs.h>
 #endif
 
 @class WebBasePluginPackage;

@@ -30,18 +30,18 @@
 #define WebDownload_h
 
 #import <Foundation/Foundation.h>
-#import <WebKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/WebKitAvailability.h>
 
 #if defined(TARGET_OS_MACCATALYST) && TARGET_OS_MACCATALYST
 #import <CFNetwork/CFNSURLConnection.h>
 #elif !TARGET_OS_IPHONE || (defined(USE_APPLE_INTERNAL_SDK) && USE_APPLE_INTERNAL_SDK)
 #import <Foundation/NSURLDownload.h>
 #else
-#import <WebKitLegacy/NSURLDownloadSPI.h>
+#import <CyberKitLegacy/NSURLDownloadSPI.h>
 #endif
 
 #if TARGET_OS_IPHONE
-#import <WebKitLegacy/WAKAppKitStubs.h>
+#import <CyberKitLegacy/WAKAppKitStubs.h>
 #endif
 
 #if !TARGET_OS_IPHONE

@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMCSSStyleSheet.h>
+#import <CyberKitLegacy/DOMCSSStyleSheet.h>
 
 namespace WebCore {
 class CSSStyleSheet;

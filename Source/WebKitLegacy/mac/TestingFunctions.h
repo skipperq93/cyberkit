@@ -25,7 +25,7 @@
 #pragma once
 
 #include <Foundation/Foundation.h>
-#include <WebKitLegacy/WebPreferences.h>
+#include <CyberKitLegacy/WebPreferences.h>
 #include <wtf/Compiler.h>
 #include <wtf/Platform.h>
 

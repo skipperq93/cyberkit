@@ -24,7 +24,7 @@
  */
 
 
-#import <WebKitLegacy/DOMNodeIterator.h>
+#import <CyberKitLegacy/DOMNodeIterator.h>
 
 namespace WebCore {
 class NodeIterator;

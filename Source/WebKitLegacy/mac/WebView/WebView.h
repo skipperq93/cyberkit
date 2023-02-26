@@ -27,13 +27,13 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/WebKitAvailability.h>
 
 #if !TARGET_OS_IPHONE
 #import <AppKit/AppKit.h>
 #else
-#import <WebKitLegacy/WAKAppKitStubs.h>
-#import <WebKitLegacy/WAKView.h>
+#import <CyberKitLegacy/WAKAppKitStubs.h>
+#import <CyberKitLegacy/WAKView.h>
 #if !defined(IBAction)
 #define IBAction void
 #endif

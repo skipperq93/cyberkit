@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMUIEvent.h>
+#import <CyberKitLegacy/DOMUIEvent.h>
 
 @class DOMAbstractView;
 @class NSString;

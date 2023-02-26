@@ -24,10 +24,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import <WebKitLegacy/DOMCore.h>
-#import <WebKitLegacy/DOMDocument.h>
-#import <WebKitLegacy/DOMObject.h>
+#import <CyberKitLegacy/DOMCore.h>
+#import <CyberKitLegacy/DOMDocument.h>
+#import <CyberKitLegacy/DOMObject.h>
 
-#import <WebKitLegacy/DOMNodeFilter.h>
-#import <WebKitLegacy/DOMNodeIterator.h>
-#import <WebKitLegacy/DOMTreeWalker.h>
+#import <CyberKitLegacy/DOMNodeFilter.h>
+#import <CyberKitLegacy/DOMNodeIterator.h>
+#import <CyberKitLegacy/DOMTreeWalker.h>

@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMFileList.h>
+#import <CyberKitLegacy/DOMFileList.h>
 
 namespace WebCore {
 class FileList;

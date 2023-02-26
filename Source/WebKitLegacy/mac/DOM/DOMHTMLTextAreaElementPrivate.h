@@ -23,8 +23,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMHTMLElementPrivate.h>
-#import <WebKitLegacy/DOMHTMLTextAreaElement.h>
+#import <CyberKitLegacy/DOMHTMLElementPrivate.h>
+#import <CyberKitLegacy/DOMHTMLTextAreaElement.h>
 
 @class DOMNodeList;
 @class DOMValidityState;

@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebLocalizableStrings.h>
+#import <CyberKitLegacy/WebLocalizableStrings.h>
 
 #import <wtf/Assertions.h>
 #import <wtf/MainThread.h>

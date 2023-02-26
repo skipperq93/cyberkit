@@ -27,7 +27,7 @@
 
 #import "WebDefaultFrameLoadDelegate.h"
 
-#import <WebKitLegacy/WebFrameLoadDelegatePrivate.h>
+#import <CyberKitLegacy/WebFrameLoadDelegatePrivate.h>
 #import "WebViewPrivate.h"
 
 @implementation WebDefaultFrameLoadDelegate

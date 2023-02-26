@@ -26,12 +26,12 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebKitErrors.h>
+#import <CyberKitLegacy/WebKitErrors.h>
 
 #import "WebLocalizableStringsInternal.h"
 #import <Foundation/NSURLError.h>
-#import <WebKitLegacy/WebKitErrorsPrivate.h>
-#import <WebKitLegacy/WebNSURLExtras.h>
+#import <CyberKitLegacy/WebKitErrorsPrivate.h>
+#import <CyberKitLegacy/WebNSURLExtras.h>
 
 #import <dispatch/dispatch.h>
 

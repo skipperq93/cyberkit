@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMHTMLDocument.h>
+#import <CyberKitLegacy/DOMHTMLDocument.h>
 
 namespace WebCore {
 class HTMLDocument;

@@ -48,8 +48,8 @@
 #import <WebCore/Editor.h>
 #import <WebCore/Frame.h>
 #import <WebCore/FrameLoader.h>
-#import <WebKitLegacy/DOM.h>
-#import <WebKitLegacy/DOMPrivate.h>
+#import <CyberKitLegacy/DOM.h>
+#import <CyberKitLegacy/DOMPrivate.h>
 #import <pal/system/mac/DefaultSearchProvider.h>
 #import <wtf/Assertions.h>
 

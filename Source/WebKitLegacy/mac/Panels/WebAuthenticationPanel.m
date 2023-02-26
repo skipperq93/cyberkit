@@ -28,17 +28,17 @@
 
 #if !PLATFORM(IOS_FAMILY)
 
-#import <WebKitLegacy/WebAuthenticationPanel.h>
+#import <CyberKitLegacy/WebAuthenticationPanel.h>
 
 #import "WebLocalizableStringsInternal.h"
 #import <Foundation/NSURLAuthenticationChallenge.h>
 #import <Foundation/NSURLProtectionSpace.h>
 #import <Foundation/NSURLCredential.h>
-#import <WebKitLegacy/WebKitNSStringExtras.h>
-#import <WebKitLegacy/WebNSURLExtras.h>
+#import <CyberKitLegacy/WebKitNSStringExtras.h>
+#import <CyberKitLegacy/WebNSURLExtras.h>
 #import <wtf/Assertions.h>
 
-#import <WebKitLegacy/WebNSControlExtras.h>
+#import <CyberKitLegacy/WebNSControlExtras.h>
 
 #define WebAuthenticationPanelNibName @"WebAuthenticationPanel"
 

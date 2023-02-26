@@ -26,10 +26,10 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebAllowDenyPolicyListener.h>
-#import <WebKitLegacy/WebUIDelegate.h>
+#import <CyberKitLegacy/WebAllowDenyPolicyListener.h>
+#import <CyberKitLegacy/WebUIDelegate.h>
 #if TARGET_OS_IPHONE
-#import <WebKitLegacy/WAKView.h>
+#import <CyberKitLegacy/WAKView.h>
 #endif
 
 #if !defined(ENABLE_DASHBOARD_SUPPORT)

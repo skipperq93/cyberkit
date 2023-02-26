@@ -31,7 +31,7 @@
 #import <JavaScriptCore/JSBase.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebKitLegacy/WAKAppKitStubs.h>
+#import <CyberKitLegacy/WAKAppKitStubs.h>
 #endif
 
 @class WebView;

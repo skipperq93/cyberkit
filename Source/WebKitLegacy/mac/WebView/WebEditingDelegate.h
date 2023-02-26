@@ -27,12 +27,12 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/WebKitAvailability.h>
 
 #if !TARGET_OS_IPHONE
 #import <AppKit/AppKit.h>
 #else
-#import <WebKitLegacy/WAKAppKitStubs.h>
+#import <CyberKitLegacy/WAKAppKitStubs.h>
 #endif
 
 @class DOMCSSStyleDeclaration;

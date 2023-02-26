@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKitLegacy/WebPolicyDelegate.h>
+#import <CyberKitLegacy/WebPolicyDelegate.h>
 
 /*!
     @class WebDefaultPolicyDelegate

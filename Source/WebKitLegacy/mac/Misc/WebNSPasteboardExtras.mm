@@ -46,8 +46,8 @@
 #import <WebCore/PasteboardCustomData.h>
 #import <WebCore/RenderAttachment.h>
 #import <WebCore/RenderImage.h>
-#import <WebKitLegacy/DOMExtensions.h>
-#import <WebKitLegacy/DOMPrivate.h>
+#import <CyberKitLegacy/DOMExtensions.h>
+#import <CyberKitLegacy/DOMPrivate.h>
 #import <wtf/Assertions.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/StdLibExtras.h>

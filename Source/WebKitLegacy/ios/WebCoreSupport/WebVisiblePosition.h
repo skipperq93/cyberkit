@@ -24,9 +24,9 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKitLegacy/DOMUIKitExtensions.h>
+#import <CyberKitLegacy/DOMUIKitExtensions.h>
 
-#import <WebKitLegacy/WAKAppKitStubs.h>
+#import <CyberKitLegacy/WAKAppKitStubs.h>
 
 typedef struct WebObjectInternal WebObjectInternal;
 

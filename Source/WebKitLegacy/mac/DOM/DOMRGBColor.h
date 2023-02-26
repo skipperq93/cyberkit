@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMObject.h>
+#import <CyberKitLegacy/DOMObject.h>
 
 @class DOMCSSPrimitiveValue;
 #if !TARGET_OS_IPHONE

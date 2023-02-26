@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMXPathResult.h>
+#import <CyberKitLegacy/DOMXPathResult.h>
 
 namespace WebCore {
 class XPathResult;

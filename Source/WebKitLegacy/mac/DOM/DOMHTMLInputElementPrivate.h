@@ -23,8 +23,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMHTMLElementPrivate.h>
-#import <WebKitLegacy/DOMHTMLInputElement.h>
+#import <CyberKitLegacy/DOMHTMLElementPrivate.h>
+#import <CyberKitLegacy/DOMHTMLInputElement.h>
 
 @class DOMHTMLElement;
 @class DOMNodeList;

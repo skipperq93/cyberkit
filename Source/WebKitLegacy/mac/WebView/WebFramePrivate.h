@@ -26,12 +26,12 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebFrame.h>
+#import <CyberKitLegacy/WebFrame.h>
 #import <JavaScriptCore/JSBase.h>
 
 #if TARGET_OS_IPHONE
 #import <CoreText/CoreText.h>
-#import <WebKitLegacy/WAKAppKitStubs.h>
+#import <CyberKitLegacy/WAKAppKitStubs.h>
 #endif
 
 @class DOMDocumentFragment;

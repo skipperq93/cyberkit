@@ -24,21 +24,21 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import <WebKitLegacy/DOMAttr.h>
-#import <WebKitLegacy/DOMCDATASection.h>
-#import <WebKitLegacy/DOMCharacterData.h>
-#import <WebKitLegacy/DOMComment.h>
-#import <WebKitLegacy/DOMDocument.h>
-#import <WebKitLegacy/DOMDocumentFragment.h>
-#import <WebKitLegacy/DOMDocumentType.h>
-#import <WebKitLegacy/DOMElement.h>
-#import <WebKitLegacy/DOMEntity.h>
-#import <WebKitLegacy/DOMEntityReference.h>
-#import <WebKitLegacy/DOMException.h>
-#import <WebKitLegacy/DOMImplementation.h>
-#import <WebKitLegacy/DOMNamedNodeMap.h>
-#import <WebKitLegacy/DOMNode.h>
-#import <WebKitLegacy/DOMNodeList.h>
-#import <WebKitLegacy/DOMObject.h>
-#import <WebKitLegacy/DOMProcessingInstruction.h>
-#import <WebKitLegacy/DOMText.h>
+#import <CyberKitLegacy/DOMAttr.h>
+#import <CyberKitLegacy/DOMCDATASection.h>
+#import <CyberKitLegacy/DOMCharacterData.h>
+#import <CyberKitLegacy/DOMComment.h>
+#import <CyberKitLegacy/DOMDocument.h>
+#import <CyberKitLegacy/DOMDocumentFragment.h>
+#import <CyberKitLegacy/DOMDocumentType.h>
+#import <CyberKitLegacy/DOMElement.h>
+#import <CyberKitLegacy/DOMEntity.h>
+#import <CyberKitLegacy/DOMEntityReference.h>
+#import <CyberKitLegacy/DOMException.h>
+#import <CyberKitLegacy/DOMImplementation.h>
+#import <CyberKitLegacy/DOMNamedNodeMap.h>
+#import <CyberKitLegacy/DOMNode.h>
+#import <CyberKitLegacy/DOMNodeList.h>
+#import <CyberKitLegacy/DOMObject.h>
+#import <CyberKitLegacy/DOMProcessingInstruction.h>
+#import <CyberKitLegacy/DOMText.h>

@@ -130,9 +130,9 @@
 #import <WebCore/WebCoreObjCExtras.h>
 #import <WebCore/WebNSAttributedStringExtras.h>
 #import <WebCore/markup.h>
-#import <WebKitLegacy/DOM.h>
-#import <WebKitLegacy/DOMExtensions.h>
-#import <WebKitLegacy/DOMPrivate.h>
+#import <CyberKitLegacy/DOM.h>
+#import <CyberKitLegacy/DOMExtensions.h>
+#import <CyberKitLegacy/DOMPrivate.h>
 #import <dlfcn.h>
 #import <limits>
 #import <pal/spi/cf/CFUtilitiesSPI.h>

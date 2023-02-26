@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMProcessingInstruction.h>
+#import <CyberKitLegacy/DOMProcessingInstruction.h>
 
 namespace WebCore {
 class ProcessingInstruction;

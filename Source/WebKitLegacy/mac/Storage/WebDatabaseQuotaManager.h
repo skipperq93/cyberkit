@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebQuotaManager.h>
+#import <CyberKitLegacy/WebQuotaManager.h>
 #import <objc/NSObject.h>
 
 @interface WebDatabaseQuotaManager : NSObject <WebQuotaManager> {

@@ -27,14 +27,14 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKitLegacy/WebDOMOperations.h>
+#import <CyberKitLegacy/WebDOMOperations.h>
 #import <JavaScriptCore/JSBase.h>
 
 #if TARGET_OS_IPHONE
-#import <WebKitLegacy/WAKAppKitStubs.h>
+#import <CyberKitLegacy/WAKAppKitStubs.h>
 #else
 #import <AppKit/NSEvent.h>
-#import <WebKitLegacy/DOMWheelEvent.h>
+#import <CyberKitLegacy/DOMWheelEvent.h>
 #endif
 
 @interface DOMElement (WebDOMElementOperationsPrivate)

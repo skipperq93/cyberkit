@@ -61,7 +61,7 @@
 #import <WebCore/RenderElement.h>
 #import <WebCore/ScriptDisallowedScope.h>
 #import <WebCore/TextResourceDecoder.h>
-#import <WebKitLegacy/DOMHTMLInputElement.h>
+#import <CyberKitLegacy/DOMHTMLInputElement.h>
 #import <wtf/Assertions.h>
 #import <wtf/FixedVector.h>
 #import <wtf/NeverDestroyed.h>

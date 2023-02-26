@@ -42,7 +42,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 #import <WebCore/WAKResponder.h>
-#import <WebKitLegacy/WebCoreThreadRun.h>
+#import <CyberKitLegacy/WebCoreThreadRun.h>
 #endif
 
 using namespace WebCore;

@@ -58,8 +58,8 @@
 #import <WebCore/WebCoreJITOperations.h>
 #import <WebCore/WebCoreObjCExtras.h>
 #import <WebCore/WebCoreURLResponse.h>
-#import <WebKitLegacy/DOMHTML.h>
-#import <WebKitLegacy/DOMPrivate.h>
+#import <CyberKitLegacy/DOMHTML.h>
+#import <CyberKitLegacy/DOMPrivate.h>
 #import <wtf/Assertions.h>
 #import <wtf/MainThread.h>
 #import <wtf/NakedPtr.h>

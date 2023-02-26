@@ -28,7 +28,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <WebKitLegacy/WebDocumentPrivate.h>
+#import <CyberKitLegacy/WebDocumentPrivate.h>
 
 @class WebHTMLRepresentationPrivate;
 #if !TARGET_OS_IPHONE

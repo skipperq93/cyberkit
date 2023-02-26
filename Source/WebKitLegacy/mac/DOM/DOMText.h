@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMCharacterData.h>
+#import <CyberKitLegacy/DOMCharacterData.h>
 
 @class DOMText;
 @class NSString;

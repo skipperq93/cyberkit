@@ -24,19 +24,19 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import <WebKitLegacy/DOMDocument.h>
-#import <WebKitLegacy/DOMNode.h>
-#import <WebKitLegacy/DOMObject.h>
-#import <WebKitLegacy/DOMViews.h>
+#import <CyberKitLegacy/DOMDocument.h>
+#import <CyberKitLegacy/DOMNode.h>
+#import <CyberKitLegacy/DOMObject.h>
+#import <CyberKitLegacy/DOMViews.h>
 
-#import <WebKitLegacy/DOMEvent.h>
-#import <WebKitLegacy/DOMEventException.h>
-#import <WebKitLegacy/DOMEventListener.h>
-#import <WebKitLegacy/DOMEventTarget.h>
-#import <WebKitLegacy/DOMKeyboardEvent.h>
-#import <WebKitLegacy/DOMMouseEvent.h>
-#import <WebKitLegacy/DOMMutationEvent.h>
-#import <WebKitLegacy/DOMOverflowEvent.h>
-#import <WebKitLegacy/DOMProgressEvent.h>
-#import <WebKitLegacy/DOMUIEvent.h>
-#import <WebKitLegacy/DOMWheelEvent.h>
+#import <CyberKitLegacy/DOMEvent.h>
+#import <CyberKitLegacy/DOMEventException.h>
+#import <CyberKitLegacy/DOMEventListener.h>
+#import <CyberKitLegacy/DOMEventTarget.h>
+#import <CyberKitLegacy/DOMKeyboardEvent.h>
+#import <CyberKitLegacy/DOMMouseEvent.h>
+#import <CyberKitLegacy/DOMMutationEvent.h>
+#import <CyberKitLegacy/DOMOverflowEvent.h>
+#import <CyberKitLegacy/DOMProgressEvent.h>
+#import <CyberKitLegacy/DOMUIEvent.h>
+#import <CyberKitLegacy/DOMWheelEvent.h>

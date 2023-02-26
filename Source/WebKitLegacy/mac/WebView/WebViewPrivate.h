@@ -26,13 +26,13 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebView.h>
-#import <WebKitLegacy/WebFramePrivate.h>
+#import <CyberKitLegacy/WebView.h>
+#import <CyberKitLegacy/WebFramePrivate.h>
 #import <JavaScriptCore/JSBase.h>
 
 #if TARGET_OS_IPHONE
 #import <CoreGraphics/CGColor.h>
-#import <WebKitLegacy/WAKView.h>
+#import <CyberKitLegacy/WAKView.h>
 #endif
 
 #if !defined(ENABLE_DASHBOARD_SUPPORT)

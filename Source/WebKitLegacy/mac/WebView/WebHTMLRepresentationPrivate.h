@@ -26,9 +26,9 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebHTMLRepresentation.h>
+#import <CyberKitLegacy/WebHTMLRepresentation.h>
 #if TARGET_OS_IPHONE
-#import <WebKitLegacy/WAKView.h>
+#import <CyberKitLegacy/WAKView.h>
 #endif
 
 @protocol WebPluginManualLoader;
