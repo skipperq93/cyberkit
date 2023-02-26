@@ -101,7 +101,7 @@ case "${INPUT_FILE_PATH}" in
     [ "${WK_PLATFORM_NAME}" = macosx ]
     UNIFDEF_OPTIONS+=(-DTARGET_OS_IPHONE=$?)
     ;;
-*/WebKitLegacy.framework/*)
+*/CyberKitLegacy.framework/*)
     if [ "${WK_PLATFORM_NAME}" = macosx ]; then
         SED_OPTIONS+=(-e "s/\<CyberKitLegacy/\<CyberKit/")
     else

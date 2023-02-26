@@ -26,7 +26,7 @@
 #import <CyberKitLegacy/WebArchive.h>
 #import <CyberKitLegacy/WebResource.h>
 
-// This makes it possible to use -[NSBundle classNamed:] to find classes from WebKitLegacy.framework.
+// This makes it possible to use -[NSBundle classNamed:] to find classes from CyberKitLegacy.framework.
 
 #define DEFINE_BUNDLE_FOR_CLASS(className) \
 @interface className (WKFoundationSupport) \
