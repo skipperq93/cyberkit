@@ -97,7 +97,6 @@
 		31C11A6F1476552E0049A4CC /* WebNotificationClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 31C11A6D1476552E0049A4CC /* WebNotificationClient.mm */; };
 		37A453371899EC720034DC25 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D623DD051E791F002F47DD /* libicucore.dylib */; };
 		37A453381899EC760034DC25 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F738C9E903FAD3DF0321FBE0 /* JavaScriptCore.framework */; };
-		37A453391899EC790034DC25 /* WebCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F738C9EA03FAD3DF0321FBE0 /* WebCore.framework */; };
 		37A4533B1899EC880034DC25 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A4533A1899EC880034DC25 /* QuartzCore.framework */; };
 		37A4533D1899EE710034DC25 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A4533C1899EE710034DC25 /* Security.framework */; };
 		37B6FB4E1063530C000FDB3B /* WebPDFDocumentExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 37B6FB4C1063530C000FDB3B /* WebPDFDocumentExtras.h */; };
@@ -114,6 +113,7 @@
 		460135E5269FAD31007A8A95 /* WebBroadcastChannelRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 460135E3269FAD31007A8A95 /* WebBroadcastChannelRegistry.h */; };
 		4618DFF81DEF760A0033C3AA /* WebValidationMessageClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4618DFF61DEF760A0033C3AA /* WebValidationMessageClient.h */; };
 		4618DFF91DEF760A0033C3AA /* WebValidationMessageClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4618DFF71DEF760A0033C3AA /* WebValidationMessageClient.mm */; };
+		48DA66FF29AB7A8B0015A1DD /* CyberCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DA66FE29AB7A8B0015A1DD /* CyberCore.framework */; };
 		4BF99F900AE050BC00815C2B /* WebEditorClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BF99F8E0AE050BC00815C2B /* WebEditorClient.h */; settings = {ATTRIBUTES = (); }; };
 		4BF99F910AE050BC00815C2B /* WebEditorClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4BF99F8F0AE050BC00815C2B /* WebEditorClient.mm */; };
 		511F3FD50CECC88F00852565 /* WebDatabaseManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 511F3FD10CECC88F00852565 /* WebDatabaseManager.mm */; };
@@ -798,6 +798,7 @@
 		460135E3269FAD31007A8A95 /* WebBroadcastChannelRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBroadcastChannelRegistry.h; path = WebCoreSupport/WebBroadcastChannelRegistry.h; sourceTree = SOURCE_ROOT; };
 		4618DFF61DEF760A0033C3AA /* WebValidationMessageClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebValidationMessageClient.h; sourceTree = "<group>"; };
 		4618DFF71DEF760A0033C3AA /* WebValidationMessageClient.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebValidationMessageClient.mm; sourceTree = "<group>"; };
+		48DA66FE29AB7A8B0015A1DD /* CyberCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF99F8E0AE050BC00815C2B /* WebEditorClient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = WebEditorClient.h; sourceTree = "<group>"; };
 		4BF99F8F0AE050BC00815C2B /* WebEditorClient.mm */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.objcpp; path = WebEditorClient.mm; sourceTree = "<group>"; };
 		511F3FD10CECC88F00852565 /* WebDatabaseManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebDatabaseManager.mm; sourceTree = "<group>"; };
@@ -1514,7 +1515,7 @@
 				37A453371899EC720034DC25 /* libicucore.dylib in Frameworks */,
 				37A4533B1899EC880034DC25 /* QuartzCore.framework in Frameworks */,
 				37A4533D1899EE710034DC25 /* Security.framework in Frameworks */,
-				37A453391899EC790034DC25 /* WebCore.framework in Frameworks */,
+				48DA66FF29AB7A8B0015A1DD /* CyberCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1566,6 +1567,7 @@
 				0867D69AFE84028FC02AAC07 /* Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				1C904FCE0BA9DCF20081E9D0 /* Configurations */,
+				48DA66FD29AB7A8B0015A1DD /* Frameworks */,
 			);
 			name = WebKit;
 			sourceTree = "<group>";
@@ -1739,6 +1741,14 @@
 			sourceTree = "<group>";
 			tabWidth = 4;
 			usesTabs = 0;
+		};
+		48DA66FD29AB7A8B0015A1DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48DA66FE29AB7A8B0015A1DD /* CyberCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
 		};
 		511F3FC30CECC7E200852565 /* Storage */ = {
 			isa = PBXGroup;

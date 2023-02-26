@@ -24,7 +24,7 @@
 #include "BaseTarget.xcconfig"
 #include? "<DEVELOPER_DIR>/AppleInternal/XcodeConfig/AppleFeatures.xcconfig"
 
-PRODUCT_NAME = WebKit;
+PRODUCT_NAME = CyberKit;
 PRODUCT_BUNDLE_IDENTIFIER = com.apple.$(PRODUCT_NAME:rfc1034identifier);
 INFOPLIST_FILE = Info.plist;
 
@@ -187,8 +187,8 @@ WK_NO_STATIC_INITIALIZERS_Production_NO_ = $(WK_ERROR_WHEN_LINKING_WITH_STATIC_I
 
 OTHER_LDFLAGS = $(inherited) -iframework $(SDK_DIR)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks $(UNEXPORTED_SYMBOL_LDFLAGS) $(FRAMEWORK_AND_LIBRARY_LDFLAGS) $(WK_RELOCATABLE_FRAMEWORK_LDFLAGS) $(SOURCE_VERSION_LDFLAGS) $(PROFILE_GENERATE_OR_USE_LDFLAGS) $(WK_NO_STATIC_INITIALIZERS);
 
-REEXPORTED_FRAMEWORK_NAMES = WebKitLegacy;
-REEXPORTED_FRAMEWORK_NAMES[sdk=macosx*] = $(inherited) WebCore;
+REEXPORTED_FRAMEWORK_NAMES = CyberKitLegacy;
+REEXPORTED_FRAMEWORK_NAMES[sdk=macosx*] = $(inherited) CyberCore;
 
 OTHER_TAPI_FLAGS = $(OTHER_TAPI_FLAGS_$(WK_COCOA_TOUCH));
 OTHER_TAPI_FLAGS_cocoatouch = $(inherited) -extra-private-header $(SRCROOT)/Platform/ExtraPrivateSymbolsForTAPI.h -extra-public-header $(SRCROOT)/Platform/ExtraPublicSymbolsForTAPI.h $(OTHER_TAPI_FLAGS_SRCROOT_$(TAPI_USE_SRCROOT));
