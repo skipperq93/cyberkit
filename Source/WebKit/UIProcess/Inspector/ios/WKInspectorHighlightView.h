@@ -26,7 +26,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import <UIKit/UIKit.h>
-#import <WebCore/InspectorOverlay.h>
+#import <CyberCore/InspectorOverlay.h>
 
 namespace WebCore {
 class FloatRect;

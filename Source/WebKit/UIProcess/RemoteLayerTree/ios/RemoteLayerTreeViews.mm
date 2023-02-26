@@ -34,9 +34,9 @@
 #import "RemoteLayerTreeNode.h"
 #import "UIKitSPI.h"
 #import "WKDeferringGestureRecognizer.h"
-#import <WebCore/Region.h>
-#import <WebCore/TransformationMatrix.h>
-#import <WebCore/WebCoreCALayerExtras.h>
+#import <CyberCore/Region.h>
+#import <CyberCore/TransformationMatrix.h>
+#import <CyberCore/WebCoreCALayerExtras.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/SoftLinking.h>
 

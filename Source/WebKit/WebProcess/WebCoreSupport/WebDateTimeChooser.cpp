@@ -31,8 +31,8 @@
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/DateTimeChooserClient.h>
-#include <WebCore/DateTimeChooserParameters.h>
+#include <CyberCore/DateTimeChooserClient.h>
+#include <CyberCore/DateTimeChooserParameters.h>
 
 namespace WebKit {
 

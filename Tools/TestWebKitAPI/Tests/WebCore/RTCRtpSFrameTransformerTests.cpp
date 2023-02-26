@@ -27,8 +27,8 @@
 
 #if ENABLE(WEB_RTC)
 
-#include <WebCore/RTCRtpSFrameTransformer.h>
-#include <WebCore/SFrameUtils.h>
+#include <CyberCore/RTCRtpSFrameTransformer.h>
+#include <CyberCore/SFrameUtils.h>
 #include <wtf/Vector.h>
 
 namespace TestWebKitAPI {

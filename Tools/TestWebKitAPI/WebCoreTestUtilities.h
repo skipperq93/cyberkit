@@ -26,10 +26,10 @@
 #pragma once
 
 #include "Test.h"
-#include <WebCore/Color.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/FloatSize.h>
-#include <WebCore/RuntimeApplicationChecks.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
 #include <wtf/text/TextStream.h>
 
 namespace TestWebKitAPI {

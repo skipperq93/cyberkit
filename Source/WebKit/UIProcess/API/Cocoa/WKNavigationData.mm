@@ -27,9 +27,9 @@
 #import "WKNavigationDataInternal.h"
 
 #import "WKNSURLExtras.h"
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/ResourceResponse.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/ResourceResponse.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKNavigationData {
     API::ObjectStorage<API::NavigationData> _data;

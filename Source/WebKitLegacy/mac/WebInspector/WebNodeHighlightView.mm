@@ -29,16 +29,16 @@
 #import "WebNodeHighlightView.h"
 #import "WebNodeHighlight.h"
 
-#import <WebCore/GraphicsContextCG.h>
-#import <WebCore/InspectorController.h>
+#import <CyberCore/GraphicsContextCG.h>
+#import <CyberCore/InspectorController.h>
 #import <wtf/Assertions.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import <CoreGraphics/CoreGraphics.h>
-#import <WebCore/FloatQuad.h>
-#import <WebCore/GeometryUtilities.h>
-#import <WebCore/InspectorOverlay.h>
-#import <WebCore/WebCoreThread.h>
+#import <CyberCore/FloatQuad.h>
+#import <CyberCore/GeometryUtilities.h>
+#import <CyberCore/InspectorOverlay.h>
+#import <CyberCore/WebCoreThread.h>
 #endif
 
 using namespace WebCore;

@@ -29,7 +29,7 @@
 
 #import "DOMNodeFilter.h"
 #import "DOMNodeInternal.h"
-#import <WebCore/NodeFilter.h>
+#import <CyberCore/NodeFilter.h>
 
 namespace WebCore {
 

@@ -34,9 +34,9 @@
 #include "SharedVideoFrame.h"
 #include "StreamMessageReceiver.h"
 #include "StreamServerConnection.h"
-#include <WebCore/ControlFactory.h>
-#include <WebCore/DisplayListItems.h>
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/ControlFactory.h>
+#include <CyberCore/DisplayListItems.h>
+#include <CyberCore/ProcessIdentifier.h>
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 

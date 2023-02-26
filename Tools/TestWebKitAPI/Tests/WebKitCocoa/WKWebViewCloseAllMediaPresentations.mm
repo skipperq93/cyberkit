@@ -28,7 +28,7 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebCore/PictureInPictureSupport.h>
+#import <CyberCore/PictureInPictureSupport.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>

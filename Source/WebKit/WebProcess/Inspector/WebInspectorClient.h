@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/InspectorClient.h>
-#include <WebCore/PageOverlay.h>
+#include <CyberCore/InspectorClient.h>
+#include <CyberCore/PageOverlay.h>
 #include <wtf/HashSet.h>
 
 namespace WebCore {

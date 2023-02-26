@@ -29,12 +29,12 @@
 #include "MessageReceiver.h"
 #include "MessageSender.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/NetworkSendQueue.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/ThreadableWebSocketChannel.h>
-#include <WebCore/WebSocketChannelInspector.h>
-#include <WebCore/WebSocketFrame.h>
+#include <CyberCore/NetworkSendQueue.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/ThreadableWebSocketChannel.h>
+#include <CyberCore/WebSocketChannelInspector.h>
+#include <CyberCore/WebSocketFrame.h>
 #include <wtf/WeakPtr.h>
 
 namespace IPC {

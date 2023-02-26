@@ -31,16 +31,16 @@
 
 #include "ArgumentCoders.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/ScrollTypes.h>
-#include <WebCore/ScrollingStateFixedNode.h>
-#include <WebCore/ScrollingStateFrameHostingNode.h>
-#include <WebCore/ScrollingStateFrameScrollingNode.h>
-#include <WebCore/ScrollingStateOverflowScrollProxyNode.h>
-#include <WebCore/ScrollingStateOverflowScrollingNode.h>
-#include <WebCore/ScrollingStatePositionedNode.h>
-#include <WebCore/ScrollingStateStickyNode.h>
-#include <WebCore/ScrollingStateTree.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/ScrollTypes.h>
+#include <CyberCore/ScrollingStateFixedNode.h>
+#include <CyberCore/ScrollingStateFrameHostingNode.h>
+#include <CyberCore/ScrollingStateFrameScrollingNode.h>
+#include <CyberCore/ScrollingStateOverflowScrollProxyNode.h>
+#include <CyberCore/ScrollingStateOverflowScrollingNode.h>
+#include <CyberCore/ScrollingStatePositionedNode.h>
+#include <CyberCore/ScrollingStateStickyNode.h>
+#include <CyberCore/ScrollingStateTree.h>
 #include <wtf/text/CString.h>
 #include <wtf/text/TextStream.h>
 

@@ -30,7 +30,7 @@
 #import "CtapNfcDriver.h"
 #import "NearFieldSPI.h"
 #import "NfcConnection.h"
-#import <WebCore/FidoConstants.h>
+#import <CyberCore/FidoConstants.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/RunLoop.h>

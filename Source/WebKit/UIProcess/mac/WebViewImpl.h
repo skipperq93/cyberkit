@@ -33,11 +33,11 @@
 #include "PDFPluginIdentifier.h"
 #include "ShareableBitmap.h"
 #include "WKLayoutMode.h"
-#include <WebCore/DOMPasteAccess.h>
-#include <WebCore/FocusDirection.h>
-#include <WebCore/ScrollTypes.h>
-#include <WebCore/TextIndicatorWindow.h>
-#include <WebCore/UserInterfaceLayoutDirection.h>
+#include <CyberCore/DOMPasteAccess.h>
+#include <CyberCore/FocusDirection.h>
+#include <CyberCore/ScrollTypes.h>
+#include <CyberCore/TextIndicatorWindow.h>
+#include <CyberCore/UserInterfaceLayoutDirection.h>
 #include <CyberKit/WKDragDestinationAction.h>
 #include <CyberKit/_WKOverlayScrollbarStyle.h>
 #include <pal/spi/cocoa/AVKitSPI.h>

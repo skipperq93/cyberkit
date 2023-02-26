@@ -26,7 +26,7 @@
 #ifndef MenuUtilities_h
 #define MenuUtilities_h
 
-#import <WebCore/IntRect.h>
+#import <CyberCore/IntRect.h>
 #import <wtf/text/WTFString.h>
 
 namespace WebKit {

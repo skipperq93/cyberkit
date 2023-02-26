@@ -35,10 +35,10 @@
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceLoader.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceLoader.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
 
 namespace WebKit {
 using namespace WebCore;

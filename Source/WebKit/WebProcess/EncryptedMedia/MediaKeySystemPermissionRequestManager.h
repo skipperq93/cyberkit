@@ -28,9 +28,9 @@
 #if ENABLE(ENCRYPTED_MEDIA)
 
 #include "SandboxExtension.h"
-#include <WebCore/MediaCanStartListener.h>
-#include <WebCore/MediaKeySystemClient.h>
-#include <WebCore/MediaKeySystemRequest.h>
+#include <CyberCore/MediaCanStartListener.h>
+#include <CyberCore/MediaKeySystemClient.h>
+#include <CyberCore/MediaKeySystemRequest.h>
 #include <wtf/HashMap.h>
 #include <wtf/Ref.h>
 #include <wtf/RefPtr.h>

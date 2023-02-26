@@ -29,11 +29,11 @@
 
 #include "MessageReceiver.h"
 #include "PlaybackSessionContextIdentifier.h"
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/MediaSelectionOption.h>
-#include <WebCore/PlatformView.h>
-#include <WebCore/PlaybackSessionModel.h>
-#include <WebCore/TimeRanges.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/MediaSelectionOption.h>
+#include <CyberCore/PlatformView.h>
+#include <CyberCore/PlaybackSessionModel.h>
+#include <CyberCore/TimeRanges.h>
 #include <wtf/HashCountedSet.h>
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
@@ -41,9 +41,9 @@
 #include <wtf/RefPtr.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/PlaybackSessionInterfaceAVKit.h>
+#include <CyberCore/PlaybackSessionInterfaceAVKit.h>
 #else
-#include <WebCore/PlaybackSessionInterfaceMac.h>
+#include <CyberCore/PlaybackSessionInterfaceMac.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)

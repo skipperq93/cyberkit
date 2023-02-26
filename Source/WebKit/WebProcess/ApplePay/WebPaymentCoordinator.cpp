@@ -36,13 +36,13 @@
 #include "WebPaymentCoordinatorMessages.h"
 #include "WebPaymentCoordinatorProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/ApplePayCouponCodeUpdate.h>
-#include <WebCore/ApplePayPaymentAuthorizationResult.h>
-#include <WebCore/ApplePayPaymentMethodUpdate.h>
-#include <WebCore/ApplePayShippingContactUpdate.h>
-#include <WebCore/ApplePayShippingMethodUpdate.h>
-#include <WebCore/Frame.h>
-#include <WebCore/PaymentCoordinator.h>
+#include <CyberCore/ApplePayCouponCodeUpdate.h>
+#include <CyberCore/ApplePayPaymentAuthorizationResult.h>
+#include <CyberCore/ApplePayPaymentMethodUpdate.h>
+#include <CyberCore/ApplePayShippingContactUpdate.h>
+#include <CyberCore/ApplePayShippingMethodUpdate.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/PaymentCoordinator.h>
 #include <wtf/URL.h>
 
 namespace WebKit {

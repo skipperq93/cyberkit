@@ -26,8 +26,8 @@
 #pragma once
 
 #include "ContentWorldShared.h"
-#include <WebCore/UserScript.h>
-#include <WebCore/UserStyleSheet.h>
+#include <CyberCore/UserScript.h>
+#include <CyberCore/UserStyleSheet.h>
 
 namespace IPC {
 class Decoder;

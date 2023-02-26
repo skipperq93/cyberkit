@@ -31,9 +31,9 @@
 #include "WebMessagePortChannelProvider.h"
 #include "WebProcess.h"
 #include "WebSharedWorkerServerConnectionMessages.h"
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/SharedWorkerKey.h>
-#include <WebCore/WorkerOptions.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/SharedWorkerKey.h>
+#include <CyberCore/WorkerOptions.h>
 
 namespace WebKit {
 

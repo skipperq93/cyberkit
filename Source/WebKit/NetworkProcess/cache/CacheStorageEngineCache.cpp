@@ -32,10 +32,10 @@
 #include "NetworkCacheKey.h"
 #include "NetworkProcess.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/CacheQueryOptions.h>
-#include <WebCore/CrossOriginAccessControl.h>
-#include <WebCore/HTTPParsers.h>
-#include <WebCore/RetrieveRecordsOptions.h>
+#include <CyberCore/CacheQueryOptions.h>
+#include <CyberCore/CrossOriginAccessControl.h>
+#include <CyberCore/HTTPParsers.h>
+#include <CyberCore/RetrieveRecordsOptions.h>
 #include <pal/SessionID.h>
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/MainThread.h>

@@ -28,9 +28,9 @@
 #include "RTCDataChannelRemoteManager.h"
 
 #if USE(LIBWEBRTC)
-#include <WebCore/LibWebRTCProvider.h>
+#include <CyberCore/LibWebRTCProvider.h>
 #elif USE(GSTREAMER_WEBRTC)
-#include <WebCore/GStreamerWebRTCProvider.h>
+#include <CyberCore/GStreamerWebRTCProvider.h>
 #endif
 
 namespace WebKit {

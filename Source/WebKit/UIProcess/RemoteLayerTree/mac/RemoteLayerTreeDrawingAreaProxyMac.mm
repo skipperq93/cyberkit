@@ -35,9 +35,9 @@
 #import "WebProcessPool.h"
 #import "WebProcessProxy.h"
 #import <QuartzCore/QuartzCore.h>
-#import <WebCore/FloatPoint.h>
-#import <WebCore/ScrollView.h>
-#import <WebCore/ScrollingTreeFrameScrollingNode.h>
+#import <CyberCore/FloatPoint.h>
+#import <CyberCore/ScrollView.h>
+#import <CyberCore/ScrollingTreeFrameScrollingNode.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 

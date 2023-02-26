@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/MediaUsageInfo.h>
+#include <CyberCore/MediaUsageInfo.h>
 #include <wtf/Forward.h>
 
 namespace WebKit {

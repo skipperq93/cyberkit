@@ -27,9 +27,9 @@
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)
 
-#include <WebCore/MediaPlaybackTarget.h>
-#include <WebCore/MediaPlaybackTargetContext.h>
-#include <WebCore/WebMediaSessionManagerClient.h>
+#include <CyberCore/MediaPlaybackTarget.h>
+#include <CyberCore/MediaPlaybackTargetContext.h>
+#include <CyberCore/WebMediaSessionManagerClient.h>
 #include <wtf/Ref.h>
 
 OBJC_CLASS WebView;

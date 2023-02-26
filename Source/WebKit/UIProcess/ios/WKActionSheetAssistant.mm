@@ -38,10 +38,10 @@
 #import "_WKActivatedElementInfoInternal.h"
 #import "_WKElementActionInternal.h"
 #import <UIKit/UIView.h>
-#import <WebCore/DataDetection.h>
-#import <WebCore/FloatRect.h>
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/PathUtilities.h>
+#import <CyberCore/DataDetection.h>
+#import <CyberCore/FloatRect.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/PathUtilities.h>
 #import <wtf/CompletionHandler.h>
 #import <wtf/SoftLinking.h>
 #import <wtf/Vector.h>

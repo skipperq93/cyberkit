@@ -26,7 +26,7 @@
 #include "WebStorageNamespaceProvider.h"
 
 #include "StorageNamespaceImpl.h"
-#include <WebCore/Page.h>
+#include <CyberCore/Page.h>
 #include <wtf/NeverDestroyed.h>
 
 using namespace WebCore;

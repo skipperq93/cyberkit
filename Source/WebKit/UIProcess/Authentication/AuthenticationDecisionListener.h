@@ -27,7 +27,7 @@
 
 #include "APIObject.h"
 
-#include <WebCore/Credential.h>
+#include <CyberCore/Credential.h>
 #include <wtf/CompletionHandler.h>
 
 namespace WebKit {

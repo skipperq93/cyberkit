@@ -30,12 +30,12 @@
 #include "WebPageProxy.h"
 #include "WebPreferencesKeys.h"
 #include "WebProcessPool.h"
-#include <WebCore/LibWebRTCProvider.h>
+#include <CyberCore/LibWebRTCProvider.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/ThreadingPrimitives.h>
 
 #if !PLATFORM(COCOA)
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 #endif
 
 namespace WebKit {

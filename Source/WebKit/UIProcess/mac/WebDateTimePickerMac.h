@@ -28,7 +28,7 @@
 #if ENABLE(DATE_AND_TIME_INPUT_TYPES) && USE(APPKIT)
 
 #import "WebDateTimePicker.h"
-#import <WebCore/DateTimeChooserParameters.h>
+#import <CyberCore/DateTimeChooserParameters.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>
 #import <wtf/text/StringView.h>

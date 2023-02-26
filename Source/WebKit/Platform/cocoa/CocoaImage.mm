@@ -26,7 +26,7 @@
 #import "config.h"
 #import "CocoaImage.h"
 
-#import <WebCore/UTIRegistry.h>
+#import <CyberCore/UTIRegistry.h>
 
 #if HAVE(UNIFORM_TYPE_IDENTIFIERS_FRAMEWORK)
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>

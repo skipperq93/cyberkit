@@ -30,7 +30,7 @@
 #include "MessageReceiver.h"
 #include "RemoteLegacyCDMFactoryProxy.h"
 #include "RemoteLegacyCDMIdentifier.h"
-#include <WebCore/LegacyCDM.h>
+#include <CyberCore/LegacyCDM.h>
 #include <wtf/Forward.h>
 #include <wtf/UniqueRef.h>
 #include <wtf/WeakPtr.h>

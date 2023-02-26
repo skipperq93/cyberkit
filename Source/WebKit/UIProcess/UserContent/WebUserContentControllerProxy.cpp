@@ -41,7 +41,7 @@
 #include "WebUserContentControllerDataTypes.h"
 #include "WebUserContentControllerMessages.h"
 #include "WebUserContentControllerProxyMessages.h"
-#include <WebCore/SerializedScriptValue.h>
+#include <CyberCore/SerializedScriptValue.h>
 
 #if ENABLE(CONTENT_EXTENSIONS)
 #include "APIContentRuleList.h"

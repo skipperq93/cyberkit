@@ -29,7 +29,7 @@
 #if HAVE(CVDISPLAYLINK)
 
 #include "Logging.h"
-#include <WebCore/AnimationFrameRate.h>
+#include <CyberCore/AnimationFrameRate.h>
 #include <wtf/ProcessPrivilege.h>
 #include <wtf/RunLoop.h>
 #include <wtf/text/TextStream.h>

@@ -28,9 +28,9 @@
 #if ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)
 
 #import "WebView.h"
-#import <WebCore/MediaPlaybackTarget.h>
-#import <WebCore/Page.h>
-#import <WebCore/WebMediaSessionManager.h>
+#import <CyberCore/MediaPlaybackTarget.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/WebMediaSessionManager.h>
 
 std::unique_ptr<WebMediaPlaybackTargetPicker> WebMediaPlaybackTargetPicker::create(WebView *webView, WebCore::Page& page)
 {

@@ -36,11 +36,11 @@
 #include "UserMediaCaptureManagerMessages.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <WebCore/AudioMediaStreamTrackRendererUnit.h>
-#include <WebCore/DeprecatedGlobalSettings.h>
-#include <WebCore/MockRealtimeMediaSourceCenter.h>
-#include <WebCore/RealtimeMediaSourceCenter.h>
-#include <WebCore/RealtimeVideoSource.h>
+#include <CyberCore/AudioMediaStreamTrackRendererUnit.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/MockRealtimeMediaSourceCenter.h>
+#include <CyberCore/RealtimeMediaSourceCenter.h>
+#include <CyberCore/RealtimeVideoSource.h>
 #include <wtf/Assertions.h>
 
 namespace WebKit {

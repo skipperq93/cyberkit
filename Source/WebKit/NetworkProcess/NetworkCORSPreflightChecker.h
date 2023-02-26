@@ -27,10 +27,10 @@
 
 #include "NetworkDataTask.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/NetworkLoadInformation.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/StoredCredentialsPolicy.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/NetworkLoadInformation.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/StoredCredentialsPolicy.h>
 #include <pal/SessionID.h>
 #include <wtf/CompletionHandler.h>
 

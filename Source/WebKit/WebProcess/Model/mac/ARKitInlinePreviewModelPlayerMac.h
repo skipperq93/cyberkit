@@ -28,8 +28,8 @@
 #if ENABLE(ARKIT_INLINE_PREVIEW_MAC)
 
 #include "ARKitInlinePreviewModelPlayer.h"
-#include <WebCore/ModelPlayer.h>
-#include <WebCore/ModelPlayerClient.h>
+#include <CyberCore/ModelPlayer.h>
+#include <CyberCore/ModelPlayerClient.h>
 #include <wtf/Compiler.h>
 #include <wtf/RetainPtr.h>
 

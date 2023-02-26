@@ -26,8 +26,8 @@
 #pragma once
 
 #include "UserMediaPermissionCheckProxy.h"
-#include <WebCore/KeyedCoding.h>
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/KeyedCoding.h>
+#include <CyberCore/SecurityOrigin.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>

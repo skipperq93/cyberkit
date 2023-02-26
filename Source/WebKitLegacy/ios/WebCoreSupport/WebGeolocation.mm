@@ -26,7 +26,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "WebGeolocationInternal.h"
-#import <WebCore/Geolocation.h>
+#import <CyberCore/Geolocation.h>
 
 using namespace WebCore;
 

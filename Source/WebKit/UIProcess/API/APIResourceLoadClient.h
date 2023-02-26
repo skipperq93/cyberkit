@@ -25,9 +25,9 @@
 
 #pragma once
 
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
 
 namespace WebCore {
 class AuthenticationChallenge;

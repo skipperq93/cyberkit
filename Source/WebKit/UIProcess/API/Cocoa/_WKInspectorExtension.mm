@@ -33,8 +33,8 @@
 #import "InspectorExtensionTypes.h"
 #import "WKError.h"
 #import "WKWebViewInternal.h"
-#import <WebCore/ExceptionDetails.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/ExceptionDetails.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/URL.h>
 

@@ -30,7 +30,7 @@
 
 #include "RemoteGraphicsContextGL.h"
 #include "StreamConnectionWorkQueue.h"
-#include <WebCore/GraphicsContextGLANGLE.h>
+#include <CyberCore/GraphicsContextGLANGLE.h>
 #include <wtf/RunLoop.h>
 #include <wtf/Seconds.h>
 

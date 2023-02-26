@@ -27,7 +27,7 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-#include <WebCore/ServiceWorkerProvider.h>
+#include <CyberCore/ServiceWorkerProvider.h>
 #include <wtf/NeverDestroyed.h>
 
 namespace WebCore {

@@ -26,7 +26,7 @@
 #pragma once
 
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/SocketProvider.h>
+#include <CyberCore/SocketProvider.h>
 
 namespace WebKit {
 

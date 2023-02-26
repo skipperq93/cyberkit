@@ -33,8 +33,8 @@
 #include "WebInspectorUIProxy.h"
 #include "WebPageGroup.h"
 #include "WebPageProxy.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/NotImplemented.h>
 
 #if ENABLE(INSPECTOR_EXTENSIONS)
 #include "WebInspectorUIExtensionControllerProxy.h"

@@ -29,7 +29,7 @@
 #include "SharedCARingBuffer.h"
 
 #include "Logging.h"
-#include <WebCore/CARingBuffer.h>
+#include <CyberCore/CARingBuffer.h>
 
 namespace WebKit {
 

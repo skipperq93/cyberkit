@@ -36,8 +36,8 @@
 
 #if USE(APPKIT)
 
-#import <WebCore/Color.h>
-#import <WebCore/ColorMac.h>
+#import <CyberCore/Color.h>
+#import <CyberCore/ColorMac.h>
 #import <pal/spi/mac/NSColorWellSPI.h>
 #import <pal/spi/mac/NSPopoverColorWellSPI.h>
 #import <pal/spi/mac/NSPopoverSPI.h>

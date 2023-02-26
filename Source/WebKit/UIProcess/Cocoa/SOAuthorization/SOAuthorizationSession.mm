@@ -39,8 +39,8 @@
 #import "WKWebViewInternal.h"
 #import "WebPageProxy.h"
 #import "WebsiteDataStore.h"
-#import <WebCore/ResourceResponse.h>
-#import <WebCore/SecurityOrigin.h>
+#import <CyberCore/ResourceResponse.h>
+#import <CyberCore/SecurityOrigin.h>
 #import <pal/cocoa/AppSSOSoftLink.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/Vector.h>

@@ -35,7 +35,7 @@
 #include "RemoteCDMInstanceSessionIdentifier.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <WebCore/CDMKeySystemConfiguration.h>
+#include <CyberCore/CDMKeySystemConfiguration.h>
 
 namespace WebKit {
 

@@ -31,12 +31,12 @@
 #import "DOMStyleSheetInternal.h"
 #import "DOMStyleSheetListInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/JSExecState.h>
-#import <WebCore/StyleSheet.h>
-#import <WebCore/StyleSheetList.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebCoreObjCExtras.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/StyleSheet.h>
+#import <CyberCore/StyleSheetList.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
 #define IMPL reinterpret_cast<WebCore::StyleSheetList*>(_internal)

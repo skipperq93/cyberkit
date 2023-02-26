@@ -26,8 +26,8 @@
 #pragma once
 
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/EmptyFrameLoaderClient.h>
-#include <WebCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/EmptyFrameLoaderClient.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
 
 namespace WebKit {
 

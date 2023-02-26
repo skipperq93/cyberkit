@@ -33,8 +33,8 @@
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
 #import <Foundation/NSURLRequest.h>
-#import <WebCore/RegistrableDomain.h>
-#import <WebCore/RuntimeApplicationChecks.h>
+#import <CyberCore/RegistrableDomain.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
 #import <CyberKit/WKHTTPCookieStorePrivate.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKURLSchemeTaskPrivate.h>

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/AlternativeTextClient.h>
+#include <CyberCore/AlternativeTextClient.h>
 
 namespace WebKit {
 

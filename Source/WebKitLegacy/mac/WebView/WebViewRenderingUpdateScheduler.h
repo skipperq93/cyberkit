@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/RunLoopObserver.h>
+#import <CyberCore/RunLoopObserver.h>
 #import <wtf/FastMalloc.h>
 
 @class WebView;

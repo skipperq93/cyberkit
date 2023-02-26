@@ -26,7 +26,7 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/Cookie.h>
+#include <CyberCore/Cookie.h>
 #include <pal/SessionID.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Forward.h>

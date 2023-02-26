@@ -25,10 +25,10 @@
 
 #include "config.h"
 
-#include <WebCore/FloatRect.h>
-#include <WebCore/IntPoint.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/IntSize.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/IntPoint.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/IntSize.h>
 
 #if USE(CG)
 #include <CoreGraphics/CoreGraphics.h>

@@ -28,7 +28,7 @@
 #if ENABLE(SERVICE_WORKER)
 
 #include "Test.h"
-#include <WebCore/PushMessageCrypto.h>
+#include <CyberCore/PushMessageCrypto.h>
 #include <wtf/text/Base64.h>
 
 namespace TestWebKitAPI {

@@ -26,7 +26,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "WebVisiblePosition.h"
-#import <WebCore/VisiblePosition.h>
+#import <CyberCore/VisiblePosition.h>
 
 @interface WebVisiblePosition (Internal)
 

@@ -25,9 +25,9 @@
 
 #include "config.h"
 
-#include <WebCore/FloatPoint.h>
-#include <WebCore/IntPoint.h>
-#include <WebCore/IntSize.h>
+#include <CyberCore/FloatPoint.h>
+#include <CyberCore/IntPoint.h>
+#include <CyberCore/IntSize.h>
 
 #if USE(CG)
 #include <CoreGraphics/CoreGraphics.h>

@@ -30,8 +30,8 @@
 #import "WebSecurityOriginInternal.h"
 #import "WebStorageNamespaceProvider.h"
 #import "WebStorageTrackerClient.h"
-#import <WebCore/SecurityOrigin.h>
-#import <WebCore/SecurityOriginData.h>
+#import <CyberCore/SecurityOrigin.h>
+#import <CyberCore/SecurityOriginData.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 using namespace WebCore;

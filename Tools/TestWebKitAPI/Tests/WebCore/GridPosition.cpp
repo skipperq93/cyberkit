@@ -25,7 +25,7 @@
 
 #include "config.h"
 
-#include <WebCore/GridPosition.h>
+#include <CyberCore/GridPosition.h>
 
 namespace TestWebKitAPI {
 

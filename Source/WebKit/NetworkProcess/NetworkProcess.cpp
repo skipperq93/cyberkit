@@ -65,28 +65,28 @@
 #include "WebsiteDataStore.h"
 #include "WebsiteDataStoreParameters.h"
 #include "WebsiteDataType.h"
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/CommonAtomStrings.h>
-#include <WebCore/CookieJar.h>
-#include <WebCore/CrossOriginPreflightResultCache.h>
-#include <WebCore/DNS.h>
-#include <WebCore/DeprecatedGlobalSettings.h>
-#include <WebCore/DiagnosticLoggingClient.h>
-#include <WebCore/HTTPCookieAcceptPolicy.h>
-#include <WebCore/LegacySchemeRegistry.h>
-#include <WebCore/LogInitialization.h>
-#include <WebCore/MIMETypeRegistry.h>
-#include <WebCore/NetworkStateNotifier.h>
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/NotificationData.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/RuntimeApplicationChecks.h>
-#include <WebCore/SQLiteDatabase.h>
-#include <WebCore/SWServer.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/SecurityPolicy.h>
-#include <WebCore/UserContentURLPattern.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/CommonAtomStrings.h>
+#include <CyberCore/CookieJar.h>
+#include <CyberCore/CrossOriginPreflightResultCache.h>
+#include <CyberCore/DNS.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/DiagnosticLoggingClient.h>
+#include <CyberCore/HTTPCookieAcceptPolicy.h>
+#include <CyberCore/LegacySchemeRegistry.h>
+#include <CyberCore/LogInitialization.h>
+#include <CyberCore/MIMETypeRegistry.h>
+#include <CyberCore/NetworkStateNotifier.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/NotificationData.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
+#include <CyberCore/SQLiteDatabase.h>
+#include <CyberCore/SWServer.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/SecurityPolicy.h>
+#include <CyberCore/UserContentURLPattern.h>
 #include <wtf/Algorithms.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/CryptographicallyRandomNumber.h>
@@ -113,11 +113,11 @@
 
 #if USE(SOUP)
 #include "NetworkSessionSoup.h"
-#include <WebCore/SoupNetworkSession.h>
+#include <CyberCore/SoupNetworkSession.h>
 #endif
 
 #if USE(CURL)
-#include <WebCore/CurlContext.h>
+#include <CyberCore/CurlContext.h>
 #endif
 
 namespace WebKit {

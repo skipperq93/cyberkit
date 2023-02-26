@@ -28,7 +28,7 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebCore/SQLiteFileSystem.h>
+#import <CyberCore/SQLiteFileSystem.h>
 #import <CyberKit/WebKit.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKUserContentControllerPrivate.h>

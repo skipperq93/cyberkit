@@ -31,9 +31,9 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#include <WebCore/FidoConstants.h>
-#include <WebCore/FidoHidMessage.h>
-#include <WebCore/FidoHidPacket.h>
+#include <CyberCore/FidoConstants.h>
+#include <CyberCore/FidoHidMessage.h>
+#include <CyberCore/FidoHidPacket.h>
 #include <wtf/Deque.h>
 #include <wtf/Vector.h>
 

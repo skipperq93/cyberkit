@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/StorageNamespaceProvider.h>
+#include <CyberCore/StorageNamespaceProvider.h>
 #include <wtf/WeakHashMap.h>
 
 namespace WebCore {

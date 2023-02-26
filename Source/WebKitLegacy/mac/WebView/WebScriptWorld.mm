@@ -25,8 +25,8 @@
 #import "WebScriptWorld.h"
 
 #import "WebScriptWorldInternal.h"
-#import <WebCore/JSDOMBinding.h>
-#import <WebCore/ScriptController.h>
+#import <CyberCore/JSDOMBinding.h>
+#import <CyberCore/ScriptController.h>
 #import <JavaScriptCore/APICast.h>
 #import <JavaScriptCore/JSContextInternal.h>
 #import <wtf/RefPtr.h>

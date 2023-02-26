@@ -42,7 +42,7 @@
 #import "WebProcessPool.h"
 #import "_WKGeolocationCoreLocationProvider.h"
 #import "_WKGeolocationPositionInternal.h"
-#import <WebCore/GeolocationPosition.h>
+#import <CyberCore/GeolocationPosition.h>
 #import <WebGeolocationPosition.h>
 #import <wtf/Assertions.h>
 #import <wtf/BlockPtr.h>

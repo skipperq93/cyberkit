@@ -32,7 +32,7 @@
 #if ENABLE(INPUT_TYPE_COLOR) && USE(APPKIT)
 
 #import "WebColorPicker.h"
-#import <WebCore/IntRect.h>
+#import <CyberCore/IntRect.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 

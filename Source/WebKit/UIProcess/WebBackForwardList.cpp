@@ -32,8 +32,8 @@
 #include "WebBackForwardCache.h"
 #include "WebBackForwardListCounts.h"
 #include "WebPageProxy.h"
-#include <WebCore/DiagnosticLoggingClient.h>
-#include <WebCore/DiagnosticLoggingKeys.h>
+#include <CyberCore/DiagnosticLoggingClient.h>
+#include <CyberCore/DiagnosticLoggingKeys.h>
 #include <wtf/DebugUtilities.h>
 #include <wtf/HexNumber.h>
 #include <wtf/text/StringBuilder.h>

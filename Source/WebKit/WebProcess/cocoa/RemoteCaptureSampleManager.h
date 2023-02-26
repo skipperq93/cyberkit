@@ -36,9 +36,9 @@
 #include "RemoteVideoFrameProxy.h"
 #include "SharedCARingBuffer.h"
 #include "WorkQueueMessageReceiver.h"
-#include <WebCore/CAAudioStreamDescription.h>
-#include <WebCore/CARingBuffer.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/CAAudioStreamDescription.h>
+#include <CyberCore/CARingBuffer.h>
+#include <CyberCore/WebAudioBufferList.h>
 #include <wtf/HashMap.h>
 #include <wtf/Lock.h>
 #include <wtf/WorkQueue.h>

@@ -36,12 +36,12 @@
 #import "WebViewInternal.h"
 #import "WebViewRenderingUpdateScheduler.h"
 #import <JavaScriptCore/InitializeThreading.h>
-#import <WebCore/AlternativeTextUIController.h>
-#import <WebCore/HistoryItem.h>
-#import <WebCore/RunLoopObserver.h>
-#import <WebCore/TextIndicatorWindow.h>
-#import <WebCore/ValidationBubble.h>
-#import <WebCore/WebCoreJITOperations.h>
+#import <CyberCore/AlternativeTextUIController.h>
+#import <CyberCore/HistoryItem.h>
+#import <CyberCore/RunLoopObserver.h>
+#import <CyberCore/TextIndicatorWindow.h>
+#import <CyberCore/ValidationBubble.h>
+#import <CyberCore/WebCoreJITOperations.h>
 #import <wtf/MainThread.h>
 #import <wtf/RunLoop.h>
 #import <wtf/SetForScope.h>
@@ -55,8 +55,8 @@
 #endif
 
 #if PLATFORM(MAC) && ENABLE(VIDEO_PRESENTATION_MODE)
-#import <WebCore/PlaybackSessionInterfaceMac.h>
-#import <WebCore/PlaybackSessionModelMediaElement.h>
+#import <CyberCore/PlaybackSessionInterfaceMac.h>
+#import <CyberCore/PlaybackSessionModelMediaElement.h>
 #endif
 
 BOOL applicationIsTerminating = NO;

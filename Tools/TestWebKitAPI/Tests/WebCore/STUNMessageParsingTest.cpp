@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_RTC)
 
-#include <WebCore/STUNMessageParsing.h>
+#include <CyberCore/STUNMessageParsing.h>
 #include <utility>
 
 namespace TestWebKitAPI {

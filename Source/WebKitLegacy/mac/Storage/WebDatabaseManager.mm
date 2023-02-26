@@ -32,15 +32,15 @@
 #import "WebDatabaseProvider.h"
 #import "WebPlatformStrategies.h"
 #import "WebSecurityOriginInternal.h"
-#import <WebCore/DatabaseManager.h>
-#import <WebCore/DatabaseTracker.h>
-#import <WebCore/SecurityOrigin.h>
+#import <CyberCore/DatabaseManager.h>
+#import <CyberCore/DatabaseTracker.h>
+#import <CyberCore/SecurityOrigin.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import "WebDatabaseManagerInternal.h"
-#import <WebCore/DatabaseTracker.h>
-#import <WebCore/WebCoreThread.h>
+#import <CyberCore/DatabaseTracker.h>
+#import <CyberCore/WebCoreThread.h>
 #endif
 
 using namespace WebCore;

@@ -45,7 +45,7 @@
 #include "WebsiteDataRecord.h"
 #include "WebsiteDataStore.h"
 #include "WebsiteDataType.h"
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/URL.h>
 

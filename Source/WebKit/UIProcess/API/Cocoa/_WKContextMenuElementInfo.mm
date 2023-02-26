@@ -29,7 +29,7 @@
 #import "APIHitTestResult.h"
 #import "_WKContextMenuElementInfoInternal.h"
 #import "_WKHitTestResultInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 #if !PLATFORM(IOS_FAMILY)

@@ -42,7 +42,7 @@
 #include <JavaScriptCore/JSGlobalObjectInlines.h>
 #include <JavaScriptCore/TypedArrayInlines.h>
 #include <JavaScriptCore/VMInlines.h>
-#include <WebCore/LogInitialization.h>
+#include <CyberCore/LogInitialization.h>
 #include <cstring>
 #include <locale.h>
 #include <stdio.h>
@@ -57,7 +57,7 @@
 #include <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/WebCoreThreadRun.h>
+#include <CyberCore/WebCoreThreadRun.h>
 #include <wtf/BlockPtr.h>
 #endif
 

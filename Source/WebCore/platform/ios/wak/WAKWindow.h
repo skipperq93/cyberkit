@@ -30,9 +30,9 @@
 #if TARGET_OS_IPHONE
 
 #import <CoreGraphics/CoreGraphics.h>
-#import <WebCore/WAKAppKitStubs.h>
-#import <WebCore/WAKView.h>
-#import <WebCore/WKContentObservation.h>
+#import <CyberCore/WAKAppKitStubs.h>
+#import <CyberCore/WAKView.h>
+#import <CyberCore/WKContentObservation.h>
 
 @class CALayer;
 @class WebEvent;

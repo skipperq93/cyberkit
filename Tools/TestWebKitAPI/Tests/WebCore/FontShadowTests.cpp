@@ -26,8 +26,8 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/CommonAtomStrings.h>
-#include <WebCore/FontShadow.h>
+#include <CyberCore/CommonAtomStrings.h>
+#include <CyberCore/FontShadow.h>
 #include <wtf/text/AtomString.h>
 
 using namespace WebCore;

@@ -62,8 +62,8 @@
 #import "_WKWebAuthenticationPanelInternal.h"
 #import <AVFoundation/AVCaptureDevice.h>
 #import <AVFoundation/AVMediaFormat.h>
-#import <WebCore/FontAttributes.h>
-#import <WebCore/SecurityOrigin.h>
+#import <CyberCore/FontAttributes.h>
+#import <CyberCore/SecurityOrigin.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/URL.h>
 

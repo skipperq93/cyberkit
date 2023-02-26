@@ -28,7 +28,7 @@
 #if PLATFORM(COCOA) && ENABLE(MEDIA_STREAM)
 
 #include "UserMediaCaptureManagerProxyMessages.h"
-#include <WebCore/RealtimeMediaSource.h>
+#include <CyberCore/RealtimeMediaSource.h>
 
 namespace IPC {
 class Connection;

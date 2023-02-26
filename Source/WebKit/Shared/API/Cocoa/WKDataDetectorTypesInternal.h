@@ -27,7 +27,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-#import <WebCore/DataDetectorType.h>
+#import <CyberCore/DataDetectorType.h>
 
 static inline OptionSet<WebCore::DataDetectorType> fromWKDataDetectorTypes(WKDataDetectorTypes types)
 {

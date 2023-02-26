@@ -33,15 +33,15 @@
 #import "DOMNodeListInternal.h"
 #import "ExceptionHandlers.h"
 #import "ObjCEventListener.h"
-#import <WebCore/AddEventListenerOptions.h>
-#import <WebCore/DOMImplementation.h>
-#import <WebCore/Element.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/NodeList.h>
-#import <WebCore/SVGTests.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebCoreObjCExtras.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/AddEventListenerOptions.h>
+#import <CyberCore/DOMImplementation.h>
+#import <CyberCore/Element.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/NodeList.h>
+#import <CyberCore/SVGTests.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 
 using namespace WebCore;
 

@@ -30,7 +30,7 @@
 OBJC_CLASS NSArray;
 OBJC_CLASS PKPaymentSetupFeature;
 
-#include <WebCore/ApplePaySetupFeatureWebCore.h>
+#include <CyberCore/ApplePaySetupFeatureWebCore.h>
 #include <wtf/ArgumentCoder.h>
 #include <wtf/Forward.h>
 #include <wtf/RetainPtr.h>

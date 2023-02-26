@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/DragActions.h>
+#import <CyberCore/DragActions.h>
 #import <CyberKit/WKDragDestinationAction.h>
 
 namespace WebKit {

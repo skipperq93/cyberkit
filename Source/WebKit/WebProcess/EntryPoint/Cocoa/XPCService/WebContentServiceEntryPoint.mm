@@ -31,7 +31,7 @@
 #import "XPCServiceEntryPoint.h"
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/WebCoreThreadSystemInterface.h>
 #import <pal/spi/ios/GraphicsServicesSPI.h>
 #endif
 

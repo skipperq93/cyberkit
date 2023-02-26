@@ -29,8 +29,8 @@
 #import "WKFoundation.h"
 
 #import "APIDiagnosticLoggingClient.h"
-#import <WebCore/DiagnosticLoggingDomain.h>
-#import <WebCore/DiagnosticLoggingResultType.h>
+#import <CyberCore/DiagnosticLoggingDomain.h>
+#import <CyberCore/DiagnosticLoggingResultType.h>
 #import <wtf/WeakObjCPtr.h>
 
 @class WKWebView;

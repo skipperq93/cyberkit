@@ -30,8 +30,8 @@
 
 #import "RemoteLayerTreeContext.h"
 #import "WebProcess.h"
-#import <WebCore/GraphicsLayerCA.h>
-#import <WebCore/PlatformCALayerCocoa.h>
+#import <CyberCore/GraphicsLayerCA.h>
+#import <CyberCore/PlatformCALayerCocoa.h>
 #import <wtf/RetainPtr.h>
 
 namespace WebKit {

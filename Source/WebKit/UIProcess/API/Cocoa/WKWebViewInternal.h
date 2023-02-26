@@ -42,9 +42,9 @@
 #import "WKContentView.h"
 #import "WKContentViewInteraction.h"
 #import "WKFullScreenWindowControllerIOS.h"
-#import <WebCore/FloatRect.h>
-#import <WebCore/LengthBox.h>
-#import <WebCore/ViewportArguments.h>
+#import <CyberCore/FloatRect.h>
+#import <CyberCore/LengthBox.h>
+#import <CyberCore/ViewportArguments.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)

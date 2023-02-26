@@ -27,8 +27,8 @@
 
 #if USE(LIBWEBRTC) && PLATFORM(COCOA) && ENABLE(GPU_PROCESS) && ENABLE(WEB_CODECS)
 
-#include <WebCore/VideoDecoder.h>
-#include <WebCore/VideoEncoder.h>
+#include <CyberCore/VideoDecoder.h>
+#include <CyberCore/VideoEncoder.h>
 
 namespace WebKit {
 

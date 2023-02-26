@@ -25,11 +25,11 @@
 
 #import "WebKitFullScreenListener.h"
 
-#import <WebCore/Element.h>
+#import <CyberCore/Element.h>
 
 #if ENABLE(FULLSCREEN_API)
 
-#import <WebCore/FullscreenManager.h>
+#import <CyberCore/FullscreenManager.h>
 
 using namespace WebCore;
 

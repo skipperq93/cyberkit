@@ -26,7 +26,7 @@
 #import "config.h"
 #import "WKNSData.h"
 
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKNSData {
     API::ObjectStorage<API::Data> _data;

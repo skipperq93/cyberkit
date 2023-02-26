@@ -29,7 +29,7 @@
 #if ENABLE(MEDIA_SESSION_COORDINATOR) && HAVE(GROUP_ACTIVITIES)
 
 #import "WKGroupSession.h"
-#import <WebCore/NotImplemented.h>
+#import <CyberCore/NotImplemented.h>
 #import <wtf/BlockPtr.h>
 
 #import <pal/cocoa/AVFoundationSoftLink.h>

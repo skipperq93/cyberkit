@@ -30,9 +30,9 @@
 
 #include "MessageReceiver.h"
 #include "TrackPrivateRemoteIdentifier.h"
-#include <WebCore/MediaPlayerIdentifier.h>
-#include <WebCore/TrackBase.h>
-#include <WebCore/VideoTrackPrivate.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
+#include <CyberCore/TrackBase.h>
+#include <CyberCore/VideoTrackPrivate.h>
 #include <wtf/Ref.h>
 #include <wtf/WeakPtr.h>
 

@@ -26,7 +26,7 @@
 #pragma once
 
 #include "Connection.h"
-#include <WebCore/IDBResourceIdentifier.h>
+#include <CyberCore/IDBResourceIdentifier.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebCore {

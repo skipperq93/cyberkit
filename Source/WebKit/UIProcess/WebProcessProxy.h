@@ -41,14 +41,14 @@
 #include "VisibleWebPageCounter.h"
 #include "WebConnectionToWebProcess.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/CrossOriginMode.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/MediaProducer.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/SharedStringHash.h>
-#include <WebCore/SleepDisabler.h>
+#include <CyberCore/CrossOriginMode.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/MediaProducer.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/SharedStringHash.h>
+#include <CyberCore/SleepDisabler.h>
 #include <pal/SessionID.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
@@ -60,7 +60,7 @@
 #include <wtf/WeakHashSet.h>
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
-#include <WebCore/CaptionUserPreferences.h>
+#include <CyberCore/CaptionUserPreferences.h>
 #endif
 
 #if HAVE(CVDISPLAYLINK)

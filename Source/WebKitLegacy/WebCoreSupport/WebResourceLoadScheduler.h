@@ -22,11 +22,11 @@
 
 #pragma once
 
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/LoaderStrategy.h>
-#include <WebCore/ResourceLoadPriority.h>
-#include <WebCore/ResourceLoaderOptions.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/LoaderStrategy.h>
+#include <CyberCore/ResourceLoadPriority.h>
+#include <CyberCore/ResourceLoaderOptions.h>
+#include <CyberCore/Timer.h>
 #include <array>
 #include <wtf/Deque.h>
 #include <wtf/HashMap.h>

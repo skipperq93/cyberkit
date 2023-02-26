@@ -29,7 +29,7 @@
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
 #include "LogInitialization.h"
-#include <WebCore/LogInitialization.h>
+#include <CyberCore/LogInitialization.h>
 #include <wtf/LogInitialization.h>
 
 namespace WebKit {

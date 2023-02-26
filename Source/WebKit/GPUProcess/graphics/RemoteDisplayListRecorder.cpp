@@ -31,12 +31,12 @@
 #include "ImageBufferShareableAllocator.h"
 #include "RemoteDisplayListRecorderMessages.h"
 #include "RemoteImageBuffer.h"
-#include <WebCore/BitmapImage.h>
-#include <WebCore/FEImage.h>
-#include <WebCore/FilterResults.h>
+#include <CyberCore/BitmapImage.h>
+#include <CyberCore/FEImage.h>
+#include <CyberCore/FilterResults.h>
 
 #if USE(SYSTEM_PREVIEW)
-#include <WebCore/ARKitBadgeSystemImage.h>
+#include <CyberCore/ARKitBadgeSystemImage.h>
 #endif
 
 namespace WebKit {

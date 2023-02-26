@@ -29,7 +29,7 @@
 #if HAVE(APP_SSO)
 
 #import "WebPageProxy.h"
-#import <WebCore/ResourceResponse.h>
+#import <CyberCore/ResourceResponse.h>
 
 #define AUTHORIZATIONSESSION_RELEASE_LOG(fmt, ...) RELEASE_LOG(AppSSO, "%p - [InitiatingAction=%s][State=%s] NavigationSOAuthorizationSession::" fmt, this, initiatingActionString(), stateString(), ##__VA_ARGS__)
 

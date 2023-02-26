@@ -33,8 +33,8 @@
 #import "WebLocalizableStrings.h"
 #import "WebNSDataExtras.h"
 #import <Foundation/NSURLRequest.h>
-#import <WebCore/LoaderNSURLExtras.h>
-#import <WebCore/WebCoreNSURLExtras.h>
+#import <CyberCore/LoaderNSURLExtras.h>
+#import <CyberCore/WebCoreNSURLExtras.h>
 #import <pal/text/TextEncoding.h>
 #import <unicode/uchar.h>
 #import <unicode/uscript.h>

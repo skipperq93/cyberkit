@@ -29,15 +29,15 @@
 #include "DrawingArea.h"
 #include "WebInspector.h"
 #include "WebPage.h"
-#include <WebCore/Animation.h>
-#include <WebCore/Frame.h>
-#include <WebCore/InspectorController.h>
-#include <WebCore/Page.h>
-#include <WebCore/PageOverlayController.h>
-#include <WebCore/Settings.h>
+#include <CyberCore/Animation.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/InspectorController.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PageOverlayController.h>
+#include <CyberCore/Settings.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/InspectorOverlay.h>
+#include <CyberCore/InspectorOverlay.h>
 #endif
 
 namespace WebKit {

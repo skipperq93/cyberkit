@@ -27,7 +27,7 @@
 
 #include "APIObject.h"
 #include "WebUndoStepID.h"
-#include <WebCore/EditAction.h>
+#include <CyberCore/EditAction.h>
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>

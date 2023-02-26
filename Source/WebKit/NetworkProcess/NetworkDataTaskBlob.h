@@ -32,7 +32,7 @@
 #pragma once
 
 #include "NetworkDataTask.h"
-#include <WebCore/FileStreamClient.h>
+#include <CyberCore/FileStreamClient.h>
 #include <wtf/FileSystem.h>
 
 namespace WebCore {

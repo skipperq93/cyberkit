@@ -31,7 +31,7 @@
 #include "APIWebAuthenticationPanelClient.h"
 #include "AuthenticatorManager.h"
 #include "MockAuthenticatorManager.h"
-#include <WebCore/WebAuthenticationConstants.h>
+#include <CyberCore/WebAuthenticationConstants.h>
 
 namespace API {
 using namespace WebCore;

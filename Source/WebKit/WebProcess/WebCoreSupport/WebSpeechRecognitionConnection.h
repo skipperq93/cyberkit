@@ -27,8 +27,8 @@
 
 #include "MessageReceiver.h"
 #include "MessageSender.h"
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/SpeechRecognitionConnection.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/SpeechRecognitionConnection.h>
 
 namespace WebCore {
 

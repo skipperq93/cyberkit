@@ -27,9 +27,9 @@
 #include "SessionStateConversion.h"
 
 #include "SessionState.h"
-#include <WebCore/BlobData.h>
-#include <WebCore/FormData.h>
-#include <WebCore/HistoryItem.h>
+#include <CyberCore/BlobData.h>
+#include <CyberCore/FormData.h>
+#include <CyberCore/HistoryItem.h>
 #include <wtf/FileSystem.h>
 
 namespace WebKit {

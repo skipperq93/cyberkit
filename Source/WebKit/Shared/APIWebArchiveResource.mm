@@ -29,7 +29,7 @@
 #if PLATFORM(COCOA)
 
 #import "APIData.h"
-#import <WebCore/ArchiveResource.h>
+#import <CyberCore/ArchiveResource.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/URL.h>
 

@@ -38,13 +38,13 @@
 #include "WKData.h"
 #include "WebFrame.h"
 #include "WebPage.h"
-#include <WebCore/Document.h>
-#include <WebCore/FocusController.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/Page.h>
-#include <WebCore/ReportingScope.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/FocusController.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/ReportingScope.h>
 
 WKTypeID WKBundleFrameGetTypeID()
 {

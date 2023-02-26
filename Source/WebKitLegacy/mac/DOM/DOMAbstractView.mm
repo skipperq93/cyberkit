@@ -30,13 +30,13 @@
 
 #import "DOMDocumentInternal.h"
 #import "DOMInternal.h"
-#import <WebCore/DOMWindow.h>
-#import <WebCore/Document.h>
+#import <CyberCore/DOMWindow.h>
+#import <CyberCore/Document.h>
 #import "ExceptionHandlers.h"
-#import <WebCore/Frame.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
-#import <WebCore/WindowProxy.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
+#import <CyberCore/WindowProxy.h>
 
 #define IMPL reinterpret_cast<WebCore::Frame*>(_internal)
 

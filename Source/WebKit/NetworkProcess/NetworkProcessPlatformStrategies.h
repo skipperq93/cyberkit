@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/LoaderStrategy.h>
-#include <WebCore/PlatformStrategies.h>
+#include <CyberCore/LoaderStrategy.h>
+#include <CyberCore/PlatformStrategies.h>
 
 namespace WebKit {
 

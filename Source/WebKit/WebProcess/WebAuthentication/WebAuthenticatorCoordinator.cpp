@@ -35,15 +35,15 @@
 #include "WebPage.h"
 #include "WebProcess.h"
 #include <JavaScriptCore/ConsoleTypes.h>
-#include <WebCore/AuthenticatorAttachment.h>
-#include <WebCore/AuthenticatorResponseData.h>
-#include <WebCore/Frame.h>
-#include <WebCore/PublicKeyCredentialCreationOptions.h>
-#include <WebCore/PublicKeyCredentialRequestOptions.h>
-#include <WebCore/Quirks.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/UserGestureIndicator.h>
-#include <WebCore/WebAuthenticationConstants.h>
+#include <CyberCore/AuthenticatorAttachment.h>
+#include <CyberCore/AuthenticatorResponseData.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/PublicKeyCredentialCreationOptions.h>
+#include <CyberCore/PublicKeyCredentialRequestOptions.h>
+#include <CyberCore/Quirks.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/UserGestureIndicator.h>
+#include <CyberCore/WebAuthenticationConstants.h>
 
 #undef WEBAUTHN_RELEASE_LOG
 #define PAGE_ID (m_webPage.identifier().toUInt64())

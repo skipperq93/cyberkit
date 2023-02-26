@@ -28,7 +28,7 @@
 #include "MessageReceiver.h"
 #include "WebPage.h"
 
-#include <WebCore/DeviceOrientationUpdateProvider.h>
+#include <CyberCore/DeviceOrientationUpdateProvider.h>
 
 #include <wtf/WeakHashSet.h>
 #include <wtf/WeakPtr.h>

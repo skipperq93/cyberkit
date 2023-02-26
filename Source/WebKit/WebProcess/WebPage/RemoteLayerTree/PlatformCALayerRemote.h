@@ -26,9 +26,9 @@
 #pragma once
 
 #include "RemoteLayerTreeTransaction.h"
-#include <WebCore/HTMLMediaElementIdentifier.h>
-#include <WebCore/PlatformCALayer.h>
-#include <WebCore/PlatformLayer.h>
+#include <CyberCore/HTMLMediaElementIdentifier.h>
+#include <CyberCore/PlatformCALayer.h>
+#include <CyberCore/PlatformLayer.h>
 
 namespace WebCore {
 class LayerPool;

@@ -81,43 +81,43 @@
 #include "WebUndoStepID.h"
 #include "WebsitePoliciesData.h"
 #include "WindowKind.h"
-#include <WebCore/AlternativeTextClient.h>
-#include <WebCore/AutoplayEvent.h>
-#include <WebCore/Color.h>
-#include <WebCore/DiagnosticLoggingClient.h>
-#include <WebCore/DictationContext.h>
-#include <WebCore/DragActions.h>
-#include <WebCore/EventTrackingRegions.h>
-#include <WebCore/ExceptionDetails.h>
-#include <WebCore/FocusDirection.h>
-#include <WebCore/FontAttributes.h>
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/FrameView.h> // FIXME: Move LayoutViewportConstraint to its own file and stop including this.
-#include <WebCore/GlobalFrameIdentifier.h>
-#include <WebCore/InputMode.h>
-#include <WebCore/LayoutPoint.h>
-#include <WebCore/LayoutSize.h>
-#include <WebCore/MediaControlsContextMenuItem.h>
-#include <WebCore/MediaProducer.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/PlatformEvent.h>
-#include <WebCore/PlatformScreen.h>
-#include <WebCore/PlatformSpeechSynthesisUtterance.h>
-#include <WebCore/PlatformSpeechSynthesizer.h>
-#include <WebCore/PointerID.h>
-#include <WebCore/RectEdges.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/RunJavaScriptParameters.h>
-#include <WebCore/ScrollTypes.h>
-#include <WebCore/SearchPopupMenu.h>
-#include <WebCore/TextChecking.h>
-#include <WebCore/TextGranularity.h>
-#include <WebCore/TextManipulationController.h>
-#include <WebCore/TextManipulationItem.h>
-#include <WebCore/TranslationContextMenuInfo.h>
-#include <WebCore/UserInterfaceLayoutDirection.h>
-#include <WebCore/UserMediaClient.h>
-#include <WebCore/ViewportArguments.h>
+#include <CyberCore/AlternativeTextClient.h>
+#include <CyberCore/AutoplayEvent.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/DiagnosticLoggingClient.h>
+#include <CyberCore/DictationContext.h>
+#include <CyberCore/DragActions.h>
+#include <CyberCore/EventTrackingRegions.h>
+#include <CyberCore/ExceptionDetails.h>
+#include <CyberCore/FocusDirection.h>
+#include <CyberCore/FontAttributes.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/FrameView.h> // FIXME: Move LayoutViewportConstraint to its own file and stop including this.
+#include <CyberCore/GlobalFrameIdentifier.h>
+#include <CyberCore/InputMode.h>
+#include <CyberCore/LayoutPoint.h>
+#include <CyberCore/LayoutSize.h>
+#include <CyberCore/MediaControlsContextMenuItem.h>
+#include <CyberCore/MediaProducer.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/PlatformEvent.h>
+#include <CyberCore/PlatformScreen.h>
+#include <CyberCore/PlatformSpeechSynthesisUtterance.h>
+#include <CyberCore/PlatformSpeechSynthesizer.h>
+#include <CyberCore/PointerID.h>
+#include <CyberCore/RectEdges.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/RunJavaScriptParameters.h>
+#include <CyberCore/ScrollTypes.h>
+#include <CyberCore/SearchPopupMenu.h>
+#include <CyberCore/TextChecking.h>
+#include <CyberCore/TextGranularity.h>
+#include <CyberCore/TextManipulationController.h>
+#include <CyberCore/TextManipulationItem.h>
+#include <CyberCore/TranslationContextMenuInfo.h>
+#include <CyberCore/UserInterfaceLayoutDirection.h>
+#include <CyberCore/UserMediaClient.h>
+#include <CyberCore/ViewportArguments.h>
 #include <memory>
 #include <pal/HysteresisActivity.h>
 #include <wtf/CompletionHandler.h>
@@ -136,14 +136,14 @@
 #include <wtf/text/WTFString.h>
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
-#include <WebCore/MediaPlaybackTargetContext.h>
+#include <CyberCore/MediaPlaybackTargetContext.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)
 #include "DynamicViewportSizeUpdate.h"
 #include "GestureTypes.h"
 #include "WebAutocorrectionContext.h"
-#include <WebCore/InspectorOverlay.h>
+#include <CyberCore/InspectorOverlay.h>
 #endif
 
 #if PLATFORM(MACCATALYST)
@@ -151,7 +151,7 @@
 #endif
 
 #if ENABLE(DRAG_SUPPORT)
-#include <WebCore/DragActions.h>
+#include <CyberCore/DragActions.h>
 #endif
 
 #if ENABLE(TOUCH_EVENTS)
@@ -175,8 +175,8 @@
 #endif
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)
-#include <WebCore/MediaPlaybackTargetPicker.h>
-#include <WebCore/WebMediaSessionManagerClient.h>
+#include <CyberCore/MediaPlaybackTargetPicker.h>
+#include <CyberCore/WebMediaSessionManagerClient.h>
 #endif
 
 #if HAVE(APP_SSO)
@@ -184,11 +184,11 @@
 #endif
 
 #if ENABLE(ATTACHMENT_ELEMENT)
-#include <WebCore/PromisedAttachmentInfo.h>
+#include <CyberCore/PromisedAttachmentInfo.h>
 #endif
 
 #if ENABLE(MEDIA_USAGE)
-#include <WebCore/MediaSessionIdentifier.h>
+#include <CyberCore/MediaSessionIdentifier.h>
 #endif
 
 #if ENABLE(WEBXR) && !USE(OPENXR)
@@ -201,7 +201,7 @@
 #endif
 
 #if PLATFORM(GTK) || PLATFORM(WPE)
-#include <WebCore/ResourceLoaderIdentifier.h>
+#include <CyberCore/ResourceLoaderIdentifier.h>
 #endif
 
 namespace API {

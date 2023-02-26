@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/ExceptionOr.h>
+#include <CyberCore/ExceptionOr.h>
 #include <wtf/EnumTraits.h>
 
 namespace WebKit {

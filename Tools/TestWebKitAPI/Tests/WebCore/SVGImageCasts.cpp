@@ -25,9 +25,9 @@
 
 #include "config.h"
 
-#include <WebCore/ImageObserver.h>
-#include <WebCore/SVGImage.h>
-#include <WebCore/SVGImageForContainer.h>
+#include <CyberCore/ImageObserver.h>
+#include <CyberCore/SVGImage.h>
+#include <CyberCore/SVGImageForContainer.h>
 #include <wtf/URL.h>
 
 namespace TestWebKitAPI {

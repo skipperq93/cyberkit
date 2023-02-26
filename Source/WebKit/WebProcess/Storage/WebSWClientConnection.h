@@ -32,8 +32,8 @@
 #include "MessageSender.h"
 #include "RetrieveRecordResponseBodyCallbackIdentifier.h"
 #include "SharedMemory.h"
-#include <WebCore/MessageWithMessagePorts.h>
-#include <WebCore/SWClientConnection.h>
+#include <CyberCore/MessageWithMessagePorts.h>
+#include <CyberCore/SWClientConnection.h>
 #include <wtf/UniqueRef.h>
 
 namespace IPC {

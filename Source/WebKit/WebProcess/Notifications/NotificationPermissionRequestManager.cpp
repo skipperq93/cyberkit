@@ -31,11 +31,11 @@
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/Notification.h>
-#include <WebCore/Page.h>
-#include <WebCore/ScriptExecutionContext.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/Settings.h>
+#include <CyberCore/Notification.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/ScriptExecutionContext.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/Settings.h>
 
 #if ENABLE(NOTIFICATIONS)
 #include "WebNotificationManager.h"
@@ -43,7 +43,7 @@
 
 #if ENABLE(BUILT_IN_NOTIFICATIONS)
 #include "NetworkProcessConnection.h"
-#include <WebCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
 #endif
 
 namespace WebKit {

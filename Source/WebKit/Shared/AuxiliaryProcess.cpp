@@ -32,7 +32,7 @@
 #include "Logging.h"
 #include "SandboxInitializationParameters.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/LogInitialization.h>
+#include <CyberCore/LogInitialization.h>
 #include <pal/SessionID.h>
 #include <wtf/LogInitialization.h>
 #include <wtf/SetForScope.h>

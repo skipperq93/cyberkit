@@ -36,8 +36,8 @@
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/MediaKeySystemRequest.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/MediaKeySystemRequest.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/Scope.h>
 
 namespace WebKit {

@@ -27,8 +27,8 @@
 #import "ViewSnapshotStore.h"
 
 #import <CoreGraphics/CoreGraphics.h>
-#import <WebCore/IOSurface.h>
-#import <WebCore/ImageBuffer.h>
+#import <CyberCore/IOSurface.h>
+#import <CyberCore/ImageBuffer.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import <pal/spi/cocoa/QuartzCoreSPI.h>

@@ -28,10 +28,10 @@
 #import "DOMCSSValueInternal.h"
 #import "DOMNodeInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/DeprecatedCSSOMValueList.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/DeprecatedCSSOMValueList.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
 #define IMPL static_cast<WebCore::DeprecatedCSSOMValueList*>(reinterpret_cast<WebCore::DeprecatedCSSOMValue*>(_internal))

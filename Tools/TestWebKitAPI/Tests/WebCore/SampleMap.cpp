@@ -28,8 +28,8 @@
 #if ENABLE(MEDIA_SOURCE)
 
 #include "Test.h"
-#include <WebCore/MediaSample.h>
-#include <WebCore/SampleMap.h>
+#include <CyberCore/MediaSample.h>
+#include <CyberCore/SampleMap.h>
 
 namespace WTF {
 inline std::ostream& operator<<(std::ostream& os, const MediaTime& time)

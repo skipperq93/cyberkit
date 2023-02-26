@@ -40,10 +40,10 @@
 #include "WebPreferencesStore.h"
 #include "WebProcessProxy.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/CrossSiteNavigationDataTransfer.h>
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/SecurityOriginHash.h>
-#include <WebCore/SharedStringHash.h>
+#include <CyberCore/CrossSiteNavigationDataTransfer.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/SecurityOriginHash.h>
+#include <CyberCore/SharedStringHash.h>
 #include <pal/SessionID.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
@@ -70,7 +70,7 @@ OBJC_CLASS WKWebInspectorPreferenceObserver;
 
 #if PLATFORM(MAC)
 #include "DisplayLink.h"
-#include <WebCore/PowerObserverMac.h>
+#include <CyberCore/PowerObserverMac.h>
 #include <pal/system/SystemSleepListener.h>
 #endif
 

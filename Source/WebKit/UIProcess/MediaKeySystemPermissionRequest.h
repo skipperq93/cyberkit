@@ -26,7 +26,7 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/ClientOrigin.h>
+#include <CyberCore/ClientOrigin.h>
 #include <wtf/CompletionHandler.h>
 
 namespace WebKit {

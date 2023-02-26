@@ -26,7 +26,7 @@
 #ifndef WebDocumentLoader_h
 #define WebDocumentLoader_h
 
-#include <WebCore/DocumentLoader.h>
+#include <CyberCore/DocumentLoader.h>
 
 namespace WebKit {
 

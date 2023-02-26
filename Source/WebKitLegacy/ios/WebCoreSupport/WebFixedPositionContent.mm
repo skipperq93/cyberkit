@@ -29,11 +29,11 @@
 #import "WebFixedPositionContentInternal.h"
 
 #import "WebViewInternal.h"
-#import <WebCore/ChromeClient.h>
-#import <WebCore/Frame.h>
-#import <WebCore/IntSize.h>
-#import <WebCore/ScrollingConstraints.h>
-#import <WebCore/WebCoreThreadRun.h>
+#import <CyberCore/ChromeClient.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/IntSize.h>
+#import <CyberCore/ScrollingConstraints.h>
+#import <CyberCore/WebCoreThreadRun.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 
 #import <wtf/HashMap.h>

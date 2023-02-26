@@ -27,7 +27,7 @@
 
 #if ENABLE(CONTEXT_MENUS)
 
-#include <WebCore/ContextMenuItem.h>
+#include <CyberCore/ContextMenuItem.h>
 #include <wtf/text/WTFString.h>
 
 namespace API {

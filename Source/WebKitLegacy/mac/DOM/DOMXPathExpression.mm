@@ -29,13 +29,13 @@
 #import "DOMNodeInternal.h"
 #import "DOMXPathResultInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/JSExecState.h>
-#import <WebCore/Node.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebCoreObjCExtras.h>
-#import <WebCore/WebScriptObjectPrivate.h>
-#import <WebCore/XPathExpression.h>
-#import <WebCore/XPathResult.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/Node.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
+#import <CyberCore/XPathExpression.h>
+#import <CyberCore/XPathResult.h>
 #import <wtf/GetPtr.h>
 
 #define IMPL reinterpret_cast<WebCore::XPathExpression*>(_internal)

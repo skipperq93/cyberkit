@@ -26,11 +26,11 @@
 #pragma once
 
 #include "ViewSnapshotStore.h"
-#include <WebCore/BackForwardItemIdentifier.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/SerializedScriptValue.h>
+#include <CyberCore/BackForwardItemIdentifier.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/SerializedScriptValue.h>
 #include <wtf/ArgumentCoder.h>
 #include <wtf/EnumTraits.h>
 #include <wtf/RunLoop.h>

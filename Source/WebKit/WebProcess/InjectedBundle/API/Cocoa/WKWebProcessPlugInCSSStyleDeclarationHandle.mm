@@ -26,8 +26,8 @@
 #import "config.h"
 #import "WKWebProcessPlugInCSSStyleDeclarationHandleInternal.h"
 
-#import <WebCore/CSSStyleDeclaration.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/CSSStyleDeclaration.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKWebProcessPlugInCSSStyleDeclarationHandle {
     API::ObjectStorage<WebKit::InjectedBundleCSSStyleDeclarationHandle> _cssStyleDeclarationHandle;

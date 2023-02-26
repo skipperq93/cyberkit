@@ -33,10 +33,10 @@
 #import "WKWebViewIOS.h"
 #import "WebPageProxy.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import <WebCore/FloatRect.h>
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/MIMETypeRegistry.h>
-#import <WebCore/UTIUtilities.h>
+#import <CyberCore/FloatRect.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/MIMETypeRegistry.h>
+#import <CyberCore/UTIUtilities.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <pal/spi/ios/SystemPreviewSPI.h>
 #import <wtf/RetainPtr.h>

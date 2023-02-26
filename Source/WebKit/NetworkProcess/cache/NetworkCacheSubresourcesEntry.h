@@ -28,7 +28,7 @@
 #if ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION)
 
 #include "NetworkCacheStorage.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 #include <wtf/URL.h>
 
 namespace WebKit::NetworkCache {

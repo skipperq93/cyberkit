@@ -34,8 +34,8 @@
 #include "RemoteLegacyCDMFactoryProxyMessages.h"
 #include "RemoteLegacyCDMSession.h"
 #include "WebProcess.h"
-#include <WebCore/LegacyCDM.h>
-#include <WebCore/Settings.h>
+#include <CyberCore/LegacyCDM.h>
+#include <CyberCore/Settings.h>
 
 namespace WebKit {
 

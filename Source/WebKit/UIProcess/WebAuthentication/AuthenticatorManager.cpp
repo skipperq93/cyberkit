@@ -37,11 +37,11 @@
 #include "WebPageProxy.h"
 #include "WebPreferencesKeys.h"
 #include "WebProcessProxy.h"
-#include <WebCore/AuthenticatorAssertionResponse.h>
-#include <WebCore/AuthenticatorAttachment.h>
-#include <WebCore/AuthenticatorTransport.h>
-#include <WebCore/PublicKeyCredentialCreationOptions.h>
-#include <WebCore/WebAuthenticationConstants.h>
+#include <CyberCore/AuthenticatorAssertionResponse.h>
+#include <CyberCore/AuthenticatorAttachment.h>
+#include <CyberCore/AuthenticatorTransport.h>
+#include <CyberCore/PublicKeyCredentialCreationOptions.h>
+#include <CyberCore/WebAuthenticationConstants.h>
 #include <wtf/MonotonicTime.h>
 
 namespace WebKit {

@@ -30,7 +30,7 @@
 #if PLATFORM(MAC)
 
 #include "DisplayLinkObserverID.h"
-#include <WebCore/AnimationFrameRate.h>
+#include <CyberCore/AnimationFrameRate.h>
 
 namespace WebKit {
 

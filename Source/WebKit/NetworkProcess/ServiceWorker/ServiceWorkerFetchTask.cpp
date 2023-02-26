@@ -43,8 +43,8 @@
 #include "WebSWContextManagerConnectionMessages.h"
 #include "WebSWServerConnection.h"
 #include "WebSWServerToContextConnection.h"
-#include <WebCore/CrossOriginAccessControl.h>
-#include <WebCore/SWServerRegistration.h>
+#include <CyberCore/CrossOriginAccessControl.h>
+#include <CyberCore/SWServerRegistration.h>
 
 #define SWFETCH_RELEASE_LOG(fmt, ...) RELEASE_LOG(ServiceWorker, "%p - [fetchIdentifier=%" PRIu64 "] ServiceWorkerFetchTask::" fmt, this, m_fetchIdentifier.toUInt64(), ##__VA_ARGS__)
 #define SWFETCH_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(ServiceWorker, "%p - [fetchIdentifier=%" PRIu64 "] ServiceWorkerFetchTask::" fmt, this, m_fetchIdentifier.toUInt64(), ##__VA_ARGS__)

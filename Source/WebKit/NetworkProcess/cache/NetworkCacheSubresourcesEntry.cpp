@@ -30,7 +30,7 @@
 
 #include "Logging.h"
 #include "NetworkCacheCoders.h"
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <wtf/persistence/PersistentEncoder.h>
 
 namespace WebKit {

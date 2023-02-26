@@ -32,8 +32,8 @@
 #include "MessageSender.h"
 #include "NetworkDataTask.h"
 #include "SandboxExtension.h"
-#include <WebCore/AuthenticationChallenge.h>
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/AuthenticationChallenge.h>
+#include <CyberCore/ResourceRequest.h>
 #include <memory>
 #include <pal/SessionID.h>
 #include <wtf/Noncopyable.h>

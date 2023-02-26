@@ -32,11 +32,11 @@
 #include "PlatformCALayerRemoteHost.h"
 #include "RemoteLayerTreeContext.h"
 #include "RemoteLayerTreeDrawingAreaProxyMessages.h"
-#include <WebCore/GraphicsLayerContentsDisplayDelegate.h>
-#include <WebCore/HTMLVideoElement.h>
-#include <WebCore/Model.h>
-#include <WebCore/PlatformScreen.h>
-#include <WebCore/RemoteFrame.h>
+#include <CyberCore/GraphicsLayerContentsDisplayDelegate.h>
+#include <CyberCore/HTMLVideoElement.h>
+#include <CyberCore/Model.h>
+#include <CyberCore/PlatformScreen.h>
+#include <CyberCore/RemoteFrame.h>
 
 namespace WebKit {
 using namespace WebCore;

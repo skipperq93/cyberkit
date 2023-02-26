@@ -27,7 +27,7 @@
 
 #import "TestCocoa.h"
 #import "TestWKWebView.h"
-#import <WebCore/ColorCocoa.h>
+#import <CyberCore/ColorCocoa.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 

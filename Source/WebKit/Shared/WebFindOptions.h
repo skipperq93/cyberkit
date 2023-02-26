@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/FindOptions.h>
+#include <CyberCore/FindOptions.h>
 #include <wtf/EnumTraits.h>
 
 namespace WebKit {

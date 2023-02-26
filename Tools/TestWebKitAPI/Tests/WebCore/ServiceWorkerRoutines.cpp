@@ -26,7 +26,7 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/ServiceWorkerRegistrationKey.h>
+#include <CyberCore/ServiceWorkerRegistrationKey.h>
 
 TEST(ServiceWorkerRoutines, ServiceWorkerRegistrationKey_fromDatabaseKey)
 {

@@ -31,15 +31,15 @@
 #include "GPUConnectionToWebProcess.h"
 #include "GPUProcess.h"
 #include "Logging.h"
-#include <WebCore/AudioUtilities.h>
+#include <CyberCore/AudioUtilities.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
 #if PLATFORM(COCOA)
 #include "SharedCARingBuffer.h"
-#include <WebCore/AudioOutputUnitAdaptor.h>
-#include <WebCore/CAAudioStreamDescription.h>
-#include <WebCore/CARingBuffer.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/AudioOutputUnitAdaptor.h>
+#include <CyberCore/CAAudioStreamDescription.h>
+#include <CyberCore/CARingBuffer.h>
+#include <CyberCore/WebAudioBufferList.h>
 #endif
 
 #if ENABLE(IPC_TESTING_API)

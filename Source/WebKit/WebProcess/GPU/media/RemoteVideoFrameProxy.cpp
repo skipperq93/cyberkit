@@ -33,9 +33,9 @@
 
 #if PLATFORM(COCOA)
 #include "WebProcess.h"
-#include <WebCore/CVUtilities.h>
-#include <WebCore/RealtimeIncomingVideoSourceCocoa.h>
-#include <WebCore/VideoFrameCV.h>
+#include <CyberCore/CVUtilities.h>
+#include <CyberCore/RealtimeIncomingVideoSourceCocoa.h>
+#include <CyberCore/VideoFrameCV.h>
 #include <wtf/MainThread.h>
 #include <wtf/threads/BinarySemaphore.h>
 #endif

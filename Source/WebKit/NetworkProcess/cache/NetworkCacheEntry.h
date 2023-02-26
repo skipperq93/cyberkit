@@ -28,8 +28,8 @@
 #include "NetworkCacheStorage.h"
 #include "PrivateRelayed.h"
 #include "ShareableResource.h"
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/Seconds.h>
 #include <wtf/text/WTFString.h>

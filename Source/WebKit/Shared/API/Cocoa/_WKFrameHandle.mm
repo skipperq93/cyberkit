@@ -26,8 +26,8 @@
 #import "config.h"
 #import "_WKFrameHandleInternal.h"
 
-#import <WebCore/FrameIdentifier.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/FrameIdentifier.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation _WKFrameHandle
 

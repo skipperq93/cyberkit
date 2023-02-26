@@ -31,7 +31,7 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#include <WebCore/CBORValue.h>
+#include <CyberCore/CBORValue.h>
 #include <utility>
 
 namespace TestWebKitAPI {

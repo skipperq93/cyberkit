@@ -26,7 +26,7 @@
 #pragma once
 
 #include "UserMediaPermissionRequestProxy.h"
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 
 namespace WebKit {
 

@@ -29,14 +29,14 @@
 
 #import "WebContextMenuClient.h"
 #import "WebViewInternal.h"
-#import <WebCore/BitmapImage.h>
-#import <WebCore/ContextMenuController.h>
-#import <WebCore/Document.h>
-#import <WebCore/Editor.h>
-#import <WebCore/FocusController.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameSelection.h>
-#import <WebCore/Page.h>
+#import <CyberCore/BitmapImage.h>
+#import <CyberCore/ContextMenuController.h>
+#import <CyberCore/Document.h>
+#import <CyberCore/Editor.h>
+#import <CyberCore/FocusController.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameSelection.h>
+#import <CyberCore/Page.h>
 
 static NSString *serviceControlsPasteboardName = @"WebKitServiceControlsPasteboard";
 

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/SQLiteDatabase.h>
+#include <CyberCore/SQLiteDatabase.h>
 #include <wtf/HashSet.h>
 #include <wtf/Seconds.h>
 #include <wtf/Vector.h>

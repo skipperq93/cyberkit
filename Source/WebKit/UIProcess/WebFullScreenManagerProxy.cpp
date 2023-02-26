@@ -35,8 +35,8 @@
 #include "WebPageProxy.h"
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
-#include <WebCore/IntRect.h>
-#include <WebCore/ScreenOrientationType.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/ScreenOrientationType.h>
 
 namespace WebKit {
 using namespace WebCore;

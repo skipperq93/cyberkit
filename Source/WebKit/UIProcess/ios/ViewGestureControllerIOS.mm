@@ -42,8 +42,8 @@
 #import "WebPageProxy.h"
 #import "WebProcessProxy.h"
 #import <UIKit/UIScreenEdgePanGestureRecognizer.h>
-#import <WebCore/ColorCocoa.h>
-#import <WebCore/IOSurface.h>
+#import <CyberCore/ColorCocoa.h>
+#import <CyberCore/IOSurface.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/WeakObjCPtr.h>
 

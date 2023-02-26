@@ -32,7 +32,7 @@
 #include "TextCheckerState.h"
 #include "UserData.h"
 #include "WebProcessDataStoreParameters.h"
-#include <WebCore/CrossOriginMode.h>
+#include <CyberCore/CrossOriginMode.h>
 #include <wtf/HashMap.h>
 #include <wtf/ProcessID.h>
 #include <wtf/RetainPtr.h>
@@ -41,13 +41,13 @@
 #include <wtf/text/WTFString.h>
 
 #if PLATFORM(COCOA)
-#include <WebCore/PlatformScreen.h>
-#include <WebCore/ScreenProperties.h>
+#include <CyberCore/PlatformScreen.h>
+#include <CyberCore/ScreenProperties.h>
 #include <wtf/MachSendRight.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/RenderThemeIOS.h>
+#include <CyberCore/RenderThemeIOS.h>
 #endif
 
 #if PLATFORM(GTK) || PLATFORM(WPE)

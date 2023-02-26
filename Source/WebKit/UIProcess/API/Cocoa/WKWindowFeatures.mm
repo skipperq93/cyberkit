@@ -26,8 +26,8 @@
 #import "config.h"
 #import "WKWindowFeaturesInternal.h"
 
-#import <WebCore/WebCoreObjCExtras.h>
-#import <WebCore/WindowFeatures.h>
+#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/WindowFeatures.h>
 #import <wtf/RetainPtr.h>
 
 @implementation WKWindowFeatures

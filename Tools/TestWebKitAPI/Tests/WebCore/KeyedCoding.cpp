@@ -25,8 +25,8 @@
 
 #include "config.h"
 
-#include <WebCore/KeyedCoding.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/KeyedCoding.h>
+#include <CyberCore/SharedBuffer.h>
 #include <cstdint>
 #include <cstdlib>
 #include <wtf/text/WTFString.h>

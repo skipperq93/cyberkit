@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/GraphicsLayer.h>
+#import <CyberCore/GraphicsLayer.h>
 
 namespace WebKit {
 class RemoteLayerTreeHost;

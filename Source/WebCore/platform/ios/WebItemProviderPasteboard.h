@@ -26,7 +26,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 #if TARGET_OS_IPHONE
-#import <WebCore/AbstractPasteboard.h>
+#import <CyberCore/AbstractPasteboard.h>
 #endif
 
 #if TARGET_OS_IOS

@@ -29,7 +29,7 @@
 #include "Logging.h"
 #include "NetworkCacheCoders.h"
 #include "NetworkCacheIOChannel.h"
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 #include <wtf/RunLoop.h>
 #include <wtf/UUID.h>
 #include <wtf/persistence/PersistentDecoder.h>

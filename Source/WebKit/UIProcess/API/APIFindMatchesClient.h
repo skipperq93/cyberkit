@@ -26,7 +26,7 @@
 #ifndef APIFindMatchesClient_h
 #define APIFindMatchesClient_h
 
-#include <WebCore/IntRect.h>
+#include <CyberCore/IntRect.h>
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 

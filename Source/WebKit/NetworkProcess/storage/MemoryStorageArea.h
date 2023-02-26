@@ -26,7 +26,7 @@
 #pragma once
 
 #include "StorageAreaBase.h"
-#include <WebCore/StorageMap.h>
+#include <CyberCore/StorageMap.h>
 
 namespace WebCore {
 class StorageMap;

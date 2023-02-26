@@ -25,9 +25,9 @@
 
 #pragma once
 
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/StorageArea.h>
-#include <WebCore/StorageNamespace.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/StorageArea.h>
+#include <CyberCore/StorageNamespace.h>
 #include <pal/SessionID.h>
 #include <wtf/HashMap.h>
 #include <wtf/RefPtr.h>

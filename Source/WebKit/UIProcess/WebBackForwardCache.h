@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/ProcessIdentifier.h>
 #include <pal/SessionID.h>
 #include <wtf/Forward.h>
 #include <wtf/Vector.h>

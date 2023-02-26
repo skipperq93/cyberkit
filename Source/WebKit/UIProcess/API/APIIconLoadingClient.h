@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/LinkIcon.h>
+#include <CyberCore/LinkIcon.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Function.h>
 

@@ -56,8 +56,8 @@
 #include "WebPageMessages.h"
 #include "WebProcess.h"
 #include "WebProcessProxyMessages.h"
-#include <WebCore/PlatformMediaSessionManager.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/PlatformMediaSessionManager.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/Language.h>
 
 #if ENABLE(ENCRYPTED_MEDIA)
@@ -90,11 +90,11 @@
 #endif
 
 #if PLATFORM(COCOA)
-#include <WebCore/SystemBattery.h>
+#include <CyberCore/SystemBattery.h>
 #endif
 
 #if ENABLE(VP9) && PLATFORM(COCOA)
-#include <WebCore/VP9UtilitiesCocoa.h>
+#include <CyberCore/VP9UtilitiesCocoa.h>
 #endif
 
 #if ENABLE(ROUTING_ARBITRATION)

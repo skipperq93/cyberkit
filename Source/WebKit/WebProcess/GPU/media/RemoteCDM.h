@@ -30,7 +30,7 @@
 #include "RemoteCDMConfiguration.h"
 #include "RemoteCDMFactory.h"
 #include "RemoteCDMIdentifier.h"
-#include <WebCore/CDMPrivate.h>
+#include <CyberCore/CDMPrivate.h>
 #include <wtf/RefCounted.h>
 
 namespace WebKit {

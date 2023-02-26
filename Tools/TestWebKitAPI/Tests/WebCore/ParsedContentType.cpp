@@ -26,7 +26,7 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/ParsedContentType.h>
+#include <CyberCore/ParsedContentType.h>
 #include <wtf/text/StringBuilder.h>
 
 using namespace WebCore;

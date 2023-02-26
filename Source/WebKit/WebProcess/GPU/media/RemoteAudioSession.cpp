@@ -33,7 +33,7 @@
 #include "RemoteAudioSessionMessages.h"
 #include "RemoteAudioSessionProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/PlatformMediaSessionManager.h>
+#include <CyberCore/PlatformMediaSessionManager.h>
 
 namespace WebKit {
 

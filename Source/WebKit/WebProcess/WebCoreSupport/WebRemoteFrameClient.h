@@ -26,7 +26,7 @@
 #pragma once
 
 #include "WebFrame.h"
-#include <WebCore/RemoteFrameClient.h>
+#include <CyberCore/RemoteFrameClient.h>
 #include <wtf/Scope.h>
 
 namespace WebKit {

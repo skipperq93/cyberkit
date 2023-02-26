@@ -32,7 +32,7 @@
 #include "ServiceWorkerDownloadTask.h"
 #include "ServiceWorkerFetchTask.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/SWServerToContextConnection.h>
+#include <CyberCore/SWServerToContextConnection.h>
 #include <wtf/ThreadSafeWeakPtr.h>
 #include <wtf/URLHash.h>
 #include <wtf/WeakPtr.h>

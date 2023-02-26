@@ -30,9 +30,9 @@
 #include "SharedBufferTest.h"
 #include "Test.h"
 #include <JavaScriptCore/ArrayBuffer.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #if ENABLE(MHTML)
-#include <WebCore/SharedBufferChunkReader.h>
+#include <CyberCore/SharedBufferChunkReader.h>
 #endif
 #include <wtf/MainThread.h>
 #include <wtf/StringExtras.h>

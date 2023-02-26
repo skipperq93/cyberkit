@@ -60,26 +60,26 @@
 #import "_WKDownloadInternal.h"
 #import "_WKHitTestResultInternal.h"
 #import "_WKThumbnailView.h"
-#import <WebCore/AlternativeTextUIController.h>
-#import <WebCore/BitmapImage.h>
-#import <WebCore/ColorMac.h>
-#import <WebCore/Cursor.h>
-#import <WebCore/DestinationColorSpace.h>
-#import <WebCore/DictionaryLookup.h>
-#import <WebCore/DragItem.h>
-#import <WebCore/FloatRect.h>
-#import <WebCore/GraphicsContext.h>
-#import <WebCore/Image.h>
-#import <WebCore/KeyboardEvent.h>
-#import <WebCore/NotImplemented.h>
-#import <WebCore/PlatformScreen.h>
-#import <WebCore/PromisedAttachmentInfo.h>
-#import <WebCore/SharedBuffer.h>
-#import <WebCore/TextIndicator.h>
-#import <WebCore/TextIndicatorWindow.h>
-#import <WebCore/TextUndoInsertionMarkupMac.h>
-#import <WebCore/ValidationBubble.h>
-#import <WebCore/WebCoreCALayerExtras.h>
+#import <CyberCore/AlternativeTextUIController.h>
+#import <CyberCore/BitmapImage.h>
+#import <CyberCore/ColorMac.h>
+#import <CyberCore/Cursor.h>
+#import <CyberCore/DestinationColorSpace.h>
+#import <CyberCore/DictionaryLookup.h>
+#import <CyberCore/DragItem.h>
+#import <CyberCore/FloatRect.h>
+#import <CyberCore/GraphicsContext.h>
+#import <CyberCore/Image.h>
+#import <CyberCore/KeyboardEvent.h>
+#import <CyberCore/NotImplemented.h>
+#import <CyberCore/PlatformScreen.h>
+#import <CyberCore/PromisedAttachmentInfo.h>
+#import <CyberCore/SharedBuffer.h>
+#import <CyberCore/TextIndicator.h>
+#import <CyberCore/TextIndicatorWindow.h>
+#import <CyberCore/TextUndoInsertionMarkupMac.h>
+#import <CyberCore/ValidationBubble.h>
+#import <CyberCore/WebCoreCALayerExtras.h>
 #import <pal/spi/mac/NSApplicationSPI.h>
 #import <wtf/ProcessPrivilege.h>
 #import <wtf/RetainPtr.h>
@@ -87,7 +87,7 @@
 #import <wtf/text/WTFString.h>
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
-#import <WebCore/WebMediaSessionManager.h>
+#import <CyberCore/WebMediaSessionManager.h>
 #endif
 
 static NSString * const kAXLoadCompleteNotification = @"AXLoadComplete";

@@ -27,9 +27,9 @@
 
 #import "WebPluginDatabase.h"
 #import "WebPluginPackage.h"
-#import <WebCore/Frame.h>
-#import <WebCore/FrameLoader.h>
-#import <WebCore/Page.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameLoader.h>
+#import <CyberCore/Page.h>
 #import <wtf/BlockObjCExceptions.h>
 
 using namespace WebCore;

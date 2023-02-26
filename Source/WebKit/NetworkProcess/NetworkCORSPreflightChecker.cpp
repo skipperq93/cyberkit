@@ -33,8 +33,8 @@
 #include "NetworkProcess.h"
 #include "NetworkResourceLoader.h"
 #include "WebErrors.h"
-#include <WebCore/CrossOriginAccessControl.h>
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/CrossOriginAccessControl.h>
+#include <CyberCore/SecurityOrigin.h>
 
 #define CORS_CHECKER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - NetworkCORSPreflightChecker::" fmt, this, ##__VA_ARGS__)
 

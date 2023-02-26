@@ -33,8 +33,8 @@
 #import "WebEventFactory.h"
 #import "_WKHitTestResultInternal.h"
 #import "_WKUserInitiatedActionInternal.h"
-#import <WebCore/FloatPoint.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/FloatPoint.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(IOS_FAMILY)

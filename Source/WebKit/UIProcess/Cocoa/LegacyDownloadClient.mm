@@ -41,8 +41,8 @@
 #import "WebProcessProxy.h"
 #import "_WKDownloadDelegate.h"
 #import "_WKDownloadInternal.h"
-#import <WebCore/ResourceError.h>
-#import <WebCore/ResourceResponse.h>
+#import <CyberCore/ResourceError.h>
+#import <CyberCore/ResourceResponse.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/FileSystem.h>
 

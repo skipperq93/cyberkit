@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/SQLiteDatabaseTrackerClient.h>
+#include <CyberCore/SQLiteDatabaseTrackerClient.h>
 #include <wtf/Forward.h>
 #include <wtf/Lock.h>
 #include <wtf/Noncopyable.h>

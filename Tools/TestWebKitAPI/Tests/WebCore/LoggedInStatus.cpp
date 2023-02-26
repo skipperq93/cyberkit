@@ -25,8 +25,8 @@
 
 #include "config.h"
 
-#include <WebCore/LoggedInStatus.h>
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/LoggedInStatus.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <wtf/Seconds.h>
 #include <wtf/text/StringBuilder.h>
 

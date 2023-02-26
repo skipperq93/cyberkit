@@ -33,20 +33,20 @@
 #include "WebCoreArgumentCoders.h"
 #include "WebIDBResult.h"
 #include "WebProcess.h"
-#include <WebCore/IDBConnectionToServer.h>
-#include <WebCore/IDBCursorInfo.h>
-#include <WebCore/IDBError.h>
-#include <WebCore/IDBIndexInfo.h>
-#include <WebCore/IDBIterateCursorData.h>
-#include <WebCore/IDBKeyRangeData.h>
-#include <WebCore/IDBObjectStoreInfo.h>
-#include <WebCore/IDBOpenDBRequest.h>
-#include <WebCore/IDBRequestData.h>
-#include <WebCore/IDBResourceIdentifier.h>
-#include <WebCore/IDBResultData.h>
-#include <WebCore/IDBTransactionInfo.h>
-#include <WebCore/IDBValue.h>
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/IDBConnectionToServer.h>
+#include <CyberCore/IDBCursorInfo.h>
+#include <CyberCore/IDBError.h>
+#include <CyberCore/IDBIndexInfo.h>
+#include <CyberCore/IDBIterateCursorData.h>
+#include <CyberCore/IDBKeyRangeData.h>
+#include <CyberCore/IDBObjectStoreInfo.h>
+#include <CyberCore/IDBOpenDBRequest.h>
+#include <CyberCore/IDBRequestData.h>
+#include <CyberCore/IDBResourceIdentifier.h>
+#include <CyberCore/IDBResultData.h>
+#include <CyberCore/IDBTransactionInfo.h>
+#include <CyberCore/IDBValue.h>
+#include <CyberCore/ProcessIdentifier.h>
 
 namespace WebKit {
 using namespace WebCore;

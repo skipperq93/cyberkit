@@ -25,7 +25,7 @@
 
 #import "WebDeviceOrientationInternal.h"
 #import "WebDeviceOrientationProviderMock.h"
-#import <WebCore/DeviceOrientationClientMock.h>
+#import <CyberCore/DeviceOrientationClientMock.h>
 
 @interface WebDeviceOrientationProviderMockInternal : NSObject {
     std::unique_ptr<WebCore::DeviceOrientationClientMock> m_core;

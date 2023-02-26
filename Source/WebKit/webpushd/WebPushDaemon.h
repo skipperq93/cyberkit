@@ -31,9 +31,9 @@
 #include "WebPushDaemonConnectionConfiguration.h"
 #include "WebPushDaemonConstants.h"
 #include "WebPushMessage.h"
-#include <WebCore/ExceptionData.h>
-#include <WebCore/PushSubscriptionData.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/ExceptionData.h>
+#include <CyberCore/PushSubscriptionData.h>
+#include <CyberCore/Timer.h>
 #include <wtf/Deque.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>

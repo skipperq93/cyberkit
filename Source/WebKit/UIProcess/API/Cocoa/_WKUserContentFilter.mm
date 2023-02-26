@@ -28,8 +28,8 @@
 
 #import "WKContentRuleListInternal.h"
 #import "WebCompiledContentRuleList.h"
-#import <WebCore/ContentExtensionCompiler.h>
-#import <WebCore/ContentExtensionError.h>
+#import <CyberCore/ContentExtensionCompiler.h>
+#import <CyberCore/ContentExtensionError.h>
 #import <string>
 
 #pragma clang diagnostic push

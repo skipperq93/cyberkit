@@ -27,9 +27,9 @@
 
 #include "PushServiceConnection.h"
 #include "WebPushMessage.h"
-#include <WebCore/ExceptionData.h>
-#include <WebCore/PushDatabase.h>
-#include <WebCore/PushSubscriptionData.h>
+#include <CyberCore/ExceptionData.h>
+#include <CyberCore/PushDatabase.h>
+#include <CyberCore/PushSubscriptionData.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Deque.h>
 #include <wtf/Expected.h>

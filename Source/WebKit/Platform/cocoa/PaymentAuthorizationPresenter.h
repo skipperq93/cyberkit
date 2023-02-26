@@ -27,7 +27,7 @@
 
 #if USE(PASSKIT) && ENABLE(APPLE_PAY)
 
-#include <WebCore/ApplePaySessionPaymentRequest.h>
+#include <CyberCore/ApplePaySessionPaymentRequest.h>
 #include <wtf/FastMalloc.h>
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>

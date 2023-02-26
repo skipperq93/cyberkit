@@ -31,15 +31,15 @@
 #include "WebInspectorUIProxyMessages.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/Chrome.h>
-#include <WebCore/DOMWrapperWorld.h>
-#include <WebCore/ExceptionDetails.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/InspectorController.h>
-#include <WebCore/InspectorFrontendHost.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/Settings.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/Chrome.h>
+#include <CyberCore/DOMWrapperWorld.h>
+#include <CyberCore/ExceptionDetails.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/InspectorController.h>
+#include <CyberCore/InspectorFrontendHost.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/Settings.h>
 
 #if ENABLE(INSPECTOR_EXTENSIONS)
 #include "WebInspectorUIExtensionController.h"

@@ -37,8 +37,8 @@
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/NotificationData.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/NotificationData.h>
+#include <CyberCore/SecurityOriginData.h>
 
 namespace WebKit {
 using namespace WebCore;

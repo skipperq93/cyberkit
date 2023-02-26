@@ -32,9 +32,9 @@
 #import "CompletionHandlerCallChecker.h"
 #import "WebPageProxy.h"
 #import "_WKDataTaskDelegate.h"
-#import <WebCore/AuthenticationMac.h>
-#import <WebCore/Credential.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/AuthenticationMac.h>
+#import <CyberCore/Credential.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 
 class WKDataTaskClient final : public API::DataTaskClient {

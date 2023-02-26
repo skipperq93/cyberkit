@@ -31,10 +31,10 @@
 #include "SandboxExtension.h"
 #include "UserData.h"
 #include "WebsitePoliciesData.h"
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ShouldTreatAsContinuingLoad.h>
-#include <WebCore/SubstituteData.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ShouldTreatAsContinuingLoad.h>
+#include <CyberCore/SubstituteData.h>
 
 OBJC_CLASS NSDictionary;
 

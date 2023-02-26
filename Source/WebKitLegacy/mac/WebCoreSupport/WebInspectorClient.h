@@ -27,10 +27,10 @@
  */
 
 #import <JavaScriptCore/InspectorFrontendChannel.h>
-#import <WebCore/FloatRect.h>
-#import <WebCore/InspectorClient.h>
-#import <WebCore/InspectorDebuggableType.h>
-#import <WebCore/InspectorFrontendClientLocal.h>
+#import <CyberCore/FloatRect.h>
+#import <CyberCore/InspectorClient.h>
+#import <CyberCore/InspectorDebuggableType.h>
+#import <CyberCore/InspectorFrontendClientLocal.h>
 #import <wtf/Forward.h>
 #import <wtf/HashMap.h>
 #import <wtf/RetainPtr.h>

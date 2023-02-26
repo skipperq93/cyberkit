@@ -27,7 +27,7 @@
 
 #if USE(LIBWEBRTC)
 
-#include <WebCore/LibWebRTCMacros.h>
+#include <CyberCore/LibWebRTCMacros.h>
 #include <optional>
 #include <wtf/Forward.h>
 

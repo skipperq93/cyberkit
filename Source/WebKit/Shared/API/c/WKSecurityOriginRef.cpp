@@ -28,7 +28,7 @@
 
 #include "APISecurityOrigin.h"
 #include "WKAPICast.h"
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOriginData.h>
 
 WKTypeID WKSecurityOriginGetTypeID()
 {

@@ -27,7 +27,7 @@
 
 #if ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)
 
-#include <WebCore/ScrollingCoordinatorMac.h>
+#include <CyberCore/ScrollingCoordinatorMac.h>
 
 namespace WebKit {
 

@@ -27,8 +27,8 @@
 
 #if ENABLE(GPU_PROCESS)
 
-#include <WebCore/MediaPlayerEnums.h>
-#include <WebCore/PlatformTimeRanges.h>
+#include <CyberCore/MediaPlayerEnums.h>
+#include <CyberCore/PlatformTimeRanges.h>
 #include <wtf/MediaTime.h>
 
 namespace WebKit {

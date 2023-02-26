@@ -27,8 +27,8 @@
 #include "IDBStorageRegistry.h"
 
 #include "IDBStorageConnectionToClient.h"
-#include <WebCore/UniqueIDBDatabaseConnection.h>
-#include <WebCore/UniqueIDBDatabaseTransaction.h>
+#include <CyberCore/UniqueIDBDatabaseConnection.h>
+#include <CyberCore/UniqueIDBDatabaseTransaction.h>
 
 namespace WebKit {
 

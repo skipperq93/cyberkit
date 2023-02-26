@@ -28,8 +28,8 @@
 #include "NetworkActivityTracker.h"
 #include "NetworkDataTask.h"
 #include "NetworkLoadParameters.h"
-#include <WebCore/NetworkLoadMetrics.h>
-#include <WebCore/PrivateClickMeasurement.h>
+#include <CyberCore/NetworkLoadMetrics.h>
+#include <CyberCore/PrivateClickMeasurement.h>
 #include <wtf/RetainPtr.h>
 
 OBJC_CLASS NSHTTPCookieStorage;

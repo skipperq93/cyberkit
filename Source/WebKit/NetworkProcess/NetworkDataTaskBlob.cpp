@@ -40,14 +40,14 @@
 #include "NetworkSession.h"
 #include "PrivateRelayed.h"
 #include "WebErrors.h"
-#include <WebCore/AsyncFileStream.h>
-#include <WebCore/BlobRegistryImpl.h>
-#include <WebCore/HTTPParsers.h>
-#include <WebCore/ParsedContentRange.h>
-#include <WebCore/PolicyContainer.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/AsyncFileStream.h>
+#include <CyberCore/BlobRegistryImpl.h>
+#include <CyberCore/HTTPParsers.h>
+#include <CyberCore/ParsedContentRange.h>
+#include <CyberCore/PolicyContainer.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/RunLoop.h>
 
 namespace WebKit {

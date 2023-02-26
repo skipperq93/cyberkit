@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/BackForwardItemIdentifier.h>
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/BackForwardItemIdentifier.h>
+#include <CyberCore/ProcessIdentifier.h>
 #include <wtf/Forward.h>
 #include <wtf/RunLoop.h>
 

@@ -31,8 +31,8 @@
 #import "UIKitSPI.h"
 #import "WKWebViewPrivateForTesting.h"
 #import <CoreLocation/CoreLocation.h>
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/SecurityOrigin.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/SecurityOrigin.h>
 #import <pal/spi/cocoa/NSFileManagerSPI.h>
 #import <wtf/Deque.h>
 #import <wtf/SoftLinking.h>

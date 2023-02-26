@@ -31,9 +31,9 @@
 #include "ShareableResource.h"
 #include "WebPageProxyIdentifier.h"
 #include "WebResourceInterceptController.h"
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/ResourceLoaderIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/ResourceLoaderIdentifier.h>
 #include <wtf/MonotonicTime.h>
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>

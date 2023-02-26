@@ -34,7 +34,7 @@
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebCore/PushSubscriptionIdentifier.h>
+#import <CyberCore/PushSubscriptionIdentifier.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKUIDelegatePrivate.h>

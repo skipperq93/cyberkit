@@ -28,8 +28,8 @@
 #if ENABLE(APPLE_PAY)
 
 #include "ApplePaySetupConfiguration.h"
-#include <WebCore/ActiveDOMObject.h>
-#include <WebCore/JSDOMPromiseDeferredForward.h>
+#include <CyberCore/ActiveDOMObject.h>
+#include <CyberCore/JSDOMPromiseDeferredForward.h>
 #include <wtf/Forward.h>
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>

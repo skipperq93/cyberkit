@@ -30,7 +30,7 @@
 #include "BufferIdentifierSet.h"
 #include "ImageBufferBackendHandle.h"
 #include "SwapBuffersDisplayRequirement.h"
-#include <WebCore/RenderingResourceIdentifier.h>
+#include <CyberCore/RenderingResourceIdentifier.h>
 
 namespace WebKit {
 

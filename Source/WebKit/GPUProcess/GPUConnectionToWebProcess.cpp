@@ -66,15 +66,15 @@
 #include "WebErrors.h"
 #include "WebGPUObjectHeap.h"
 #include "WebProcessMessages.h"
-#include <WebCore/LogInitialization.h>
-#include <WebCore/MockRealtimeMediaSourceCenter.h>
-#include <WebCore/NowPlayingManager.h>
+#include <CyberCore/LogInitialization.h>
+#include <CyberCore/MockRealtimeMediaSourceCenter.h>
+#include <CyberCore/NowPlayingManager.h>
 #include <wtf/Language.h>
 
 #if PLATFORM(COCOA)
 #include "RemoteLayerTreeDrawingAreaProxyMessages.h"
-#include <WebCore/MediaSessionManagerCocoa.h>
-#include <WebCore/MediaSessionManagerIOS.h>
+#include <CyberCore/MediaSessionManagerCocoa.h>
+#include <CyberCore/MediaSessionManagerIOS.h>
 #endif
 
 #if ENABLE(WEBGL)
@@ -131,11 +131,11 @@
 #endif
 
 #if PLATFORM(COCOA)
-#include <WebCore/SystemBattery.h>
+#include <CyberCore/SystemBattery.h>
 #endif
 
 #if ENABLE(VP9) && PLATFORM(COCOA)
-#include <WebCore/VP9UtilitiesCocoa.h>
+#include <CyberCore/VP9UtilitiesCocoa.h>
 #endif
 
 #if ENABLE(ROUTING_ARBITRATION) && HAVE(AVAUDIO_ROUTING_ARBITER)
@@ -143,7 +143,7 @@
 #endif
 
 #if ENABLE(MEDIA_STREAM)
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 #endif
 
 #if USE(GRAPHICS_LAYER_WC)

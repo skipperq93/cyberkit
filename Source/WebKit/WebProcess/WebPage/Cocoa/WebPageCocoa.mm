@@ -36,34 +36,34 @@
 #import "WebPasteboardOverrides.h"
 #import "WebPaymentCoordinator.h"
 #import "WebRemoteObjectRegistry.h"
-#import <WebCore/DeprecatedGlobalSettings.h>
-#import <WebCore/DictionaryLookup.h>
-#import <WebCore/DocumentMarkerController.h>
-#import <WebCore/Editing.h>
-#import <WebCore/Editor.h>
-#import <WebCore/EventHandler.h>
-#import <WebCore/EventNames.h>
-#import <WebCore/FocusController.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/GeometryUtilities.h>
-#import <WebCore/GraphicsContextCG.h>
-#import <WebCore/HTMLBodyElement.h>
-#import <WebCore/HTMLConverter.h>
-#import <WebCore/HTMLImageElement.h>
-#import <WebCore/HTMLOListElement.h>
-#import <WebCore/HTMLUListElement.h>
-#import <WebCore/HitTestResult.h>
-#import <WebCore/ImageOverlay.h>
-#import <WebCore/MutableStyleProperties.h>
-#import <WebCore/NetworkExtensionContentFilter.h>
-#import <WebCore/NodeRenderStyle.h>
-#import <WebCore/PaymentCoordinator.h>
-#import <WebCore/PlatformMediaSessionManager.h>
-#import <WebCore/Range.h>
-#import <WebCore/RenderElement.h>
-#import <WebCore/RenderLayer.h>
-#import <WebCore/RenderedDocumentMarker.h>
-#import <WebCore/TextIterator.h>
+#import <CyberCore/DeprecatedGlobalSettings.h>
+#import <CyberCore/DictionaryLookup.h>
+#import <CyberCore/DocumentMarkerController.h>
+#import <CyberCore/Editing.h>
+#import <CyberCore/Editor.h>
+#import <CyberCore/EventHandler.h>
+#import <CyberCore/EventNames.h>
+#import <CyberCore/FocusController.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/GeometryUtilities.h>
+#import <CyberCore/GraphicsContextCG.h>
+#import <CyberCore/HTMLBodyElement.h>
+#import <CyberCore/HTMLConverter.h>
+#import <CyberCore/HTMLImageElement.h>
+#import <CyberCore/HTMLOListElement.h>
+#import <CyberCore/HTMLUListElement.h>
+#import <CyberCore/HitTestResult.h>
+#import <CyberCore/ImageOverlay.h>
+#import <CyberCore/MutableStyleProperties.h>
+#import <CyberCore/NetworkExtensionContentFilter.h>
+#import <CyberCore/NodeRenderStyle.h>
+#import <CyberCore/PaymentCoordinator.h>
+#import <CyberCore/PlatformMediaSessionManager.h>
+#import <CyberCore/Range.h>
+#import <CyberCore/RenderElement.h>
+#import <CyberCore/RenderLayer.h>
+#import <CyberCore/RenderedDocumentMarker.h>
+#import <CyberCore/TextIterator.h>
 #import <pal/spi/cocoa/LaunchServicesSPI.h>
 
 #if ENABLE(GPU_PROCESS) && PLATFORM(COCOA)
@@ -71,7 +71,7 @@
 #endif
 
 #if PLATFORM(IOS)
-#import <WebCore/ParentalControlsContentFilter.h>
+#import <CyberCore/ParentalControlsContentFilter.h>
 #endif
 
 #define WEBPAGE_RELEASE_LOG(channel, fmt, ...) RELEASE_LOG(channel, "%p - [webPageID=%" PRIu64 "] WebPage::" fmt, this, m_identifier.toUInt64(), ##__VA_ARGS__)

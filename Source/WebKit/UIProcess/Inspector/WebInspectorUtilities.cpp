@@ -31,7 +31,7 @@
 #include "WebPageProxy.h"
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
-#include <WebCore/RuntimeApplicationChecks.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/WeakHashSet.h>

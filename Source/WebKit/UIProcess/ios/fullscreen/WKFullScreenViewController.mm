@@ -36,7 +36,7 @@
 #import "WKWebViewIOS.h"
 #import "WebFullScreenManagerProxy.h"
 #import "WebPageProxy.h"
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <pal/spi/cocoa/AVKitSPI.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>

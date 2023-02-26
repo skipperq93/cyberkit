@@ -25,7 +25,7 @@
 
 #include "NetworkStorageSessionMap.h"
 
-#include <WebCore/NetworkStorageSession.h>
+#include <CyberCore/NetworkStorageSession.h>
 #include <pal/SessionID.h>
 #include <wtf/MainThread.h>
 #include <wtf/ProcessID.h>

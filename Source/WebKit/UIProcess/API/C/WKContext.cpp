@@ -46,7 +46,7 @@
 #include "WebContextInjectedBundleClient.h"
 #include "WebPageProxy.h"
 #include "WebProcessPool.h"
-#include <WebCore/GamepadProvider.h>
+#include <CyberCore/GamepadProvider.h>
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 

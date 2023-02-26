@@ -38,7 +38,7 @@
 #import "WKStringCF.h"
 #import "WKURL.h"
 #import "WKURLCF.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/Vector.h>
 
 ALLOW_DEPRECATED_IMPLEMENTATIONS_BEGIN

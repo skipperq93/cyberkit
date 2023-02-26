@@ -29,7 +29,7 @@
 
 #import "PageClientImplCocoa.h"
 #import "WebFullScreenManagerProxy.h"
-#import <WebCore/InspectorOverlay.h>
+#import <CyberCore/InspectorOverlay.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>
 

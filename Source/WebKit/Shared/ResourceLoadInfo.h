@@ -27,7 +27,7 @@
 
 #include "ArgumentCoders.h"
 #include "NetworkResourceLoadIdentifier.h"
-#include <WebCore/FrameIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
 #include <wtf/URL.h>
 #include <wtf/WallTime.h>
 

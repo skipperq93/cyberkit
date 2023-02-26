@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/WritingMode.h>
+#include <CyberCore/WritingMode.h>
 #include <wtf/EnumTraits.h>
 #include <wtf/text/WTFString.h>
 

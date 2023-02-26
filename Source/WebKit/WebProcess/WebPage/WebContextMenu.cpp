@@ -31,11 +31,11 @@
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/ContextMenu.h>
-#include <WebCore/ContextMenuController.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/Page.h>
+#include <CyberCore/ContextMenu.h>
+#include <CyberCore/ContextMenuController.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/Page.h>
 
 namespace WebKit {
 using namespace WebCore;

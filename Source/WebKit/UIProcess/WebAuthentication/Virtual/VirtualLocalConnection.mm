@@ -31,8 +31,8 @@
 #import "VirtualAuthenticatorConfiguration.h"
 #import <JavaScriptCore/ArrayBuffer.h>
 #import <Security/SecItem.h>
-#import <WebCore/AuthenticatorAssertionResponse.h>
-#import <WebCore/ExceptionData.h>
+#import <CyberCore/AuthenticatorAssertionResponse.h>
+#import <CyberCore/ExceptionData.h>
 #import <wtf/Ref.h>
 #import <wtf/RunLoop.h>
 #import <wtf/spi/cocoa/SecuritySPI.h>

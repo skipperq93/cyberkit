@@ -30,11 +30,11 @@
 
 #import "WebFramePrivate.h"
 #import "WebPreferencesPrivate.h"
-#import <WebCore/EditAction.h>
-#import <WebCore/FrameLoaderTypes.h>
-#import <WebCore/FrameSelection.h>
-#import <WebCore/Position.h>
-#import <WebCore/Settings.h>
+#import <CyberCore/EditAction.h>
+#import <CyberCore/FrameLoaderTypes.h>
+#import <CyberCore/FrameSelection.h>
+#import <CyberCore/Position.h>
+#import <CyberCore/Settings.h>
 #import <wtf/NakedPtr.h>
 
 @class DOMCSSStyleDeclaration;

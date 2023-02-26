@@ -34,7 +34,7 @@
 #include <JavaScriptCore/GenericTypedArrayViewInlines.h>
 #include <JavaScriptCore/JSGenericTypedArrayViewInlines.h>
 #include <JavaScriptCore/TypedArrayType.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 
 namespace WebKit {
 

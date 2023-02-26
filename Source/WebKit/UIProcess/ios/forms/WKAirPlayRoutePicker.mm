@@ -29,7 +29,7 @@
 #if PLATFORM(IOS_FAMILY) && ENABLE(AIRPLAY_PICKER)
 
 #import "UIKitSPI.h"
-#import <WebCore/AudioSession.h>
+#import <CyberCore/AudioSession.h>
 #import <pal/spi/ios/MediaPlayerSPI.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SoftLinking.h>

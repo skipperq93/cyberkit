@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/SharedStringHash.h>
+#include <CyberCore/SharedStringHash.h>
 #include <wtf/RefPtr.h>
 
 namespace WebKit {

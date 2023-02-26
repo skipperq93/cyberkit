@@ -29,7 +29,7 @@
  */
 
 #include "config.h"
-#include <WebCore/TimeRanges.h>
+#include <CyberCore/TimeRanges.h>
 
 using namespace WebCore;
 

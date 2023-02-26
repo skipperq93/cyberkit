@@ -24,7 +24,7 @@
  */
 
 #import "WebDeviceOrientationProvider.h"
-#import <WebCore/DeviceOrientationClient.h>
+#import <CyberCore/DeviceOrientationClient.h>
 
 namespace WebCore {
 class DeviceOrientationController;

@@ -28,9 +28,9 @@
 
 #import "APIError.h"
 #import "WKErrorRef.h"
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/ResourceResponse.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/ResourceResponse.h>
 
 namespace WebKit {
 using namespace WebCore;

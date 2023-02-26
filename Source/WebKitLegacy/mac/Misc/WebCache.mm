@@ -32,24 +32,24 @@
 #import "WebView.h"
 #import "WebViewInternal.h"
 #import <JavaScriptCore/InitializeThreading.h>
-#import <WebCore/ApplicationCacheStorage.h>
-#import <WebCore/CookieJar.h>
-#import <WebCore/CredentialStorage.h>
-#import <WebCore/CrossOriginPreflightResultCache.h>
-#import <WebCore/Document.h>
-#import <WebCore/MemoryCache.h>
-#import <WebCore/NetworkStorageSession.h>
-#import <WebCore/StorageSessionProvider.h>
-#import <WebCore/WebCoreJITOperations.h>
+#import <CyberCore/ApplicationCacheStorage.h>
+#import <CyberCore/CookieJar.h>
+#import <CyberCore/CredentialStorage.h>
+#import <CyberCore/CrossOriginPreflightResultCache.h>
+#import <CyberCore/Document.h>
+#import <CyberCore/MemoryCache.h>
+#import <CyberCore/NetworkStorageSession.h>
+#import <CyberCore/StorageSessionProvider.h>
+#import <CyberCore/WebCoreJITOperations.h>
 #import <wtf/MainThread.h>
 #import <wtf/RunLoop.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import "WebFrameInternal.h"
-#import <WebCore/BackForwardCache.h>
-#import <WebCore/CachedImage.h>
-#import <WebCore/Frame.h>
-#import <WebCore/WebCoreThreadRun.h>
+#import <CyberCore/BackForwardCache.h>
+#import <CyberCore/CachedImage.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/WebCoreThreadRun.h>
 #endif
 
 class DefaultStorageSessionProvider : public WebCore::StorageSessionProvider {

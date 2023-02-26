@@ -30,12 +30,12 @@
 #include "WebPage.h"
 #include "WebPageCreationParameters.h"
 #include "WebProcess.h"
-#include <WebCore/DisplayRefreshMonitor.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/RenderView.h>
-#include <WebCore/ScrollView.h>
-#include <WebCore/TiledBacking.h>
-#include <WebCore/TransformationMatrix.h>
+#include <CyberCore/DisplayRefreshMonitor.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/RenderView.h>
+#include <CyberCore/ScrollView.h>
+#include <CyberCore/TiledBacking.h>
+#include <CyberCore/TransformationMatrix.h>
 
 // Subclasses
 #if PLATFORM(COCOA)

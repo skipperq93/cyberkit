@@ -32,7 +32,7 @@
 #import "DataReference.h"
 #import "WebPageProxy.h"
 #import "WebProcessProxy.h"
-#import <WebCore/ResourceResponse.h>
+#import <CyberCore/ResourceResponse.h>
 #import <wtf/RunLoop.h>
 
 namespace WebKit {

@@ -34,13 +34,13 @@
 #include "RemoteMediaRecorderMessages.h"
 #include "RemoteVideoFrameProxy.h"
 #include "WebProcess.h"
-#include <WebCore/CARingBuffer.h>
-#include <WebCore/CVUtilities.h>
-#include <WebCore/MediaStreamPrivate.h>
-#include <WebCore/MediaStreamTrackPrivate.h>
-#include <WebCore/RealtimeIncomingVideoSourceCocoa.h>
-#include <WebCore/SharedBuffer.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/CARingBuffer.h>
+#include <CyberCore/CVUtilities.h>
+#include <CyberCore/MediaStreamPrivate.h>
+#include <CyberCore/MediaStreamTrackPrivate.h>
+#include <CyberCore/RealtimeIncomingVideoSourceCocoa.h>
+#include <CyberCore/SharedBuffer.h>
+#include <CyberCore/WebAudioBufferList.h>
 
 #include <pal/cf/CoreMediaSoftLink.h>
 

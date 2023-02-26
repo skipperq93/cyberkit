@@ -34,15 +34,15 @@
 #include "IPCSemaphore.h"
 #include "Logging.h"
 #include "SharedCARingBuffer.h"
-#include <WebCore/AudioMediaStreamTrackRendererInternalUnit.h>
-#include <WebCore/AudioSampleBufferList.h>
-#include <WebCore/AudioSession.h>
-#include <WebCore/AudioUtilities.h>
-#include <WebCore/CAAudioStreamDescription.h>
-#include <WebCore/CARingBuffer.h>
-#include <WebCore/CoreAudioCaptureSource.h>
-#include <WebCore/CoreAudioSharedUnit.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/AudioMediaStreamTrackRendererInternalUnit.h>
+#include <CyberCore/AudioSampleBufferList.h>
+#include <CyberCore/AudioSession.h>
+#include <CyberCore/AudioUtilities.h>
+#include <CyberCore/CAAudioStreamDescription.h>
+#include <CyberCore/CARingBuffer.h>
+#include <CyberCore/CoreAudioCaptureSource.h>
+#include <CyberCore/CoreAudioSharedUnit.h>
+#include <CyberCore/WebAudioBufferList.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebKit {

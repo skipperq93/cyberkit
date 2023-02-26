@@ -26,11 +26,11 @@
 #import "config.h"
 #import "_WKApplicationManifestInternal.h"
 
-#import <WebCore/ApplicationManifest.h>
-#import <WebCore/ApplicationManifestParser.h>
-#import <WebCore/Color.h>
-#import <WebCore/ColorCocoa.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/ApplicationManifest.h>
+#import <CyberCore/ApplicationManifestParser.h>
+#import <CyberCore/Color.h>
+#import <CyberCore/ColorCocoa.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 #if PLATFORM(IOS_FAMILY)

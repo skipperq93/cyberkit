@@ -25,7 +25,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-#import <WebCore/HTMLMediaElementEnums.h>
+#import <CyberCore/HTMLMediaElementEnums.h>
 #import <wtf/NakedPtr.h>
 
 @class UIView;

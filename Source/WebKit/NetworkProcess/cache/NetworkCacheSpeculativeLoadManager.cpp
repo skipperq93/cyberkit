@@ -35,7 +35,7 @@
 #include "NetworkLoadParameters.h"
 #include "NetworkProcess.h"
 #include "PreconnectTask.h"
-#include <WebCore/DiagnosticLoggingKeys.h>
+#include <CyberCore/DiagnosticLoggingKeys.h>
 #include <pal/HysteresisActivity.h>
 #include <wtf/HashCountedSet.h>
 #include <wtf/NeverDestroyed.h>

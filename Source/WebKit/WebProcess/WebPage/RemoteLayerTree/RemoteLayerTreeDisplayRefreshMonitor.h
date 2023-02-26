@@ -26,8 +26,8 @@
 #pragma once
 
 #include "RemoteLayerTreeDrawingArea.h"
-#include <WebCore/AnimationFrameRate.h>
-#include <WebCore/DisplayRefreshMonitor.h>
+#include <CyberCore/AnimationFrameRate.h>
+#include <CyberCore/DisplayRefreshMonitor.h>
 
 namespace WebKit {
 

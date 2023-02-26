@@ -28,7 +28,7 @@
 
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JSBase.h>
-#import <WebCore/WebKitAvailability.h>
+#import <CyberCore/WebKitAvailability.h>
 
 // NSObject (WebScripting) -----------------------------------------------------
 

@@ -33,8 +33,8 @@
 #import "WebSecurityOriginInternal.h"
 #import "WebUIDelegatePrivate.h"
 #import "WebViewInternal.h"
-#import <WebCore/ScriptExecutionContext.h>
-#import <WebCore/SecurityOrigin.h>
+#import <CyberCore/ScriptExecutionContext.h>
+#import <CyberCore/SecurityOrigin.h>
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/CompletionHandler.h>
 #import <wtf/Scope.h>

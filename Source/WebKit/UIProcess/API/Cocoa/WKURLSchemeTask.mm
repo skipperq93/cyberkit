@@ -30,9 +30,9 @@
 #import "WKURLSchemeTaskInternal.h"
 #import "WebURLSchemeHandler.h"
 #import "WebURLSchemeTask.h"
-#import <WebCore/ResourceError.h>
-#import <WebCore/ResourceResponse.h>
-#import <WebCore/SharedBuffer.h>
+#import <CyberCore/ResourceError.h>
+#import <CyberCore/ResourceResponse.h>
+#import <CyberCore/SharedBuffer.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/CompletionHandler.h>
 #import <wtf/MainThread.h>

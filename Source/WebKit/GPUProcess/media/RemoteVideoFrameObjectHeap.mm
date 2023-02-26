@@ -28,8 +28,8 @@
 
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO) && PLATFORM(COCOA)
 
-#include <WebCore/PixelBufferConformerCV.h>
-#include <WebCore/CoreVideoSoftLink.h>
+#include <CyberCore/PixelBufferConformerCV.h>
+#include <CyberCore/CoreVideoSoftLink.h>
 
 namespace WebKit {
 

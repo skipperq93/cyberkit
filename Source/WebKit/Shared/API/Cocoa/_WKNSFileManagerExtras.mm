@@ -28,7 +28,7 @@
 
 #if USE(QUICK_LOOK)
 
-#import <WebCore/QuickLook.h>
+#import <CyberCore/QuickLook.h>
 
 @implementation NSFileManager (WKExtras)
 

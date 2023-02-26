@@ -29,7 +29,7 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebCore/PictureInPictureSupport.h>
+#import <CyberCore/PictureInPictureSupport.h>
 
 TEST(WebKit, PictureInPictureSupport)
 {

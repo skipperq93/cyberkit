@@ -42,8 +42,8 @@
 #import "WebURLSchemeHandlerCocoa.h"
 #import "_WKApplicationManifestInternal.h"
 #import "_WKVisitedLinkStore.h"
-#import <WebCore/RuntimeApplicationChecks.h>
-#import <WebCore/Settings.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
+#import <CyberCore/Settings.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/RobinHoodHashSet.h>
 #import <wtf/URLParser.h>

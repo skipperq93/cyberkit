@@ -30,7 +30,7 @@
 #include "ProcessThrottler.h"
 #include "WebBackForwardListItem.h"
 #include "WebProcessProxy.h"
-#include <WebCore/FrameIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 

@@ -27,14 +27,14 @@
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
-#include <WebCore/CaptureDevice.h>
-#include <WebCore/Document.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameDestructionObserverInlines.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/MediaConstraints.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/CaptureDevice.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameDestructionObserverInlines.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/MediaConstraints.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOriginData.h>
 
 namespace WebKit {
 using namespace WebCore;

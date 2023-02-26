@@ -29,11 +29,11 @@
 #include "MessageReceiver.h"
 #include "MomentumEventDispatcher.h"
 #include "WebEvent.h"
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/PlatformWheelEvent.h>
-#include <WebCore/RectEdges.h>
-#include <WebCore/ScrollingCoordinatorTypes.h>
-#include <WebCore/WheelEventDeltaFilter.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/PlatformWheelEvent.h>
+#include <CyberCore/RectEdges.h>
+#include <CyberCore/ScrollingCoordinatorTypes.h>
+#include <CyberCore/WheelEventDeltaFilter.h>
 #include <memory>
 #include <wtf/HashMap.h>
 #include <wtf/Lock.h>

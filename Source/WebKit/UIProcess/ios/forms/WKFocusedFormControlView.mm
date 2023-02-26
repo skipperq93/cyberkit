@@ -31,8 +31,8 @@
 asm(".linker_option \"-framework\", \"PepperUICore\"");
 
 #import "PepperUICoreSPI.h"
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/WebCoreCALayerExtras.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/WebCoreCALayerExtras.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>

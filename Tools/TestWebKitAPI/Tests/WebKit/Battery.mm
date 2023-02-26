@@ -29,7 +29,7 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebCore/SystemBattery.h>
+#import <CyberCore/SystemBattery.h>
 
 TEST(WebKit, SystemHasBattery)
 {

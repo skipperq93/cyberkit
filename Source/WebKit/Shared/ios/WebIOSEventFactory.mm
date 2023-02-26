@@ -29,9 +29,9 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "UIKitSPI.h"
-#import <WebCore/KeyEventCodesIOS.h>
-#import <WebCore/PlatformEventFactoryIOS.h>
-#import <WebCore/Scrollbar.h>
+#import <CyberCore/KeyEventCodesIOS.h>
+#import <CyberCore/PlatformEventFactoryIOS.h>
+#import <CyberCore/Scrollbar.h>
 
 OptionSet<WebKit::WebEventModifier> WebIOSEventFactory::webEventModifiersForUIKeyModifierFlags(UIKeyModifierFlags modifierFlags)
 {

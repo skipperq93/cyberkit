@@ -28,9 +28,9 @@
 #if ENABLE(WEB_RTC)
 
 #include "MDNSRegisterIdentifier.h"
-#include <WebCore/MDNSRegisterError.h>
-#include <WebCore/ProcessQualified.h>
-#include <WebCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/MDNSRegisterError.h>
+#include <CyberCore/ProcessQualified.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Expected.h>
 #include <wtf/Forward.h>

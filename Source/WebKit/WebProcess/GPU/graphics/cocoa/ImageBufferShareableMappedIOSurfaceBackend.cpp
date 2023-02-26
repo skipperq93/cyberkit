@@ -29,8 +29,8 @@
 #if ENABLE(GPU_PROCESS) && HAVE(IOSURFACE)
 
 #include "Logging.h"
-#include <WebCore/GraphicsContextCG.h>
-#include <WebCore/IOSurfacePool.h>
+#include <CyberCore/GraphicsContextCG.h>
+#include <CyberCore/IOSurfacePool.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StdLibExtras.h>
 #include <wtf/spi/cocoa/IOSurfaceSPI.h>

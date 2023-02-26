@@ -25,24 +25,24 @@
 #include "WebResourceLoadScheduler.h"
 
 #include "PingHandle.h"
-#include <WebCore/CachedResource.h>
-#include <WebCore/Document.h>
-#include <WebCore/DocumentLoader.h>
-#include <WebCore/FetchOptions.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/NetscapePlugInStreamLoader.h>
-#include <WebCore/NetworkStateNotifier.h>
-#include <WebCore/PlatformStrategies.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/SubresourceLoader.h>
+#include <CyberCore/CachedResource.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/DocumentLoader.h>
+#include <CyberCore/FetchOptions.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/NetscapePlugInStreamLoader.h>
+#include <CyberCore/NetworkStateNotifier.h>
+#include <CyberCore/PlatformStrategies.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/SubresourceLoader.h>
 #include <wtf/MainThread.h>
 #include <wtf/SetForScope.h>
 #include <wtf/URL.h>
 #include <wtf/text/CString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/RuntimeApplicationChecks.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
 #endif
 
 // Match the parallel connection count used by the networking layer.

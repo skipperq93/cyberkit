@@ -22,14 +22,14 @@
 
 #include "ShareableBitmapUtilities.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/Document.h>
-#include <WebCore/ElementInlines.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/HitTestResult.h>
-#include <WebCore/Node.h>
-#include <WebCore/RenderImage.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/ElementInlines.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/HitTestResult.h>
+#include <CyberCore/Node.h>
+#include <CyberCore/RenderImage.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 

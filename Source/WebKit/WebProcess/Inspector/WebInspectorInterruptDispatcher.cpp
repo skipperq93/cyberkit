@@ -29,7 +29,7 @@
 #include "Connection.h"
 #include "WebInspectorInterruptDispatcherMessages.h"
 #include <JavaScriptCore/VM.h>
-#include <WebCore/CommonVM.h>
+#include <CyberCore/CommonVM.h>
 #include <wtf/WorkQueue.h>
 
 namespace WebKit {

@@ -33,7 +33,7 @@
 #include "WebPage.h"
 #include "WebProcess.h"
 
-#include <WebCore/MotionManagerClient.h>
+#include <CyberCore/MotionManagerClient.h>
 
 namespace WebKit {
 

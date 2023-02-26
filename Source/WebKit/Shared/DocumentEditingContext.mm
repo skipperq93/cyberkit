@@ -30,7 +30,7 @@
 
 #import "UIKitSPI.h"
 #import "WebCoreArgumentCoders.h"
-#import <WebCore/ElementContext.h>
+#import <CyberCore/ElementContext.h>
 
 namespace WebKit {
 

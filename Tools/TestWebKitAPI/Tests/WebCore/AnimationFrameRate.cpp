@@ -24,8 +24,8 @@
  */
 
 #include "config.h"
-#include <WebCore/AnimationFrameRate.h>
-#include <WebCore/DisplayUpdate.h>
+#include <CyberCore/AnimationFrameRate.h>
+#include <CyberCore/DisplayUpdate.h>
 
 using namespace WebCore;
 

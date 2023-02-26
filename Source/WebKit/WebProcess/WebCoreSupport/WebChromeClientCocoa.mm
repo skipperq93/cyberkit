@@ -29,7 +29,7 @@
 #if PLATFORM(COCOA)
 
 #import "WebIconUtilities.h"
-#import <WebCore/Icon.h>
+#import <CyberCore/Icon.h>
 
 namespace WebKit {
 using namespace WebCore;

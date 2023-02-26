@@ -29,7 +29,7 @@
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER)
 
 #include "Logging.h"
-#include <WebCore/Scrollbar.h>
+#include <CyberCore/Scrollbar.h>
 #include <wtf/SystemTracing.h>
 
 namespace WebKit {

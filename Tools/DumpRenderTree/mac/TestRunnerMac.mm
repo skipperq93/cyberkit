@@ -42,7 +42,7 @@
 #import "WorkQueueItem.h"
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JSStringRefCF.h>
-#import <WebCore/GeolocationPositionData.h>
+#import <CyberCore/GeolocationPositionData.h>
 #import <CyberKit/DOMDocument.h>
 #import <CyberKit/DOMElement.h>
 #import <CyberKit/DOMHTMLInputElementPrivate.h>

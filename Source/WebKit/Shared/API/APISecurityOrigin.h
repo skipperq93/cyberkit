@@ -26,7 +26,7 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 #include <wtf/Ref.h>
 
 namespace API {

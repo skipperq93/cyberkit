@@ -27,9 +27,9 @@
 
 #if USE(QUICK_LOOK)
 
-#include <WebCore/LegacyPreviewLoaderClient.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/LegacyPreviewLoaderClient.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {

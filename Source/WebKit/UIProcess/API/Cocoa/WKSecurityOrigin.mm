@@ -26,9 +26,9 @@
 #import "config.h"
 #import "WKSecurityOriginInternal.h"
 
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/SecurityOrigin.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/SecurityOrigin.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/RefPtr.h>
 
 @implementation WKSecurityOrigin

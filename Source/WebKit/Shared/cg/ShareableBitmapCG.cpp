@@ -26,12 +26,12 @@
 #include "config.h"
 #include "ShareableBitmap.h"
 
-#include <WebCore/BitmapImage.h>
-#include <WebCore/GraphicsContextCG.h>
-#include <WebCore/IOSurface.h>
-#include <WebCore/ImageBufferUtilitiesCG.h>
-#include <WebCore/NativeImage.h>
-#include <WebCore/PlatformScreen.h>
+#include <CyberCore/BitmapImage.h>
+#include <CyberCore/GraphicsContextCG.h>
+#include <CyberCore/IOSurface.h>
+#include <CyberCore/ImageBufferUtilitiesCG.h>
+#include <CyberCore/NativeImage.h>
+#include <CyberCore/PlatformScreen.h>
 #include <pal/spi/cg/CoreGraphicsSPI.h>
 #include <wtf/RetainPtr.h>
 #include <wtf/spi/cocoa/IOSurfaceSPI.h>

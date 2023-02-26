@@ -29,8 +29,8 @@
 #import "SandboxUtilities.h"
 #import "WKWebViewInternal.h"
 #import "WebPageProxy.h"
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/SecurityOriginData.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/SecurityOriginData.h>
 #import <mutex>
 #import <wtf/BlockPtr.h>
 #import <wtf/URLHelpers.h>

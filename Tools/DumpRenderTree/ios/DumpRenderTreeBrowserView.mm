@@ -28,7 +28,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-#import <WebCore/WebCoreThreadRun.h>
+#import <CyberCore/WebCoreThreadRun.h>
 #import <CyberKit/WebCoreThread.h>
 #import <CyberKit/WebUIDelegate.h>
 #import <CyberKit/WebUIKitDelegate.h>

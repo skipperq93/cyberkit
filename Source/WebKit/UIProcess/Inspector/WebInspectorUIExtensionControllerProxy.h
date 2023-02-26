@@ -29,7 +29,7 @@
 
 #include "InspectorExtensionTypes.h"
 #include "MessageReceiver.h"
-#include <WebCore/FrameIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
 #include <wtf/Expected.h>
 #include <wtf/Forward.h>
 #include <wtf/URL.h>

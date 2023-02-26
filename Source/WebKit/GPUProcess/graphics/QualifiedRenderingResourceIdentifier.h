@@ -27,8 +27,8 @@
 
 #if ENABLE(GPU_PROCESS)
 
-#include <WebCore/ProcessQualified.h>
-#include <WebCore/RenderingResourceIdentifier.h>
+#include <CyberCore/ProcessQualified.h>
+#include <CyberCore/RenderingResourceIdentifier.h>
 
 namespace WebKit {
 

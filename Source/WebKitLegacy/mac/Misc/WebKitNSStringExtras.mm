@@ -28,11 +28,11 @@
 
 #import "WebKitNSStringExtras.h"
 
-#import <WebCore/ColorMac.h>
-#import <WebCore/FontCascade.h>
-#import <WebCore/GraphicsContextCG.h>
-#import <WebCore/LoaderNSURLExtras.h>
-#import <WebCore/TextRun.h>
+#import <CyberCore/ColorMac.h>
+#import <CyberCore/FontCascade.h>
+#import <CyberCore/GraphicsContextCG.h>
+#import <CyberCore/LoaderNSURLExtras.h>
+#import <CyberCore/TextRun.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <sys/param.h>
 #import <unicode/uchar.h>

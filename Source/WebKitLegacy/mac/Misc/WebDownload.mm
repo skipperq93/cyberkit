@@ -30,12 +30,12 @@
 
 #import "NetworkStorageSessionMap.h"
 #import <Foundation/NSURLAuthenticationChallenge.h>
-#import <WebCore/AuthenticationMac.h>
-#import <WebCore/Credential.h>
-#import <WebCore/CredentialStorage.h>
-#import <WebCore/NetworkStorageSession.h>
-#import <WebCore/ProtectionSpace.h>
-#import <WebCore/RuntimeApplicationChecks.h>
+#import <CyberCore/AuthenticationMac.h>
+#import <CyberCore/Credential.h>
+#import <CyberCore/CredentialStorage.h>
+#import <CyberCore/NetworkStorageSession.h>
+#import <CyberCore/ProtectionSpace.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
 #import <CyberKitLegacy/WebPanelAuthenticationHandler.h>
 #import <pal/spi/cocoa/NSURLDownloadSPI.h>
 #import <wtf/Assertions.h>

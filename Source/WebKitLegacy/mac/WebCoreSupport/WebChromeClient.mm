@@ -55,38 +55,38 @@
 #import "WebView.h"
 #import "WebViewInternal.h"
 #import <Foundation/Foundation.h>
-#import <WebCore/ColorChooser.h>
-#import <WebCore/ContextMenu.h>
-#import <WebCore/ContextMenuController.h>
-#import <WebCore/CookieConsentDecisionResult.h>
-#import <WebCore/Cursor.h>
-#import <WebCore/DataListSuggestionPicker.h>
-#import <WebCore/Element.h>
-#import <WebCore/FileChooser.h>
-#import <WebCore/FileIconLoader.h>
-#import <WebCore/FloatRect.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/FullscreenManager.h>
-#import <WebCore/GraphicsLayer.h>
-#import <WebCore/HTMLInputElement.h>
-#import <WebCore/HTMLNames.h>
-#import <WebCore/HTMLPlugInImageElement.h>
-#import <WebCore/HTMLVideoElement.h>
-#import <WebCore/HitTestResult.h>
-#import <WebCore/Icon.h>
-#import <WebCore/IntPoint.h>
-#import <WebCore/IntRect.h>
-#import <WebCore/ModalContainerTypes.h>
-#import <WebCore/NavigationAction.h>
-#import <WebCore/NotImplemented.h>
-#import <WebCore/Page.h>
-#import <WebCore/PlatformScreen.h>
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/SerializedCryptoKeyWrap.h>
-#import <WebCore/UniversalAccessZoom.h>
-#import <WebCore/Widget.h>
-#import <WebCore/WindowFeatures.h>
+#import <CyberCore/ColorChooser.h>
+#import <CyberCore/ContextMenu.h>
+#import <CyberCore/ContextMenuController.h>
+#import <CyberCore/CookieConsentDecisionResult.h>
+#import <CyberCore/Cursor.h>
+#import <CyberCore/DataListSuggestionPicker.h>
+#import <CyberCore/Element.h>
+#import <CyberCore/FileChooser.h>
+#import <CyberCore/FileIconLoader.h>
+#import <CyberCore/FloatRect.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/FullscreenManager.h>
+#import <CyberCore/GraphicsLayer.h>
+#import <CyberCore/HTMLInputElement.h>
+#import <CyberCore/HTMLNames.h>
+#import <CyberCore/HTMLPlugInImageElement.h>
+#import <CyberCore/HTMLVideoElement.h>
+#import <CyberCore/HitTestResult.h>
+#import <CyberCore/Icon.h>
+#import <CyberCore/IntPoint.h>
+#import <CyberCore/IntRect.h>
+#import <CyberCore/ModalContainerTypes.h>
+#import <CyberCore/NavigationAction.h>
+#import <CyberCore/NotImplemented.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/PlatformScreen.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/SerializedCryptoKeyWrap.h>
+#import <CyberCore/UniversalAccessZoom.h>
+#import <CyberCore/Widget.h>
+#import <CyberCore/WindowFeatures.h>
 #import <pal/spi/mac/NSViewSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/RefPtr.h>
@@ -98,17 +98,17 @@
 #endif
 
 #if PLATFORM(IOS_FAMILY) && ENABLE(GEOLOCATION)
-#import <WebCore/Geolocation.h>
+#import <CyberCore/Geolocation.h>
 #endif
 
 #if ENABLE(POINTER_LOCK)
-#import <WebCore/PointerLockController.h>
+#import <CyberCore/PointerLockController.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WAKClipView.h>
-#import <WebCore/WAKWindow.h>
-#import <WebCore/WebCoreThreadMessage.h>
+#import <CyberCore/WAKClipView.h>
+#import <CyberCore/WAKWindow.h>
+#import <CyberCore/WebCoreThreadMessage.h>
 #endif
 
 NSString *WebConsoleMessageXMLMessageSource = @"XMLMessageSource";

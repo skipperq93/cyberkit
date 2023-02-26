@@ -30,8 +30,8 @@
 
 #import "AppKitSPI.h"
 #import "WebPageProxy.h"
-#import <WebCore/IntRect.h>
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/IntRect.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <pal/spi/mac/NSColorSPI.h>
 
 constexpr CGFloat dropdownTopMargin = 3;

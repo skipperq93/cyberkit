@@ -32,9 +32,9 @@
 #include "RemoteVideoFrameProxy.h"
 #include "SharedCARingBuffer.h"
 #include "WebProcess.h"
-#include <WebCore/CVUtilities.h>
-#include <WebCore/VideoFrameCV.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/CVUtilities.h>
+#include <CyberCore/VideoFrameCV.h>
+#include <CyberCore/WebAudioBufferList.h>
 
 #if PLATFORM(COCOA) && ENABLE(MEDIA_STREAM)
 

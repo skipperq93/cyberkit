@@ -28,7 +28,7 @@
 
 #import "RemoteLayerTreeLayers.h"
 #import <QuartzCore/CALayer.h>
-#import <WebCore/WebActionDisablingCALayerDelegate.h>
+#import <CyberCore/WebActionDisablingCALayerDelegate.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import <UIKit/UIView.h>

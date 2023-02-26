@@ -37,7 +37,7 @@
 #import "VideoFullscreenModel.h"
 #import "WebPlaybackControlsManager.h"
 #import <AVFoundation/AVTime.h>
-#import <WebCore/WebAVPlayerLayer.h>
+#import <CyberCore/WebAVPlayerLayer.h>
 #import <pal/avfoundation/MediaTimeAVFoundation.h>
 #import <pal/spi/cocoa/AVKitSPI.h>
 #import <pal/spi/mac/PIPSPI.h>

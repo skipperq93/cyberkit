@@ -34,8 +34,8 @@
 #include "ProcessThrottlerClient.h"
 #include "ShareableBitmap.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/MediaPlayerIdentifier.h>
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 #include <memory>
 #include <pal/SessionID.h>
 

@@ -26,7 +26,7 @@
 #import "config.h"
 #import "ResourceLoadDelegate.h"
 
-#import <WebCore/AuthenticationMac.h>
+#import <CyberCore/AuthenticationMac.h>
 #import "AuthenticationChallengeProxy.h"
 #import "WKNSURLAuthenticationChallenge.h"
 #import "_WKResourceLoadDelegate.h"

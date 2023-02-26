@@ -29,7 +29,7 @@
 #if USE(PASSKIT) && PLATFORM(IOS_FAMILY)
 
 #import "WKPaymentAuthorizationDelegate.h"
-#import <WebCore/RuntimeApplicationChecks.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
 #import <wtf/CompletionHandler.h>
 #import <pal/cocoa/PassKitSoftLink.h>
 

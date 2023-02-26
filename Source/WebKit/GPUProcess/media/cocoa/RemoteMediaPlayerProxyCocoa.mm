@@ -32,9 +32,9 @@
 #import "MediaPlayerPrivateRemoteMessages.h"
 #import "WebCoreArgumentCoders.h"
 #import <QuartzCore/QuartzCore.h>
-#import <WebCore/FloatSize.h>
-#import <WebCore/IOSurface.h>
-#import <WebCore/VideoFrameCV.h>
+#import <CyberCore/FloatSize.h>
+#import <CyberCore/IOSurface.h>
+#import <CyberCore/VideoFrameCV.h>
 #import <wtf/MachSendRight.h>
 
 namespace WebKit {

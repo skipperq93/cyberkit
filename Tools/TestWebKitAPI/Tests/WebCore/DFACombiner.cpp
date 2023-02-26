@@ -28,7 +28,7 @@
 #if ENABLE(CONTENT_EXTENSIONS)
 
 #include "DFAHelpers.h"
-#include <WebCore/DFACombiner.h>
+#include <CyberCore/DFACombiner.h>
 #include <wtf/MainThread.h>
 
 using namespace WebCore;

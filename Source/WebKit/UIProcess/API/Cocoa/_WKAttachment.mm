@@ -29,9 +29,9 @@
 #import "APIAttachment.h"
 #import "WKErrorPrivate.h"
 #import "_WKAttachmentInternal.h"
-#import <WebCore/MIMETypeRegistry.h>
-#import <WebCore/SharedBuffer.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/MIMETypeRegistry.h>
+#import <CyberCore/SharedBuffer.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/CompletionHandler.h>
 

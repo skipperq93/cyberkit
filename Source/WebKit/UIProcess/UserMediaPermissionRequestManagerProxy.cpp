@@ -34,11 +34,11 @@
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/MediaConstraints.h>
-#include <WebCore/MockRealtimeMediaSourceCenter.h>
-#include <WebCore/RealtimeMediaSource.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/UserMediaRequest.h>
+#include <CyberCore/MediaConstraints.h>
+#include <CyberCore/MockRealtimeMediaSourceCenter.h>
+#include <CyberCore/RealtimeMediaSource.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/UserMediaRequest.h>
 #include <wtf/CryptographicallyRandomNumber.h>
 #include <wtf/Scope.h>
 
@@ -48,7 +48,7 @@
 #endif
 
 #if HAVE(SCREEN_CAPTURE_KIT)
-#include <WebCore/ScreenCaptureKitCaptureSource.h>
+#include <CyberCore/ScreenCaptureKitCaptureSource.h>
 #endif
 
 namespace WebKit {

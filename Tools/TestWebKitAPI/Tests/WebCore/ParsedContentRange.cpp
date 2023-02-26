@@ -25,8 +25,8 @@
 
 #include "config.h"
 
-#include <WebCore/ParsedContentRange.h>
-#include <WebCore/ParsedRequestRange.h>
+#include <CyberCore/ParsedContentRange.h>
+#include <CyberCore/ParsedRequestRange.h>
 #include <wtf/text/WTFString.h>
 
 using namespace WebCore;

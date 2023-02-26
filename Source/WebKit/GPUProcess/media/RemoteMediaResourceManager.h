@@ -31,7 +31,7 @@
 #include "MessageReceiver.h"
 #include "RemoteMediaResourceIdentifier.h"
 #include "SharedMemory.h"
-#include <WebCore/PolicyChecker.h>
+#include <CyberCore/PolicyChecker.h>
 #include <wtf/HashMap.h>
 #include <wtf/WeakPtr.h>
 

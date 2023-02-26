@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebPreferencesDefaultValues.h"
 
-#include <WebCore/RuntimeApplicationChecks.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
 #include <wtf/text/WTFString.h>
 
 #if PLATFORM(COCOA)

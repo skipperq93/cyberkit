@@ -29,9 +29,9 @@
 #include "CacheStorageDiskStore.h"
 #include "CacheStorageManager.h"
 #include "CacheStorageMemoryStore.h"
-#include <WebCore/CacheQueryOptions.h>
-#include <WebCore/CrossOriginAccessControl.h>
-#include <WebCore/ResourceError.h>
+#include <CyberCore/CacheQueryOptions.h>
+#include <CyberCore/CrossOriginAccessControl.h>
+#include <CyberCore/ResourceError.h>
 #include <wtf/Scope.h>
 
 namespace WebKit {

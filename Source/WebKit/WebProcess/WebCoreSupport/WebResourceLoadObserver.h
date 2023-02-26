@@ -27,10 +27,10 @@
 
 #if ENABLE(TRACKING_PREVENTION)
 
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/ResourceLoadObserver.h>
-#include <WebCore/ResourceLoadStatistics.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/ResourceLoadObserver.h>
+#include <CyberCore/ResourceLoadStatistics.h>
+#include <CyberCore/Timer.h>
 #include <wtf/Forward.h>
 
 namespace WebKit {

@@ -26,7 +26,7 @@
 #pragma once
 
 #include "SharedFileHandle.h"
-#include <WebCore/FileSystemSyncAccessHandleIdentifier.h>
+#include <CyberCore/FileSystemSyncAccessHandleIdentifier.h>
 
 namespace WebKit {
 

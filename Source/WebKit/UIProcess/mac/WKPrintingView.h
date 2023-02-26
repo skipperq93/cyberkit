@@ -26,7 +26,7 @@
 #if PLATFORM(MAC)
 
 #import "Connection.h"
-#import <WebCore/IntRectHash.h>
+#import <CyberCore/IntRectHash.h>
 #import <condition_variable>
 #import <wtf/Condition.h>
 #import <wtf/HashMap.h>

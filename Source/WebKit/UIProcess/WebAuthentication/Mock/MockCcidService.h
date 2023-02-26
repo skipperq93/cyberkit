@@ -28,7 +28,7 @@
 #if ENABLE(WEB_AUTHN)
 
 #include "CcidService.h"
-#include <WebCore/MockWebAuthenticationConfiguration.h>
+#include <CyberCore/MockWebAuthenticationConfiguration.h>
 
 OBJC_CLASS NSData;
 

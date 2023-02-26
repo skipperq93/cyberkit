@@ -30,7 +30,7 @@
 #include "WKAPICast.h"
 #include <JavaScriptCore/InitializeThreading.h>
 #include <JavaScriptCore/OpaqueJSString.h>
-#include <WebCore/WebCoreJITOperations.h>
+#include <CyberCore/WebCoreJITOperations.h>
 #include <wtf/unicode/UTF8Conversion.h>
 
 WKTypeID WKStringGetTypeID()

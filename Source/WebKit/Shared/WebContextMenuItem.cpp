@@ -30,7 +30,7 @@
 #include "WebContextMenuItem.h"
 
 #include "APIArray.h"
-#include <WebCore/ContextMenuItem.h>
+#include <CyberCore/ContextMenuItem.h>
 
 namespace WebKit {
 

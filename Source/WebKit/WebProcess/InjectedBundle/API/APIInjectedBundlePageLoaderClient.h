@@ -26,7 +26,7 @@
 #pragma once
 
 #include "SameDocumentNavigationType.h"
-#include <WebCore/LayoutMilestone.h>
+#include <CyberCore/LayoutMilestone.h>
 #include <wtf/Forward.h>
 #include <wtf/WallTime.h>
 #include <wtf/text/WTFString.h>

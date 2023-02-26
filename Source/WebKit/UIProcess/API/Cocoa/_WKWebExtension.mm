@@ -33,7 +33,7 @@
 #import "CocoaImage.h"
 #import "WebExtension.h"
 #import "_WKWebExtensionMatchPatternInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 NSErrorDomain const _WKWebExtensionErrorDomain = @"_WKWebExtensionErrorDomain";
 NSNotificationName const _WKWebExtensionErrorsWereUpdatedNotification = @"_WKWebExtensionErrorsWereUpdated";

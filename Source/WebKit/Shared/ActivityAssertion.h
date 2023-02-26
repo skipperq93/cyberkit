@@ -26,7 +26,7 @@
 #ifndef ActivityAssertion_h
 #define ActivityAssertion_h
 
-#include <WebCore/CountedUserActivity.h>
+#include <CyberCore/CountedUserActivity.h>
 #include <wtf/Noncopyable.h>
 
 namespace WebKit {

@@ -30,7 +30,7 @@
 #include "MessageReceiver.h"
 #include "XRDeviceIdentifier.h"
 #include "XRDeviceProxy.h"
-#include <WebCore/PlatformXR.h>
+#include <CyberCore/PlatformXR.h>
 
 namespace WebCore {
 class SecurityOriginData;

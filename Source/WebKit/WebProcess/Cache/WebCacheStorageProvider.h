@@ -26,7 +26,7 @@
 #pragma once
 
 #include "WebCacheStorageConnection.h"
-#include <WebCore/CacheStorageProvider.h>
+#include <CyberCore/CacheStorageProvider.h>
 #include <wtf/HashMap.h>
 
 namespace IPC {

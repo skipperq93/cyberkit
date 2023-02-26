@@ -28,8 +28,8 @@
 #if ENABLE(ARKIT_INLINE_PREVIEW_IOS)
 
 #include "ARKitInlinePreviewModelPlayer.h"
-#include <WebCore/ModelPlayer.h>
-#include <WebCore/ModelPlayerClient.h>
+#include <CyberCore/ModelPlayer.h>
+#include <CyberCore/ModelPlayerClient.h>
 
 namespace WebKit {
 

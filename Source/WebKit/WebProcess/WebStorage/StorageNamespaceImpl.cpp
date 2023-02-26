@@ -32,10 +32,10 @@
 #include "StorageAreaMap.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/Frame.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/Settings.h>
-#include <WebCore/StorageType.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/StorageType.h>
 
 namespace WebKit {
 using namespace WebCore;

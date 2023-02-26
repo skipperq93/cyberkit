@@ -26,8 +26,8 @@
 #pragma once
 
 #include "NetworkProcess.h"
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/StorageSessionProvider.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/StorageSessionProvider.h>
 #include <pal/SessionID.h>
 #include <wtf/WeakPtr.h>
 

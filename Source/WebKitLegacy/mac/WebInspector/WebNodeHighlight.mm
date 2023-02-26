@@ -30,14 +30,14 @@
 #import "WebNodeHighlightView.h"
 #import "WebNSViewExtras.h"
 
-#import <WebCore/InspectorController.h>
+#import <CyberCore/InspectorController.h>
 #import <wtf/Assertions.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import "WebFramePrivate.h"
 #import "WebHTMLView.h"
 #import "WebView.h"
-#import <WebCore/WAKWindow.h>
+#import <CyberCore/WAKWindow.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #endif
 

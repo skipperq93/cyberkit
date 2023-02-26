@@ -30,7 +30,7 @@
 #include "RemoteLegacyCDMIdentifier.h"
 #include "RemoteLegacyCDMSessionIdentifier.h"
 #include "WebProcessSupplement.h"
-#include <WebCore/LegacyCDM.h>
+#include <CyberCore/LegacyCDM.h>
 #include <wtf/HashMap.h>
 #include <wtf/WeakPtr.h>
 

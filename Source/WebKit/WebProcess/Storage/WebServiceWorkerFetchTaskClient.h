@@ -28,14 +28,14 @@
 #if ENABLE(SERVICE_WORKER)
 
 #include "Connection.h"
-#include <WebCore/FetchEvent.h>
-#include <WebCore/FetchLoader.h>
-#include <WebCore/FetchLoaderClient.h>
-#include <WebCore/NetworkLoadMetrics.h>
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/ServiceWorkerFetch.h>
-#include <WebCore/ServiceWorkerTypes.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/FetchEvent.h>
+#include <CyberCore/FetchLoader.h>
+#include <CyberCore/FetchLoaderClient.h>
+#include <CyberCore/NetworkLoadMetrics.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/ServiceWorkerFetch.h>
+#include <CyberCore/ServiceWorkerTypes.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/UniqueRef.h>
 
 namespace WebKit {

@@ -35,7 +35,7 @@
 #import "WKFormSelectControl.h"
 #import "WebPageProxy.h"
 #import <UIKit/UIPickerView.h>
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <pal/spi/cocoa/IOKitSPI.h>
 #import <wtf/RetainPtr.h>
 

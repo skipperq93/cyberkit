@@ -33,9 +33,9 @@
 #include "RTCDataChannelRemoteManagerMessages.h"
 #include "RTCDataChannelRemoteManagerProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/RTCDataChannel.h>
-#include <WebCore/RTCError.h>
-#include <WebCore/ScriptExecutionContext.h>
+#include <CyberCore/RTCDataChannel.h>
+#include <CyberCore/RTCError.h>
+#include <CyberCore/ScriptExecutionContext.h>
 
 namespace WebKit {
 

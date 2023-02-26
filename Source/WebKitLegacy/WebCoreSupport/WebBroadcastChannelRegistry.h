@@ -23,8 +23,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <WebCore/BroadcastChannelRegistry.h>
-#include <WebCore/PartitionedSecurityOrigin.h>
+#include <CyberCore/BroadcastChannelRegistry.h>
+#include <CyberCore/PartitionedSecurityOrigin.h>
 #include <wtf/Forward.h>
 #include <wtf/WeakPtr.h>
 

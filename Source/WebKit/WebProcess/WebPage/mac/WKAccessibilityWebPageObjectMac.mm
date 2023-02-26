@@ -37,15 +37,15 @@
 #import "WKSharedAPICast.h"
 #import "WKString.h"
 #import "WKStringCF.h"
-#import <WebCore/AXObjectCache.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/Page.h>
-#import <WebCore/PageOverlayController.h>
-#import <WebCore/PlatformScreen.h>
-#import <WebCore/ScrollView.h>
-#import <WebCore/Scrollbar.h>
-#import <WebCore/WebAccessibilityObjectWrapperMac.h>
+#import <CyberCore/AXObjectCache.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/PageOverlayController.h>
+#import <CyberCore/PlatformScreen.h>
+#import <CyberCore/ScrollView.h>
+#import <CyberCore/Scrollbar.h>
+#import <CyberCore/WebAccessibilityObjectWrapperMac.h>
 #import <pal/spi/cocoa/NSAccessibilitySPI.h>
 #import <wtf/cocoa/VectorCocoa.h>
 

@@ -21,12 +21,12 @@
 
 #include "UserMediaPermissionCheckProxy.h"
 #include "UserMediaPermissionRequestProxy.h"
-#include <WebCore/MediaProducer.h>
-#include <WebCore/PermissionDescriptor.h>
-#include <WebCore/PermissionState.h>
-#include <WebCore/RealtimeMediaSourceCenter.h>
-#include <WebCore/RealtimeMediaSourceFactory.h>
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/MediaProducer.h>
+#include <CyberCore/PermissionDescriptor.h>
+#include <CyberCore/PermissionState.h>
+#include <CyberCore/RealtimeMediaSourceCenter.h>
+#include <CyberCore/RealtimeMediaSourceFactory.h>
+#include <CyberCore/SecurityOrigin.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Deque.h>
 #include <wtf/HashMap.h>

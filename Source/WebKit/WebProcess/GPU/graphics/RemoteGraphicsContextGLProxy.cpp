@@ -34,15 +34,15 @@
 #include "RemoteGraphicsContextGLProxyMessages.h"
 #include "RemoteVideoFrameObjectHeapProxy.h"
 #include "WebProcess.h"
-#include <WebCore/BitmapImage.h>
-#include <WebCore/GCGLSpan.h>
-#include <WebCore/ImageBuffer.h>
+#include <CyberCore/BitmapImage.h>
+#include <CyberCore/GCGLSpan.h>
+#include <CyberCore/ImageBuffer.h>
 #include <wtf/StdLibExtras.h>
 
 #if ENABLE(VIDEO)
 #include "RemoteVideoFrameObjectHeapProxy.h"
 #include "RemoteVideoFrameProxy.h"
-#include <WebCore/MediaPlayer.h>
+#include <CyberCore/MediaPlayer.h>
 #endif
 
 namespace WebKit {

@@ -31,9 +31,9 @@
 #include "WebLockRegistryProxyMessages.h"
 #include "WebProcessProxy.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/WebLockIdentifier.h>
-#include <WebCore/WebLockManagerSnapshot.h>
-#include <WebCore/WebLockRegistry.h>
+#include <CyberCore/WebLockIdentifier.h>
+#include <CyberCore/WebLockManagerSnapshot.h>
+#include <CyberCore/WebLockRegistry.h>
 
 namespace WebKit {
 

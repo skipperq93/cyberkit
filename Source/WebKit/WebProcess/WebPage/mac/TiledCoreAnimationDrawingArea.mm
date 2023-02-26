@@ -44,29 +44,29 @@
 #import "WebProcess.h"
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <QuartzCore/QuartzCore.h>
-#import <WebCore/DebugPageOverlays.h>
-#import <WebCore/DestinationColorSpace.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/GraphicsContext.h>
-#import <WebCore/GraphicsLayerCA.h>
-#import <WebCore/Page.h>
-#import <WebCore/PlatformCAAnimationCocoa.h>
-#import <WebCore/RenderView.h>
-#import <WebCore/RunLoopObserver.h>
-#import <WebCore/ScrollbarTheme.h>
-#import <WebCore/Settings.h>
-#import <WebCore/TiledBacking.h>
-#import <WebCore/WebActionDisablingCALayerDelegate.h>
-#import <WebCore/WindowEventLoop.h>
+#import <CyberCore/DebugPageOverlays.h>
+#import <CyberCore/DestinationColorSpace.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/GraphicsContext.h>
+#import <CyberCore/GraphicsLayerCA.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/PlatformCAAnimationCocoa.h>
+#import <CyberCore/RenderView.h>
+#import <CyberCore/RunLoopObserver.h>
+#import <CyberCore/ScrollbarTheme.h>
+#import <CyberCore/Settings.h>
+#import <CyberCore/TiledBacking.h>
+#import <CyberCore/WebActionDisablingCALayerDelegate.h>
+#import <CyberCore/WindowEventLoop.h>
 #import <wtf/MachSendRight.h>
 #import <wtf/MainThread.h>
 #import <wtf/SystemTracing.h>
 
 #if ENABLE(ASYNC_SCROLLING)
-#import <WebCore/AsyncScrollingCoordinator.h>
-#import <WebCore/ScrollingThread.h>
-#import <WebCore/ScrollingTree.h>
+#import <CyberCore/AsyncScrollingCoordinator.h>
+#import <CyberCore/ScrollingThread.h>
+#import <CyberCore/ScrollingTree.h>
 #endif
 
 namespace WebKit {

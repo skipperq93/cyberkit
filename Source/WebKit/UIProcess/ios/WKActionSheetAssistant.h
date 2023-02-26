@@ -28,7 +28,7 @@
 #import "GestureTypes.h"
 #import "WKActionSheet.h"
 #import <UIKit/UIPopoverController.h>
-#import <WebCore/MediaControlsContextMenuItem.h>
+#import <CyberCore/MediaControlsContextMenuItem.h>
 #import <pal/spi/ios/DataDetectorsUISPI.h>
 #import <wtf/Forward.h>
 #import <wtf/RetainPtr.h>

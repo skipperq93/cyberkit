@@ -33,7 +33,7 @@
 #include "GPUConnectionToWebProcess.h"
 #include "GPUProcess.h"
 #include "RemoteMediaRecorder.h"
-#include <WebCore/ExceptionData.h>
+#include <CyberCore/ExceptionData.h>
 
 namespace WebKit {
 using namespace WebCore;

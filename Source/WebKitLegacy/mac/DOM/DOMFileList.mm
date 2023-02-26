@@ -29,12 +29,12 @@
 #import "DOMInternal.h"
 #import "DOMNodeInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/File.h>
-#import <WebCore/FileList.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebCoreObjCExtras.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/File.h>
+#import <CyberCore/FileList.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
 #define IMPL reinterpret_cast<WebCore::FileList*>(_internal)

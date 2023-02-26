@@ -29,8 +29,8 @@
 
 #import "WebFramePrivate.h"
 #import "WebView.h"
-#import <WebCore/ColorMac.h>
-#import <WebCore/WAKWindow.h>
+#import <CyberCore/ColorMac.h>
+#import <CyberCore/WAKWindow.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/NeverDestroyed.h>
 

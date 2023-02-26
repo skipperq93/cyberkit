@@ -30,14 +30,14 @@
 #include "MessageReceiver.h"
 #include "WebContextSupplement.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/GeolocationPositionData.h>
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/GeolocationPositionData.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <wtf/HashMap.h>
 #include <wtf/WeakHashSet.h>
 #include <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/CoreLocationGeolocationProvider.h>
+#include <CyberCore/CoreLocationGeolocationProvider.h>
 #endif
 
 namespace API {

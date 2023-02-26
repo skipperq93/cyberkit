@@ -29,8 +29,8 @@
 #include "NetworkBroadcastChannelRegistryMessages.h"
 #include "NetworkProcessConnection.h"
 #include "WebProcess.h"
-#include <WebCore/BroadcastChannel.h>
-#include <WebCore/MessageWithMessagePorts.h>
+#include <CyberCore/BroadcastChannel.h>
+#include <CyberCore/MessageWithMessagePorts.h>
 #include <wtf/CallbackAggregator.h>
 
 namespace WebKit {

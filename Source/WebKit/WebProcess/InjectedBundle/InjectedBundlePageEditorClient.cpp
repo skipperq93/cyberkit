@@ -37,8 +37,8 @@
 #include "WKRetainPtr.h"
 #include "WKString.h"
 #include "WebPage.h"
-#include <WebCore/DocumentFragment.h>
-#include <WebCore/MutableStyleProperties.h>
+#include <CyberCore/DocumentFragment.h>
+#include <CyberCore/MutableStyleProperties.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {

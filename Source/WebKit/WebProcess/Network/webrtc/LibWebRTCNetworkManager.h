@@ -28,10 +28,10 @@
 #if USE(LIBWEBRTC)
 
 #include "WebRTCMonitor.h"
-#include <WebCore/LibWebRTCProvider.h>
-#include <WebCore/ProcessQualified.h>
-#include <WebCore/RTCNetworkManager.h>
-#include <WebCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/LibWebRTCProvider.h>
+#include <CyberCore/ProcessQualified.h>
+#include <CyberCore/RTCNetworkManager.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
 
 namespace WebKit {
 

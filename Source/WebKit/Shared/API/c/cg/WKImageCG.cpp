@@ -30,10 +30,10 @@
 #include "WKSharedAPICast.h"
 #include "WKString.h"
 #include "WebImage.h"
-#include <WebCore/ColorSpace.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/ImageBufferUtilitiesCG.h>
-#include <WebCore/NativeImage.h>
+#include <CyberCore/ColorSpace.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/ImageBufferUtilitiesCG.h>
+#include <CyberCore/NativeImage.h>
 
 CGImageRef WKImageCreateCGImage(WKImageRef imageRef)
 {

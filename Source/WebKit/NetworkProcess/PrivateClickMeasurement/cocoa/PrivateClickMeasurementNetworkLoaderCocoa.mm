@@ -27,8 +27,8 @@
 #import "PrivateClickMeasurementNetworkLoader.h"
 
 #import "NetworkDataTaskCocoa.h"
-#import <WebCore/HTTPHeaderValues.h>
-#import <WebCore/MIMETypeRegistry.h>
+#import <CyberCore/HTTPHeaderValues.h>
+#import <CyberCore/MIMETypeRegistry.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/NeverDestroyed.h>

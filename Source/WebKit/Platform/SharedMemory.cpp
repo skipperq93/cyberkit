@@ -26,7 +26,7 @@
 #include "config.h"
 #include "SharedMemory.h"
 
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 
 namespace WebKit {
 

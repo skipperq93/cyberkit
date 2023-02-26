@@ -27,7 +27,7 @@
 
 #include "APIObject.h"
 #include "PolicyDecision.h"
-#include <WebCore/FrameLoaderTypes.h>
+#include <CyberCore/FrameLoaderTypes.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Vector.h>
 

@@ -31,9 +31,9 @@
 #include "NetworkProcessSupplement.h"
 #include "WebPageProxyIdentifier.h"
 #include "WebProcessSupplement.h"
-#include <WebCore/AuthenticationChallenge.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/AuthenticationChallenge.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>

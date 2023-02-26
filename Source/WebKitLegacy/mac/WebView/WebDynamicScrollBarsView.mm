@@ -29,10 +29,10 @@
 #import "WebFrameInternal.h"
 #import "WebFrameView.h"
 #import "WebHTMLViewInternal.h"
-#import <WebCore/DeprecatedGlobalSettings.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/PlatformEventFactoryMac.h>
+#import <CyberCore/DeprecatedGlobalSettings.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/PlatformEventFactoryMac.h>
 
 using namespace WebCore;
 

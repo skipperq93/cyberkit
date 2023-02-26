@@ -31,15 +31,15 @@
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/CookieRequestHeaderFieldProxy.h>
-#include <WebCore/DeprecatedGlobalSettings.h>
-#include <WebCore/Document.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameDestructionObserverInlines.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/FrameLoaderClient.h>
-#include <WebCore/Settings.h>
-#include <WebCore/StorageSessionProvider.h>
+#include <CyberCore/CookieRequestHeaderFieldProxy.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameDestructionObserverInlines.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/FrameLoaderClient.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/StorageSessionProvider.h>
 
 namespace WebKit {
 

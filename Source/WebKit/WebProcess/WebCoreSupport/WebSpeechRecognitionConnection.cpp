@@ -31,9 +31,9 @@
 #include "WebProcess.h"
 #include "WebProcessProxyMessages.h"
 #include "WebSpeechRecognitionConnectionMessages.h"
-#include <WebCore/SpeechRecognitionConnectionClient.h>
-#include <WebCore/SpeechRecognitionRequestInfo.h>
-#include <WebCore/SpeechRecognitionUpdate.h>
+#include <CyberCore/SpeechRecognitionConnectionClient.h>
+#include <CyberCore/SpeechRecognitionRequestInfo.h>
+#include <CyberCore/SpeechRecognitionUpdate.h>
 
 namespace WebKit {
 

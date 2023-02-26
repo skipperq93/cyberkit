@@ -29,9 +29,9 @@
 #import "InjectedBundleNodeHandle.h"
 #import "WKBundleAPICast.h"
 #import "WKDOMInternals.h"
-#import <WebCore/Document.h>
-#import <WebCore/RenderObject.h>
-#import <WebCore/SimpleRange.h>
+#import <CyberCore/Document.h>
+#import <CyberCore/RenderObject.h>
+#import <CyberCore/SimpleRange.h>
 #import <wtf/MainThread.h>
 #import <wtf/cocoa/VectorCocoa.h>
 

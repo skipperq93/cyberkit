@@ -33,15 +33,15 @@
 #import "WebSecurityOriginInternal.h"
 #import "WebUIDelegatePrivate.h"
 #import "WebViewInternal.h"
-#import <WebCore/Document.h>
-#import <WebCore/Frame.h>
-#import <WebCore/Geolocation.h>
+#import <CyberCore/Document.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/Geolocation.h>
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/NakedPtr.h>
 #import <wtf/NakedRef.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WAKResponder.h>
+#import <CyberCore/WAKResponder.h>
 #import <CyberKitLegacy/WebCoreThreadRun.h>
 #endif
 

@@ -26,7 +26,7 @@
 #import "config.h"
 #import "AuxiliaryProcessProxy.h"
 
-#import <WebCore/WebMAudioUtilitiesCocoa.h>
+#import <CyberCore/WebMAudioUtilitiesCocoa.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 #if PLATFORM(IOS_FAMILY) 

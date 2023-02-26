@@ -32,7 +32,7 @@
 #include "PlatformXRSystemProxyMessages.h"
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOriginData.h>
 
 namespace WebKit {
 

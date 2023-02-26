@@ -27,7 +27,7 @@
 
 #import "WebWindowAnimation.h"
 
-#import <WebCore/FloatConversion.h>
+#import <CyberCore/FloatConversion.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <wtf/Assertions.h>
 #import <wtf/MathExtras.h>

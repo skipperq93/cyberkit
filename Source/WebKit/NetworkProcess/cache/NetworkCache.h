@@ -31,9 +31,9 @@
 #include "ShareableResource.h"
 #include "WebPageProxyIdentifier.h"
 #include "WebsiteData.h"
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/ResourceResponse.h>
 #include <pal/SessionID.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Hasher.h>

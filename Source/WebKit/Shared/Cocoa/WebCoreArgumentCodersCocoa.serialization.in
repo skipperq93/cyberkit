@@ -22,13 +22,13 @@
 
 headers: "ArgumentCodersCocoa.h"
 
-header: <WebCore/DictionaryPopupInfo.h>
+header: <CyberCore/DictionaryPopupInfo.h>
 [CustomHeader=True] struct WebCore::DictionaryPopupInfoCocoa {
     RetainPtr<NSDictionary> options;
     RetainPtr<NSAttributedString> attributedString;
 };
 
-header: <WebCore/ResourceRequest.h>
+header: <CyberCore/ResourceRequest.h>
 [CustomHeader=True] struct WebCore::ResourceRequestPlatformData {
     RetainPtr<NSURLRequest> m_urlRequest;
     std::optional<bool> m_isAppInitiated;

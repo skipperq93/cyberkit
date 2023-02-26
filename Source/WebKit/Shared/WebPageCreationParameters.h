@@ -35,32 +35,32 @@
 #include "WebPageProxyIdentifier.h"
 #include "WebPreferencesStore.h"
 #include "WebURLSchemeHandlerIdentifier.h"
-#include <WebCore/ActivityState.h>
-#include <WebCore/Color.h>
-#include <WebCore/ContentSecurityPolicy.h>
-#include <WebCore/DestinationColorSpace.h>
-#include <WebCore/FloatSize.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/HighlightVisibility.h>
-#include <WebCore/IntSize.h>
-#include <WebCore/LayerHostingContextIdentifier.h>
-#include <WebCore/LayoutMilestone.h>
-#include <WebCore/MediaProducer.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/Pagination.h>
-#include <WebCore/ScrollTypes.h>
-#include <WebCore/ShouldRelaxThirdPartyCookieBlocking.h>
-#include <WebCore/UserInterfaceLayoutDirection.h>
-#include <WebCore/ViewportArguments.h>
+#include <CyberCore/ActivityState.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/ContentSecurityPolicy.h>
+#include <CyberCore/DestinationColorSpace.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/HighlightVisibility.h>
+#include <CyberCore/IntSize.h>
+#include <CyberCore/LayerHostingContextIdentifier.h>
+#include <CyberCore/LayoutMilestone.h>
+#include <CyberCore/MediaProducer.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/Pagination.h>
+#include <CyberCore/ScrollTypes.h>
+#include <CyberCore/ShouldRelaxThirdPartyCookieBlocking.h>
+#include <CyberCore/UserInterfaceLayoutDirection.h>
+#include <CyberCore/ViewportArguments.h>
 #include <wtf/RobinHoodHashSet.h>
 #include <wtf/text/WTFString.h>
 
 #if ENABLE(APPLICATION_MANIFEST)
-#include <WebCore/ApplicationManifest.h>
+#include <CyberCore/ApplicationManifest.h>
 #endif
 
 #if ENABLE(NETWORK_CONNECTION_INTEGRITY)
-#include <WebCore/LookalikeCharactersSanitizationData.h>
+#include <CyberCore/LookalikeCharactersSanitizationData.h>
 #endif
 
 #if ENABLE(WK_WEB_EXTENSIONS)

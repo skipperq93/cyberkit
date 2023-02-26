@@ -34,12 +34,12 @@
 #include "WebCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/Frame.h>
-#include <WebCore/FrameDestructionObserverInlines.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/FrameLoaderClient.h>
-#include <WebCore/HTMLFrameOwnerElement.h>
-#include <WebCore/Page.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameDestructionObserverInlines.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/FrameLoaderClient.h>
+#include <CyberCore/HTMLFrameOwnerElement.h>
+#include <CyberCore/Page.h>
 
 namespace WebKit {
 

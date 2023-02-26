@@ -27,9 +27,9 @@
 
 #if ENABLE(SPEECH_SYNTHESIS)
 
-#include <WebCore/PlatformSpeechSynthesisUtterance.h>
-#include <WebCore/PlatformSpeechSynthesisVoice.h>
-#include <WebCore/SpeechSynthesisClient.h>
+#include <CyberCore/PlatformSpeechSynthesisUtterance.h>
+#include <CyberCore/PlatformSpeechSynthesisVoice.h>
+#include <CyberCore/SpeechSynthesisClient.h>
 
 namespace WebKit {
 

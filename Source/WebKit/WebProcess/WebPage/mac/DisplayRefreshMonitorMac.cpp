@@ -32,9 +32,9 @@
 #include "WebProcess.h"
 #include "WebProcessProxy.h"
 #include "WebProcessProxyMessages.h"
-#include <WebCore/AnimationFrameRate.h>
-#include <WebCore/DisplayRefreshMonitor.h>
-#include <WebCore/RunLoopObserver.h>
+#include <CyberCore/AnimationFrameRate.h>
+#include <CyberCore/DisplayRefreshMonitor.h>
+#include <CyberCore/RunLoopObserver.h>
 #include <wtf/text/TextStream.h>
 
 namespace WebKit {

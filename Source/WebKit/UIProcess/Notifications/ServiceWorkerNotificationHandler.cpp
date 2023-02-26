@@ -28,7 +28,7 @@
 
 #include "Logging.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/NotificationData.h>
+#include <CyberCore/NotificationData.h>
 #include <wtf/Scope.h>
 
 namespace WebKit {

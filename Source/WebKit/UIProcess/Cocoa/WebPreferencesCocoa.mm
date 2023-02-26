@@ -28,7 +28,7 @@
 
 #import "StringUtilities.h"
 #import "WebPreferencesKeys.h"
-#import <WebCore/RealtimeMediaSourceCenter.h>
+#import <CyberCore/RealtimeMediaSourceCenter.h>
 #import <wtf/text/StringConcatenate.h>
 
 #if ENABLE(MEDIA_STREAM)

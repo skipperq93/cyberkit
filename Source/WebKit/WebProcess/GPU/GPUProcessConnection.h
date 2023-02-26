@@ -32,8 +32,8 @@
 #include "MediaOverridesForTesting.h"
 #include "MessageReceiverMap.h"
 #include "SharedMemory.h"
-#include <WebCore/AudioSession.h>
-#include <WebCore/PlatformMediaSession.h>
+#include <CyberCore/AudioSession.h>
+#include <CyberCore/PlatformMediaSession.h>
 #include <wtf/RefCounted.h>
 #include <wtf/WeakHashSet.h>
 #include <wtf/WeakPtr.h>

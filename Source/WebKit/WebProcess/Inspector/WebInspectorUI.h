@@ -28,11 +28,11 @@
 #include "Connection.h"
 #include "DebuggableInfoData.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/Color.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/InspectorDebuggableType.h>
-#include <WebCore/InspectorFrontendAPIDispatcher.h>
-#include <WebCore/InspectorFrontendClient.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/InspectorDebuggableType.h>
+#include <CyberCore/InspectorFrontendAPIDispatcher.h>
+#include <CyberCore/InspectorFrontendClient.h>
 
 #if ENABLE(INSPECTOR_EXTENSIONS)
 #include "InspectorExtensionTypes.h"

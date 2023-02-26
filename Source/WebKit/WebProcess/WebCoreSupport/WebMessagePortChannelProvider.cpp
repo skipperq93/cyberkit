@@ -29,9 +29,9 @@
 #include "NetworkConnectionToWebProcessMessages.h"
 #include "NetworkProcessConnection.h"
 #include "WebProcess.h"
-#include <WebCore/MessagePort.h>
-#include <WebCore/MessagePortIdentifier.h>
-#include <WebCore/MessageWithMessagePorts.h>
+#include <CyberCore/MessagePort.h>
+#include <CyberCore/MessagePortIdentifier.h>
+#include <CyberCore/MessageWithMessagePorts.h>
 
 namespace WebKit {
 using namespace WebCore;

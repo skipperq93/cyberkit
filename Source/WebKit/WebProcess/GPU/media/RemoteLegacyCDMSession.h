@@ -29,7 +29,7 @@
 
 #include "MessageReceiver.h"
 #include "RemoteLegacyCDMSessionIdentifier.h"
-#include <WebCore/LegacyCDMSession.h>
+#include <CyberCore/LegacyCDMSession.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebCore {

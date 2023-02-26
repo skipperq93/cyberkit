@@ -32,19 +32,19 @@
 #import "DOMNodeListInternal.h"
 #import "DOMTokenListInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/Attr.h>
-#import <WebCore/CSSStyleDeclaration.h>
-#import <WebCore/Element.h>
-#import <WebCore/HTMLCollection.h>
-#import <WebCore/HTMLNames.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/NameNodeList.h>
-#import <WebCore/NodeList.h>
-#import <WebCore/ScrollIntoViewOptions.h>
-#import <WebCore/StyleProperties.h>
-#import <WebCore/StyledElement.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/Attr.h>
+#import <CyberCore/CSSStyleDeclaration.h>
+#import <CyberCore/Element.h>
+#import <CyberCore/HTMLCollection.h>
+#import <CyberCore/HTMLNames.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/NameNodeList.h>
+#import <CyberCore/NodeList.h>
+#import <CyberCore/ScrollIntoViewOptions.h>
+#import <CyberCore/StyleProperties.h>
+#import <CyberCore/StyledElement.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 
 static inline WebCore::Element& unwrap(DOMElement& wrapper)
 {

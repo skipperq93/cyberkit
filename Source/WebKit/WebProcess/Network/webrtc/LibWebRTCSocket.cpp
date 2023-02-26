@@ -34,7 +34,7 @@
 #include "NetworkRTCProviderMessages.h"
 #include "RTCPacketOptions.h"
 #include "WebProcess.h"
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/Function.h>
 #include <wtf/MainThread.h>
 

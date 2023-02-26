@@ -29,11 +29,11 @@
 
 #include "MessageReceiver.h"
 #include "PlaybackSessionContextIdentifier.h"
-#include <WebCore/EventListener.h>
-#include <WebCore/HTMLMediaElementEnums.h>
-#include <WebCore/PlatformCALayer.h>
-#include <WebCore/PlatformMediaSession.h>
-#include <WebCore/PlaybackSessionModelMediaElement.h>
+#include <CyberCore/EventListener.h>
+#include <CyberCore/HTMLMediaElementEnums.h>
+#include <CyberCore/PlatformCALayer.h>
+#include <CyberCore/PlatformMediaSession.h>
+#include <CyberCore/PlaybackSessionModelMediaElement.h>
 #include <wtf/HashCountedSet.h>
 #include <wtf/HashMap.h>
 #include <wtf/RefCounted.h>

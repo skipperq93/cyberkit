@@ -29,14 +29,14 @@
 #import "DOMNodeInternal.h"
 #import "DOMNodeListInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/HTMLCollection.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/NameNodeList.h>
-#import <WebCore/Node.h>
-#import <WebCore/NodeList.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebCoreObjCExtras.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/HTMLCollection.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/NameNodeList.h>
+#import <CyberCore/Node.h>
+#import <CyberCore/NodeList.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 

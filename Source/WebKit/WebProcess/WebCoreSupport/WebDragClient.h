@@ -28,7 +28,7 @@
 
 #if ENABLE(DRAG_SUPPORT)
 
-#include <WebCore/DragClient.h>
+#include <CyberCore/DragClient.h>
 
 namespace WebKit {
 

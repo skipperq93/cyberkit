@@ -32,11 +32,11 @@
 #include "WebProcess.h"
 #include "WebSWClientConnection.h"
 #include "WebSWServerConnection.h"
-#include <WebCore/CachedResource.h>
-#include <WebCore/Exception.h>
-#include <WebCore/ExceptionCode.h>
-#include <WebCore/LegacySchemeRegistry.h>
-#include <WebCore/ServiceWorkerJob.h>
+#include <CyberCore/CachedResource.h>
+#include <CyberCore/Exception.h>
+#include <CyberCore/ExceptionCode.h>
+#include <CyberCore/LegacySchemeRegistry.h>
+#include <CyberCore/ServiceWorkerJob.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {

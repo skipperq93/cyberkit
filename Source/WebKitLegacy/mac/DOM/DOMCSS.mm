@@ -26,9 +26,9 @@
  */
 
 
-#import <WebCore/CSSRule.h>
-#import <WebCore/CSSStyleSheet.h>
-#import <WebCore/DeprecatedCSSOMValue.h>
+#import <CyberCore/CSSRule.h>
+#import <CyberCore/CSSStyleSheet.h>
+#import <CyberCore/DeprecatedCSSOMValue.h>
 #import "DOMCSSCharsetRule.h"
 #import "DOMCSSFontFaceRule.h"
 #import "DOMCSSImportRule.h"

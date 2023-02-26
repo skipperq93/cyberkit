@@ -33,20 +33,20 @@
 #include "WebFrame.h"
 #include "WebFullScreenManagerProxyMessages.h"
 #include "WebPage.h"
-#include <WebCore/AddEventListenerOptions.h>
-#include <WebCore/Color.h>
-#include <WebCore/EventNames.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/FullscreenManager.h>
-#include <WebCore/HTMLVideoElement.h>
-#include <WebCore/JSDOMPromiseDeferred.h>
-#include <WebCore/Quirks.h>
-#include <WebCore/RenderLayerBacking.h>
-#include <WebCore/RenderView.h>
-#include <WebCore/Settings.h>
-#include <WebCore/TypedElementDescendantIterator.h>
-#include <WebCore/UserGestureIndicator.h>
+#include <CyberCore/AddEventListenerOptions.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/EventNames.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/FullscreenManager.h>
+#include <CyberCore/HTMLVideoElement.h>
+#include <CyberCore/JSDOMPromiseDeferred.h>
+#include <CyberCore/Quirks.h>
+#include <CyberCore/RenderLayerBacking.h>
+#include <CyberCore/RenderView.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/TypedElementDescendantIterator.h>
+#include <CyberCore/UserGestureIndicator.h>
 
 #if PLATFORM(IOS_FAMILY) || (PLATFORM(MAC) && ENABLE(VIDEO_PRESENTATION_MODE))
 #include "PlaybackSessionManager.h"

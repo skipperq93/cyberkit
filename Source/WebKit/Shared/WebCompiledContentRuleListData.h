@@ -28,7 +28,7 @@
 #if ENABLE(CONTENT_EXTENSIONS)
 
 #include "SharedMemory.h"
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <variant>
 #include <wtf/RefPtr.h>
 

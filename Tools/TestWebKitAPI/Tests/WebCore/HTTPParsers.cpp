@@ -26,8 +26,8 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/HTTPParsers.h>
-#include <WebCore/RFC8941.h>
+#include <CyberCore/HTTPParsers.h>
+#include <CyberCore/RFC8941.h>
 
 using namespace WebCore;
 

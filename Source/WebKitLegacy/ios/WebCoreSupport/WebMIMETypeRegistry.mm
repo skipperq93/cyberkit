@@ -27,7 +27,7 @@
 
 #import "WebMIMETypeRegistry.h"
 
-#import <WebCore/MIMETypeRegistry.h>
+#import <CyberCore/MIMETypeRegistry.h>
 
 using WebCore::MIMETypeRegistry;
 

@@ -29,8 +29,8 @@
 #include "Connection.h"
 #include "DataReference.h"
 #include "WorkQueueMessageReceiver.h"
-#include <WebCore/RTCDataChannelRemoteHandlerConnection.h>
-#include <WebCore/RTCDataChannelRemoteSourceConnection.h>
+#include <CyberCore/RTCDataChannelRemoteHandlerConnection.h>
+#include <CyberCore/RTCDataChannelRemoteSourceConnection.h>
 #include <wtf/WorkQueue.h>
 
 namespace WebKit {

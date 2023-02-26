@@ -33,8 +33,8 @@
 
 #if PLATFORM(COCOA)
 #include "SharedCARingBuffer.h"
-#include <WebCore/CARingBuffer.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/CARingBuffer.h>
+#include <CyberCore/WebAudioBufferList.h>
 #endif
 
 namespace WebKit {

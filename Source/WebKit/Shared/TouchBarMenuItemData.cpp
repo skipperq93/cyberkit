@@ -32,9 +32,9 @@
 #include "Decoder.h"
 #include "Encoder.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/ElementInlines.h>
-#include <WebCore/HTMLMenuItemElement.h>
-#include <WebCore/HTMLNames.h>
+#include <CyberCore/ElementInlines.h>
+#include <CyberCore/HTMLMenuItemElement.h>
+#include <CyberCore/HTMLNames.h>
 
 namespace WebKit {
 

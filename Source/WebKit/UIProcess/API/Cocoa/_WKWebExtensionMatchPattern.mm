@@ -31,7 +31,7 @@
 #import "_WKWebExtensionMatchPatternInternal.h"
 
 #import "WebExtensionMatchPattern.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/URLParser.h>
 
 static NSString * const stringCodingKey = @"string";

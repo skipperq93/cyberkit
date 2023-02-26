@@ -36,9 +36,9 @@
 #import "WKWebViewPrivate.h"
 #import "_WKAutomationSession.h"
 #import <Carbon/Carbon.h>
-#import <WebCore/IntPoint.h>
-#import <WebCore/IntSize.h>
-#import <WebCore/PlatformMouseEvent.h>
+#import <CyberCore/IntPoint.h>
+#import <CyberCore/IntSize.h>
+#import <CyberCore/PlatformMouseEvent.h>
 #import <objc/runtime.h>
 #import <pal/spi/mac/NSEventSPI.h>
 

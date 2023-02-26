@@ -34,8 +34,8 @@
 #import "DOMProgressEvent.h"
 #import "DOMTextEvent.h"
 #import "DOMWheelEvent.h"
-#import <WebCore/Event.h>
-#import <WebCore/EventNames.h>
+#import <CyberCore/Event.h>
+#import <CyberCore/EventNames.h>
 
 using WebCore::eventNames;
 

@@ -28,9 +28,9 @@
 
 #import "InjectedBundleNodeHandle.h"
 #import "WKWebProcessPlugInFrameInternal.h"
-#import <WebCore/DataDetection.h>
-#import <WebCore/Range.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/DataDetection.h>
+#import <CyberCore/Range.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 #if ENABLE(DATA_DETECTION)
 #import "WKDataDetectorTypesInternal.h"

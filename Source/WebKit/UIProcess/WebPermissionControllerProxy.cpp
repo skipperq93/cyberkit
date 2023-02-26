@@ -29,11 +29,11 @@
 #include "WebPageProxy.h"
 #include "WebPermissionControllerProxyMessages.h"
 #include "WebProcessProxy.h"
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/PermissionDescriptor.h>
-#include <WebCore/PermissionQuerySource.h>
-#include <WebCore/PermissionState.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/PermissionDescriptor.h>
+#include <CyberCore/PermissionQuerySource.h>
+#include <CyberCore/PermissionState.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <optional>
 #include <wtf/GetPtr.h>
 #include <wtf/Vector.h>

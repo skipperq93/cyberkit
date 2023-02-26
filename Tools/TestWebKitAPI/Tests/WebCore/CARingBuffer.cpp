@@ -28,8 +28,8 @@
 #if ENABLE(WEB_AUDIO) && USE(MEDIATOOLBOX)
 
 #include "Test.h"
-#include <WebCore/CAAudioStreamDescription.h>
-#include <WebCore/CARingBuffer.h>
+#include <CyberCore/CAAudioStreamDescription.h>
+#include <CyberCore/CARingBuffer.h>
 #include <wtf/MainThread.h>
 
 using namespace WebCore;

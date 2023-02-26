@@ -28,7 +28,7 @@
 
 #include "WKAPICast.h"
 #include "WKSharedAPICast.h"
-#include <WebCore/Image.h>
+#include <CyberCore/Image.h>
 
 using namespace WebKit;
 

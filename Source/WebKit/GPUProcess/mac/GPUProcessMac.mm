@@ -31,10 +31,10 @@
 #import "GPUProcessCreationParameters.h"
 #import "SandboxInitializationParameters.h"
 #import "WKFoundation.h"
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/PlatformScreen.h>
-#import <WebCore/ScreenProperties.h>
-#import <WebCore/WebMAudioUtilitiesCocoa.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/PlatformScreen.h>
+#import <CyberCore/ScreenProperties.h>
+#import <CyberCore/WebMAudioUtilitiesCocoa.h>
 #import <pal/spi/cocoa/CoreServicesSPI.h>
 #import <pal/spi/cocoa/LaunchServicesSPI.h>
 #import <sysexits.h>

@@ -31,8 +31,8 @@
 #include "LibWebRTCNetwork.h"
 #include "Logging.h"
 #include "WebProcess.h"
-#include <WebCore/Document.h>
-#include <WebCore/LibWebRTCUtils.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/LibWebRTCUtils.h>
 
 namespace WebKit {
 using namespace WebCore;

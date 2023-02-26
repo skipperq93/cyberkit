@@ -27,12 +27,12 @@
 
 #include "IdentifierTypes.h"
 #include "StorageNamespaceIdentifier.h"
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/SecurityOriginHash.h>
-#include <WebCore/StorageArea.h>
-#include <WebCore/StorageMap.h>
-#include <WebCore/StorageNamespace.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOriginHash.h>
+#include <CyberCore/StorageArea.h>
+#include <CyberCore/StorageMap.h>
+#include <CyberCore/StorageNamespace.h>
 #include <pal/SessionID.h>
 #include <wtf/HashMap.h>
 

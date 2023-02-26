@@ -27,7 +27,7 @@
 
 #if ENABLE(UI_SIDE_COMPOSITING)
 
-#include <WebCore/ScrollingStateTree.h>
+#include <CyberCore/ScrollingStateTree.h>
 
 namespace IPC {
 class Decoder;

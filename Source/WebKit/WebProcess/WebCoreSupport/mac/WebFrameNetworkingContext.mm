@@ -30,13 +30,13 @@
 #import "WebPage.h"
 #import "WebProcess.h"
 #import "WebsiteDataStoreParameters.h"
-#import <WebCore/Frame.h>
-#import <WebCore/FrameLoader.h>
-#import <WebCore/FrameLoaderClient.h>
-#import <WebCore/NetworkStorageSession.h>
-#import <WebCore/Page.h>
-#import <WebCore/ResourceError.h>
-#import <WebCore/Settings.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameLoader.h>
+#import <CyberCore/FrameLoaderClient.h>
+#import <CyberCore/NetworkStorageSession.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/ResourceError.h>
+#import <CyberCore/Settings.h>
 #import <wtf/ProcessPrivilege.h>
 
 namespace WebKit {

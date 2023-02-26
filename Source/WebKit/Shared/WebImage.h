@@ -28,7 +28,7 @@
 #include "APIObject.h"
 #include "ImageOptions.h"
 #include "ShareableBitmap.h"
-#include <WebCore/ImageBufferBackend.h>
+#include <CyberCore/ImageBufferBackend.h>
 #include <wtf/Ref.h>
 
 namespace WebCore {

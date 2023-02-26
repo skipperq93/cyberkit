@@ -28,8 +28,8 @@
 #if ENABLE(WEB_AUTHN)
 
 #include "HidConnection.h"
-#include <WebCore/FidoHidMessage.h>
-#include <WebCore/MockWebAuthenticationConfiguration.h>
+#include <CyberCore/FidoHidMessage.h>
+#include <CyberCore/MockWebAuthenticationConfiguration.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebKit {

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/KeyedCoding.h>
+#include <CyberCore/KeyedCoding.h>
 
 namespace WebKit {
 

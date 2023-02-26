@@ -26,8 +26,8 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/MediaConstraints.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/MediaConstraints.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
 

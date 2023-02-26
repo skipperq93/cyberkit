@@ -30,7 +30,7 @@
 #include "VisitedLinkTableControllerMessages.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/BackForwardCache.h>
+#include <CyberCore/BackForwardCache.h>
 #include <wtf/NeverDestroyed.h>
 
 namespace WebKit {

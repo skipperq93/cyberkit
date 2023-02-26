@@ -31,7 +31,7 @@
 #import "APIArray.h"
 #import "APIData.h"
 #import "APIWebArchiveResource.h"
-#import <WebCore/LegacyWebArchive.h>
+#import <CyberCore/LegacyWebArchive.h>
 #import <wtf/RetainPtr.h>
 
 namespace API {

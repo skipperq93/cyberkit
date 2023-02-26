@@ -27,7 +27,7 @@
 #import "_WKProcessPoolConfigurationInternal.h"
 
 #import "LegacyGlobalSettings.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <objc/runtime.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>

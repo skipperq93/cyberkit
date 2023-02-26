@@ -27,8 +27,8 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#include <WebCore/AuthenticatorTransport.h>
-#include <WebCore/FidoConstants.h>
+#include <CyberCore/AuthenticatorTransport.h>
+#include <CyberCore/FidoConstants.h>
 #include <wtf/Forward.h>
 #include <wtf/Function.h>
 #include <wtf/Noncopyable.h>

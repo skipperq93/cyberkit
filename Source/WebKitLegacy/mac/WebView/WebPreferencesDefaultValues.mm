@@ -27,7 +27,7 @@
 
 #import "WebKitVersionChecks.h"
 #import <Foundation/NSBundle.h>
-#import <WebCore/RuntimeApplicationChecks.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
 #import <mach-o/dyld.h>
 #import <pal/spi/cf/CFUtilitiesSPI.h>
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
@@ -35,7 +35,7 @@
 #import <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/Device.h>
+#import <CyberCore/Device.h>
 #endif
 
 namespace WebKit {

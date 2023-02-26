@@ -38,16 +38,16 @@
 #include "WebNotification.h"
 #include "WebNotificationManagerMessages.h"
 #include "WebPageProxyMessages.h"
-#include <WebCore/DeprecatedGlobalSettings.h>
-#include <WebCore/Document.h>
-#include <WebCore/Notification.h>
-#include <WebCore/NotificationData.h>
-#include <WebCore/Page.h>
-#include <WebCore/SWContextManager.h>
-#include <WebCore/ScriptExecutionContext.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/Settings.h>
-#include <WebCore/UserGestureIndicator.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Notification.h>
+#include <CyberCore/NotificationData.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/SWContextManager.h>
+#include <CyberCore/ScriptExecutionContext.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/UserGestureIndicator.h>
 #endif
 
 namespace WebKit {

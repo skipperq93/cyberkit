@@ -33,14 +33,14 @@
 #include "RemoteAudioDestinationManagerMessages.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <WebCore/AudioBus.h>
-#include <WebCore/AudioUtilities.h>
+#include <CyberCore/AudioBus.h>
+#include <CyberCore/AudioUtilities.h>
 #include <algorithm>
 
 #if PLATFORM(COCOA)
-#include <WebCore/AudioUtilitiesCocoa.h>
-#include <WebCore/CARingBuffer.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/AudioUtilitiesCocoa.h>
+#include <CyberCore/CARingBuffer.h>
+#include <CyberCore/WebAudioBufferList.h>
 #include <mach/mach_time.h>
 #endif
 

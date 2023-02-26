@@ -32,7 +32,7 @@
 #import "Logging.h"
 #import "WebPageProxy.h"
 #import "WebProcessProxy.h"
-#import <WebCore/AudioSession.h>
+#import <CyberCore/AudioSession.h>
 
 namespace WebKit {
 

@@ -26,7 +26,7 @@
 #ifndef WebProgressTrackerClient_h
 #define WebProgressTrackerClient_h
 
-#include <WebCore/ProgressTrackerClient.h>
+#include <CyberCore/ProgressTrackerClient.h>
 
 namespace WebKit {
 

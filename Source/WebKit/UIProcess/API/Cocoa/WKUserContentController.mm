@@ -43,10 +43,10 @@
 #import "_WKUserContentFilterInternal.h"
 #import "_WKUserContentWorldInternal.h"
 #import "_WKUserStyleSheetInternal.h"
-#import <WebCore/SecurityOrigin.h>
-#import <WebCore/SecurityOriginData.h>
-#import <WebCore/SerializedScriptValue.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/SecurityOrigin.h>
+#import <CyberCore/SecurityOriginData.h>
+#import <CyberCore/SerializedScriptValue.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKUserContentController
 

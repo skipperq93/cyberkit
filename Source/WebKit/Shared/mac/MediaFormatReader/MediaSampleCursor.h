@@ -29,8 +29,8 @@
 
 #include "CoreMediaWrapped.h"
 #include "MediaSampleByteRange.h"
-#include <WebCore/MediaSample.h>
-#include <WebCore/SampleMap.h>
+#include <CyberCore/MediaSample.h>
+#include <CyberCore/SampleMap.h>
 #include <variant>
 #include <wtf/Identified.h>
 #include <wtf/Lock.h>

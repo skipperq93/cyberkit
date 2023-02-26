@@ -47,8 +47,8 @@
 #import "_WKWebExtensionMatchPatternInternal.h"
 #import "_WKWebExtensionPermission.h"
 #import "_WKWebExtensionTab.h"
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/UserScript.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/UserScript.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/FileSystem.h>
 #import <wtf/URLParser.h>

@@ -29,8 +29,8 @@
 #include "ArgumentCoders.h"
 #include "Logging.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/ProcessIdentity.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/ProcessIdentity.h>
+#include <CyberCore/SharedBuffer.h>
 #include <mach/mach_error.h>
 #include <mach/mach_port.h>
 #include <mach/vm_map.h>

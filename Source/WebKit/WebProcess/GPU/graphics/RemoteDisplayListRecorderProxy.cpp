@@ -33,14 +33,14 @@
 #include "RemoteRenderingBackendProxy.h"
 #include "StreamClientConnection.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/DisplayList.h>
-#include <WebCore/DisplayListDrawingContext.h>
-#include <WebCore/DisplayListItems.h>
-#include <WebCore/Filter.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/ImageBuffer.h>
-#include <WebCore/MediaPlayer.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/DisplayList.h>
+#include <CyberCore/DisplayListDrawingContext.h>
+#include <CyberCore/DisplayListItems.h>
+#include <CyberCore/Filter.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/ImageBuffer.h>
+#include <CyberCore/MediaPlayer.h>
+#include <CyberCore/NotImplemented.h>
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 

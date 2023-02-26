@@ -27,8 +27,8 @@
 
 #include "APIFrameInfo.h"
 #include "APIObject.h"
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
 
 namespace API {
 

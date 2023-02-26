@@ -27,7 +27,7 @@
 #pragma once
 
 #include "WebEvent.h"
-#include <WebCore/IntPoint.h>
+#include <CyberCore/IntPoint.h>
 
 namespace WebKit {
 

@@ -27,7 +27,7 @@
 #import "_WKTextInputContext.h"
 
 #import "_WKTextInputContextInternal.h"
-#import <WebCore/ElementContext.h>
+#import <CyberCore/ElementContext.h>
 
 @implementation _WKTextInputContext {
     WebCore::ElementContext _textInputContext;

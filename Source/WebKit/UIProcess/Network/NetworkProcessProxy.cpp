@@ -63,10 +63,10 @@
 #include "WebsiteData.h"
 #include "WebsiteDataStoreClient.h"
 #include "WebsiteDataStoreParameters.h"
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/PushPermissionState.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/ResourceError.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/PushPermissionState.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/ResourceError.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/CompletionHandler.h>
 

@@ -49,15 +49,15 @@
 #import "WebResourceLoadDelegate.h"
 #import "WebViewInternal.h"
 #import <JavaScriptCore/InitializeThreading.h>
-#import <WebCore/ApplicationCacheStorage.h>
-#import <WebCore/FrameLoader.h>
-#import <WebCore/LegacyWebArchive.h>
-#import <WebCore/MIMETypeRegistry.h>
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/SharedBuffer.h>
-#import <WebCore/WebCoreJITOperations.h>
-#import <WebCore/WebCoreObjCExtras.h>
-#import <WebCore/WebCoreURLResponse.h>
+#import <CyberCore/ApplicationCacheStorage.h>
+#import <CyberCore/FrameLoader.h>
+#import <CyberCore/LegacyWebArchive.h>
+#import <CyberCore/MIMETypeRegistry.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/SharedBuffer.h>
+#import <CyberCore/WebCoreJITOperations.h>
+#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreURLResponse.h>
 #import <CyberKitLegacy/DOMHTML.h>
 #import <CyberKitLegacy/DOMPrivate.h>
 #import <wtf/Assertions.h>
@@ -74,8 +74,8 @@
 #endif
 
 #if USE(QUICK_LOOK)
-#import <WebCore/LegacyPreviewLoaderClient.h>
-#import <WebCore/QuickLook.h>
+#import <CyberCore/LegacyPreviewLoaderClient.h>
+#import <CyberCore/QuickLook.h>
 #endif
 
 class WebDataSourcePrivate

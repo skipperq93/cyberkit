@@ -30,8 +30,8 @@
 #include "MessageReceiver.h"
 #include "RemoteImageDecoderAVFManager.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/ImageDecoder.h>
-#include <WebCore/ImageDecoderIdentifier.h>
+#include <CyberCore/ImageDecoder.h>
+#include <CyberCore/ImageDecoderIdentifier.h>
 #include <wtf/Function.h>
 #include <wtf/HashMap.h>
 #include <wtf/WeakPtr.h>

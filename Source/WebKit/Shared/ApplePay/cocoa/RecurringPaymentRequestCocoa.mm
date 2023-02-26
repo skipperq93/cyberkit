@@ -28,8 +28,8 @@
 
 #if HAVE(PASSKIT_RECURRING_PAYMENTS)
 
-#import <WebCore/ApplePayRecurringPaymentRequest.h>
-#import <WebCore/PaymentSummaryItems.h>
+#import <CyberCore/ApplePayRecurringPaymentRequest.h>
+#import <CyberCore/PaymentSummaryItems.h>
 #import <wtf/RetainPtr.h>
 
 #import <pal/cocoa/PassKitSoftLink.h>

@@ -27,10 +27,10 @@
 
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
-#include <WebCore/FloatSize.h>
-#include <WebCore/MediaPlayerEnums.h>
-#include <WebCore/PlatformTimeRanges.h>
-#include <WebCore/VideoPlaybackQualityMetrics.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/MediaPlayerEnums.h>
+#include <CyberCore/PlatformTimeRanges.h>
+#include <CyberCore/VideoPlaybackQualityMetrics.h>
 #include <wtf/MediaTime.h>
 #include <wtf/MonotonicTime.h>
 

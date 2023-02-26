@@ -25,7 +25,7 @@
 
 #include "config.h"
 
-#include <WebCore/NowPlayingInfo.h>
+#include <CyberCore/NowPlayingInfo.h>
 
 namespace TestWebKitAPI {
 

@@ -31,8 +31,8 @@
 #include "DataReference.h"
 #include "TextTrackPrivateRemoteConfiguration.h"
 #include "TrackPrivateRemoteIdentifier.h"
-#include <WebCore/InbandTextTrackPrivate.h>
-#include <WebCore/MediaPlayerIdentifier.h>
+#include <CyberCore/InbandTextTrackPrivate.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
 
 namespace WebCore {
 class InbandGenericCue;

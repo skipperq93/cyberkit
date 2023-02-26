@@ -32,19 +32,19 @@
 #import "PDFLayerControllerSPI.h"
 #import "PDFPlugin.h"
 #import <Quartz/Quartz.h>
-#import <WebCore/AddEventListenerOptions.h>
-#import <WebCore/CSSPrimitiveValue.h>
-#import <WebCore/CSSPropertyNames.h>
-#import <WebCore/ColorMac.h>
-#import <WebCore/ColorSerialization.h>
-#import <WebCore/Event.h>
-#import <WebCore/EventNames.h>
-#import <WebCore/HTMLElement.h>
-#import <WebCore/HTMLInputElement.h>
-#import <WebCore/HTMLNames.h>
-#import <WebCore/HTMLTextAreaElement.h>
-#import <WebCore/KeyboardEvent.h>
-#import <WebCore/Page.h>
+#import <CyberCore/AddEventListenerOptions.h>
+#import <CyberCore/CSSPrimitiveValue.h>
+#import <CyberCore/CSSPropertyNames.h>
+#import <CyberCore/ColorMac.h>
+#import <CyberCore/ColorSerialization.h>
+#import <CyberCore/Event.h>
+#import <CyberCore/EventNames.h>
+#import <CyberCore/HTMLElement.h>
+#import <CyberCore/HTMLInputElement.h>
+#import <CyberCore/HTMLNames.h>
+#import <CyberCore/HTMLTextAreaElement.h>
+#import <CyberCore/KeyboardEvent.h>
+#import <CyberCore/Page.h>
 
 namespace WebKit {
 using namespace WebCore;

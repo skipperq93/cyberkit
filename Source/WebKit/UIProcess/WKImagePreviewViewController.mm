@@ -29,7 +29,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import <UIKitSPI.h>
-#import <WebCore/IntSize.h>
+#import <CyberCore/IntSize.h>
 #import <_WKElementAction.h>
 
 @implementation WKImagePreviewViewController {

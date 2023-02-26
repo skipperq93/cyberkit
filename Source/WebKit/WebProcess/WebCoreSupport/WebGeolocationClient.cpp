@@ -32,8 +32,8 @@
 #include "WebGeolocationManager.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/Geolocation.h>
-#include <WebCore/GeolocationPositionData.h>
+#include <CyberCore/Geolocation.h>
+#include <CyberCore/GeolocationPositionData.h>
 
 namespace WebKit {
 using namespace WebCore;

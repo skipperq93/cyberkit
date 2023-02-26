@@ -34,12 +34,12 @@
 #include "RemoteAudioMediaStreamTrackRendererInternalUnitManagerMessages.h"
 #include "SharedCARingBuffer.h"
 #include "WebProcess.h"
-#include <WebCore/AudioMediaStreamTrackRendererInternalUnit.h>
-#include <WebCore/AudioMediaStreamTrackRendererUnit.h>
-#include <WebCore/AudioSampleBufferList.h>
-#include <WebCore/CAAudioStreamDescription.h>
-#include <WebCore/CARingBuffer.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/AudioMediaStreamTrackRendererInternalUnit.h>
+#include <CyberCore/AudioMediaStreamTrackRendererUnit.h>
+#include <CyberCore/AudioSampleBufferList.h>
+#include <CyberCore/CAAudioStreamDescription.h>
+#include <CyberCore/CARingBuffer.h>
+#include <CyberCore/WebAudioBufferList.h>
 #include <mach/mach_time.h>
 #include <wtf/Deque.h>
 

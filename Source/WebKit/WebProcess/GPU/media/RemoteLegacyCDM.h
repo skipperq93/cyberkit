@@ -28,8 +28,8 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(LEGACY_ENCRYPTED_MEDIA)
 
 #include "RemoteLegacyCDMIdentifier.h"
-#include <WebCore/LegacyCDMPrivate.h>
-#include <WebCore/MediaPlayerIdentifier.h>
+#include <CyberCore/LegacyCDMPrivate.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebCore {

@@ -38,11 +38,11 @@
 #import "RemoteVideoFrameObjectHeap.h"
 #import "SharedVideoFrame.h"
 #import "WebCoreArgumentCoders.h"
-#import <WebCore/CVUtilities.h>
-#import <WebCore/FrameRateMonitor.h>
-#import <WebCore/LibWebRTCProvider.h>
-#import <WebCore/PixelBufferConformerCV.h>
-#import <WebCore/VideoFrameCV.h>
+#import <CyberCore/CVUtilities.h>
+#import <CyberCore/FrameRateMonitor.h>
+#import <CyberCore/LibWebRTCProvider.h>
+#import <CyberCore/PixelBufferConformerCV.h>
+#import <CyberCore/VideoFrameCV.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/MediaTime.h>
 
@@ -54,7 +54,7 @@ ALLOW_COMMA_BEGIN
 ALLOW_COMMA_END
 
 #import <pal/cf/CoreMediaSoftLink.h>
-#import <WebCore/CoreVideoSoftLink.h>
+#import <CyberCore/CoreVideoSoftLink.h>
 
 namespace WebKit {
 using namespace WebCore;

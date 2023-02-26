@@ -37,7 +37,7 @@
 #endif
 
 #if ENABLE(WEBGL)
-#include <WebCore/GraphicsContextGL.h>
+#include <CyberCore/GraphicsContextGL.h>
 #endif
 
 namespace WebKit {

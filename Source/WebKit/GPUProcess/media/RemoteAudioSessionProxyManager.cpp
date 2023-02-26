@@ -31,8 +31,8 @@
 #include "GPUProcess.h"
 #include "GPUProcessConnectionMessages.h"
 #include "RemoteAudioSessionProxy.h"
-#include <WebCore/AudioSession.h>
-#include <WebCore/CoreAudioCaptureSource.h>
+#include <CyberCore/AudioSession.h>
+#include <CyberCore/CoreAudioCaptureSource.h>
 #include <wtf/HashCountedSet.h>
 
 namespace WebKit {

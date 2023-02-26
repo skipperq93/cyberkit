@@ -30,7 +30,7 @@
 #include "GPUProcessConnection.h"
 #include "MessageReceiver.h"
 #include "RemoteAudioHardwareListenerIdentifier.h"
-#include <WebCore/AudioHardwareListener.h>
+#include <CyberCore/AudioHardwareListener.h>
 
 namespace IPC {
 class Connection;

@@ -28,7 +28,7 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
 #include "TrackPrivateRemoteConfiguration.h"
-#include <WebCore/AudioTrackPrivate.h>
+#include <CyberCore/AudioTrackPrivate.h>
 
 namespace WebKit {
 

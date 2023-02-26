@@ -36,8 +36,8 @@
 #include "VideoEncoderIdentifier.h"
 #include "VideoCodecType.h"
 #include "WorkQueueMessageReceiver.h"
-#include <WebCore/ProcessIdentity.h>
-#include <WebCore/WebRTCVideoDecoder.h>
+#include <CyberCore/ProcessIdentity.h>
+#include <CyberCore/WebRTCVideoDecoder.h>
 #include <atomic>
 #include <wtf/ThreadAssertions.h>
 

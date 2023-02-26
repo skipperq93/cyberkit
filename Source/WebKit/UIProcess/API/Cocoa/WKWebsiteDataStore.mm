@@ -48,10 +48,10 @@
 #import "_WKResourceLoadStatisticsThirdPartyInternal.h"
 #import "_WKWebsiteDataStoreConfigurationInternal.h"
 #import "_WKWebsiteDataStoreDelegate.h"
-#import <WebCore/Credential.h>
-#import <WebCore/RegistrationDatabase.h>
-#import <WebCore/ServiceWorkerClientData.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/Credential.h>
+#import <CyberCore/RegistrationDatabase.h>
+#import <CyberCore/ServiceWorkerClientData.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/URL.h>
 #import <wtf/WeakObjCPtr.h>

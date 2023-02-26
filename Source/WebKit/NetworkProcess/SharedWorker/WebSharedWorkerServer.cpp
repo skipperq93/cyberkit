@@ -35,9 +35,9 @@
 #include "WebSharedWorker.h"
 #include "WebSharedWorkerServerConnection.h"
 #include "WebSharedWorkerServerToContextConnection.h"
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/WorkerFetchResult.h>
-#include <WebCore/WorkerOptions.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/WorkerFetchResult.h>
+#include <CyberCore/WorkerOptions.h>
 
 namespace WebKit {
 

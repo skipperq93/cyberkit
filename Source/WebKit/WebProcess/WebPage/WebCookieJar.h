@@ -26,7 +26,7 @@
 #pragma once
 
 #include "WebCookieCache.h"
-#include <WebCore/CookieJar.h>
+#include <CyberCore/CookieJar.h>
 
 namespace WebCore {
 struct Cookie;

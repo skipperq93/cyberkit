@@ -26,7 +26,7 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/HTTPHeaderMap.h>
+#include <CyberCore/HTTPHeaderMap.h>
 
 using namespace WebCore;
 

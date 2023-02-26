@@ -32,7 +32,7 @@
 #include "NetworkProcess.h"
 #include "NetworkProcessCreationParameters.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 
 namespace WebKit {
 

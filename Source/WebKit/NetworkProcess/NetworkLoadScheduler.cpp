@@ -28,7 +28,7 @@
 
 #include "Logging.h"
 #include "NetworkLoad.h"
-#include <WebCore/ResourceError.h>
+#include <CyberCore/ResourceError.h>
 
 namespace WebKit {
 

@@ -28,7 +28,7 @@
 #include "ResourceLoadStatisticsParameters.h"
 #include "UnifiedOriginStorageLevel.h"
 #include "WebPushDaemonConnectionConfiguration.h"
-#include <WebCore/NetworkStorageSession.h>
+#include <CyberCore/NetworkStorageSession.h>
 #include <pal/SessionID.h>
 #include <wtf/Seconds.h>
 #include <wtf/URL.h>
@@ -36,12 +36,12 @@
 
 #if USE(SOUP)
 #include "SoupCookiePersistentStorageType.h"
-#include <WebCore/HTTPCookieAcceptPolicy.h>
-#include <WebCore/SoupNetworkProxySettings.h>
+#include <CyberCore/HTTPCookieAcceptPolicy.h>
+#include <CyberCore/SoupNetworkProxySettings.h>
 #endif
 
 #if USE(CURL)
-#include <WebCore/CurlProxySettings.h>
+#include <CyberCore/CurlProxySettings.h>
 #endif
 
 #if PLATFORM(COCOA)

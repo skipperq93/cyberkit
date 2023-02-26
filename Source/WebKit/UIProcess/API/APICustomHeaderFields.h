@@ -26,7 +26,7 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/CustomHeaderFields.h>
+#include <CyberCore/CustomHeaderFields.h>
 
 namespace API {
 

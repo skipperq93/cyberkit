@@ -58,22 +58,22 @@
 #include "WebServiceWorkerFetchTaskClient.h"
 #include "WebSocketProvider.h"
 #include "WebUserContentController.h"
-#include <WebCore/EditorClient.h>
-#include <WebCore/EmptyClients.h>
-#include <WebCore/MessageWithMessagePorts.h>
-#include <WebCore/NotificationData.h>
-#include <WebCore/PageConfiguration.h>
-#include <WebCore/ScriptExecutionContextIdentifier.h>
-#include <WebCore/SerializedScriptValue.h>
-#include <WebCore/ServiceWorkerClientData.h>
-#include <WebCore/ServiceWorkerClientQueryOptions.h>
-#include <WebCore/ServiceWorkerJobDataIdentifier.h>
-#include <WebCore/UserAgent.h>
-#include <WebCore/UserContentURLPattern.h>
+#include <CyberCore/EditorClient.h>
+#include <CyberCore/EmptyClients.h>
+#include <CyberCore/MessageWithMessagePorts.h>
+#include <CyberCore/NotificationData.h>
+#include <CyberCore/PageConfiguration.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/SerializedScriptValue.h>
+#include <CyberCore/ServiceWorkerClientData.h>
+#include <CyberCore/ServiceWorkerClientQueryOptions.h>
+#include <CyberCore/ServiceWorkerJobDataIdentifier.h>
+#include <CyberCore/UserAgent.h>
+#include <CyberCore/UserContentURLPattern.h>
 #include <wtf/ProcessID.h>
 
 #if USE(QUICK_LOOK)
-#include <WebCore/LegacyPreviewLoaderClient.h>
+#include <CyberCore/LegacyPreviewLoaderClient.h>
 #endif
 
 namespace WebKit {

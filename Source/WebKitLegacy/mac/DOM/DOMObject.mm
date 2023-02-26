@@ -32,11 +32,11 @@
 #import "DOMInternal.h"
 #import "DOMProcessingInstructionInternal.h"
 #import "DOMStyleSheetInternal.h"
-#import <WebCore/HTMLLinkElement.h>
-#import <WebCore/HTMLStyleElement.h>
-#import <WebCore/ProcessingInstruction.h>
-#import <WebCore/StyleSheet.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/HTMLLinkElement.h>
+#import <CyberCore/HTMLStyleElement.h>
+#import <CyberCore/ProcessingInstruction.h>
+#import <CyberCore/StyleSheet.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 
 @implementation DOMObject
 

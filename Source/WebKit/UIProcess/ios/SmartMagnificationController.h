@@ -28,7 +28,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #include "MessageReceiver.h"
-#include <WebCore/FloatRect.h>
+#include <CyberCore/FloatRect.h>
 #include <wtf/Noncopyable.h>
 
 OBJC_CLASS WKContentView;

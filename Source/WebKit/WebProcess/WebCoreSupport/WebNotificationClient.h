@@ -27,8 +27,8 @@
 
 #if ENABLE(NOTIFICATIONS)
 
-#include <WebCore/NotificationClient.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/NotificationClient.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/HashSet.h>
 
 namespace WebKit {

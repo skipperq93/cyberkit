@@ -26,7 +26,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "UIKitSPI.h"
-#import <WebCore/GraphicsLayer.h>
+#import <CyberCore/GraphicsLayer.h>
 
 namespace WebKit {
 class RemoteLayerTreeHost;

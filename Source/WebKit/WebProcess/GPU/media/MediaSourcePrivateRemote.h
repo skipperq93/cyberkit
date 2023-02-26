@@ -31,10 +31,10 @@
 #include "MessageReceiver.h"
 #include "RemoteMediaPlayerMIMETypeCache.h"
 #include "RemoteMediaSourceIdentifier.h"
-#include <WebCore/ContentType.h>
-#include <WebCore/MediaSourcePrivate.h>
-#include <WebCore/MediaSourcePrivateClient.h>
-#include <WebCore/SourceBufferPrivate.h>
+#include <CyberCore/ContentType.h>
+#include <CyberCore/MediaSourcePrivate.h>
+#include <CyberCore/MediaSourcePrivateClient.h>
+#include <CyberCore/SourceBufferPrivate.h>
 #include <wtf/LoggerHelper.h>
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>

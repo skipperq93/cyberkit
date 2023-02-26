@@ -31,15 +31,15 @@
 #import "DOMHTMLTableSectionElementInternal.h"
 #import "DOMNodeInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/HTMLCollection.h>
-#import <WebCore/HTMLElement.h>
-#import <WebCore/HTMLNames.h>
-#import <WebCore/HTMLTableCaptionElement.h>
-#import <WebCore/HTMLTableElement.h>
-#import <WebCore/HTMLTableSectionElement.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/HTMLCollection.h>
+#import <CyberCore/HTMLElement.h>
+#import <CyberCore/HTMLNames.h>
+#import <CyberCore/HTMLTableCaptionElement.h>
+#import <CyberCore/HTMLTableElement.h>
+#import <CyberCore/HTMLTableSectionElement.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 

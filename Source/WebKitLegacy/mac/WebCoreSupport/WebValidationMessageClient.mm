@@ -27,7 +27,7 @@
 
 #import "WebView.h"
 #import "WebViewInternal.h"
-#import <WebCore/Element.h>
+#import <CyberCore/Element.h>
 
 using namespace WebCore;
 

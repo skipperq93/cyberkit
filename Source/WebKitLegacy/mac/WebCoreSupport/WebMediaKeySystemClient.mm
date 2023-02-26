@@ -27,7 +27,7 @@
 
 #if ENABLE(ENCRYPTED_MEDIA)
 
-#import <WebCore/MediaKeySystemRequest.h>
+#import <CyberCore/MediaKeySystemRequest.h>
 #import <wtf/BlockObjCExceptions.h>
 
 using namespace WebCore;

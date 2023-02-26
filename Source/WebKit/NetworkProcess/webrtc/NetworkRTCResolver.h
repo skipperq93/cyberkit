@@ -29,7 +29,7 @@
 
 #include "LibWebRTCResolverIdentifier.h"
 #include "RTCNetwork.h"
-#include <WebCore/DNS.h>
+#include <CyberCore/DNS.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
 

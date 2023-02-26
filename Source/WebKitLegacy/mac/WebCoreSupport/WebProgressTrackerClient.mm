@@ -29,7 +29,7 @@
 #import "WebViewInternal.h"
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WebCoreThreadMessage.h>
+#import <CyberCore/WebCoreThreadMessage.h>
 #endif
 
 using namespace WebCore;

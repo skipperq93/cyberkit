@@ -39,7 +39,7 @@
 #import <CoreFoundation/CFBundle.h>
 #import <UniformTypeIdentifiers/UTCoreTypes.h>
 #import <UniformTypeIdentifiers/UTType.h>
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/HashSet.h>
 #import <wtf/NeverDestroyed.h>

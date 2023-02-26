@@ -31,9 +31,9 @@
 #import "WebGeolocationCoreLocationProvider.h"
 #import <WebGeolocationPosition.h>
 #import <WebUIDelegatePrivate.h>
-#import <WebCore/GeolocationPosition.h>
-#import <WebCore/WebCoreThread.h>
-#import <WebCore/WebCoreThreadRun.h>
+#import <CyberCore/GeolocationPosition.h>
+#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/WebCoreThreadRun.h>
 #import <wtf/HashSet.h>
 #import <wtf/HashMap.h>
 #import <wtf/RetainPtr.h>

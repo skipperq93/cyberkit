@@ -29,7 +29,7 @@
 
 #include "MessageReceiver.h"
 #include "VisibleContentRectUpdateInfo.h"
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 #include <wtf/HashMap.h>
 #include <wtf/Lock.h>
 #include <wtf/Ref.h>

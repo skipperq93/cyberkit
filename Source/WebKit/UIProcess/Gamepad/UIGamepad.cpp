@@ -29,7 +29,7 @@
 #if ENABLE(GAMEPAD)
 
 #include "GamepadData.h"
-#include <WebCore/PlatformGamepad.h>
+#include <CyberCore/PlatformGamepad.h>
 
 namespace WebKit {
 using namespace WebCore;

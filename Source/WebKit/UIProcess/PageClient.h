@@ -37,18 +37,18 @@
 #include "WebDateTimePicker.h"
 #include "WebPopupMenuProxy.h"
 #include "WindowKind.h"
-#include <WebCore/ActivityState.h>
-#include <WebCore/AlternativeTextClient.h>
-#include <WebCore/ContactInfo.h>
-#include <WebCore/ContactsRequestData.h>
-#include <WebCore/DataOwnerType.h>
-#include <WebCore/DragActions.h>
-#include <WebCore/EditorClient.h>
-#include <WebCore/FocusDirection.h>
-#include <WebCore/InputMode.h>
-#include <WebCore/MediaControlsContextMenuItem.h>
-#include <WebCore/UserInterfaceLayoutDirection.h>
-#include <WebCore/ValidationBubble.h>
+#include <CyberCore/ActivityState.h>
+#include <CyberCore/AlternativeTextClient.h>
+#include <CyberCore/ContactInfo.h>
+#include <CyberCore/ContactsRequestData.h>
+#include <CyberCore/DataOwnerType.h>
+#include <CyberCore/DragActions.h>
+#include <CyberCore/EditorClient.h>
+#include <CyberCore/FocusDirection.h>
+#include <CyberCore/InputMode.h>
+#include <CyberCore/MediaControlsContextMenuItem.h>
+#include <CyberCore/UserInterfaceLayoutDirection.h>
+#include <CyberCore/ValidationBubble.h>
 #include <variant>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Forward.h>
@@ -60,11 +60,11 @@
 #include "WKFoundation.h"
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/InspectorOverlay.h>
+#include <CyberCore/InspectorOverlay.h>
 #endif
 
 #if ENABLE(IMAGE_ANALYSIS)
-#include <WebCore/TextRecognitionResult.h>
+#include <CyberCore/TextRecognitionResult.h>
 #endif
 
 OBJC_CLASS AVPlayerViewController;

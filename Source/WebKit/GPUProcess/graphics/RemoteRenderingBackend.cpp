@@ -43,13 +43,13 @@
 #include "RemoteRenderingBackendProxyMessages.h"
 #include "SwapBuffersDisplayRequirement.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/HTMLCanvasElement.h>
+#include <CyberCore/HTMLCanvasElement.h>
 #include <wtf/CheckedArithmetic.h>
 #include <wtf/StdLibExtras.h>
 #include <wtf/SystemTracing.h>
 
 #if HAVE(IOSURFACE)
-#include <WebCore/IOSurfacePool.h>
+#include <CyberCore/IOSurfacePool.h>
 #endif
 
 #if ENABLE(IPC_TESTING_API)

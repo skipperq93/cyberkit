@@ -33,9 +33,9 @@
 #include "RemoteMediaSessionHelperMessages.h"
 #include "RemoteMediaSessionHelperProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/MediaPlaybackTargetCocoa.h>
-#include <WebCore/MediaPlaybackTargetContext.h>
-#include <WebCore/MediaPlaybackTargetMock.h>
+#include <CyberCore/MediaPlaybackTargetCocoa.h>
+#include <CyberCore/MediaPlaybackTargetContext.h>
+#include <CyberCore/MediaPlaybackTargetMock.h>
 
 namespace WebKit {
 

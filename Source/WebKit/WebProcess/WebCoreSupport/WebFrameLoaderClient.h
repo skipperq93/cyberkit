@@ -27,8 +27,8 @@
 
 #include "SameDocumentNavigationType.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/FrameLoaderClient.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/FrameLoaderClient.h>
 #include <pal/SessionID.h>
 #include <wtf/Scope.h>
 

@@ -29,7 +29,7 @@
 #if ENABLE(WEB_AUTHN)
 #import "CcidService.h"
 #import <CryptoTokenKit/TKSmartCard.h>
-#import <WebCore/FidoConstants.h>
+#import <CyberCore/FidoConstants.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
 

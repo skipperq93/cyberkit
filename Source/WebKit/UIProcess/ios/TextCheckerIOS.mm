@@ -30,7 +30,7 @@
 
 #import "TextCheckerState.h"
 #import "UIKitSPI.h"
-#import <WebCore/NotImplemented.h>
+#import <CyberCore/NotImplemented.h>
 #import <pal/spi/cocoa/FoundationSPI.h>
 #import <wtf/HashMap.h>
 #import <wtf/NeverDestroyed.h>

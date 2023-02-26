@@ -27,7 +27,7 @@
 #import "_WKWebAuthenticationAssertionResponseInternal.h"
 
 #import "WKNSData.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation _WKWebAuthenticationAssertionResponse
 

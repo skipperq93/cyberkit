@@ -30,11 +30,11 @@
 
 #include "RemoteLayerTreeHost.h"
 #include "RemoteScrollingCoordinatorProxy.h"
-#include <WebCore/ScrollingTreeFixedNodeCocoa.h>
-#include <WebCore/ScrollingTreeFrameHostingNode.h>
-#include <WebCore/ScrollingTreeOverflowScrollProxyNodeCocoa.h>
-#include <WebCore/ScrollingTreePositionedNodeCocoa.h>
-#include <WebCore/ScrollingTreeStickyNodeCocoa.h>
+#include <CyberCore/ScrollingTreeFixedNodeCocoa.h>
+#include <CyberCore/ScrollingTreeFrameHostingNode.h>
+#include <CyberCore/ScrollingTreeOverflowScrollProxyNodeCocoa.h>
+#include <CyberCore/ScrollingTreePositionedNodeCocoa.h>
+#include <CyberCore/ScrollingTreeStickyNodeCocoa.h>
 
 namespace WebKit {
 using namespace WebCore;

@@ -26,13 +26,13 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/PluginData.h>
+#import <CyberCore/PluginData.h>
 #import <wtf/RetainPtr.h>
 
 typedef void (*BP_CreatePluginMIMETypesPreferencesFuncPtr)(void);
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WAKAppKitStubs.h>
+#import <CyberCore/WAKAppKitStubs.h>
 #endif
 
 @class WebPluginDatabase;

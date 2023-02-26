@@ -28,7 +28,7 @@
 #if PLATFORM(MAC)
 
 #include <OpenGL/CGLTypes.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/Timer.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/WeakHashSet.h>
 

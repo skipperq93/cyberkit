@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/FrameFlattening.h>
+#include <CyberCore/FrameFlattening.h>
 #include <wtf/Forward.h>
 
 #if PLATFORM(IOS_FAMILY)

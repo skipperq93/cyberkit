@@ -26,7 +26,7 @@
 #include "config.h"
 #include "SessionState.h"
 
-#include <WebCore/BackForwardItemIdentifier.h>
+#include <CyberCore/BackForwardItemIdentifier.h>
 
 namespace WebKit {
 

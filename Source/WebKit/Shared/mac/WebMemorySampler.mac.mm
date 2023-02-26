@@ -31,7 +31,7 @@
 #import <JavaScriptCore/JSLock.h>
 #import <JavaScriptCore/MemoryStatistics.h>
 #import <JavaScriptCore/VM.h>
-#import <WebCore/CommonVM.h>
+#import <CyberCore/CommonVM.h>
 #import <mach/mach.h>
 #import <mach/mach_types.h>
 #import <mach/task.h>

@@ -28,7 +28,7 @@
 
 #import "WKBackForwardListItemInternal.h"
 #import "WKNSArray.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKBackForwardList {
     API::ObjectStorage<WebKit::WebBackForwardList> _list;

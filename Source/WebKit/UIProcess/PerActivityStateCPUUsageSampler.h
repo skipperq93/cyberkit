@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/Page.h>
+#include <CyberCore/Page.h>
 #include <wtf/HashMap.h>
 #include <wtf/RunLoop.h>
 

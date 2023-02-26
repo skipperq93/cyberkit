@@ -34,14 +34,14 @@
 #if USE(LIBWEBRTC)
 
 #if PLATFORM(COCOA)
-#include <WebCore/LibWebRTCProviderCocoa.h>
+#include <CyberCore/LibWebRTCProviderCocoa.h>
 #elif USE(GSTREAMER)
-#include <WebCore/LibWebRTCProviderGStreamer.h>
+#include <CyberCore/LibWebRTCProviderGStreamer.h>
 #endif
 #elif USE(GSTREAMER_WEBRTC)
-#include <WebCore/GStreamerWebRTCProvider.h>
+#include <CyberCore/GStreamerWebRTCProvider.h>
 #else // !USE(LIBWEBRTC) && !USE(GSTREAMER_WEBRTC)
-#include <WebCore/WebRTCProvider.h>
+#include <CyberCore/WebRTCProvider.h>
 #endif
 
 namespace WebKit {

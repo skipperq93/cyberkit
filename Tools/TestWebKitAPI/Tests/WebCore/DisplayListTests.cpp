@@ -25,12 +25,12 @@
 
 #include "config.h"
 
-#include <WebCore/DisplayList.h>
-#include <WebCore/DisplayListItems.h>
-#include <WebCore/DisplayListIterator.h>
-#include <WebCore/Filter.h>
-#include <WebCore/Gradient.h>
-#include <WebCore/InMemoryDisplayList.h>
+#include <CyberCore/DisplayList.h>
+#include <CyberCore/DisplayListItems.h>
+#include <CyberCore/DisplayListIterator.h>
+#include <CyberCore/Filter.h>
+#include <CyberCore/Gradient.h>
+#include <CyberCore/InMemoryDisplayList.h>
 
 namespace TestWebKitAPI {
 using namespace WebCore;

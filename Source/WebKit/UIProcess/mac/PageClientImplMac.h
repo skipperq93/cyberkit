@@ -30,7 +30,7 @@
 #include "CorrectionPanel.h"
 #include "PageClientImplCocoa.h"
 #include "WebFullScreenManagerProxy.h"
-#include <WebCore/DOMPasteAccess.h>
+#include <CyberCore/DOMPasteAccess.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Forward.h>
 

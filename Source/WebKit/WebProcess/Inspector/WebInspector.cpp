@@ -32,20 +32,20 @@
 #include "WebInspectorUIProxyMessages.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/Chrome.h>
-#include <WebCore/Document.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameLoadRequest.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/InspectorController.h>
-#include <WebCore/InspectorFrontendClient.h>
-#include <WebCore/InspectorPageAgent.h>
-#include <WebCore/NavigationAction.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/Page.h>
-#include <WebCore/ScriptController.h>
-#include <WebCore/WindowFeatures.h>
+#include <CyberCore/Chrome.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameLoadRequest.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/InspectorController.h>
+#include <CyberCore/InspectorFrontendClient.h>
+#include <CyberCore/InspectorPageAgent.h>
+#include <CyberCore/NavigationAction.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/ScriptController.h>
+#include <CyberCore/WindowFeatures.h>
 
 static const float minimumAttachedHeight = 250;
 static const float maximumAttachedHeightRatio = 0.75;

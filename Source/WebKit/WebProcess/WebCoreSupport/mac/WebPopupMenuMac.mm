@@ -27,9 +27,9 @@
 #import "WebPopupMenu.h"
 
 #import "PlatformPopupMenuData.h"
-#import <WebCore/Frame.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/PopupMenuClient.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/PopupMenuClient.h>
 
 namespace WebKit {
 using namespace WebCore;

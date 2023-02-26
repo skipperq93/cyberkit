@@ -35,9 +35,9 @@
 #include "RemoteCDMProxyMessages.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <WebCore/CDMKeySystemConfiguration.h>
-#include <WebCore/CDMRestrictions.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/CDMKeySystemConfiguration.h>
+#include <CyberCore/CDMRestrictions.h>
+#include <CyberCore/SharedBuffer.h>
 
 namespace WebKit {
 

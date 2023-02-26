@@ -25,7 +25,7 @@
 
 #pragma once
 
-#import <WebCore/FloatRect.h>
+#import <CyberCore/FloatRect.h>
 #import <wtf/Vector.h>
 
 namespace WebKit {

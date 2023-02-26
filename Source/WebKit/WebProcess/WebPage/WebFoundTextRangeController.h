@@ -27,12 +27,12 @@
 
 #include "WebFindOptions.h"
 #include "WebFoundTextRange.h"
-#include <WebCore/FindOptions.h>
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/PageOverlay.h>
-#include <WebCore/SimpleRange.h>
-#include <WebCore/TextIndicator.h>
+#include <CyberCore/FindOptions.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/PageOverlay.h>
+#include <CyberCore/SimpleRange.h>
+#include <CyberCore/TextIndicator.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
 #include <wtf/Noncopyable.h>

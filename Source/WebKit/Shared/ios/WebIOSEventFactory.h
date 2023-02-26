@@ -31,7 +31,7 @@
 #import "WebMouseEvent.h"
 #import "WebWheelEvent.h"
 #import <UIKit/UIKit.h>
-#import <WebCore/WebEvent.h>
+#import <CyberCore/WebEvent.h>
 
 OBJC_CLASS UIScrollEvent;
 

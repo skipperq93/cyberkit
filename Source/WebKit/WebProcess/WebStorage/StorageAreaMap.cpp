@@ -34,16 +34,16 @@
 #include "StorageNamespaceImpl.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/DOMWindow.h>
-#include <WebCore/Document.h>
-#include <WebCore/EventNames.h>
-#include <WebCore/Frame.h>
-#include <WebCore/Page.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/Storage.h>
-#include <WebCore/StorageEventDispatcher.h>
-#include <WebCore/StorageMap.h>
-#include <WebCore/StorageType.h>
+#include <CyberCore/DOMWindow.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/EventNames.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/Storage.h>
+#include <CyberCore/StorageEventDispatcher.h>
+#include <CyberCore/StorageMap.h>
+#include <CyberCore/StorageType.h>
 
 namespace WebKit {
 using namespace WebCore;

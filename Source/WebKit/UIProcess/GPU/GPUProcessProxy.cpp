@@ -45,17 +45,17 @@
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
 #include "WebProcessProxyMessages.h"
-#include <WebCore/LogInitialization.h>
-#include <WebCore/MockRealtimeMediaSourceCenter.h>
-#include <WebCore/RuntimeApplicationChecks.h>
-#include <WebCore/ScreenProperties.h>
+#include <CyberCore/LogInitialization.h>
+#include <CyberCore/MockRealtimeMediaSourceCenter.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
+#include <CyberCore/ScreenProperties.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/LogInitialization.h>
 #include <wtf/MachSendRight.h>
 #include <wtf/TranslatedProcess.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/AGXCompilerService.h>
+#include <CyberCore/AGXCompilerService.h>
 #include <wtf/spi/darwin/XPCSPI.h>
 #endif
 

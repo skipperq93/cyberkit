@@ -27,9 +27,9 @@
 
 #include "APIObject.h"
 #include "MessageReceiver.h"
-#include <WebCore/Color.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/InspectorFrontendClient.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/InspectorFrontendClient.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
 #include <wtf/RetainPtr.h>

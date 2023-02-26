@@ -27,9 +27,9 @@
 
 #include "MessageReceiver.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/PermissionController.h>
-#include <WebCore/PermissionDescriptor.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/PermissionController.h>
+#include <CyberCore/PermissionDescriptor.h>
 #include <wtf/Deque.h>
 #include <wtf/WeakHashSet.h>
 

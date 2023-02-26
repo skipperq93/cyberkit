@@ -28,7 +28,7 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#import <WebCore/FidoConstants.h>
+#import <CyberCore/FidoConstants.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RunLoop.h>
 

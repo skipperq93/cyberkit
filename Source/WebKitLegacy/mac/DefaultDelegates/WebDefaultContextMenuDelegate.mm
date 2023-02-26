@@ -45,9 +45,9 @@
 #import "WebViewInternal.h"
 #import <Foundation/NSURLConnection.h>
 #import <Foundation/NSURLRequest.h>
-#import <WebCore/Editor.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameLoader.h>
+#import <CyberCore/Editor.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameLoader.h>
 #import <CyberKitLegacy/DOM.h>
 #import <CyberKitLegacy/DOMPrivate.h>
 #import <pal/system/mac/DefaultSearchProvider.h>

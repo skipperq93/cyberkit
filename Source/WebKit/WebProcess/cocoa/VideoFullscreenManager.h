@@ -30,10 +30,10 @@
 #include "Connection.h"
 #include "MessageReceiver.h"
 #include "PlaybackSessionContextIdentifier.h"
-#include <WebCore/EventListener.h>
-#include <WebCore/HTMLMediaElementEnums.h>
-#include <WebCore/PlatformCALayer.h>
-#include <WebCore/VideoFullscreenModelVideoElement.h>
+#include <CyberCore/EventListener.h>
+#include <CyberCore/HTMLMediaElementEnums.h>
+#include <CyberCore/PlatformCALayer.h>
+#include <CyberCore/VideoFullscreenModelVideoElement.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/HashMap.h>
 #include <wtf/RefCounted.h>

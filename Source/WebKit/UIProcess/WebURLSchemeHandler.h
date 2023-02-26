@@ -27,7 +27,7 @@
 
 #include "WebURLSchemeHandlerIdentifier.h"
 #include "WebURLSchemeTask.h"
-#include <WebCore/ResourceLoaderIdentifier.h>
+#include <CyberCore/ResourceLoaderIdentifier.h>
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 #include <wtf/RefCounted.h>

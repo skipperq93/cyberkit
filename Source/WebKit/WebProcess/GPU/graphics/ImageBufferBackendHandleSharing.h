@@ -26,7 +26,7 @@
 #pragma once
 
 #include "ImageBufferBackendHandle.h"
-#include <WebCore/ImageBufferBackend.h>
+#include <CyberCore/ImageBufferBackend.h>
 
 namespace WebKit {
 

@@ -32,12 +32,12 @@
 #if ENABLE(WEB_AUTHN)
 
 #include "FidoTestData.h"
-#include <WebCore/FidoConstants.h>
-#include <WebCore/PublicKeyCredentialCreationOptions.h>
-#include <WebCore/PublicKeyCredentialRequestOptions.h>
-#include <WebCore/U2fCommandConstructor.h>
-#include <WebCore/WebAuthenticationConstants.h>
-#include <WebCore/WebAuthenticationUtils.h>
+#include <CyberCore/FidoConstants.h>
+#include <CyberCore/PublicKeyCredentialCreationOptions.h>
+#include <CyberCore/PublicKeyCredentialRequestOptions.h>
+#include <CyberCore/U2fCommandConstructor.h>
+#include <CyberCore/WebAuthenticationConstants.h>
+#include <CyberCore/WebAuthenticationUtils.h>
 
 namespace TestWebKitAPI {
 using namespace WebCore;

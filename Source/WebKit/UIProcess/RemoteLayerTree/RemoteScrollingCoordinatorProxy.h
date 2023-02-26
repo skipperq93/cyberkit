@@ -31,9 +31,9 @@
 #include "RemoteScrollingCoordinator.h"
 #include "RemoteScrollingTree.h"
 #include "RemoteScrollingUIState.h"
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/ScrollSnapOffsetsInfo.h>
-#include <WebCore/WheelEventTestMonitor.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/ScrollSnapOffsetsInfo.h>
+#include <CyberCore/WheelEventTestMonitor.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>

@@ -34,8 +34,8 @@
 #import "WebContentMode.h"
 #import "WebProcessPool.h"
 #import "_WKCustomHeaderFieldsInternal.h"
-#import <WebCore/DocumentLoader.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/DocumentLoader.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(IOS_FAMILY)

@@ -20,11 +20,11 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/CaptureDevice.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/MediaDeviceHashSalts.h>
-#include <WebCore/MediaStreamRequest.h>
-#include <WebCore/UserMediaRequestIdentifier.h>
+#include <CyberCore/CaptureDevice.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/MediaDeviceHashSalts.h>
+#include <CyberCore/MediaStreamRequest.h>
+#include <CyberCore/UserMediaRequestIdentifier.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>

@@ -26,8 +26,8 @@
 #pragma once
 
 #include "Connection.h"
-#include <WebCore/BroadcastChannelIdentifier.h>
-#include <WebCore/ClientOrigin.h>
+#include <CyberCore/BroadcastChannelIdentifier.h>
+#include <CyberCore/ClientOrigin.h>
 #include <wtf/HashMap.h>
 
 namespace WebCore {

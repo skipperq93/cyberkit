@@ -26,7 +26,7 @@
 #pragma once
 
 #include "SandboxExtension.h"
-#include <WebCore/NetworkStorageSession.h>
+#include <CyberCore/NetworkStorageSession.h>
 #include <pal/SessionID.h>
 #include <wtf/HashMap.h>
 

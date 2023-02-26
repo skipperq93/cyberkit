@@ -35,8 +35,8 @@
 #import "ICAppBundle.h"
 #import "MockAppBundleRegistry.h"
 
-#import <WebCore/PushPermissionState.h>
-#import <WebCore/SecurityOriginData.h>
+#import <CyberCore/PushPermissionState.h>
+#import <CyberCore/SecurityOriginData.h>
 #import <pal/spi/cocoa/LaunchServicesSPI.h>
 #import <wtf/CompletionHandler.h>
 #import <wtf/HexNumber.h>

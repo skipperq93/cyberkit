@@ -32,12 +32,12 @@
 #import "RemoteMediaPlayerProxyMessages.h"
 #import "VideoLayerRemote.h"
 #import "WebCoreArgumentCoders.h"
-#import <WebCore/ColorSpaceCG.h>
-#import <WebCore/VideoLayerManager.h>
+#import <CyberCore/ColorSpaceCG.h>
+#import <CyberCore/VideoLayerManager.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/MachSendRight.h>
 
-#import <WebCore/CoreVideoSoftLink.h>
+#import <CyberCore/CoreVideoSoftLink.h>
 
 namespace WebKit {
 using namespace WebCore;

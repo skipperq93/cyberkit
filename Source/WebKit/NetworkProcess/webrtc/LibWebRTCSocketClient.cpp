@@ -33,7 +33,7 @@
 #include "LibWebRTCNetworkMessages.h"
 #include "Logging.h"
 #include "NetworkRTCProvider.h"
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/Function.h>
 
 namespace WebKit {

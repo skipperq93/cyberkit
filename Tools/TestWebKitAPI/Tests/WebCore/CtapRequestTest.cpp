@@ -33,12 +33,12 @@
 
 #include "FidoTestData.h"
 #include "PlatformUtilities.h"
-#include <WebCore/AuthenticatorAttachment.h>
-#include <WebCore/DeviceRequestConverter.h>
-#include <WebCore/FidoConstants.h>
-#include <WebCore/Pin.h>
-#include <WebCore/PublicKeyCredentialCreationOptions.h>
-#include <WebCore/PublicKeyCredentialRequestOptions.h>
+#include <CyberCore/AuthenticatorAttachment.h>
+#include <CyberCore/DeviceRequestConverter.h>
+#include <CyberCore/FidoConstants.h>
+#include <CyberCore/Pin.h>
+#include <CyberCore/PublicKeyCredentialCreationOptions.h>
+#include <CyberCore/PublicKeyCredentialRequestOptions.h>
 #include <wtf/text/Base64.h>
 
 namespace TestWebKitAPI {

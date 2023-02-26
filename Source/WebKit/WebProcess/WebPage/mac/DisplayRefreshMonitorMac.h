@@ -28,8 +28,8 @@
 #if PLATFORM(MAC)
 
 #include "DisplayLinkObserverID.h"
-#include <WebCore/DisplayRefreshMonitor.h>
-#include <WebCore/RunLoopObserver.h>
+#include <CyberCore/DisplayRefreshMonitor.h>
+#include <CyberCore/RunLoopObserver.h>
 
 namespace WebKit {
 

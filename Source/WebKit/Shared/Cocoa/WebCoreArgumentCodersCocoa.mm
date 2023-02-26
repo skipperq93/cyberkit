@@ -30,14 +30,14 @@
 #import "ArgumentCodersCocoa.h"
 #import "SharedMemory.h"
 #import <CoreText/CoreText.h>
-#import <WebCore/AttributedString.h>
-#import <WebCore/DataDetectorElementInfo.h>
-#import <WebCore/DictionaryPopupInfo.h>
-#import <WebCore/Font.h>
-#import <WebCore/FontAttributes.h>
-#import <WebCore/FontCustomPlatformData.h>
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/TextRecognitionResult.h>
+#import <CyberCore/AttributedString.h>
+#import <CyberCore/DataDetectorElementInfo.h>
+#import <CyberCore/DictionaryPopupInfo.h>
+#import <CyberCore/Font.h>
+#import <CyberCore/FontAttributes.h>
+#import <CyberCore/FontCustomPlatformData.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/TextRecognitionResult.h>
 #import <pal/spi/cf/CoreTextSPI.h>
 
 #if PLATFORM(IOS_FAMILY)
@@ -45,7 +45,7 @@
 #endif
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
-#import <WebCore/MediaPlaybackTargetContext.h>
+#import <CyberCore/MediaPlaybackTargetContext.h>
 #import <objc/runtime.h>
 #endif
 
@@ -71,7 +71,7 @@
 #endif
 
 #if USE(AVFOUNDATION)
-#import <WebCore/CoreVideoSoftLink.h>
+#import <CyberCore/CoreVideoSoftLink.h>
 #endif
 
 #import <pal/cocoa/VisionKitCoreSoftLink.h>

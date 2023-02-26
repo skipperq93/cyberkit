@@ -28,8 +28,8 @@
 #if ENABLE(WEB_AUTHN)
 
 #include "MessageReceiver.h"
-#include <WebCore/CredentialRequestOptions.h>
-#include <WebCore/FrameIdentifier.h>
+#include <CyberCore/CredentialRequestOptions.h>
+#include <CyberCore/FrameIdentifier.h>
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 

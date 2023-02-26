@@ -33,7 +33,7 @@
 #import "WKModelInteractionGestureRecognizer.h"
 #import "WebPageProxy.h"
 #import "WebsiteDataStore.h"
-#import <WebCore/Model.h>
+#import <CyberCore/Model.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <pal/spi/ios/SystemPreviewSPI.h>
 #import <wtf/Assertions.h>

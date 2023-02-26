@@ -26,7 +26,7 @@
 
 #import "BackForwardList.h"
 
-#import <WebCore/BackForwardCache.h>
+#import <CyberCore/BackForwardCache.h>
 
 using namespace WebCore;
 

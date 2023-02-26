@@ -33,7 +33,7 @@
 #import <IOKit/pwr_mgt/IOPMLib.h>
 #import <JavaScriptCore/JSCConfig.h>
 #import <JavaScriptCore/JSContext.h>
-#import <WebCore/Settings.h>
+#import <CyberCore/Settings.h>
 #import <CyberKit/WebKitLegacy.h>
 #import <wtf/RetainPtr.h>
 

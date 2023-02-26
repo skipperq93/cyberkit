@@ -26,7 +26,7 @@
 #include "LegacyCustomProtocolManagerProxyMessages.h"
 #include "NetworkProcessProxy.h"
 #include "WebProcessPool.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 
 namespace WebKit {
 

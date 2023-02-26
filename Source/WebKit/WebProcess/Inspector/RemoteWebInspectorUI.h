@@ -27,11 +27,11 @@
 
 #include "DebuggableInfoData.h"
 #include "MessageReceiver.h"
-#include <WebCore/Color.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/InspectorFrontendAPIDispatcher.h>
-#include <WebCore/InspectorFrontendClient.h>
-#include <WebCore/InspectorFrontendHost.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/InspectorFrontendAPIDispatcher.h>
+#include <CyberCore/InspectorFrontendClient.h>
+#include <CyberCore/InspectorFrontendHost.h>
 #include <wtf/Deque.h>
 
 #if ENABLE(INSPECTOR_EXTENSIONS)

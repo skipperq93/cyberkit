@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Vector.h>
 

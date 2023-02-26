@@ -31,7 +31,7 @@
 #include "NetworkCacheEntry.h"
 #include "NetworkLoadClient.h"
 #include "NetworkLoadParameters.h"
-#include <WebCore/NavigationPreloadState.h>
+#include <CyberCore/NavigationPreloadState.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebCore {

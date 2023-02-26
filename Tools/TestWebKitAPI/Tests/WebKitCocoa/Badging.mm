@@ -34,7 +34,7 @@
 #import "TestNotificationProvider.h"
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
-#import <WebCore/RegistrationDatabase.h>
+#import <CyberCore/RegistrationDatabase.h>
 #import <CyberKit/WKNotificationProvider.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKProcessPoolPrivate.h>

@@ -25,10 +25,10 @@
 
 #include "config.h"
 
-#include <WebCore/CSSGridIntegerRepeatValue.h>
-#include <WebCore/CSSParser.h>
-#include <WebCore/CSSValueList.h>
-#include <WebCore/MutableStyleProperties.h>
+#include <CyberCore/CSSGridIntegerRepeatValue.h>
+#include <CyberCore/CSSParser.h>
+#include <CyberCore/CSSValueList.h>
+#include <CyberCore/MutableStyleProperties.h>
 
 namespace TestWebKitAPI {
 

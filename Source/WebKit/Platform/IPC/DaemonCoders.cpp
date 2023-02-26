@@ -31,12 +31,12 @@
 #include "PushMessageForTesting.h"
 #include "WebPushDaemonConnectionConfiguration.h"
 #include "WebPushMessage.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/ExceptionData.h>
-#include <WebCore/PrivateClickMeasurement.h>
-#include <WebCore/PushSubscriptionData.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/ExceptionData.h>
+#include <CyberCore/PrivateClickMeasurement.h>
+#include <CyberCore/PushSubscriptionData.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/SecurityOriginData.h>
 
 #if PLATFORM(COCOA)
 #include <CoreFoundation/CoreFoundation.h>

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/MockContentFilterSettingsClient.h>
+#include <CyberCore/MockContentFilterSettingsClient.h>
 
 namespace WebCore {
 

@@ -32,10 +32,10 @@
 #import "WebInspectorPrivate.h"
 #import "WebInspectorFrontend.h"
 
-#import <WebCore/Document.h>
-#import <WebCore/Frame.h>
-#import <WebCore/InspectorController.h>
-#import <WebCore/Page.h>
+#import <CyberCore/Document.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/InspectorController.h>
+#import <CyberCore/Page.h>
 
 NSString *WebInspectorDidStartSearchingForNode = @"WebInspectorDidStartSearchingForNode";
 NSString *WebInspectorDidStopSearchingForNode = @"WebInspectorDidStopSearchingForNode";

@@ -27,7 +27,7 @@
 
 #include "WKPageRenderingProgressEvents.h"
 
-#include <WebCore/LayoutMilestone.h>
+#include <CyberCore/LayoutMilestone.h>
 
 static inline WKPageRenderingProgressEvents pageRenderingProgressEvents(OptionSet<WebCore::LayoutMilestone> milestones)
 {

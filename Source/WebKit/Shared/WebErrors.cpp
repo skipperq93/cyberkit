@@ -30,9 +30,9 @@
 
 #include "APIError.h"
 #include "Logging.h"
-#include <WebCore/LocalizedStrings.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/LocalizedStrings.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
 
 namespace WebKit {
 using namespace WebCore;

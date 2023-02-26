@@ -27,10 +27,10 @@
 
 #include "ShareableBitmap.h"
 #include "WebFindOptions.h"
-#include <WebCore/FindOptions.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/PageOverlay.h>
-#include <WebCore/SimpleRange.h>
+#include <CyberCore/FindOptions.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/PageOverlay.h>
+#include <CyberCore/SimpleRange.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>

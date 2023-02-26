@@ -64,8 +64,8 @@
 #import <JavaScriptCore/JSCConfig.h>
 #import <JavaScriptCore/Options.h>
 #import <JavaScriptCore/TestRunnerUtils.h>
-#import <WebCore/LogInitialization.h>
-#import <WebCore/NetworkStorageSession.h>
+#import <CyberCore/LogInitialization.h>
+#import <CyberCore/NetworkStorageSession.h>
 #import <CyberKit/DOMElement.h>
 #import <CyberKit/DOMExtensions.h>
 #import <CyberKit/DOMRange.h>

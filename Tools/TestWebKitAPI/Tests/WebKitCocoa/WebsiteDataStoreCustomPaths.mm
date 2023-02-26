@@ -32,7 +32,7 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import <JavaScriptCore/JSCConfig.h>
-#import <WebCore/SQLiteFileSystem.h>
+#import <CyberCore/SQLiteFileSystem.h>
 #import <CyberKit/WKHTTPCookieStorePrivate.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKPreferencesRef.h>

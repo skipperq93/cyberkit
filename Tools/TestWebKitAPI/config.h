@@ -48,13 +48,13 @@
 
 #if defined(BUILDING_TestWebCore)
 #include <JavaScriptCore/JSExportMacros.h>
-#include <WebCore/PlatformExportMacros.h>
+#include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #endif
 
 #if defined(BUILDING_TestWebKit)
 #include <JavaScriptCore/JSExportMacros.h>
-#include <WebCore/PlatformExportMacros.h>
+#include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #include <CyberKit/WebKit2_C.h>
 #endif
@@ -63,7 +63,7 @@
 
 // XCode path
 #include <JavaScriptCore/JSExportMacros.h>
-#include <WebCore/PlatformExportMacros.h>
+#include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #if !PLATFORM(IOS_FAMILY)
 #include <CyberKit/WebKit2_C.h>

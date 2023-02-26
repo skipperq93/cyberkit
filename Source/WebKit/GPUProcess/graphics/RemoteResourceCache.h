@@ -29,7 +29,7 @@
 
 #include "QualifiedRenderingResourceIdentifier.h"
 #include "QualifiedResourceHeap.h"
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/ProcessIdentifier.h>
 
 namespace WebKit {
 

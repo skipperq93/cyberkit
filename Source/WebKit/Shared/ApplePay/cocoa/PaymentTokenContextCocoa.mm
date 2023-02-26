@@ -28,7 +28,7 @@
 
 #if HAVE(PASSKIT_MULTI_MERCHANT_PAYMENTS)
 
-#import <WebCore/ApplePayPaymentTokenContext.h>
+#import <CyberCore/ApplePayPaymentTokenContext.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/WTFString.h>

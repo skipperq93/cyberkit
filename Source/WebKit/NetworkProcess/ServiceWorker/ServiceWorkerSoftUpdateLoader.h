@@ -29,10 +29,10 @@
 
 #include "NetworkCacheEntry.h"
 #include "NetworkLoadClient.h"
-#include <WebCore/ContentSecurityPolicyResponseHeaders.h>
-#include <WebCore/CrossOriginEmbedderPolicy.h>
-#include <WebCore/FetchOptions.h>
-#include <WebCore/ServiceWorkerJobData.h>
+#include <CyberCore/ContentSecurityPolicyResponseHeaders.h>
+#include <CyberCore/CrossOriginEmbedderPolicy.h>
+#include <CyberCore/FetchOptions.h>
+#include <CyberCore/ServiceWorkerJobData.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/WeakPtr.h>
 

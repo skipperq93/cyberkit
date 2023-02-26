@@ -32,7 +32,7 @@
 #import "JSBasics.h"
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JSStringRefCF.h>
-#import <WebCore/TextGranularity.h>
+#import <CyberCore/TextGranularity.h>
 #import <CyberKit/WebFrame.h>
 #import <CyberKit/WebHTMLView.h>
 #import <wtf/RetainPtr.h>

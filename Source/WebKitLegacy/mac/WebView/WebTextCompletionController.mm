@@ -33,8 +33,8 @@
 #import "WebFrameInternal.h"
 #import "WebHTMLViewInternal.h"
 #import "WebView.h"
-#import <WebCore/Frame.h>
-#import <WebCore/SimpleRange.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/SimpleRange.h>
 
 @interface NSWindow (WebNSWindowDetails)
 - (void)_setForceActiveControls:(BOOL)flag;

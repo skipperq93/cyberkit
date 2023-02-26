@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/DOMWindow.h>
+#include <CyberCore/DOMWindow.h>
 #include <wtf/Forward.h>
 
 namespace WebCore {

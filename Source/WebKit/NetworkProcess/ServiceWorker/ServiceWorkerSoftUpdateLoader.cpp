@@ -32,11 +32,11 @@
 #include "NetworkCache.h"
 #include "NetworkLoad.h"
 #include "NetworkSession.h"
-#include <WebCore/NetworkConnectionIntegrity.h>
-#include <WebCore/ServiceWorkerJob.h>
-#include <WebCore/TextResourceDecoder.h>
-#include <WebCore/WorkerFetchResult.h>
-#include <WebCore/WorkerScriptLoader.h>
+#include <CyberCore/NetworkConnectionIntegrity.h>
+#include <CyberCore/ServiceWorkerJob.h>
+#include <CyberCore/TextResourceDecoder.h>
+#include <CyberCore/WorkerFetchResult.h>
+#include <CyberCore/WorkerScriptLoader.h>
 
 namespace WebKit {
 

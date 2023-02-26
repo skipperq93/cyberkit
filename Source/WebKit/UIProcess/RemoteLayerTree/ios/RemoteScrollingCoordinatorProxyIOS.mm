@@ -34,17 +34,17 @@
 #import "ScrollingTreeOverflowScrollingNodeIOS.h"
 #import "WebPageProxy.h"
 #import <UIKit/UIView.h>
-#import <WebCore/ScrollSnapOffsetsInfo.h>
-#import <WebCore/ScrollTypes.h>
-#import <WebCore/ScrollingStateFrameScrollingNode.h>
-#import <WebCore/ScrollingStateOverflowScrollProxyNode.h>
-#import <WebCore/ScrollingStateOverflowScrollingNode.h>
-#import <WebCore/ScrollingStatePositionedNode.h>
-#import <WebCore/ScrollingStateTree.h>
-#import <WebCore/ScrollingTreeFrameScrollingNode.h>
-#import <WebCore/ScrollingTreeOverflowScrollProxyNode.h>
-#import <WebCore/ScrollingTreeOverflowScrollingNode.h>
-#import <WebCore/ScrollingTreePositionedNode.h>
+#import <CyberCore/ScrollSnapOffsetsInfo.h>
+#import <CyberCore/ScrollTypes.h>
+#import <CyberCore/ScrollingStateFrameScrollingNode.h>
+#import <CyberCore/ScrollingStateOverflowScrollProxyNode.h>
+#import <CyberCore/ScrollingStateOverflowScrollingNode.h>
+#import <CyberCore/ScrollingStatePositionedNode.h>
+#import <CyberCore/ScrollingStateTree.h>
+#import <CyberCore/ScrollingTreeFrameScrollingNode.h>
+#import <CyberCore/ScrollingTreeOverflowScrollProxyNode.h>
+#import <CyberCore/ScrollingTreeOverflowScrollingNode.h>
+#import <CyberCore/ScrollingTreePositionedNode.h>
 #import <tuple>
 
 namespace WebKit {

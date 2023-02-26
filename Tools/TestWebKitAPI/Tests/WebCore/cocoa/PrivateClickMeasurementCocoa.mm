@@ -30,7 +30,7 @@
 #include "ASN1Utilities.h"
 #include "CoreCryptoSPI.h"
 #include "Test.h"
-#include <WebCore/PrivateClickMeasurement.h>
+#include <CyberCore/PrivateClickMeasurement.h>
 #include <wtf/spi/cocoa/SecuritySPI.h>
 
 namespace TestWebKitAPI {

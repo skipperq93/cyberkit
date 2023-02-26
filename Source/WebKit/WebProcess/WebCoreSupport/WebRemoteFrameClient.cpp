@@ -26,8 +26,8 @@
 #include "config.h"
 #include "WebRemoteFrameClient.h"
 
-#include <WebCore/FrameTree.h>
-#include <WebCore/RemoteFrame.h>
+#include <CyberCore/FrameTree.h>
+#include <CyberCore/RemoteFrame.h>
 
 namespace WebKit {
 

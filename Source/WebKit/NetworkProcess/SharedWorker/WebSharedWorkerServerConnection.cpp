@@ -35,7 +35,7 @@
 #include "WebSharedWorker.h"
 #include "WebSharedWorkerObjectConnectionMessages.h"
 #include "WebSharedWorkerServer.h"
-#include <WebCore/WorkerFetchResult.h>
+#include <CyberCore/WorkerFetchResult.h>
 
 namespace WebKit {
 

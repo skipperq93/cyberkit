@@ -31,7 +31,7 @@
 #import "PasteboardUtilities.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebCore/ColorCocoa.h>
+#import <CyberCore/ColorCocoa.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>

@@ -27,8 +27,8 @@
 
 #include "NetworkDataTask.h"
 #include "NetworkResourceLoadParameters.h"
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceResponse.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/UniqueRef.h>
 #include <wtf/WeakPtr.h>

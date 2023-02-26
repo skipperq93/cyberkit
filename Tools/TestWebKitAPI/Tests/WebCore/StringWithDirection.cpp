@@ -26,7 +26,7 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/StringWithDirection.h>
+#include <CyberCore/StringWithDirection.h>
 
 using namespace WebCore;
 

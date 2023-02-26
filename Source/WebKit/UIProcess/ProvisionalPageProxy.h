@@ -35,9 +35,9 @@
 #include "WebFramePolicyListenerProxy.h"
 #include "WebPageProxyIdentifier.h"
 #include "WebsitePoliciesData.h"
-#include <WebCore/DiagnosticLoggingClient.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/DiagnosticLoggingClient.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/ResourceRequest.h>
 #include <wtf/WeakPtr.h>
 
 namespace API {

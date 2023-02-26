@@ -25,8 +25,8 @@
 
 #include "config.h"
 
-#include <WebCore/FloatSize.h>
-#include <WebCore/IntSize.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/IntSize.h>
 
 #if USE(CG)
 #include <CoreGraphics/CoreGraphics.h>

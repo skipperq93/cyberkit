@@ -29,9 +29,9 @@
 #import "CacheStoragePolicy.h"
 #import "DataReference.h"
 #import "LegacyCustomProtocolManagerProxy.h"
-#import <WebCore/ResourceError.h>
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/ResourceResponse.h>
+#import <CyberCore/ResourceError.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/ResourceResponse.h>
 
 @interface WKCustomProtocolLoader : NSObject <NSURLConnectionDelegate> {
 @private

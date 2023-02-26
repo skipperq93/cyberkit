@@ -28,10 +28,10 @@
 #if ENABLE(ASYNC_SCROLLING)
 
 #include "MessageReceiver.h"
-#include <WebCore/AsyncScrollingCoordinator.h>
-#include <WebCore/ScrollTypes.h>
-#include <WebCore/ScrollingConstraints.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/AsyncScrollingCoordinator.h>
+#include <CyberCore/ScrollTypes.h>
+#include <CyberCore/ScrollingConstraints.h>
+#include <CyberCore/Timer.h>
 
 namespace IPC {
 class Decoder;

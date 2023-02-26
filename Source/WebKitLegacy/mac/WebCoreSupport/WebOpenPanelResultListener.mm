@@ -25,12 +25,12 @@
 
 #import "WebOpenPanelResultListener.h"
 
-#import <WebCore/FileChooser.h>
+#import <CyberCore/FileChooser.h>
 #import <wtf/RefPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/Icon.h>
+#import <CyberCore/Icon.h>
 #endif
 
 using namespace WebCore;

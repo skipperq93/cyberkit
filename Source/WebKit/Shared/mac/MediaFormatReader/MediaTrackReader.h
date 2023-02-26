@@ -28,8 +28,8 @@
 #if ENABLE(WEBM_FORMAT_READER)
 
 #include "CoreMediaWrapped.h"
-#include <WebCore/MediaSample.h>
-#include <WebCore/SampleMap.h>
+#include <CyberCore/MediaSample.h>
+#include <CyberCore/SampleMap.h>
 #include <wtf/Condition.h>
 #include <wtf/Lock.h>
 

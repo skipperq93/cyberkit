@@ -28,11 +28,11 @@
 #if ENABLE(VIDEO) && PLATFORM(MAC)
 
 #import <AVFoundation/AVPlayer.h>
-#import <WebCore/HTMLVideoElement.h>
-#import <WebCore/PlaybackSessionInterfaceAVKit.h>
-#import <WebCore/PlaybackSessionModelMediaElement.h>
-#import <WebCore/WebAVPlayerController.h>
-#import <WebCore/WebCoreFullScreenWindow.h>
+#import <CyberCore/HTMLVideoElement.h>
+#import <CyberCore/PlaybackSessionInterfaceAVKit.h>
+#import <CyberCore/PlaybackSessionModelMediaElement.h>
+#import <CyberCore/WebAVPlayerController.h>
+#import <CyberCore/WebCoreFullScreenWindow.h>
 #import <objc/message.h>
 #import <objc/runtime.h>
 #import <pal/spi/cocoa/AVKitSPI.h>

@@ -28,7 +28,7 @@
 
 #import "WKError.h"
 #import "WebCompiledContentRuleList.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKContentRuleList
 

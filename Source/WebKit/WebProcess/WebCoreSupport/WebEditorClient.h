@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/EditorClient.h>
-#include <WebCore/TextCheckerClient.h>
+#include <CyberCore/EditorClient.h>
+#include <CyberCore/TextCheckerClient.h>
 
 namespace WebCore {
 enum class DOMPasteAccessCategory : uint8_t;

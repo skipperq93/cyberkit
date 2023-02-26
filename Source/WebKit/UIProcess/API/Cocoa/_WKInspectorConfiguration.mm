@@ -29,7 +29,7 @@
 #import "WKProcessPoolInternal.h"
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import "WebURLSchemeHandlerCocoa.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation _WKInspectorConfiguration
 

@@ -39,9 +39,9 @@
 #include "TextTrackPrivateRemote.h"
 #include "TrackPrivateRemoteIdentifier.h"
 #include "VideoTrackPrivateRemote.h"
-#include <WebCore/MediaPlayerPrivate.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/VideoFrameMetadata.h>
+#include <CyberCore/MediaPlayerPrivate.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/VideoFrameMetadata.h>
 #include <wtf/LoggerHelper.h>
 #include <wtf/MediaTime.h>
 #include <wtf/WeakPtr.h>

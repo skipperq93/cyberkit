@@ -29,8 +29,8 @@
 
 #include "GPUProcessConnection.h"
 #include "MessageReceiver.h"
-#include <WebCore/MediaPlaybackTargetContext.h>
-#include <WebCore/MediaSessionHelperIOS.h>
+#include <CyberCore/MediaPlaybackTargetContext.h>
+#include <CyberCore/MediaSessionHelperIOS.h>
 
 namespace WebKit {
 

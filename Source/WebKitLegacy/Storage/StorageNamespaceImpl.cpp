@@ -28,9 +28,9 @@
 #include "StorageAreaImpl.h"
 #include "StorageSyncManager.h"
 #include "StorageTracker.h"
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/StorageMap.h>
-#include <WebCore/StorageType.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/StorageMap.h>
+#include <CyberCore/StorageType.h>
 #include <wtf/MainThread.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringHash.h>

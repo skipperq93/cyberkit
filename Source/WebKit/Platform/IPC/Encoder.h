@@ -27,7 +27,7 @@
 
 #include "Attachment.h"
 #include "MessageNames.h"
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/Forward.h>
 #include <wtf/OptionSet.h>
 #include <wtf/Vector.h>

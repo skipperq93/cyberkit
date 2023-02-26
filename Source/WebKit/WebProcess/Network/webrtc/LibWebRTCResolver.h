@@ -28,7 +28,7 @@
 #if USE(LIBWEBRTC)
 
 #include "LibWebRTCResolverIdentifier.h"
-#include <WebCore/LibWebRTCMacros.h>
+#include <CyberCore/LibWebRTCMacros.h>
 #include <wtf/Vector.h>
 
 ALLOW_COMMA_BEGIN

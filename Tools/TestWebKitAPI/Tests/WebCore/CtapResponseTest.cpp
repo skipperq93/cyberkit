@@ -33,16 +33,16 @@
 
 #include "FidoTestData.h"
 #include <JavaScriptCore/ArrayBuffer.h>
-#include <WebCore/AuthenticatorAttachment.h>
-#include <WebCore/AuthenticatorTransport.h>
-#include <WebCore/BufferSource.h>
-#include <WebCore/CBORReader.h>
-#include <WebCore/CBORValue.h>
-#include <WebCore/CBORWriter.h>
-#include <WebCore/DeviceResponseConverter.h>
-#include <WebCore/FidoConstants.h>
-#include <WebCore/U2fResponseConverter.h>
-#include <WebCore/WebAuthenticationUtils.h>
+#include <CyberCore/AuthenticatorAttachment.h>
+#include <CyberCore/AuthenticatorTransport.h>
+#include <CyberCore/BufferSource.h>
+#include <CyberCore/CBORReader.h>
+#include <CyberCore/CBORValue.h>
+#include <CyberCore/CBORWriter.h>
+#include <CyberCore/DeviceResponseConverter.h>
+#include <CyberCore/FidoConstants.h>
+#include <CyberCore/U2fResponseConverter.h>
+#include <CyberCore/WebAuthenticationUtils.h>
 
 namespace TestWebKitAPI {
 using namespace WebCore;

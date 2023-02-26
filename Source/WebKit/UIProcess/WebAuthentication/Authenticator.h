@@ -29,8 +29,8 @@
 
 #include "WebAuthenticationFlags.h"
 #include "WebAuthenticationRequestData.h"
-#include <WebCore/AuthenticatorResponse.h>
-#include <WebCore/ExceptionData.h>
+#include <CyberCore/AuthenticatorResponse.h>
+#include <CyberCore/ExceptionData.h>
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>

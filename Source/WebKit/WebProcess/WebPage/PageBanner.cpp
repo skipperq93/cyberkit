@@ -27,7 +27,7 @@
 #include "PageBanner.h"
 
 #include "WebPage.h"
-#include <WebCore/GraphicsLayer.h>
+#include <CyberCore/GraphicsLayer.h>
 
 namespace WebKit {
 

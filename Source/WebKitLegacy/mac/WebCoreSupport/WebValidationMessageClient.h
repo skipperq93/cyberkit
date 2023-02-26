@@ -25,8 +25,8 @@
 
 #pragma once
 
-#import <WebCore/IntRect.h>
-#import <WebCore/ValidationMessageClient.h>
+#import <CyberCore/IntRect.h>
+#import <CyberCore/ValidationMessageClient.h>
 
 namespace WebCore {
 class Element;

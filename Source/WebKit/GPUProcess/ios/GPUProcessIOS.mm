@@ -32,8 +32,8 @@
 #import "GPUProcessProxyMessages.h"
 #import "LayerHostingContext.h"
 #import "SandboxInitializationParameters.h"
-#import <WebCore/NotImplemented.h>
-#import <WebCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/NotImplemented.h>
+#import <CyberCore/WebCoreThreadSystemInterface.h>
 
 namespace WebKit {
 using namespace WebCore;

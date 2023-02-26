@@ -36,7 +36,7 @@
 #include "WebExtensionAPINamespace.h"
 #include "WebExtensionAPIPermissions.h"
 #include "WebExtensionAPIWebNavigation.h"
-#include <WebCore/ProcessQualified.h>
+#include <CyberCore/ProcessQualified.h>
 #include <wtf/ObjectIdentifier.h>
 
 namespace WebKit {

@@ -42,8 +42,8 @@
 #include "RenderingUpdateID.h"
 #include "SharedMemory.h"
 #include "StreamClientConnection.h"
-#include <WebCore/RenderingResourceIdentifier.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/RenderingResourceIdentifier.h>
+#include <CyberCore/Timer.h>
 #include <wtf/Deque.h>
 #include <wtf/HashMap.h>
 #include <wtf/Span.h>

@@ -28,7 +28,7 @@
 
 #include "JSBasics.h"
 #include "UIScriptController.h"
-#include <WebCore/FloatRect.h>
+#include <CyberCore/FloatRect.h>
 
 using namespace WTR;
 

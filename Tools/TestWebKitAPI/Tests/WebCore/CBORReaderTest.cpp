@@ -31,7 +31,7 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#include <WebCore/CBORReader.h>
+#include <CyberCore/CBORReader.h>
 #include <limits>
 #include <utility>
 

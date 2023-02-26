@@ -21,10 +21,10 @@
 #if ENABLE(MEDIA_STREAM)
 
 #include "UserMediaPermissionRequestManagerProxy.h"
-#include <WebCore/CaptureDevice.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/RealtimeMediaSourceCenter.h>
-#include <WebCore/UserMediaClient.h>
+#include <CyberCore/CaptureDevice.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/RealtimeMediaSourceCenter.h>
+#include <CyberCore/UserMediaClient.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebKit {

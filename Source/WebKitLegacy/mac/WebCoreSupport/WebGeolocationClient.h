@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/GeolocationClient.h>
+#import <CyberCore/GeolocationClient.h>
 
 namespace WebCore {
 class Geolocation;

@@ -33,11 +33,11 @@
 #import "WKError.h"
 #import "WebAuthenticationRequestData.h"
 #import "WebPageProxy.h"
-#import <WebCore/AuthenticatorAttachment.h>
-#import <WebCore/AuthenticatorResponseData.h>
-#import <WebCore/BufferSource.h>
-#import <WebCore/ExceptionData.h>
-#import <WebCore/PublicKeyCredentialCreationOptions.h>
+#import <CyberCore/AuthenticatorAttachment.h>
+#import <CyberCore/AuthenticatorResponseData.h>
+#import <CyberCore/BufferSource.h>
+#import <CyberCore/ExceptionData.h>
+#import <CyberCore/PublicKeyCredentialCreationOptions.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
 

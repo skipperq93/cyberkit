@@ -25,7 +25,7 @@
 
 #if ENABLE(DRAG_SUPPORT)
 
-#import <WebCore/DragClient.h>
+#import <CyberCore/DragClient.h>
 
 @class WebView;
 

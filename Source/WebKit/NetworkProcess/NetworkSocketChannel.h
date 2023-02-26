@@ -29,8 +29,8 @@
 #include "MessageReceiver.h"
 #include "MessageSender.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/Timer.h>
-#include <WebCore/WebSocketIdentifier.h>
+#include <CyberCore/Timer.h>
+#include <CyberCore/WebSocketIdentifier.h>
 #include <pal/SessionID.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/WeakPtr.h>

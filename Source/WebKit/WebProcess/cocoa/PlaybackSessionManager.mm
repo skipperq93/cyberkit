@@ -34,14 +34,14 @@
 #import "WebCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebProcess.h"
-#import <WebCore/Color.h>
-#import <WebCore/ElementInlines.h>
-#import <WebCore/Event.h>
-#import <WebCore/EventNames.h>
-#import <WebCore/HTMLMediaElement.h>
-#import <WebCore/Settings.h>
-#import <WebCore/TimeRanges.h>
-#import <WebCore/UserGestureIndicator.h>
+#import <CyberCore/Color.h>
+#import <CyberCore/ElementInlines.h>
+#import <CyberCore/Event.h>
+#import <CyberCore/EventNames.h>
+#import <CyberCore/HTMLMediaElement.h>
+#import <CyberCore/Settings.h>
+#import <CyberCore/TimeRanges.h>
+#import <CyberCore/UserGestureIndicator.h>
 #import <mach/mach_port.h>
 
 namespace WebKit {

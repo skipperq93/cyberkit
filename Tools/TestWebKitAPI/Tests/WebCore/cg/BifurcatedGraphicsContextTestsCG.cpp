@@ -27,16 +27,16 @@
 
 #if USE(CG)
 
-#include <WebCore/BifurcatedGraphicsContext.h>
-#include <WebCore/DestinationColorSpace.h>
-#include <WebCore/DisplayList.h>
-#include <WebCore/DisplayListItems.h>
-#include <WebCore/DisplayListIterator.h>
-#include <WebCore/DisplayListRecorderImpl.h>
-#include <WebCore/FontCascade.h>
-#include <WebCore/GradientImage.h>
-#include <WebCore/GraphicsContextCG.h>
-#include <WebCore/InMemoryDisplayList.h>
+#include <CyberCore/BifurcatedGraphicsContext.h>
+#include <CyberCore/DestinationColorSpace.h>
+#include <CyberCore/DisplayList.h>
+#include <CyberCore/DisplayListItems.h>
+#include <CyberCore/DisplayListIterator.h>
+#include <CyberCore/DisplayListRecorderImpl.h>
+#include <CyberCore/FontCascade.h>
+#include <CyberCore/GradientImage.h>
+#include <CyberCore/GraphicsContextCG.h>
+#include <CyberCore/InMemoryDisplayList.h>
 
 namespace TestWebKitAPI {
 using namespace WebCore;

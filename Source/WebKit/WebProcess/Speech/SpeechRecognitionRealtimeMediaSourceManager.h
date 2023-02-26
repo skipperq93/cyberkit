@@ -30,8 +30,8 @@
 #include "MessageReceiver.h"
 #include "MessageSender.h"
 #include "SandboxExtension.h"
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/RealtimeMediaSourceIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/RealtimeMediaSourceIdentifier.h>
 
 namespace WebCore {
 class CaptureDevice;

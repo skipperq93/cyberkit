@@ -44,9 +44,9 @@
 #import "WebPreferences.h"
 #import "WebProcessProxy.h"
 #import <Cocoa/Cocoa.h>
-#import <WebCore/IOSurface.h>
-#import <WebCore/NotImplemented.h>
-#import <WebCore/WebActionDisablingCALayerDelegate.h>
+#import <CyberCore/IOSurface.h>
+#import <CyberCore/NotImplemented.h>
+#import <CyberCore/WebActionDisablingCALayerDelegate.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <pal/spi/mac/NSEventSPI.h>
 

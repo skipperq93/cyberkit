@@ -29,7 +29,7 @@
 
 #include "HidConnection.h"
 #include "VirtualAuthenticatorConfiguration.h"
-#include <WebCore/FidoHidMessage.h>
+#include <CyberCore/FidoHidMessage.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebKit {

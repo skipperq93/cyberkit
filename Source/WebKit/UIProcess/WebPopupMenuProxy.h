@@ -26,7 +26,7 @@
 #ifndef WebPopupMenuProxy_h
 #define WebPopupMenuProxy_h
 
-#include <WebCore/WritingMode.h>
+#include <CyberCore/WritingMode.h>
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 

@@ -28,8 +28,8 @@
 #if ENABLE(GPU_PROCESS)
 
 #include "SharedMemory.h"
-#include <WebCore/ImageBufferAllocator.h>
-#include <WebCore/ProcessIdentity.h>
+#include <CyberCore/ImageBufferAllocator.h>
+#include <CyberCore/ProcessIdentity.h>
 
 namespace WebKit {
 

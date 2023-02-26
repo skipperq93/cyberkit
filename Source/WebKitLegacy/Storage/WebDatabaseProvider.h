@@ -26,7 +26,7 @@
 #pragma once
 
 #include "InProcessIDBServer.h"
-#include <WebCore/DatabaseProvider.h>
+#include <CyberCore/DatabaseProvider.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
 #include <wtf/RefPtr.h>

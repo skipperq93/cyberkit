@@ -20,9 +20,9 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-headers: <WebCore/Pasteboard.h>
+headers: <CyberCore/Pasteboard.h>
 
-header: <WebCore/Pasteboard.h>
+header: <CyberCore/Pasteboard.h>
 [CustomHeader=True] struct WebCore::PasteboardImage {
     RefPtr<WebCore::Image> image;
 #if PLATFORM(MAC)
@@ -42,7 +42,7 @@ header: <WebCore/Pasteboard.h>
     WebCore::FloatSize imageSize;
 };
 
-header: <WebCore/Pasteboard.h>
+header: <CyberCore/Pasteboard.h>
 [CustomHeader=True] struct WebCore::PasteboardWebContent {
 #if PLATFORM(COCOA)
     String contentOrigin;
@@ -68,7 +68,7 @@ header: <WebCore/Pasteboard.h>
 #endif
 };
 
-header: <WebCore/Pasteboard.h>
+header: <CyberCore/Pasteboard.h>
 [CustomHeader=True] struct WebCore::PasteboardURL {
     URL url
     String title
@@ -80,7 +80,7 @@ header: <WebCore/Pasteboard.h>
 #endif
 };
 
-header: <WebCore/Pasteboard.h>
+header: <CyberCore/Pasteboard.h>
 [CustomHeader=True] struct WebCore::PasteboardBuffer {
 #if PLATFORM(COCOA)
     String contentOrigin;

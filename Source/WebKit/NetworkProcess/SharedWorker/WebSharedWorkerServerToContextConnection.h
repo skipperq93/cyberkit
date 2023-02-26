@@ -28,11 +28,11 @@
 #include "MessageReceiver.h"
 #include "MessageSender.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/SharedWorkerIdentifier.h>
-#include <WebCore/SharedWorkerObjectIdentifier.h>
-#include <WebCore/Timer.h>
-#include <WebCore/TransferredMessagePort.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/SharedWorkerIdentifier.h>
+#include <CyberCore/SharedWorkerObjectIdentifier.h>
+#include <CyberCore/Timer.h>
+#include <CyberCore/TransferredMessagePort.h>
 
 namespace WebCore {
 class RegistrableDomain;

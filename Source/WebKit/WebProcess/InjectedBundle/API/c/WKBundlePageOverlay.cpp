@@ -37,10 +37,10 @@
 #include "WKStringPrivate.h"
 #include "WebPage.h"
 #include "WebPageOverlay.h"
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/PageOverlay.h>
-#include <WebCore/PlatformMouseEvent.h>
-#include <WebCore/Range.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/PageOverlay.h>
+#include <CyberCore/PlatformMouseEvent.h>
+#include <CyberCore/Range.h>
 
 namespace API {
 

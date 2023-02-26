@@ -32,16 +32,16 @@
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/FontCascade.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/HTMLImageElement.h>
-#include <WebCore/HTMLTextFormControlElement.h>
-#include <WebCore/HitTestResult.h>
-#include <WebCore/ImageDocument.h>
-#include <WebCore/Range.h>
-#include <WebCore/RenderView.h>
-#include <WebCore/TextIterator.h>
+#include <CyberCore/FontCascade.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/HTMLImageElement.h>
+#include <CyberCore/HTMLTextFormControlElement.h>
+#include <CyberCore/HitTestResult.h>
+#include <CyberCore/ImageDocument.h>
+#include <CyberCore/Range.h>
+#include <CyberCore/RenderView.h>
+#include <CyberCore/TextIterator.h>
 
 #if PLATFORM(IOS_FAMILY)
 #include "SmartMagnificationControllerMessages.h"

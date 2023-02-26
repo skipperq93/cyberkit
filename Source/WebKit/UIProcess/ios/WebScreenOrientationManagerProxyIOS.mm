@@ -30,7 +30,7 @@
 
 #import "WKWebView.h"
 #import "WebPageProxy.h"
-#import <WebCore/Exception.h>
+#import <CyberCore/Exception.h>
 
 namespace WebKit {
 

@@ -57,10 +57,10 @@
 #include <JavaScriptCore/JSValueRef.h>
 #include <JavaScriptCore/JavaScript.h>
 #include <JavaScriptCore/OpaqueJSString.h>
-#include <WebCore/DOMWrapperWorld.h>
-#include <WebCore/Frame.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/ScriptController.h>
+#include <CyberCore/DOMWrapperWorld.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/ScriptController.h>
 #include <wtf/PageBlock.h>
 
 namespace WebKit {

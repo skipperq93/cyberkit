@@ -26,9 +26,9 @@
 #pragma once
 
 #include "MessageReceiver.h"
-#include <WebCore/ProcessQualified.h>
-#include <WebCore/ScriptExecutionContextIdentifier.h>
-#include <WebCore/WebLockRegistry.h>
+#include <CyberCore/ProcessQualified.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/WebLockRegistry.h>
 #include <wtf/HashMap.h>
 
 namespace WebKit {

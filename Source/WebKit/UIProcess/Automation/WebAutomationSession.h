@@ -35,7 +35,7 @@
 #include "SimulatedInputDispatcher.h"
 #include "WebEvent.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/FrameIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Forward.h>
 #include <wtf/RunLoop.h>

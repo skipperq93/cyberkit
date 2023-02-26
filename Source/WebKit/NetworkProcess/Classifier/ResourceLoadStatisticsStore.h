@@ -30,7 +30,7 @@
 #include "ResourceLoadStatisticsClassifier.h"
 #include "WebResourceLoadStatisticsStore.h"
 #include <JavaScriptCore/ConsoleTypes.h>
-#include <WebCore/FrameIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Forward.h>
 #include <wtf/Vector.h>

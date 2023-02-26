@@ -30,8 +30,8 @@
 #if PLATFORM(MAC) && ENABLE(UI_SIDE_COMPOSITING)
 
 #include "RemoteScrollingCoordinator.h"
-#include <WebCore/ScrollingConstraints.h>
-#include <WebCore/ScrollingTree.h>
+#include <CyberCore/ScrollingConstraints.h>
+#include <CyberCore/ScrollingTree.h>
 
 namespace WebCore {
 class PlatformMouseEvent;

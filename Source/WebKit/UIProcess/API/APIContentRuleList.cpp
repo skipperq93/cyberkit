@@ -29,9 +29,9 @@
 #if ENABLE(CONTENT_EXTENSIONS)
 
 #include "WebCompiledContentRuleList.h"
-#include <WebCore/CombinedURLFilters.h>
-#include <WebCore/ContentExtensionParser.h>
-#include <WebCore/URLFilterParser.h>
+#include <CyberCore/CombinedURLFilters.h>
+#include <CyberCore/ContentExtensionParser.h>
+#include <CyberCore/URLFilterParser.h>
 
 namespace API {
 

@@ -30,7 +30,7 @@
 
 #include "WebSWClientConnectionMessages.h"
 #include "WebSWServerConnection.h"
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 
 namespace WebKit {
 

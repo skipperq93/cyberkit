@@ -27,8 +27,8 @@
 
 #include "MessageSender.h"
 #include "SandboxExtension.h"
-#include <WebCore/IDBConnectionToServer.h>
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/IDBConnectionToServer.h>
+#include <CyberCore/ProcessIdentifier.h>
 
 namespace WebKit {
 

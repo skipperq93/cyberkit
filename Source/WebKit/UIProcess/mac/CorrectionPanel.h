@@ -26,12 +26,12 @@
 #ifndef CorrectionPanel_h
 #define CorrectionPanel_h
 
-#import <WebCore/TextChecking.h>
+#import <CyberCore/TextChecking.h>
 
 #if USE(AUTOCORRECTION_PANEL)
 
 #import <AppKit/NSSpellChecker.h>
-#import <WebCore/AlternativeTextClient.h>
+#import <CyberCore/AlternativeTextClient.h>
 #import <wtf/RetainPtr.h>
 
 namespace WebKit {

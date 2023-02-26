@@ -30,7 +30,7 @@
 #import "WebPageProxy.h"
 #import "_WKFrameHandleInternal.h"
 #import "_WKFrameTreeNodeInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 @implementation _WKFrameTreeNode

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/BlobRegistry.h>
+#include <CyberCore/BlobRegistry.h>
 
 namespace WebKit {
 

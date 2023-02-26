@@ -25,9 +25,9 @@
 
 #if ENABLE(NOTIFICATIONS)
 
-#import <WebCore/NotificationClient.h>
-#import <WebCore/NotificationData.h>
-#import <WebCore/SecurityOriginData.h>
+#import <CyberCore/NotificationClient.h>
+#import <CyberCore/NotificationData.h>
+#import <CyberCore/SecurityOriginData.h>
 #import <wtf/HashMap.h>
 #import <wtf/RefPtr.h>
 #import <wtf/RetainPtr.h>

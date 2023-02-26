@@ -28,7 +28,7 @@
 #include "MessageReceiver.h"
 #include "RemoteLegacyCDMFactoryProxy.h"
 #include "RemoteLegacyCDMSessionIdentifier.h"
-#include <WebCore/LegacyCDMSession.h>
+#include <CyberCore/LegacyCDMSession.h>
 #include <wtf/Forward.h>
 #include <wtf/UniqueRef.h>
 

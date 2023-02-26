@@ -28,12 +28,12 @@
 #import "DOMAbstractViewInternal.h"
 #import "DOMEventInternal.h"
 #import "DOMNodeInternal.h"
-#import <WebCore/DOMWindow.h>
+#import <CyberCore/DOMWindow.h>
 #import "ExceptionHandlers.h"
-#import <WebCore/JSExecState.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
-#import <WebCore/WheelEvent.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
+#import <CyberCore/WheelEvent.h>
 #import <wtf/GetPtr.h>
 
 #define IMPL static_cast<WebCore::WheelEvent*>(reinterpret_cast<WebCore::Event*>(_internal))

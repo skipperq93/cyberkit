@@ -26,10 +26,10 @@
 #pragma once
 
 #include "PrivateRelayed.h"
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/SharedBuffer.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/SharedBuffer.h>
+#include <CyberCore/Timer.h>
 #include <wtf/Deque.h>
 #include <wtf/HashMap.h>
 #include <wtf/URLHash.h>

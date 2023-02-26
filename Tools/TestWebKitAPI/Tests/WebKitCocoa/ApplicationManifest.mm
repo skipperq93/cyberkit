@@ -32,7 +32,7 @@
 #import "TestCocoa.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebCore/ApplicationManifest.h>
+#import <CyberCore/ApplicationManifest.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/_WKApplicationManifest.h>

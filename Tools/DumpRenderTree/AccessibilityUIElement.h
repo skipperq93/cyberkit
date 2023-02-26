@@ -40,7 +40,7 @@ OBJC_CLASS NSString;
 #elif PLATFORM(WIN)
 #undef _WINSOCKAPI_
 #define _WINSOCKAPI_ // Prevent inclusion of winsock.h in windows.h
-#include <WebCore/COMPtr.h>
+#include <CyberCore/COMPtr.h>
 #include <oleacc.h>
 typedef COMPtr<IAccessible> PlatformUIElement;
 #else

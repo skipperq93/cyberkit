@@ -26,7 +26,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "UIKitSPI.h"
-#import <WebCore/TouchAction.h>
+#import <CyberCore/TouchAction.h>
 #import <wtf/OptionSet.h>
 
 @protocol WKTouchActionGestureRecognizerDelegate;

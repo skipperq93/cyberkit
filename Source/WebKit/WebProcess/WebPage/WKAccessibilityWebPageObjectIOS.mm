@@ -30,11 +30,11 @@
 
 #import "WebFrame.h"
 #import "WebPage.h"
-#import <WebCore/Frame.h>
-#import <WebCore/IntPoint.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/Page.h>
-#import <WebCore/WAKAppKitStubs.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/IntPoint.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/WAKAppKitStubs.h>
 
 /* 
  The implementation of this class will be augmented by an accessibility bundle that is loaded only when accessibility is requested to be enabled.

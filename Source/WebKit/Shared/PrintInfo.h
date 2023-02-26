@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/LengthBox.h>
+#include <CyberCore/LengthBox.h>
 #include <wtf/EnumTraits.h>
 
 #if USE(APPKIT)

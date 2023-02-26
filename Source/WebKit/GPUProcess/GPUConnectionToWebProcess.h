@@ -40,11 +40,11 @@
 #include "ScopedActiveMessageReceiveQueue.h"
 #include "ThreadSafeObjectHeap.h"
 #include "WebGPUIdentifier.h"
-#include <WebCore/LibWebRTCEnumTraits.h>
-#include <WebCore/NowPlayingManager.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/ProcessIdentity.h>
+#include <CyberCore/LibWebRTCEnumTraits.h>
+#include <CyberCore/NowPlayingManager.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/ProcessIdentity.h>
 #include <pal/SessionID.h>
 #include <wtf/Logger.h>
 #include <wtf/MachSendRight.h>
@@ -52,7 +52,7 @@
 
 #if ENABLE(WEBGL)
 #include "GraphicsContextGLIdentifier.h"
-#include <WebCore/GraphicsContextGLAttributes.h>
+#include <CyberCore/GraphicsContextGLAttributes.h>
 #endif
 
 #if PLATFORM(MAC)

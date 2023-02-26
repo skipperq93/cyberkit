@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/SwitchingGPUClient.h>
+#include <CyberCore/SwitchingGPUClient.h>
 
 namespace WebKit {
 

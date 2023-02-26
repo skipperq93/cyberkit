@@ -46,8 +46,8 @@
 #import "WebPageProxy.h"
 #import <UIKit/UIDocumentPickerViewController.h>
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/MIMETypeRegistry.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/MIMETypeRegistry.h>
 #import <wtf/MainThread.h>
 #import <wtf/OptionSet.h>
 #import <wtf/RetainPtr.h>

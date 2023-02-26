@@ -29,9 +29,9 @@
 
 #include "DisplayLinkObserverID.h"
 #include <CoreVideo/CVDisplayLink.h>
-#include <WebCore/AnimationFrameRate.h>
-#include <WebCore/DisplayUpdate.h>
-#include <WebCore/PlatformScreen.h>
+#include <CyberCore/AnimationFrameRate.h>
+#include <CyberCore/DisplayUpdate.h>
+#include <CyberCore/PlatformScreen.h>
 #include <wtf/CheckedPtr.h>
 #include <wtf/HashMap.h>
 #include <wtf/Lock.h>

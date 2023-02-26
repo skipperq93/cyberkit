@@ -27,7 +27,7 @@
 
 #include "ArgumentCoders.h"
 #include "PushMessageForTesting.h"
-#include <WebCore/PushSubscriptionIdentifier.h>
+#include <CyberCore/PushSubscriptionIdentifier.h>
 #include <optional>
 #include <wtf/Forward.h>
 #include <wtf/URL.h>

@@ -28,7 +28,7 @@
 #if ENABLE(WEB_AUTHN)
 
 #include "APIObject.h"
-#include <WebCore/AuthenticatorAssertionResponse.h>
+#include <CyberCore/AuthenticatorAssertionResponse.h>
 
 namespace API {
 

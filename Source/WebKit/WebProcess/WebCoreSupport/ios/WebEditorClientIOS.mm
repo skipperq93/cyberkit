@@ -29,9 +29,9 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "WebPage.h"
-#import <WebCore/DocumentFragment.h>
-#import <WebCore/KeyboardEvent.h>
-#import <WebCore/NotImplemented.h>
+#import <CyberCore/DocumentFragment.h>
+#import <CyberCore/KeyboardEvent.h>
+#import <CyberCore/NotImplemented.h>
 
 namespace WebKit {
 using namespace WebCore;

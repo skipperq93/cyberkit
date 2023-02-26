@@ -29,7 +29,7 @@
 #include "PrivateClickMeasurementDatabase.h"
 #include "PrivateClickMeasurementDebugInfo.h"
 #include "PrivateClickMeasurementManager.h"
-#include <WebCore/PrivateClickMeasurement.h>
+#include <CyberCore/PrivateClickMeasurement.h>
 #include <wtf/RunLoop.h>
 #include <wtf/SuspendableWorkQueue.h>
 

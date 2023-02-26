@@ -29,7 +29,7 @@
 #include "APIClient.h"
 #include "APIDiagnosticLoggingClient.h"
 #include "WKPage.h"
-#include <WebCore/DiagnosticLoggingResultType.h>
+#include <CyberCore/DiagnosticLoggingResultType.h>
 #include <wtf/Forward.h>
 
 namespace API {

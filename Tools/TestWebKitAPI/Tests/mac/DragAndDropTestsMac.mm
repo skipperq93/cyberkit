@@ -28,7 +28,7 @@
 #import "DragAndDropSimulator.h"
 #import "InstanceMethodSwizzler.h"
 #import "PlatformUtilities.h"
-#import <WebCore/PasteboardCustomData.h>
+#import <CyberCore/PasteboardCustomData.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 

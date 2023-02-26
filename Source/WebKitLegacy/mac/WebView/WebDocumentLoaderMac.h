@@ -26,8 +26,8 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/DocumentLoader.h>
-#import <WebCore/ResourceLoaderIdentifier.h>
+#import <CyberCore/DocumentLoader.h>
+#import <CyberCore/ResourceLoaderIdentifier.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/HashSet.h>
 

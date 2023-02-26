@@ -33,8 +33,8 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <QuickLook/QuickLook.h>
 #import <UIKit/UIViewController.h>
-#import <WebCore/MIMETypeRegistry.h>
-#import <WebCore/UTIUtilities.h>
+#import <CyberCore/MIMETypeRegistry.h>
+#import <CyberCore/UTIUtilities.h>
 #import <pal/ios/QuickLookSoftLink.h>
 #import <pal/spi/ios/QuickLookSPI.h>
 #import <wtf/WeakObjCPtr.h>

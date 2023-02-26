@@ -29,7 +29,7 @@
 #if USE(LIBWEBRTC)
 
 #import "NetworkSessionCocoa.h"
-#import <WebCore/LibWebRTCMacros.h>
+#import <CyberCore/LibWebRTCMacros.h>
 #import <webrtc/rtc_base/async_packet_socket.h>
 #import <webrtc/rtc_base/logging.h>
 #import <wtf/RetainPtr.h>

@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/ResourceLoaderIdentifier.h>
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceLoaderIdentifier.h>
+#include <CyberCore/ResourceRequest.h>
 #include <wtf/Deque.h>
 #include <wtf/RefCounted.h>
 

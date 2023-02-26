@@ -26,8 +26,8 @@
 #pragma once
 
 #include "Connection.h"
-#include <WebCore/IDBConnectionToClient.h>
-#include <WebCore/IDBConnectionToClientDelegate.h>
+#include <CyberCore/IDBConnectionToClient.h>
+#include <CyberCore/IDBConnectionToClientDelegate.h>
 
 namespace WebKit {
 

@@ -34,7 +34,7 @@
 #include "NetworkSession.h"
 #include "WebPushDaemonConnectionConfiguration.h"
 #include "WebPushMessage.h"
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOriginData.h>
 
 namespace WebKit {
 using namespace WebCore;

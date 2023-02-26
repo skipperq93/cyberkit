@@ -37,14 +37,14 @@
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include "WebProcessCreationParameters.h"
-#include <WebCore/ContentTypeUtilities.h>
-#include <WebCore/MediaPlayer.h>
+#include <CyberCore/ContentTypeUtilities.h>
+#include <CyberCore/MediaPlayer.h>
 #include <wtf/HashFunctions.h>
 #include <wtf/HashMap.h>
 #include <wtf/StdLibExtras.h>
 
 #if PLATFORM(COCOA)
-#include <WebCore/MediaPlayerPrivateMediaStreamAVFObjC.h>
+#include <CyberCore/MediaPlayerPrivateMediaStreamAVFObjC.h>
 #endif
 
 namespace WebKit {

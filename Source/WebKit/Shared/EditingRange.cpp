@@ -26,10 +26,10 @@
 #include "config.h"
 #include "EditingRange.h"
 
-#include <WebCore/Frame.h>
-#include <WebCore/FrameSelection.h>
-#include <WebCore/TextIterator.h>
-#include <WebCore/VisibleUnits.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameSelection.h>
+#include <CyberCore/TextIterator.h>
+#include <CyberCore/VisibleUnits.h>
 
 namespace WebKit {
 

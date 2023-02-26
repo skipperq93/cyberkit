@@ -28,9 +28,9 @@
 #if ENABLE(FULLSCREEN_API)
 
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/EventListener.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/LengthBox.h>
+#include <CyberCore/EventListener.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/LengthBox.h>
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 #include <wtf/RunLoop.h>

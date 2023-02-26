@@ -30,7 +30,7 @@
 #include "Connection.h"
 #include "EditingRange.h"
 #include "MessageReceiver.h"
-#include <WebCore/SimpleRange.h>
+#include <CyberCore/SimpleRange.h>
 #include <wtf/Vector.h>
 
 namespace IPC {

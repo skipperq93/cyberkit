@@ -30,9 +30,9 @@
 
 #import "WebPage.h"
 #import "WebPageCreationParameters.h"
-#import <WebCore/FrameView.h>
-#import <WebCore/GraphicsLayer.h>
-#import <WebCore/RenderLayerBacking.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/GraphicsLayer.h>
+#import <CyberCore/RenderLayerBacking.h>
 
 namespace WebKit {
 using namespace WebCore;

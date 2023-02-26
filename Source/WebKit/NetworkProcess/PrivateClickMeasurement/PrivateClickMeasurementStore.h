@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/PrivateClickMeasurement.h>
+#include <CyberCore/PrivateClickMeasurement.h>
 #include <wtf/Ref.h>
 #include <wtf/ThreadSafeRefCounted.h>
 

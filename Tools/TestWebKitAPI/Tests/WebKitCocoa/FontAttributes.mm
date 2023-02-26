@@ -32,8 +32,8 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebCore/ColorCocoa.h>
-#import <WebCore/FontCocoa.h>
+#import <CyberCore/ColorCocoa.h>
+#import <CyberCore/FontCocoa.h>
 #import <CyberKit/WKUIDelegatePrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <cmath>

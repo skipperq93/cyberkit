@@ -29,18 +29,18 @@
 
 #include "FidoTestData.h"
 #include "PlatformUtilities.h"
-#include <WebCore/CBORReader.h>
-#include <WebCore/CBORValue.h>
-#include <WebCore/CryptoAlgorithmAES_CBC.h>
-#include <WebCore/CryptoAlgorithmAesCbcCfbParams.h>
-#include <WebCore/CryptoAlgorithmECDH.h>
-#include <WebCore/CryptoKeyAES.h>
-#include <WebCore/CryptoKeyEC.h>
-#include <WebCore/CryptoKeyHMAC.h>
-#include <WebCore/FidoConstants.h>
-#include <WebCore/Pin.h>
-#include <WebCore/WebAuthenticationConstants.h>
-#include <WebCore/WebAuthenticationUtils.h>
+#include <CyberCore/CBORReader.h>
+#include <CyberCore/CBORValue.h>
+#include <CyberCore/CryptoAlgorithmAES_CBC.h>
+#include <CyberCore/CryptoAlgorithmAesCbcCfbParams.h>
+#include <CyberCore/CryptoAlgorithmECDH.h>
+#include <CyberCore/CryptoKeyAES.h>
+#include <CyberCore/CryptoKeyEC.h>
+#include <CyberCore/CryptoKeyHMAC.h>
+#include <CyberCore/FidoConstants.h>
+#include <CyberCore/Pin.h>
+#include <CyberCore/WebAuthenticationConstants.h>
+#include <CyberCore/WebAuthenticationUtils.h>
 #include <pal/crypto/CryptoDigest.h>
 
 namespace TestWebKitAPI {

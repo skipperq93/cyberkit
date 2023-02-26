@@ -41,15 +41,15 @@
 #include "WebSharedWorkerServerToContextConnectionMessages.h"
 #include "WebSocketProvider.h"
 #include "WebUserContentController.h"
-#include <WebCore/EmptyClients.h>
-#include <WebCore/Page.h>
-#include <WebCore/PageConfiguration.h>
-#include <WebCore/ScriptExecutionContextIdentifier.h>
-#include <WebCore/SharedWorkerContextManager.h>
-#include <WebCore/SharedWorkerThreadProxy.h>
-#include <WebCore/UserAgent.h>
-#include <WebCore/WorkerFetchResult.h>
-#include <WebCore/WorkerInitializationData.h>
+#include <CyberCore/EmptyClients.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PageConfiguration.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/SharedWorkerContextManager.h>
+#include <CyberCore/SharedWorkerThreadProxy.h>
+#include <CyberCore/UserAgent.h>
+#include <CyberCore/WorkerFetchResult.h>
+#include <CyberCore/WorkerInitializationData.h>
 
 namespace WebKit {
 

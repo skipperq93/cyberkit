@@ -26,7 +26,7 @@
 #pragma once
 
 #include "SandboxExtension.h"
-#include <WebCore/IDBResultData.h>
+#include <CyberCore/IDBResultData.h>
 #include <wtf/Noncopyable.h>
 
 namespace WebKit {

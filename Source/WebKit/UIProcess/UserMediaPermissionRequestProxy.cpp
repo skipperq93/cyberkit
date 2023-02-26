@@ -22,10 +22,10 @@
 
 #include "MediaPermissionUtilities.h"
 #include "UserMediaPermissionRequestManagerProxy.h"
-#include <WebCore/CaptureDeviceManager.h>
-#include <WebCore/RealtimeMediaSourceCenter.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/CaptureDeviceManager.h>
+#include <CyberCore/RealtimeMediaSourceCenter.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/text/StringHash.h>
 
 namespace WebKit {

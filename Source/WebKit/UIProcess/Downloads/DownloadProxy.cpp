@@ -38,8 +38,8 @@
 #include "WebPageProxy.h"
 #include "WebProcessMessages.h"
 #include "WebProtectionSpace.h"
-#include <WebCore/MIMETypeRegistry.h>
-#include <WebCore/ResourceResponseBase.h>
+#include <CyberCore/MIMETypeRegistry.h>
+#include <CyberCore/ResourceResponseBase.h>
 #include <wtf/FileSystem.h>
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>

@@ -30,7 +30,7 @@
 
 #if PLATFORM(MAC)
 #import <AppKit/NSPasteboard.h>
-#import <WebCore/LegacyNSPasteboardTypes.h>
+#import <CyberCore/LegacyNSPasteboardTypes.h>
 #endif
 
 namespace WebKit {

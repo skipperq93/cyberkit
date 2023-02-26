@@ -27,11 +27,11 @@
 
 #include "WebHitTestResultData.h"
 #include "WebMouseEvent.h"
-#include <WebCore/BackForwardItemIdentifier.h>
-#include <WebCore/FloatPoint.h>
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/PrivateClickMeasurement.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/BackForwardItemIdentifier.h>
+#include <CyberCore/FloatPoint.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/PrivateClickMeasurement.h>
+#include <CyberCore/SecurityOriginData.h>
 
 namespace IPC {
 class Decoder;

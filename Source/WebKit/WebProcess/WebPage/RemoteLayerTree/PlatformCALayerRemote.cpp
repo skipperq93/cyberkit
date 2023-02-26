@@ -32,16 +32,16 @@
 #import "RemoteLayerBackingStore.h"
 #import "RemoteLayerTreeContext.h"
 #import "RemoteLayerTreePropertyApplier.h"
-#import <WebCore/AnimationUtilities.h>
-#import <WebCore/ColorSpaceCG.h>
-#import <WebCore/EventRegion.h>
-#import <WebCore/GraphicsContext.h>
-#import <WebCore/GraphicsLayerCA.h>
-#import <WebCore/IOSurface.h>
-#import <WebCore/LengthFunctions.h>
-#import <WebCore/PlatformCAFilters.h>
-#import <WebCore/PlatformCALayerCocoa.h>
-#import <WebCore/TiledBacking.h>
+#import <CyberCore/AnimationUtilities.h>
+#import <CyberCore/ColorSpaceCG.h>
+#import <CyberCore/EventRegion.h>
+#import <CyberCore/GraphicsContext.h>
+#import <CyberCore/GraphicsLayerCA.h>
+#import <CyberCore/IOSurface.h>
+#import <CyberCore/LengthFunctions.h>
+#import <CyberCore/PlatformCAFilters.h>
+#import <CyberCore/PlatformCALayerCocoa.h>
+#import <CyberCore/TiledBacking.h>
 #import <wtf/PointerComparison.h>
 
 namespace WebKit {

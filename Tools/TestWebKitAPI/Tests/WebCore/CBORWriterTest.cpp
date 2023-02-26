@@ -31,7 +31,7 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#include <WebCore/CBORWriter.h>
+#include <CyberCore/CBORWriter.h>
 #include <limits>
 
 // Leveraging RFC 7049 examples from https://github.com/cbor/test-vectors/blob/master/appendix_a.json.

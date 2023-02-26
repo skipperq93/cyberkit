@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/SystemSoundDelegate.h>
+#include <CyberCore/SystemSoundDelegate.h>
 
 namespace WebKit {
 

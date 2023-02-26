@@ -36,8 +36,8 @@
 #include "RemoteMediaPlayerProxy.h"
 #include "TextTrackPrivateRemoteConfiguration.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/ISOVTTCue.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/ISOVTTCue.h>
+#include <CyberCore/NotImplemented.h>
 
 namespace WebKit {
 

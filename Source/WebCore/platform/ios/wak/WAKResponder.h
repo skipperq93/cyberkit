@@ -30,7 +30,7 @@
 
 #if TARGET_OS_IPHONE
 
-#import <WebCore/WKTypes.h>
+#import <CyberCore/WKTypes.h>
 
 @class WebEvent;
 

@@ -31,10 +31,10 @@
 #import "PlatformCALayerRemote.h"
 #import "WebCoreArgumentCoders.h"
 #import <QuartzCore/QuartzCore.h>
-#import <WebCore/EventRegion.h>
-#import <WebCore/LengthFunctions.h>
-#import <WebCore/Model.h>
-#import <WebCore/TimingFunction.h>
+#import <CyberCore/EventRegion.h>
+#import <CyberCore/LengthFunctions.h>
+#import <CyberCore/Model.h>
+#import <CyberCore/TimingFunction.h>
 #import <wtf/text/CString.h>
 #import <wtf/text/TextStream.h>
 

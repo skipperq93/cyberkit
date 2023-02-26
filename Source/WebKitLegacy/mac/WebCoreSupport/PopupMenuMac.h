@@ -20,7 +20,7 @@
 #ifndef PopupMenuMac_h
 #define PopupMenuMac_h
 
-#include <WebCore/PopupMenu.h>
+#include <CyberCore/PopupMenu.h>
 #include <wtf/RetainPtr.h>
 
 @class NSPopUpButtonCell;

@@ -31,7 +31,7 @@
 #include "APIUserInitiatedAction.h"
 #include "NavigationActionData.h"
 #include "WebHitTestResultData.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 #include <wtf/URL.h>
 
 namespace API {

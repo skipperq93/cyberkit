@@ -25,9 +25,9 @@
 
 #pragma once
 
-#include <WebCore/GraphicsLayerCA.h>
-#include <WebCore/HTMLMediaElementIdentifier.h>
-#include <WebCore/PlatformLayer.h>
+#include <CyberCore/GraphicsLayerCA.h>
+#include <CyberCore/HTMLMediaElementIdentifier.h>
+#include <CyberCore/PlatformLayer.h>
 
 namespace WebKit {
 

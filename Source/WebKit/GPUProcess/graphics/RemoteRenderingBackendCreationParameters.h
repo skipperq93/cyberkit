@@ -30,7 +30,7 @@
 #include "IPCSemaphore.h"
 #include "RenderingBackendIdentifier.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 
 namespace WebKit {
 

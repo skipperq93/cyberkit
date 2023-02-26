@@ -36,13 +36,13 @@
 #include "RemoteMediaPlayerProxyConfiguration.h"
 #include "ScopedRenderingResourcesRequest.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/MediaPlayer.h>
-#include <WebCore/MediaPlayerPrivate.h>
+#include <CyberCore/MediaPlayer.h>
+#include <CyberCore/MediaPlayerPrivate.h>
 #include <wtf/Logger.h>
 #include <wtf/UniqueRef.h>
 
 #if PLATFORM(COCOA)
-#include <WebCore/AVAssetMIMETypeCache.h>
+#include <CyberCore/AVAssetMIMETypeCache.h>
 #endif
 
 namespace WebKit {

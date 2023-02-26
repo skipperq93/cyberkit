@@ -27,7 +27,7 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/FileChooser.h>
+#include <CyberCore/FileChooser.h>
 
 namespace API {
 

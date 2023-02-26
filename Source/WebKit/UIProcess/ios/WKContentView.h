@@ -28,7 +28,7 @@
 #import "WKBrowsingContextController.h"
 #import "WKBrowsingContextGroup.h"
 #import "WKProcessGroup.h"
-#import <WebCore/InspectorOverlay.h>
+#import <CyberCore/InspectorOverlay.h>
 #import <wtf/NakedRef.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>

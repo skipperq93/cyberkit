@@ -35,9 +35,9 @@
 
 #if ENABLE(VIDEO)
 #include "RemoteVideoFrameObjectHeap.h"
-#include <WebCore/GraphicsContextGLCV.h>
-#include <WebCore/MediaSampleAVFObjC.h>
-#include <WebCore/VideoFrameCV.h>
+#include <CyberCore/GraphicsContextGLCV.h>
+#include <CyberCore/MediaSampleAVFObjC.h>
+#include <CyberCore/VideoFrameCV.h>
 #endif
 
 namespace WebKit {

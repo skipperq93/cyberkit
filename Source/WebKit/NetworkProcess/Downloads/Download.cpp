@@ -38,7 +38,7 @@
 #include "NetworkSession.h"
 #include "SandboxExtension.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 
 #if PLATFORM(COCOA)
 #include "NetworkDataTaskCocoa.h"

@@ -31,7 +31,7 @@
 #import "UIKitSPI.h"
 #import "WKContentView.h"
 #import "WKWebViewContentProvider.h"
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 

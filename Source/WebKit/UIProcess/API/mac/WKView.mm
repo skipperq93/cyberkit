@@ -44,8 +44,8 @@
 #import "WebProcessPool.h"
 #import "WebViewImpl.h"
 #import "_WKLinkIconParametersInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
-#import <WebCore/WebViewVisualIdentificationOverlay.h>
+#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebViewVisualIdentificationOverlay.h>
 #import <CyberKit/WKDragDestinationAction.h>
 #import <pal/spi/cocoa/AVKitSPI.h>
 #import <pal/spi/mac/NSViewSPI.h>

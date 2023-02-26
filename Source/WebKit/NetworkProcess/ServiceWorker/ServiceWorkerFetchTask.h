@@ -29,11 +29,11 @@
 
 #include "DataReference.h"
 #include "DownloadID.h"
-#include <WebCore/FetchIdentifier.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ScriptExecutionContextIdentifier.h>
-#include <WebCore/ServiceWorkerTypes.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/FetchIdentifier.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/ServiceWorkerTypes.h>
+#include <CyberCore/Timer.h>
 #include <pal/SessionID.h>
 #include <wtf/WeakPtr.h>
 

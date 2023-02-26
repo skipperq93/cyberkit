@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#include <WebCore/AuthenticatorTransport.h>
+#include <CyberCore/AuthenticatorTransport.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {

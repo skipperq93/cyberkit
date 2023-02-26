@@ -33,10 +33,10 @@
 #import "RemoteScrollingCoordinatorProxy.h"
 #import "ScrollingTreeFrameScrollingNodeRemoteMac.h"
 #import "ScrollingTreeOverflowScrollingNodeRemoteMac.h"
-#import <WebCore/ScrollingTreeFixedNodeCocoa.h>
-#import <WebCore/ScrollingTreeOverflowScrollProxyNode.h>
-#import <WebCore/ScrollingTreePositionedNode.h>
-#import <WebCore/WebCoreCALayerExtras.h>
+#import <CyberCore/ScrollingTreeFixedNodeCocoa.h>
+#import <CyberCore/ScrollingTreeOverflowScrollProxyNode.h>
+#import <CyberCore/ScrollingTreePositionedNode.h>
+#import <CyberCore/WebCoreCALayerExtras.h>
 #import <wtf/text/TextStream.h>
 
 namespace WebKit {

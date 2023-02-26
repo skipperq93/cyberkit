@@ -27,8 +27,8 @@
 #include "WebKit2Initialize.h"
 
 #include <JavaScriptCore/InitializeThreading.h>
-#include <WebCore/CommonAtomStrings.h>
-#include <WebCore/WebCoreJITOperations.h>
+#include <CyberCore/CommonAtomStrings.h>
+#include <CyberCore/WebCoreJITOperations.h>
 #include <wtf/GenerateProfiles.h>
 #include <wtf/MainThread.h>
 #include <wtf/RefCounted.h>

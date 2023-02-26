@@ -29,8 +29,8 @@
 #import "AuxiliaryProcess.h"
 #import "Connection.h"
 #import "Logging.h"
-#import <WebCore/RegistrableDomain.h>
-#import <WebCore/RuntimeApplicationChecks.h>
+#import <CyberCore/RegistrableDomain.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
 #import <wtf/HashMap.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RunLoop.h>

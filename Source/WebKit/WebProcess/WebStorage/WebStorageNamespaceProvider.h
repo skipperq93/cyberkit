@@ -27,7 +27,7 @@
 
 #include "StorageNamespaceIdentifier.h"
 #include "StorageNamespaceImpl.h"
-#include <WebCore/StorageNamespaceProvider.h>
+#include <CyberCore/StorageNamespaceProvider.h>
 
 namespace WebKit {
 

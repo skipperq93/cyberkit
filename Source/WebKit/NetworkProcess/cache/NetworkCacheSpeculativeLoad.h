@@ -32,9 +32,9 @@
 #include "NetworkLoadClient.h"
 #include "PolicyDecision.h"
 #include "PrivateRelayed.h"
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/CompletionHandler.h>
 
 namespace WebCore {

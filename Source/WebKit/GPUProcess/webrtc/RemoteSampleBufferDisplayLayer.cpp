@@ -32,8 +32,8 @@
 #include "IPCUtilities.h"
 #include "RemoteVideoFrameObjectHeap.h"
 #include "SampleBufferDisplayLayerMessages.h"
-#include <WebCore/ImageTransferSessionVT.h>
-#include <WebCore/LocalSampleBufferDisplayLayer.h>
+#include <CyberCore/ImageTransferSessionVT.h>
+#include <CyberCore/LocalSampleBufferDisplayLayer.h>
 
 namespace WebKit {
 

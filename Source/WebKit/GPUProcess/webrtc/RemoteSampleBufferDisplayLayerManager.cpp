@@ -34,7 +34,7 @@
 #include "RemoteSampleBufferDisplayLayer.h"
 #include "RemoteSampleBufferDisplayLayerManagerMessages.h"
 #include "RemoteSampleBufferDisplayLayerMessages.h"
-#include <WebCore/IntSize.h>
+#include <CyberCore/IntSize.h>
 
 namespace WebKit {
 

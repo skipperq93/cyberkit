@@ -29,7 +29,7 @@
 #include "Logging.h"
 #include "PersistencyUtils.h"
 
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/CryptographicallyRandomNumber.h>
 #include <wtf/FileSystem.h>
 #include <wtf/HexNumber.h>

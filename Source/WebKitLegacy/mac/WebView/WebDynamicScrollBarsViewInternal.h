@@ -29,7 +29,7 @@
 #if !PLATFORM(IOS_FAMILY)
 
 #import "WebDynamicScrollBarsView.h"
-#import <WebCore/WebCoreFrameView.h>
+#import <CyberCore/WebCoreFrameView.h>
 
 @interface WebDynamicScrollBarsView (WebInternal) <WebCoreFrameScrollView>
 

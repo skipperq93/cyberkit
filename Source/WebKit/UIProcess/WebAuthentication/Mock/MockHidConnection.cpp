@@ -28,11 +28,11 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#include <WebCore/AuthenticatorGetInfoResponse.h>
-#include <WebCore/CBORReader.h>
-#include <WebCore/FidoConstants.h>
-#include <WebCore/Pin.h>
-#include <WebCore/WebAuthenticationConstants.h>
+#include <CyberCore/AuthenticatorGetInfoResponse.h>
+#include <CyberCore/CBORReader.h>
+#include <CyberCore/FidoConstants.h>
+#include <CyberCore/Pin.h>
+#include <CyberCore/WebAuthenticationConstants.h>
 #include <wtf/BlockPtr.h>
 #include <wtf/CryptographicallyRandomNumber.h>
 #include <wtf/RunLoop.h>

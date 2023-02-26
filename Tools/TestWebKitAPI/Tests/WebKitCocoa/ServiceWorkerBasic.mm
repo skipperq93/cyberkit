@@ -34,7 +34,7 @@
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebCore/CertificateInfo.h>
+#import <CyberCore/CertificateInfo.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKURLSchemeHandler.h>

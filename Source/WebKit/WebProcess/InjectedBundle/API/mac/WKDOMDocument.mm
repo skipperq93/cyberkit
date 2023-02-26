@@ -27,12 +27,12 @@
 #import "WKDOMDocument.h"
 
 #import "WKDOMInternals.h"
-#import <WebCore/Document.h>
-#import <WebCore/DocumentFragment.h>
-#import <WebCore/HTMLElement.h>
-#import <WebCore/SimpleRange.h>
-#import <WebCore/Text.h>
-#import <WebCore/markup.h>
+#import <CyberCore/Document.h>
+#import <CyberCore/DocumentFragment.h>
+#import <CyberCore/HTMLElement.h>
+#import <CyberCore/SimpleRange.h>
+#import <CyberCore/Text.h>
+#import <CyberCore/markup.h>
 #import <wtf/NakedRef.h>
 
 @interface WKDOMDocumentParserYieldToken : NSObject

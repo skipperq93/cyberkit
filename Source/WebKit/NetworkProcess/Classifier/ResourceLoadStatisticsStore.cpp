@@ -34,10 +34,10 @@
 #include "StorageAccessStatus.h"
 #include "WebProcessProxy.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/CookieJar.h>
-#include <WebCore/KeyedCoding.h>
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/ResourceLoadStatistics.h>
+#include <CyberCore/CookieJar.h>
+#include <CyberCore/KeyedCoding.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/ResourceLoadStatistics.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/DateMath.h>

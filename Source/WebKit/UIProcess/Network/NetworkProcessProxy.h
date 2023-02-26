@@ -37,10 +37,10 @@
 #include "QuotaIncreaseRequestIdentifier.h"
 #include "UserContentControllerIdentifier.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/CrossSiteNavigationDataTransfer.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/NotificationEventType.h>
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/CrossSiteNavigationDataTransfer.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/NotificationEventType.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <memory>
 #include <wtf/Deque.h>
 

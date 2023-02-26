@@ -26,8 +26,8 @@
 #include "config.h"
 
 #include <JavaScriptCore/InitializeThreading.h>
-#include <WebCore/ComplexTextController.h>
-#include <WebCore/FontCascade.h>
+#include <CyberCore/ComplexTextController.h>
+#include <CyberCore/FontCascade.h>
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 

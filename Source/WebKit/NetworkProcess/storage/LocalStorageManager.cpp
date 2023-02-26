@@ -29,7 +29,7 @@
 #include "MemoryStorageArea.h"
 #include "SQLiteStorageArea.h"
 #include "StorageAreaRegistry.h"
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOriginData.h>
 
 namespace WebKit {
 

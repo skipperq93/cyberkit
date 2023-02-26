@@ -29,8 +29,8 @@
 
 #include "GPUProcessConnection.h"
 #include "WebProcessSupplement.h"
-#include <WebCore/MediaPlayer.h>
-#include <WebCore/MediaPlayerIdentifier.h>
+#include <CyberCore/MediaPlayer.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
 #include <wtf/HashMap.h>
 
 namespace WebCore {

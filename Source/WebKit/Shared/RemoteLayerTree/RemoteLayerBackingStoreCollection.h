@@ -25,7 +25,7 @@
 
 #pragma once
 
-#import <WebCore/Timer.h>
+#import <CyberCore/Timer.h>
 #import <wtf/HashSet.h>
 #import <wtf/Noncopyable.h>
 #import <wtf/OptionSet.h>

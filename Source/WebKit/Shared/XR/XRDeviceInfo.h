@@ -28,7 +28,7 @@
 #if ENABLE(WEBXR)
 
 #include "XRDeviceIdentifier.h"
-#include <WebCore/PlatformXR.h>
+#include <CyberCore/PlatformXR.h>
 
 namespace IPC {
 class Decoder;

@@ -25,22 +25,22 @@
 
 #pragma once
 
-#include <WebCore/Color.h>
-#include <WebCore/IntPoint.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/IntPoint.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/ListHashSet.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/text/WTFString.h>
 
 #if HAVE(IOSURFACE)
-#include <WebCore/IOSurface.h>
+#include <CyberCore/IOSurface.h>
 #endif
 
 #if PLATFORM(GTK)
 #if USE(GTK4)
 #include <gtk/gtk.h>
 #else
-#include <WebCore/RefPtrCairo.h>
+#include <CyberCore/RefPtrCairo.h>
 #endif
 #endif
 

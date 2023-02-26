@@ -28,8 +28,8 @@
 #if USE(MEDIATOOLBOX)
 
 #include "SharedMemory.h"
-#include <WebCore/CAAudioStreamDescription.h>
-#include <WebCore/CARingBuffer.h>
+#include <CyberCore/CAAudioStreamDescription.h>
+#include <CyberCore/CARingBuffer.h>
 #include <wtf/Atomics.h>
 #include <wtf/Function.h>
 

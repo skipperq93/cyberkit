@@ -27,7 +27,7 @@
 
 #if TARGET_OS_IPHONE
 
-#import <WebCore/WAKAppKitStubs.h>
+#import <CyberCore/WAKAppKitStubs.h>
 
 #if WAK_APPKIT_API_AVAILABLE_MACCATALYST
 #import <AppKit/NSEvent.h>

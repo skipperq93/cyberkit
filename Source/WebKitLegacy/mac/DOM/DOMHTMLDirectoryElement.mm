@@ -27,11 +27,11 @@
 
 #import "DOMNodeInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/HTMLDirectoryElement.h>
-#import <WebCore/HTMLNames.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/HTMLDirectoryElement.h>
+#import <CyberCore/HTMLNames.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
 #define IMPL static_cast<WebCore::HTMLDirectoryElement*>(reinterpret_cast<WebCore::Node*>(_internal))

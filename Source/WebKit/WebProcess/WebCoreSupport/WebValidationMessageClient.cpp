@@ -29,8 +29,8 @@
 #include "WebCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
-#include <WebCore/Element.h>
-#include <WebCore/Frame.h>
+#include <CyberCore/Element.h>
+#include <CyberCore/Frame.h>
 
 namespace WebKit {
 using namespace WebCore;

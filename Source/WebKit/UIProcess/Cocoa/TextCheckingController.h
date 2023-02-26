@@ -29,7 +29,7 @@
 
 #import "EditingRange.h"
 #import "WebPageProxy.h"
-#import <WebCore/FloatRect.h>
+#import <CyberCore/FloatRect.h>
 #import <wtf/CompletionHandler.h>
 
 OBJC_CLASS NSAttributedString;

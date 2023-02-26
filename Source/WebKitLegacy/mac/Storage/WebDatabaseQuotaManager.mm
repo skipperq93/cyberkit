@@ -26,8 +26,8 @@
 #import "WebDatabaseQuotaManager.h"
 
 #import "WebSecurityOriginInternal.h"
-#import <WebCore/DatabaseTracker.h>
-#import <WebCore/SecurityOriginData.h>
+#import <CyberCore/DatabaseTracker.h>
+#import <CyberCore/SecurityOriginData.h>
 
 using namespace WebCore;
 

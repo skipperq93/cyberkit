@@ -37,10 +37,10 @@
 #import "WebPageProxy.h"
 #import "WebProcessProxy.h"
 #import <QuartzCore/CoreAnimation.h>
-#import <WebCore/MediaPlayerEnums.h>
-#import <WebCore/TimeRanges.h>
-#import <WebCore/WebAVPlayerLayer.h>
-#import <WebCore/WebAVPlayerLayerView.h>
+#import <CyberCore/MediaPlayerEnums.h>
+#import <CyberCore/TimeRanges.h>
+#import <CyberCore/WebAVPlayerLayer.h>
+#import <CyberCore/WebAVPlayerLayerView.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/MachSendRight.h>
 #import <wtf/WeakObjCPtr.h>

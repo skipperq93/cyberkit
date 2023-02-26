@@ -27,7 +27,7 @@
 #pragma once
 
 #include "WebProcessProxy.h"
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <pal/SessionID.h>
 #include <wtf/HashMap.h>
 #include <wtf/RunLoop.h>

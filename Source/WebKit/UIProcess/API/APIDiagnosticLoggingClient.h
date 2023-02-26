@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/DiagnosticLoggingDomain.h>
-#include <WebCore/DiagnosticLoggingResultType.h>
+#include <CyberCore/DiagnosticLoggingDomain.h>
+#include <CyberCore/DiagnosticLoggingResultType.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {

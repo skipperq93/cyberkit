@@ -32,7 +32,7 @@
 #include "MessageReceiver.h"
 #include "RemoteCDMInstanceSessionIdentifier.h"
 #include "RemoteCDMProxy.h"
-#include <WebCore/CDMInstanceSession.h>
+#include <CyberCore/CDMInstanceSession.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/WeakPtr.h>
 

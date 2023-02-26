@@ -27,8 +27,8 @@
 #import "WebKit2Initialize.h"
 
 #import <JavaScriptCore/InitializeThreading.h>
-#import <WebCore/CommonAtomStrings.h>
-#import <WebCore/WebCoreJITOperations.h>
+#import <CyberCore/CommonAtomStrings.h>
+#import <CyberCore/WebCoreJITOperations.h>
 #import <mutex>
 #import <wtf/GenerateProfiles.h>
 #import <wtf/MainThread.h>
@@ -37,7 +37,7 @@
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/WebCoreThreadSystemInterface.h>
 #endif
 
 namespace WebKit {

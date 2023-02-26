@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/EditorInsertAction.h>
-#include <WebCore/TextAffinity.h>
+#include <CyberCore/EditorInsertAction.h>
+#include <CyberCore/TextAffinity.h>
 #include <wtf/Forward.h>
 #include <wtf/text/WTFString.h>
 

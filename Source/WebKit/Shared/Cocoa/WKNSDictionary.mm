@@ -27,7 +27,7 @@
 #import "WKNSDictionary.h"
 
 #import "WKNSArray.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 using namespace WebKit;
 

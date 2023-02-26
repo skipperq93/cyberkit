@@ -48,11 +48,11 @@
 #import "_WKDownloadDelegate.h"
 #import "_WKDownloadInternal.h"
 #import "_WKProcessPoolConfigurationInternal.h"
-#import <WebCore/CertificateInfo.h>
-#import <WebCore/HTTPCookieAcceptPolicyCocoa.h>
-#import <WebCore/PluginData.h>
-#import <WebCore/RegistrableDomain.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/CertificateInfo.h>
+#import <CyberCore/HTTPCookieAcceptPolicyCocoa.h>
+#import <CyberCore/PluginData.h>
+#import <CyberCore/RegistrableDomain.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
@@ -61,7 +61,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/WebCoreThreadSystemInterface.h>
 #import "WKGeolocationProviderIOS.h"
 #endif
 

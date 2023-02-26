@@ -28,8 +28,8 @@
 #if ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
 
 #include "ImageBufferBackendHandleSharing.h"
-#include <WebCore/ImageBuffer.h>
-#include <WebCore/ImageBufferCGBackend.h>
+#include <CyberCore/ImageBuffer.h>
+#include <CyberCore/ImageBufferCGBackend.h>
 #include <wtf/IsoMalloc.h>
 
 namespace WebKit {

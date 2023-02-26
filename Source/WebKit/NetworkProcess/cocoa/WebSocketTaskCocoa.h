@@ -29,7 +29,7 @@
 
 #include "DataReference.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/RetainPtr.h>
 #include <wtf/WeakPtr.h>
 

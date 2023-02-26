@@ -28,7 +28,7 @@
 #import "WKFoundation.h"
 
 #import "WKWebViewConfigurationPrivate.h"
-#import <WebCore/ContentSecurityPolicy.h>
+#import <CyberCore/ContentSecurityPolicy.h>
 
 namespace WebKit {
 

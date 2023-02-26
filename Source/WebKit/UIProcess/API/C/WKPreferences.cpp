@@ -30,7 +30,7 @@
 #include "WKPreferencesRef.h"
 #include "WKPreferencesRefPrivate.h"
 #include "WebPreferences.h"
-#include <WebCore/Settings.h>
+#include <CyberCore/Settings.h>
 #include <wtf/RefPtr.h>
 
 using namespace WebKit;

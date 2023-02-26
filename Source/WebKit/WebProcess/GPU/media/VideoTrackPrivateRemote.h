@@ -29,8 +29,8 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
 #include "TrackPrivateRemoteIdentifier.h"
-#include <WebCore/MediaPlayerIdentifier.h>
-#include <WebCore/VideoTrackPrivate.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
+#include <CyberCore/VideoTrackPrivate.h>
 
 namespace WebKit {
 

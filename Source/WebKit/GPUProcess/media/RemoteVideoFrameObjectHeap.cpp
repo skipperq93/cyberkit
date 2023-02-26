@@ -36,9 +36,9 @@
 #include <wtf/WorkQueue.h>
 
 #if PLATFORM(COCOA)
-#include <WebCore/ColorSpaceCG.h>
-#include <WebCore/PixelBufferConformerCV.h>
-#include <WebCore/VideoFrameCV.h>
+#include <CyberCore/ColorSpaceCG.h>
+#include <CyberCore/PixelBufferConformerCV.h>
+#include <CyberCore/VideoFrameCV.h>
 #include <pal/cf/CoreMediaSoftLink.h>
 #endif
 

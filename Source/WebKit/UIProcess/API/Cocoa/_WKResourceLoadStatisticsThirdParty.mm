@@ -27,7 +27,7 @@
 #import "_WKResourceLoadStatisticsThirdPartyInternal.h"
 
 #import "APIArray.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 @implementation _WKResourceLoadStatisticsThirdParty

@@ -29,7 +29,7 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebCore/LegacyNSPasteboardTypes.h>
+#import <CyberCore/LegacyNSPasteboardTypes.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKPreferencesRefPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>

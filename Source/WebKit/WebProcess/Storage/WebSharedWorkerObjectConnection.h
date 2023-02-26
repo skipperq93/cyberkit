@@ -27,7 +27,7 @@
 
 #include "MessageReceiver.h"
 #include "MessageSender.h"
-#include <WebCore/SharedWorkerObjectConnection.h>
+#include <CyberCore/SharedWorkerObjectConnection.h>
 
 namespace WebKit {
 

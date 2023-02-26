@@ -24,7 +24,7 @@
  */
 
 #import "CorrectionPanel.h"
-#import <WebCore/AlternativeTextClient.h>
+#import <CyberCore/AlternativeTextClient.h>
 
 @class WebView;
 

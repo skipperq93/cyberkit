@@ -28,11 +28,11 @@
 #include "LayerTreeContext.h"
 #include "RemoteLayerBackingStoreCollection.h"
 #include "RemoteLayerTreeTransaction.h"
-#include <WebCore/FloatSize.h>
-#include <WebCore/GraphicsLayerFactory.h>
-#include <WebCore/HTMLMediaElementIdentifier.h>
-#include <WebCore/LayerPool.h>
-#include <WebCore/PlatformCALayer.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/GraphicsLayerFactory.h>
+#include <CyberCore/HTMLMediaElementIdentifier.h>
+#include <CyberCore/LayerPool.h>
+#include <CyberCore/PlatformCALayer.h>
 #include <wtf/Vector.h>
 
 namespace WebKit {

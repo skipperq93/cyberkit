@@ -27,23 +27,23 @@
 #include "WebFoundTextRangeController.h"
 
 #include "WebPage.h"
-#include <WebCore/CharacterRange.h>
-#include <WebCore/Document.h>
-#include <WebCore/DocumentMarkerController.h>
-#include <WebCore/Editor.h>
-#include <WebCore/FocusController.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameSelection.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/GeometryUtilities.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/ImageOverlay.h>
-#include <WebCore/Page.h>
-#include <WebCore/PageOverlayController.h>
-#include <WebCore/PathUtilities.h>
-#include <WebCore/PlatformMouseEvent.h>
-#include <WebCore/SimpleRange.h>
-#include <WebCore/TextIterator.h>
+#include <CyberCore/CharacterRange.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/DocumentMarkerController.h>
+#include <CyberCore/Editor.h>
+#include <CyberCore/FocusController.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameSelection.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/GeometryUtilities.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/ImageOverlay.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PageOverlayController.h>
+#include <CyberCore/PathUtilities.h>
+#include <CyberCore/PlatformMouseEvent.h>
+#include <CyberCore/SimpleRange.h>
+#include <CyberCore/TextIterator.h>
 #include <wtf/Scope.h>
 
 namespace WebKit {

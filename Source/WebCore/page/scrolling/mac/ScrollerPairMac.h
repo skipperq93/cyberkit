@@ -28,8 +28,8 @@
 #if PLATFORM(MAC)
 
 #include "ScrollerMac.h"
-#include <WebCore/FloatRect.h>
-#include <WebCore/FloatSize.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/FloatSize.h>
 
 OBJC_CLASS NSScrollerImpPair;
 OBJC_CLASS WebScrollerImpPairDelegateMac;

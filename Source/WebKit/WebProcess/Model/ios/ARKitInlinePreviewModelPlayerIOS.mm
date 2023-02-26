@@ -30,7 +30,7 @@
 
 #import "WebPage.h"
 #import "WebPageProxyMessages.h"
-#import <WebCore/GraphicsLayer.h>
+#import <CyberCore/GraphicsLayer.h>
 
 namespace WebKit {
 

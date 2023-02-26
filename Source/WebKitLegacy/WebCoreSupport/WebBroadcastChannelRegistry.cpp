@@ -25,8 +25,8 @@
 
 #include "WebBroadcastChannelRegistry.h"
 
-#include <WebCore/BroadcastChannel.h>
-#include <WebCore/SerializedScriptValue.h>
+#include <CyberCore/BroadcastChannel.h>
+#include <CyberCore/SerializedScriptValue.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>

@@ -26,7 +26,7 @@
 #pragma once
 
 #include "WebFrame.h"
-#include <WebCore/FrameNetworkingContext.h>
+#include <CyberCore/FrameNetworkingContext.h>
 
 namespace WebKit {
 

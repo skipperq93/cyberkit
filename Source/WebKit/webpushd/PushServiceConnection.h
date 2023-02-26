@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/PushMessageCrypto.h>
+#include <CyberCore/PushMessageCrypto.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Deque.h>
 #include <wtf/Function.h>

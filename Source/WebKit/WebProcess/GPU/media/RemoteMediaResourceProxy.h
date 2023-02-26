@@ -29,9 +29,9 @@
 
 #include "Connection.h"
 #include "RemoteMediaResourceIdentifier.h"
-#include <WebCore/PlatformMediaResourceLoader.h>
-#include <WebCore/PolicyChecker.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/PlatformMediaResourceLoader.h>
+#include <CyberCore/PolicyChecker.h>
+#include <CyberCore/ResourceResponse.h>
 
 namespace WebKit {
 

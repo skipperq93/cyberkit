@@ -39,8 +39,8 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <JavaScriptCore/OpaqueJSString.h>
 #import <UIKit/UIKit.h>
-#import <WebCore/FloatPoint.h>
-#import <WebCore/FloatRect.h>
+#import <CyberCore/FloatPoint.h>
+#import <CyberCore/FloatRect.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <CyberKit/WebKit.h>

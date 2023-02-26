@@ -26,7 +26,7 @@
 #pragma once
 
 #include "WebFramePolicyListenerProxy.h"
-#include <WebCore/FrameLoaderTypes.h>
+#include <CyberCore/FrameLoaderTypes.h>
 #include <wtf/Forward.h>
 
 namespace WebCore {

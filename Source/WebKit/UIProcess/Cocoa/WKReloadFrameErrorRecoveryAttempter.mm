@@ -32,7 +32,7 @@
 #import "WebFrameProxy.h"
 #import "WebPageProxy.h"
 #import "WebProcessProxy.h"
-#import <WebCore/FrameIdentifier.h>
+#import <CyberCore/FrameIdentifier.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>
 

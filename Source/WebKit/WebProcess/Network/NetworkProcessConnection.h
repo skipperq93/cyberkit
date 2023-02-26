@@ -28,10 +28,10 @@
 #include "Connection.h"
 #include "ShareableResource.h"
 #include <JavaScriptCore/ConsoleTypes.h>
-#include <WebCore/MessagePortChannelProvider.h>
-#include <WebCore/RTCDataChannelIdentifier.h>
-#include <WebCore/ResourceLoaderIdentifier.h>
-#include <WebCore/ServiceWorkerTypes.h>
+#include <CyberCore/MessagePortChannelProvider.h>
+#include <CyberCore/RTCDataChannelIdentifier.h>
+#include <CyberCore/ResourceLoaderIdentifier.h>
+#include <CyberCore/ServiceWorkerTypes.h>
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 

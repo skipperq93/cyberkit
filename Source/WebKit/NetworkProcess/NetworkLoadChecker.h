@@ -27,12 +27,12 @@
 
 #include "UserContentControllerIdentifier.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/ContentExtensionActions.h>
-#include <WebCore/ContentSecurityPolicyResponseHeaders.h>
-#include <WebCore/CrossOriginEmbedderPolicy.h>
-#include <WebCore/FetchOptions.h>
-#include <WebCore/NetworkLoadInformation.h>
-#include <WebCore/ResourceError.h>
+#include <CyberCore/ContentExtensionActions.h>
+#include <CyberCore/ContentSecurityPolicyResponseHeaders.h>
+#include <CyberCore/CrossOriginEmbedderPolicy.h>
+#include <CyberCore/FetchOptions.h>
+#include <CyberCore/NetworkLoadInformation.h>
+#include <CyberCore/ResourceError.h>
 #include <pal/SessionID.h>
 #include <variant>
 #include <wtf/CompletionHandler.h>

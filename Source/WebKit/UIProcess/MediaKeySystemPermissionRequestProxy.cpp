@@ -27,8 +27,8 @@
 #include "MediaKeySystemPermissionRequestProxy.h"
 
 #include "MediaKeySystemPermissionRequestManagerProxy.h"
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/text/StringHash.h>
 
 namespace WebKit {

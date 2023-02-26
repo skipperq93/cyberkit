@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/PerformanceLoggingClient.h>
+#include <CyberCore/PerformanceLoggingClient.h>
 #include <wtf/Forward.h>
 
 namespace WebKit {

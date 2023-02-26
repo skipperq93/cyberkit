@@ -26,8 +26,8 @@
 #include "config.h"
 #include "WebAutomationDOMWindowObserver.h"
 
-#include <WebCore/Element.h>
-#include <WebCore/Frame.h>
+#include <CyberCore/Element.h>
+#include <CyberCore/Frame.h>
 
 namespace WebKit {
 

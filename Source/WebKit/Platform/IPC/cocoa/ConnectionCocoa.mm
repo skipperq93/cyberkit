@@ -34,7 +34,7 @@
 #import "MachUtilities.h"
 #import "WKCrashReporter.h"
 #import "XPCUtilities.h"
-#import <WebCore/AXObjectCache.h>
+#import <CyberCore/AXObjectCache.h>
 #import <mach/mach_error.h>
 #import <mach/mach_init.h>
 #import <mach/mach_traps.h>

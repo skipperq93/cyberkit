@@ -29,9 +29,9 @@
 #include "Connection.h"
 #include "DrawingAreaInfo.h"
 #include "MessageReceiver.h"
-#include <WebCore/FloatRect.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/IntSize.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/IntSize.h>
 #include <stdint.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/RunLoop.h>

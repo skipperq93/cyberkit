@@ -28,7 +28,7 @@
 #include "MessageReceiver.h"
 #include "SandboxExtension.h"
 #include "SharedMemory.h"
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 #include <wtf/HashMap.h>
 #include <wtf/WeakHashSet.h>
 

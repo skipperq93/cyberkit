@@ -35,8 +35,8 @@
 #import "ShareableBitmap.h"
 #import "WebPageProxy.h"
 #import <Quartz/Quartz.h>
-#import <WebCore/GraphicsContextCG.h>
-#import <WebCore/LocalDefaultSystemAppearance.h>
+#import <CyberCore/GraphicsContextCG.h>
+#import <CyberCore/LocalDefaultSystemAppearance.h>
 #import <wtf/RunLoop.h>
 
 #import "PDFKitSoftLink.h"

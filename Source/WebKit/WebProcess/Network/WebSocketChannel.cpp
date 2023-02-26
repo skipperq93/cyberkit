@@ -31,18 +31,18 @@
 #include "NetworkSocketChannelMessages.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <WebCore/Blob.h>
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/Document.h>
-#include <WebCore/DocumentInlines.h>
-#include <WebCore/DocumentLoader.h>
-#include <WebCore/ExceptionCode.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameDestructionObserverInlines.h>
-#include <WebCore/NetworkConnectionIntegrity.h>
-#include <WebCore/Page.h>
-#include <WebCore/WebSocketChannel.h>
-#include <WebCore/WebSocketChannelClient.h>
+#include <CyberCore/Blob.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/DocumentInlines.h>
+#include <CyberCore/DocumentLoader.h>
+#include <CyberCore/ExceptionCode.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameDestructionObserverInlines.h>
+#include <CyberCore/NetworkConnectionIntegrity.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/WebSocketChannel.h>
+#include <CyberCore/WebSocketChannelClient.h>
 #include <wtf/CheckedArithmetic.h>
 
 namespace WebKit {

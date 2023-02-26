@@ -41,17 +41,17 @@
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <JavaScriptCore/TypedArrayInlines.h>
-#include <WebCore/DeprecatedGlobalSettings.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/MediaPlayer.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/PlatformLayer.h>
-#include <WebCore/PlatformScreen.h>
-#include <WebCore/PlatformTimeRanges.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/TextTrackRepresentation.h>
-#include <WebCore/VideoLayerManager.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/MediaPlayer.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/PlatformLayer.h>
+#include <CyberCore/PlatformScreen.h>
+#include <CyberCore/PlatformTimeRanges.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/TextTrackRepresentation.h>
+#include <CyberCore/VideoLayerManager.h>
 #include <wtf/HashMap.h>
 #include <wtf/MachSendRight.h>
 #include <wtf/MainThread.h>
@@ -60,11 +60,11 @@
 #include <wtf/text/CString.h>
 
 #if USE(NICOSIA)
-#include <WebCore/NicosiaPlatformLayer.h>
+#include <CyberCore/NicosiaPlatformLayer.h>
 #elif USE(COORDINATED_GRAPHICS)
-#include <WebCore/TextureMapperPlatformLayerProxyProvider.h>
+#include <CyberCore/TextureMapperPlatformLayerProxyProvider.h>
 #elif USE(TEXTURE_MAPPER)
-#include <WebCore/TextureMapperPlatformLayer.h>
+#include <CyberCore/TextureMapperPlatformLayer.h>
 #endif
 
 #if ENABLE(ENCRYPTED_MEDIA)
@@ -72,7 +72,7 @@
 #endif
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
-#include <WebCore/LegacyCDM.h>
+#include <CyberCore/LegacyCDM.h>
 #endif
 
 #if ENABLE(MEDIA_SOURCE)
@@ -80,9 +80,9 @@
 #endif
 
 #if PLATFORM(COCOA)
-#include <WebCore/PixelBufferConformerCV.h>
-#include <WebCore/VideoFrameCV.h>
-#include <WebCore/VideoLayerManagerObjC.h>
+#include <CyberCore/PixelBufferConformerCV.h>
+#include <CyberCore/VideoFrameCV.h>
+#include <CyberCore/VideoLayerManagerObjC.h>
 #endif
 
 namespace WebCore {
