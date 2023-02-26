@@ -27,7 +27,7 @@
 
 #include "WebKitNavigationAction.h"
 #include "WebMouseEvent.h"
-#include <WebCore/FrameLoaderTypes.h>
+#include <CyberCore/FrameLoaderTypes.h>
 
 unsigned toPlatformModifiers(OptionSet<WebKit::WebEventModifier>);
 WebKitNavigationType toWebKitNavigationType(WebCore::NavigationType);

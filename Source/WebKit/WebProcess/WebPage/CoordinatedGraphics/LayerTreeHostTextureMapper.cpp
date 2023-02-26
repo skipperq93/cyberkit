@@ -32,16 +32,16 @@
 #include "DrawingArea.h"
 #include "WebPage.h"
 #include <GLES2/gl2.h>
-#include <WebCore/Document.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/GraphicsLayerTextureMapper.h>
-#include <WebCore/Page.h>
-#include <WebCore/Settings.h>
-#include <WebCore/TemporaryOpenGLSetting.h>
-#include <WebCore/TextureMapperGL.h>
-#include <WebCore/TextureMapperLayer.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/GraphicsLayerTextureMapper.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/TemporaryOpenGLSetting.h>
+#include <CyberCore/TextureMapperGL.h>
+#include <CyberCore/TextureMapperLayer.h>
 
 namespace WebKit {
 using namespace WebCore;

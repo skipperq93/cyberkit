@@ -26,8 +26,8 @@
 #include "config.h"
 #include "PlatformWebView.h"
 
-#include <WebCore/GUniquePtrGtk.h>
-#include <WebCore/GtkVersioning.h>
+#include <CyberCore/GUniquePtrGtk.h>
+#include <CyberCore/GtkVersioning.h>
 #include <WebKit/WKRetainPtr.h>
 #include <WebKit/WKView.h>
 #include <gtk/gtk.h>

@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLTableRowElementPrivate_h
 #define WebKitDOMHTMLTableRowElementPrivate_h
 
-#include <WebCore/HTMLTableRowElement.h>
+#include <CyberCore/HTMLTableRowElement.h>
 #include <webkitdom/WebKitDOMHTMLTableRowElement.h>
 
 namespace WebKit {

@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLQuoteElementPrivate_h
 #define WebKitDOMHTMLQuoteElementPrivate_h
 
-#include <WebCore/HTMLQuoteElement.h>
+#include <CyberCore/HTMLQuoteElement.h>
 #include <webkitdom/WebKitDOMHTMLQuoteElement.h>
 
 namespace WebKit {

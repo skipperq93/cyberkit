@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLOptionElementPrivate_h
 #define WebKitDOMHTMLOptionElementPrivate_h
 
-#include <WebCore/HTMLOptionElement.h>
+#include <CyberCore/HTMLOptionElement.h>
 #include <webkitdom/WebKitDOMHTMLOptionElement.h>
 
 namespace WebKit {

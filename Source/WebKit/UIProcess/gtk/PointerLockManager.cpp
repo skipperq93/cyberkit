@@ -28,10 +28,10 @@
 
 #include "NativeWebMouseEvent.h"
 #include "WebPageProxy.h"
-#include <WebCore/PlatformDisplay.h>
-#include <WebCore/PlatformMouseEvent.h>
-#include <WebCore/PointerEvent.h>
-#include <WebCore/PointerID.h>
+#include <CyberCore/PlatformDisplay.h>
+#include <CyberCore/PlatformMouseEvent.h>
+#include <CyberCore/PointerEvent.h>
+#include <CyberCore/PointerID.h>
 #include <gtk/gtk.h>
 
 #if PLATFORM(WAYLAND)

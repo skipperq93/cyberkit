@@ -20,8 +20,8 @@
 #include "WebKitDOMNodeFilter.h"
 
 #include "GObjectNodeFilterCondition.h"
-#include <WebCore/Document.h>
-#include <WebCore/NativeNodeFilter.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/NativeNodeFilter.h>
 #include "WebKitDOMNode.h"
 #include "WebKitDOMNodeFilterPrivate.h"
 #include <wtf/HashMap.h>

@@ -27,7 +27,7 @@
 #pragma once
 
 #include "WebKitWindowProperties.h"
-#include <WebCore/WindowFeatures.h>
+#include <CyberCore/WindowFeatures.h>
 
 WebKitWindowProperties* webkitWindowPropertiesCreate();
 void webkitWindowPropertiesUpdateFromWebWindowFeatures(WebKitWindowProperties*, const WebCore::WindowFeatures&);

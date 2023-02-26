@@ -30,7 +30,7 @@
 
 #include "WebKitWebViewBasePrivate.h"
 #include "WebPageProxy.h"
-#include <WebCore/GtkUtilities.h>
+#include <CyberCore/GtkUtilities.h>
 #include <wtf/ProcessPrivilege.h>
 #include <wtf/glib/GRefPtr.h>
 

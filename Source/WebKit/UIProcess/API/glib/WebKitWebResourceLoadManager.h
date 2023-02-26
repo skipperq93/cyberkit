@@ -21,8 +21,8 @@
 
 #include "WebKitWebResource.h"
 #include "WebKitWebView.h"
-#include <WebCore/GlobalFrameIdentifier.h>
-#include <WebCore/ResourceLoaderIdentifier.h>
+#include <CyberCore/GlobalFrameIdentifier.h>
+#include <CyberCore/ResourceLoaderIdentifier.h>
 #include <wtf/HashMap.h>
 #include <wtf/glib/GRefPtr.h>
 

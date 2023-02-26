@@ -25,12 +25,12 @@
 #include "WebKitDOMNamedNodeMapPrivate.h"
 #include "WebKitDOMNodePrivate.h"
 #include "WebKitDOMPrivate.h"
-#include <WebCore/Attr.h>
-#include <WebCore/CSSImportRule.h>
-#include <WebCore/DOMException.h>
-#include <WebCore/Document.h>
-#include <WebCore/Element.h>
-#include <WebCore/JSExecState.h>
+#include <CyberCore/Attr.h>
+#include <CyberCore/CSSImportRule.h>
+#include <CyberCore/DOMException.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Element.h>
+#include <CyberCore/JSExecState.h>
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 

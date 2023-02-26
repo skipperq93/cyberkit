@@ -20,7 +20,7 @@
 #ifndef WebKitDOMBlobPrivate_h
 #define WebKitDOMBlobPrivate_h
 
-#include <WebCore/Blob.h>
+#include <CyberCore/Blob.h>
 #include <webkitdom/WebKitDOMBlob.h>
 
 namespace WebKit {

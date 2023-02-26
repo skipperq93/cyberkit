@@ -23,7 +23,7 @@
 #include "WebKitInputMethodContextPrivate.h"
 #include "WebKitWebViewPrivate.h"
 #include "WebPageProxy.h"
-#include <WebCore/PlatformDisplay.h>
+#include <CyberCore/PlatformDisplay.h>
 #include <wtf/SetForScope.h>
 
 namespace WebKit {

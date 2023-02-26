@@ -28,7 +28,7 @@
 
 #if ENABLE(BUBBLEWRAP_SANDBOX)
 #include "BubblewrapLauncher.h"
-#include <WebCore/PlatformDisplay.h>
+#include <CyberCore/PlatformDisplay.h>
 #include <wtf/UniStdExtras.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>

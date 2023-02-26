@@ -27,12 +27,12 @@
 #include "config.h"
 #include "WebEventFactory.h"
 
-#include <WebCore/GDIUtilities.h>
-#include <WebCore/PlatformKeyboardEvent.h>
-#include <WebCore/PlatformWheelEvent.h>
-#include <WebCore/Scrollbar.h>
-#include <WebCore/WindowsKeyNames.h>
-#include <WebCore/WindowsKeyboardCodes.h>
+#include <CyberCore/GDIUtilities.h>
+#include <CyberCore/PlatformKeyboardEvent.h>
+#include <CyberCore/PlatformWheelEvent.h>
+#include <CyberCore/Scrollbar.h>
+#include <CyberCore/WindowsKeyNames.h>
+#include <CyberCore/WindowsKeyboardCodes.h>
 #include <windowsx.h>
 #include <wtf/ASCIICType.h>
 #include <wtf/HexNumber.h>

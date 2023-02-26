@@ -24,7 +24,7 @@
 #include <wtf/glib/GUniquePtr.h>
 
 #if PLATFORM(GTK)
-#include <WebCore/GtkVersioning.h>
+#include <CyberCore/GtkVersioning.h>
 #if USE(GTK4)
 #include <webkit/WebKitWebViewBaseInternal.h>
 using PlatformEventKey = GdkEvent;

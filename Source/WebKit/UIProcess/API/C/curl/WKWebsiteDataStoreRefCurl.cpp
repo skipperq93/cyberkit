@@ -28,7 +28,7 @@
 
 #include "WKAPICast.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/CurlProxySettings.h>
+#include <CyberCore/CurlProxySettings.h>
 #include <WebKit/WKWebsiteDataStoreRef.h>
 #include <wtf/URL.h>
 

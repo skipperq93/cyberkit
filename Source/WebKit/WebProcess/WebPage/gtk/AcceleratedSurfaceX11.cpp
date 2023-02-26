@@ -29,8 +29,8 @@
 #if PLATFORM(X11)
 
 #include "WebPage.h"
-#include <WebCore/PlatformDisplayX11.h>
-#include <WebCore/RefPtrCairo.h>
+#include <CyberCore/PlatformDisplayX11.h>
+#include <CyberCore/RefPtrCairo.h>
 #include <X11/Xlib.h>
 #include <X11/extensions/Xcomposite.h>
 #include <cairo-xlib.h>

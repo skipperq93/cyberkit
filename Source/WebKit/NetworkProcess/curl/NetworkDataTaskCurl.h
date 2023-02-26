@@ -27,12 +27,12 @@
 
 #include "NetworkDataTask.h"
 #include "NetworkLoadParameters.h"
-#include <WebCore/CurlRequestClient.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/ProtectionSpace.h>
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/ShouldRelaxThirdPartyCookieBlocking.h>
+#include <CyberCore/CurlRequestClient.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/ProtectionSpace.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/ShouldRelaxThirdPartyCookieBlocking.h>
 #include <wtf/FileSystem.h>
 #include <wtf/MonotonicTime.h>
 

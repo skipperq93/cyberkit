@@ -20,7 +20,7 @@
 #ifndef WebKitDOMTextPrivate_h
 #define WebKitDOMTextPrivate_h
 
-#include <WebCore/Text.h>
+#include <CyberCore/Text.h>
 #include <webkitdom/WebKitDOMText.h>
 
 namespace WebKit {

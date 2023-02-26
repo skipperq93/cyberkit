@@ -28,7 +28,7 @@
 
 #if ENABLE(GPU_PROCESS)
 
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 
 namespace WebKit {
 

@@ -22,19 +22,19 @@
 
 #if USE(COORDINATED_GRAPHICS)
 
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/IntSize.h>
-#include <WebCore/NicosiaImageBackingStore.h>
-#include <WebCore/NicosiaPlatformLayer.h>
-#include <WebCore/NicosiaScene.h>
-#include <WebCore/TextureMapper.h>
-#include <WebCore/TextureMapperBackingStore.h>
-#include <WebCore/TextureMapperFPSCounter.h>
-#include <WebCore/TextureMapperLayer.h>
-#include <WebCore/TextureMapperPlatformLayerProxy.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/IntSize.h>
+#include <CyberCore/NicosiaImageBackingStore.h>
+#include <CyberCore/NicosiaPlatformLayer.h>
+#include <CyberCore/NicosiaScene.h>
+#include <CyberCore/TextureMapper.h>
+#include <CyberCore/TextureMapperBackingStore.h>
+#include <CyberCore/TextureMapperFPSCounter.h>
+#include <CyberCore/TextureMapperLayer.h>
+#include <CyberCore/TextureMapperPlatformLayerProxy.h>
+#include <CyberCore/Timer.h>
 #include <wtf/Function.h>
 #include <wtf/HashSet.h>
 #include <wtf/Lock.h>

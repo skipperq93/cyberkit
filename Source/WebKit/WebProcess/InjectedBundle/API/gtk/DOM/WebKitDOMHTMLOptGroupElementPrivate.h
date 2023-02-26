@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLOptGroupElementPrivate_h
 #define WebKitDOMHTMLOptGroupElementPrivate_h
 
-#include <WebCore/HTMLOptGroupElement.h>
+#include <CyberCore/HTMLOptGroupElement.h>
 #include <webkitdom/WebKitDOMHTMLOptGroupElement.h>
 
 namespace WebKit {

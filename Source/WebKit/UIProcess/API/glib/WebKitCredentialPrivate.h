@@ -20,7 +20,7 @@
 #pragma once
 
 #include "WebKitCredential.h"
-#include <WebCore/Credential.h>
+#include <CyberCore/Credential.h>
 
 WebKitCredential* webkitCredentialCreate(const WebCore::Credential&);
 const WebCore::Credential& webkitCredentialGetCredential(WebKitCredential*);

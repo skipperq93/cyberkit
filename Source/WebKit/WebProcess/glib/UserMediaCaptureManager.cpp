@@ -30,10 +30,10 @@
 
 #include "UserMediaCaptureManagerMessages.h"
 #include "WebProcess.h"
-#include <WebCore/CaptureDevice.h>
-#include <WebCore/MediaDeviceHashSalts.h>
-#include <WebCore/MediaStreamRequest.h>
-#include <WebCore/RealtimeMediaSourceCenter.h>
+#include <CyberCore/CaptureDevice.h>
+#include <CyberCore/MediaDeviceHashSalts.h>
+#include <CyberCore/MediaStreamRequest.h>
+#include <CyberCore/RealtimeMediaSourceCenter.h>
 
 namespace WebKit {
 using namespace WebCore;

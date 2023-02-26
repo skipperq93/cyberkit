@@ -20,7 +20,7 @@
 #ifndef WebKitDOMCSSStyleSheetPrivate_h
 #define WebKitDOMCSSStyleSheetPrivate_h
 
-#include <WebCore/CSSStyleSheet.h>
+#include <CyberCore/CSSStyleSheet.h>
 #include <webkitdom/WebKitDOMCSSStyleSheet.h>
 
 namespace WebKit {

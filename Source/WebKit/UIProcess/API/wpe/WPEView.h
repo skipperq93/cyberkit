@@ -29,7 +29,7 @@
 #include "InputMethodFilter.h"
 #include "PageClientImpl.h"
 #include "WebPageProxy.h"
-#include <WebCore/ActivityState.h>
+#include <CyberCore/ActivityState.h>
 #include <memory>
 #include <wtf/OptionSet.h>
 #include <wtf/RefPtr.h>

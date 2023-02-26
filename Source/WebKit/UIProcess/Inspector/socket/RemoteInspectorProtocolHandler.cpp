@@ -35,8 +35,8 @@
 #include "WebPageProxy.h"
 #include "WebScriptMessageHandler.h"
 #include "WebUserContentControllerProxy.h"
-#include <WebCore/JSDOMExceptionHandling.h>
-#include <WebCore/SerializedScriptValue.h>
+#include <CyberCore/JSDOMExceptionHandling.h>
+#include <CyberCore/SerializedScriptValue.h>
 #include <wtf/URL.h>
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringToIntegerConversion.h>

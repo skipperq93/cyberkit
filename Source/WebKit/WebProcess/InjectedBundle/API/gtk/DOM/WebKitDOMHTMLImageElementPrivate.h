@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLImageElementPrivate_h
 #define WebKitDOMHTMLImageElementPrivate_h
 
-#include <WebCore/HTMLImageElement.h>
+#include <CyberCore/HTMLImageElement.h>
 #include <webkitdom/WebKitDOMHTMLImageElement.h>
 
 namespace WebKit {

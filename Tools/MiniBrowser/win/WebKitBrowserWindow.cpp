@@ -28,7 +28,7 @@
 #include "Common.h"
 #include "Common2.h"
 #include "MiniBrowserLibResource.h"
-#include <WebCore/GDIUtilities.h>
+#include <CyberCore/GDIUtilities.h>
 #include <WebKit/WKAuthenticationChallenge.h>
 #include <WebKit/WKAuthenticationDecisionListener.h>
 #include <WebKit/WKCertificateInfoCurl.h>

@@ -20,9 +20,9 @@
 #include "config.h"
 #include "WebKitWebViewDialog.h"
 
-#include <WebCore/FloatSize.h>
-#include <WebCore/GtkVersioning.h>
-#include <WebCore/RefPtrCairo.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/GtkVersioning.h>
+#include <CyberCore/RefPtrCairo.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/WTFGType.h>
 

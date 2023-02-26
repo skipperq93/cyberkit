@@ -40,10 +40,10 @@
 #include "WebKitWebViewBase.h"
 #include "WebKitWebViewBaseInternal.h"
 #include "WebPageProxy.h"
-#include <WebCore/DragActions.h>
-#include <WebCore/GRefPtrGtk.h>
-#include <WebCore/GUniquePtrGtk.h>
-#include <WebCore/SelectionData.h>
+#include <CyberCore/DragActions.h>
+#include <CyberCore/GRefPtrGtk.h>
+#include <CyberCore/GUniquePtrGtk.h>
+#include <CyberCore/SelectionData.h>
 
 WebKitWebViewBase* webkitWebViewBaseCreate(const API::PageConfiguration&);
 WebKit::WebPageProxy* webkitWebViewBaseGetPage(WebKitWebViewBase*);

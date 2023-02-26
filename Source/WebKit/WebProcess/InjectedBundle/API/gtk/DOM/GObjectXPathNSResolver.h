@@ -19,7 +19,7 @@
 #pragma once
 
 #include "WebKitDOMXPathNSResolver.h"
-#include <WebCore/XPathNSResolver.h>
+#include <CyberCore/XPathNSResolver.h>
 #include <wtf/glib/GRefPtr.h>
 
 namespace WebKit {

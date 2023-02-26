@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLTitleElementPrivate_h
 #define WebKitDOMHTMLTitleElementPrivate_h
 
-#include <WebCore/HTMLTitleElement.h>
+#include <CyberCore/HTMLTitleElement.h>
 #include <webkitdom/WebKitDOMHTMLTitleElement.h>
 
 namespace WebKit {

@@ -29,15 +29,15 @@
 #if USE(COORDINATED_GRAPHICS)
 
 #include "WebPage.h"
-#include <WebCore/CoordinatedGraphicsLayer.h>
-#include <WebCore/FloatPoint.h>
-#include <WebCore/GraphicsLayerClient.h>
-#include <WebCore/GraphicsLayerFactory.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/NicosiaBuffer.h>
-#include <WebCore/NicosiaPlatformLayer.h>
-#include <WebCore/NicosiaScene.h>
-#include <WebCore/NicosiaSceneIntegration.h>
+#include <CyberCore/CoordinatedGraphicsLayer.h>
+#include <CyberCore/FloatPoint.h>
+#include <CyberCore/GraphicsLayerClient.h>
+#include <CyberCore/GraphicsLayerFactory.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/NicosiaBuffer.h>
+#include <CyberCore/NicosiaPlatformLayer.h>
+#include <CyberCore/NicosiaScene.h>
+#include <CyberCore/NicosiaSceneIntegration.h>
 
 namespace Nicosia {
 class ImageBackingStore;

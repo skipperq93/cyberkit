@@ -29,7 +29,7 @@
 
 #if PLATFORM(WAYLAND)
 
-#include <WebCore/RefPtrCairo.h>
+#include <CyberCore/RefPtrCairo.h>
 #include <gtk/gtk.h>
 #include <wpe/fdo.h>
 #include <wtf/glib/GRefPtr.h>

@@ -20,7 +20,7 @@
 #ifndef WebKitDOMXPathNSResolverPrivate_h
 #define WebKitDOMXPathNSResolverPrivate_h
 
-#include <WebCore/XPathNSResolver.h>
+#include <CyberCore/XPathNSResolver.h>
 #include <webkitdom/WebKitDOMXPathNSResolver.h>
 
 #define WEBKIT_DOM_TYPE_NATIVE_XPATH_NS_RESOLVER            (webkit_dom_native_xpath_ns_resolver_get_type())

@@ -24,8 +24,8 @@
 #include "WebKitDOMElementPrivate.h"
 #include "WebKitDOMNodePrivate.h"
 #include "WebKitDOMPrivate.h"
-#include <WebCore/HTMLInputElement.h>
-#include <WebCore/HTMLTextAreaElement.h>
+#include <CyberCore/HTMLInputElement.h>
+#include <CyberCore/HTMLTextAreaElement.h>
 
 #if PLATFORM(GTK)
 #include "WebKitDOMEventTarget.h"

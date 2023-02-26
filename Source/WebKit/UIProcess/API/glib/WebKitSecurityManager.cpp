@@ -23,7 +23,7 @@
 #include "WebKitSecurityManagerPrivate.h"
 #include "WebKitWebContextPrivate.h"
 #include "WebProcessPool.h"
-#include <WebCore/LegacySchemeRegistry.h>
+#include <CyberCore/LegacySchemeRegistry.h>
 #include <wtf/glib/WTFGType.h>
 
 using namespace WebKit;

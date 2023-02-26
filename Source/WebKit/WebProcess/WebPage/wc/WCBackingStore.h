@@ -29,7 +29,7 @@
 
 #include "ImageBufferBackendHandle.h"
 #include "ImageBufferBackendHandleSharing.h"
-#include <WebCore/ImageBuffer.h>
+#include <CyberCore/ImageBuffer.h>
 
 namespace WebKit {
 

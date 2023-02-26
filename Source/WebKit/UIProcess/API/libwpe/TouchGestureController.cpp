@@ -28,7 +28,7 @@
 
 #if USE(LIBWPE) && ENABLE(TOUCH_EVENTS)
 
-#include <WebCore/Scrollbar.h>
+#include <CyberCore/Scrollbar.h>
 
 namespace WebKit {
 

@@ -20,7 +20,7 @@
 #ifndef WebKitDOMMediaListPrivate_h
 #define WebKitDOMMediaListPrivate_h
 
-#include <WebCore/MediaList.h>
+#include <CyberCore/MediaList.h>
 #include <webkitdom/WebKitDOMMediaList.h>
 
 namespace WebKit {

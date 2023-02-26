@@ -20,10 +20,10 @@
 #include "config.h"
 #include "WebKitDOMBlob.h"
 
-#include <WebCore/CSSImportRule.h>
+#include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
-#include <WebCore/Document.h>
-#include <WebCore/JSExecState.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/JSExecState.h>
 #include "WebKitDOMBlobPrivate.h"
 #include "WebKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/IntSize.h>
+#include <CyberCore/IntSize.h>
 #include <wtf/Noncopyable.h>
 
 namespace WebKit {

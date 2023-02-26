@@ -27,7 +27,7 @@
 #define WebViewportAttributes_h
 
 #include "APIObject.h"
-#include <WebCore/ViewportArguments.h>
+#include <CyberCore/ViewportArguments.h>
 
 namespace WebKit {
 

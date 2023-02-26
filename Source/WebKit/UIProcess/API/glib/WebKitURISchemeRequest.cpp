@@ -27,10 +27,10 @@
 #include "WebKitWebContextPrivate.h"
 #include "WebKitWebView.h"
 #include "WebPageProxy.h"
-#include <WebCore/GUniquePtrSoup.h>
-#include <WebCore/HTTPParsers.h>
-#include <WebCore/MIMETypeRegistry.h>
-#include <WebCore/ResourceError.h>
+#include <CyberCore/GUniquePtrSoup.h>
+#include <CyberCore/HTTPParsers.h>
+#include <CyberCore/MIMETypeRegistry.h>
+#include <CyberCore/ResourceError.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/RunLoopSourcePriority.h>
 #include <wtf/glib/WTFGType.h>

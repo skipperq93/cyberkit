@@ -30,14 +30,14 @@
 
 #include "ArgumentCodersGLib.h"
 #include "DataReference.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/Credential.h>
-#include <WebCore/DictionaryPopupInfo.h>
-#include <WebCore/Font.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/SoupNetworkProxySettings.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/Credential.h>
+#include <CyberCore/DictionaryPopupInfo.h>
+#include <CyberCore/Font.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/SoupNetworkProxySettings.h>
 #include <wtf/text/CString.h>
 
 namespace IPC {

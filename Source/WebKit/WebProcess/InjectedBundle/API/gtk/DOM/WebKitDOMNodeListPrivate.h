@@ -20,7 +20,7 @@
 #ifndef WebKitDOMNodeListPrivate_h
 #define WebKitDOMNodeListPrivate_h
 
-#include <WebCore/NodeList.h>
+#include <CyberCore/NodeList.h>
 #include <webkitdom/WebKitDOMNodeList.h>
 
 namespace WebKit {

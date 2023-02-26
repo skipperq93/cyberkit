@@ -21,7 +21,7 @@
 
 #include "APIData.h"
 #include "WebKitFaviconDatabase.h"
-#include <WebCore/LinkIcon.h>
+#include <CyberCore/LinkIcon.h>
 
 WebKitFaviconDatabase* webkitFaviconDatabaseCreate();
 void webkitFaviconDatabaseOpen(WebKitFaviconDatabase*, const String& path, bool isEphemeral);

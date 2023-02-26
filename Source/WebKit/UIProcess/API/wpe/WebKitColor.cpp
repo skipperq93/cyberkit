@@ -21,7 +21,7 @@
 #include "WebKitColor.h"
 
 #include "WebKitColorPrivate.h"
-#include <WebCore/CSSParser.h>
+#include <CyberCore/CSSParser.h>
 
 /**
  * WebKitColor:

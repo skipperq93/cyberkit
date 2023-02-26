@@ -27,9 +27,9 @@
 #include "WebPopupMenu.h"
 
 #include "PlatformPopupMenuData.h"
-#include <WebCore/LengthFunctions.h>
-#include <WebCore/PopupMenuClient.h>
-#include <WebCore/RenderTheme.h>
+#include <CyberCore/LengthFunctions.h>
+#include <CyberCore/PopupMenuClient.h>
+#include <CyberCore/RenderTheme.h>
 
 namespace WebKit {
 using namespace WebCore;

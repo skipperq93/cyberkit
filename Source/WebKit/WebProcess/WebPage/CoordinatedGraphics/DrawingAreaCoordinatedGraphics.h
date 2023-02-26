@@ -28,7 +28,7 @@
 #pragma once
 
 #include "DrawingArea.h"
-#include <WebCore/Region.h>
+#include <CyberCore/Region.h>
 #include <wtf/RunLoop.h>
 
 namespace WebCore {

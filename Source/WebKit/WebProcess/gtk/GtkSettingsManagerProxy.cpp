@@ -28,9 +28,9 @@
 
 #include "GtkSettingsManagerProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/CairoUtilities.h>
-#include <WebCore/Page.h>
-#include <WebCore/RenderTheme.h>
+#include <CyberCore/CairoUtilities.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/RenderTheme.h>
 
 namespace WebKit {
 using namespace WebCore;

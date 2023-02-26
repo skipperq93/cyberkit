@@ -30,15 +30,15 @@
 #include "ShareableBitmap.h"
 #include "UpdateInfo.h"
 #include "WebPageProxy.h"
-#include <WebCore/BackingStoreBackendCairoImpl.h>
-#include <WebCore/CairoUtilities.h>
-#include <WebCore/GraphicsContextCairo.h>
-#include <WebCore/RefPtrCairo.h>
+#include <CyberCore/BackingStoreBackendCairoImpl.h>
+#include <CyberCore/CairoUtilities.h>
+#include <CyberCore/GraphicsContextCairo.h>
+#include <CyberCore/RefPtrCairo.h>
 #include <cairo.h>
 
 #if PLATFORM(GTK) && PLATFORM(X11) && defined(GDK_WINDOWING_X11) && !USE(GTK4)
-#include <WebCore/BackingStoreBackendCairoX11.h>
-#include <WebCore/PlatformDisplayX11.h>
+#include <CyberCore/BackingStoreBackendCairoX11.h>
+#include <CyberCore/PlatformDisplayX11.h>
 #include <gdk/gdkx.h>
 #endif
 

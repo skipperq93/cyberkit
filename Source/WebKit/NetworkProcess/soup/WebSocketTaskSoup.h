@@ -26,7 +26,7 @@
 #pragma once
 
 #include "DataReference.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 #include <libsoup/soup.h>
 #include <wtf/RunLoop.h>
 #include <wtf/glib/GRefPtr.h>

@@ -18,9 +18,9 @@
 
 #pragma once
 
-#include <WebCore/AddEventListenerOptions.h>
-#include <WebCore/EventListener.h>
-#include <WebCore/EventTarget.h>
+#include <CyberCore/AddEventListenerOptions.h>
+#include <CyberCore/EventListener.h>
+#include <CyberCore/EventTarget.h>
 #include <wtf/RefPtr.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/CString.h>

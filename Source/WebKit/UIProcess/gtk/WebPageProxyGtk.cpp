@@ -35,7 +35,7 @@
 #include "WebPageMessages.h"
 #include "WebPasteboardProxy.h"
 #include "WebProcessProxy.h"
-#include <WebCore/PlatformDisplay.h>
+#include <CyberCore/PlatformDisplay.h>
 #include <wtf/NeverDestroyed.h>
 
 namespace WebKit {

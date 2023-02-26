@@ -25,11 +25,11 @@
 
 #pragma once
 
-#include <WebCore/IntRect.h>
+#include <CyberCore/IntRect.h>
 #include <wtf/Noncopyable.h>
 
 #if USE(CAIRO)
-#include <WebCore/BackingStoreBackendCairo.h>
+#include <CyberCore/BackingStoreBackendCairo.h>
 #endif
 
 namespace WebKit {

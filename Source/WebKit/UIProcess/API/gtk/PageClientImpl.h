@@ -32,7 +32,7 @@
 #include "PageClient.h"
 #include "WebFullScreenManagerProxy.h"
 #include "WebPageProxy.h"
-#include <WebCore/IntSize.h>
+#include <CyberCore/IntSize.h>
 #include <gtk/gtk.h>
 #include <memory>
 

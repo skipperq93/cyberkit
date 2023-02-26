@@ -27,8 +27,8 @@
 
 #if ENABLE(DRAG_SUPPORT)
 
-#include <WebCore/DragActions.h>
-#include <WebCore/SelectionData.h>
+#include <CyberCore/DragActions.h>
+#include <CyberCore/SelectionData.h>
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/glib/GRefPtr.h>

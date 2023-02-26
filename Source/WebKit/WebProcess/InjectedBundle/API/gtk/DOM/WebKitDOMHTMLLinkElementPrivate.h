@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLLinkElementPrivate_h
 #define WebKitDOMHTMLLinkElementPrivate_h
 
-#include <WebCore/HTMLLinkElement.h>
+#include <CyberCore/HTMLLinkElement.h>
 #include <webkitdom/WebKitDOMHTMLLinkElement.h>
 
 namespace WebKit {

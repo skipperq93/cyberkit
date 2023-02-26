@@ -26,15 +26,15 @@
 #include "config.h"
 #include "WebEditorClient.h"
 
-#include <WebCore/Document.h>
-#include <WebCore/Editor.h>
-#include <WebCore/EventNames.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameDestructionObserverInlines.h>
-#include <WebCore/KeyboardEvent.h>
-#include <WebCore/Node.h>
-#include <WebCore/PlatformKeyboardEvent.h>
-#include <WebCore/WindowsKeyboardCodes.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Editor.h>
+#include <CyberCore/EventNames.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameDestructionObserverInlines.h>
+#include <CyberCore/KeyboardEvent.h>
+#include <CyberCore/Node.h>
+#include <CyberCore/PlatformKeyboardEvent.h>
+#include <CyberCore/WindowsKeyboardCodes.h>
 #include <wtf/NeverDestroyed.h>
 
 namespace WebKit {

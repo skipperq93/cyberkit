@@ -34,11 +34,11 @@
 #include "WebCookieManager.h"
 #include "WebKitCachedResolver.h"
 #include "WebKitOverridingResolver.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/ResourceHandle.h>
-#include <WebCore/SoupNetworkSession.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/ResourceHandle.h>
+#include <CyberCore/SoupNetworkSession.h>
 #include <libsoup/soup.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/FileSystem.h>

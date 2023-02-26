@@ -37,19 +37,19 @@
 #endif
 
 #if USE(GSTREAMER)
-#include <WebCore/GStreamerCommon.h>
+#include <CyberCore/GStreamerCommon.h>
 #endif
 
-#include <WebCore/ApplicationGLib.h>
-#include <WebCore/MemoryCache.h>
+#include <CyberCore/ApplicationGLib.h>
+#include <CyberCore/MemoryCache.h>
 
 #if USE(WPE_RENDERER)
-#include <WebCore/PlatformDisplayLibWPE.h>
+#include <CyberCore/PlatformDisplayLibWPE.h>
 #include <wpe/wpe.h>
 #endif
 
 #if PLATFORM(GTK) && !USE(GTK4)
-#include <WebCore/ScrollbarThemeGtk.h>
+#include <CyberCore/ScrollbarThemeGtk.h>
 #endif
 
 #if ENABLE(MEDIA_STREAM)
@@ -61,7 +61,7 @@
 #endif
 
 #if USE(ATSPI)
-#include <WebCore/AccessibilityAtspi.h>
+#include <CyberCore/AccessibilityAtspi.h>
 #endif
 
 #if PLATFORM(GTK)
@@ -69,7 +69,7 @@
 #include <gtk/gtk.h>
 #endif
 
-#include <WebCore/CairoUtilities.h>
+#include <CyberCore/CairoUtilities.h>
 
 namespace WebKit {
 

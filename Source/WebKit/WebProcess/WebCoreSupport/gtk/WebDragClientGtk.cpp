@@ -32,12 +32,12 @@
 #include "ShareableBitmap.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
-#include <WebCore/CairoOperations.h>
-#include <WebCore/DataTransfer.h>
-#include <WebCore/DragData.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/Pasteboard.h>
-#include <WebCore/SelectionData.h>
+#include <CyberCore/CairoOperations.h>
+#include <CyberCore/DataTransfer.h>
+#include <CyberCore/DragData.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/Pasteboard.h>
+#include <CyberCore/SelectionData.h>
 #include <cairo.h>
 
 namespace WebKit {

@@ -31,8 +31,8 @@
 #include "GraphicsLayerWC.h"
 #include "RemoteWCLayerTreeHostProxy.h"
 #include "WCLayerFactory.h"
-#include <WebCore/GraphicsLayerFactory.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/GraphicsLayerFactory.h>
+#include <CyberCore/Timer.h>
 
 namespace WebKit {
 

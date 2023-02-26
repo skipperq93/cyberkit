@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLMapElementPrivate_h
 #define WebKitDOMHTMLMapElementPrivate_h
 
-#include <WebCore/HTMLMapElement.h>
+#include <CyberCore/HTMLMapElement.h>
 #include <webkitdom/WebKitDOMHTMLMapElement.h>
 
 namespace WebKit {

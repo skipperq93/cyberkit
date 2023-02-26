@@ -19,7 +19,7 @@
 #pragma once
 
 #include "WebKitDOMNodeFilter.h"
-#include <WebCore/NodeFilterCondition.h>
+#include <CyberCore/NodeFilterCondition.h>
 #include <wtf/glib/GRefPtr.h>
 
 namespace WebCore {

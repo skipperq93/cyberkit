@@ -20,7 +20,7 @@
 #pragma once
 
 #include "WebPopupMenuProxy.h"
-#include <WebCore/GUniquePtrGtk.h>
+#include <CyberCore/GUniquePtrGtk.h>
 #include <wtf/Vector.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/WTFString.h>

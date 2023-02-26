@@ -33,7 +33,7 @@
 #include "RemoteInspectorHTTPServer.h"
 #include "RemoteWebInspectorUIProxy.h"
 #include <JavaScriptCore/RemoteInspectorUtils.h>
-#include <WebCore/InspectorDebuggableType.h>
+#include <CyberCore/InspectorDebuggableType.h>
 #include <gio/gio.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/glib/GUniquePtr.h>

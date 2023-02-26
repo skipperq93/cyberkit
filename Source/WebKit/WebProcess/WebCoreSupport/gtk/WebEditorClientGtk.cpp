@@ -20,16 +20,16 @@
 #include "config.h"
 #include "WebEditorClient.h"
 
-#include <WebCore/Document.h>
-#include <WebCore/Editor.h>
-#include <WebCore/EventNames.h>
-#include <WebCore/Frame.h>
-#include <WebCore/KeyboardEvent.h>
-#include <WebCore/PagePasteboardContext.h>
-#include <WebCore/Pasteboard.h>
-#include <WebCore/PlatformKeyboardEvent.h>
-#include <WebCore/TextIterator.h>
-#include <WebCore/markup.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Editor.h>
+#include <CyberCore/EventNames.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/KeyboardEvent.h>
+#include <CyberCore/PagePasteboardContext.h>
+#include <CyberCore/Pasteboard.h>
+#include <CyberCore/PlatformKeyboardEvent.h>
+#include <CyberCore/TextIterator.h>
+#include <CyberCore/markup.h>
 #include <WebPage.h>
 #include <variant>
 #include <wtf/glib/GRefPtr.h>

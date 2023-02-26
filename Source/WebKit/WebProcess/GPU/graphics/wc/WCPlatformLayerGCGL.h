@@ -29,7 +29,7 @@
 
 #include "GraphicsContextGLIdentifier.h"
 #include "WCContentBufferIdentifier.h"
-#include <WebCore/WCPlatformLayer.h>
+#include <CyberCore/WCPlatformLayer.h>
 
 namespace WebKit {
 

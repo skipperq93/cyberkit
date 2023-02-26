@@ -23,7 +23,7 @@
 #include "WebKitWebContext.h"
 #include "WebPageProxy.h"
 #include "WebURLSchemeTask.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 
 WebKitURISchemeRequest* webkitURISchemeRequestCreate(WebKitWebContext*, WebKit::WebPageProxy&, WebKit::WebURLSchemeTask&);
 void webkitURISchemeRequestCancel(WebKitURISchemeRequest*);

@@ -21,8 +21,8 @@
 
 #include "DownloadProxy.h"
 #include "WebKitDownload.h"
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceRequest.h>
 #include <wtf/glib/GRefPtr.h>
 
 GRefPtr<WebKitDownload> webkitDownloadCreate(WebKit::DownloadProxy&, WebKitWebView* = nullptr);

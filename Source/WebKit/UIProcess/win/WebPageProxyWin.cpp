@@ -29,8 +29,8 @@
 
 #include "NativeWebKeyboardEvent.h"
 #include "PageClientImpl.h"
-#include <WebCore/SearchPopupMenuDB.h>
-#include <WebCore/UserAgent.h>
+#include <CyberCore/SearchPopupMenuDB.h>
+#include <CyberCore/UserAgent.h>
 
 namespace WebKit {
 

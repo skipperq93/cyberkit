@@ -20,7 +20,7 @@
 #ifndef WebKitDOMNodeIteratorPrivate_h
 #define WebKitDOMNodeIteratorPrivate_h
 
-#include <WebCore/NodeIterator.h>
+#include <CyberCore/NodeIterator.h>
 #include <webkitdom/WebKitDOMNodeIterator.h>
 
 namespace WebKit {

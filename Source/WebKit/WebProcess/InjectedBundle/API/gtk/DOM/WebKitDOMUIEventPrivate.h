@@ -20,7 +20,7 @@
 #ifndef WebKitDOMUIEventPrivate_h
 #define WebKitDOMUIEventPrivate_h
 
-#include <WebCore/UIEvent.h>
+#include <CyberCore/UIEvent.h>
 #include <webkitdom/WebKitDOMUIEvent.h>
 
 namespace WebKit {

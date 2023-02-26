@@ -20,7 +20,7 @@
 #ifndef WebKitDOMRangePrivate_h
 #define WebKitDOMRangePrivate_h
 
-#include <WebCore/Range.h>
+#include <CyberCore/Range.h>
 #include <webkitdom/WebKitDOMRange.h>
 
 namespace WebKit {

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebInspectorUI.h"
 
-#include <WebCore/WebCoreBundleWin.h>
+#include <CyberCore/WebCoreBundleWin.h>
 #include <wtf/FileSystem.h>
 #include <wtf/text/WTFString.h>
 

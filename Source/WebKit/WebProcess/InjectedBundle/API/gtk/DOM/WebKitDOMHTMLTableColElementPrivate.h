@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLTableColElementPrivate_h
 #define WebKitDOMHTMLTableColElementPrivate_h
 
-#include <WebCore/HTMLTableColElement.h>
+#include <CyberCore/HTMLTableColElement.h>
 #include <webkitdom/WebKitDOMHTMLTableColElement.h>
 
 namespace WebKit {

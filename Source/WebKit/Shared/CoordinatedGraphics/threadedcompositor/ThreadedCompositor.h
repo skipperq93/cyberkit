@@ -30,9 +30,9 @@
 #include "CompositingRunLoop.h"
 #include "CoordinatedGraphicsScene.h"
 #include "ThreadedDisplayRefreshMonitor.h"
-#include <WebCore/GLContext.h>
-#include <WebCore/IntSize.h>
-#include <WebCore/TextureMapper.h>
+#include <CyberCore/GLContext.h>
+#include <CyberCore/IntSize.h>
+#include <CyberCore/TextureMapper.h>
 #include <wtf/Atomics.h>
 #include <wtf/FastMalloc.h>
 #include <wtf/Noncopyable.h>

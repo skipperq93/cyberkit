@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLMetaElementPrivate_h
 #define WebKitDOMHTMLMetaElementPrivate_h
 
-#include <WebCore/HTMLMetaElement.h>
+#include <CyberCore/HTMLMetaElement.h>
 #include <webkitdom/WebKitDOMHTMLMetaElement.h>
 
 namespace WebKit {

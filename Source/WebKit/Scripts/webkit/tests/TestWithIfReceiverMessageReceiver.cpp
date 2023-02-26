@@ -30,7 +30,7 @@
 #include "HandleMessage.h"
 #include "TestWithIfReceiverMessages.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/ApplePayPaymentAuthorizationResult.h>
+#include <CyberCore/ApplePayPaymentAuthorizationResult.h>
 
 #if ENABLE(IPC_TESTING_API)
 #include "JSIPCBinding.h"

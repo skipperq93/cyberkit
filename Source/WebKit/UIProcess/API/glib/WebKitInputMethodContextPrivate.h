@@ -21,7 +21,7 @@
 
 #include "WebKitInputMethodContext.h"
 #include "WebKitWebView.h"
-#include <WebCore/CompositionUnderline.h>
+#include <CyberCore/CompositionUnderline.h>
 
 struct _WebKitInputMethodUnderline {
     explicit _WebKitInputMethodUnderline(const WebCore::CompositionUnderline& underline)

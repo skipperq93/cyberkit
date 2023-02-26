@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/DisplayRefreshMonitor.h>
+#include <CyberCore/DisplayRefreshMonitor.h>
 
 #if USE(COORDINATED_GRAPHICS)
 #include <wtf/RunLoop.h>

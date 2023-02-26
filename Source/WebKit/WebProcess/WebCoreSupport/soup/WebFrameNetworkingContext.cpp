@@ -32,10 +32,10 @@
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebsiteDataStoreParameters.h"
-#include <WebCore/FrameLoader.h>
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/Settings.h>
-#include <WebCore/SoupNetworkSession.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/SoupNetworkSession.h>
 
 namespace WebKit {
 using namespace WebCore;

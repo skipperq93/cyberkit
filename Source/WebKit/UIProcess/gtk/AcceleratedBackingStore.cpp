@@ -28,8 +28,8 @@
 
 #include "HardwareAccelerationManager.h"
 #include "WebPageProxy.h"
-#include <WebCore/CairoUtilities.h>
-#include <WebCore/PlatformDisplay.h>
+#include <CyberCore/CairoUtilities.h>
+#include <CyberCore/PlatformDisplay.h>
 
 #if PLATFORM(WAYLAND)
 #include "AcceleratedBackingStoreWayland.h"

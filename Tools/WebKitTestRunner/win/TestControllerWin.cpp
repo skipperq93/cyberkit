@@ -27,7 +27,7 @@
 #include "config.h"
 #include "TestController.h"
 
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 #include <WinBase.h>
 #include <fcntl.h>
 #include <io.h>

@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include <WebCore/SerializedScriptValue.h>
+#include <CyberCore/SerializedScriptValue.h>
 #include "WebKitJavascriptResult.h"
 
 WebKitJavascriptResult* webkitJavascriptResultCreate(WebCore::SerializedScriptValue&);

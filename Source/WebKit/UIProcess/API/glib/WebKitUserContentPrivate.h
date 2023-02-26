@@ -25,8 +25,8 @@
 #include "APIUserScript.h"
 #include "APIUserStyleSheet.h"
 #include "WebKitUserContent.h"
-#include <WebCore/UserScript.h>
-#include <WebCore/UserStyleSheet.h>
+#include <CyberCore/UserScript.h>
+#include <CyberCore/UserStyleSheet.h>
 
 API::UserScript& webkitUserScriptGetUserScript(WebKitUserScript*);
 API::UserStyleSheet& webkitUserStyleSheetGetUserStyleSheet(WebKitUserStyleSheet*);

@@ -30,7 +30,7 @@
 #include "HandleMessage.h" // NOLINT
 #include "TestWithImageDataMessages.h" // NOLINT
 #include "WebCoreArgumentCoders.h" // NOLINT
-#include <WebCore/ImageData.h> // NOLINT
+#include <CyberCore/ImageData.h> // NOLINT
 #include <wtf/RefCounted.h> // NOLINT
 
 #if ENABLE(IPC_TESTING_API)

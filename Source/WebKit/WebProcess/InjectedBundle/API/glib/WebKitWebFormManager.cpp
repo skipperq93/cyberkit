@@ -22,9 +22,9 @@
 
 #include "WebKitWebFormManagerPrivate.h"
 #include <JavaScriptCore/APICast.h>
-#include <WebCore/HTMLInputElement.h>
-#include <WebCore/HTMLTextAreaElement.h>
-#include <WebCore/JSNode.h>
+#include <CyberCore/HTMLInputElement.h>
+#include <CyberCore/HTMLTextAreaElement.h>
+#include <CyberCore/JSNode.h>
 #include <jsc/JSCContextPrivate.h>
 #include <jsc/JSCValuePrivate.h>
 

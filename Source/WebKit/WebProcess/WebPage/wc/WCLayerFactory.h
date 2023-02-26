@@ -28,7 +28,7 @@
 #if USE(GRAPHICS_LAYER_WC)
 
 #include "GraphicsLayerWC.h"
-#include <WebCore/GraphicsLayerFactory.h>
+#include <CyberCore/GraphicsLayerFactory.h>
 
 namespace WebKit {
 

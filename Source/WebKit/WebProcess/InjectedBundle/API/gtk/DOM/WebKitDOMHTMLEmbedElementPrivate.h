@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLEmbedElementPrivate_h
 #define WebKitDOMHTMLEmbedElementPrivate_h
 
-#include <WebCore/HTMLEmbedElement.h>
+#include <CyberCore/HTMLEmbedElement.h>
 #include <webkitdom/WebKitDOMHTMLEmbedElement.h>
 
 namespace WebKit {

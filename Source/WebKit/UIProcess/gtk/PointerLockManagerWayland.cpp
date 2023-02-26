@@ -30,7 +30,7 @@
 
 #include "WebPageProxy.h"
 #include "pointer-constraints-unstable-v1-client-protocol.h"
-#include <WebCore/WlUniquePtr.h>
+#include <CyberCore/WlUniquePtr.h>
 #include <gtk/gtk.h>
 
 #if USE(GTK4)

@@ -20,15 +20,15 @@
 #include "config.h"
 #include "WebKitDOMElement.h"
 
-#include <WebCore/CSSImportRule.h>
-#include <WebCore/DOMException.h>
-#include <WebCore/DOMRect.h>
-#include <WebCore/Document.h>
-#include <WebCore/ElementInlines.h>
-#include <WebCore/HTMLNames.h>
-#include <WebCore/JSExecState.h>
-#include <WebCore/ScrollIntoViewOptions.h>
-#include <WebCore/StyledElement.h>
+#include <CyberCore/CSSImportRule.h>
+#include <CyberCore/DOMException.h>
+#include <CyberCore/DOMRect.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/ElementInlines.h>
+#include <CyberCore/HTMLNames.h>
+#include <CyberCore/JSExecState.h>
+#include <CyberCore/ScrollIntoViewOptions.h>
+#include <CyberCore/StyledElement.h>
 #include "GObjectEventListener.h"
 #include "WebKitDOMAttrPrivate.h"
 #include "WebKitDOMCSSStyleDeclarationPrivate.h"

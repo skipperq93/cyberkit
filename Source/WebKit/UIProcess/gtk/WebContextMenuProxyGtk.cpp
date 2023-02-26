@@ -35,8 +35,8 @@
 #include "WebKitWebViewBasePrivate.h"
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
-#include <WebCore/GUniquePtrGtk.h>
-#include <WebCore/GtkUtilities.h>
+#include <CyberCore/GUniquePtrGtk.h>
+#include <CyberCore/GtkUtilities.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <wtf/text/CString.h>

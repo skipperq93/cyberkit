@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLCollectionPrivate_h
 #define WebKitDOMHTMLCollectionPrivate_h
 
-#include <WebCore/HTMLCollection.h>
+#include <CyberCore/HTMLCollection.h>
 #include <webkitdom/WebKitDOMHTMLCollection.h>
 
 namespace WebKit {

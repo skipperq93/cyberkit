@@ -30,12 +30,12 @@
 
 #include "CallbackID.h"
 #include "LayerTreeContext.h"
-#include <WebCore/DisplayRefreshMonitor.h>
-#include <WebCore/GLContext.h>
-#include <WebCore/GraphicsLayerClient.h>
-#include <WebCore/PlatformScreen.h>
-#include <WebCore/TextureMapperFPSCounter.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/DisplayRefreshMonitor.h>
+#include <CyberCore/GLContext.h>
+#include <CyberCore/GraphicsLayerClient.h>
+#include <CyberCore/PlatformScreen.h>
+#include <CyberCore/TextureMapperFPSCounter.h>
+#include <CyberCore/Timer.h>
 #include <wtf/Forward.h>
 
 namespace WebCore {

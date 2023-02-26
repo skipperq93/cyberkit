@@ -26,7 +26,7 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/WebCoreBundleWin.h>
+#include <CyberCore/WebCoreBundleWin.h>
 #include <wtf/FileSystem.h>
 
 class WebCoreBundleTest : public testing::Test {

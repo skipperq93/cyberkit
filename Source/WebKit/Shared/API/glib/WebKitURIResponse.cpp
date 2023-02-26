@@ -21,7 +21,7 @@
 #include "WebKitURIResponse.h"
 
 #include "WebKitURIResponsePrivate.h"
-#include <WebCore/GUniquePtrSoup.h>
+#include <CyberCore/GUniquePtrSoup.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>

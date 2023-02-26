@@ -33,8 +33,8 @@
 #include "WebKitInspectorWindow.h"
 #include "WebKitWebViewBasePrivate.h"
 #include "WebPageGroup.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/GtkVersioning.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/GtkVersioning.h>
 #include <wtf/text/Base64.h>
 
 namespace WebKit {

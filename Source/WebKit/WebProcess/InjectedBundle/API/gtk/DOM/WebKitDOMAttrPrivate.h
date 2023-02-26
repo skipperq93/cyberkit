@@ -20,7 +20,7 @@
 #ifndef WebKitDOMAttrPrivate_h
 #define WebKitDOMAttrPrivate_h
 
-#include <WebCore/Attr.h>
+#include <CyberCore/Attr.h>
 #include <webkitdom/WebKitDOMAttr.h>
 
 namespace WebKit {

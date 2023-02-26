@@ -23,12 +23,12 @@
 
 #if USE(COORDINATED_GRAPHICS)
 
-#include <WebCore/FloatPoint.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/FloatSize.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/IntSize.h>
-#include <WebCore/ViewportArguments.h>
+#include <CyberCore/FloatPoint.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/IntSize.h>
+#include <CyberCore/ViewportArguments.h>
 #include <wtf/Noncopyable.h>
 
 namespace WebKit {

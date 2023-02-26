@@ -32,8 +32,8 @@
 #include "WebPageProxy.h"
 #include "WebPopupMenuProxyWin.h"
 #include "WebView.h"
-#include <WebCore/DOMPasteAccess.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/DOMPasteAccess.h>
+#include <CyberCore/NotImplemented.h>
 
 #if USE(GRAPHICS_LAYER_WC)
 #include "DrawingAreaProxyWC.h"

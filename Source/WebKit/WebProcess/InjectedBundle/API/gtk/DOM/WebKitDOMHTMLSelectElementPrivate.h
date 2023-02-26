@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLSelectElementPrivate_h
 #define WebKitDOMHTMLSelectElementPrivate_h
 
-#include <WebCore/HTMLSelectElement.h>
+#include <CyberCore/HTMLSelectElement.h>
 #include <webkitdom/WebKitDOMHTMLSelectElement.h>
 
 namespace WebKit {

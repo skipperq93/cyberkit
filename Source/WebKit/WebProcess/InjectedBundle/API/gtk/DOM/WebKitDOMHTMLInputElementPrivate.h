@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLInputElementPrivate_h
 #define WebKitDOMHTMLInputElementPrivate_h
 
-#include <WebCore/HTMLInputElement.h>
+#include <CyberCore/HTMLInputElement.h>
 #include <webkitdom/WebKitDOMHTMLInputElement.h>
 
 namespace WebKit {

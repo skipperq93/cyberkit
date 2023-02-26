@@ -25,7 +25,7 @@
 #include "WebKitURIResponsePrivate.h"
 #include "WebKitWebViewPrivate.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/UserAgent.h>
+#include <CyberCore/UserAgent.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/CString.h>
 

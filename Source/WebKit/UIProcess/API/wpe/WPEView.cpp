@@ -38,9 +38,9 @@
 #include "TouchGestureController.h"
 #include "WebPageGroup.h"
 #include "WebProcessPool.h"
-#include <WebCore/CompositionUnderline.h>
+#include <CyberCore/CompositionUnderline.h>
 #if ENABLE(GAMEPAD)
-#include <WebCore/GamepadProviderLibWPE.h>
+#include <CyberCore/GamepadProviderLibWPE.h>
 #endif
 #include <wpe/wpe.h>
 #include <wtf/NeverDestroyed.h>

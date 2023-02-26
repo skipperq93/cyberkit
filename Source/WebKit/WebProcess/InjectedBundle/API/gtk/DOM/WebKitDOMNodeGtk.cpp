@@ -29,12 +29,12 @@
 #include "WebKitDOMNodeListPrivate.h"
 #include "WebKitDOMNodePrivate.h"
 #include "WebKitDOMPrivate.h"
-#include <WebCore/CSSImportRule.h>
-#include <WebCore/DOMException.h>
-#include <WebCore/Document.h>
-#include <WebCore/JSExecState.h>
-#include <WebCore/JSNode.h>
-#include <WebCore/SVGTests.h>
+#include <CyberCore/CSSImportRule.h>
+#include <CyberCore/DOMException.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/JSExecState.h>
+#include <CyberCore/JSNode.h>
+#include <CyberCore/SVGTests.h>
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 

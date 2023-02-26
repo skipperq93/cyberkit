@@ -20,7 +20,7 @@
 #pragma once
 
 #include "WebKitDOMNode.h"
-#include <WebCore/Node.h>
+#include <CyberCore/Node.h>
 
 namespace WebKit {
 WebKitDOMNode* wrapNode(WebCore::Node*);

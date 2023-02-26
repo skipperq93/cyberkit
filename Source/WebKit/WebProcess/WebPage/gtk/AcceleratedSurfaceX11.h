@@ -28,7 +28,7 @@
 #if PLATFORM(X11)
 
 #include "AcceleratedSurface.h"
-#include <WebCore/XUniqueResource.h>
+#include <CyberCore/XUniqueResource.h>
 
 typedef struct _XDisplay Display;
 typedef unsigned long Pixmap;

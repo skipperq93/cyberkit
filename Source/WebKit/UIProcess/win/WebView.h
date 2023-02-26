@@ -30,8 +30,8 @@
 #include "PageClientImpl.h"
 #include "WKView.h"
 #include "WebPageProxy.h"
-#include <WebCore/COMPtr.h>
-#include <WebCore/WindowMessageListener.h>
+#include <CyberCore/COMPtr.h>
+#include <CyberCore/WindowMessageListener.h>
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>
 

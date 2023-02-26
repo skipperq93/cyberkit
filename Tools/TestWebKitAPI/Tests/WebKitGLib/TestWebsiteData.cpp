@@ -21,8 +21,8 @@
 
 #include "WebKitTestServer.h"
 #include "WebViewTest.h"
-#include <WebCore/GUniquePtrSoup.h>
-#include <WebCore/SoupVersioning.h>
+#include <CyberCore/GUniquePtrSoup.h>
+#include <CyberCore/SoupVersioning.h>
 #include <glib/gstdio.h>
 
 static WebKitTestServer* kServer;

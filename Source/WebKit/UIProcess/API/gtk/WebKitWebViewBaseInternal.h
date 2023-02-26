@@ -26,7 +26,7 @@
 #pragma once
 
 #include <WebKit/WKBase.h>
-#include <WebCore/PlatformMouseEvent.h>
+#include <CyberCore/PlatformMouseEvent.h>
 #include <wtf/text/WTFString.h>
 
 typedef struct _WebKitWebViewBase WebKitWebViewBase;

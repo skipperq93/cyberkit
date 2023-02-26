@@ -20,7 +20,7 @@
 #ifndef WebKitDOMCDATASectionPrivate_h
 #define WebKitDOMCDATASectionPrivate_h
 
-#include <WebCore/CDATASection.h>
+#include <CyberCore/CDATASection.h>
 #include <webkitdom/WebKitDOMCDATASection.h>
 
 namespace WebKit {

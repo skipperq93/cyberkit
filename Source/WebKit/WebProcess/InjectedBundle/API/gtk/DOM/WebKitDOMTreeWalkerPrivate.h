@@ -20,7 +20,7 @@
 #ifndef WebKitDOMTreeWalkerPrivate_h
 #define WebKitDOMTreeWalkerPrivate_h
 
-#include <WebCore/TreeWalker.h>
+#include <CyberCore/TreeWalker.h>
 #include <webkitdom/WebKitDOMTreeWalker.h>
 
 namespace WebKit {

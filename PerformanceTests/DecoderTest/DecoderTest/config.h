@@ -26,6 +26,6 @@
 #pragma once
 
 #include <JavaScriptCore/JSExportMacros.h>
-#include <WebCore/PlatformExportMacros.h>
+#include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #include <wtf/Platform.h>

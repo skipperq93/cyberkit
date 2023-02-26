@@ -29,7 +29,7 @@
 #include "APINavigation.h"
 #include "DrawingAreaProxy.h"
 #include "WebBackForwardList.h"
-#include <WebCore/GRefPtrGtk.h>
+#include <CyberCore/GRefPtrGtk.h>
 
 namespace WebKit {
 using namespace WebCore;

@@ -30,9 +30,9 @@
 #include "NetworkSessionCreationParameters.h"
 #include "WebCookieManager.h"
 #include "WebSocketTaskCurl.h"
-#include <WebCore/CookieJarDB.h>
-#include <WebCore/CurlContext.h>
-#include <WebCore/NetworkStorageSession.h>
+#include <CyberCore/CookieJarDB.h>
+#include <CyberCore/CurlContext.h>
+#include <CyberCore/NetworkStorageSession.h>
 
 namespace WebKit {
 

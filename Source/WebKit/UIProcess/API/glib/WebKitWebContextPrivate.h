@@ -29,7 +29,7 @@
 #include "WebKitWebContext.h"
 #include "WebKitWebsitePolicies.h"
 #include "WebProcessPool.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 
 WebKit::WebProcessPool& webkitWebContextGetProcessPool(WebKitWebContext*);
 #if !ENABLE(2022_GLIB_API)

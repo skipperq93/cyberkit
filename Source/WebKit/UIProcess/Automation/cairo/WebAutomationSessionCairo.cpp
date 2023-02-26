@@ -27,7 +27,7 @@
 #include "WebAutomationSession.h"
 
 #include "ViewSnapshotStore.h"
-#include <WebCore/RefPtrCairo.h>
+#include <CyberCore/RefPtrCairo.h>
 #include <cairo.h>
 #include <wtf/text/Base64.h>
 

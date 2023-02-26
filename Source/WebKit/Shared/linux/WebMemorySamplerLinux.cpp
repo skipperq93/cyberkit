@@ -31,9 +31,9 @@
 #include <JavaScriptCore/JSCInlines.h>
 #include <JavaScriptCore/JSLock.h>
 #include <JavaScriptCore/MemoryStatistics.h>
-#include <WebCore/CommonVM.h>
-#include <WebCore/JSDOMWindow.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/CommonVM.h>
+#include <CyberCore/JSDOMWindow.h>
+#include <CyberCore/NotImplemented.h>
 #include <string.h>
 #include <sys/sysinfo.h>
 #include <wtf/WallTime.h>

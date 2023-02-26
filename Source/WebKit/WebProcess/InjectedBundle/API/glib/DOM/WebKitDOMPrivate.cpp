@@ -22,7 +22,7 @@
 #include "WebKitDOMDocumentPrivate.h"
 #include "WebKitDOMElementPrivate.h"
 #include "WebKitDOMNodePrivate.h"
-#include <WebCore/HTMLFormElement.h>
+#include <CyberCore/HTMLFormElement.h>
 
 #if PLATFORM(GTK)
 #include "WebKitDOMPrivateGtk.h"

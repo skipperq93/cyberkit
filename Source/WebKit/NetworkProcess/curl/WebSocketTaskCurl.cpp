@@ -28,8 +28,8 @@
 
 #include "NetworkSession.h"
 #include "NetworkSocketChannel.h"
-#include <WebCore/CurlStreamScheduler.h>
-#include <WebCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/CurlStreamScheduler.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
 
 namespace WebKit {
 

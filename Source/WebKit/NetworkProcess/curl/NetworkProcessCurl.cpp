@@ -29,9 +29,9 @@
 #include "NetworkCache.h"
 #include "NetworkProcessCreationParameters.h"
 #include "NetworkSessionCurl.h"
-#include <WebCore/CurlContext.h>
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/CurlContext.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/NotImplemented.h>
 #include <wtf/CallbackAggregator.h>
 
 namespace WebKit {

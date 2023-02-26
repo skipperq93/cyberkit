@@ -20,13 +20,13 @@
 #include "config.h"
 #include "WebEditorClient.h"
 
-#include <WebCore/CompositionHighlight.h>
-#include <WebCore/Document.h>
-#include <WebCore/Editor.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameDestructionObserverInlines.h>
-#include <WebCore/KeyboardEvent.h>
-#include <WebCore/PlatformKeyboardEvent.h>
+#include <CyberCore/CompositionHighlight.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Editor.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameDestructionObserverInlines.h>
+#include <CyberCore/KeyboardEvent.h>
+#include <CyberCore/PlatformKeyboardEvent.h>
 #include <WebPage.h>
 
 namespace WebKit {

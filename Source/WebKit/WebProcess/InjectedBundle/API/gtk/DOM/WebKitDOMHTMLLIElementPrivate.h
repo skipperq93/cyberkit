@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLLIElementPrivate_h
 #define WebKitDOMHTMLLIElementPrivate_h
 
-#include <WebCore/HTMLLIElement.h>
+#include <CyberCore/HTMLLIElement.h>
 #include <webkitdom/WebKitDOMHTMLLIElement.h>
 
 namespace WebKit {

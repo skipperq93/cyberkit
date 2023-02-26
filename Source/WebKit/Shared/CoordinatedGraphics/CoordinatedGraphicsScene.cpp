@@ -24,17 +24,17 @@
 
 #if USE(COORDINATED_GRAPHICS)
 
-#include <WebCore/CoordinatedBackingStore.h>
-#include <WebCore/NicosiaBackingStoreTextureMapperImpl.h>
-#include <WebCore/NicosiaBuffer.h>
-#include <WebCore/NicosiaCompositionLayerTextureMapperImpl.h>
-#include <WebCore/NicosiaContentLayerTextureMapperImpl.h>
-#include <WebCore/NicosiaImageBackingTextureMapperImpl.h>
-#include <WebCore/NicosiaScene.h>
-#include <WebCore/TextureMapper.h>
-#include <WebCore/TextureMapperBackingStore.h>
-#include <WebCore/TextureMapperGL.h>
-#include <WebCore/TextureMapperLayer.h>
+#include <CyberCore/CoordinatedBackingStore.h>
+#include <CyberCore/NicosiaBackingStoreTextureMapperImpl.h>
+#include <CyberCore/NicosiaBuffer.h>
+#include <CyberCore/NicosiaCompositionLayerTextureMapperImpl.h>
+#include <CyberCore/NicosiaContentLayerTextureMapperImpl.h>
+#include <CyberCore/NicosiaImageBackingTextureMapperImpl.h>
+#include <CyberCore/NicosiaScene.h>
+#include <CyberCore/TextureMapper.h>
+#include <CyberCore/TextureMapperBackingStore.h>
+#include <CyberCore/TextureMapperGL.h>
+#include <CyberCore/TextureMapperLayer.h>
 #include <wtf/Atomics.h>
 
 namespace WebKit {

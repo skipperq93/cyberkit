@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLButtonElementPrivate_h
 #define WebKitDOMHTMLButtonElementPrivate_h
 
-#include <WebCore/HTMLButtonElement.h>
+#include <CyberCore/HTMLButtonElement.h>
 #include <webkitdom/WebKitDOMHTMLButtonElement.h>
 
 namespace WebKit {

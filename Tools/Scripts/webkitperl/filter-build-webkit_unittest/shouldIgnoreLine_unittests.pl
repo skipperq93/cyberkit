@@ -60,7 +60,7 @@ perl JavaScriptCore/docs/make-bytecode-docs.pl JavaScriptCore/interpreter/Interp
 cat WebCore/css/CSSPropertyNames.in WebCore/css/SVGCSSPropertyNames.in > CSSPropertyNames.in
 rm -f ./idl_files.tmp
 python JavaScriptCore/KeywordLookupGenerator.py JavaScriptCore/parser/Keywords.table > KeywordLookup.h
-sed -e s/\<WebCore/\<WebKit/ -e s/DOMDOMImplementation/DOMImplementation/ /Volumes/Data/Build/Release/CyberCore.framework/PrivateHeaders/DOM.h > /Volumes/Data/Build/Release/WebKit.framework/Versions/A/Headers/DOM.h
+sed -e s/\<CyberCore/\<WebKit/ -e s/DOMDOMImplementation/DOMImplementation/ /Volumes/Data/Build/Release/CyberCore.framework/PrivateHeaders/DOM.h > /Volumes/Data/Build/Release/WebKit.framework/Versions/A/Headers/DOM.h
 END
 
 for my $line (@expectIgnoredLines) {

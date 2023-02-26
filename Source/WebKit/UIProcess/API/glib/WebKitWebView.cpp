@@ -70,11 +70,11 @@
 #include "WebPageMessages.h"
 #include <JavaScriptCore/APICast.h>
 #include <JavaScriptCore/JSRetainPtr.h>
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/JSDOMExceptionHandling.h>
-#include <WebCore/RefPtrCairo.h>
-#include <WebCore/SharedBuffer.h>
-#include <WebCore/URLSoup.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/JSDOMExceptionHandling.h>
+#include <CyberCore/RefPtrCairo.h>
+#include <CyberCore/SharedBuffer.h>
+#include <CyberCore/URLSoup.h>
 #include <glib/gi18n-lib.h>
 #include <jsc/JSCContextPrivate.h>
 #include <libsoup/soup.h>
@@ -92,9 +92,9 @@
 #include "WebKitPrintOperationPrivate.h"
 #include "WebKitWebInspectorPrivate.h"
 #include "WebKitWebViewBasePrivate.h"
-#include <WebCore/GUniquePtrGtk.h>
-#include <WebCore/GdkCairoUtilities.h>
-#include <WebCore/RefPtrCairo.h>
+#include <CyberCore/GUniquePtrGtk.h>
+#include <CyberCore/GdkCairoUtilities.h>
+#include <CyberCore/RefPtrCairo.h>
 #endif
 
 #if PLATFORM(WPE)

@@ -44,11 +44,11 @@
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/GtkUtilities.h>
-#include <WebCore/GtkVersioning.h>
-#include <WebCore/InspectorDebuggableType.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/GtkUtilities.h>
+#include <CyberCore/GtkVersioning.h>
+#include <CyberCore/InspectorDebuggableType.h>
+#include <CyberCore/NotImplemented.h>
 #include <wtf/FileSystem.h>
 #include <wtf/text/Base64.h>
 #include <wtf/text/CString.h>

@@ -27,7 +27,7 @@
 #define WebKitURIRequestPrivate_h
 
 #include "WebKitURIRequest.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 
 WebKitURIRequest* webkitURIRequestCreateForResourceRequest(const WebCore::ResourceRequest&);
 void webkitURIRequestGetResourceRequest(WebKitURIRequest*, WebCore::ResourceRequest&);

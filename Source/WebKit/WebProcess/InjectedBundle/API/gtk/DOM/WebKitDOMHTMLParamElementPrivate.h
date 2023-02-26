@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLParamElementPrivate_h
 #define WebKitDOMHTMLParamElementPrivate_h
 
-#include <WebCore/HTMLParamElement.h>
+#include <CyberCore/HTMLParamElement.h>
 #include <webkitdom/WebKitDOMHTMLParamElement.h>
 
 namespace WebKit {

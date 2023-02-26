@@ -20,7 +20,7 @@
 #ifndef WebKitDOMCSSRulePrivate_h
 #define WebKitDOMCSSRulePrivate_h
 
-#include <WebCore/CSSRule.h>
+#include <CyberCore/CSSRule.h>
 #include <webkitdom/WebKitDOMCSSRule.h>
 
 namespace WebKit {

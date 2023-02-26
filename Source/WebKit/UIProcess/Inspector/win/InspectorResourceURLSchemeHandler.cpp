@@ -26,9 +26,9 @@
 #include "config.h"
 #include "InspectorResourceURLSchemeHandler.h"
 
-#include <WebCore/File.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/WebCoreBundleWin.h>
+#include <CyberCore/File.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/WebCoreBundleWin.h>
 #include <winsock2.h> // This is required for curl.h
 #include <wtf/FileSystem.h>
 #include <wtf/URL.h>

@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLMenuElementPrivate_h
 #define WebKitDOMHTMLMenuElementPrivate_h
 
-#include <WebCore/HTMLMenuElement.h>
+#include <CyberCore/HTMLMenuElement.h>
 #include <webkitdom/WebKitDOMHTMLMenuElement.h>
 
 namespace WebKit {

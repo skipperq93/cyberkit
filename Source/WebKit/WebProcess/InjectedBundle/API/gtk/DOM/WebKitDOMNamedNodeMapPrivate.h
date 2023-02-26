@@ -20,7 +20,7 @@
 #ifndef WebKitDOMNamedNodeMapPrivate_h
 #define WebKitDOMNamedNodeMapPrivate_h
 
-#include <WebCore/NamedNodeMap.h>
+#include <CyberCore/NamedNodeMap.h>
 #include <webkitdom/WebKitDOMNamedNodeMap.h>
 
 namespace WebKit {

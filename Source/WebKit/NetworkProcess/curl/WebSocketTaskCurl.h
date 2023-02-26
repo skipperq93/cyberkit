@@ -27,10 +27,10 @@
 
 #include "DataReference.h"
 #include "WebSocketTask.h"
-#include <WebCore/CurlStream.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/WebSocketChannel.h>
-#include <WebCore/WebSocketDeflateFramer.h>
+#include <CyberCore/CurlStream.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/WebSocketChannel.h>
+#include <CyberCore/WebSocketDeflateFramer.h>
 
 namespace WebCore {
 class CurlStreamScheduler;

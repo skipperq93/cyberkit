@@ -31,7 +31,7 @@
 #include "PlayStationWebView.h"
 #include "WKAPICast.h"
 #include "WKSharedAPICast.h"
-#include <WebCore/Cursor.h>
+#include <CyberCore/Cursor.h>
 
 namespace API {
 template<> struct ClientTraits<WKViewClientBase> {

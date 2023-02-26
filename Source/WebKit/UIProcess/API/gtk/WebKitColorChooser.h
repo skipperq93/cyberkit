@@ -20,7 +20,7 @@
 #pragma once
 
 #include "WebColorPickerGtk.h"
-#include <WebCore/IntRect.h>
+#include <CyberCore/IntRect.h>
 #include <wtf/glib/GRefPtr.h>
 
 typedef struct _WebKitColorChooserRequest WebKitColorChooserRequest;

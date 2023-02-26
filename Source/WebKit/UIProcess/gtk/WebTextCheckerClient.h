@@ -27,7 +27,7 @@
 
 #include "APIClient.h"
 #include "WKTextCheckerGLib.h"
-#include <WebCore/TextCheckerClient.h>
+#include <CyberCore/TextCheckerClient.h>
 #include <wtf/Forward.h>
 
 namespace API {

@@ -20,12 +20,12 @@
 #include "config.h"
 #include "WebKitDOMProcessingInstruction.h"
 
-#include <WebCore/CSSImportRule.h>
+#include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
-#include <WebCore/DOMException.h>
-#include <WebCore/Document.h>
+#include <CyberCore/DOMException.h>
+#include <CyberCore/Document.h>
 #include "GObjectEventListener.h"
-#include <WebCore/JSExecState.h>
+#include <CyberCore/JSExecState.h>
 #include "WebKitDOMEventPrivate.h"
 #include "WebKitDOMEventTarget.h"
 #include "WebKitDOMNodePrivate.h"

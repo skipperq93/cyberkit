@@ -24,11 +24,11 @@
 #include "WebKitError.h"
 #include "WebKitVersion.h"
 #include "WebKitWebView.h"
-#include <WebCore/FloatRect.h>
-#include <WebCore/GLContext.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/PlatformDisplay.h>
-#include <WebCore/PlatformScreen.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/GLContext.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/PlatformDisplay.h>
+#include <CyberCore/PlatformScreen.h>
 #include <gio/gio.h>
 #include <wtf/URL.h>
 #include <wtf/glib/GRefPtr.h>
@@ -56,7 +56,7 @@
 #elif USE(OPENGL_ES)
 #include <GLES2/gl2.h>
 #else
-#include <WebCore/OpenGLShims.h>
+#include <CyberCore/OpenGLShims.h>
 #endif
 
 #if USE(EGL)
@@ -68,7 +68,7 @@
 #endif
 
 #if PLATFORM(X11)
-#include <WebCore/PlatformDisplayX11.h>
+#include <CyberCore/PlatformDisplayX11.h>
 #if USE(GLX)
 #if USE(LIBEPOXY)
 #include <epoxy/glx.h>

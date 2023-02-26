@@ -29,8 +29,8 @@
 #if ENABLE(DRAG_SUPPORT) && USE(GTK4)
 
 #include "WebKitWebViewBasePrivate.h"
-#include <WebCore/GtkUtilities.h>
-#include <WebCore/PasteboardCustomData.h>
+#include <CyberCore/GtkUtilities.h>
+#include <CyberCore/PasteboardCustomData.h>
 #include <gtk/gtk.h>
 
 namespace WebKit {

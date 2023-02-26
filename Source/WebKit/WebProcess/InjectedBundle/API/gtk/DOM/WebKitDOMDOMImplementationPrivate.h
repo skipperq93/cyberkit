@@ -20,7 +20,7 @@
 #ifndef WebKitDOMDOMImplementationPrivate_h
 #define WebKitDOMDOMImplementationPrivate_h
 
-#include <WebCore/DOMImplementation.h>
+#include <CyberCore/DOMImplementation.h>
 #include <webkitdom/WebKitDOMDOMImplementation.h>
 
 namespace WebKit {

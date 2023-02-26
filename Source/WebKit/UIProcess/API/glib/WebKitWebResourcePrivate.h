@@ -20,9 +20,9 @@
 #pragma once
 
 #include "WebKitWebResource.h"
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
 
 WebKitWebResource* webkitWebResourceCreate(WebKit::WebFrameProxy&, const WebCore::ResourceRequest&);
 void webkitWebResourceSentRequest(WebKitWebResource*, WebCore::ResourceRequest&&, WebCore::ResourceResponse&&);

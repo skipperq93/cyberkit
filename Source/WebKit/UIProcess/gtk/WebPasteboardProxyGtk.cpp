@@ -29,11 +29,11 @@
 #include "Clipboard.h"
 #include "SharedBufferReference.h"
 #include "WebFrameProxy.h"
-#include <WebCore/Pasteboard.h>
-#include <WebCore/PasteboardCustomData.h>
-#include <WebCore/PasteboardItemInfo.h>
-#include <WebCore/PlatformPasteboard.h>
-#include <WebCore/SelectionData.h>
+#include <CyberCore/Pasteboard.h>
+#include <CyberCore/PasteboardCustomData.h>
+#include <CyberCore/PasteboardItemInfo.h>
+#include <CyberCore/PlatformPasteboard.h>
+#include <CyberCore/SelectionData.h>
 #include <wtf/ListHashSet.h>
 #include <wtf/SetForScope.h>
 

@@ -19,9 +19,9 @@
 
 #pragma once
 
-#include <WebCore/NativeImage.h>
-#include <WebCore/SQLiteDatabase.h>
-#include <WebCore/SQLiteStatement.h>
+#include <CyberCore/NativeImage.h>
+#include <CyberCore/SQLiteDatabase.h>
+#include <CyberCore/SQLiteStatement.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/HashMap.h>
 #include <wtf/Lock.h>

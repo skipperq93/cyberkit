@@ -20,7 +20,7 @@
 #include "GObjectNodeFilterCondition.h"
 
 #include "WebKitDOMNodePrivate.h"
-#include <WebCore/NodeFilter.h>
+#include <CyberCore/NodeFilter.h>
 
 using namespace WebCore;
 

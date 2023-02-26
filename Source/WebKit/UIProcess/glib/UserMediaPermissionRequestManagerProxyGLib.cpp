@@ -22,7 +22,7 @@
 #include "UserMediaCaptureManagerMessages.h"
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
-#include <WebCore/UserMediaRequest.h>
+#include <CyberCore/UserMediaRequest.h>
 
 namespace WebKit {
 using namespace WebCore;

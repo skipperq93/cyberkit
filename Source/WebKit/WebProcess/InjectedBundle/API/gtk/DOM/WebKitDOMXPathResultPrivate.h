@@ -20,7 +20,7 @@
 #ifndef WebKitDOMXPathResultPrivate_h
 #define WebKitDOMXPathResultPrivate_h
 
-#include <WebCore/XPathResult.h>
+#include <CyberCore/XPathResult.h>
 #include <webkitdom/WebKitDOMXPathResult.h>
 
 namespace WebKit {

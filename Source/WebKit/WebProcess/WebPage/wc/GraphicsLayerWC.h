@@ -28,7 +28,7 @@
 #if USE(GRAPHICS_LAYER_WC)
 
 #include "WCUpateInfo.h"
-#include <WebCore/GraphicsLayerContentsDisplayDelegate.h>
+#include <CyberCore/GraphicsLayerContentsDisplayDelegate.h>
 #include <wtf/DoublyLinkedList.h>
 
 namespace WebCore {

@@ -38,10 +38,10 @@
 #include <Namespace/EmptyConstructorNullable.h>
 #include <Namespace/EmptyConstructorStruct.h>
 #include <Namespace/ReturnRefClass.h>
-#include <WebCore/FloatBoxExtent.h>
-#include <WebCore/InheritanceGrandchild.h>
-#include <WebCore/InheritsFrom.h>
-#include <WebCore/TimingFunction.h>
+#include <CyberCore/FloatBoxExtent.h>
+#include <CyberCore/InheritanceGrandchild.h>
+#include <CyberCore/InheritsFrom.h>
+#include <CyberCore/TimingFunction.h>
 #include <wtf/CreateUsingClass.h>
 #include <wtf/Seconds.h>
 
