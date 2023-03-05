@@ -26,11 +26,11 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebDocument.h>
-#import <WebKitLegacy/WebFrame.h>
-#import <WebKitLegacy/WebHTMLView.h>
+#import <CyberKitLegacy/WebDocument.h>
+#import <CyberKitLegacy/WebFrame.h>
+#import <CyberKitLegacy/WebHTMLView.h>
 #if TARGET_OS_IPHONE
-#import <WebKitLegacy/WAKView.h>
+#import <CyberKitLegacy/WAKView.h>
 #endif
 
 @class DOMDocument;

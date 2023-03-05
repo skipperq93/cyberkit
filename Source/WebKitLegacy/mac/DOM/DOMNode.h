@@ -23,8 +23,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMObject.h>
-#import <WebKitLegacy/DOMEventTarget.h>
+#import <CyberKitLegacy/DOMObject.h>
+#import <CyberKitLegacy/DOMEventTarget.h>
 
 @class DOMDocument;
 @class DOMElement;

@@ -23,4 +23,4 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebFrameIOS.h>
+#import <CyberKitLegacy/WebFrameIOS.h>

@@ -24,7 +24,7 @@
  */
 
 
-#import <WebKitLegacy/DOMHTMLElement.h>
+#import <CyberKitLegacy/DOMHTMLElement.h>
 
 @class DOMHTMLCollection;
 @class DOMHTMLElement;

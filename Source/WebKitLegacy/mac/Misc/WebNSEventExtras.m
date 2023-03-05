@@ -28,7 +28,7 @@
 
 #if !PLATFORM(IOS_FAMILY)
 
-#import <WebKitLegacy/WebNSEventExtras.h>
+#import <CyberKitLegacy/WebNSEventExtras.h>
 
 @implementation NSEvent (WebExtras)
 

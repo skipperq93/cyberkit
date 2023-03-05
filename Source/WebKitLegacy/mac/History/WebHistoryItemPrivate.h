@@ -27,7 +27,7 @@
  */
 
 #import <CoreGraphics/CoreGraphics.h>
-#import <WebKitLegacy/WebHistoryItem.h>
+#import <CyberKitLegacy/WebHistoryItem.h>
 
 #if TARGET_OS_IPHONE
 extern NSString *WebViewportInitialScaleKey;

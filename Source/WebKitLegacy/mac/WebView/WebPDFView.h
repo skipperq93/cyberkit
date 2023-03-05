@@ -29,7 +29,7 @@
 #if !PLATFORM(IOS_FAMILY)
 
 #import <Quartz/Quartz.h>
-#import <WebKitLegacy/WebDocumentInternal.h>
+#import <CyberKitLegacy/WebDocumentInternal.h>
 
 @class WebDataSource;
 

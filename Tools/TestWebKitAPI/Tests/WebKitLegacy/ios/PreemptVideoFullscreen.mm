@@ -32,7 +32,7 @@
 #import <UIKit/UIKit.h>
 #import <CyberKit/DOMHTMLMediaElement.h>
 #import <CyberKit/WebFramePrivate.h>
-#import <WebKitLegacy/WebPreferencesPrivate.h>
+#import <CyberKitLegacy/WebPreferencesPrivate.h>
 #import <wtf/MainThread.h>
 #import <wtf/RetainPtr.h>
 

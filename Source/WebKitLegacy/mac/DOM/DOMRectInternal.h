@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMRect.h>
+#import <CyberKitLegacy/DOMRect.h>
 
 namespace WebCore {
 class DeprecatedCSSOMRect;

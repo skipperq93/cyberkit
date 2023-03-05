@@ -26,10 +26,10 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebPluginPackage.h>
+#import <CyberKitLegacy/WebPluginPackage.h>
 
-#import <WebKitLegacy/WebKitLogging.h>
-#import <WebKitLegacy/WebKitNSStringExtras.h>
+#import <CyberKitLegacy/WebKitLogging.h>
+#import <CyberKitLegacy/WebKitNSStringExtras.h>
 
 NSString *WebPlugInBaseURLKey =                 @"WebPlugInBaseURLKey";
 NSString *WebPlugInAttributesKey =              @"WebPlugInAttributesKey";

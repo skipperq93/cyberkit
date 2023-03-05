@@ -26,12 +26,12 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebDefaultEditingDelegate.h>
+#import <CyberKitLegacy/WebDefaultEditingDelegate.h>
 
-#import <WebKitLegacy/DOM.h>
-#import <WebKitLegacy/WebEditingDelegate.h>
-#import <WebKitLegacy/WebEditingDelegatePrivate.h>
-#import <WebKitLegacy/WebView.h>
+#import <CyberKitLegacy/DOM.h>
+#import <CyberKitLegacy/WebEditingDelegate.h>
+#import <CyberKitLegacy/WebEditingDelegatePrivate.h>
+#import <CyberKitLegacy/WebView.h>
 
 @implementation WebDefaultEditingDelegate
 

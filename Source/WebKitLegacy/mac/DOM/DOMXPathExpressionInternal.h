@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMXPathExpression.h>
+#import <CyberKitLegacy/DOMXPathExpression.h>
 
 namespace WebCore {
 class XPathExpression;

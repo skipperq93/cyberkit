@@ -121,8 +121,8 @@
 #import <WebCore/WebGLBlocklist.h>
 #import <WebCore/WebScriptObjectPrivate.h>
 #import <WebCore/Widget.h>
-#import <WebKitLegacy/DOMElement.h>
-#import <WebKitLegacy/DOMHTMLFormElement.h>
+#import <CyberKitLegacy/DOMElement.h>
+#import <CyberKitLegacy/DOMHTMLFormElement.h>
 #import <pal/spi/cocoa/NSURLDownloadSPI.h>
 #import <pal/spi/cocoa/NSURLFileTypeMappingsSPI.h>
 #import <wtf/BlockObjCExceptions.h>

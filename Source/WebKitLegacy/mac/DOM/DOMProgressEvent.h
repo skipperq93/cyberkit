@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMEvent.h>
+#import <CyberKitLegacy/DOMEvent.h>
 
 WEBKIT_CLASS_DEPRECATED_MAC(10_6, 10_14)
 @interface DOMProgressEvent : DOMEvent

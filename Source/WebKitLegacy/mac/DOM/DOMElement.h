@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMNode.h>
+#import <CyberKitLegacy/DOMNode.h>
 
 #if TARGET_OS_IPHONE
 #import <CoreGraphics/CoreGraphics.h>

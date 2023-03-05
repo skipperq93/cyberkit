@@ -24,9 +24,9 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import <WebKitLegacy/DOM.h>
-#import <WebKitLegacy/WebAutocapitalizeTypes.h>
-#import <WebKitLegacy/WebDOMOperationsPrivate.h>
+#import <CyberKitLegacy/DOM.h>
+#import <CyberKitLegacy/WebAutocapitalizeTypes.h>
+#import <CyberKitLegacy/WebDOMOperationsPrivate.h>
 
 #if TARGET_OS_IPHONE
 #import <CoreText/CoreText.h>

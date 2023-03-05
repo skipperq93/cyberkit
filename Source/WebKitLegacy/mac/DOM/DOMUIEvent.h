@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMEvent.h>
+#import <CyberKitLegacy/DOMEvent.h>
 
 @class DOMAbstractView;
 @class NSString;

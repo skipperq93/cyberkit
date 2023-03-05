@@ -39,7 +39,7 @@
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/_WKProcessPoolConfiguration.h>
-#import <WebKitLegacy/WebEvent.h>
+#import <CyberKitLegacy/WebEvent.h>
 #import <cmath>
 
 @interface WKContentView ()

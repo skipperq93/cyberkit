@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebNSDataExtras.h>
-#import <WebKitLegacy/WebNSDataExtrasPrivate.h>
+#import <CyberKitLegacy/WebNSDataExtras.h>
+#import <CyberKitLegacy/WebNSDataExtrasPrivate.h>
 
 #import <wtf/Assertions.h>
 #import <wtf/RetainPtr.h>

@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebUIKitDelegate.h>
+#import <CyberKitLegacy/WebUIKitDelegate.h>
 
 @interface WebDefaultUIKitDelegate : NSObject {
 }

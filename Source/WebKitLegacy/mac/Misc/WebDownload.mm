@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebDownload.h>
+#import <CyberKitLegacy/WebDownload.h>
 
 #import "NetworkStorageSessionMap.h"
 #import <Foundation/NSURLAuthenticationChallenge.h>
@@ -36,7 +36,7 @@
 #import <WebCore/NetworkStorageSession.h>
 #import <WebCore/ProtectionSpace.h>
 #import <WebCore/RuntimeApplicationChecks.h>
-#import <WebKitLegacy/WebPanelAuthenticationHandler.h>
+#import <CyberKitLegacy/WebPanelAuthenticationHandler.h>
 #import <pal/spi/cocoa/NSURLDownloadSPI.h>
 #import <wtf/Assertions.h>
 #import <wtf/MainThread.h>

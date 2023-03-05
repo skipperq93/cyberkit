@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/NSObjCRuntime.h>
-#import <WebKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/WebKitAvailability.h>
 
 @class WebView;
 @class WebDataSource;

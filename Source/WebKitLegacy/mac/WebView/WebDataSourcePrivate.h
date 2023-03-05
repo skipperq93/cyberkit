@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebDataSource.h>
+#import <CyberKitLegacy/WebDataSource.h>
 
 @protocol WebDataSourcePrivateDelegate
 @required

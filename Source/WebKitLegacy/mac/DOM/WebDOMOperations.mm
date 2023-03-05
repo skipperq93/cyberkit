@@ -59,8 +59,8 @@
 #import <WebCore/SimpleRange.h>
 #import <WebCore/WheelEvent.h>
 #import <WebCore/markup.h>
-#import <WebKitLegacy/DOMExtensions.h>
-#import <WebKitLegacy/DOMHTML.h>
+#import <CyberKitLegacy/DOMExtensions.h>
+#import <CyberKitLegacy/DOMHTML.h>
 #import <wtf/Assertions.h>
 
 using namespace WebCore;

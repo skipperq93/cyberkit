@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebArchive.h>
-#import <WebKitLegacy/WebResource.h>
+#import <CyberKitLegacy/WebArchive.h>
+#import <CyberKitLegacy/WebResource.h>
 
 // This makes it possible to use -[NSBundle classNamed:] to find classes from WebKitLegacy.framework.
 

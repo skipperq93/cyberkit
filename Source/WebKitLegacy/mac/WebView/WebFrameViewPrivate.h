@@ -26,9 +26,9 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/WebFrameView.h>
+#import <CyberKitLegacy/WebFrameView.h>
 #if TARGET_OS_IPHONE
-#import <WebKitLegacy/WAKAppKitStubs.h>
+#import <CyberKitLegacy/WAKAppKitStubs.h>
 #endif
 
 @interface WebFrameView (WebPrivate)

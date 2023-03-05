@@ -39,7 +39,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 #import <WebCore/WebCoreThread.h>
-#import <WebKitLegacy/WebFrameLoadDelegate.h>
+#import <CyberKitLegacy/WebFrameLoadDelegate.h>
 #endif
 
 using namespace WebCore;

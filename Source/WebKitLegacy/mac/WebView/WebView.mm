@@ -233,9 +233,9 @@
 #import <WebCore/WebRTCProvider.h>
 #import <WebCore/WebViewVisualIdentificationOverlay.h>
 #import <WebCore/Widget.h>
-#import <WebKitLegacy/DOM.h>
-#import <WebKitLegacy/DOMExtensions.h>
-#import <WebKitLegacy/DOMPrivate.h>
+#import <CyberKitLegacy/DOM.h>
+#import <CyberKitLegacy/DOMExtensions.h>
+#import <CyberKitLegacy/DOMPrivate.h>
 #import <mach-o/dyld.h>
 #import <objc/runtime.h>
 #import <pal/spi/cf/CFNetworkSPI.h>

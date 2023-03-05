@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMCounter.h>
+#import <CyberKitLegacy/DOMCounter.h>
 
 namespace WebCore {
 class DeprecatedCSSOMCounter;

@@ -27,7 +27,7 @@
 
 #import "WebDefaultResourceLoadDelegate.h"
 
-#import <WebKitLegacy/WebResourceLoadDelegate.h>
+#import <CyberKitLegacy/WebResourceLoadDelegate.h>
 
 @implementation WebDefaultResourceLoadDelegate
 

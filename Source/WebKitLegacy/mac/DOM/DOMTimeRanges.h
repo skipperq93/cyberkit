@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMObject.h>
+#import <CyberKitLegacy/DOMObject.h>
 
 WEBKIT_CLASS_DEPRECATED_MAC(10_5, 10_14)
 @interface DOMTimeRanges : DOMObject

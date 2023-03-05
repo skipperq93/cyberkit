@@ -24,29 +24,29 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import <WebKitLegacy/DOMCore.h>
-#import <WebKitLegacy/DOMDocument.h>
-#import <WebKitLegacy/DOMElement.h>
-#import <WebKitLegacy/DOMObject.h>
-#import <WebKitLegacy/DOMStylesheets.h>
+#import <CyberKitLegacy/DOMCore.h>
+#import <CyberKitLegacy/DOMDocument.h>
+#import <CyberKitLegacy/DOMElement.h>
+#import <CyberKitLegacy/DOMObject.h>
+#import <CyberKitLegacy/DOMStylesheets.h>
 
-#import <WebKitLegacy/DOMCSSCharsetRule.h>
-#import <WebKitLegacy/DOMCSSFontFaceRule.h>
-#import <WebKitLegacy/DOMCSSImportRule.h>
-#import <WebKitLegacy/DOMCSSMediaRule.h>
-#import <WebKitLegacy/DOMCSSPageRule.h>
-#import <WebKitLegacy/DOMCSSPrimitiveValue.h>
-#import <WebKitLegacy/DOMCSSRule.h>
-#import <WebKitLegacy/DOMCSSRuleList.h>
-#import <WebKitLegacy/DOMCSSStyleDeclaration.h>
-#import <WebKitLegacy/DOMCSSStyleRule.h>
-#import <WebKitLegacy/DOMCSSStyleSheet.h>
-#import <WebKitLegacy/DOMCSSUnknownRule.h>
-#import <WebKitLegacy/DOMCSSValue.h>
-#import <WebKitLegacy/DOMCSSValueList.h>
-#import <WebKitLegacy/DOMCounter.h>
-#import <WebKitLegacy/DOMRGBColor.h>
-#import <WebKitLegacy/DOMRect.h>
+#import <CyberKitLegacy/DOMCSSCharsetRule.h>
+#import <CyberKitLegacy/DOMCSSFontFaceRule.h>
+#import <CyberKitLegacy/DOMCSSImportRule.h>
+#import <CyberKitLegacy/DOMCSSMediaRule.h>
+#import <CyberKitLegacy/DOMCSSPageRule.h>
+#import <CyberKitLegacy/DOMCSSPrimitiveValue.h>
+#import <CyberKitLegacy/DOMCSSRule.h>
+#import <CyberKitLegacy/DOMCSSRuleList.h>
+#import <CyberKitLegacy/DOMCSSStyleDeclaration.h>
+#import <CyberKitLegacy/DOMCSSStyleRule.h>
+#import <CyberKitLegacy/DOMCSSStyleSheet.h>
+#import <CyberKitLegacy/DOMCSSUnknownRule.h>
+#import <CyberKitLegacy/DOMCSSValue.h>
+#import <CyberKitLegacy/DOMCSSValueList.h>
+#import <CyberKitLegacy/DOMCounter.h>
+#import <CyberKitLegacy/DOMRGBColor.h>
+#import <CyberKitLegacy/DOMRect.h>
 
 @interface DOMCSSStyleDeclaration (DOMCSS2Properties)
 - (NSString *)azimuth WEBKIT_AVAILABLE_MAC(10_4);

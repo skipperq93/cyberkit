@@ -24,7 +24,7 @@
  */
 
 
-#import <WebKitLegacy/DOMTreeWalker.h>
+#import <CyberKitLegacy/DOMTreeWalker.h>
 
 namespace WebCore {
 class TreeWalker;

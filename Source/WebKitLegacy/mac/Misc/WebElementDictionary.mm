@@ -42,8 +42,8 @@
 #import <WebCore/Image.h>
 #import <WebCore/WebCoreJITOperations.h>
 #import <WebCore/WebCoreObjCExtras.h>
-#import <WebKitLegacy/DOMCore.h>
-#import <WebKitLegacy/DOMExtensions.h>
+#import <CyberKitLegacy/DOMCore.h>
+#import <CyberKitLegacy/DOMExtensions.h>
 #import <wtf/MainThread.h>
 #import <wtf/RunLoop.h>
 

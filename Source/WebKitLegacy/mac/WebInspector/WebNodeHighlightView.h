@@ -28,8 +28,8 @@
 
 #if PLATFORM(IOS_FAMILY)
 #import <QuartzCore/CAShapeLayer.h>
-#import <WebKitLegacy/WAKAppKitStubs.h>
-#import <WebKitLegacy/WAKView.h>
+#import <CyberKitLegacy/WAKAppKitStubs.h>
+#import <CyberKitLegacy/WAKView.h>
 #endif
 
 @class WebNodeHighlight;

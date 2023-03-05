@@ -24,8 +24,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import <WebKitLegacy/DOMException.h>
-#import <WebKitLegacy/WebScriptObject.h>
+#import <CyberKitLegacy/DOMException.h>
+#import <CyberKitLegacy/WebScriptObject.h>
 
 @class DOMStyleSheet;
 

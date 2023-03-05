@@ -52,7 +52,7 @@
 #import <WebCore/Page.h>
 #import <WebCore/ScriptController.h>
 #import <WebCore/Settings.h>
-#import <WebKitLegacy/DOMExtensions.h>
+#import <CyberKitLegacy/DOMExtensions.h>
 #import <algorithm>
 #import <wtf/NakedPtr.h>
 #import <wtf/text/Base64.h>

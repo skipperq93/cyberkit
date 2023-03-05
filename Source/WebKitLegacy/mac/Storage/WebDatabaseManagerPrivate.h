@@ -45,7 +45,7 @@ extern NSString *WebDatabaseDidModifyDatabaseNotification;
 extern NSString *WebDatabaseIdentifierKey;
 
 #if TARGET_OS_IPHONE
-#import <WebKitLegacy/WebUIKitSupport.h>
+#import <CyberKitLegacy/WebUIKitSupport.h>
 
 // Posted when origins have changed.
 extern CFStringRef WebDatabaseOriginsDidChangeNotification;

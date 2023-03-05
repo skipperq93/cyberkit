@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKitLegacy/WebKitErrors.h>
+#import <CyberKitLegacy/WebKitErrors.h>
 
 #define WebKitErrorPlugInCancelledConnection 203
 // FIXME: WebKitErrorPlugInWillHandleLoad is used for the cancel we do to prevent loading plugin content twice.  See <rdar://problem/4258008>

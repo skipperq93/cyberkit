@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMHTMLSelectElement.h>
+#import <CyberKitLegacy/DOMHTMLSelectElement.h>
 
 namespace WebCore {
 class HTMLSelectElement;

@@ -23,10 +23,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMObject.h>
-#import <WebKitLegacy/DOMCore.h>
-#import <WebKitLegacy/DOMDocument.h>
-#import <WebKitLegacy/DOMRangeException.h>
+#import <CyberKitLegacy/DOMObject.h>
+#import <CyberKitLegacy/DOMCore.h>
+#import <CyberKitLegacy/DOMDocument.h>
+#import <CyberKitLegacy/DOMRangeException.h>
 
 @class DOMDocumentFragment;
 @class DOMNode;

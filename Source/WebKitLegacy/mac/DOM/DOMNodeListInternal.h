@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKitLegacy/DOMNodeList.h>
+#import <CyberKitLegacy/DOMNodeList.h>
 
 namespace WebCore {
 class NodeList;
