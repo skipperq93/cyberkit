@@ -5625,13 +5625,13 @@
 		DDF3A82A28930475005920CF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DDF3A83D28930475005920CF /* gtest_unittest */,
-				DDF3A83B28930475005920CF /* gtest_unittest-framework */,
-				DDF3A83F28930475005920CF /* sample1_unittest-framework */,
-				DDF3A84128930475005920CF /* sample1_unittest-static */,
 				DDF3A83528930475005920CF /* gtest.framework */,
 				DDF3A83728930475005920CF /* libgtest.a */,
 				DDF3A83928930475005920CF /* libgtest_main.a */,
+				DDF3A83B28930475005920CF /* gtest_unittest-framework */,
+				DDF3A83D28930475005920CF /* gtest_unittest */,
+				DDF3A83F28930475005920CF /* sample1_unittest-framework */,
+				DDF3A84128930475005920CF /* sample1_unittest-static */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -6840,6 +6840,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC90957F12554CF900083756 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
 		};
@@ -6847,6 +6848,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC90957F12554CF900083756 /* DebugRelease.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Release;
 		};
