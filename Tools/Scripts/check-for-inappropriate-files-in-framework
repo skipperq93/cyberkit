@@ -35,7 +35,7 @@ $INAPPROPRIATE_FILES = {
   "WebCore" => {
     "Resources" => ["*.txt", "*.in", "*.idl", "*.h"],
   },
-  "WebKitLegacy" => {
+  "CyberKitLegacy" => {
     "PrivateHeaders" => ["*.tmp"],
     "Resources" => ["*.txt", "*.in", "*.idl", "*.h"],
   },

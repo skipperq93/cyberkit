@@ -786,7 +786,7 @@ class WebKitLegacyGenerator(BaseGenerator):
 
     @util.LogEntryExit
     def _get_project_file_path(self):
-        return os.path.join(self.application.get_opensource_dir(), "Source", "WebKitLegacy", "WebKitLegacy.xcodeproj")
+        return os.path.join(self.application.get_opensource_dir(), "Source", "WebKitLegacy", "CyberKitLegacy.xcodeproj")
 
     @util.LogEntryExit
     def _get_generate_unified_sources_script(self):
