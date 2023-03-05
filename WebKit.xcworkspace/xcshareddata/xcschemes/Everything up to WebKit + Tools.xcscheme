@@ -87,7 +87,7 @@
                BlueprintIdentifier = "41816F7913859C550057AAA4"
                BuildableName = "All"
                BlueprintName = "All"
-               ReferencedContainer = "container:Source/WebCore/WebCore.xcodeproj">
+               ReferencedContainer = "container:Source/WebCore/CyberCore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
