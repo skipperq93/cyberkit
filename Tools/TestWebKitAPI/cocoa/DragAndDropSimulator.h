@@ -26,8 +26,8 @@
 #if ENABLE(DRAG_SUPPORT)
 
 #import "TestWKWebView.h"
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/_WKInputDelegate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/_WKInputDelegate.h>
 #import <wtf/BlockPtr.h>
 
 #if PLATFORM(IOS_FAMILY)

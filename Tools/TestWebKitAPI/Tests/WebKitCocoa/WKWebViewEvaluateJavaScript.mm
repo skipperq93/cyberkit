@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import "DeprecatedGlobalValues.h"
 #import "HTTPServer.h"
@@ -34,16 +34,16 @@
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKContentWorldPrivate.h>
-#import <WebKit/WKErrorPrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKPreferencesRef.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFrameTreeNode.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKContentWorldPrivate.h>
+#import <CyberKit/WKErrorPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesRef.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFrameTreeNode.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 TEST(WKWebView, EvaluateJavaScriptBlockCrash)

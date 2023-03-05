@@ -28,10 +28,10 @@
 
 #import "CrashReporterInfo.h"
 #import "InjectedBundle.h"
-#import <WebKit/WKBundleFrame.h>
-#import <WebKit/WKBundlePagePrivate.h>
-#import <WebKit/WKURLCF.h>
-#import <WebKit/WKURLResponseNS.h>
+#import <CyberKit/WKBundleFrame.h>
+#import <CyberKit/WKBundlePagePrivate.h>
+#import <CyberKit/WKURLCF.h>
+#import <CyberKit/WKURLResponseNS.h>
 
 namespace WTR {
 

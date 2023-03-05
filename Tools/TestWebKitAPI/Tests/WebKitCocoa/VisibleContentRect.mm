@@ -28,7 +28,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakPtr.h>
 

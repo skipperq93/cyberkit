@@ -29,7 +29,7 @@
 
 #include "PlatformUtilities.h"
 #include "Test.h"
-#include <WebKit/WKSecurityOriginRef.h>
+#include <CyberKit/WKSecurityOriginRef.h>
 
 namespace TestWebKitAPI {
 

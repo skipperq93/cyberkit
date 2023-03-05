@@ -33,8 +33,8 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFullscreenDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFullscreenDelegate.h>
 #import <pal/spi/cocoa/VisionKitCoreSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RunLoop.h>

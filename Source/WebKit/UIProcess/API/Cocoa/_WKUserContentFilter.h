@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 // FIXME: Remove this once rdar://100785999 is unblocked.
 WK_CLASS_DEPRECATED_WITH_REPLACEMENT("WKContentRuleList", macos(10.11, 13.3), ios(9.0, 16.4))

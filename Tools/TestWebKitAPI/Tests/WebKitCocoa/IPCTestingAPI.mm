@@ -29,13 +29,13 @@
 #import "RemoteObjectRegistry.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFeature.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFeature.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
 static bool didCrash = false;

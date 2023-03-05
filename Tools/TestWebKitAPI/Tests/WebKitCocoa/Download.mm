@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import "DeprecatedGlobalValues.h"
 #import "HTTPServer.h"
@@ -36,22 +36,22 @@
 #import "TestProtocol.h"
 #import "TestWKWebView.h"
 #import <Foundation/NSURLResponse.h>
-#import <WebKit/WKDownload.h>
-#import <WebKit/WKErrorPrivate.h>
-#import <WebKit/WKNavigationDelegatePrivate.h>
-#import <WebKit/WKNavigationResponsePrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebpagePreferences.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKDownload.h>
-#import <WebKit/_WKDownloadDelegate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKDownload.h>
+#import <CyberKit/WKErrorPrivate.h>
+#import <CyberKit/WKNavigationDelegatePrivate.h>
+#import <CyberKit/WKNavigationResponsePrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebpagePreferences.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKDownload.h>
+#import <CyberKit/_WKDownloadDelegate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/FileSystem.h>
 #import <wtf/MainThread.h>

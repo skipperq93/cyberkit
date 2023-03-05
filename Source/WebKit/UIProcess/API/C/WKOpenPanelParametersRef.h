@@ -27,7 +27,7 @@
 #ifndef WKOpenPanelParametersRef_h
 #define WKOpenPanelParametersRef_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>

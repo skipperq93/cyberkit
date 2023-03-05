@@ -30,7 +30,7 @@
 #include "PlatformWebView.h"
 #include "TestController.h"
 #include <ImageIO/ImageIO.h>
-#include <WebKit/WKImageCG.h>
+#include <CyberKit/WKImageCG.h>
 #include <wtf/ASCIICType.h>
 #include <wtf/RetainPtr.h>
 #include <wtf/SHA1.h>

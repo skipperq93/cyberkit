@@ -27,10 +27,10 @@
 #define WKBundleFrame_h
 
 #include <JavaScriptCore/JavaScript.h>
-#include <WebKit/WKBase.h>
-#include <WebKit/WKDeprecated.h>
-#include <WebKit/WKFrame.h>
-#include <WebKit/WKGeometry.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKDeprecated.h>
+#include <CyberKit/WKFrame.h>
+#include <CyberKit/WKGeometry.h>
 
 #ifdef __cplusplus
 extern "C" {

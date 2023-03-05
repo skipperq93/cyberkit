@@ -24,7 +24,7 @@
  */
 
 #import "APIAttachment.h"
-#import <WebKit/_WKAttachment.h>
+#import <CyberKit/_WKAttachment.h>
 
 namespace WebKit {
 

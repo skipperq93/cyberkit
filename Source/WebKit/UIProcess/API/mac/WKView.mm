@@ -46,7 +46,7 @@
 #import "_WKLinkIconParametersInternal.h"
 #import <WebCore/WebCoreObjCExtras.h>
 #import <WebCore/WebViewVisualIdentificationOverlay.h>
-#import <WebKit/WKDragDestinationAction.h>
+#import <CyberKit/WKDragDestinationAction.h>
 #import <pal/spi/cocoa/AVKitSPI.h>
 #import <pal/spi/mac/NSViewSPI.h>
 #import <wtf/BlockPtr.h>

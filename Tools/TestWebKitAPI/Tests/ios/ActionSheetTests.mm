@@ -36,10 +36,10 @@
 #import "UIKitSPI.h"
 #import "UserInterfaceSwizzler.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKActivatedElementInfo.h>
-#import <WebKit/_WKElementAction.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKActivatedElementInfo.h>
+#import <CyberKit/_WKElementAction.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SoftLinking.h>

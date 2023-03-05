@@ -24,7 +24,7 @@
  */
 
 #import <WebCore/DragActions.h>
-#import <WebKit/WKDragDestinationAction.h>
+#import <CyberKit/WKDragDestinationAction.h>
 
 namespace WebKit {
 

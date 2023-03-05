@@ -26,10 +26,10 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextController.h>
-#import <WebKit/WKWebProcessPlugInFrame.h>
-#import <WebKit/WKWebProcessPlugInScriptWorld.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextController.h>
+#import <CyberKit/WKWebProcessPlugInFrame.h>
+#import <CyberKit/WKWebProcessPlugInScriptWorld.h>
 #import <wtf/RetainPtr.h>
 
 static NSString * const testParameter1 = @"TestParameter1";

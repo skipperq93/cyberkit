@@ -31,8 +31,8 @@
 #include "PlatformWebView.h"
 #include "Test.h"
 #include <JavaScriptCore/JSContextRef.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKSerializedScriptValue.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKSerializedScriptValue.h>
 
 namespace TestWebKitAPI {
 

@@ -29,8 +29,8 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 
 TEST(WebKit, BacklightLevelNotificationCrash)
 {

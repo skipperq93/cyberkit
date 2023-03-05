@@ -31,12 +31,12 @@
 #import "TestProtocol.h"
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKUserScriptPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKUserScriptPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/Function.h>
 #import <wtf/RetainPtr.h>
 

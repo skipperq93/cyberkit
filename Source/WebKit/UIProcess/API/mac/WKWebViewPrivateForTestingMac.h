@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKBase.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKBase.h>
+#import <CyberKit/WKWebView.h>
 
 #if !TARGET_OS_IPHONE
 

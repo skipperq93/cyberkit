@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
-#import <WebKit/WKWebProcessPlugInEditingDelegate.h>
+#import <CyberKit/WKWebProcessPlugInEditingDelegate.h>
 
 @protocol BundleEditingDelegateProtocol <NSObject>
 

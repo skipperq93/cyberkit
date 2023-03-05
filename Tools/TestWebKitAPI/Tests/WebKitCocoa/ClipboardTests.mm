@@ -30,8 +30,8 @@
 #import "UIKitSPI.h"
 #import <CoreServices/CoreServices.h>
 #import <WebCore/LegacyNSPasteboardTypes.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/_WKFeature.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/_WKFeature.h>
 
 @interface TestWKWebView (ClipboardTests)
 

@@ -24,7 +24,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 WK_CLASS_AVAILABLE(macos(10.15.4), ios(13.4))
 @interface _WKTextManipulationExclusionRule : NSObject

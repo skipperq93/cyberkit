@@ -37,8 +37,8 @@
 #import "UIKitSPI.h"
 #import "WKWebViewConfigurationExtras.h"
 #import <WebCore/LocalizedStrings.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WebKit.h>
 #import <wtf/RetainPtr.h>
 
 TEST(WebKit, WKContentViewEditingActions)

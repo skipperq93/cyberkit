@@ -32,9 +32,9 @@
 #import "TestWKWebView.h"
 #import "Utilities.h"
 #import <AppKit/AppKit.h>
-#import <WebKit/WKOpenPanelParametersPrivate.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKOpenPanelParametersPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WebKit.h>
 #import <wtf/RetainPtr.h>
 
 static bool fileSelected;

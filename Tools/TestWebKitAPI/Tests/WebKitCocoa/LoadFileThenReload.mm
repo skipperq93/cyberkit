@@ -28,7 +28,7 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WebKit.h>
+#import <CyberKit/WebKit.h>
 #import <wtf/RetainPtr.h>
 
 @interface LoadFileThenReloadDelegate : NSObject <WKNavigationDelegate>

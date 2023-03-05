@@ -24,7 +24,7 @@
  */
 
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if TARGET_OS_IPHONE
 

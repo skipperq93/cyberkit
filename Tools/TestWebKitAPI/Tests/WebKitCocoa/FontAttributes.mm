@@ -34,8 +34,8 @@
 #import "TestWKWebView.h"
 #import <WebCore/ColorCocoa.h>
 #import <WebCore/FontCocoa.h>
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <cmath>
 #import <pal/spi/cf/CoreTextSPI.h>
 #import <pal/spi/cocoa/NSAttributedStringSPI.h>

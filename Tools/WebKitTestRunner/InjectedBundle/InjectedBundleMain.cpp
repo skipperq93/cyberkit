@@ -26,7 +26,7 @@
 #include "config.h"
 #include "InjectedBundle.h"
 
-#include <WebKit/WKBundleInitialize.h>
+#include <CyberKit/WKBundleInitialize.h>
 
 extern "C" WTF_EXPORT_DECLARATION
 void WKBundleInitialize(WKBundleRef bundle, WKTypeRef initializationUserData)

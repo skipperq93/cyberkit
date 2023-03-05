@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKNavigationData.h>
+#import <CyberKit/WKNavigationData.h>
 
 #import "APINavigationData.h"
 #import "WKObject.h"

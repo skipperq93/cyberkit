@@ -23,9 +23,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
-#import <WebKit/WKBackForwardListItem.h>
+#import <CyberKit/WKBackForwardListItem.h>
 
 /*! @abstract A WKBackForwardList object is a list of webpages previously
  visited in a web view that can be reached by going back or forward.

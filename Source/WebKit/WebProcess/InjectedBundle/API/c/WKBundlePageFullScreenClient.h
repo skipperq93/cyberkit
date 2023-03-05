@@ -26,8 +26,8 @@
 #ifndef WKBundlePageFullScreenClient_h
 #define WKBundlePageFullScreenClient_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKGeometry.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKGeometry.h>
 
 enum {
     WKFullScreenNoKeyboard,

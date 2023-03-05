@@ -29,7 +29,7 @@
 #include "TestOptions.h"
 #include "WebNotificationProvider.h"
 #include "WorkQueueManager.h"
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <set>
 #include <string>
 #include <unordered_map>

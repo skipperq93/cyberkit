@@ -35,15 +35,15 @@
 #import <Foundation/NSURLRequest.h>
 #import <WebCore/RegistrableDomain.h>
 #import <WebCore/RuntimeApplicationChecks.h>
-#import <WebKit/WKHTTPCookieStorePrivate.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKURLSchemeTaskPrivate.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/_WKUserContentWorld.h>
-#import <WebKit/_WKUserStyleSheet.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKHTTPCookieStorePrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKURLSchemeTaskPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/_WKUserContentWorld.h>
+#import <CyberKit/_WKUserStyleSheet.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/RunLoop.h>
 #import <wtf/text/WTFString.h>
 

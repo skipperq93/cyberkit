@@ -25,7 +25,7 @@
 
 #pragma once
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 typedef NS_ENUM(NSInteger, _WKAuthenticatorAttachment) {
     _WKAuthenticatorAttachmentAll,

@@ -32,14 +32,14 @@
 #endif
 #endif
 
-#import <WebKit/WKDataDetectorTypes.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/_WKActivatedElementInfo.h>
-#import <WebKit/_WKAttachment.h>
-#import <WebKit/_WKFindOptions.h>
-#import <WebKit/_WKLayoutMode.h>
-#import <WebKit/_WKOverlayScrollbarStyle.h>
-#import <WebKit/_WKRenderingProgressEvents.h>
+#import <CyberKit/WKDataDetectorTypes.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/_WKActivatedElementInfo.h>
+#import <CyberKit/_WKAttachment.h>
+#import <CyberKit/_WKFindOptions.h>
+#import <CyberKit/_WKLayoutMode.h>
+#import <CyberKit/_WKOverlayScrollbarStyle.h>
+#import <CyberKit/_WKRenderingProgressEvents.h>
 
 typedef NS_ENUM(NSInteger, _WKPaginationMode) {
     _WKPaginationModeUnpaginated,
@@ -91,7 +91,7 @@ typedef NS_ENUM(NSUInteger, _WKDragInteractionPolicy) {
 } WK_API_AVAILABLE(ios(11.0));
 
 #else
-#import <WebKit/WKBase.h>
+#import <CyberKit/WKBase.h>
 #endif
 
 #if !TARGET_OS_IPHONE

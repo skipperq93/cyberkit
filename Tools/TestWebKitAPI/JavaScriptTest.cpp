@@ -33,8 +33,8 @@
 #include "Test.h"
 #include <JavaScriptCore/JSContextRef.h>
 #include <JavaScriptCore/JSRetainPtr.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKSerializedScriptValue.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKSerializedScriptValue.h>
 #include <wtf/StdLibExtras.h>
 #include <wtf/UniqueArray.h>
 

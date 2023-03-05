@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import "TestNavigationDelegate.h"
-#import <WebKit/WebKit.h>
+#import <CyberKit/WebKit.h>
 #import <wtf/RetainPtr.h>
 
 TEST(WebKit, LoadDataWithNilMIMEType)

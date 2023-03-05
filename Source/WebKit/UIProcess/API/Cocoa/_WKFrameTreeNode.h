@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFrameInfo.h>
+#import <CyberKit/WKFrameInfo.h>
 
 WK_CLASS_AVAILABLE(macos(11.0), ios(14.0))
 @interface _WKFrameTreeNode : WKFrameInfo

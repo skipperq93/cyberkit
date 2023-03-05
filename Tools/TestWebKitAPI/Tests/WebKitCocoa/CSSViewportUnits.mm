@@ -27,7 +27,7 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static double evaluateForNumber(RetainPtr<TestWKWebView>& webView, NSString *script)

@@ -29,8 +29,8 @@
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
 #import <WebCore/PictureInPictureSupport.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 // We can enable the test for old iOS versions after <rdar://problem/63572534> is fixed.

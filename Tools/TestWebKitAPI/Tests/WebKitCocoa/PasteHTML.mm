@@ -30,9 +30,9 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import <WebCore/LegacyNSPasteboardTypes.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKPreferencesRefPrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKPreferencesRefPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 

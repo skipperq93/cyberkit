@@ -33,11 +33,11 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WKWebpagePreferencesPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKWebpagePreferencesPrivate.h>
+#import <CyberKit/WebKit.h>
 #import <pal/spi/cocoa/RevealSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/MonotonicTime.h>

@@ -28,9 +28,9 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/WebURLsWithTitles.h>
-#import <WebKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/WebURLsWithTitles.h>
+#import <CyberKit/DOM.h>
 #import <Carbon/Carbon.h>
 #import <wtf/RetainPtr.h>
 

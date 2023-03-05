@@ -23,12 +23,12 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if PLATFORM(IOS_FAMILY)
 
-#import <WebKit/WKPageLoadTypes.h>
-#import <WebKit/_WKFindOptions.h>
+#import <CyberKit/WKPageLoadTypes.h>
+#import <CyberKit/_WKFindOptions.h>
 
 @class NSData;
 @class UIEvent;

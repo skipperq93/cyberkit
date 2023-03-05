@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(WK_WEB_EXTENSIONS)
-headers: <WebKit/WebExtensionEventListenerType.h>
+headers: <CyberKit/WebExtensionEventListenerType.h>
 
 enum class WebKit::WebExtensionEventListenerType : uint8_t {
     Unknown,

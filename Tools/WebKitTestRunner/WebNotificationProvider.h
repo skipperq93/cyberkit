@@ -26,10 +26,10 @@
 #ifndef WebNotificationProvider_h
 #define WebNotificationProvider_h
 
-#include <WebKit/WKNotificationManager.h>
-#include <WebKit/WKNotificationProvider.h>
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKSecurityOriginRef.h>
+#include <CyberKit/WKNotificationManager.h>
+#include <CyberKit/WKNotificationProvider.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKSecurityOriginRef.h>
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 #include <wtf/UUID.h>

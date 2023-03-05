@@ -28,7 +28,7 @@
 #if PLATFORM(MAC)
 
 #import "PlatformUtilities.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool finishedLoad = false;

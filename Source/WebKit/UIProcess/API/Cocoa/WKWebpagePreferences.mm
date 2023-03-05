@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <WebKit/WKWebpagePreferences.h>
+#import <CyberKit/WKWebpagePreferences.h>
 
 #import "APICustomHeaderFields.h"
 #import "LockdownModeObserver.h"

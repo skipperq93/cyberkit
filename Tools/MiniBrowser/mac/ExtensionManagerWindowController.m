@@ -27,7 +27,7 @@
 
 #import "AppDelegate.h"
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
-#import <WebKit/WKUserContentControllerPrivate.h>
+#import <CyberKit/WKUserContentControllerPrivate.h>
 
 @implementation ExtensionManagerWindowController
 

@@ -56,7 +56,7 @@
 #include <JavaScriptCore/JSExportMacros.h>
 #include <WebCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
-#include <WebKit/WebKit2_C.h>
+#include <CyberKit/WebKit2_C.h>
 #endif
 
 #else
@@ -66,15 +66,15 @@
 #include <WebCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #if !PLATFORM(IOS_FAMILY)
-#include <WebKit/WebKit2_C.h>
+#include <CyberKit/WebKit2_C.h>
 #endif
 #if PLATFORM(COCOA) && defined(__OBJC__)
-#import <WebKit/WebKit.h>
+#import <CyberKit/WebKit.h>
 #if PLATFORM(MACCATALYST)
 // Many tests depend on WebKitLegacy.h being implicitly included; however,
 // on macCatalyst, WebKit.h does not include WebKitLegacy.h, so we need
 // to do it explicitly here.
-#import <WebKit/WebKitLegacy.h>
+#import <CyberKit/WebKitLegacy.h>
 #endif
 #endif
 

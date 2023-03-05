@@ -27,8 +27,8 @@
 
 #import "TestNavigationDelegate.h"
 #import "Utilities.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 #import <wtf/RetainPtr.h>
 
 TEST(WebKit, AttrStyle)

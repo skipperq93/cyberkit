@@ -24,7 +24,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 typedef NS_ENUM(NSInteger, _WKUnifiedOriginStorageLevel) {
     _WKUnifiedOriginStorageLevelNone,

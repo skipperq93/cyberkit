@@ -26,7 +26,7 @@
 #include "config.h"
 #include "GeolocationProviderMock.h"
 
-#include <WebKit/WKGeolocationManager.h>
+#include <CyberKit/WKGeolocationManager.h>
 #include <string.h>
 #include <wtf/Assertions.h>
 #include <wtf/WallTime.h>

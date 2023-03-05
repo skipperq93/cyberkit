@@ -23,10 +23,10 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKWebpagePreferences.h>
+#import <CyberKit/WKWebpagePreferences.h>
 
 /*! A WKNavigation object can be used for tracking the loading progress of a webpage.
  @discussion A navigation is returned from the web view load methods, and is

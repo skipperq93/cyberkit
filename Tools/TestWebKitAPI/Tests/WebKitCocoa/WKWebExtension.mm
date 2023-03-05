@@ -28,9 +28,9 @@
 #if ENABLE(WK_WEB_EXTENSIONS)
 
 #import "TestCocoa.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/_WKWebExtensionMatchPatternPrivate.h>
-#import <WebKit/_WKWebExtensionPrivate.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/_WKWebExtensionMatchPatternPrivate.h>
+#import <CyberKit/_WKWebExtensionPrivate.h>
 
 namespace TestWebKitAPI {
 

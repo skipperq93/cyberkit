@@ -29,7 +29,7 @@
 
 #import "WebExtensionUtilities.h"
 
-#import <WebKit/_WKWebExtensionWebNavigationURLFilter.h>
+#import <CyberKit/_WKWebExtensionWebNavigationURLFilter.h>
 
 namespace TestWebKitAPI {
 

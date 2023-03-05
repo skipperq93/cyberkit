@@ -29,9 +29,9 @@
 
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKNavigationActionPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKUserInitiatedAction.h>
+#import <CyberKit/WKNavigationActionPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKUserInitiatedAction.h>
 #import <wtf/RetainPtr.h>
 
 static bool finishedNavigation;

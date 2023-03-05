@@ -30,7 +30,7 @@
 #import "InstanceMethodSwizzler.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 namespace TestWebKitAPI {
 

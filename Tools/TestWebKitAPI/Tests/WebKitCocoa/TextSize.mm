@@ -28,8 +28,8 @@
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 TEST(WebKit, TextSize)

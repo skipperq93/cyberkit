@@ -26,7 +26,7 @@
 #ifndef WKErrorRef_h
 #define WKErrorRef_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifdef __cplusplus
 extern "C" {

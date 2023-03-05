@@ -29,8 +29,8 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static void *audioStateObserverChangeKVOContext = &audioStateObserverChangeKVOContext;

@@ -28,8 +28,8 @@
 #if ENABLE(INPUT_TYPE_DATE) && PLATFORM(MAC)
 
 #import "TestWKWebView.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/_WKFeature.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/_WKFeature.h>
 #import <wtf/RetainPtr.h>
 
 static RetainPtr<TestWKWebView> createWebViewForTest()

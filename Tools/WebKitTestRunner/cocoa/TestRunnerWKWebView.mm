@@ -28,15 +28,15 @@
 
 #import "TestController.h"
 #import "WebKitTestRunnerDraggingInfo.h"
-#import <WebKit/WKUIDelegatePrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/Assertions.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 @interface WKWebView ()
 

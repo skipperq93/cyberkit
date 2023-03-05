@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKEvent.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKEvent.h>
 
 enum {
     WKBundlePageUIElementVisibilityUnknown,

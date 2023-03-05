@@ -24,7 +24,7 @@
  */
 
 #import "APIPageConfiguration.h"
-#import <WebKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <wtf/Ref.h>
 
 @class WKWebView;

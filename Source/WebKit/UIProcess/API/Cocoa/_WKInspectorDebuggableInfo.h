@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 /*! A _WKInspectorDebuggableInfo object contains information about a debuggable target.
  @discussion An instance of this class is a transient, data-only object;

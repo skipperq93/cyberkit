@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 typedef NS_ENUM(NSUInteger, _WKOverlayScrollbarStyle) {
     _WKOverlayScrollbarStyleDefault,

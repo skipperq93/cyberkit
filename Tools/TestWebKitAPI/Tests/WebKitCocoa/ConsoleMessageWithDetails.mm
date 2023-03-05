@@ -31,8 +31,8 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebKit.h>
 #import <wtf/text/WTFString.h>
 
 namespace TestWebKitAPI {

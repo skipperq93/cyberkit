@@ -23,11 +23,11 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
-#import <WebKit/WKWebProcessPlugInBrowserContextController.h>
-#import <WebKit/WKWebProcessPlugInFrame.h>
-#import <WebKit/WKWebProcessPlugInNodeHandle.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextController.h>
+#import <CyberKit/WKWebProcessPlugInFrame.h>
+#import <CyberKit/WKWebProcessPlugInNodeHandle.h>
 
 @protocol WKWebProcessPlugInFormDelegatePrivate <NSObject>
 

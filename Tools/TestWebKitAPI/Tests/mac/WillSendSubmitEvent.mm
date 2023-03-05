@@ -28,8 +28,8 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 #import "Test.h"
-#import <WebKit/WebFormDelegate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WebFormDelegate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 static bool didFinishLoad;

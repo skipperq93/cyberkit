@@ -31,7 +31,7 @@
 #import "PlatformWebView.h"
 #import "Test.h"
 
-#import <WebKit/WKString.h>
+#import <CyberKit/WKString.h>
 
 namespace TestWebKitAPI {
 

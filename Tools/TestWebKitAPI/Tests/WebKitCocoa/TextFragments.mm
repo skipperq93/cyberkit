@@ -29,8 +29,8 @@
 #import "Test.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKWebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 TEST(WebKit, GetTextFragmentMatch)

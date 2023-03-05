@@ -32,8 +32,8 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKHitTestResult.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKHitTestResult.h>
 #import <pal/spi/cocoa/RevealSPI.h>
 #import <pal/spi/mac/NSImmediateActionGestureRecognizerSPI.h>
 #import <wtf/RetainPtr.h>

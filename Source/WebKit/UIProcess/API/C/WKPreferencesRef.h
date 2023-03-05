@@ -26,8 +26,8 @@
 #ifndef WKPreferencesRef_h
 #define WKPreferencesRef_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKDeprecated.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKDeprecated.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>

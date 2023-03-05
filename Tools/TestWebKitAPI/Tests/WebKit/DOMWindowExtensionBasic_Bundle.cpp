@@ -28,13 +28,13 @@
 #if WK_HAVE_C_SPI
 
 #include "InjectedBundleTest.h"
-#include <WebKit/WKBundleDOMWindowExtension.h>
-#include <WebKit/WKBundleFrame.h>
-#include <WebKit/WKBundlePage.h>
-#include <WebKit/WKBundlePagePrivate.h>
-#include <WebKit/WKBundlePrivate.h>
-#include <WebKit/WKBundleScriptWorld.h>
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKBundleDOMWindowExtension.h>
+#include <CyberKit/WKBundleFrame.h>
+#include <CyberKit/WKBundlePage.h>
+#include <CyberKit/WKBundlePagePrivate.h>
+#include <CyberKit/WKBundlePrivate.h>
+#include <CyberKit/WKBundleScriptWorld.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <wtf/HashMap.h>
 #include <assert.h>
 

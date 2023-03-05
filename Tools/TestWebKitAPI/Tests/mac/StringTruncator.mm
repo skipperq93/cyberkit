@@ -26,7 +26,7 @@
 #import "config.h"
 #import "PlatformUtilities.h"
 
-#import <WebKit/WebStringTruncator.h>
+#import <CyberKit/WebStringTruncator.h>
 
 namespace TestWebKitAPI {
 

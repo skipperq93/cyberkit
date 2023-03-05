@@ -26,9 +26,9 @@
 #import "config.h"
 #import "WebKitAgnosticTest.h"
 
-#import <WebKit/WKURLCF.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/WKURLCF.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface FrameLoadDelegate : NSObject <WebFrameLoadDelegate> {

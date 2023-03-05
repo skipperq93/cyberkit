@@ -28,7 +28,7 @@
 #import "WKFoundation.h"
 
 #import <WebCore/MediaProducer.h>
-#import <WebKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
 
 namespace WebKit {
 

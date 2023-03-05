@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WebKit.h>
+#import <CyberKit/WebKit.h>
 
 @interface TestURLSchemeHandler : NSObject <WKURLSchemeHandler>
 

@@ -27,9 +27,9 @@
 #pragma once
 
 #include "JSBasics.h"
-#include <WebKit/WKRetainPtr.h>
-#include <WebKit/WKString.h>
-#include <WebKit/WKStringPrivate.h>
+#include <CyberKit/WKRetainPtr.h>
+#include <CyberKit/WKString.h>
+#include <CyberKit/WKStringPrivate.h>
 #include <sstream>
 #include <string>
 #include <vector>

@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKDownloadDelegate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/_WKDownloadDelegate.h>
 
 @interface TestLegacyDownloadDelegate : NSObject<_WKDownloadDelegate>
 @property (nonatomic, copy) void (^downloadDidStart)(_WKDownload *);

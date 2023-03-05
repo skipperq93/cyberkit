@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKNavigationAction.h>
+#import <CyberKit/WKNavigationAction.h>
 
 @class WKNavigation;
 @class _WKHitTestResult;

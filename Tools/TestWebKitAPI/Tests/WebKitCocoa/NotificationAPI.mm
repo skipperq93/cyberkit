@@ -29,7 +29,7 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKUIDelegatePrivate.h>
+#import <CyberKit/WKUIDelegatePrivate.h>
 #import <wtf/Function.h>
 #import <wtf/RetainPtr.h>
 

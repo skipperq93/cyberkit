@@ -26,7 +26,7 @@
 #ifndef WKFormSubmissionListener_h
 #define WKFormSubmissionListener_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -28,9 +28,9 @@
 #import "PlatformUtilities.h"
 #import "PlatformWebView.h"
 
-#import <WebKit/DOM.h>
-#import <WebKit/WebPreferencesPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
+#import <CyberKit/WebPreferencesPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface AdditionalSupportedImageTypesTest : NSObject <WebFrameLoadDelegate> {

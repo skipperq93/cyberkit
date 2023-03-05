@@ -41,9 +41,9 @@
 #import <UIKit/UIKit.h>
 #import <WebCore/FloatPoint.h>
 #import <WebCore/FloatRect.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/WebKit.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/WebKit.h>
 #import <pal/spi/ios/GraphicsServicesSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/MonotonicTime.h>

@@ -27,13 +27,13 @@
 
 #import "PlatformUtilities.h"
 #import "Test.h"
-#import <WebKit/WKURLSchemeHandler.h>
-#import <WebKit/WKURLSchemeTask.h>
-#import <WebKit/WKWebViewConfigurationPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKIconLoadingDelegate.h>
-#import <WebKit/_WKLinkIconParameters.h>
+#import <CyberKit/WKURLSchemeHandler.h>
+#import <CyberKit/WKURLSchemeTask.h>
+#import <CyberKit/WKWebViewConfigurationPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/_WKIconLoadingDelegate.h>
+#import <CyberKit/_WKLinkIconParameters.h>
 #import <wtf/RetainPtr.h>
 
 static bool doneWithIcons;

@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKNavigationResponse.h>
+#import <CyberKit/WKNavigationResponse.h>
 
 @interface WKNavigationResponse (WKPrivate)
 

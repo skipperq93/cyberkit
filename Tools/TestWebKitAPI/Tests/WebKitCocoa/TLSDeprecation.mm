@@ -30,16 +30,16 @@
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
 #import "WebCoreTestSupport.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebsiteDataStorePrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKWebsiteDataStoreConfiguration.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebsiteDataStorePrivate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/_WKWebsiteDataStoreConfiguration.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/StringConcatenateNumbers.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebKit/WebUIKitSupport.h>
-#import <WebKit/WebCoreThread.h>
+#import <CyberKit/WebUIKitSupport.h>
+#import <CyberKit/WebCoreThread.h>
 #endif
 
 @interface TLSObserver : NSObject

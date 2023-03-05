@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import "Test.h"
-#import <WebKit/WebNSURLExtras.h>
+#import <CyberKit/WebNSURLExtras.h>
 
 namespace TestWebKitAPI {
 

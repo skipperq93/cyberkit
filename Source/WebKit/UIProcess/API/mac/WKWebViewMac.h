@@ -29,7 +29,7 @@
 
 #import "WebViewImpl.h"
 #import <WebCore/ScrollTypes.h>
-#import <WebKit/_WKOverlayScrollbarStyle.h>
+#import <CyberKit/_WKOverlayScrollbarStyle.h>
 
 _WKOverlayScrollbarStyle toAPIScrollbarStyle(std::optional<WebCore::ScrollbarOverlayStyle>);
 std::optional<WebCore::ScrollbarOverlayStyle> toCoreScrollbarStyle(_WKOverlayScrollbarStyle);

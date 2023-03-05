@@ -33,7 +33,7 @@
 #if ENABLE(WK_WEB_EXTENSIONS)
 
 #import "_WKWebExtensionUtilities.h"
-#import <WebKit/WebNSURLExtras.h>
+#import <CyberKit/WebNSURLExtras.h>
 #import <wtf/RetainPtr.h>
 
 typedef NS_ENUM(NSInteger, PredicateType) {

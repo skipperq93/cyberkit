@@ -26,8 +26,8 @@
 #import "config.h"
 #import <wtf/RetainPtr.h>
 
-#import <WebKit/WebView.h>
-#import <WebKit/WebPreferences.h>
+#import <CyberKit/WebView.h>
+#import <CyberKit/WebPreferences.h>
 
 @interface WebView (WebViewOtherInternal)
 + (WebCacheModel)_cacheModel;

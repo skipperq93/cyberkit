@@ -30,7 +30,7 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKString.h>
+#include <CyberKit/WKString.h>
 
 namespace TestWebKitAPI {
 

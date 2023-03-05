@@ -25,8 +25,8 @@
 
 #if PLATFORM(MAC)
 
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKURLSchemeHandler.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKURLSchemeHandler.h>
 
 @protocol WKInspectorViewControllerDelegate;
 

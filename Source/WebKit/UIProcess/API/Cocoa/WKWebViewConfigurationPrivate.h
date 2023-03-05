@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKBase.h>
-#import <WebKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKBase.h>
+#import <CyberKit/WKWebViewConfiguration.h>
 
 #if TARGET_OS_IPHONE
 typedef NS_ENUM(NSUInteger, _WKDragLiftDelay) {

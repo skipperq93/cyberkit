@@ -26,7 +26,7 @@
 #ifndef WKURLResponse_h
 #define WKURLResponse_h
 
-#include <WebKit/WKBase.h>
+#include <CyberKit/WKBase.h>
 
 #ifdef __cplusplus
 extern "C" {

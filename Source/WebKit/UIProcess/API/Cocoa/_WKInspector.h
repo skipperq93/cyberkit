@@ -24,9 +24,9 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WKFoundation.h>
-#import <WebKit/_WKInspectorExtensionHost.h>
-#import <WebKit/_WKInspectorIBActions.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/_WKInspectorExtensionHost.h>
+#import <CyberKit/_WKInspectorIBActions.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

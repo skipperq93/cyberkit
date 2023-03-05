@@ -29,10 +29,10 @@
 #import "TestNavigationDelegate.h"
 #import "Utilities.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WebKit.h>
-#import <WebKit/_WKRemoteObjectInterface.h>
-#import <WebKit/_WKRemoteObjectRegistry.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WebKit.h>
+#import <CyberKit/_WKRemoteObjectInterface.h>
+#import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <wtf/RetainPtr.h>
 
 using namespace TestWebKitAPI;

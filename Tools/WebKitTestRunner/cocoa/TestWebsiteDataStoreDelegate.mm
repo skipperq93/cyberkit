@@ -29,7 +29,7 @@
 #import "PlatformWebView.h"
 #import "TestController.h"
 #import "TestRunnerWKWebView.h"
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/UniqueRef.h>
 
 @implementation TestWebsiteDataStoreDelegate { }

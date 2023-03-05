@@ -26,9 +26,9 @@
 #import "config.h"
 
 #import <JavaScriptCore/JSRetainPtr.h>
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebScriptWorld.h>
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/WebScriptWorld.h>
 #import <objc/runtime.h>
 #import <wtf/RetainPtr.h>
 

@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKBrowsingContextHandle.h>
+#import <CyberKit/WKBrowsingContextHandle.h>
 
 @interface WKBrowsingContextHandle (WKPrivate)
 @property (nonatomic, readonly, getter=_webPageID) uint64_t webPageID;

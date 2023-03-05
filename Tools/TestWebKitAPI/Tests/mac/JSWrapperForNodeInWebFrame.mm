@@ -25,10 +25,10 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WebFramePrivate.h>
-#import <WebKit/WebPreferencesPrivate.h>
-#import <WebKit/WebScriptWorld.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WebFramePrivate.h>
+#import <CyberKit/WebPreferencesPrivate.h>
+#import <CyberKit/WebScriptWorld.h>
 #import <JavaScriptCore/JSContextRef.h>
 #import <JavaScriptCore/JSRetainPtr.h>
 #import <JavaScriptCore/JSStringRef.h>

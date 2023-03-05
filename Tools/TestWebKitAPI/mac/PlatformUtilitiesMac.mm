@@ -26,10 +26,10 @@
 #import "config.h"
 #import "PlatformUtilities.h"
 
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKStringCF.h>
-#import <WebKit/WKURLCF.h>
-#import <WebKit/WKURLResponseNS.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKStringCF.h>
+#import <CyberKit/WKURLCF.h>
+#import <CyberKit/WKURLResponseNS.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/StdLibExtras.h>
 

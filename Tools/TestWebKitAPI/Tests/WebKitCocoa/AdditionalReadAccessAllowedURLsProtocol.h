@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 @protocol AdditionalReadAccessAllowedURLsProtocol <NSObject>
 - (void)readStringFromURL:(NSURL *)url completionHandler:(void (^)(NSString *string, NSError *error))completionHandler;

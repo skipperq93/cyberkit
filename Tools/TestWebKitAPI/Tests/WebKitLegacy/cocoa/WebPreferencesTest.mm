@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import <Foundation/Foundation.h>
-#import <WebKit/WebPreferences.h>
+#import <CyberKit/WebPreferences.h>
 
 WTF_EXTERN_C_BEGIN
 WebCacheModel TestWebPreferencesCacheModelForMainBundle(NSString *bundleIdentifier);

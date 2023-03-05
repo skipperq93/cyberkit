@@ -25,8 +25,8 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebDocumentPrivate.h>
-#import <WebKit/DOMPrivate.h>
+#import <CyberKit/WebDocumentPrivate.h>
+#import <CyberKit/DOMPrivate.h>
 #import <wtf/RetainPtr.h>
 
 @interface RenderedImageFromDOMRangeFrameLoadDelegate : NSObject <WebFrameLoadDelegate> {

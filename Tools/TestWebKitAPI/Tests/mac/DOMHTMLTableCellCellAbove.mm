@@ -28,8 +28,8 @@
 #import "PlatformWebView.h"
 #import <wtf/RetainPtr.h>
 
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WebViewPrivate.h>
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/WebViewPrivate.h>
 
 @interface HTMLTableCellElementCellAboveTest : NSObject <WebFrameLoadDelegate>
 @end

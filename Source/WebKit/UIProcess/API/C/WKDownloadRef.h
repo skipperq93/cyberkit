@@ -26,8 +26,8 @@
 #ifndef WKDownloadRef_h
 #define WKDownloadRef_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKDownloadClient.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKDownloadClient.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>

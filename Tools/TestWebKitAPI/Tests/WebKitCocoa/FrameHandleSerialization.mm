@@ -25,10 +25,10 @@
 
 #import "config.h"
 
-#import <WebKit/WKBundlePage.h>
-#import <WebKit/WKBundlePageUIClient.h>
-#import <WebKit/WKWebProcessPlugIn.h>
-#import <WebKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
+#import <CyberKit/WKBundlePage.h>
+#import <CyberKit/WKBundlePageUIClient.h>
+#import <CyberKit/WKWebProcessPlugIn.h>
+#import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>
 
 void mouseDidMoveOverElement(WKBundlePageRef page, WKBundleHitTestResultRef hitTestResult, WKEventModifiers modifiers, WKTypeRef* userData, const void* clientInfo)
 {

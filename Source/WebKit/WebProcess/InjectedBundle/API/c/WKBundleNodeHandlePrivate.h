@@ -27,9 +27,9 @@
 #define WKBundleNodeHandlePrivate_h
 
 #include <JavaScriptCore/JavaScript.h>
-#include <WebKit/WKBase.h>
-#include <WebKit/WKGeometry.h>
-#include <WebKit/WKImage.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKGeometry.h>
+#include <CyberKit/WKImage.h>
 
 #ifdef __cplusplus
 extern "C" {

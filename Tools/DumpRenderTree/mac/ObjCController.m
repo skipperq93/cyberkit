@@ -33,10 +33,10 @@
 @class NSFont;
 
 #import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/DOMAbstractView.h>
-#import <WebKit/DOMPrivate.h>
-#import <WebKit/WebScriptObject.h>
-#import <WebKit/WebView.h>
+#import <CyberKit/DOMAbstractView.h>
+#import <CyberKit/DOMPrivate.h>
+#import <CyberKit/WebScriptObject.h>
+#import <CyberKit/WebView.h>
 #import <pthread.h>
 #import <wtf/Assertions.h>
 

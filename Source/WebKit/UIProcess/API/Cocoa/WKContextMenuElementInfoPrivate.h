@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKContextMenuElementInfo.h>
+#import <CyberKit/WKContextMenuElementInfo.h>
 
 @class _WKActivatedElementInfo;
 

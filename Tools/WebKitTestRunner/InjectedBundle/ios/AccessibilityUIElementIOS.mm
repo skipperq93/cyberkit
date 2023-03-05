@@ -34,7 +34,7 @@
 #import <JavaScriptCore/JSStringRefCF.h>
 #import <UIKit/UIKit.h>
 #import <WebCore/TextGranularity.h>
-#import <WebKit/WKBundleFrame.h>
+#import <CyberKit/WKBundleFrame.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 #import <wtf/cocoa/VectorCocoa.h>

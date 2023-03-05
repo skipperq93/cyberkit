@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/_WKFeature.h>
+#import <CyberKit/_WKFeature.h>
 
 // Empty subclass for binary compatibility. All logic should live in the superclass, _WKFeature.
 WK_CLASS_AVAILABLE(macos(10.14.4), ios(12.2))

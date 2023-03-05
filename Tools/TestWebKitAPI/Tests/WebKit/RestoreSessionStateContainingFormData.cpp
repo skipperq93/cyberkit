@@ -31,7 +31,7 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <WebKit/WKSessionStateRef.h>
+#include <CyberKit/WKSessionStateRef.h>
 
 namespace TestWebKitAPI {
 

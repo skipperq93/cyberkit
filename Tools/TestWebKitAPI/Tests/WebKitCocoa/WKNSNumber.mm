@@ -25,12 +25,12 @@
 
 #import "config.h"
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #if WK_HAVE_C_SPI
 
-#import <WebKit/WKNumber.h>
-#import <WebKit/WKRetainPtr.h>
+#import <CyberKit/WKNumber.h>
+#import <CyberKit/WKRetainPtr.h>
 
 namespace TestWebKitAPI {
 

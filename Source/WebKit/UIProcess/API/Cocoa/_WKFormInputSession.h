@@ -23,10 +23,10 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebKit/WKFoundation.h>
+#import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
-#import <WebKit/_WKFocusedElementInfo.h>
+#import <CyberKit/_WKFocusedElementInfo.h>
 
 @class UITextSuggestion;
 

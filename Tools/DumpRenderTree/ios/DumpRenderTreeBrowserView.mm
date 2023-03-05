@@ -29,10 +29,10 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import <WebCore/WebCoreThreadRun.h>
-#import <WebKit/WebCoreThread.h>
-#import <WebKit/WebUIDelegate.h>
-#import <WebKit/WebUIKitDelegate.h>
-#import <WebKit/WebView.h>
+#import <CyberKit/WebCoreThread.h>
+#import <CyberKit/WebUIDelegate.h>
+#import <CyberKit/WebUIKitDelegate.h>
+#import <CyberKit/WebView.h>
 #import <wtf/RetainPtr.h>
 
 @interface UIWebBrowserView (WebUIKitDelegate)

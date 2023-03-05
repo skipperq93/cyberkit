@@ -29,7 +29,7 @@
 #include "TestOptions.h"
 #include "UIScriptContext.h"
 #include "WhatToDump.h"
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 #include <string>
 #include <wtf/Noncopyable.h>
 #include <wtf/RunLoop.h>

@@ -28,10 +28,10 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "Utilities.h"
-#import <WebKit/WKFoundation.h>
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKUIDelegate.h>
-#import <WebKit/_WKFeature.h>
+#import <CyberKit/WKFoundation.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKUIDelegate.h>
+#import <CyberKit/_WKFeature.h>
 #import <wtf/RetainPtr.h>
 
 TEST(WebKit, DefaultWKPreferences)

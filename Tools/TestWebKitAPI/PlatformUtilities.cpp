@@ -26,7 +26,7 @@
 #include "config.h"
 #include "PlatformUtilities.h"
 
-#include <WebKit/WKContextConfigurationRef.h>
+#include <CyberKit/WKContextConfigurationRef.h>
 #include <wtf/StdLibExtras.h>
 #include <wtf/UniqueArray.h>
 

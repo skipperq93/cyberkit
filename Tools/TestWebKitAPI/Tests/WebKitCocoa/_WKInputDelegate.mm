@@ -29,10 +29,10 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKFocusedElementInfo.h>
-#import <WebKit/_WKFormInputSession.h>
-#import <WebKit/_WKInputDelegate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKFocusedElementInfo.h>
+#import <CyberKit/_WKFormInputSession.h>
+#import <CyberKit/_WKInputDelegate.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
 

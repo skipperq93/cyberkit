@@ -27,7 +27,7 @@
 #import "TestInspectorURLSchemeHandler.h"
 
 #import <WebCore/MIMETypeRegistry.h>
-#import <WebKit/WKURLSchemeTask.h>
+#import <CyberKit/WKURLSchemeTask.h>
 #import <wtf/Assertions.h>
 
 // Note: this class is a simplified version of WKResourceURLSchemeHandler for testing purposes.

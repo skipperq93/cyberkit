@@ -28,7 +28,7 @@
 #if WK_HAVE_C_SPI
 
 #include "InjectedBundleTest.h"
-#include <WebKit/WKBundlePage.h>
+#include <CyberKit/WKBundlePage.h>
 
 namespace TestWebKitAPI {
 

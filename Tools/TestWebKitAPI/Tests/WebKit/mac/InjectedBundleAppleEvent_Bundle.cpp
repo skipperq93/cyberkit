@@ -30,7 +30,7 @@
 #include "InjectedBundleTest.h"
 #include "PlatformUtilities.h"
 #include <Carbon/Carbon.h> // Needed for AppleEvents
-#include <WebKit/WKRetainPtr.h>
+#include <CyberKit/WKRetainPtr.h>
 
 namespace TestWebKitAPI {
 

@@ -26,11 +26,11 @@
 #ifndef WKPageNavigationClient_h
 #define WKPageNavigationClient_h
 
-#include <WebKit/WKBase.h>
-#include <WebKit/WKPageLoadTypes.h>
-#include <WebKit/WKPageRenderingProgressEvents.h>
-#include <WebKit/WKPluginLoadPolicy.h>
-#include <WebKit/WKProcessTerminationReason.h>
+#include <CyberKit/WKBase.h>
+#include <CyberKit/WKPageLoadTypes.h>
+#include <CyberKit/WKPageRenderingProgressEvents.h>
+#include <CyberKit/WKPluginLoadPolicy.h>
+#include <CyberKit/WKProcessTerminationReason.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -29,7 +29,7 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebKit/PreferenceObserver.h>
+#import <CyberKit/PreferenceObserver.h>
 #import <wtf/ObjCRuntimeExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/StringBuilder.h>

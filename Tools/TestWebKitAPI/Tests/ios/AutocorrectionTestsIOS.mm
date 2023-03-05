@@ -31,9 +31,9 @@
 #import "TestInputDelegate.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/WKWebViewPrivateForTesting.h>
-#import <WebKit/_WKProcessPoolConfiguration.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/WKWebViewPrivateForTesting.h>
+#import <CyberKit/_WKProcessPoolConfiguration.h>
 
 @interface TestWKWebView (AutocorrectionTests)
 - (UIWKAutocorrectionRects *)autocorrectionRectsForString:(NSString *)string;

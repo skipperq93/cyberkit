@@ -29,7 +29,7 @@
 
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
-#include <WebKit/WKDownloadRef.h>
+#include <CyberKit/WKDownloadRef.h>
 
 namespace TestWebKitAPI {
 

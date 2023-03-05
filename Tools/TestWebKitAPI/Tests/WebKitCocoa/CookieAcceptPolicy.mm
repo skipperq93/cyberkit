@@ -27,10 +27,10 @@
 
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WKHTTPCookieStorePrivate.h>
-#import <WebKit/WKProcessPoolPrivate.h>
-#import <WebKit/WKWebView.h>
-#import <WebKit/WKWebViewConfiguration.h>
+#import <CyberKit/WKHTTPCookieStorePrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKWebView.h>
+#import <CyberKit/WKWebViewConfiguration.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/RetainPtr.h>
 

@@ -33,13 +33,13 @@
 #import "TestInspectorURLSchemeHandler.h"
 #import "TestNavigationDelegate.h"
 #import "Utilities.h"
-#import <WebKit/WKPreferencesPrivate.h>
-#import <WebKit/WKWebViewPrivate.h>
-#import <WebKit/_WKInspector.h>
-#import <WebKit/_WKInspectorConfiguration.h>
-#import <WebKit/_WKInspectorExtension.h>
-#import <WebKit/_WKInspectorExtensionDelegate.h>
-#import <WebKit/_WKInspectorPrivateForTesting.h>
+#import <CyberKit/WKPreferencesPrivate.h>
+#import <CyberKit/WKWebViewPrivate.h>
+#import <CyberKit/_WKInspector.h>
+#import <CyberKit/_WKInspectorConfiguration.h>
+#import <CyberKit/_WKInspectorExtension.h>
+#import <CyberKit/_WKInspectorExtensionDelegate.h>
+#import <CyberKit/_WKInspectorPrivateForTesting.h>
 #import <wtf/RetainPtr.h>
 
 static RetainPtr<NSURL> sharedNewURLAfterNavigation;

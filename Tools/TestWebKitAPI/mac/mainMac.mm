@@ -28,7 +28,7 @@
 #import <wtf/RetainPtr.h>
 
 #if !defined(BUILDING_TEST_IPC) && !defined(BUILDING_TEST_WTF) && !defined(BUILDING_TEST_WGSL)
-#import <WebKit/WKProcessPoolPrivate.h>
+#import <CyberKit/WKProcessPoolPrivate.h>
 #endif
 
 extern "C" void _BeginEventReceiptOnThread(void);

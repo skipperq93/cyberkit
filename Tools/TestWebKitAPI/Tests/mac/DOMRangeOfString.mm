@@ -25,8 +25,8 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <WebKit/WebViewPrivate.h>
-#import <WebKit/DOM.h>
+#import <CyberKit/WebViewPrivate.h>
+#import <CyberKit/DOM.h>
 #import <wtf/RetainPtr.h>
 
 @interface DOMRangeOfStringFrameLoadDelegate : NSObject <WebFrameLoadDelegate> {

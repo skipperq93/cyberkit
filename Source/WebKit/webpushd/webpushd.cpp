@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <WebKit/WKMain.h>
+#include <CyberKit/WKMain.h>
 #include <os/availability.h>
 
 int main(int argc, char** argv)

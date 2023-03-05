@@ -26,12 +26,12 @@
 #import "config.h"
 
 #import "Test.h"
-#import <WebKit/WKBrowsingContextController.h>
-#import <WebKit/WKBrowsingContextGroup.h>
-#import <WebKit/WKBrowsingContextLoadDelegate.h>
-#import <WebKit/WKProcessGroup.h>
-#import <WebKit/WKRetainPtr.h>
-#import <WebKit/WKWebView.h>
+#import <CyberKit/WKBrowsingContextController.h>
+#import <CyberKit/WKBrowsingContextGroup.h>
+#import <CyberKit/WKBrowsingContextLoadDelegate.h>
+#import <CyberKit/WKProcessGroup.h>
+#import <CyberKit/WKRetainPtr.h>
+#import <CyberKit/WKWebView.h>
 #import <wtf/RetainPtr.h>
 
 #import "PlatformUtilities.h"
