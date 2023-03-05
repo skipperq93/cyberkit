@@ -29,7 +29,7 @@
       location = "group:Source/WebInspectorUI/WebInspectorUI.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Source/WebKitLegacy/WebKitLegacy.xcodeproj">
+      location = "group:/Users/matthewbenedict/Documents/git/WebKit/Source/WebKitLegacy/CyberKitLegacy.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:/Users/matthewbenedict/Documents/git/WebKit/Source/WebKit/CyberKit.xcodeproj">
