@@ -110,7 +110,7 @@ static void XPCServiceEventHandler(xpc_connection_t peer)
             typedef void (*InitializerFunction)(xpc_connection_t, xpc_object_t);
             InitializerFunction initializerFunctionPtr = reinterpret_cast<InitializerFunction>(CFBundleGetFunctionPointerForName(webKitBundle, entryPointFunctionName));
             if (!initializerFunctionPtr) {
-                RELEASE_LOG_FAULT(IPC, "Exiting: Unable to find entry point in WebKit.framework with name: %s", [(__bridge NSString *)entryPointFunctionName UTF8String]);
+                RELEASE_LOG_FAULT(IPC, "Exiting: Unable to find entry point in CyberKit.framework with name: %s", [(__bridge NSString *)entryPointFunctionName UTF8String]);
                 [[NSRunLoop mainRunLoop] performBlock:^{
                     exit(EXIT_FAILURE);
                 }];
