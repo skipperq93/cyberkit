@@ -28,10 +28,10 @@
 
 #if USE(APPKIT)
 
-#import <WebCore/KeyboardEvent.h>
-#import <WebCore/PlatformEventFactoryMac.h>
-#import <WebCore/Scrollbar.h>
-#import <WebCore/WindowsKeyboardCodes.h>
+#import <CyberCore/KeyboardEvent.h>
+#import <CyberCore/PlatformEventFactoryMac.h>
+#import <CyberCore/Scrollbar.h>
+#import <CyberCore/WindowsKeyboardCodes.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <pal/spi/mac/NSMenuSPI.h>
 #import <wtf/ASCIICType.h>

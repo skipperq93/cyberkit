@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import <WebCore/DatabaseManagerClient.h>
+#import <CyberCore/DatabaseManagerClient.h>
 #import <wtf/NeverDestroyed.h>
 
 namespace WebKit {

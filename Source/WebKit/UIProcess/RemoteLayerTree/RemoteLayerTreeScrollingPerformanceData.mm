@@ -29,7 +29,7 @@
 #import "RemoteLayerTreeDrawingAreaProxy.h"
 #import "RemoteLayerTreeHost.h"
 #import <QuartzCore/CALayer.h>
-#import <WebCore/TileController.h>
+#import <CyberCore/TileController.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 namespace WebKit {

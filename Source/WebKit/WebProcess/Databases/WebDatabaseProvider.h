@@ -26,7 +26,7 @@
 #pragma once
 
 #include "IdentifierTypes.h"
-#include <WebCore/DatabaseProvider.h>
+#include <CyberCore/DatabaseProvider.h>
 #include <wtf/HashMap.h>
 
 namespace WebKit {

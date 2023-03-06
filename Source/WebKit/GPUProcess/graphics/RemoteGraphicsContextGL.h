@@ -36,18 +36,18 @@
 #include "SharedVideoFrame.h"
 #include "StreamMessageReceiver.h"
 #include "StreamServerConnection.h"
-#include <WebCore/NotImplemented.h>
-#include <WebCore/PixelBuffer.h>
-#include <WebCore/ProcessIdentity.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/PixelBuffer.h>
+#include <CyberCore/ProcessIdentity.h>
 #include <wtf/ThreadAssertions.h>
 #include <wtf/WeakPtr.h>
 
 #if PLATFORM(COCOA)
-#include <WebCore/GraphicsContextGLCocoa.h>
+#include <CyberCore/GraphicsContextGLCocoa.h>
 #elif USE(LIBGBM)
-#include <WebCore/GraphicsContextGLGBM.h>
+#include <CyberCore/GraphicsContextGLGBM.h>
 #else
-#include <WebCore/GraphicsContextGLTextureMapperANGLE.h>
+#include <CyberCore/GraphicsContextGLTextureMapperANGLE.h>
 #endif
 
 #if PLATFORM(MAC)

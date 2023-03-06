@@ -34,7 +34,7 @@
 #include "NetworkLoad.h"
 #include "NetworkSession.h"
 #include "PrivateRelayed.h"
-#include <WebCore/NavigationPreloadState.h>
+#include <CyberCore/NavigationPreloadState.h>
 
 namespace WebKit {
 

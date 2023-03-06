@@ -29,8 +29,8 @@
 #if ENABLE(ASYNC_SCROLLING) && PLATFORM(MAC)
 
 #include "RemoteScrollingTree.h"
-#include <WebCore/ScrollingStateOverflowScrollingNode.h>
-#include <WebCore/ScrollingTreeScrollingNodeDelegate.h>
+#include <CyberCore/ScrollingStateOverflowScrollingNode.h>
+#include <CyberCore/ScrollingTreeScrollingNodeDelegate.h>
 
 namespace WebKit {
 using namespace WebCore;

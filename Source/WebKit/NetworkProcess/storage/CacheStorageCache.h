@@ -28,7 +28,7 @@
 #include "CacheStorageRecord.h"
 #include "CacheStorageStore.h"
 #include "NetworkCacheKey.h"
-#include <WebCore/RetrieveRecordsOptions.h>
+#include <CyberCore/RetrieveRecordsOptions.h>
 #include <wtf/WorkQueue.h>
 
 namespace WebKit {

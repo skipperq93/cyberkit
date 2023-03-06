@@ -31,7 +31,7 @@
 #import "_WKWebExtensionControllerConfigurationInternal.h"
 
 #import "WebExtensionControllerConfiguration.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 static constexpr NSString *persistentCodingKey = @"persistent";
 static constexpr NSString *identifierCodingKey = @"identifier";

@@ -34,23 +34,23 @@
 #include "WebProcess.h"
 #include "WebTouchEvent.h"
 #include "WebWheelEvent.h"
-#include <WebCore/DisplayUpdate.h>
-#include <WebCore/Page.h>
-#include <WebCore/WheelEventTestMonitor.h>
+#include <CyberCore/DisplayUpdate.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/WheelEventTestMonitor.h>
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 #include <wtf/SystemTracing.h>
 
 #if ENABLE(ASYNC_SCROLLING)
-#include <WebCore/AsyncScrollingCoordinator.h>
+#include <CyberCore/AsyncScrollingCoordinator.h>
 #endif
 
-#include <WebCore/DisplayRefreshMonitorManager.h>
+#include <CyberCore/DisplayRefreshMonitorManager.h>
 
 #if ENABLE(SCROLLING_THREAD)
-#include <WebCore/ScrollingThread.h>
-#include <WebCore/ScrollingTreeNode.h>
-#include <WebCore/ThreadedScrollingTree.h>
+#include <CyberCore/ScrollingThread.h>
+#include <CyberCore/ScrollingTreeNode.h>
+#include <CyberCore/ThreadedScrollingTree.h>
 #endif
 
 namespace WebKit {

@@ -27,7 +27,7 @@
 
 #if ENABLE(WEBM_FORMAT_READER)
 
-#include <WebCore/MediaSample.h>
+#include <CyberCore/MediaSample.h>
 
 namespace WebKit {
 

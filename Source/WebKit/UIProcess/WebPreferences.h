@@ -29,7 +29,7 @@
 #include "APIObject.h"
 #include "WebPreferencesDefinitions.h"
 #include "WebPreferencesStore.h"
-#include <WebCore/LibWebRTCProvider.h>
+#include <CyberCore/LibWebRTCProvider.h>
 #include <wtf/RefPtr.h>
 #include <wtf/WeakHashSet.h>
 

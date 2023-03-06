@@ -27,7 +27,7 @@
 
 #if ENABLE(GPU_PROCESS) && USE(AUDIO_SESSION)
 
-#include <WebCore/AudioSession.h>
+#include <CyberCore/AudioSession.h>
 
 namespace WebKit {
 

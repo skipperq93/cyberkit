@@ -73,16 +73,16 @@
 #include "WebSharedWorkerServerToContextConnection.h"
 #include "WebSharedWorkerServerToContextConnectionMessages.h"
 #include "WebsiteDataStoreParameters.h"
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/DocumentStorageAccess.h>
-#include <WebCore/HTTPCookieAcceptPolicy.h>
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceLoadObserver.h>
-#include <WebCore/ResourceLoadStatistics.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/SameSiteInfo.h>
-#include <WebCore/SecurityPolicy.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/DocumentStorageAccess.h>
+#include <CyberCore/HTTPCookieAcceptPolicy.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceLoadObserver.h>
+#include <CyberCore/ResourceLoadStatistics.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/SameSiteInfo.h>
+#include <CyberCore/SecurityPolicy.h>
 
 #if ENABLE(APPLE_PAY_REMOTE_UI)
 #include "WebPaymentCoordinatorProxyMessages.h"

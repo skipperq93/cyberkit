@@ -30,8 +30,8 @@
 #include "IPCSemaphore.h"
 #include "RemoteVideoFrameIdentifier.h"
 #include "SharedMemory.h"
-#include <WebCore/IntSize.h>
-#include <WebCore/ProcessIdentity.h>
+#include <CyberCore/IntSize.h>
+#include <CyberCore/ProcessIdentity.h>
 #include <wtf/MediaTime.h>
 #include <wtf/RefPtr.h>
 #include <wtf/RetainPtr.h>

@@ -29,10 +29,10 @@
 #if USE(PASSKIT) && ENABLE(APPLE_PAY)
 
 #import "PaymentAuthorizationPresenter.h"
-#import <WebCore/ApplePayShippingMethod.h>
-#import <WebCore/Payment.h>
-#import <WebCore/PaymentMethod.h>
-#import <WebCore/PaymentSessionError.h>
+#import <CyberCore/ApplePayShippingMethod.h>
+#import <CyberCore/Payment.h>
+#import <CyberCore/PaymentMethod.h>
+#import <CyberCore/PaymentSessionError.h>
 #import <wtf/RunLoop.h>
 #import <wtf/URL.h>
 

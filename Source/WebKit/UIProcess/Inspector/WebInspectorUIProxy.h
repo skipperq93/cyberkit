@@ -33,10 +33,10 @@
 #include "WebInspectorUtilities.h"
 #include "WebPageProxyIdentifier.h"
 #include <JavaScriptCore/InspectorFrontendChannel.h>
-#include <WebCore/Color.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/InspectorClient.h>
-#include <WebCore/InspectorFrontendClient.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/InspectorClient.h>
+#include <CyberCore/InspectorFrontendClient.h>
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
@@ -44,7 +44,7 @@
 
 #if PLATFORM(MAC)
 #include "WKGeometry.h"
-#include <WebCore/IntRect.h>
+#include <CyberCore/IntRect.h>
 #include <wtf/HashMap.h>
 #include <wtf/RetainPtr.h>
 #include <wtf/RunLoop.h>

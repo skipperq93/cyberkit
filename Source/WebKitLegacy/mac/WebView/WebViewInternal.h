@@ -35,18 +35,18 @@
 
 #ifdef __cplusplus
 
-#import <WebCore/AlternativeTextClient.h>
-#import <WebCore/DragActions.h>
-#import <WebCore/FindOptions.h>
-#import <WebCore/FloatRect.h>
-#import <WebCore/HTMLMediaElementEnums.h>
-#import <WebCore/LayoutMilestone.h>
-#import <WebCore/PlaybackTargetClientContextIdentifier.h>
-#import <WebCore/ResourceLoaderIdentifier.h>
-#import <WebCore/TextAlternativeWithRange.h>
-#import <WebCore/TextIndicator.h>
-#import <WebCore/TextIndicatorWindow.h>
-#import <WebCore/WebCoreKeyboardUIMode.h>
+#import <CyberCore/AlternativeTextClient.h>
+#import <CyberCore/DragActions.h>
+#import <CyberCore/FindOptions.h>
+#import <CyberCore/FloatRect.h>
+#import <CyberCore/HTMLMediaElementEnums.h>
+#import <CyberCore/LayoutMilestone.h>
+#import <CyberCore/PlaybackTargetClientContextIdentifier.h>
+#import <CyberCore/ResourceLoaderIdentifier.h>
+#import <CyberCore/TextAlternativeWithRange.h>
+#import <CyberCore/TextIndicator.h>
+#import <CyberCore/TextIndicatorWindow.h>
+#import <CyberCore/WebCoreKeyboardUIMode.h>
 #import <functional>
 #import <wtf/Forward.h>
 #import <wtf/NakedPtr.h>
@@ -81,8 +81,8 @@ class WebMediaPlaybackTargetPicker;
 class WebSelectionServiceController;
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)
-#import <WebCore/MediaPlaybackTargetContext.h>
-#import <WebCore/MediaProducer.h>
+#import <CyberCore/MediaPlaybackTargetContext.h>
+#import <CyberCore/MediaProducer.h>
 #endif
 
 #endif

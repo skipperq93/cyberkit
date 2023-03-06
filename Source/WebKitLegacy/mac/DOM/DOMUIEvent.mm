@@ -29,12 +29,12 @@
 #import "DOMEventInternal.h"
 #import "DOMNodeInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/DOMWindow.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/KeyboardEvent.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/UIEvent.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/DOMWindow.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/KeyboardEvent.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/UIEvent.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 

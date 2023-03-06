@@ -29,8 +29,8 @@
 #if ENABLE(CONTEXT_MENUS)
 
 #import "WebSharingServicePickerController.h"
-#import <WebCore/ContextMenuClient.h>
-#import <WebCore/IntRect.h>
+#import <CyberCore/ContextMenuClient.h>
+#import <CyberCore/IntRect.h>
 
 @class WebSharingServicePickerController;
 @class WebView;

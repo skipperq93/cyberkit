@@ -27,7 +27,7 @@
 #define WebGeolocationPosition_h
 
 #include "APIObject.h"
-#include <WebCore/GeolocationPositionData.h>
+#include <CyberCore/GeolocationPositionData.h>
 #include <wtf/RefPtr.h>
 
 namespace IPC {

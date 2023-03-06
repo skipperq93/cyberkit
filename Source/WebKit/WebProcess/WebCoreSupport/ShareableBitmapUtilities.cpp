@@ -27,16 +27,16 @@
 #include "ShareableBitmapUtilities.h"
 
 #include "ShareableBitmap.h"
-#include <WebCore/CachedImage.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameSnapshotting.h>
-#include <WebCore/GeometryUtilities.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/ImageBuffer.h>
-#include <WebCore/IntSize.h>
-#include <WebCore/PlatformScreen.h>
-#include <WebCore/RenderImage.h>
-#include <WebCore/RenderVideo.h>
+#include <CyberCore/CachedImage.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameSnapshotting.h>
+#include <CyberCore/GeometryUtilities.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/ImageBuffer.h>
+#include <CyberCore/IntSize.h>
+#include <CyberCore/PlatformScreen.h>
+#include <CyberCore/RenderImage.h>
+#include <CyberCore/RenderVideo.h>
 
 namespace WebKit {
 using namespace WebCore;

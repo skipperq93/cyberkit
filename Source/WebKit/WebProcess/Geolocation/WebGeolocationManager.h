@@ -28,7 +28,7 @@
 #include "MessageReceiver.h"
 #include "WebGeolocationPosition.h"
 #include "WebProcessSupplement.h"
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/WeakHashMap.h>

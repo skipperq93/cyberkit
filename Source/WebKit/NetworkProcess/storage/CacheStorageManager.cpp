@@ -29,7 +29,7 @@
 #include "CacheStorageCache.h"
 #include "CacheStorageRegistry.h"
 #include "StorageUtilities.h"
-#include <WebCore/ClientOrigin.h>
+#include <CyberCore/ClientOrigin.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/Scope.h>
 #include <wtf/persistence/PersistentEncoder.h>

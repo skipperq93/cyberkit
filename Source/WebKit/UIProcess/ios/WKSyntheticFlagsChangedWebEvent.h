@@ -25,7 +25,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-#import <WebCore/WebEvent.h>
+#import <CyberCore/WebEvent.h>
 
 @interface WKSyntheticFlagsChangedWebEvent : WebEvent
 

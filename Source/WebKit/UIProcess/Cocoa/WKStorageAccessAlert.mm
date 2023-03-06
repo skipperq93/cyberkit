@@ -33,9 +33,9 @@
 #if PLATFORM(COCOA) && !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
 
 #import "WKWebViewInternal.h"
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/NetworkStorageSession.h>
-#import <WebCore/RegistrableDomain.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/NetworkStorageSession.h>
+#import <CyberCore/RegistrableDomain.h>
 #import <wtf/BlockPtr.h>
 
 namespace WebKit {

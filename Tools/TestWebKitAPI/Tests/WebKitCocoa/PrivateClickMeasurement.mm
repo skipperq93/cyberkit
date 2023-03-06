@@ -26,9 +26,9 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <WebCore/SQLiteDatabase.h>
-#import <WebCore/SQLiteStatement.h>
-#import <WebCore/SQLiteTransaction.h>
+#import <CyberCore/SQLiteDatabase.h>
+#import <CyberCore/SQLiteStatement.h>
+#import <CyberCore/SQLiteTransaction.h>
 #import <CyberKit/WKFoundation.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>

@@ -30,8 +30,8 @@
 
 #include "RemoteMediaPlayerProxy.h"
 #include "RemoteMediaResourceManager.h"
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/SharedBuffer.h>
 
 namespace WebKit {
 

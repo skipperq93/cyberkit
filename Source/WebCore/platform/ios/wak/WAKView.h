@@ -31,8 +31,8 @@
 #if TARGET_OS_IPHONE
 
 #import <CoreGraphics/CoreGraphics.h>
-#import <WebCore/WAKAppKitStubs.h>
-#import <WebCore/WAKResponder.h>
+#import <CyberCore/WAKAppKitStubs.h>
+#import <CyberCore/WAKResponder.h>
 
 extern NSString *WAKViewFrameSizeDidChangeNotification;
 extern NSString *WAKViewDidScrollNotification;

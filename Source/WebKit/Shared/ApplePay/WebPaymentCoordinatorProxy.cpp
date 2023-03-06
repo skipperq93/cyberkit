@@ -33,11 +33,11 @@
 #include "WebPaymentCoordinatorMessages.h"
 #include "WebPaymentCoordinatorProxyMessages.h"
 #include "WebProcessProxy.h"
-#include <WebCore/ApplePayCouponCodeUpdate.h>
-#include <WebCore/ApplePayPaymentAuthorizationResult.h>
-#include <WebCore/ApplePayPaymentMethodUpdate.h>
-#include <WebCore/ApplePayShippingContactUpdate.h>
-#include <WebCore/ApplePayShippingMethodUpdate.h>
+#include <CyberCore/ApplePayCouponCodeUpdate.h>
+#include <CyberCore/ApplePayPaymentAuthorizationResult.h>
+#include <CyberCore/ApplePayPaymentMethodUpdate.h>
+#include <CyberCore/ApplePayShippingContactUpdate.h>
+#include <CyberCore/ApplePayShippingMethodUpdate.h>
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, messageSenderConnection())
 

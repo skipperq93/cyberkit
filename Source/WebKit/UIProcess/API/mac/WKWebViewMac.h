@@ -28,7 +28,7 @@
 #if PLATFORM(MAC)
 
 #import "WebViewImpl.h"
-#import <WebCore/ScrollTypes.h>
+#import <CyberCore/ScrollTypes.h>
 #import <CyberKit/_WKOverlayScrollbarStyle.h>
 
 _WKOverlayScrollbarStyle toAPIScrollbarStyle(std::optional<WebCore::ScrollbarOverlayStyle>);

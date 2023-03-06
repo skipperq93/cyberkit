@@ -31,10 +31,10 @@
 #include "CtapAuthenticator.h"
 #include "CtapDriver.h"
 #include "U2fAuthenticator.h"
-#include <WebCore/DeviceRequestConverter.h>
-#include <WebCore/DeviceResponseConverter.h>
-#include <WebCore/FidoConstants.h>
-#include <WebCore/FidoHidMessage.h>
+#include <CyberCore/DeviceRequestConverter.h>
+#include <CyberCore/DeviceResponseConverter.h>
+#include <CyberCore/FidoConstants.h>
+#include <CyberCore/FidoHidMessage.h>
 #include <wtf/RunLoop.h>
 
 

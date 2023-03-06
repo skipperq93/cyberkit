@@ -29,9 +29,9 @@
 #include "DrawingArea.h"
 #include "GraphicsLayerCARemote.h"
 #include "RemoteLayerTreeTransaction.h"
-#include <WebCore/AnimationFrameRate.h>
-#include <WebCore/GraphicsLayerClient.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/AnimationFrameRate.h>
+#include <CyberCore/GraphicsLayerClient.h>
+#include <CyberCore/Timer.h>
 #include <atomic>
 #include <dispatch/dispatch.h>
 #include <wtf/HashMap.h>

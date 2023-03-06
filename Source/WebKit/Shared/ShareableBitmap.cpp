@@ -28,7 +28,7 @@
 
 #include "SharedMemory.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/GraphicsContext.h>
+#include <CyberCore/GraphicsContext.h>
 #include <wtf/DebugHeap.h>
 
 namespace WebKit {

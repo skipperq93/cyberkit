@@ -36,10 +36,10 @@
 #include "WebEventConversion.h"
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
-#include <WebCore/PerformanceLoggingClient.h>
-#include <WebCore/RuntimeApplicationChecks.h>
-#include <WebCore/ScrollingStateTree.h>
-#include <WebCore/ScrollingTreeFrameScrollingNode.h>
+#include <CyberCore/PerformanceLoggingClient.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
+#include <CyberCore/ScrollingStateTree.h>
+#include <CyberCore/ScrollingTreeFrameScrollingNode.h>
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
 namespace WebKit {

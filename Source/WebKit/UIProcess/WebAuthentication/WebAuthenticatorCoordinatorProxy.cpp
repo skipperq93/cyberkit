@@ -37,9 +37,9 @@
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/AuthenticatorResponseData.h>
-#include <WebCore/ExceptionData.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/AuthenticatorResponseData.h>
+#include <CyberCore/ExceptionData.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 

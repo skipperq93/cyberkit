@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/PixelBuffer.h>
+#include <CyberCore/PixelBuffer.h>
 
 namespace WebKit {
 

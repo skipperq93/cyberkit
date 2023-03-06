@@ -37,7 +37,7 @@
 #include "WebSharedWorker.h"
 #include "WebSharedWorkerContextManagerConnectionMessages.h"
 #include "WebSharedWorkerServer.h"
-#include <WebCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
 #include <wtf/MemoryPressureHandler.h>
 
 namespace WebKit {

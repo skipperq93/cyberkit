@@ -27,7 +27,7 @@
 #include "WebNotification.h"
 
 #include "APIDictionary.h"
-#include <WebCore/NotificationData.h>
+#include <CyberCore/NotificationData.h>
 
 namespace WebKit {
 

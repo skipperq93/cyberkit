@@ -31,7 +31,7 @@
 #import "PlatformCALayerRemote.h"
 #import "RemoteLayerTreeHost.h"
 #import <QuartzCore/QuartzCore.h>
-#import <WebCore/IntRectHash.h>
+#import <CyberCore/IntRectHash.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 
 #if USE(APPLE_INTERNAL_SDK)

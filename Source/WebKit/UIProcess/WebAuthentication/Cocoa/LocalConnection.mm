@@ -28,9 +28,9 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/UserVerificationRequirement.h>
-#import <WebCore/WebAuthenticationConstants.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/UserVerificationRequirement.h>
+#import <CyberCore/WebAuthenticationConstants.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RunLoop.h>
 

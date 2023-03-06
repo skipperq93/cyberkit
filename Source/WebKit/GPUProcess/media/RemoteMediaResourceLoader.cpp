@@ -29,7 +29,7 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
 #include "RemoteMediaPlayerProxy.h"
-#include <WebCore/ResourceError.h>
+#include <CyberCore/ResourceError.h>
 
 namespace WebKit {
 

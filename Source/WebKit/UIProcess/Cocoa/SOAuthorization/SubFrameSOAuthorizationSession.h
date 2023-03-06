@@ -30,7 +30,7 @@
 #include <variant>
 #include "FrameLoadState.h"
 #include "NavigationSOAuthorizationSession.h"
-#include <WebCore/FrameIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
 #include <wtf/Deque.h>
 
 namespace WebKit {

@@ -28,7 +28,7 @@
 #if ENABLE(GPU_PROCESS) && HAVE(IOSURFACE)
 
 #include "ImageBufferBackendHandleSharing.h"
-#include <WebCore/ImageBufferIOSurfaceBackend.h>
+#include <CyberCore/ImageBufferIOSurfaceBackend.h>
 #include <wtf/IsoMalloc.h>
 
 namespace WebCore {

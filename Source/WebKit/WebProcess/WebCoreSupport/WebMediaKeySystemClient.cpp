@@ -30,8 +30,8 @@
 
 #include "MediaKeySystemPermissionRequestManager.h"
 #include "WebPage.h"
-#include <WebCore/MediaKeySystemController.h>
-#include <WebCore/MediaKeySystemRequest.h>
+#include <CyberCore/MediaKeySystemController.h>
+#include <CyberCore/MediaKeySystemRequest.h>
 
 namespace WebKit {
 using namespace WebCore;

@@ -26,10 +26,10 @@
 #import "config.h"
 #import "WKHTTPCookieStoreInternal.h"
 
-#import <WebCore/Cookie.h>
-#import <WebCore/HTTPCookieAcceptPolicy.h>
-#import <WebCore/HTTPCookieAcceptPolicyCocoa.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/Cookie.h>
+#import <CyberCore/HTTPCookieAcceptPolicy.h>
+#import <CyberCore/HTTPCookieAcceptPolicyCocoa.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/HashMap.h>

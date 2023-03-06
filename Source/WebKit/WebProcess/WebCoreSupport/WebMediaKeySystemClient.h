@@ -27,7 +27,7 @@
 
 #if ENABLE(ENCRYPTED_MEDIA)
 
-#include <WebCore/MediaKeySystemClient.h>
+#include <CyberCore/MediaKeySystemClient.h>
 
 namespace WebKit {
 

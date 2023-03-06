@@ -30,7 +30,7 @@
 
 #import "TextCheckingControllerProxyMessages.h"
 #import "WebProcessProxy.h"
-#import <WebCore/AttributedString.h>
+#import <CyberCore/AttributedString.h>
 
 namespace WebKit {
 

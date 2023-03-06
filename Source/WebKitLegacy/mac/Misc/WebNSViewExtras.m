@@ -41,7 +41,7 @@
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WAKWindow.h>
+#import <CyberCore/WAKWindow.h>
 #endif
 
 #define WebDragStartHysteresisX                 5.0f

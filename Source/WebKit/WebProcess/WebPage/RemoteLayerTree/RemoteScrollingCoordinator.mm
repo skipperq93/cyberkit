@@ -37,16 +37,16 @@
 #import "WebCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebProcess.h"
-#import <WebCore/Frame.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/GraphicsLayer.h>
-#import <WebCore/Page.h>
-#import <WebCore/RenderLayerCompositor.h>
-#import <WebCore/RenderView.h>
-#import <WebCore/ScrollingStateFrameScrollingNode.h>
-#import <WebCore/ScrollingTreeFixedNodeCocoa.h>
-#import <WebCore/ScrollingTreeStickyNodeCocoa.h>
-#import <WebCore/WheelEventTestMonitor.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/GraphicsLayer.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/RenderLayerCompositor.h>
+#import <CyberCore/RenderView.h>
+#import <CyberCore/ScrollingStateFrameScrollingNode.h>
+#import <CyberCore/ScrollingTreeFixedNodeCocoa.h>
+#import <CyberCore/ScrollingTreeStickyNodeCocoa.h>
+#import <CyberCore/WheelEventTestMonitor.h>
 
 namespace WebKit {
 using namespace WebCore;

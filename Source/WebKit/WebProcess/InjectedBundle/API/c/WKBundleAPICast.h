@@ -29,8 +29,8 @@
 #include "WKBundlePage.h"
 #include "WKBundlePagePrivate.h"
 #include "WKBundlePrivate.h"
-#include <WebCore/EditorInsertAction.h>
-#include <WebCore/TextAffinity.h>
+#include <CyberCore/EditorInsertAction.h>
+#include <CyberCore/TextAffinity.h>
 
 namespace WebKit {
 

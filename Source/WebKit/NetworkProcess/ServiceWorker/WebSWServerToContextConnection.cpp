@@ -39,9 +39,9 @@
 #include "WebCoreArgumentCoders.h"
 #include "WebSWContextManagerConnectionMessages.h"
 #include "WebSWServerConnection.h"
-#include <WebCore/NotificationData.h>
-#include <WebCore/SWServer.h>
-#include <WebCore/ServiceWorkerContextData.h>
+#include <CyberCore/NotificationData.h>
+#include <CyberCore/SWServer.h>
+#include <CyberCore/ServiceWorkerContextData.h>
 
 namespace WebKit {
 using namespace WebCore;

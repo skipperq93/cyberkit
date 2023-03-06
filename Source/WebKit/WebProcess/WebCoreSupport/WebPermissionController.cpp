@@ -31,13 +31,13 @@
 #include "WebPermissionControllerMessages.h"
 #include "WebPermissionControllerProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/Document.h>
-#include <WebCore/Page.h>
-#include <WebCore/PermissionObserver.h>
-#include <WebCore/PermissionQuerySource.h>
-#include <WebCore/PermissionState.h>
-#include <WebCore/Permissions.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PermissionObserver.h>
+#include <CyberCore/PermissionQuerySource.h>
+#include <CyberCore/PermissionState.h>
+#include <CyberCore/Permissions.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <optional>
 
 namespace WebKit {

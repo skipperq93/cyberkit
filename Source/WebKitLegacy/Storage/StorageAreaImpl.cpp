@@ -28,14 +28,14 @@
 #include "StorageAreaSync.h"
 #include "StorageSyncManager.h"
 #include "StorageTracker.h"
-#include <WebCore/DOMWindow.h>
-#include <WebCore/Frame.h>
-#include <WebCore/Page.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/Storage.h>
-#include <WebCore/StorageEventDispatcher.h>
-#include <WebCore/StorageType.h>
+#include <CyberCore/DOMWindow.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/Storage.h>
+#include <CyberCore/StorageEventDispatcher.h>
+#include <CyberCore/StorageType.h>
 #include <wtf/MainThread.h>
 
 using namespace WebCore;

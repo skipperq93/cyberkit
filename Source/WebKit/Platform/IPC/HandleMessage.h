@@ -31,7 +31,7 @@
 #include "MessageArgumentDescriptions.h"
 #include "MessageNames.h"
 #include "StreamServerConnection.h"
-#include <WebCore/RuntimeApplicationChecks.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/ProcessID.h>
 #include <wtf/StdLibExtras.h>

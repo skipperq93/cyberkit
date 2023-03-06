@@ -30,10 +30,10 @@
 #include "NetworkProcessProxyMessages.h"
 #include "WebCookieManagerMessages.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/Cookie.h>
-#include <WebCore/CookieStorage.h>
-#include <WebCore/HTTPCookieAcceptPolicy.h>
-#include <WebCore/NetworkStorageSession.h>
+#include <CyberCore/Cookie.h>
+#include <CyberCore/CookieStorage.h>
+#include <CyberCore/HTTPCookieAcceptPolicy.h>
+#include <CyberCore/NetworkStorageSession.h>
 #include <wtf/MainThread.h>
 #include <wtf/URL.h>
 #include <wtf/text/StringHash.h>

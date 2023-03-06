@@ -25,8 +25,8 @@
 
 #include "config.h"
 #include "Utilities.h"
-#include <WebCore/PushDatabase.h>
-#include <WebCore/SQLiteDatabase.h>
+#include <CyberCore/PushDatabase.h>
+#include <CyberCore/SQLiteDatabase.h>
 #include <algorithm>
 #include <iterator>
 #include <wtf/FileSystem.h>

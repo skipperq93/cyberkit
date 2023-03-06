@@ -35,9 +35,9 @@
 #import "WebPageProxyMessages.h"
 #import "WebProcessProxy.h"
 #import "WebViewImpl.h"
-#import <WebCore/DictionaryLookup.h>
-#import <WebCore/GeometryUtilities.h>
-#import <WebCore/TextIndicatorWindow.h>
+#import <CyberCore/DictionaryLookup.h>
+#import <CyberCore/GeometryUtilities.h>
+#import <CyberCore/TextIndicatorWindow.h>
 #import <pal/spi/mac/LookupSPI.h>
 #import <pal/spi/mac/NSMenuSPI.h>
 #import <pal/spi/mac/NSPopoverSPI.h>

@@ -27,8 +27,8 @@
 #pragma once
 
 #include "WebEvent.h"
-#include <WebCore/FloatSize.h>
-#include <WebCore/IntPoint.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/IntPoint.h>
 #include <wtf/EnumTraits.h>
 
 namespace WebKit {

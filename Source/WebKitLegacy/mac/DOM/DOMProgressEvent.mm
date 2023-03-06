@@ -28,10 +28,10 @@
 #import "DOMEventInternal.h"
 #import "DOMNodeInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/JSExecState.h>
-#import <WebCore/ProgressEvent.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/ProgressEvent.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
 #define IMPL static_cast<WebCore::ProgressEvent*>(reinterpret_cast<WebCore::Event*>(_internal))

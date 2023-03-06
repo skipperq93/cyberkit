@@ -28,10 +28,10 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-#import <WebCore/FloatQuad.h>
-#import <WebCore/FloatRect.h>
-#import <WebCore/GeometryUtilities.h>
-#import <WebCore/GraphicsContextCG.h>
+#import <CyberCore/FloatQuad.h>
+#import <CyberCore/FloatRect.h>
+#import <CyberCore/GeometryUtilities.h>
+#import <CyberCore/GraphicsContextCG.h>
 
 @implementation WKInspectorHighlightView
 

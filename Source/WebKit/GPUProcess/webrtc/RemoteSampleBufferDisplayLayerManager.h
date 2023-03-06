@@ -31,7 +31,7 @@
 #include "LayerHostingContext.h"
 #include "SampleBufferDisplayLayerIdentifier.h"
 #include "WorkQueueMessageReceiver.h"
-#include <WebCore/IntSize.h>
+#include <CyberCore/IntSize.h>
 #include <wtf/HashMap.h>
 
 namespace IPC {

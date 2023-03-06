@@ -27,8 +27,8 @@
 
 #if USE(LIBWEBRTC)
 
-#include <WebCore/LibWebRTCProvider.h>
-#include <WebCore/LibWebRTCSocketIdentifier.h>
+#include <CyberCore/LibWebRTCProvider.h>
+#include <CyberCore/LibWebRTCSocketIdentifier.h>
 #include <wtf/Deque.h>
 #include <wtf/Forward.h>
 

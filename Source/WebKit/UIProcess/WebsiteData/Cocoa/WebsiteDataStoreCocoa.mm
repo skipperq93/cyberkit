@@ -37,10 +37,10 @@
 #import "WebProcessProxy.h"
 #import "WebResourceLoadStatisticsStore.h"
 #import "WebsiteDataStoreParameters.h"
-#import <WebCore/NetworkStorageSession.h>
-#import <WebCore/RegistrableDomain.h>
-#import <WebCore/RuntimeApplicationChecks.h>
-#import <WebCore/SearchPopupMenuCocoa.h>
+#import <CyberCore/NetworkStorageSession.h>
+#import <CyberCore/RegistrableDomain.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
+#import <CyberCore/SearchPopupMenuCocoa.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/FileSystem.h>
 #import <wtf/NeverDestroyed.h>

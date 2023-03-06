@@ -33,29 +33,29 @@
 #import "DOMHTMLTextAreaElementInternal.h"
 #import "DOMNodeInternal.h"
 #import "DOMPrivate.h"
-#import <WebCore/DocumentFragment.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/HTMLCollection.h>
-#import <WebCore/HTMLDocument.h>
-#import <WebCore/HTMLInputElement.h>
-#import <WebCore/HTMLParserIdioms.h>
-#import <WebCore/HTMLSelectElement.h>
-#import <WebCore/HTMLTextAreaElement.h>
-#import <WebCore/Range.h>
-#import <WebCore/RenderTextControl.h>
-#import <WebCore/Settings.h>
-#import <WebCore/SimpleRange.h>
-#import <WebCore/markup.h>
+#import <CyberCore/DocumentFragment.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/HTMLCollection.h>
+#import <CyberCore/HTMLDocument.h>
+#import <CyberCore/HTMLInputElement.h>
+#import <CyberCore/HTMLParserIdioms.h>
+#import <CyberCore/HTMLSelectElement.h>
+#import <CyberCore/HTMLTextAreaElement.h>
+#import <CyberCore/Range.h>
+#import <CyberCore/RenderTextControl.h>
+#import <CyberCore/Settings.h>
+#import <CyberCore/SimpleRange.h>
+#import <CyberCore/markup.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import "DOMHTMLElementInternal.h"
-#import <WebCore/Autocapitalize.h>
-#import <WebCore/HTMLTextFormControlElement.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/RenderLayer.h>
-#import <WebCore/RenderLayerScrollableArea.h>
-#import <WebCore/WAKWindow.h>
-#import <WebCore/WebCoreThreadMessage.h>
+#import <CyberCore/Autocapitalize.h>
+#import <CyberCore/HTMLTextFormControlElement.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/RenderLayer.h>
+#import <CyberCore/RenderLayerScrollableArea.h>
+#import <CyberCore/WAKWindow.h>
+#import <CyberCore/WebCoreThreadMessage.h>
 #endif
 
 // FIXME: We should move all these into the various specific element source files.

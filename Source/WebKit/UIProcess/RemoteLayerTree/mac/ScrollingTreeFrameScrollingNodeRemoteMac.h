@@ -27,7 +27,7 @@
 
 #if ENABLE(ASYNC_SCROLLING) && PLATFORM(MAC)
 
-#include <WebCore/ScrollingTreeFrameScrollingNodeMac.h>
+#include <CyberCore/ScrollingTreeFrameScrollingNodeMac.h>
 
 namespace WebKit {
 

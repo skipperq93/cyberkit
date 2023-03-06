@@ -57,17 +57,17 @@
 #import "WebScreenOrientationManagerProxy.h"
 #import "WebsiteDataStore.h"
 #import <Foundation/NSURLRequest.h>
-#import <WebCore/ApplePayAMSUIRequest.h>
-#import <WebCore/DragItem.h>
-#import <WebCore/GeometryUtilities.h>
-#import <WebCore/HighlightVisibility.h>
-#import <WebCore/LocalCurrentGraphicsContext.h>
-#import <WebCore/NetworkExtensionContentFilter.h>
-#import <WebCore/NotImplemented.h>
-#import <WebCore/RunLoopObserver.h>
-#import <WebCore/SearchPopupMenuCocoa.h>
-#import <WebCore/TextAlternativeWithRange.h>
-#import <WebCore/ValidationBubble.h>
+#import <CyberCore/ApplePayAMSUIRequest.h>
+#import <CyberCore/DragItem.h>
+#import <CyberCore/GeometryUtilities.h>
+#import <CyberCore/HighlightVisibility.h>
+#import <CyberCore/LocalCurrentGraphicsContext.h>
+#import <CyberCore/NetworkExtensionContentFilter.h>
+#import <CyberCore/NotImplemented.h>
+#import <CyberCore/RunLoopObserver.h>
+#import <CyberCore/SearchPopupMenuCocoa.h>
+#import <CyberCore/TextAlternativeWithRange.h>
+#import <CyberCore/ValidationBubble.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <pal/spi/mac/QuarantineSPI.h>
 #import <wtf/BlockPtr.h>
@@ -90,10 +90,10 @@ SOFT_LINK_CLASS_OPTIONAL(Synapse, SYNotesActivationObserver)
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/RenderThemeIOS.h>
+#import <CyberCore/RenderThemeIOS.h>
 #import "UIKitSPI.h"
 #else
-#import <WebCore/RenderThemeMac.h>
+#import <CyberCore/RenderThemeMac.h>
 #endif
 
 #if PLATFORM(IOS)
@@ -104,7 +104,7 @@ SOFT_LINK_CLASS(WebContentAnalysis, WebFilterEvaluator);
 #endif
 
 #if HAVE(SC_CONTENT_SHARING_SESSION)
-#import <WebCore/ScreenCaptureKitSharingSessionManager.h>
+#import <CyberCore/ScreenCaptureKitSharingSessionManager.h>
 #endif
 
 #if ENABLE(APPLE_PAY_AMS_UI)

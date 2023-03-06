@@ -28,21 +28,21 @@
 
 #import "WebFrame.h"
 #import "WebPage.h"
-#import <WebCore/Frame.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/HistoryController.h>
-#import <WebCore/HistoryItem.h>
-#import <WebCore/Page.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/HistoryController.h>
+#import <CyberCore/HistoryItem.h>
+#import <CyberCore/Page.h>
 
 #if PLATFORM(IOS_FAMILY)
 
-#import <WebCore/NotImplemented.h>
+#import <CyberCore/NotImplemented.h>
 
 #if USE(QUICK_LOOK)
 #import "WebFrame.h"
 #import "WebPage.h"
 #import "WebPreviewLoaderClient.h"
-#import <WebCore/QuickLook.h>
+#import <CyberCore/QuickLook.h>
 #endif
 
 namespace WebKit {

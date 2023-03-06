@@ -34,13 +34,13 @@
 #import "WebPreferences.h"
 #import "WebProcessMessages.h"
 #import "WebProcessProxy.h"
-#import <WebCore/Color.h>
-#import <WebCore/DataOwnerType.h>
-#import <WebCore/LegacyNSPasteboardTypes.h>
-#import <WebCore/Pasteboard.h>
-#import <WebCore/PasteboardItemInfo.h>
-#import <WebCore/PlatformPasteboard.h>
-#import <WebCore/SharedBuffer.h>
+#import <CyberCore/Color.h>
+#import <CyberCore/DataOwnerType.h>
+#import <CyberCore/LegacyNSPasteboardTypes.h>
+#import <CyberCore/Pasteboard.h>
+#import <CyberCore/PasteboardItemInfo.h>
+#import <CyberCore/PlatformPasteboard.h>
+#import <CyberCore/SharedBuffer.h>
 #import <wtf/URL.h>
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, (&connection))

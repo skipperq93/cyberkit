@@ -32,7 +32,7 @@
 #include "Logging.h"
 #include "WebAutomationSession.h"
 #include "WebAutomationSessionMacros.h"
-#include <WebCore/PointerEventTypeNames.h>
+#include <CyberCore/PointerEventTypeNames.h>
 #include <variant>
 
 #if ENABLE(WEBDRIVER_KEYBOARD_GRAPHEME_CLUSTERS)

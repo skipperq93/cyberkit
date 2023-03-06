@@ -52,7 +52,7 @@
 #if ENABLE(MEMORY_SAMPLER)
 
 #include "SandboxExtension.h"
-#include <WebCore/Timer.h>
+#include <CyberCore/Timer.h>
 #include <wtf/FileSystem.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/RefPtr.h>

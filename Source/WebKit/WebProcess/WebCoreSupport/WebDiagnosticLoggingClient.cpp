@@ -29,7 +29,7 @@
 #include "WebCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
-#include <WebCore/Settings.h>
+#include <CyberCore/Settings.h>
 
 namespace WebKit {
 using namespace WebCore;

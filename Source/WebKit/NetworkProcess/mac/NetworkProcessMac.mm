@@ -36,8 +36,8 @@
 #import "SecItemShim.h"
 #import "StringUtilities.h"
 #import "WKFoundation.h"
-#import <WebCore/CertificateInfo.h>
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/CertificateInfo.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <notify.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <pal/spi/cocoa/LaunchServicesSPI.h>

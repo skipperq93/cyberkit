@@ -27,7 +27,7 @@
 #import "WKDOMElement.h"
 
 #import "WKDOMInternals.h"
-#import <WebCore/Element.h>
+#import <CyberCore/Element.h>
 
 @implementation WKDOMElement
 

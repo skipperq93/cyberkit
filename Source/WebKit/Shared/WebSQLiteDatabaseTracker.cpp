@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebSQLiteDatabaseTracker.h"
 
-#include <WebCore/SQLiteDatabaseTracker.h>
+#include <CyberCore/SQLiteDatabaseTracker.h>
 
 namespace WebKit {
 using namespace WebCore;

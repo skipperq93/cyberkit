@@ -26,7 +26,7 @@
 #import "config.h"
 #import "ModalContainerControlClassifier.h"
 
-#import <WebCore/ModalContainerTypes.h>
+#import <CyberCore/ModalContainerTypes.h>
 #import <unicode/uspoof.h>
 
 #import <wtf/CompletionHandler.h>

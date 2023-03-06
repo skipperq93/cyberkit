@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/PluginInfoProvider.h>
+#import <CyberCore/PluginInfoProvider.h>
 
 class WebPluginInfoProvider final : public WebCore::PluginInfoProvider {
     friend class NeverDestroyed<WebPluginInfoProvider>;

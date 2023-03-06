@@ -32,7 +32,7 @@
 #import "WKUSDPreviewView.h"
 #import "WKWebViewInternal.h"
 #import "WebPageProxy.h"
-#import <WebCore/MIMETypeRegistry.h>
+#import <CyberCore/MIMETypeRegistry.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <wtf/FixedVector.h>

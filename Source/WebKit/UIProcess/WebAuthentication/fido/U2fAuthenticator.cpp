@@ -29,11 +29,11 @@
 #if ENABLE(WEB_AUTHN)
 
 #include "CtapDriver.h"
-#include <WebCore/ApduResponse.h>
-#include <WebCore/AuthenticatorAttachment.h>
-#include <WebCore/ExceptionData.h>
-#include <WebCore/U2fCommandConstructor.h>
-#include <WebCore/U2fResponseConverter.h>
+#include <CyberCore/ApduResponse.h>
+#include <CyberCore/AuthenticatorAttachment.h>
+#include <CyberCore/ExceptionData.h>
+#include <CyberCore/U2fCommandConstructor.h>
+#include <CyberCore/U2fResponseConverter.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
 namespace WebKit {

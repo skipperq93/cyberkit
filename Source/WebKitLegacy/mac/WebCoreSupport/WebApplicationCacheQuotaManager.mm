@@ -27,7 +27,7 @@
 
 #import "WebApplicationCacheInternal.h"
 #import "WebSecurityOriginInternal.h"
-#import <WebCore/ApplicationCacheStorage.h>
+#import <CyberCore/ApplicationCacheStorage.h>
 
 @implementation WebApplicationCacheQuotaManager
 

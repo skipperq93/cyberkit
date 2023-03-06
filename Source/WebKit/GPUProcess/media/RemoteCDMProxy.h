@@ -31,7 +31,7 @@
 #include "MessageReceiver.h"
 #include "RemoteCDMFactoryProxy.h"
 #include "RemoteCDMInstanceIdentifier.h"
-#include <WebCore/CDMPrivate.h>
+#include <CyberCore/CDMPrivate.h>
 #include <wtf/Forward.h>
 #include <wtf/UniqueRef.h>
 

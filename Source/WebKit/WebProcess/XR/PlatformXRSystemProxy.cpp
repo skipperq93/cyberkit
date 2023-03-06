@@ -34,7 +34,7 @@
 #include "WebPage.h"
 #include "WebProcess.h"
 #include "XRDeviceInfo.h"
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 #include <wtf/Vector.h>
 
 using namespace PlatformXR;

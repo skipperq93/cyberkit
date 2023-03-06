@@ -25,7 +25,7 @@
 
 #include "config.h"
 
-#include <WebCore/DNS.h>
+#include <CyberCore/DNS.h>
 #include <wtf/text/WTFString.h>
 
 namespace TestWebKitAPI {

@@ -28,9 +28,9 @@
 #include "MessageReceiver.h"
 #include "SameDocumentNavigationType.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/Color.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/FloatSize.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/FloatSize.h>
 #include <wtf/MonotonicTime.h>
 #include <wtf/RetainPtr.h>
 #include <wtf/RunLoop.h>
@@ -45,9 +45,9 @@
 #include <wtf/glib/GRefPtr.h>
 
 #if USE(GTK4)
-#include <WebCore/GRefPtrGtk.h>
+#include <CyberCore/GRefPtrGtk.h>
 #else
-#include <WebCore/CairoUtilities.h>
+#include <CyberCore/CairoUtilities.h>
 #endif
 #endif
 

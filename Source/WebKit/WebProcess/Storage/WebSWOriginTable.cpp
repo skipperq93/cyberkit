@@ -28,7 +28,7 @@
 #if ENABLE(SERVICE_WORKER)
 #include "WebSWOriginTable.h"
 
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 
 namespace WebKit {
 using namespace WebCore;

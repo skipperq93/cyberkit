@@ -32,9 +32,9 @@
 
 #if ENABLE(NOTIFICATIONS)
 #import "WebSecurityOriginInternal.h"
-#import <WebCore/Notification.h>
-#import <WebCore/NotificationData.h>
-#import <WebCore/ScriptExecutionContext.h>
+#import <CyberCore/Notification.h>
+#import <CyberCore/NotificationData.h>
+#import <CyberCore/ScriptExecutionContext.h>
 #import <wtf/RefPtr.h>
 
 using namespace WebCore;

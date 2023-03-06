@@ -28,8 +28,8 @@
 #include "CacheStorageEngineCaches.h"
 #include "NetworkCacheData.h"
 #include "WebsiteData.h"
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/DOMCacheIdentifier.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/DOMCacheIdentifier.h>
 #include <pal/SessionID.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/HashMap.h>

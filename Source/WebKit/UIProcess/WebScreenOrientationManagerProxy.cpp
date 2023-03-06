@@ -31,8 +31,8 @@
 #include "WebPageProxy.h"
 #include "WebScreenOrientationManagerMessages.h"
 #include "WebScreenOrientationManagerProxyMessages.h"
-#include <WebCore/Exception.h>
-#include <WebCore/ScreenOrientationProvider.h>
+#include <CyberCore/Exception.h>
+#include <CyberCore/ScreenOrientationProvider.h>
 
 namespace WebKit {
 

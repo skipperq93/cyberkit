@@ -26,7 +26,7 @@
 #pragma once
 
 #include "WebUndoStepID.h"
-#include <WebCore/UndoStep.h>
+#include <CyberCore/UndoStep.h>
 #include <wtf/Ref.h>
 
 namespace WebKit {

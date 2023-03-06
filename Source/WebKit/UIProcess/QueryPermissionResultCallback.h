@@ -26,7 +26,7 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/PermissionState.h>
+#include <CyberCore/PermissionState.h>
 #include <wtf/CompletionHandler.h>
 
 namespace WebKit {

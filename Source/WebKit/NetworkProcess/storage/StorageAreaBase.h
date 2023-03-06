@@ -29,7 +29,7 @@
 #include "StorageAreaIdentifier.h"
 #include "StorageAreaImplIdentifier.h"
 #include "StorageAreaMapIdentifier.h"
-#include <WebCore/ClientOrigin.h>
+#include <CyberCore/ClientOrigin.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebCore {

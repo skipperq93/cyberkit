@@ -34,7 +34,7 @@
 #include "Encoder.h"
 #include "StreamConnectionEncoder.h"
 #include <CoreGraphics/CoreGraphics.h>
-#include <WebCore/Color.h>
+#include <CyberCore/Color.h>
 #include <wtf/EnumTraits.h>
 #include <wtf/HashSet.h>
 #include <wtf/ProcessPrivilege.h>

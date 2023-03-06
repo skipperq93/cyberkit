@@ -37,9 +37,9 @@
 #include "WebPageProxyIdentifier.h"
 #include "WebPreferencesStore.h"
 #include "WorkQueueMessageReceiver.h"
-#include <WebCore/SWContextManager.h>
-#include <WebCore/ServiceWorkerClientData.h>
-#include <WebCore/ServiceWorkerTypes.h>
+#include <CyberCore/SWContextManager.h>
+#include <CyberCore/ServiceWorkerClientData.h>
+#include <CyberCore/ServiceWorkerTypes.h>
 #include <wtf/URLHash.h>
 
 namespace IPC {

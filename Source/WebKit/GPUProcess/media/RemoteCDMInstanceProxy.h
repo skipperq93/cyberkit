@@ -32,7 +32,7 @@
 #include "RemoteCDMInstanceIdentifier.h"
 #include "RemoteCDMInstanceSessionIdentifier.h"
 #include "RemoteCDMProxy.h"
-#include <WebCore/CDMInstance.h>
+#include <CyberCore/CDMInstance.h>
 #include <wtf/Ref.h>
 #include <wtf/UniqueRef.h>
 

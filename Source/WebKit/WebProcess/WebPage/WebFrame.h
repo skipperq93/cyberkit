@@ -37,10 +37,10 @@
 #include "WebFrameLoaderClient.h"
 #include <JavaScriptCore/ConsoleTypes.h>
 #include <JavaScriptCore/JSBase.h>
-#include <WebCore/FrameLoaderClient.h>
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/HitTestRequest.h>
-#include <WebCore/LayerHostingContextIdentifier.h>
+#include <CyberCore/FrameLoaderClient.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/HitTestRequest.h>
+#include <CyberCore/LayerHostingContextIdentifier.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
 #include <wtf/RefPtr.h>

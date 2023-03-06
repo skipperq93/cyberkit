@@ -30,7 +30,7 @@
 
 #include "config.h"
 
-#include <WebCore/WritingMode.h>
+#include <CyberCore/WritingMode.h>
 
 using namespace WebCore;
 

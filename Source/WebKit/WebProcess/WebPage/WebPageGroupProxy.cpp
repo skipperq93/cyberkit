@@ -29,9 +29,9 @@
 #include "InjectedBundle.h"
 #include "WebProcess.h"
 #include "WebUserContentController.h"
-#include <WebCore/DOMWrapperWorld.h>
-#include <WebCore/PageGroup.h>
-#include <WebCore/UserContentController.h>
+#include <CyberCore/DOMWrapperWorld.h>
+#include <CyberCore/PageGroup.h>
+#include <CyberCore/UserContentController.h>
 
 namespace WebKit {
 

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/XPathNSResolver.h>
+#include <CyberCore/XPathNSResolver.h>
 #include "DOMXPathNSResolver.h"
 #include <wtf/Ref.h>
 

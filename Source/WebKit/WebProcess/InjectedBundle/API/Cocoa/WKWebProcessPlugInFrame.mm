@@ -37,12 +37,12 @@
 #import "WebProcess.h"
 #import "_WKFrameHandleInternal.h"
 #import <JavaScriptCore/JSValue.h>
-#import <WebCore/CertificateInfo.h>
-#import <WebCore/Frame.h>
-#import <WebCore/IntPoint.h>
-#import <WebCore/LinkIconCollector.h>
-#import <WebCore/LinkIconType.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/CertificateInfo.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/IntPoint.h>
+#import <CyberCore/LinkIconCollector.h>
+#import <CyberCore/LinkIconType.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 @implementation WKWebProcessPlugInFrame {

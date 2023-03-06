@@ -25,8 +25,8 @@
 #pragma once
 
 #include "NetworkCacheKey.h"
-#include <WebCore/DOMCacheEngine.h>
-#include <WebCore/HTTPParsers.h>
+#include <CyberCore/DOMCacheEngine.h>
+#include <CyberCore/HTTPParsers.h>
 
 namespace WebKit {
 

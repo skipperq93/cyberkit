@@ -29,10 +29,10 @@
 #import "DOMNodeInternal.h"
 #import "DOMNodeListInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/HTMLTextAreaElement.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/NodeList.h>
-#import <WebCore/ThreadCheck.h>
+#import <CyberCore/HTMLTextAreaElement.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/NodeList.h>
+#import <CyberCore/ThreadCheck.h>
 
 static inline WebCore::HTMLTextAreaElement& unwrap(DOMHTMLTextAreaElement& wrapper)
 {

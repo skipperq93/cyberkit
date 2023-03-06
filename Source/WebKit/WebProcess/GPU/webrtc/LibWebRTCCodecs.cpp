@@ -37,13 +37,13 @@
 #include "RemoteVideoFrameProxy.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <WebCore/CVUtilities.h>
-#include <WebCore/LibWebRTCDav1dDecoder.h>
-#include <WebCore/LibWebRTCMacros.h>
-#include <WebCore/Page.h>
-#include <WebCore/PlatformMediaSessionManager.h>
-#include <WebCore/VP9UtilitiesCocoa.h>
-#include <WebCore/VideoFrameCV.h>
+#include <CyberCore/CVUtilities.h>
+#include <CyberCore/LibWebRTCDav1dDecoder.h>
+#include <CyberCore/LibWebRTCMacros.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PlatformMediaSessionManager.h>
+#include <CyberCore/VP9UtilitiesCocoa.h>
+#include <CyberCore/VideoFrameCV.h>
 #include <wtf/MainThread.h>
 
 ALLOW_COMMA_BEGIN

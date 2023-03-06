@@ -45,24 +45,24 @@
 #include "WebPasteboardProxyMessages.h"
 #include "WebProcess.h"
 #include "WebProcessProxyMessages.h"
-#include <WebCore/AudioDestination.h>
-#include <WebCore/Color.h>
-#include <WebCore/Document.h>
-#include <WebCore/DocumentLoader.h>
-#include <WebCore/Frame.h>
-#include <WebCore/LoaderStrategy.h>
-#include <WebCore/MediaStrategy.h>
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/Page.h>
-#include <WebCore/PageGroup.h>
-#include <WebCore/PagePasteboardContext.h>
-#include <WebCore/PasteboardItemInfo.h>
-#include <WebCore/PlatformPasteboard.h>
-#include <WebCore/ProgressTracker.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/SameSiteInfo.h>
-#include <WebCore/StorageNamespace.h>
-#include <WebCore/SubframeLoader.h>
+#include <CyberCore/AudioDestination.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/DocumentLoader.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/LoaderStrategy.h>
+#include <CyberCore/MediaStrategy.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PageGroup.h>
+#include <CyberCore/PagePasteboardContext.h>
+#include <CyberCore/PasteboardItemInfo.h>
+#include <CyberCore/PlatformPasteboard.h>
+#include <CyberCore/ProgressTracker.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/SameSiteInfo.h>
+#include <CyberCore/StorageNamespace.h>
+#include <CyberCore/SubframeLoader.h>
 #include <wtf/Atomics.h>
 #include <wtf/URL.h>
 
@@ -71,7 +71,7 @@
 #endif
 
 #if PLATFORM(GTK)
-#include <WebCore/SelectionData.h>
+#include <CyberCore/SelectionData.h>
 #endif
 
 namespace WebKit {

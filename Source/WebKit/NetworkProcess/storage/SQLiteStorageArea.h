@@ -26,8 +26,8 @@
 #pragma once
 
 #include "StorageAreaBase.h"
-#include <WebCore/SQLiteDatabase.h>
-#include <WebCore/SQLiteStatementAutoResetScope.h>
+#include <CyberCore/SQLiteDatabase.h>
+#include <CyberCore/SQLiteStatementAutoResetScope.h>
 
 namespace WebKit {
 

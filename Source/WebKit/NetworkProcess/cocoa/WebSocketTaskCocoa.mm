@@ -31,10 +31,10 @@
 #import "NetworkSessionCocoa.h"
 #import "NetworkSocketChannel.h"
 #import <Foundation/NSURLSession.h>
-#import <WebCore/ClientOrigin.h>
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/ResourceResponse.h>
-#import <WebCore/WebSocketChannel.h>
+#import <CyberCore/ClientOrigin.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/ResourceResponse.h>
+#import <CyberCore/WebSocketChannel.h>
 #import <wtf/BlockPtr.h>
 
 namespace WebKit {

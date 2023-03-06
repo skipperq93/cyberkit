@@ -26,7 +26,7 @@
 #pragma once
 
 #include "NetworkCacheStorage.h"
-#include <WebCore/DOMCacheEngine.h>
+#include <CyberCore/DOMCacheEngine.h>
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/MediaStrategy.h>
+#include <CyberCore/MediaStrategy.h>
 
 namespace WebKit {
 

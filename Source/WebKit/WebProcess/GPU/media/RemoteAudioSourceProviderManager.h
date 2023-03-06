@@ -32,9 +32,9 @@
 #include "SharedMemory.h"
 #include "WebProcess.h"
 #include "WorkQueueMessageReceiver.h"
-#include <WebCore/CAAudioStreamDescription.h>
-#include <WebCore/MediaPlayerIdentifier.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/CAAudioStreamDescription.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
+#include <CyberCore/WebAudioBufferList.h>
 
 namespace WebKit {
 

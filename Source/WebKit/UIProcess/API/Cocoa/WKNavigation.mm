@@ -28,7 +28,7 @@
 #import "WKWebpagePreferencesInternal.h"
 
 #import "APINavigation.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKNavigation {
     API::ObjectStorage<API::Navigation> _navigation;

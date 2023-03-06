@@ -27,10 +27,10 @@
 
 #include "MessageReceiver.h"
 #include "MessageSender.h"
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/SharedWorkerObjectIdentifier.h>
-#include <WebCore/TransferredMessagePort.h>
-#include <WebCore/WorkerInitializationData.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/SharedWorkerObjectIdentifier.h>
+#include <CyberCore/TransferredMessagePort.h>
+#include <CyberCore/WorkerInitializationData.h>
 #include <pal/SessionID.h>
 
 namespace WebCore {

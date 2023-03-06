@@ -34,8 +34,8 @@
 #include <wtf/NeverDestroyed.h>
 
 #if !PLATFORM(COCOA)
-#include <WebCore/PasteboardCustomData.h>
-#include <WebCore/PasteboardItemInfo.h>
+#include <CyberCore/PasteboardCustomData.h>
+#include <CyberCore/PasteboardItemInfo.h>
 #endif
 
 namespace WebKit {

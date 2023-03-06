@@ -26,7 +26,7 @@
 #import "config.h"
 #import "_WKResourceLoadStatisticsFirstPartyInternal.h"
 
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation _WKResourceLoadStatisticsFirstParty
 

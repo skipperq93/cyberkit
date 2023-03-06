@@ -33,12 +33,12 @@
 #import "WebPreferencesDefinitions.h"
 #import "WebViewPrivate.h"
 #import <JavaScriptCore/InitializeThreading.h>
-#import <WebCore/BreakLines.h>
-#import <WebCore/PathUtilities.h>
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/Settings.h>
-#import <WebCore/WebBackgroundTaskController.h>
-#import <WebCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/BreakLines.h>
+#import <CyberCore/PathUtilities.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/Settings.h>
+#import <CyberCore/WebBackgroundTaskController.h>
+#import <CyberCore/WebCoreThreadSystemInterface.h>
 #import <wtf/spi/darwin/dyldSPI.h>
 
 using namespace WebCore;

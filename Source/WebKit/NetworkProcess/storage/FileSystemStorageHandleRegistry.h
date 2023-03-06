@@ -26,7 +26,7 @@
 #pragma once
 
 #include "Connection.h"
-#include <WebCore/FileSystemHandleIdentifier.h>
+#include <CyberCore/FileSystemHandleIdentifier.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebKit {

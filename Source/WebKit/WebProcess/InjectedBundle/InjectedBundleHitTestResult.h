@@ -28,7 +28,7 @@
 
 #include "APIObject.h"
 #include "InjectedBundleHitTestResultMediaType.h"
-#include <WebCore/HitTestResult.h>
+#include <CyberCore/HitTestResult.h>
 #include <wtf/Forward.h>
 #include <wtf/Ref.h>
 #include <wtf/RefPtr.h>

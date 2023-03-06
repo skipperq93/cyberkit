@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/SharedWorkerProvider.h>
+#include <CyberCore/SharedWorkerProvider.h>
 #include <wtf/NeverDestroyed.h>
 
 namespace WebKit {

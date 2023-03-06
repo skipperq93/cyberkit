@@ -33,7 +33,7 @@
 #import "TestProtocol.h"
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebCore/MockContentFilterSettings.h>
+#import <CyberCore/MockContentFilterSettings.h>
 #import <CyberKit/WKErrorRef.h>
 #import <CyberKit/WKNavigationDelegatePrivate.h>
 #import <CyberKit/WKProcessPoolPrivate.h>

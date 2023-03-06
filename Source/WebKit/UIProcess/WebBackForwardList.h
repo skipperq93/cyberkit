@@ -28,7 +28,7 @@
 #include "APIObject.h"
 #include "WebBackForwardListItem.h"
 #include "WebPageProxy.h"
-#include <WebCore/BackForwardItemIdentifier.h>
+#include <CyberCore/BackForwardItemIdentifier.h>
 #include <wtf/Ref.h>
 #include <wtf/Vector.h>
 

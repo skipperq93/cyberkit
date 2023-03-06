@@ -28,7 +28,7 @@
 #include "Connection.h"
 #include "RemoteRenderingBackendCreationParameters.h"
 #include "RemoteVideoFrameObjectHeapProxy.h"
-#include <WebCore/WorkerClient.h>
+#include <CyberCore/WorkerClient.h>
 
 namespace WebKit {
 

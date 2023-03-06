@@ -30,7 +30,7 @@
 #import <CoreLocation/CLLocation.h>
 #import <CoreLocation/CLLocationManagerDelegate.h>
 #import <CoreLocation/CoreLocation.h>
-#import <WebCore/GeolocationPositionData.h>
+#import <CyberCore/GeolocationPositionData.h>
 #import <WebKitLogging.h>
 #import <objc/objc-runtime.h>
 #import <wtf/RefPtr.h>

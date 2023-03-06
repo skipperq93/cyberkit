@@ -33,7 +33,7 @@
 #include "RemoteCDMIdentifier.h"
 #include "RemoteCDMInstanceIdentifier.h"
 #include "RemoteCDMInstanceSessionIdentifier.h"
-#include <WebCore/CDMPrivate.h>
+#include <CyberCore/CDMPrivate.h>
 #include <wtf/UniqueRef.h>
 #include <wtf/WeakPtr.h>
 

@@ -28,7 +28,7 @@
 
 #if USE(LIBWEBRTC)
 
-#import <WebCore/RegistrableDomain.h>
+#import <CyberCore/RegistrableDomain.h>
 #import <wtf/SoftLinking.h>
 #import <wtf/text/WTFString.h>
 

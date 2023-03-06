@@ -27,8 +27,8 @@
 
 #if ENABLE(GPU_PROCESS) && USE(AUDIO_SESSION)
 
-#include <WebCore/AudioSession.h>
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/AudioSession.h>
+#include <CyberCore/ProcessIdentifier.h>
 #include <wtf/WeakHashSet.h>
 
 namespace WebKit {

@@ -32,7 +32,7 @@
 #import "WKURLSchemeTask.h"
 #import "WebInspectorUIProxy.h"
 #import "WebURLSchemeHandlerCocoa.h"
-#import <WebCore/MIMETypeRegistry.h>
+#import <CyberCore/MIMETypeRegistry.h>
 #import <wtf/Assertions.h>
 
 @implementation WKInspectorResourceURLSchemeHandler {

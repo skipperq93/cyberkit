@@ -26,10 +26,10 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/SpeechRecognitionError.h>
-#include <WebCore/SpeechRecognitionRequest.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/SpeechRecognitionError.h>
+#include <CyberCore/SpeechRecognitionRequest.h>
 #include <wtf/CompletionHandler.h>
 
 namespace WebKit {

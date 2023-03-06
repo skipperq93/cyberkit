@@ -27,7 +27,7 @@
 
 #include "APIObject.h"
 
-#include <WebCore/UserContentURLPattern.h>
+#include <CyberCore/UserContentURLPattern.h>
 #include <wtf/URL.h>
 
 namespace API {

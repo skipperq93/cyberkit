@@ -40,7 +40,7 @@
 #import "WKTypeRefWrapper.h"
 #import "WebProcessMessages.h"
 #import "WebProcessPool.h"
-#import <WebCore/RuntimeApplicationChecks.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
 #import <sys/sysctl.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/Scope.h>
@@ -59,7 +59,7 @@
 #endif
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
-#import <WebCore/CaptionUserPreferencesMediaAF.h>
+#import <CyberCore/CaptionUserPreferencesMediaAF.h>
 #endif
 
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)

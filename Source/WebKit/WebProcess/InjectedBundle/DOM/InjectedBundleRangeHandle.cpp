@@ -31,26 +31,26 @@
 #include "WebImage.h"
 #include <JavaScriptCore/APICast.h>
 #include <JavaScriptCore/HeapInlines.h>
-#include <WebCore/Document.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameSelection.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/GeometryUtilities.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/JSRange.h>
-#include <WebCore/Page.h>
-#include <WebCore/Range.h>
-#include <WebCore/RenderView.h>
-#include <WebCore/SimpleRange.h>
-#include <WebCore/TextIterator.h>
-#include <WebCore/VisibleSelection.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameSelection.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/GeometryUtilities.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/JSRange.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/Range.h>
+#include <CyberCore/RenderView.h>
+#include <CyberCore/SimpleRange.h>
+#include <CyberCore/TextIterator.h>
+#include <CyberCore/VisibleSelection.h>
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
 #if PLATFORM(MAC)
-#include <WebCore/LocalDefaultSystemAppearance.h>
+#include <CyberCore/LocalDefaultSystemAppearance.h>
 #endif
 
 namespace WebKit {

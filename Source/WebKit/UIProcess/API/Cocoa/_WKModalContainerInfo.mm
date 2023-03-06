@@ -26,7 +26,7 @@
 #import "config.h"
 #import "_WKModalContainerInfoInternal.h"
 
-#import <WebCore/ModalContainerTypes.h>
+#import <CyberCore/ModalContainerTypes.h>
 
 @implementation _WKModalContainerInfo
 

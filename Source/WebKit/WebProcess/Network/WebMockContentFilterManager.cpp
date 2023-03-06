@@ -32,8 +32,8 @@
 #include "NetworkProcessConnection.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <WebCore/MockContentFilterManager.h>
-#include <WebCore/MockContentFilterSettings.h>
+#include <CyberCore/MockContentFilterManager.h>
+#include <CyberCore/MockContentFilterSettings.h>
 #include <wtf/NeverDestroyed.h>
 
 namespace WebKit {

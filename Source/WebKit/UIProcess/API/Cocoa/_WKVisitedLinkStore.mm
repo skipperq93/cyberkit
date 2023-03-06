@@ -27,8 +27,8 @@
 #import "_WKVisitedLinkStoreInternal.h"
 
 #import "VisitedLinkStore.h"
-#import <WebCore/SharedStringHash.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/SharedStringHash.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation _WKVisitedLinkStore
 

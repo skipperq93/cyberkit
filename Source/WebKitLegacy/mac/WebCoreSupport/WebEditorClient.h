@@ -27,10 +27,10 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/DOMPasteAccess.h>
-#import <WebCore/EditorClient.h>
-#import <WebCore/TextCheckerClient.h>
-#import <WebCore/VisibleSelection.h>
+#import <CyberCore/DOMPasteAccess.h>
+#import <CyberCore/EditorClient.h>
+#import <CyberCore/TextCheckerClient.h>
+#import <CyberCore/VisibleSelection.h>
 #import <wtf/Forward.h>
 #import <wtf/Ref.h>
 #import <wtf/RetainPtr.h>
@@ -39,7 +39,7 @@
 #import <wtf/text/StringView.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WAKAppKitStubs.h>
+#import <CyberCore/WAKAppKitStubs.h>
 #endif
 
 @class WebView;

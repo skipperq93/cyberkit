@@ -39,8 +39,8 @@
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WAKWindow.h>
-#import <WebCore/WKViewPrivate.h>
+#import <CyberCore/WAKWindow.h>
+#import <CyberCore/WKViewPrivate.h>
 #endif
 
 #if PLATFORM(MAC)

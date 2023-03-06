@@ -26,7 +26,7 @@
 
 #pragma once
 
-#include <WebCore/WebCorePersistentCoders.h>
+#include <CyberCore/WebCorePersistentCoders.h>
 
 namespace WebKit::NetworkCache {
 class Key;

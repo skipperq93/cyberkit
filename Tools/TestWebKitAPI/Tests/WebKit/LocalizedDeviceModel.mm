@@ -31,7 +31,7 @@
 
 #import "PlatformUtilities.h"
 #import "TestWKWebView.h"
-#import <WebCore/LocalizedDeviceModel.h>
+#import <CyberCore/LocalizedDeviceModel.h>
 
 TEST(WebKit, LocalizedDeviceModel)
 {

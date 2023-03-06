@@ -35,7 +35,7 @@
 #import "WKWebViewInternal.h"
 #import "WebPageProxy.h"
 #import <Foundation/Foundation.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/WeakObjCPtr.h>
 
 class DownloadClient final : public API::DownloadClient {

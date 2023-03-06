@@ -30,9 +30,9 @@
 
 #include "MediaRecorderPrivate.h"
 #include "WebPage.h"
-#include <WebCore/MediaRecorderPrivate.h>
-#include <WebCore/Page.h>
-#include <WebCore/Settings.h>
+#include <CyberCore/MediaRecorderPrivate.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/Settings.h>
 
 namespace WebKit {
 using namespace WebCore;

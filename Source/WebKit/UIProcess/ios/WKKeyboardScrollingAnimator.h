@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/ScrollTypes.h>
+#import <CyberCore/ScrollTypes.h>
 
 #if PLATFORM(IOS_FAMILY)
 

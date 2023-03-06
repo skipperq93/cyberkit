@@ -36,15 +36,15 @@
 #include "UserMediaCaptureManagerProxyMessages.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcessProxy.h"
-#include <WebCore/AudioSession.h>
-#include <WebCore/AudioUtilities.h>
-#include <WebCore/CARingBuffer.h>
-#include <WebCore/ImageRotationSessionVT.h>
-#include <WebCore/MediaConstraints.h>
-#include <WebCore/RealtimeMediaSourceCenter.h>
-#include <WebCore/RealtimeVideoSource.h>
-#include <WebCore/VideoFrameCV.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/AudioSession.h>
+#include <CyberCore/AudioUtilities.h>
+#include <CyberCore/CARingBuffer.h>
+#include <CyberCore/ImageRotationSessionVT.h>
+#include <CyberCore/MediaConstraints.h>
+#include <CyberCore/RealtimeMediaSourceCenter.h>
+#include <CyberCore/RealtimeVideoSource.h>
+#include <CyberCore/VideoFrameCV.h>
+#include <CyberCore/WebAudioBufferList.h>
 #include <wtf/UniqueRef.h>
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, &m_connectionProxy->connection())

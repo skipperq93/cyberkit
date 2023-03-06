@@ -29,11 +29,11 @@
 #include "UserContentControllerIdentifier.h"
 #include "WebScriptMessageHandler.h"
 #include "WebUserContentControllerDataTypes.h"
-#include <WebCore/UserContentProvider.h>
+#include <CyberCore/UserContentProvider.h>
 #include <wtf/HashMap.h>
 
 #if ENABLE(CONTENT_EXTENSIONS)
-#include <WebCore/ContentExtensionsBackend.h>
+#include <CyberCore/ContentExtensionsBackend.h>
 #endif
 
 namespace WebCore {

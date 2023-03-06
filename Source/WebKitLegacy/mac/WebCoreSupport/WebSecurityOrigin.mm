@@ -31,9 +31,9 @@
 #import "WebApplicationCacheQuotaManager.h"
 #import "WebDatabaseQuotaManager.h"
 #import "WebQuotaManager.h"
-#import <WebCore/DatabaseTracker.h>
-#import <WebCore/SecurityOrigin.h>
-#import <WebCore/SecurityOriginData.h>
+#import <CyberCore/DatabaseTracker.h>
+#import <CyberCore/SecurityOrigin.h>
+#import <CyberCore/SecurityOriginData.h>
 #import <wtf/URL.h>
 
 using namespace WebCore;

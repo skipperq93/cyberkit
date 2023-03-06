@@ -27,9 +27,9 @@
 
 #include "APIObject.h"
 #include "WebProcessProxy.h"
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/InstanceCounted.h>
 #include <wtf/Lock.h>

@@ -31,7 +31,7 @@
 #include "GPUProcessConnection.h"
 #include "UserMediaCaptureManager.h"
 #include "WebProcess.h"
-#include <WebCore/MediaConstraints.h>
+#include <CyberCore/MediaConstraints.h>
 
 namespace WebKit {
 using namespace WebCore;

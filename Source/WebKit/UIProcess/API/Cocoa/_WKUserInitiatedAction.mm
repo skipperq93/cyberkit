@@ -26,7 +26,7 @@
 #import "config.h"
 #import "_WKUserInitiatedActionInternal.h"
 
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation _WKUserInitiatedAction
 

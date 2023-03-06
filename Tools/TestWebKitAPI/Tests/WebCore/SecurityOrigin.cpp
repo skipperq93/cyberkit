@@ -27,7 +27,7 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 #include <wtf/FileSystem.h>
 #include <wtf/HashSet.h>
 #include <wtf/MainThread.h>

@@ -30,10 +30,10 @@
 
 #import "Logging.h"
 #import "MediaPermissionUtilities.h"
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/RealtimeMediaSourceCenter.h>
-#import <WebCore/RegistrableDomain.h>
-#import <WebCore/SecurityOrigin.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/RealtimeMediaSourceCenter.h>
+#import <CyberCore/RegistrableDomain.h>
+#import <CyberCore/SecurityOrigin.h>
 #import <pal/spi/cocoa/LaunchServicesSPI.h>
 #import <wtf/OSObjectPtr.h>
 

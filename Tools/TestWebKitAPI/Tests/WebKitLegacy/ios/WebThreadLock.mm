@@ -29,7 +29,7 @@
 
 #import "PlatformUtilities.h"
 #import <Foundation/Foundation.h>
-#import <WebCore/WebCoreThread.h>
+#import <CyberCore/WebCoreThread.h>
 #import <wtf/RetainPtr.h>
 
 namespace TestWebKitAPI {

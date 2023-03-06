@@ -26,7 +26,7 @@
 #import "HistoryPropertyList.h"
 
 #import "WebHistoryItemInternal.h"
-#import <WebCore/HistoryItem.h>
+#import <CyberCore/HistoryItem.h>
 
 using namespace WebCore;
 

@@ -22,7 +22,7 @@
 #define WebSearchPopupMenu_h
 
 #include "WebPopupMenu.h"
-#include <WebCore/SearchPopupMenu.h>
+#include <CyberCore/SearchPopupMenu.h>
 
 namespace WebKit {
 

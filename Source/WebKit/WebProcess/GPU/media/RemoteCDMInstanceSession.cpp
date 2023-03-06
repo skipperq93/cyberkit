@@ -30,7 +30,7 @@
 
 #include "GPUProcessConnection.h"
 #include "RemoteCDMInstanceSessionProxyMessages.h"
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/Ref.h>
 
 namespace WebKit {

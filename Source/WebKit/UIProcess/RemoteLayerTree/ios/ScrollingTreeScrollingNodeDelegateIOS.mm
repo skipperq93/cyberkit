@@ -38,16 +38,16 @@
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIPanGestureRecognizer.h>
 #import <UIKit/UIScrollView.h>
-#import <WebCore/ScrollSnapOffsetsInfo.h>
-#import <WebCore/ScrollingStateOverflowScrollingNode.h>
-#import <WebCore/ScrollingTree.h>
-#import <WebCore/ScrollingTreeFrameScrollingNode.h>
-#import <WebCore/ScrollingTreeScrollingNode.h>
+#import <CyberCore/ScrollSnapOffsetsInfo.h>
+#import <CyberCore/ScrollingStateOverflowScrollingNode.h>
+#import <CyberCore/ScrollingTree.h>
+#import <CyberCore/ScrollingTreeFrameScrollingNode.h>
+#import <CyberCore/ScrollingTreeScrollingNode.h>
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/SetForScope.h>
 
 #if ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)
-#import <WebCore/WebCoreCALayerExtras.h>
+#import <CyberCore/WebCoreCALayerExtras.h>
 #endif
 
 @implementation WKScrollingNodeScrollViewDelegate

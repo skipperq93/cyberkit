@@ -28,11 +28,11 @@
 
 #include "DataReference.h"
 #include "WorkQueueMessageReceiver.h"
-#include <WebCore/ProcessQualified.h>
-#include <WebCore/RTCDataChannelRemoteHandler.h>
-#include <WebCore/RTCDataChannelRemoteHandlerConnection.h>
-#include <WebCore/RTCDataChannelRemoteSource.h>
-#include <WebCore/RTCDataChannelRemoteSourceConnection.h>
+#include <CyberCore/ProcessQualified.h>
+#include <CyberCore/RTCDataChannelRemoteHandler.h>
+#include <CyberCore/RTCDataChannelRemoteHandlerConnection.h>
+#include <CyberCore/RTCDataChannelRemoteSource.h>
+#include <CyberCore/RTCDataChannelRemoteSourceConnection.h>
 #include <wtf/WorkQueue.h>
 
 namespace WebKit {

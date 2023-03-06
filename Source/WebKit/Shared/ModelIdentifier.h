@@ -28,7 +28,7 @@
 #import <wtf/text/WTFString.h>
 
 #if ENABLE(ARKIT_INLINE_PREVIEW_IOS)
-#import <WebCore/GraphicsLayer.h>
+#import <CyberCore/GraphicsLayer.h>
 #endif
 
 namespace WebKit {

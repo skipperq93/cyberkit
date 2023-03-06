@@ -34,8 +34,8 @@
 #include "RemoteLegacyCDMSessionMessages.h"
 #include <JavaScriptCore/GenericTypedArrayViewInlines.h>
 #include <JavaScriptCore/TypedArrayAdaptors.h>
-#include <WebCore/LegacyCDM.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/LegacyCDM.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/LoggerHelper.h>
 
 namespace WebKit {

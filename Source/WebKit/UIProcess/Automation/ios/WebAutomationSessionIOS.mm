@@ -33,9 +33,9 @@
 #import "WebAutomationSessionMacros.h"
 #import "WebPageProxy.h"
 #import "_WKTouchEventGenerator.h"
-#import <WebCore/KeyEventCodesIOS.h>
-#import <WebCore/NotImplemented.h>
-#import <WebCore/WebEvent.h>
+#import <CyberCore/KeyEventCodesIOS.h>
+#import <CyberCore/NotImplemented.h>
+#import <CyberCore/WebEvent.h>
 #import <wtf/BlockPtr.h>
 
 namespace WebKit {

@@ -32,7 +32,7 @@
 #import "WebAutomationSession.h"
 #import "_WKAutomationSessionConfiguration.h"
 #import "_WKAutomationSessionDelegate.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/WeakObjCPtr.h>
 
 @implementation _WKAutomationSession {

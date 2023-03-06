@@ -28,11 +28,11 @@
 #include "MessageReceiver.h"
 #include "MessageSender.h"
 #include "SpeechRecognitionPermissionRequest.h"
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/SpeechRecognitionError.h>
-#include <WebCore/SpeechRecognitionRequest.h>
-#include <WebCore/SpeechRecognitionResultData.h>
-#include <WebCore/SpeechRecognizer.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/SpeechRecognitionError.h>
+#include <CyberCore/SpeechRecognitionRequest.h>
+#include <CyberCore/SpeechRecognitionResultData.h>
+#include <CyberCore/SpeechRecognizer.h>
 #include <wtf/Deque.h>
 
 namespace WebCore {

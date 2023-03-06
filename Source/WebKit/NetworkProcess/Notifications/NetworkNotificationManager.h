@@ -31,9 +31,9 @@
 #include "WebPushDaemonConnection.h"
 #include "WebPushDaemonConnectionConfiguration.h"
 #include "WebPushMessage.h"
-#include <WebCore/ExceptionData.h>
-#include <WebCore/NotificationDirection.h>
-#include <WebCore/PushSubscriptionData.h>
+#include <CyberCore/ExceptionData.h>
+#include <CyberCore/NotificationDirection.h>
+#include <CyberCore/PushSubscriptionData.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebCore {

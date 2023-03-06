@@ -31,8 +31,8 @@
 #include "AuthenticatorPresenterCoordinator.h"
 #include "AuthenticatorTransportService.h"
 #include "WebAuthenticationRequestData.h"
-#include <WebCore/AuthenticatorResponse.h>
-#include <WebCore/ExceptionData.h>
+#include <CyberCore/AuthenticatorResponse.h>
+#include <CyberCore/ExceptionData.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/HashSet.h>
 #include <wtf/Noncopyable.h>

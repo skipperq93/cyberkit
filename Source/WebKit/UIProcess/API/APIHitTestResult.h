@@ -22,10 +22,10 @@
 #include "APIObject.h"
 #include "SharedMemory.h"
 #include "WebHitTestResultData.h"
-#include <WebCore/DictionaryPopupInfo.h>
-#include <WebCore/FloatPoint.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/PageOverlay.h>
+#include <CyberCore/DictionaryPopupInfo.h>
+#include <CyberCore/FloatPoint.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/PageOverlay.h>
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>

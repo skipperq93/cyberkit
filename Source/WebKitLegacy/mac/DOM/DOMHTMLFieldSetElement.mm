@@ -26,8 +26,8 @@
 #import "DOMHTMLFieldSetElement.h"
 
 #import "DOMHTMLFormElementInternal.h"
-#import <WebCore/HTMLFieldSetElement.h>
-#import <WebCore/JSExecState.h>
+#import <CyberCore/HTMLFieldSetElement.h>
+#import <CyberCore/JSExecState.h>
 
 #define IMPL static_cast<WebCore::HTMLFieldSetElement*>(reinterpret_cast<WebCore::Node*>(_internal))
 

@@ -27,11 +27,11 @@
 
 #include "Test.h"
 #include <JavaScriptCore/DataView.h>
-#include <WebCore/ISOFairPlayStreamingPsshBox.h>
-#include <WebCore/ISOProtectionSchemeInfoBox.h>
-#include <WebCore/ISOSchemeInformationBox.h>
-#include <WebCore/ISOSchemeTypeBox.h>
-#include <WebCore/ISOTrackEncryptionBox.h>
+#include <CyberCore/ISOFairPlayStreamingPsshBox.h>
+#include <CyberCore/ISOProtectionSchemeInfoBox.h>
+#include <CyberCore/ISOSchemeInformationBox.h>
+#include <CyberCore/ISOSchemeTypeBox.h>
+#include <CyberCore/ISOTrackEncryptionBox.h>
 #include <wtf/text/Base64.h>
 
 using namespace WebCore;

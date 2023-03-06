@@ -26,7 +26,7 @@
 #import "config.h"
 #import "_WKInspectorDebuggableInfoInternal.h"
 
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation _WKInspectorDebuggableInfo
 

@@ -29,21 +29,21 @@
 
 #import "DOMNodeInternal.h"
 #import "DOMRangeInternal.h"
-#import <WebCore/DocumentMarkerController.h>
-#import <WebCore/Editing.h>
-#import <WebCore/FrameSelection.h>
-#import <WebCore/HTMLTextFormControlElement.h>
-#import <WebCore/Node.h>
-#import <WebCore/Position.h>
-#import <WebCore/Range.h>
-#import <WebCore/RenderTextControl.h>
-#import <WebCore/RenderedDocumentMarker.h>
-#import <WebCore/SimpleRange.h>
-#import <WebCore/TextBoundaries.h>
-#import <WebCore/TextFlags.h>
-#import <WebCore/TextGranularity.h>
-#import <WebCore/TextIterator.h>
-#import <WebCore/VisibleUnits.h>
+#import <CyberCore/DocumentMarkerController.h>
+#import <CyberCore/Editing.h>
+#import <CyberCore/FrameSelection.h>
+#import <CyberCore/HTMLTextFormControlElement.h>
+#import <CyberCore/Node.h>
+#import <CyberCore/Position.h>
+#import <CyberCore/Range.h>
+#import <CyberCore/RenderTextControl.h>
+#import <CyberCore/RenderedDocumentMarker.h>
+#import <CyberCore/SimpleRange.h>
+#import <CyberCore/TextBoundaries.h>
+#import <CyberCore/TextFlags.h>
+#import <CyberCore/TextGranularity.h>
+#import <CyberCore/TextIterator.h>
+#import <CyberCore/VisibleUnits.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 using namespace WebCore;

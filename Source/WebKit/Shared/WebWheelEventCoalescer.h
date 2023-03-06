@@ -26,7 +26,7 @@
 #pragma once
 
 #include "NativeWebWheelEvent.h"
-#include <WebCore/ScrollingCoordinatorTypes.h>
+#include <CyberCore/ScrollingCoordinatorTypes.h>
 #include <wtf/Deque.h>
 #include <wtf/FastMalloc.h>
 

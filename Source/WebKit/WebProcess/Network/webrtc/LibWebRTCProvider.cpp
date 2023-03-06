@@ -37,9 +37,9 @@
 #include "RTCDataChannelRemoteManager.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/Page.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/Settings.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/Settings.h>
 
 ALLOW_COMMA_BEGIN
 

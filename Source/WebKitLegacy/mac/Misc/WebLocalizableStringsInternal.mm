@@ -25,7 +25,7 @@
 
 #import "WebLocalizableStringsInternal.h"
 
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/LocalizedStrings.h>
 
 using namespace WebCore;
 

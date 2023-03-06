@@ -33,9 +33,9 @@
 #include "Encoder.h"
 #include "TouchBarMenuItemData.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/ElementInlines.h>
-#include <WebCore/HTMLMenuElement.h>
-#include <WebCore/HTMLNames.h>
+#include <CyberCore/ElementInlines.h>
+#include <CyberCore/HTMLMenuElement.h>
+#include <CyberCore/HTMLNames.h>
 
 namespace WebKit {
     

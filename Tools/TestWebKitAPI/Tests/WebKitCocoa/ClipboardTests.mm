@@ -29,7 +29,7 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import <CoreServices/CoreServices.h>
-#import <WebCore/LegacyNSPasteboardTypes.h>
+#import <CyberCore/LegacyNSPasteboardTypes.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/_WKFeature.h>
 

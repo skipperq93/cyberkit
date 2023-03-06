@@ -26,7 +26,7 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/ResourceError.h>
+#include <CyberCore/ResourceError.h>
 
 namespace API {
 

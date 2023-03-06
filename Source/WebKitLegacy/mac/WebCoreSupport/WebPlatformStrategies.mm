@@ -28,17 +28,17 @@
 #import "WebFrameNetworkingContext.h"
 #import "WebPluginPackage.h"
 #import "WebResourceLoadScheduler.h"
-#import <WebCore/AudioDestination.h>
-#import <WebCore/BlobRegistryImpl.h>
-#import <WebCore/CDMFactory.h>
-#import <WebCore/Color.h>
-#import <WebCore/Frame.h>
-#import <WebCore/MediaStrategy.h>
-#import <WebCore/NetworkStorageSession.h>
-#import <WebCore/PasteboardItemInfo.h>
-#import <WebCore/PlatformPasteboard.h>
-#import <WebCore/SharedBuffer.h>
-#import <WebCore/SubframeLoader.h>
+#import <CyberCore/AudioDestination.h>
+#import <CyberCore/BlobRegistryImpl.h>
+#import <CyberCore/CDMFactory.h>
+#import <CyberCore/Color.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/MediaStrategy.h>
+#import <CyberCore/NetworkStorageSession.h>
+#import <CyberCore/PasteboardItemInfo.h>
+#import <CyberCore/PlatformPasteboard.h>
+#import <CyberCore/SharedBuffer.h>
+#import <CyberCore/SubframeLoader.h>
 
 using namespace WebCore;
 

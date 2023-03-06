@@ -31,15 +31,15 @@
 #include "WebEvent.h"
 #include "WebHitTestResultData.h"
 #include "WebPageProxy.h"
-#include <WebCore/CookieConsentDecisionResult.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/ModalContainerTypes.h>
-#include <WebCore/PermissionState.h>
-#include <WebCore/ScreenOrientationType.h>
+#include <CyberCore/CookieConsentDecisionResult.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/ModalContainerTypes.h>
+#include <CyberCore/PermissionState.h>
+#include <CyberCore/ScreenOrientationType.h>
 #include <wtf/CompletionHandler.h>
 
 #if PLATFORM(COCOA)
-#include <WebCore/PlatformViewController.h>
+#include <CyberCore/PlatformViewController.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)
@@ -53,7 +53,7 @@ OBJC_CLASS UIViewController;
 #endif
 
 #if ENABLE(WEBXR) && PLATFORM(COCOA)
-#include <WebCore/PlatformXR.h>
+#include <CyberCore/PlatformXR.h>
 #endif
 
 namespace WebCore {

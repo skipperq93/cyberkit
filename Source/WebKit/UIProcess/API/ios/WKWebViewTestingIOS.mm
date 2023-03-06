@@ -37,9 +37,9 @@
 #import "WebPageProxy.h"
 #import "_WKActivatedElementInfoInternal.h"
 #import "_WKTextInputContextInternal.h"
-#import <WebCore/ColorCocoa.h>
-#import <WebCore/ColorSerialization.h>
-#import <WebCore/ElementContext.h>
+#import <CyberCore/ColorCocoa.h>
+#import <CyberCore/ColorSerialization.h>
+#import <CyberCore/ElementContext.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/SortedArrayMap.h>
 #import <wtf/text/TextStream.h>

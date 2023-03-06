@@ -30,7 +30,7 @@
 #include "LibWebRTCNetworkMessages.h"
 #include "Logging.h"
 #include "NetworkConnectionToWebProcessMessages.h"
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/MainThread.h>
 
 namespace WebKit {

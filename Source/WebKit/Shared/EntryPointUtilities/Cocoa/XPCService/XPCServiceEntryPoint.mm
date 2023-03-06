@@ -28,7 +28,7 @@
 #import "ArgumentCodersCF.h"
 #import "SandboxUtilities.h"
 #import "XPCServiceEntryPoint.h"
-#import <WebCore/ProcessIdentifier.h>
+#import <CyberCore/ProcessIdentifier.h>
 #import <signal.h>
 #import <wtf/cocoa/Entitlements.h>
 #import <wtf/spi/darwin/SandboxSPI.h>

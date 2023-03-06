@@ -27,8 +27,8 @@
 
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
-#include <WebCore/PlatformMediaResourceLoader.h>
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/PlatformMediaResourceLoader.h>
+#include <CyberCore/ResourceRequest.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebKit {

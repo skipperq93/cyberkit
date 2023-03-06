@@ -39,8 +39,8 @@
 #include "StorageAreaRegistry.h"
 #include "UnifiedOriginStorageLevel.h"
 #include "WebsiteDataType.h"
-#include <WebCore/SQLiteFileSystem.h>
-#include <WebCore/StorageEstimate.h>
+#include <CyberCore/SQLiteFileSystem.h>
+#include <CyberCore/StorageEstimate.h>
 #include <wtf/FileSystem.h>
 
 namespace WebKit {

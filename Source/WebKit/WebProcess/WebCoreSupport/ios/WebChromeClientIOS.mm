@@ -37,12 +37,12 @@
 #import "WebIconUtilities.h"
 #import "WebPage.h"
 #import "WebPageProxyMessages.h"
-#import <WebCore/AudioSession.h>
-#import <WebCore/ContentChangeObserver.h>
-#import <WebCore/Icon.h>
-#import <WebCore/MouseEvent.h>
-#import <WebCore/NotImplemented.h>
-#import <WebCore/PlatformMouseEvent.h>
+#import <CyberCore/AudioSession.h>
+#import <CyberCore/ContentChangeObserver.h>
+#import <CyberCore/Icon.h>
+#import <CyberCore/MouseEvent.h>
+#import <CyberCore/NotImplemented.h>
+#import <CyberCore/PlatformMouseEvent.h>
 #import <wtf/RefPtr.h>
 
 namespace WebKit {

@@ -97,52 +97,52 @@
 #include <JavaScriptCore/JSLock.h>
 #include <JavaScriptCore/MemoryStatistics.h>
 #include <JavaScriptCore/WasmFaultSignalHandler.h>
-#include <WebCore/AXObjectCache.h>
-#include <WebCore/ApplicationCacheStorage.h>
-#include <WebCore/AuthenticationChallenge.h>
-#include <WebCore/BackForwardCache.h>
-#include <WebCore/CPUMonitor.h>
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/CommonVM.h>
-#include <WebCore/CrossOriginPreflightResultCache.h>
-#include <WebCore/DNS.h>
-#include <WebCore/DOMWindow.h>
-#include <WebCore/DatabaseTracker.h>
-#include <WebCore/DeprecatedGlobalSettings.h>
-#include <WebCore/DiagnosticLoggingClient.h>
-#include <WebCore/DiagnosticLoggingKeys.h>
-#include <WebCore/FontCache.h>
-#include <WebCore/FontCascade.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/GCController.h>
-#include <WebCore/GlyphPage.h>
-#include <WebCore/HTMLMediaElement.h>
-#include <WebCore/JSDOMWindow.h>
-#include <WebCore/LegacySchemeRegistry.h>
-#include <WebCore/MediaEngineConfigurationFactory.h>
-#include <WebCore/MemoryCache.h>
-#include <WebCore/MemoryRelease.h>
-#include <WebCore/MessagePort.h>
-#include <WebCore/MockRealtimeMediaSourceCenter.h>
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/Page.h>
-#include <WebCore/PageGroup.h>
-#include <WebCore/PermissionController.h>
-#include <WebCore/PlatformKeyboardEvent.h>
-#include <WebCore/PlatformMediaSessionManager.h>
-#include <WebCore/ProcessWarming.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/RemoteCommandListener.h>
-#include <WebCore/ResourceLoadStatistics.h>
-#include <WebCore/RuntimeApplicationChecks.h>
-#include <WebCore/ScriptExecutionContext.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/ServiceWorkerContextData.h>
-#include <WebCore/Settings.h>
-#include <WebCore/SharedWorkerContextManager.h>
-#include <WebCore/SharedWorkerThreadProxy.h>
-#include <WebCore/UserGestureIndicator.h>
+#include <CyberCore/AXObjectCache.h>
+#include <CyberCore/ApplicationCacheStorage.h>
+#include <CyberCore/AuthenticationChallenge.h>
+#include <CyberCore/BackForwardCache.h>
+#include <CyberCore/CPUMonitor.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/CommonVM.h>
+#include <CyberCore/CrossOriginPreflightResultCache.h>
+#include <CyberCore/DNS.h>
+#include <CyberCore/DOMWindow.h>
+#include <CyberCore/DatabaseTracker.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/DiagnosticLoggingClient.h>
+#include <CyberCore/DiagnosticLoggingKeys.h>
+#include <CyberCore/FontCache.h>
+#include <CyberCore/FontCascade.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/GCController.h>
+#include <CyberCore/GlyphPage.h>
+#include <CyberCore/HTMLMediaElement.h>
+#include <CyberCore/JSDOMWindow.h>
+#include <CyberCore/LegacySchemeRegistry.h>
+#include <CyberCore/MediaEngineConfigurationFactory.h>
+#include <CyberCore/MemoryCache.h>
+#include <CyberCore/MemoryRelease.h>
+#include <CyberCore/MessagePort.h>
+#include <CyberCore/MockRealtimeMediaSourceCenter.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PageGroup.h>
+#include <CyberCore/PermissionController.h>
+#include <CyberCore/PlatformKeyboardEvent.h>
+#include <CyberCore/PlatformMediaSessionManager.h>
+#include <CyberCore/ProcessWarming.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/RemoteCommandListener.h>
+#include <CyberCore/ResourceLoadStatistics.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
+#include <CyberCore/ScriptExecutionContext.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/ServiceWorkerContextData.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/SharedWorkerContextManager.h>
+#include <CyberCore/SharedWorkerThreadProxy.h>
+#include <CyberCore/UserGestureIndicator.h>
 #include <pal/Logging.h>
 #include <wtf/Algorithms.h>
 #include <wtf/CallbackAggregator.h>
@@ -169,11 +169,11 @@
 #endif
 
 #if USE(CG)
-#include <WebCore/ImageDecoderCG.h>
+#include <CyberCore/ImageDecoderCG.h>
 #endif
 
 #if PLATFORM(MAC)
-#include <WebCore/DisplayRefreshMonitorManager.h>
+#include <CyberCore/DisplayRefreshMonitorManager.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)
@@ -219,12 +219,12 @@
 
 #if ENABLE(GPU_PROCESS) && HAVE(AVASSETREADER)
 #include "RemoteImageDecoderAVF.h"
-#include <WebCore/ImageDecoder.h>
+#include <CyberCore/ImageDecoder.h>
 #endif
 
 #if PLATFORM(COCOA)
-#include <WebCore/SystemBattery.h>
-#include <WebCore/VP9UtilitiesCocoa.h>
+#include <CyberCore/SystemBattery.h>
+#include <CyberCore/VP9UtilitiesCocoa.h>
 #endif
 
 #if OS(LINUX)

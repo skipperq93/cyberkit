@@ -30,8 +30,8 @@
 
 #import "UIKitSPI.h"
 #import <UIKit/UITouch.h>
-#import <WebCore/IntPoint.h>
-#import <WebCore/WAKAppKitStubs.h>
+#import <CyberCore/IntPoint.h>
+#import <CyberCore/WAKAppKitStubs.h>
 
 namespace WebKit {
 

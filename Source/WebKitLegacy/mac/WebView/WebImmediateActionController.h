@@ -26,8 +26,8 @@
 #if PLATFORM(MAC)
 
 #import "WebUIDelegatePrivate.h"
-#import <WebCore/HitTestResult.h>
-#import <WebCore/TextIndicator.h>
+#import <CyberCore/HitTestResult.h>
+#import <CyberCore/TextIndicator.h>
 #import <pal/spi/mac/NSImmediateActionGestureRecognizerSPI.h>
 #import <wtf/RetainPtr.h>
 

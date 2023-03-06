@@ -36,7 +36,7 @@
 #import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
 #import <CyberKit/_WKSessionState.h>
-#import <WebCore/ResourceRequest.h>
+#import <CyberCore/ResourceRequest.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/RunLoop.h>
 #import <wtf/text/WTFString.h>

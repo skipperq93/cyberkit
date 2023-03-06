@@ -26,8 +26,8 @@
 #ifndef PopupMenuIOS_h
 #define PopupMenuIOS_h
 
-#include <WebCore/IntRect.h>
-#include <WebCore/PopupMenu.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/PopupMenu.h>
 
 namespace WebCore {
 class PopupMenuClient;

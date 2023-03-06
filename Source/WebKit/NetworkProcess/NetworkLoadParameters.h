@@ -28,13 +28,13 @@
 #include "NetworkActivityTracker.h"
 #include "PolicyDecision.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/BlobDataFileReference.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/ResourceLoaderOptions.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/ShouldRelaxThirdPartyCookieBlocking.h>
+#include <CyberCore/BlobDataFileReference.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/ResourceLoaderOptions.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/ShouldRelaxThirdPartyCookieBlocking.h>
 #include <wtf/EnumTraits.h>
 #include <wtf/ProcessID.h>
 

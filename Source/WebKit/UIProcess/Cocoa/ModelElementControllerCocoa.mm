@@ -32,9 +32,9 @@
 
 #import "Logging.h"
 #import "WebPageProxy.h"
-#import <WebCore/LayoutPoint.h>
-#import <WebCore/LayoutUnit.h>
-#import <WebCore/ResourceError.h>
+#import <CyberCore/LayoutPoint.h>
+#import <CyberCore/LayoutUnit.h>
+#import <CyberCore/ResourceError.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <simd/simd.h>
 #import <wtf/MachSendRight.h>

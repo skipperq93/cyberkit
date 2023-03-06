@@ -38,11 +38,11 @@
 #include "SandboxExtension.h"
 #include "ScopedRenderingResourcesRequest.h"
 #include "TrackPrivateRemoteIdentifier.h"
-#include <WebCore/Cookie.h>
-#include <WebCore/InbandTextTrackPrivate.h>
-#include <WebCore/MediaPlayer.h>
-#include <WebCore/MediaPlayerIdentifier.h>
-#include <WebCore/PlatformMediaResourceLoader.h>
+#include <CyberCore/Cookie.h>
+#include <CyberCore/InbandTextTrackPrivate.h>
+#include <CyberCore/MediaPlayer.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
+#include <CyberCore/PlatformMediaResourceLoader.h>
 #include <wtf/LoggerHelper.h>
 #include <wtf/RefPtr.h>
 #include <wtf/RunLoop.h>

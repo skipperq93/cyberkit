@@ -26,10 +26,10 @@
 #ifndef FindIndicatorOverlayClientIOS_h
 #define FindIndicatorOverlayClientIOS_h
 
-#import <WebCore/Frame.h>
-#import <WebCore/GraphicsContext.h>
-#import <WebCore/PageOverlay.h>
-#import <WebCore/TextIndicator.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/GraphicsContext.h>
+#import <CyberCore/PageOverlay.h>
+#import <CyberCore/TextIndicator.h>
 
 namespace WebKit {
 

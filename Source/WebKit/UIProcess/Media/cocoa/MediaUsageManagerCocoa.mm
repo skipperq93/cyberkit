@@ -28,7 +28,7 @@
 
 #if ENABLE(MEDIA_USAGE)
 
-#import <WebCore/NotImplemented.h>
+#import <CyberCore/NotImplemented.h>
 #import <pal/cocoa/UsageTrackingSoftLink.h>
 
 NS_ASSUME_NONNULL_BEGIN

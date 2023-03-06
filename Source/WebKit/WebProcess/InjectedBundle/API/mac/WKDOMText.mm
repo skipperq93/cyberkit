@@ -27,7 +27,7 @@
 #import "WKDOMText.h"
 
 #import "WKDOMInternals.h"
-#import <WebCore/Text.h>
+#import <CyberCore/Text.h>
 
 @implementation WKDOMText
 

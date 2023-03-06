@@ -33,11 +33,11 @@
 #import "NetworkSessionCocoa.h"
 #import "WebCoreArgumentCoders.h"
 #import <Foundation/NSURLSession.h>
-#import <WebCore/AuthenticationChallenge.h>
-#import <WebCore/Credential.h>
-#import <WebCore/ResourceError.h>
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/ResourceResponse.h>
+#import <CyberCore/AuthenticationChallenge.h>
+#import <CyberCore/Credential.h>
+#import <CyberCore/ResourceError.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/ResourceResponse.h>
 #import <wtf/BlockPtr.h>
 
 @implementation WKURLSessionTaskDelegate {

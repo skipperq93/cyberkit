@@ -25,16 +25,16 @@
 
 #import "DOMCSSStyleRule.h"
 
-#import <WebCore/CSSStyleDeclaration.h>
-#import <WebCore/CSSStyleRule.h>
+#import <CyberCore/CSSStyleDeclaration.h>
+#import <CyberCore/CSSStyleRule.h>
 #import "DOMCSSRuleInternal.h"
 #import "DOMCSSStyleDeclarationInternal.h"
 #import "DOMNodeInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/JSExecState.h>
-#import <WebCore/StyleProperties.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/StyleProperties.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 

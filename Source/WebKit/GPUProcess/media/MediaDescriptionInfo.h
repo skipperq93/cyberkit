@@ -27,7 +27,7 @@
 
 #if ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)
 
-#include <WebCore/MediaDescription.h>
+#include <CyberCore/MediaDescription.h>
 #include <wtf/text/AtomString.h>
 
 namespace WebKit {

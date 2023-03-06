@@ -36,11 +36,11 @@
 #import "WebPageProxy.h"
 #import "WebProcessProxy.h"
 #import <QuartzCore/QuartzCore.h>
-#import <WebCore/AnimationFrameRate.h>
-#import <WebCore/GraphicsContextCG.h>
-#import <WebCore/IOSurfacePool.h>
-#import <WebCore/ScrollView.h>
-#import <WebCore/WebActionDisablingCALayerDelegate.h>
+#import <CyberCore/AnimationFrameRate.h>
+#import <CyberCore/GraphicsContextCG.h>
+#import <CyberCore/IOSurfacePool.h>
+#import <CyberCore/ScrollView.h>
+#import <CyberCore/WebActionDisablingCALayerDelegate.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/CallbackAggregator.h>
 #import <wtf/MachSendRight.h>

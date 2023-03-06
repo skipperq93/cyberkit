@@ -26,9 +26,9 @@
 #import "config.h"
 
 #import "Utilities.h"
-#import <WebCore/CVUtilities.h>
-#import <WebCore/ImageRotationSessionVT.h>
-#import <WebCore/VideoFrameCV.h>
+#import <CyberCore/CVUtilities.h>
+#import <CyberCore/ImageRotationSessionVT.h>
+#import <CyberCore/VideoFrameCV.h>
 
 namespace TestWebKitAPI {
 

@@ -25,7 +25,7 @@
 
 #import "config.h"
 
-#import <WebCore/SerializedCryptoKeyWrap.h>
+#import <CyberCore/SerializedCryptoKeyWrap.h>
 #import <wtf/MainThread.h>
 
 namespace TestWebKitAPI {

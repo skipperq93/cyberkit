@@ -25,8 +25,8 @@
 
 #include "config.h"
 
-#include <WebCore/CalcExpressionNode.h>
-#include <WebCore/CalculationValue.h>
+#include <CyberCore/CalcExpressionNode.h>
+#include <CyberCore/CalculationValue.h>
 #include <wtf/RefPtr.h>
 
 namespace WTF {

@@ -27,7 +27,7 @@
 
 #if ENABLE(APPLE_PAY_RECURRING_PAYMENTS)
 
-#include <WebCore/ApplePayLineItem.h>
+#include <CyberCore/ApplePayLineItem.h>
 #include <optional>
 #include <wtf/text/WTFString.h>
 

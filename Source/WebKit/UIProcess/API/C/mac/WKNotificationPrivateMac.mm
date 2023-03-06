@@ -27,7 +27,7 @@
 #import "WKNotificationPrivateMac.h"
 
 #import "WebNotification.h"
-#import <WebCore/NotificationData.h>
+#import <CyberCore/NotificationData.h>
 
 NSDictionary *WKNotificationCopyDictionaryRepresentation(WKNotificationRef notification)
 {

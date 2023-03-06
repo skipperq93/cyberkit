@@ -31,7 +31,7 @@
 #import "Test.h"
 #import "TestPDFDocument.h"
 #import "TestWKWebView.h"
-#import <WebCore/Color.h>
+#import <CyberCore/Color.h>
 #import <CyberKit/WKPDFConfiguration.h>
 #import <CyberKit/WKWebViewPrivate.h>
 

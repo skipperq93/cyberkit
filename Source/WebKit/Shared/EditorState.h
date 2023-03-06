@@ -27,19 +27,19 @@
 
 #include "ArgumentCoders.h"
 #include "IdentifierTypes.h"
-#include <WebCore/Color.h>
-#include <WebCore/ElementContext.h>
-#include <WebCore/FontAttributes.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/WritingDirection.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/ElementContext.h>
+#include <CyberCore/FontAttributes.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/WritingDirection.h>
 #include <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/SelectionGeometry.h>
+#include <CyberCore/SelectionGeometry.h>
 #endif
 
 #if USE(DICTATION_ALTERNATIVES)
-#include <WebCore/DictationContext.h>
+#include <CyberCore/DictationContext.h>
 #endif
 
 namespace WTF {

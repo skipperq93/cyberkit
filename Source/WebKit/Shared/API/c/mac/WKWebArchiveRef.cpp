@@ -33,8 +33,8 @@
 #include "InjectedBundleRangeHandle.h"
 #include "WKBundleAPICast.h"
 #include "WKSharedAPICast.h"
-#include <WebCore/Range.h>
-#include <WebCore/SimpleRange.h>
+#include <CyberCore/Range.h>
+#include <CyberCore/SimpleRange.h>
 
 WKTypeID WKWebArchiveGetTypeID()
 {

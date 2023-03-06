@@ -26,7 +26,7 @@
 #import "config.h"
 #import "_WKLinkIconParametersInternal.h"
 
-#import <WebCore/LinkIcon.h>
+#import <CyberCore/LinkIcon.h>
 
 @implementation _WKLinkIconParameters {
     RetainPtr<NSURL> _url;

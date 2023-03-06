@@ -30,11 +30,11 @@
 #include "APIWebAuthenticationPanel.h"
 #include "FrameInfoData.h"
 #include "WebAuthenticationFlags.h"
-#include <WebCore/CredentialRequestOptions.h>
-#include <WebCore/GlobalFrameIdentifier.h>
-#include <WebCore/PublicKeyCredentialCreationOptions.h>
-#include <WebCore/PublicKeyCredentialRequestOptions.h>
-#include <WebCore/WebAuthenticationConstants.h>
+#include <CyberCore/CredentialRequestOptions.h>
+#include <CyberCore/GlobalFrameIdentifier.h>
+#include <CyberCore/PublicKeyCredentialCreationOptions.h>
+#include <CyberCore/PublicKeyCredentialRequestOptions.h>
+#include <CyberCore/WebAuthenticationConstants.h>
 #include <variant>
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>

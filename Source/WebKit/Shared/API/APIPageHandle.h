@@ -27,7 +27,7 @@
 
 #include "APIObject.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 #include <wtf/Ref.h>
 
 namespace API {

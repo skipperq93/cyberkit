@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/GraphicsLayerCA.h>
-#include <WebCore/PlatformLayer.h>
+#include <CyberCore/GraphicsLayerCA.h>
+#include <CyberCore/PlatformLayer.h>
 
 namespace WebKit {
 

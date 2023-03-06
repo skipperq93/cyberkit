@@ -28,8 +28,8 @@
 
 #include "NetworkStorageSessionProvider.h"
 #include "WebSocketStreamMessages.h"
-#include <WebCore/CookieRequestHeaderFieldProxy.h>
-#include <WebCore/SocketStreamError.h>
+#include <CyberCore/CookieRequestHeaderFieldProxy.h>
+#include <CyberCore/SocketStreamError.h>
 
 namespace WebKit {
 using namespace WebCore;

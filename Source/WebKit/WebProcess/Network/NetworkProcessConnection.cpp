@@ -65,12 +65,12 @@
 #include "WebSocketChannelMessages.h"
 #include "WebSocketStream.h"
 #include "WebSocketStreamMessages.h"
-#include <WebCore/CachedResource.h>
-#include <WebCore/HTTPCookieAcceptPolicy.h>
-#include <WebCore/InspectorInstrumentationWebKit.h>
-#include <WebCore/MemoryCache.h>
-#include <WebCore/MessagePort.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/CachedResource.h>
+#include <CyberCore/HTTPCookieAcceptPolicy.h>
+#include <CyberCore/InspectorInstrumentationWebKit.h>
+#include <CyberCore/MemoryCache.h>
+#include <CyberCore/MessagePort.h>
+#include <CyberCore/SharedBuffer.h>
 #include <pal/SessionID.h>
 
 #if ENABLE(APPLE_PAY_REMOTE_UI)

@@ -25,9 +25,9 @@
 
 #pragma once
 
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/SecurityOriginData.h>
 
 namespace WebKit {
 

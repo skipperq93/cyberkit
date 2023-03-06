@@ -29,8 +29,8 @@
 
 #include "MessageReceiver.h"
 #include "RemoteAudioSessionConfiguration.h"
-#include <WebCore/AudioSession.h>
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/AudioSession.h>
+#include <CyberCore/ProcessIdentifier.h>
 #include <wtf/WeakPtr.h>
 
 namespace IPC {

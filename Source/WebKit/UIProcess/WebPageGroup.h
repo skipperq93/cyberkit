@@ -29,7 +29,7 @@
 #include "IdentifierTypes.h"
 #include "WebPageGroupData.h"
 #include "WebProcessProxy.h"
-#include <WebCore/UserStyleSheetTypes.h>
+#include <CyberCore/UserStyleSheetTypes.h>
 #include <wtf/WeakHashSet.h>
 #include <wtf/text/WTFString.h>
 

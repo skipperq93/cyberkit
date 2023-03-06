@@ -29,8 +29,8 @@
 #if ENABLE(MAC_GESTURE_EVENTS)
 
 #import "WebGestureEvent.h"
-#import <WebCore/IntPoint.h>
-#import <WebCore/PlatformEventFactoryMac.h>
+#import <CyberCore/IntPoint.h>
+#import <CyberCore/PlatformEventFactoryMac.h>
 
 namespace WebKit {
 

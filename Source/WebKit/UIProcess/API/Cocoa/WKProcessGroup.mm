@@ -46,7 +46,7 @@
 #if PLATFORM(IOS_FAMILY)
 #import "WKAPICast.h"
 #import "WKGeolocationProviderIOS.h"
-#import <WebCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/WebCoreThreadSystemInterface.h>
 #endif
 
 ALLOW_DEPRECATED_IMPLEMENTATIONS_BEGIN

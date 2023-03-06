@@ -30,7 +30,7 @@
 #import "APIContentRuleListStore.h"
 #import "NetworkCacheFileSystem.h"
 #import "WKErrorInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/CompletionHandler.h>
 #import <wtf/cocoa/VectorCocoa.h>

@@ -35,7 +35,7 @@
 #include "SharedBufferReference.h"
 #include "WebCoreArgumentCoders.h"
 #include <CoreGraphics/CGImage.h>
-#include <WebCore/ImageDecoderAVFObjC.h>
+#include <CyberCore/ImageDecoderAVFObjC.h>
 #include <wtf/Scope.h>
 
 namespace WebKit {

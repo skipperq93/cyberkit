@@ -27,7 +27,7 @@
 
 #include "MessageReceiver.h"
 #include "MessageSender.h"
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 
 namespace IPC {
 class Connection;

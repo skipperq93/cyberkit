@@ -29,7 +29,7 @@
 #include "APIObject.h"
 
 #include "DataReference.h"
-#include <WebCore/SerializedScriptValue.h>
+#include <CyberCore/SerializedScriptValue.h>
 #include <wtf/RefPtr.h>
 
 #if USE(GLIB)

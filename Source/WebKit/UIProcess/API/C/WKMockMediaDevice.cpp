@@ -30,7 +30,7 @@
 #include "WKAPICast.h"
 #include "WKString.h"
 #include "WebProcessPool.h"
-#include <WebCore/MockMediaDevice.h>
+#include <CyberCore/MockMediaDevice.h>
 
 using namespace WebKit;
 

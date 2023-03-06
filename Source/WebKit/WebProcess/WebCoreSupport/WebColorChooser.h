@@ -28,7 +28,7 @@
 
 #if ENABLE(INPUT_TYPE_COLOR)
 
-#include <WebCore/ColorChooser.h>
+#include <CyberCore/ColorChooser.h>
 
 namespace WebCore {
 class Color;

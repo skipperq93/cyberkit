@@ -26,10 +26,10 @@
 #pragma once
 
 #include "Connection.h"
-#include <WebCore/BroadcastChannelRegistry.h>
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/PartitionedSecurityOrigin.h>
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/BroadcastChannelRegistry.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/PartitionedSecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>

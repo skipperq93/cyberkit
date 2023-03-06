@@ -31,8 +31,8 @@
 #include "GPUProcessConnection.h"
 #include "IPCSemaphore.h"
 #include "RemoteAudioDestinationIdentifier.h"
-#include <WebCore/AudioDestinationResampler.h>
-#include <WebCore/AudioIOCallback.h>
+#include <CyberCore/AudioDestinationResampler.h>
+#include <CyberCore/AudioIOCallback.h>
 #include <wtf/CrossThreadQueue.h>
 #include <wtf/MediaTime.h>
 #include <wtf/Threading.h>

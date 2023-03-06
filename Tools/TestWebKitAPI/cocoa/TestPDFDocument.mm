@@ -28,7 +28,7 @@
 
 #if HAVE(PDFKIT)
 
-#import <WebCore/ColorMac.h>
+#import <CyberCore/ColorMac.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 
 namespace TestWebKitAPI {

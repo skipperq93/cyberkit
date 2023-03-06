@@ -29,8 +29,8 @@
 #include "UserMediaProcessManager.h"
 #include "WebProcessProxy.h"
 #include "WebSpeechRecognitionConnectionMessages.h"
-#include <WebCore/SpeechRecognitionRequestInfo.h>
-#include <WebCore/SpeechRecognitionUpdate.h>
+#include <CyberCore/SpeechRecognitionRequestInfo.h>
+#include <CyberCore/SpeechRecognitionUpdate.h>
 
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, messageSenderConnection())
 

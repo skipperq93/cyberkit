@@ -34,11 +34,11 @@
 #include "RemoteSourceBufferProxyMessages.h"
 #include "SharedBufferReference.h"
 #include "SourceBufferPrivateRemoteMessages.h"
-#include <WebCore/AudioTrackPrivate.h>
-#include <WebCore/ContentType.h>
-#include <WebCore/MediaDescription.h>
-#include <WebCore/PlatformTimeRanges.h>
-#include <WebCore/VideoTrackPrivate.h>
+#include <CyberCore/AudioTrackPrivate.h>
+#include <CyberCore/ContentType.h>
+#include <CyberCore/MediaDescription.h>
+#include <CyberCore/PlatformTimeRanges.h>
+#include <CyberCore/VideoTrackPrivate.h>
 #include <wtf/Scope.h>
 
 namespace WebKit {

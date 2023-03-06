@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/SleepDisablerClient.h>
+#include <CyberCore/SleepDisablerClient.h>
 
 namespace WebKit {
 

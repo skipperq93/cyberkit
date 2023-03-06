@@ -24,7 +24,7 @@
  */
  
 #import "StorageTrackerClient.h"
-#import <WebCore/SecurityOrigin.h>
+#import <CyberCore/SecurityOrigin.h>
 
 class WebStorageTrackerClient : public WebCore::StorageTrackerClient {
 public:

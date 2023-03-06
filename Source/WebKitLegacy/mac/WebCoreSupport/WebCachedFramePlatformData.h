@@ -27,7 +27,7 @@
  */
 
 #import "WebHTMLViewInternal.h"
-#import <WebCore/CachedFramePlatformData.h>
+#import <CyberCore/CachedFramePlatformData.h>
 #import <wtf/ObjCRuntimeExtras.h>
 #import <wtf/RetainPtr.h>
 

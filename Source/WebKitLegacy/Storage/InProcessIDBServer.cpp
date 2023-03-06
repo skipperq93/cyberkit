@@ -25,19 +25,19 @@
 
 #include "InProcessIDBServer.h"
 
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/IDBConnectionToClient.h>
-#include <WebCore/IDBConnectionToServer.h>
-#include <WebCore/IDBCursorInfo.h>
-#include <WebCore/IDBGetRecordData.h>
-#include <WebCore/IDBIterateCursorData.h>
-#include <WebCore/IDBKeyRangeData.h>
-#include <WebCore/IDBOpenDBRequest.h>
-#include <WebCore/IDBRequestData.h>
-#include <WebCore/IDBResultData.h>
-#include <WebCore/IDBTransactionInfo.h>
-#include <WebCore/IDBValue.h>
-#include <WebCore/StorageQuotaManager.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/IDBConnectionToClient.h>
+#include <CyberCore/IDBConnectionToServer.h>
+#include <CyberCore/IDBCursorInfo.h>
+#include <CyberCore/IDBGetRecordData.h>
+#include <CyberCore/IDBIterateCursorData.h>
+#include <CyberCore/IDBKeyRangeData.h>
+#include <CyberCore/IDBOpenDBRequest.h>
+#include <CyberCore/IDBRequestData.h>
+#include <CyberCore/IDBResultData.h>
+#include <CyberCore/IDBTransactionInfo.h>
+#include <CyberCore/IDBValue.h>
+#include <CyberCore/StorageQuotaManager.h>
 #include <wtf/threads/BinarySemaphore.h>
 
 using namespace WebCore;

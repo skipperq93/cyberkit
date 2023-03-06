@@ -28,7 +28,7 @@
 #endif
 #import <CyberKit/_WKActivatedElementInfo.h>
 
-#import <WebCore/IntPoint.h>
+#import <CyberCore/IntPoint.h>
 
 namespace WebKit {
     class ShareableBitmap;

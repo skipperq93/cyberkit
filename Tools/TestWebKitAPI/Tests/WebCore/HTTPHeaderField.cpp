@@ -26,7 +26,7 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/HTTPHeaderField.h>
+#include <CyberCore/HTTPHeaderField.h>
 
 static String canonicalizeHTTPHeader(const String& string)
 {

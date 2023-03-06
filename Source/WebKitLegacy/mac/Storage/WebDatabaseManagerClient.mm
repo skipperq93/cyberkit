@@ -27,13 +27,13 @@
 
 #import "WebDatabaseManagerPrivate.h"
 #import "WebSecurityOriginInternal.h"
-#import <WebCore/DatabaseTracker.h>
-#import <WebCore/SecurityOrigin.h>
+#import <CyberCore/DatabaseTracker.h>
+#import <CyberCore/SecurityOrigin.h>
 #import <wtf/MainThread.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WebCoreThread.h>
+#import <CyberCore/WebCoreThread.h>
 #endif
 
 using namespace WebCore;

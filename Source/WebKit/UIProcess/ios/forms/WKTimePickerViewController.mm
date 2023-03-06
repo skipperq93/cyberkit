@@ -31,7 +31,7 @@
 #import "ClockKitSPI.h"
 #import "UIKitSPI.h"
 
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <wtf/SoftLinking.h>
 #import <wtf/text/WTFString.h>
 

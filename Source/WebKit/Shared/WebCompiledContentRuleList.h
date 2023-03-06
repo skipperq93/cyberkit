@@ -28,8 +28,8 @@
 #if ENABLE(CONTENT_EXTENSIONS)
 
 #include "WebCompiledContentRuleListData.h"
-#include <WebCore/CompiledContentExtension.h>
-#include <WebCore/ContentExtensionCompiler.h>
+#include <CyberCore/CompiledContentExtension.h>
+#include <CyberCore/ContentExtensionCompiler.h>
 
 namespace WebKit {
 

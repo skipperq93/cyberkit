@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebSocketChannelManager.h"
 
-#include <WebCore/WebSocketIdentifier.h>
+#include <CyberCore/WebSocketIdentifier.h>
 
 namespace WebKit {
 

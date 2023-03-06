@@ -26,7 +26,7 @@
 #import "config.h"
 #import "WKWebProcessPlugInScriptWorldInternal.h"
 
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKWebProcessPlugInScriptWorld {
     API::ObjectStorage<WebKit::InjectedBundleScriptWorld> _world;

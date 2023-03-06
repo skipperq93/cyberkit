@@ -31,11 +31,11 @@
 #import "AccessibilitySupportSPI.h"
 #import "UIKitSPI.h"
 #import <QuartzCore/CADisplayLink.h>
-#import <WebCore/FloatPoint.h>
-#import <WebCore/KeyEventCodesIOS.h>
-#import <WebCore/KeyboardScroll.h>
-#import <WebCore/RectEdges.h>
-#import <WebCore/WebEvent.h>
+#import <CyberCore/FloatPoint.h>
+#import <CyberCore/KeyEventCodesIOS.h>
+#import <CyberCore/KeyboardScroll.h>
+#import <CyberCore/RectEdges.h>
+#import <CyberCore/WebEvent.h>
 #import <CyberKit/UIKitSPI.h>
 #import <algorithm>
 #import <wtf/RetainPtr.h>

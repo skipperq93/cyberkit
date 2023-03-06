@@ -41,9 +41,9 @@
 #import "WebContextMenuItem.h"
 #import "WebContextMenuItemData.h"
 #import "WebPageProxy.h"
-#import <WebCore/GraphicsContext.h>
-#import <WebCore/IntRect.h>
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/GraphicsContext.h>
+#import <CyberCore/IntRect.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <pal/spi/mac/NSMenuSPI.h>
 #import <pal/spi/mac/NSSharingServicePickerSPI.h>
 #import <pal/spi/mac/NSWindowSPI.h>

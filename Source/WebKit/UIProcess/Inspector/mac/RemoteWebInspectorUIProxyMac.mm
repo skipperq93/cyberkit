@@ -42,8 +42,8 @@
 #import "_WKInspectorConfigurationInternal.h"
 #import <SecurityInterface/SFCertificatePanel.h>
 #import <SecurityInterface/SFCertificateView.h>
-#import <WebCore/CertificateInfo.h>
-#import <WebCore/Color.h>
+#import <CyberCore/CertificateInfo.h>
+#import <CyberCore/Color.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/text/Base64.h>
 

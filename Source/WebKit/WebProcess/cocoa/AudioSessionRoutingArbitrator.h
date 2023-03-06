@@ -28,7 +28,7 @@
 #if ENABLE(ROUTING_ARBITRATION)
 
 #include "WebProcessSupplement.h"
-#include <WebCore/AudioSession.h>
+#include <CyberCore/AudioSession.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebKit {

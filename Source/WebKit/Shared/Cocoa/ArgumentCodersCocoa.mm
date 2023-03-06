@@ -32,8 +32,8 @@
 #import "CoreTextHelpers.h"
 #import <CoreText/CTFont.h>
 #import <CoreText/CTFontDescriptor.h>
-#import <WebCore/ColorCocoa.h>
-#import <WebCore/FontCocoa.h>
+#import <CyberCore/ColorCocoa.h>
+#import <CyberCore/FontCocoa.h>
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/HashSet.h>
 #import <wtf/cf/CFURLExtras.h>

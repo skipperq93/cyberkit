@@ -33,7 +33,7 @@
 #import "UserInterfaceIdiom.h"
 #import "WKContentViewInteraction.h"
 #import "WebPageProxy.h"
-#import <WebCore/ColorCocoa.h>
+#import <CyberCore/ColorCocoa.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 #pragma mark - WKColorPicker

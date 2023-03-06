@@ -26,9 +26,9 @@
 #pragma once
 
 #include "MessageReceiver.h"
-#include <WebCore/ScriptExecutionContextIdentifier.h>
-#include <WebCore/WebLockIdentifier.h>
-#include <WebCore/WebLockMode.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/WebLockIdentifier.h>
+#include <CyberCore/WebLockMode.h>
 
 namespace WebCore {
 struct ClientOrigin;

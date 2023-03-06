@@ -31,7 +31,7 @@
 #import "DrawingArea.h"
 #import "WebPage.h"
 #import "WebPageProxyMessages.h"
-#import <WebCore/Model.h>
+#import <CyberCore/Model.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <pal/spi/mac/SystemPreviewSPI.h>
 #import <wtf/MachSendRight.h>

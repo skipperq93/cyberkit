@@ -37,8 +37,8 @@
 #include "WebPageProxyMessages.h"
 #include "WebProcessMessages.h"
 
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/ShouldTreatAsContinuingLoad.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/ShouldTreatAsContinuingLoad.h>
 
 namespace WebKit {
 

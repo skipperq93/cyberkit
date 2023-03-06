@@ -29,7 +29,7 @@
 #if USE(APPKIT)
 
 #import "WebEventFactory.h"
-#import <WebCore/KeyboardEvent.h>
+#import <CyberCore/KeyboardEvent.h>
 
 
 namespace WebKit {

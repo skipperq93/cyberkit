@@ -43,8 +43,8 @@
 #include "WebProcessPool.h"
 #include "WebsiteDataStore.h"
 #include "WebsitePoliciesData.h"
-#include <WebCore/Image.h>
-#include <WebCore/MIMETypeRegistry.h>
+#include <CyberCore/Image.h>
+#include <CyberCore/MIMETypeRegistry.h>
 #include <stdio.h>
 #include <wtf/RunLoop.h>
 #include <wtf/text/WTFString.h>

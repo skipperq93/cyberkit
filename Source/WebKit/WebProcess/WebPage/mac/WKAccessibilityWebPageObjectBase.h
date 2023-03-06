@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/PageIdentifier.h>
+#import <CyberCore/PageIdentifier.h>
 #import <wtf/NakedPtr.h>
 
 namespace WebKit {

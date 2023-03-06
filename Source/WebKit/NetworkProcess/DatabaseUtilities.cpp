@@ -28,9 +28,9 @@
 
 #include "Logging.h"
 #include "PrivateClickMeasurementManager.h"
-#include <WebCore/PrivateClickMeasurement.h>
-#include <WebCore/SQLiteStatement.h>
-#include <WebCore/SQLiteStatementAutoResetScope.h>
+#include <CyberCore/PrivateClickMeasurement.h>
+#include <CyberCore/SQLiteStatement.h>
+#include <CyberCore/SQLiteStatementAutoResetScope.h>
 #include <wtf/FileSystem.h>
 #include <wtf/RunLoop.h>
 

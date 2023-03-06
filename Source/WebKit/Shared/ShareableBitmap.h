@@ -26,10 +26,10 @@
 #pragma once
 
 #include "SharedMemory.h"
-#include <WebCore/CopyImageOptions.h>
-#include <WebCore/DestinationColorSpace.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/PlatformImage.h>
+#include <CyberCore/CopyImageOptions.h>
+#include <CyberCore/DestinationColorSpace.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/PlatformImage.h>
 #include <wtf/ArgumentCoder.h>
 #include <wtf/RefPtr.h>
 #include <wtf/ThreadSafeRefCounted.h>

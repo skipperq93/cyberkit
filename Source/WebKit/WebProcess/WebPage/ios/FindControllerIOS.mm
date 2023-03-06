@@ -33,17 +33,17 @@
 #import "WebCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebPageProxyMessages.h"
-#import <WebCore/Editor.h>
-#import <WebCore/FocusController.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/GraphicsContext.h>
-#import <WebCore/ImageOverlay.h>
-#import <WebCore/Page.h>
-#import <WebCore/PageOverlayController.h>
-#import <WebCore/PathUtilities.h>
-#import <WebCore/Settings.h>
-#import <WebCore/TextIndicator.h>
+#import <CyberCore/Editor.h>
+#import <CyberCore/FocusController.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/GraphicsContext.h>
+#import <CyberCore/ImageOverlay.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/PageOverlayController.h>
+#import <CyberCore/PathUtilities.h>
+#import <CyberCore/Settings.h>
+#import <CyberCore/TextIndicator.h>
 
 namespace WebKit {
 using namespace WebCore;

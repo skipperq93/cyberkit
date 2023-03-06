@@ -33,11 +33,11 @@
 #import "WebNSObjectExtras.h"
 #import "WebResourceInternal.h"
 #import <JavaScriptCore/InitializeThreading.h>
-#import <WebCore/ArchiveResource.h>
-#import <WebCore/LegacyWebArchive.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebCoreJITOperations.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/ArchiveResource.h>
+#import <CyberCore/LegacyWebArchive.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebCoreJITOperations.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/MainThread.h>
 #import <wtf/RunLoop.h>
 #import <wtf/cocoa/VectorCocoa.h>

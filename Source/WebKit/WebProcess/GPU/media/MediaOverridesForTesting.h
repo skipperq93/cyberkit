@@ -27,7 +27,7 @@
 
 #if ENABLE(GPU_PROCESS)
 
-#include <WebCore/VP9Utilities.h>
+#include <CyberCore/VP9Utilities.h>
 
 namespace WebKit {
 

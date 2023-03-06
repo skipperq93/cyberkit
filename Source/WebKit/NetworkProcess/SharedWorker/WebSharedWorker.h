@@ -25,13 +25,13 @@
 
 #pragma once
 
-#include <WebCore/SharedWorkerIdentifier.h>
-#include <WebCore/SharedWorkerKey.h>
-#include <WebCore/SharedWorkerObjectIdentifier.h>
-#include <WebCore/TransferredMessagePort.h>
-#include <WebCore/WorkerFetchResult.h>
-#include <WebCore/WorkerInitializationData.h>
-#include <WebCore/WorkerOptions.h>
+#include <CyberCore/SharedWorkerIdentifier.h>
+#include <CyberCore/SharedWorkerKey.h>
+#include <CyberCore/SharedWorkerObjectIdentifier.h>
+#include <CyberCore/TransferredMessagePort.h>
+#include <CyberCore/WorkerFetchResult.h>
+#include <CyberCore/WorkerInitializationData.h>
+#include <CyberCore/WorkerOptions.h>
 #include <wtf/ListHashSet.h>
 #include <wtf/WeakPtr.h>
 

@@ -26,7 +26,7 @@
 #import "config.h"
 #import "_WKContentRuleListActionInternal.h"
 
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 @implementation _WKContentRuleListAction

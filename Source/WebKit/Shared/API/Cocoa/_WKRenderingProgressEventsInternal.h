@@ -25,7 +25,7 @@
 
 #import <CyberKit/_WKRenderingProgressEvents.h>
 
-#import <WebCore/LayoutMilestone.h>
+#import <CyberCore/LayoutMilestone.h>
 
 static inline _WKRenderingProgressEvents renderingProgressEvents(OptionSet<WebCore::LayoutMilestone> milestones)
 {

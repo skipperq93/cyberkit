@@ -29,7 +29,7 @@
 #import "AuthenticationChallengeDisposition.h"
 #import "AuthenticationDecisionListener.h"
 #import "WebCredential.h"
-#import <WebCore/AuthenticationMac.h>
+#import <CyberCore/AuthenticationMac.h>
 
 @interface WKNSURLAuthenticationChallengeSender : NSObject <NSURLAuthenticationChallengeSender>
 @end

@@ -28,7 +28,7 @@
 
 #if ENABLE(WEBM_FORMAT_READER)
 
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <pal/cf/CoreMediaSoftLink.h>
 
 namespace WebKit {

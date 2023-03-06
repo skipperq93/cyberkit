@@ -31,7 +31,7 @@
 #include "RemoteCDMFactory.h"
 #include "RemoteCDMInstanceConfiguration.h"
 #include "RemoteCDMInstanceIdentifier.h"
-#include <WebCore/CDMInstance.h>
+#include <CyberCore/CDMInstance.h>
 
 namespace WebKit {
 

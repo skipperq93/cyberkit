@@ -29,8 +29,8 @@
 
 #include "MDNSRegisterIdentifier.h"
 #include "RTCNetwork.h"
-#include <WebCore/ProcessQualified.h>
-#include <WebCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/ProcessQualified.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
 #include <wtf/Expected.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>

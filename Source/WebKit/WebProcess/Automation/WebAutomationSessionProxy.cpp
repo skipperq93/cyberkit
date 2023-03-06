@@ -42,29 +42,29 @@
 #include <JavaScriptCore/JSObject.h>
 #include <JavaScriptCore/JSStringRefPrivate.h>
 #include <JavaScriptCore/OpaqueJSString.h>
-#include <WebCore/AXObjectCache.h>
-#include <WebCore/AccessibilityObject.h>
-#include <WebCore/CookieJar.h>
-#include <WebCore/DOMRect.h>
-#include <WebCore/DOMRectList.h>
-#include <WebCore/DOMWindow.h>
-#include <WebCore/File.h>
-#include <WebCore/FileList.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameTree.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/HTMLFrameElement.h>
-#include <WebCore/HTMLIFrameElement.h>
-#include <WebCore/HTMLInputElement.h>
-#include <WebCore/HTMLOptGroupElement.h>
-#include <WebCore/HTMLOptionElement.h>
-#include <WebCore/HTMLSelectElement.h>
-#include <WebCore/JSElement.h>
-#include <WebCore/RenderElement.h>
+#include <CyberCore/AXObjectCache.h>
+#include <CyberCore/AccessibilityObject.h>
+#include <CyberCore/CookieJar.h>
+#include <CyberCore/DOMRect.h>
+#include <CyberCore/DOMRectList.h>
+#include <CyberCore/DOMWindow.h>
+#include <CyberCore/File.h>
+#include <CyberCore/FileList.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameTree.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/HTMLFrameElement.h>
+#include <CyberCore/HTMLIFrameElement.h>
+#include <CyberCore/HTMLInputElement.h>
+#include <CyberCore/HTMLOptGroupElement.h>
+#include <CyberCore/HTMLOptionElement.h>
+#include <CyberCore/HTMLSelectElement.h>
+#include <CyberCore/JSElement.h>
+#include <CyberCore/RenderElement.h>
 #include <wtf/UUID.h>
 
 #if ENABLE(DATALIST_ELEMENT)
-#include <WebCore/HTMLDataListElement.h>
+#include <CyberCore/HTMLDataListElement.h>
 #endif
 
 namespace WebKit {

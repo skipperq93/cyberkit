@@ -29,10 +29,10 @@
 #if PLATFORM(IOS_FAMILY) && ENABLE(DRAG_SUPPORT)
 
 #import "Logging.h"
-#import <WebCore/ColorCocoa.h>
-#import <WebCore/DragItem.h>
-#import <WebCore/Image.h>
-#import <WebCore/LocalCurrentTraitCollection.h>
+#import <CyberCore/ColorCocoa.h>
+#import <CyberCore/DragItem.h>
+#import <CyberCore/Image.h>
+#import <CyberCore/LocalCurrentTraitCollection.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 namespace WebKit {

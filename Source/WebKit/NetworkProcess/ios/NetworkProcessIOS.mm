@@ -34,9 +34,9 @@
 #import "SandboxInitializationParameters.h"
 #import "SecItemShim.h"
 #import <UIKit/UIKit.h>
-#import <WebCore/CertificateInfo.h>
-#import <WebCore/NotImplemented.h>
-#import <WebCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/CertificateInfo.h>
+#import <CyberCore/NotImplemented.h>
+#import <CyberCore/WebCoreThreadSystemInterface.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/cocoa/Entitlements.h>
 

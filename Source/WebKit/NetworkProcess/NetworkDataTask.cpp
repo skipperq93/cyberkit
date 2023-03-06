@@ -31,10 +31,10 @@
 #include "NetworkLoadParameters.h"
 #include "NetworkProcess.h"
 #include "NetworkSession.h"
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
 #include <wtf/RunLoop.h>
 
 #if PLATFORM(COCOA)

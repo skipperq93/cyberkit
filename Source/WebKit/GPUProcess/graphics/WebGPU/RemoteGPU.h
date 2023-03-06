@@ -34,7 +34,7 @@
 #include "WebGPUObjectHeap.h"
 #include "WebGPUSupportedFeatures.h"
 #include "WebGPUSupportedLimits.h"
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/ProcessIdentifier.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Ref.h>
 #include <wtf/ThreadAssertions.h>

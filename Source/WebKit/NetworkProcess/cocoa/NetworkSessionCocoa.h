@@ -42,8 +42,8 @@ OBJC_CLASS NSURLCredentialStorage;
 #include "WebPageNetworkParameters.h"
 #include "WebPageProxyIdentifier.h"
 #include "WebSocketTask.h"
-#include <WebCore/NetworkLoadMetrics.h>
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/NetworkLoadMetrics.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <wtf/HashMap.h>
 #include <wtf/Seconds.h>
 

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "NetworkProcessPlatformStrategies.h"
 
-#include <WebCore/BlobRegistry.h>
+#include <CyberCore/BlobRegistry.h>
 #include <wtf/NeverDestroyed.h>
 
 namespace WebKit {

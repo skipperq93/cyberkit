@@ -31,7 +31,7 @@
 #import <JavaScriptCore/JSVirtualMachine.h>
 #import <JavaScriptCore/JSVirtualMachineInternal.h>
 #import <UIKit/UIKit.h>
-#import <WebCore/WebCoreThread.h>
+#import <CyberCore/WebCoreThread.h>
 #import <stdlib.h>
 #import <wtf/RetainPtr.h>
 

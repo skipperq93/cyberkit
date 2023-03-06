@@ -27,8 +27,8 @@
 
 #if ENABLE(DEVICE_ORIENTATION)
 
-#include <WebCore/DeviceOrientationOrMotionPermissionState.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/DeviceOrientationOrMotionPermissionState.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/HashMap.h>
 #include <wtf/WeakPtr.h>
 

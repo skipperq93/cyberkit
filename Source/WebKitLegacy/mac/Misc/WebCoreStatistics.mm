@@ -33,18 +33,18 @@
 #import "WebFrameInternal.h"
 #import <JavaScriptCore/JSLock.h>
 #import <JavaScriptCore/MemoryStatistics.h>
-#import <WebCore/BackForwardCache.h>
-#import <WebCore/CommonVM.h>
-#import <WebCore/FontCache.h>
-#import <WebCore/Frame.h>
-#import <WebCore/GCController.h>
-#import <WebCore/GlyphPage.h>
-#import <WebCore/GraphicsContextCG.h>
-#import <WebCore/JSDOMWindow.h>
-#import <WebCore/PageConsoleClient.h>
-#import <WebCore/PrintContext.h>
-#import <WebCore/RenderTreeAsText.h>
-#import <WebCore/RenderView.h>
+#import <CyberCore/BackForwardCache.h>
+#import <CyberCore/CommonVM.h>
+#import <CyberCore/FontCache.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/GCController.h>
+#import <CyberCore/GlyphPage.h>
+#import <CyberCore/GraphicsContextCG.h>
+#import <CyberCore/JSDOMWindow.h>
+#import <CyberCore/PageConsoleClient.h>
+#import <CyberCore/PrintContext.h>
+#import <CyberCore/RenderTreeAsText.h>
+#import <CyberCore/RenderView.h>
 
 using namespace JSC;
 using namespace WebCore;

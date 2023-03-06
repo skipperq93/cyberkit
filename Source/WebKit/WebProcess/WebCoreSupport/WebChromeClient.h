@@ -26,7 +26,7 @@
 
 #pragma once
 
-#include <WebCore/ChromeClient.h>
+#include <CyberCore/ChromeClient.h>
 
 namespace WebCore {
 class HTMLImageElement;

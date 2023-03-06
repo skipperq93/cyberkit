@@ -26,7 +26,7 @@
 #pragma once
 
 #include "MediaKeySystemPermissionRequestProxy.h"
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/HashMap.h>
 #include <wtf/LoggerHelper.h>

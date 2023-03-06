@@ -30,10 +30,10 @@
 #include "DataReference.h"
 #include "PDFPluginIdentifier.h"
 #include "WebMouseEvent.h"
-#include <WebCore/AffineTransform.h>
-#include <WebCore/FindOptions.h>
-#include <WebCore/NetscapePlugInStreamLoader.h>
-#include <WebCore/ScrollableArea.h>
+#include <CyberCore/AffineTransform.h>
+#include <CyberCore/FindOptions.h>
+#include <CyberCore/NetscapePlugInStreamLoader.h>
+#include <CyberCore/ScrollableArea.h>
 #include <wtf/HashMap.h>
 #include <wtf/Identified.h>
 #include <wtf/Range.h>

@@ -26,7 +26,7 @@
 #ifndef BlobDataFileReferenceWithSandboxExtension_h
 #define BlobDataFileReferenceWithSandboxExtension_h
 
-#include <WebCore/BlobDataFileReference.h>
+#include <CyberCore/BlobDataFileReference.h>
 
 namespace WebKit {
 

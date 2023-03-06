@@ -26,8 +26,8 @@
 #include "config.h"
 #include "InjectedBundleScriptWorld.h"
 
-#include <WebCore/DOMWrapperWorld.h>
-#include <WebCore/ScriptController.h>
+#include <CyberCore/DOMWrapperWorld.h>
+#include <CyberCore/ScriptController.h>
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringConcatenate.h>

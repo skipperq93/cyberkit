@@ -35,27 +35,27 @@
 #include "WebImage.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
-#include <WebCore/DocumentMarkerController.h>
-#include <WebCore/FloatQuad.h>
-#include <WebCore/FocusController.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameSelection.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/GeometryUtilities.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/ImageAnalysisQueue.h>
-#include <WebCore/ImageOverlay.h>
-#include <WebCore/Page.h>
-#include <WebCore/PageOverlayController.h>
-#include <WebCore/PathUtilities.h>
-#include <WebCore/PlatformMouseEvent.h>
-#include <WebCore/PluginDocument.h>
-#include <WebCore/Range.h>
-#include <WebCore/RenderObject.h>
-#include <WebCore/SimpleRange.h>
+#include <CyberCore/DocumentMarkerController.h>
+#include <CyberCore/FloatQuad.h>
+#include <CyberCore/FocusController.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameSelection.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/GeometryUtilities.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/ImageAnalysisQueue.h>
+#include <CyberCore/ImageOverlay.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PageOverlayController.h>
+#include <CyberCore/PathUtilities.h>
+#include <CyberCore/PlatformMouseEvent.h>
+#include <CyberCore/PluginDocument.h>
+#include <CyberCore/Range.h>
+#include <CyberCore/RenderObject.h>
+#include <CyberCore/SimpleRange.h>
 
 #if PLATFORM(COCOA)
-#include <WebCore/TextIndicatorWindow.h>
+#include <CyberCore/TextIndicatorWindow.h>
 #endif
 
 namespace WebKit {

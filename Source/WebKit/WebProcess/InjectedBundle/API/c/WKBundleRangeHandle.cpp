@@ -31,7 +31,7 @@
 #include "WKAPICast.h"
 #include "WKBundleAPICast.h"
 #include "WebImage.h"
-#include <WebCore/IntRect.h>
+#include <CyberCore/IntRect.h>
 
 WKTypeID WKBundleRangeHandleGetTypeID()
 {

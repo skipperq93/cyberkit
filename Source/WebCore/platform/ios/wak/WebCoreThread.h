@@ -31,8 +31,8 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 // Use __has_include here so that things work when rewritten into WebKitLegacy headers.
-#if __has_include(<WebCore/PlatformExportMacros.h>)
-#import <WebCore/PlatformExportMacros.h>
+#if __has_include(<CyberCore/PlatformExportMacros.h>)
+#import <CyberCore/PlatformExportMacros.h>
 #endif
 
 #if defined(__cplusplus)

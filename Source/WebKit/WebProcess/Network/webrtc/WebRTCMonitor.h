@@ -28,7 +28,7 @@
 #if USE(LIBWEBRTC)
 
 #include "RTCNetwork.h"
-#include <WebCore/LibWebRTCProvider.h>
+#include <CyberCore/LibWebRTCProvider.h>
 #include <wtf/Forward.h>
 #include <wtf/WeakHashSet.h>
 

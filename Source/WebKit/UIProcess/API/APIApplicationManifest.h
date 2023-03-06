@@ -28,7 +28,7 @@
 #if ENABLE(APPLICATION_MANIFEST)
 
 #include "APIObject.h"
-#include <WebCore/ApplicationManifest.h>
+#include <CyberCore/ApplicationManifest.h>
 
 namespace API {
 

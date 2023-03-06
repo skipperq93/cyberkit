@@ -28,8 +28,8 @@
 
 #include "ImageBufferShareableBitmapBackend.h"
 #include "ShareablePixelBuffer.h"
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/ImageBuffer.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/ImageBuffer.h>
 
 #if ENABLE(GPU_PROCESS)
 

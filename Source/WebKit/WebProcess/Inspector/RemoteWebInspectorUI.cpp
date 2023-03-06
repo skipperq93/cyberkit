@@ -32,19 +32,19 @@
 #include "WebInspectorUI.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/Chrome.h>
-#include <WebCore/DOMWrapperWorld.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/InspectorController.h>
-#include <WebCore/Settings.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/Chrome.h>
+#include <CyberCore/DOMWrapperWorld.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/InspectorController.h>
+#include <CyberCore/Settings.h>
 
 #if ENABLE(INSPECTOR_EXTENSIONS)
 #include "WebInspectorUIExtensionController.h"
 #endif
 
 #if !PLATFORM(MAC) && !PLATFORM(GTK) && !PLATFORM(WIN)
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 #endif
 
 namespace WebKit {

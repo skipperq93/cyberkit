@@ -52,19 +52,19 @@
 #endif // __has_include(<UIKit/UITextAutofillSuggestion.h>)
 #endif // TARGET_OS_IPHONE
 
-#import <WebCore/AutofillElements.h>
-#import <WebCore/FileList.h>
-#import <WebCore/HTMLElement.h>
-#import <WebCore/HTMLFormElement.h>
-#import <WebCore/HTMLInputElement.h>
-#import <WebCore/HTMLNames.h>
-#import <WebCore/HitTestResult.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/NameNodeList.h>
-#import <WebCore/NodeList.h>
-#import <WebCore/RenderElement.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/AutofillElements.h>
+#import <CyberCore/FileList.h>
+#import <CyberCore/HTMLElement.h>
+#import <CyberCore/HTMLFormElement.h>
+#import <CyberCore/HTMLInputElement.h>
+#import <CyberCore/HTMLNames.h>
+#import <CyberCore/HitTestResult.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/NameNodeList.h>
+#import <CyberCore/NodeList.h>
+#import <CyberCore/RenderElement.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 

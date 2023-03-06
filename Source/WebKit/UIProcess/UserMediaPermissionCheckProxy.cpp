@@ -27,8 +27,8 @@
 #include "UserMediaPermissionCheckProxy.h"
 
 #include "UserMediaPermissionRequestManagerProxy.h"
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOriginData.h>
 
 namespace WebKit {
 using namespace WebCore;

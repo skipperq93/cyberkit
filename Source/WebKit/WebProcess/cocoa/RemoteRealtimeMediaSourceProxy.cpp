@@ -35,10 +35,10 @@
 #include "UserMediaCaptureManagerProxyMessages.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <WebCore/MediaConstraints.h>
-#include <WebCore/RealtimeMediaSource.h>
-#include <WebCore/RealtimeMediaSourceCenter.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/MediaConstraints.h>
+#include <CyberCore/RealtimeMediaSource.h>
+#include <CyberCore/RealtimeMediaSourceCenter.h>
+#include <CyberCore/WebAudioBufferList.h>
 
 namespace WebKit {
 using namespace WebCore;

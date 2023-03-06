@@ -30,8 +30,8 @@
 
 #import "SandboxInitializationParameters.h"
 #import "XPCServiceEntryPoint.h"
-#import <WebCore/FloatingPointEnvironment.h>
-#import <WebCore/SystemVersion.h>
+#import <CyberCore/FloatingPointEnvironment.h>
+#import <CyberCore/SystemVersion.h>
 #import <mach/mach.h>
 #import <mach/task.h>
 #import <pal/spi/ios/MobileGestaltSPI.h>

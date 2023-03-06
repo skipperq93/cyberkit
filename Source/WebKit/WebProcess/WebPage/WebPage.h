@@ -64,42 +64,42 @@
 #include "WebUserContentController.h"
 #include "WebsitePoliciesData.h"
 #include <JavaScriptCore/InspectorFrontendChannel.h>
-#include <WebCore/ActivityState.h>
-#include <WebCore/AppHighlight.h>
-#include <WebCore/DiagnosticLoggingClient.h>
-#include <WebCore/DictationContext.h>
-#include <WebCore/DictionaryPopupInfo.h>
-#include <WebCore/DisabledAdaptations.h>
-#include <WebCore/DragActions.h>
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/HTMLMenuElement.h>
-#include <WebCore/HTMLMenuItemElement.h>
-#include <WebCore/HighlightVisibility.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/IntSizeHash.h>
-#include <WebCore/MediaControlsContextMenuItem.h>
-#include <WebCore/MediaKeySystemRequest.h>
-#include <WebCore/NotificationController.h>
-#include <WebCore/Page.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/PageOverlay.h>
-#include <WebCore/PluginData.h>
-#include <WebCore/PointerCharacteristics.h>
-#include <WebCore/PointerID.h>
-#include <WebCore/RectEdges.h>
-#include <WebCore/SecurityPolicyViolationEvent.h>
-#include <WebCore/ShareData.h>
-#include <WebCore/SimpleRange.h>
-#include <WebCore/SubstituteData.h>
-#include <WebCore/TextManipulationController.h>
-#include <WebCore/TextManipulationItem.h>
-#include <WebCore/UserActivity.h>
-#include <WebCore/UserContentTypes.h>
-#include <WebCore/UserInterfaceLayoutDirection.h>
-#include <WebCore/UserMediaRequestIdentifier.h>
-#include <WebCore/UserScriptTypes.h>
-#include <WebCore/VisibilityState.h>
-#include <WebCore/WebCoreKeyboardUIMode.h>
+#include <CyberCore/ActivityState.h>
+#include <CyberCore/AppHighlight.h>
+#include <CyberCore/DiagnosticLoggingClient.h>
+#include <CyberCore/DictationContext.h>
+#include <CyberCore/DictionaryPopupInfo.h>
+#include <CyberCore/DisabledAdaptations.h>
+#include <CyberCore/DragActions.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/HTMLMenuElement.h>
+#include <CyberCore/HTMLMenuItemElement.h>
+#include <CyberCore/HighlightVisibility.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/IntSizeHash.h>
+#include <CyberCore/MediaControlsContextMenuItem.h>
+#include <CyberCore/MediaKeySystemRequest.h>
+#include <CyberCore/NotificationController.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/PageOverlay.h>
+#include <CyberCore/PluginData.h>
+#include <CyberCore/PointerCharacteristics.h>
+#include <CyberCore/PointerID.h>
+#include <CyberCore/RectEdges.h>
+#include <CyberCore/SecurityPolicyViolationEvent.h>
+#include <CyberCore/ShareData.h>
+#include <CyberCore/SimpleRange.h>
+#include <CyberCore/SubstituteData.h>
+#include <CyberCore/TextManipulationController.h>
+#include <CyberCore/TextManipulationItem.h>
+#include <CyberCore/UserActivity.h>
+#include <CyberCore/UserContentTypes.h>
+#include <CyberCore/UserInterfaceLayoutDirection.h>
+#include <CyberCore/UserMediaRequestIdentifier.h>
+#include <CyberCore/UserScriptTypes.h>
+#include <CyberCore/VisibilityState.h>
+#include <CyberCore/WebCoreKeyboardUIMode.h>
 #include <memory>
 #include <pal/HysteresisActivity.h>
 #include <wtf/HashMap.h>
@@ -113,7 +113,7 @@
 #include <wtf/text/WTFString.h>
 
 #if USE(ATSPI)
-#include <WebCore/AccessibilityRootAtspi.h>
+#include <CyberCore/AccessibilityRootAtspi.h>
 #endif
 
 #if PLATFORM(GTK)
@@ -128,27 +128,27 @@
 #if PLATFORM(IOS_FAMILY)
 #include "DynamicViewportSizeUpdate.h"
 #include "GestureTypes.h"
-#include <WebCore/InspectorOverlay.h>
-#include <WebCore/IntPointHash.h>
-#include <WebCore/WKContentObservation.h>
+#include <CyberCore/InspectorOverlay.h>
+#include <CyberCore/IntPointHash.h>
+#include <CyberCore/WKContentObservation.h>
 #endif
 
 #if ENABLE(META_VIEWPORT)
-#include <WebCore/ViewportConfiguration.h>
+#include <CyberCore/ViewportConfiguration.h>
 #endif
 
 #if ENABLE(APPLICATION_MANIFEST)
-#include <WebCore/ApplicationManifest.h>
+#include <CyberCore/ApplicationManifest.h>
 #endif
 
 #if ENABLE(IOS_TOUCH_EVENTS)
 #include <WebKitAdditions/PlatformTouchEventIOS.h>
 #elif ENABLE(TOUCH_EVENTS)
-#include <WebCore/PlatformTouchEvent.h>
+#include <CyberCore/PlatformTouchEvent.h>
 #endif
 
 #if ENABLE(NETWORK_CONNECTION_INTEGRITY)
-#include <WebCore/LookalikeCharactersSanitizationData.h>
+#include <CyberCore/LookalikeCharactersSanitizationData.h>
 #endif
 
 #if ENABLE(MAC_GESTURE_EVENTS)
@@ -156,7 +156,7 @@
 #endif
 
 #if ENABLE(MEDIA_USAGE)
-#include <WebCore/MediaSessionIdentifier.h>
+#include <CyberCore/MediaSessionIdentifier.h>
 #endif
 
 #if ENABLE(WEBXR) && !USE(OPENXR)
@@ -168,7 +168,7 @@
 #endif
 
 #if PLATFORM(COCOA)
-#include <WebCore/VisibleSelection.h>
+#include <CyberCore/VisibleSelection.h>
 #include <wtf/RetainPtr.h>
 OBJC_CLASS NSArray;
 OBJC_CLASS NSDictionary;

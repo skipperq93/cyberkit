@@ -31,7 +31,7 @@
 #import "TestWKWebView.h"
 #import "TestWebExtensionsDelegate.h"
 #import "WebExtensionUtilities.h"
-#import <WebCore/UserGestureIndicator.h>
+#import <CyberCore/UserGestureIndicator.h>
 #import <CyberKit/WKFoundation.h>
 #import <CyberKit/_WKWebExtensionContextPrivate.h>
 #import <CyberKit/_WKWebExtensionControllerDelegate.h>

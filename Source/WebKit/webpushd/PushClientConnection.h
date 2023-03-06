@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/PushSubscriptionIdentifier.h>
+#include <CyberCore/PushSubscriptionIdentifier.h>
 #include <wtf/Deque.h>
 #include <wtf/Forward.h>
 #include <wtf/Identified.h>

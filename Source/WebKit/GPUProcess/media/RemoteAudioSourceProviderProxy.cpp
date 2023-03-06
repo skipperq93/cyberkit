@@ -29,7 +29,7 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(WEB_AUDIO) && PLATFORM(COCOA)
 
 #include "RemoteAudioSourceProviderManagerMessages.h"
-#include <WebCore/AudioSourceProviderAVFObjC.h>
+#include <CyberCore/AudioSourceProviderAVFObjC.h>
 
 namespace WebKit {
 

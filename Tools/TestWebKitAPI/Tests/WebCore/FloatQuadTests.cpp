@@ -25,8 +25,8 @@
 
 #include "config.h"
 
-#include <WebCore/FloatQuad.h>
-#include <WebCore/GeometryUtilities.h>
+#include <CyberCore/FloatQuad.h>
+#include <CyberCore/GeometryUtilities.h>
 #include <wtf/text/TextStream.h>
 
 namespace TestWebKitAPI {

@@ -31,9 +31,9 @@
 #include "WebExtensionContextParameters.h"
 #include "WebExtensionEventListenerType.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/DOMWrapperWorld.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/DOMWrapperWorld.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 #include <wtf/Forward.h>
 #include <wtf/WeakHashSet.h>
 

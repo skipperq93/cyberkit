@@ -30,7 +30,7 @@
 #include "MessageReceiver.h"
 #include "RemoteCDMFactory.h"
 #include "RemoteCDMInstanceSessionIdentifier.h"
-#include <WebCore/CDMInstanceSession.h>
+#include <CyberCore/CDMInstanceSession.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebCore {

@@ -27,7 +27,7 @@
 
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER)
 
-#include <WebCore/FloatSize.h>
+#include <CyberCore/FloatSize.h>
 #include <wtf/text/WTFString.h>
 
 namespace IPC {

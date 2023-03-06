@@ -32,8 +32,8 @@
 #import "RemoteLayerBackingStore.h"
 #import "RemoteLayerTreeContext.h"
 #import "SwapBuffersDisplayRequirement.h"
-#import <WebCore/IOSurfacePool.h>
-#import <WebCore/ImageBuffer.h>
+#import <CyberCore/IOSurfacePool.h>
+#import <CyberCore/ImageBuffer.h>
 #import <wtf/text/TextStream.h>
 
 const Seconds volatilityTimerInterval = 200_ms;

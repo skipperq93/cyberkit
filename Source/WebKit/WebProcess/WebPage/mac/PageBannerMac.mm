@@ -29,8 +29,8 @@
 #if PLATFORM(MAC)
 
 #import "WebPage.h"
-#import <WebCore/FrameView.h>
-#import <WebCore/GraphicsLayer.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/GraphicsLayer.h>
 
 namespace WebKit {
 using namespace WebCore;

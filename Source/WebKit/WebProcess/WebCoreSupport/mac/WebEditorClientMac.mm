@@ -35,11 +35,11 @@
 #import "WebPage.h"
 #import "WebPageProxyMessages.h"
 #import "WebProcess.h"
-#import <WebCore/Editor.h>
-#import <WebCore/FocusController.h>
-#import <WebCore/Frame.h>
-#import <WebCore/KeyboardEvent.h>
-#import <WebCore/NotImplemented.h>
+#import <CyberCore/Editor.h>
+#import <CyberCore/FocusController.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/KeyboardEvent.h>
+#import <CyberCore/NotImplemented.h>
 #import <wtf/cocoa/NSURLExtras.h>
 
 namespace WebKit {

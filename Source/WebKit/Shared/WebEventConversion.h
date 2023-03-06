@@ -27,15 +27,15 @@
 #define WebEventConversion_h
 
 #include "WebEventModifier.h"
-#include <WebCore/PlatformKeyboardEvent.h>
-#include <WebCore/PlatformMouseEvent.h>
-#include <WebCore/PlatformWheelEvent.h>
+#include <CyberCore/PlatformKeyboardEvent.h>
+#include <CyberCore/PlatformMouseEvent.h>
+#include <CyberCore/PlatformWheelEvent.h>
 
 #if ENABLE(IOS_TOUCH_EVENTS)
 #include <WebKitAdditions/PlatformTouchEventIOS.h>
 #elif ENABLE(TOUCH_EVENTS)
-#include <WebCore/PlatformTouchEvent.h>
-#include <WebCore/PlatformTouchPoint.h>
+#include <CyberCore/PlatformTouchEvent.h>
+#include <CyberCore/PlatformTouchPoint.h>
 #endif
 
 #if ENABLE(MAC_GESTURE_EVENTS)

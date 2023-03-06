@@ -34,7 +34,7 @@
 #import <wtf/text/WTFString.h>
 
 #if ENABLE(NETWORK_CONNECTION_INTEGRITY)
-#import <WebCore/LookalikeCharactersSanitizationData.h>
+#import <CyberCore/LookalikeCharactersSanitizationData.h>
 #endif
 
 OBJC_CLASS WKNetworkConnectionIntegrityNotificationListener;

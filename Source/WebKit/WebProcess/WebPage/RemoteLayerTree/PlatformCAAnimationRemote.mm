@@ -31,10 +31,10 @@
 #import "WKAnimationDelegate.h"
 #import "WebCoreArgumentCoders.h"
 #import <QuartzCore/QuartzCore.h>
-#import <WebCore/GraphicsLayer.h>
-#import <WebCore/PlatformCAAnimationCocoa.h>
-#import <WebCore/PlatformCAFilters.h>
-#import <WebCore/TimingFunction.h>
+#import <CyberCore/GraphicsLayer.h>
+#import <CyberCore/PlatformCAAnimationCocoa.h>
+#import <CyberCore/PlatformCAFilters.h>
+#import <CyberCore/TimingFunction.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/RetainPtr.h>

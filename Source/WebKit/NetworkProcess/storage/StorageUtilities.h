@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/WebCorePersistentCoders.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/WebCorePersistentCoders.h>
 #include <wtf/FileSystem.h>
 #include <wtf/Scope.h>
 #include <wtf/persistence/PersistentCoders.h>

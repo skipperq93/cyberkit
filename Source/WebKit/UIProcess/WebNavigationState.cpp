@@ -28,7 +28,7 @@
 
 #include "APINavigation.h"
 #include "WebPageProxy.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 
 namespace WebKit {
 using namespace WebCore;

@@ -28,10 +28,10 @@
 #if PLATFORM(IOS_FAMILY)
 
 #include "ArgumentCoders.h"
-#include <WebCore/AttributedString.h>
-#include <WebCore/ElementContext.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/TextGranularity.h>
+#include <CyberCore/AttributedString.h>
+#include <CyberCore/ElementContext.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/TextGranularity.h>
 #include <wtf/OptionSet.h>
 #include <wtf/Vector.h>
 

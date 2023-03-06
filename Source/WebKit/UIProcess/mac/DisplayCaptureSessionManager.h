@@ -29,7 +29,7 @@
 
 #include "UserMediaPermissionRequestProxy.h"
 #include "WebPageProxy.h"
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/WeakPtr.h>
 

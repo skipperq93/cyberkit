@@ -44,10 +44,10 @@
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebPageGroupProxy.h"
-#include <WebCore/DatabaseTracker.h>
-#include <WebCore/MemoryRelease.h>
-#include <WebCore/ResourceLoadObserver.h>
-#include <WebCore/ServiceWorkerThreadProxy.h>
+#include <CyberCore/DatabaseTracker.h>
+#include <CyberCore/MemoryRelease.h>
+#include <CyberCore/ResourceLoadObserver.h>
+#include <CyberCore/ServiceWorkerThreadProxy.h>
 
 WKTypeID WKBundleGetTypeID()
 {

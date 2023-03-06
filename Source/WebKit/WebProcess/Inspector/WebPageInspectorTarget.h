@@ -26,7 +26,7 @@
 #pragma once
 
 #include <JavaScriptCore/InspectorTarget.h>
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 #include <wtf/Noncopyable.h>
 
 namespace WebKit {

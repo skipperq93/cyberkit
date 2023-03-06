@@ -21,7 +21,7 @@
 #ifndef SearchPopupMenuMac_h
 #define SearchPopupMenuMac_h
 
-#include <WebCore/SearchPopupMenuCocoa.h>
+#include <CyberCore/SearchPopupMenuCocoa.h>
 
 namespace WebCore {
 class PopupMenuClient;

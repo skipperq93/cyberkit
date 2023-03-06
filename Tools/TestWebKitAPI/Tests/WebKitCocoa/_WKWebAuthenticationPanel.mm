@@ -33,10 +33,10 @@
 #import "TestWKWebView.h"
 #import "WKWebViewConfigurationExtras.h"
 #import <LocalAuthentication/LocalAuthentication.h>
-#import <WebCore/AuthenticatorAttachment.h>
-#import <WebCore/ExceptionCode.h>
-#import <WebCore/PublicKeyCredentialCreationOptions.h>
-#import <WebCore/PublicKeyCredentialRequestOptions.h>
+#import <CyberCore/AuthenticatorAttachment.h>
+#import <CyberCore/ExceptionCode.h>
+#import <CyberCore/PublicKeyCredentialCreationOptions.h>
+#import <CyberCore/PublicKeyCredentialRequestOptions.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKUIDelegatePrivate.h>

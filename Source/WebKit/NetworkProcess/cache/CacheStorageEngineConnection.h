@@ -28,7 +28,7 @@
 #include "ArgumentCoders.h"
 #include "CacheStorageEngine.h"
 #include "Connection.h"
-#include <WebCore/CacheStorageConnection.h>
+#include <CyberCore/CacheStorageConnection.h>
 #include <pal/SessionID.h>
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>

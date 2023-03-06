@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/CookieJar.h>
-#include <WebCore/SameSiteInfo.h>
+#include <CyberCore/CookieJar.h>
+#include <CyberCore/SameSiteInfo.h>
 #include <wtf/HashSet.h>
 
 namespace WebCore {

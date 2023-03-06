@@ -50,10 +50,10 @@
 #include "WebSWOriginStore.h"
 #include "WebSharedWorkerServer.h"
 #include "WebSocketTask.h"
-#include <WebCore/CookieJar.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/RuntimeApplicationChecks.h>
-#include <WebCore/SWServer.h>
+#include <CyberCore/CookieJar.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
+#include <CyberCore/SWServer.h>
 
 #if PLATFORM(COCOA)
 #include "DefaultWebBrowserChecks.h"

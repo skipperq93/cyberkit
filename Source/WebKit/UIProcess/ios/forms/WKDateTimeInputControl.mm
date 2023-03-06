@@ -35,7 +35,7 @@
 #import "WKWebViewPrivateForTesting.h"
 #import "WebPageProxy.h"
 #import <UIKit/UIDatePicker.h>
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SetForScope.h>
 

@@ -86,17 +86,17 @@
 #include "WebsiteDataStore.h"
 #include "WebsiteDataStoreParameters.h"
 #include <JavaScriptCore/JSCInlines.h>
-#include <WebCore/ApplicationCacheStorage.h>
-#include <WebCore/GamepadProvider.h>
-#include <WebCore/MockRealtimeMediaSourceCenter.h>
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/PlatformScreen.h>
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/ProcessWarming.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/RegistrationDatabase.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/RuntimeApplicationChecks.h>
+#include <CyberCore/ApplicationCacheStorage.h>
+#include <CyberCore/GamepadProvider.h>
+#include <CyberCore/MockRealtimeMediaSourceCenter.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/PlatformScreen.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/ProcessWarming.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/RegistrationDatabase.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
 #include <pal/SessionID.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/MainThread.h>
@@ -129,10 +129,10 @@
 
 #if PLATFORM(COCOA)
 #include "DefaultWebBrowserChecks.h"
-#include <WebCore/GameControllerGamepadProvider.h>
-#include <WebCore/HIDGamepadProvider.h>
-#include <WebCore/MultiGamepadProvider.h>
-#include <WebCore/PowerSourceNotifier.h>
+#include <CyberCore/GameControllerGamepadProvider.h>
+#include <CyberCore/HIDGamepadProvider.h>
+#include <CyberCore/MultiGamepadProvider.h>
+#include <CyberCore/PowerSourceNotifier.h>
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 

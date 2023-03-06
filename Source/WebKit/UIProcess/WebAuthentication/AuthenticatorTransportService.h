@@ -28,7 +28,7 @@
 #if ENABLE(WEB_AUTHN)
 
 #include "WebAuthenticationFlags.h"
-#include <WebCore/AuthenticatorTransport.h>
+#include <CyberCore/AuthenticatorTransport.h>
 #include <wtf/UniqueRef.h>
 #include <wtf/WeakPtr.h>
 

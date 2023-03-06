@@ -28,7 +28,7 @@
 #include "APIObject.h"
 #include "FrameInfoData.h"
 #include "WebPageProxy.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 
 namespace WebCore {
 class SecurityOriginData;

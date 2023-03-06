@@ -28,11 +28,11 @@
 #include "DataReference.h"
 #include "MessageReceiver.h"
 #include "MessageSender.h"
-#include <WebCore/SocketStreamError.h>
-#include <WebCore/SocketStreamHandleClient.h>
-#include <WebCore/SocketStreamHandleImpl.h>
-#include <WebCore/Timer.h>
-#include <WebCore/WebSocketIdentifier.h>
+#include <CyberCore/SocketStreamError.h>
+#include <CyberCore/SocketStreamHandleClient.h>
+#include <CyberCore/SocketStreamHandleImpl.h>
+#include <CyberCore/Timer.h>
+#include <CyberCore/WebSocketIdentifier.h>
 #include <pal/SessionID.h>
 
 namespace IPC {

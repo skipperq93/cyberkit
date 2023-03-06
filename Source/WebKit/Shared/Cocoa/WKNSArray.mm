@@ -26,7 +26,7 @@
 #import "config.h"
 #import "WKNSArray.h"
 
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKNSArray {
     API::ObjectStorage<API::Array> _array;

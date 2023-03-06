@@ -28,10 +28,10 @@
 #if ENABLE(ARKIT_INLINE_PREVIEW)
 
 #include "ModelIdentifier.h"
-#include <WebCore/ElementContext.h>
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/HTMLModelElementCamera.h>
-#include <WebCore/ResourceError.h>
+#include <CyberCore/ElementContext.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/HTMLModelElementCamera.h>
+#include <CyberCore/ResourceError.h>
 #include <wtf/MachSendRight.h>
 #include <wtf/RetainPtr.h>
 #include <wtf/URL.h>

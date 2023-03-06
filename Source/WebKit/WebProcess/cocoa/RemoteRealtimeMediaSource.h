@@ -29,7 +29,7 @@
 
 #include "GPUProcessConnection.h"
 #include "RemoteRealtimeMediaSourceProxy.h"
-#include <WebCore/RealtimeMediaSource.h>
+#include <CyberCore/RealtimeMediaSource.h>
 
 namespace WebKit {
 

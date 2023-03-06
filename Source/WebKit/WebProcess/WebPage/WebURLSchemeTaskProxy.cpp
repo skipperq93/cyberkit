@@ -34,9 +34,9 @@
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
 #include "WebURLSchemeHandlerProxy.h"
-#include <WebCore/NetworkLoadMetrics.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceLoader.h>
+#include <CyberCore/NetworkLoadMetrics.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceLoader.h>
 #include <wtf/CompletionHandler.h>
 
 #define WEBURLSCHEMETASKPROXY_RELEASE_LOG_STANDARD_TEMPLATE "[schemeHandler=%" PRIu64 ", webPageID=%" PRIu64 ", frameID=%" PRIu64 ", taskID=%" PRIu64 "] WebURLSchemeTaskProxy::"

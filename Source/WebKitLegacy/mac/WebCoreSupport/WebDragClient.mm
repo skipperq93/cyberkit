@@ -46,19 +46,19 @@
 #import "WebNSPasteboardExtras.h"
 #endif
 
-#import <WebCore/DataTransfer.h>
-#import <WebCore/DragData.h>
-#import <WebCore/Editor.h>
-#import <WebCore/EditorClient.h>
-#import <WebCore/EventHandler.h>
-#import <WebCore/FloatPoint.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/Image.h>
-#import <WebCore/Page.h>
-#import <WebCore/PagePasteboardContext.h>
-#import <WebCore/Pasteboard.h>
-#import <WebCore/PasteboardWriter.h>
+#import <CyberCore/DataTransfer.h>
+#import <CyberCore/DragData.h>
+#import <CyberCore/Editor.h>
+#import <CyberCore/EditorClient.h>
+#import <CyberCore/EventHandler.h>
+#import <CyberCore/FloatPoint.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/Image.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/PagePasteboardContext.h>
+#import <CyberCore/Pasteboard.h>
+#import <CyberCore/PasteboardWriter.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
 using namespace WebCore;

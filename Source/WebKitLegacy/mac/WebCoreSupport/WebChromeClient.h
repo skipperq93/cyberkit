@@ -27,8 +27,8 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/ChromeClient.h>
-#import <WebCore/FocusDirection.h>
+#import <CyberCore/ChromeClient.h>
+#import <CyberCore/FocusDirection.h>
 #import <wtf/Forward.h>
 
 namespace WebCore {

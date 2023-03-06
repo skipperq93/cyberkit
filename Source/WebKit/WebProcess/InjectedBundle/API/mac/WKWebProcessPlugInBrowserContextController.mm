@@ -56,12 +56,12 @@
 #import "_WKRemoteObjectRegistryInternal.h"
 #import "_WKRenderingProgressEventsInternal.h"
 #import "_WKSameDocumentNavigationTypeInternal.h"
-#import <WebCore/Document.h>
-#import <WebCore/DocumentFragment.h>
-#import <WebCore/Frame.h>
-#import <WebCore/HTMLFormElement.h>
-#import <WebCore/HTMLInputElement.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/Document.h>
+#import <CyberCore/DocumentFragment.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/HTMLFormElement.h>
+#import <CyberCore/HTMLInputElement.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/WeakObjCPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
 

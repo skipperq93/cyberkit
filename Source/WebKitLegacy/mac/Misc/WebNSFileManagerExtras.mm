@@ -30,7 +30,7 @@
 
 #import "WebKitNSStringExtras.h"
 #import "WebNSURLExtras.h"
-#import <WebCore/LoaderNSURLExtras.h>
+#import <CyberCore/LoaderNSURLExtras.h>
 #import <sys/stat.h>
 #import <wtf/Assertions.h>
 #import <wtf/FileSystem.h>

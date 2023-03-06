@@ -25,11 +25,11 @@
 
 #import "config.h"
 
-#import <WebCore/DatabaseTracker.h>
-#import <WebCore/OriginLock.h>
-#import <WebCore/SQLiteDatabase.h>
-#import <WebCore/SQLiteStatement.h>
-#import <WebCore/SecurityOriginData.h>
+#import <CyberCore/DatabaseTracker.h>
+#import <CyberCore/OriginLock.h>
+#import <CyberCore/SQLiteDatabase.h>
+#import <CyberCore/SQLiteStatement.h>
+#import <CyberCore/SecurityOriginData.h>
 #import <wtf/FileSystem.h>
 
 using namespace WebCore;

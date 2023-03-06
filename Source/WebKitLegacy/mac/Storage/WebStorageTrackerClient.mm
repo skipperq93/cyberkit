@@ -27,8 +27,8 @@
 
 #import "WebSecurityOriginInternal.h"
 #import "WebStorageManagerPrivate.h"
-#import <WebCore/SecurityOrigin.h>
-#import <WebCore/SecurityOriginData.h>
+#import <CyberCore/SecurityOrigin.h>
+#import <CyberCore/SecurityOriginData.h>
 #import <wtf/MainThread.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>

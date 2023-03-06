@@ -28,14 +28,14 @@
 
 #if PLATFORM(MAC)
 
-#import <WebCore/FloatPoint.h>
-#import <WebCore/IntRect.h>
-#import <WebCore/NSScrollerImpDetails.h>
-#import <WebCore/PlatformMouseEvent.h>
-#import <WebCore/PlatformWheelEvent.h>
-#import <WebCore/ScrollTypes.h>
-#import <WebCore/ScrollableArea.h>
-#import <WebCore/ScrollingTreeScrollingNode.h>
+#import <CyberCore/FloatPoint.h>
+#import <CyberCore/IntRect.h>
+#import <CyberCore/NSScrollerImpDetails.h>
+#import <CyberCore/PlatformMouseEvent.h>
+#import <CyberCore/PlatformWheelEvent.h>
+#import <CyberCore/ScrollTypes.h>
+#import <CyberCore/ScrollableArea.h>
+#import <CyberCore/ScrollingTreeScrollingNode.h>
 #import <pal/spi/mac/NSScrollerImpSPI.h>
 
 @interface WebScrollerImpPairDelegateMac : NSObject <NSScrollerImpPairDelegate> {

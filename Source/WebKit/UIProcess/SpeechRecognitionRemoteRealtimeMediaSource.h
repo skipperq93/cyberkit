@@ -27,12 +27,12 @@
 
 #if ENABLE(MEDIA_STREAM)
 
-#include <WebCore/RealtimeMediaSource.h>
-#include <WebCore/RealtimeMediaSourceIdentifier.h>
+#include <CyberCore/RealtimeMediaSource.h>
+#include <CyberCore/RealtimeMediaSourceIdentifier.h>
 
 #if PLATFORM(COCOA)
 #include "SharedCARingBuffer.h"
-#include <WebCore/CAAudioStreamDescription.h>
+#include <CyberCore/CAAudioStreamDescription.h>
 #endif
 
 namespace WebCore {

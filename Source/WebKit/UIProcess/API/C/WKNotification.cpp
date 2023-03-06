@@ -31,7 +31,7 @@
 #include "WKData.h"
 #include "WKString.h"
 #include "WebNotification.h"
-#include <WebCore/NotificationDirection.h>
+#include <CyberCore/NotificationDirection.h>
 
 using namespace WebKit;
 

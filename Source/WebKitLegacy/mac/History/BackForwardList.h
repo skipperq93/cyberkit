@@ -27,7 +27,7 @@
 
 #pragma once
 
-#include <WebCore/BackForwardClient.h>
+#include <CyberCore/BackForwardClient.h>
 #include <wtf/HashSet.h>
 #include <wtf/Vector.h>
 

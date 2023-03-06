@@ -26,9 +26,9 @@
 #include "config.h"
 #include "PrivateClickMeasurementNetworkLoader.h"
 
-#include <WebCore/NotImplemented.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceResponse.h>
 
 namespace WebKit::PCM {
 

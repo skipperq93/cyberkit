@@ -33,11 +33,11 @@
 #include "ProcessThrottler.h"
 #include "WebBackForwardListItem.h"
 #include "WebContentMode.h"
-#include <WebCore/PrivateClickMeasurement.h>
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/SubstituteData.h>
+#include <CyberCore/PrivateClickMeasurement.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/SubstituteData.h>
 #include <wtf/Ref.h>
 
 namespace WebCore {

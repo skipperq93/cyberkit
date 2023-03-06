@@ -31,8 +31,8 @@
 #include "RemoteDisplayListRecorderProxy.h"
 #include "RemoteSerializedImageBufferIdentifier.h"
 #include "RenderingBackendIdentifier.h"
-#include <WebCore/ImageBuffer.h>
-#include <WebCore/ImageBufferBackend.h>
+#include <CyberCore/ImageBuffer.h>
+#include <CyberCore/ImageBufferBackend.h>
 #include <wtf/Condition.h>
 #include <wtf/Lock.h>
 

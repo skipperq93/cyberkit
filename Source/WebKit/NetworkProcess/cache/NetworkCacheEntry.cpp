@@ -30,8 +30,8 @@
 #include "NetworkCacheCoders.h"
 #include "NetworkProcess.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/text/StringBuilder.h>
 
 namespace WebKit {

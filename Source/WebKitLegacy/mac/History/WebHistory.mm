@@ -33,11 +33,11 @@
 #import "WebKitLogging.h"
 #import "WebNSURLExtras.h"
 #import "WebVisitedLinkStore.h"
-#import <WebCore/HistoryItem.h>
+#import <CyberCore/HistoryItem.h>
 #import <pal/spi/cocoa/NSCalendarDateSPI.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WebCoreThreadMessage.h>
+#import <CyberCore/WebCoreThreadMessage.h>
 #endif
 
 using namespace WebCore;

@@ -30,8 +30,8 @@
 
 #import "CGDisplayList.h"
 #import "Logging.h"
-#import <WebCore/GraphicsContextCG.h>
-#import <WebCore/PixelBuffer.h>
+#import <CyberCore/GraphicsContextCG.h>
+#import <CyberCore/PixelBuffer.h>
 #import <WebKitAdditions/CGDisplayListImageBufferAdditions.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/IsoMallocInlines.h>

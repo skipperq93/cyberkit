@@ -26,9 +26,9 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/FloatPoint.h>
-#include <WebCore/PageOverlay.h>
-#include <WebCore/SimpleRange.h>
+#include <CyberCore/FloatPoint.h>
+#include <CyberCore/PageOverlay.h>
+#include <CyberCore/SimpleRange.h>
 #include <wtf/RetainPtr.h>
 
 OBJC_CLASS DDActionContext;

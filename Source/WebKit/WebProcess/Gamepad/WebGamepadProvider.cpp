@@ -33,7 +33,7 @@
 #include "WebGamepad.h"
 #include "WebProcess.h"
 #include "WebProcessPoolMessages.h"
-#include <WebCore/GamepadProviderClient.h>
+#include <CyberCore/GamepadProviderClient.h>
 #include <wtf/NeverDestroyed.h>
 
 namespace WebKit {

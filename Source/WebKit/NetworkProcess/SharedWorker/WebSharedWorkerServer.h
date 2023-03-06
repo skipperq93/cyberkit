@@ -25,13 +25,13 @@
 
 #pragma once
 
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/ScriptExecutionContextIdentifier.h>
-#include <WebCore/SharedWorkerIdentifier.h>
-#include <WebCore/SharedWorkerKey.h>
-#include <WebCore/SharedWorkerObjectIdentifier.h>
-#include <WebCore/TransferredMessagePort.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/SharedWorkerIdentifier.h>
+#include <CyberCore/SharedWorkerKey.h>
+#include <CyberCore/SharedWorkerObjectIdentifier.h>
+#include <CyberCore/TransferredMessagePort.h>
 #include <wtf/WeakPtr.h>
 
 namespace PAL {

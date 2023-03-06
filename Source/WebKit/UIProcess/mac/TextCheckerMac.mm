@@ -29,7 +29,7 @@
 #if PLATFORM(MAC)
 
 #import "TextCheckerState.h"
-#import <WebCore/NotImplemented.h>
+#import <CyberCore/NotImplemented.h>
 #import <pal/spi/cocoa/FoundationSPI.h>
 #import <pal/spi/mac/NSSpellCheckerSPI.h>
 #import <wtf/CheckedArithmetic.h>

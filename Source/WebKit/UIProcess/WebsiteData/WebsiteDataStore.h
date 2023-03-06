@@ -33,11 +33,11 @@
 #include "WebResourceLoadStatisticsStore.h"
 #include "WebsiteDataStoreClient.h"
 #include "WebsiteDataStoreConfiguration.h"
-#include <WebCore/Cookie.h>
-#include <WebCore/DeviceOrientationOrMotionPermissionState.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/SecurityOriginHash.h>
+#include <CyberCore/Cookie.h>
+#include <CyberCore/DeviceOrientationOrMotionPermissionState.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOriginHash.h>
 #include <pal/SessionID.h>
 #include <wtf/Function.h>
 #include <wtf/HashSet.h>
@@ -58,13 +58,13 @@
 #endif
 
 #if USE(CURL)
-#include <WebCore/CurlProxySettings.h>
+#include <CyberCore/CurlProxySettings.h>
 #endif
 
 #if USE(SOUP)
 #include "SoupCookiePersistentStorageType.h"
-#include <WebCore/HTTPCookieAcceptPolicy.h>
-#include <WebCore/SoupNetworkProxySettings.h>
+#include <CyberCore/HTTPCookieAcceptPolicy.h>
+#include <CyberCore/SoupNetworkProxySettings.h>
 #endif
 
 namespace API {

@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import <JavaScriptCore/InitializeThreading.h>
-#import <WebCore/StringUtilities.h>
+#import <CyberCore/StringUtilities.h>
 #import <wtf/text/WTFString.h>
 
 using namespace WebCore;

@@ -37,7 +37,7 @@
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
-#include <WebCore/AuthenticationChallenge.h>
+#include <CyberCore/AuthenticationChallenge.h>
 
 namespace WebKit {
 using namespace WebCore;

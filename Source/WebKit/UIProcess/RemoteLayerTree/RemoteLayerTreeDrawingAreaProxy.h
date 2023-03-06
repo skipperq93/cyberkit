@@ -28,10 +28,10 @@
 #include "DrawingAreaProxy.h"
 #include "RemoteLayerTreeHost.h"
 #include "TransactionID.h"
-#include <WebCore/AnimationFrameRate.h>
-#include <WebCore/FloatPoint.h>
-#include <WebCore/IntPoint.h>
-#include <WebCore/IntSize.h>
+#include <CyberCore/AnimationFrameRate.h>
+#include <CyberCore/FloatPoint.h>
+#include <CyberCore/IntPoint.h>
+#include <CyberCore/IntSize.h>
 
 namespace WebKit {
 

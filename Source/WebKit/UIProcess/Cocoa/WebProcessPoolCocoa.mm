@@ -52,19 +52,19 @@
 #import "WebProcessMessages.h"
 #import "WindowServerConnection.h"
 #import "_WKSystemPreferencesInternal.h"
-#import <WebCore/AGXCompilerService.h>
-#import <WebCore/Color.h>
-#import <WebCore/FontCacheCoreText.h>
-#import <WebCore/LocalizedDeviceModel.h>
-#import <WebCore/LowPowerModeNotifier.h>
-#import <WebCore/NetworkStorageSession.h>
-#import <WebCore/NotImplemented.h>
-#import <WebCore/PictureInPictureSupport.h>
-#import <WebCore/PlatformPasteboard.h>
-#import <WebCore/PowerSourceNotifier.h>
-#import <WebCore/RuntimeApplicationChecks.h>
-#import <WebCore/SharedBuffer.h>
-#import <WebCore/UTIUtilities.h>
+#import <CyberCore/AGXCompilerService.h>
+#import <CyberCore/Color.h>
+#import <CyberCore/FontCacheCoreText.h>
+#import <CyberCore/LocalizedDeviceModel.h>
+#import <CyberCore/LowPowerModeNotifier.h>
+#import <CyberCore/NetworkStorageSession.h>
+#import <CyberCore/NotImplemented.h>
+#import <CyberCore/PictureInPictureSupport.h>
+#import <CyberCore/PlatformPasteboard.h>
+#import <CyberCore/PowerSourceNotifier.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
+#import <CyberCore/SharedBuffer.h>
+#import <CyberCore/UTIUtilities.h>
 #import <objc/runtime.h>
 #import <pal/Logging.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
@@ -109,7 +109,7 @@
 #endif
 
 #if PLATFORM(COCOA)
-#import <WebCore/SystemBattery.h>
+#import <CyberCore/SystemBattery.h>
 #endif
 
 #if ENABLE(GPU_PROCESS)
@@ -125,8 +125,8 @@
 #endif
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
-#include <WebCore/CaptionUserPreferencesMediaAF.h>
-#include <WebCore/MediaAccessibilitySoftLink.h>
+#include <CyberCore/CaptionUserPreferencesMediaAF.h>
+#include <CyberCore/MediaAccessibilitySoftLink.h>
 #endif
 
 #if ENABLE(WEBCONTENT_CRASH_TESTING)

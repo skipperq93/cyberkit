@@ -28,7 +28,7 @@
 #if PLATFORM(IOS_FAMILY) && ENABLE(DEVICE_ORIENTATION)
 
 #include "MessageReceiver.h"
-#include <WebCore/MotionManagerClient.h>
+#include <CyberCore/MotionManagerClient.h>
 
 namespace WebKit {
 

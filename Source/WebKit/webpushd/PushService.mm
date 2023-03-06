@@ -31,8 +31,8 @@
 #import "Logging.h"
 #import "WebPushDaemonConstants.h"
 #import <Foundation/Foundation.h>
-#import <WebCore/PushMessageCrypto.h>
-#import <WebCore/SecurityOrigin.h>
+#import <CyberCore/PushMessageCrypto.h>
+#import <CyberCore/SecurityOrigin.h>
 #import <wtf/OSObjectPtr.h>
 #import <wtf/WorkQueue.h>
 #import <wtf/spi/darwin/XPCSPI.h>

@@ -42,13 +42,13 @@
 #import "WebPreferenceKeysPrivate.h"
 #import "WebPreferencesDefinitions.h"
 #import <JavaScriptCore/InitializeThreading.h>
-#import <WebCore/ApplicationCacheStorage.h>
-#import <WebCore/AudioSession.h>
-#import <WebCore/MediaPlayerEnums.h>
-#import <WebCore/NetworkStorageSession.h>
-#import <WebCore/RuntimeApplicationChecks.h>
-#import <WebCore/Settings.h>
-#import <WebCore/WebCoreJITOperations.h>
+#import <CyberCore/ApplicationCacheStorage.h>
+#import <CyberCore/AudioSession.h>
+#import <CyberCore/MediaPlayerEnums.h>
+#import <CyberCore/NetworkStorageSession.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
+#import <CyberCore/Settings.h>
+#import <CyberCore/WebCoreJITOperations.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <pal/text/TextEncodingRegistry.h>
 #import <wtf/BlockPtr.h>
@@ -62,8 +62,8 @@
 using namespace WebCore;
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/GraphicsContext.h>
-#import <WebCore/WebCoreThreadMessage.h>
+#import <CyberCore/GraphicsContext.h>
+#import <CyberCore/WebCoreThreadMessage.h>
 #endif
 
 NSString *WebPreferencesChangedNotification = @"WebPreferencesChangedNotification";

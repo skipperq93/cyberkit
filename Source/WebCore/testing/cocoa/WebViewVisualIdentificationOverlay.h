@@ -29,7 +29,7 @@
 #import <UIKit/UIKit.h>
 #endif
 
-#import <WebCore/PlatformView.h>
+#import <CyberCore/PlatformView.h>
 
 WEBCORE_EXPORT
 @interface WebViewVisualIdentificationOverlay : NSObject

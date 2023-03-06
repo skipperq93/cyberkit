@@ -29,7 +29,7 @@
 #import "WKSecurityOriginInternal.h"
 #import "WKWebViewInternal.h"
 #import "_WKFrameHandleInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKFrameInfo
 

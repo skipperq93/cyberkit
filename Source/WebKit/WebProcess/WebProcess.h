@@ -40,16 +40,16 @@
 #include "WebProcessCreationParameters.h"
 #include "WebSQLiteDatabaseTracker.h"
 #include "WebSocketChannelManager.h"
-#include <WebCore/ActivityState.h>
-#include <WebCore/BackForwardItemIdentifier.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/PluginData.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/RenderingMode.h>
-#include <WebCore/ServiceWorkerTypes.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/ActivityState.h>
+#include <CyberCore/BackForwardItemIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/PluginData.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/RenderingMode.h>
+#include <CyberCore/ServiceWorkerTypes.h>
+#include <CyberCore/Timer.h>
 #include <pal/HysteresisActivity.h>
 #include <pal/SessionID.h>
 #include <wtf/Forward.h>
@@ -65,17 +65,17 @@
 #endif
 
 #if PLATFORM(COCOA)
-#include <WebCore/ScreenProperties.h>
+#include <CyberCore/ScreenProperties.h>
 #include <dispatch/dispatch.h>
 #include <wtf/MachSendRight.h>
 #endif
 
 #if PLATFORM(WAYLAND)
-#include <WebCore/PlatformDisplayLibWPE.h>
+#include <CyberCore/PlatformDisplayLibWPE.h>
 #endif
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
-#include <WebCore/CaptionUserPreferences.h>
+#include <CyberCore/CaptionUserPreferences.h>
 #endif
 
 namespace API {

@@ -26,7 +26,7 @@
 #pragma once
 
 #include "MessageReceiver.h"
-#include <WebCore/ScreenOrientationManager.h>
+#include <CyberCore/ScreenOrientationManager.h>
 #include <wtf/WeakHashSet.h>
 
 namespace WebKit {

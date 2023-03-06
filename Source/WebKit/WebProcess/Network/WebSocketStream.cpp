@@ -31,9 +31,9 @@
 #include "NetworkSocketStreamMessages.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <WebCore/CookieRequestHeaderFieldProxy.h>
-#include <WebCore/SocketStreamError.h>
-#include <WebCore/SocketStreamHandleClient.h>
+#include <CyberCore/CookieRequestHeaderFieldProxy.h>
+#include <CyberCore/SocketStreamError.h>
+#include <CyberCore/SocketStreamHandleClient.h>
 #include <wtf/Lock.h>
 #include <wtf/NeverDestroyed.h>
 

@@ -27,8 +27,8 @@
 
 #include "MessageReceiver.h"
 #include "WebProcessSupplement.h"
-#include <WebCore/NotificationClient.h>
-#include <WebCore/ScriptExecutionContextIdentifier.h>
+#include <CyberCore/NotificationClient.h>
+#include <CyberCore/ScriptExecutionContextIdentifier.h>
 #include <optional>
 #include <wtf/CompletionHandler.h>
 #include <wtf/HashMap.h>

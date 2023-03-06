@@ -22,7 +22,7 @@
 
 #if ENABLE(MEDIA_STREAM)
 
-#include <WebCore/UserMediaClient.h>
+#include <CyberCore/UserMediaClient.h>
 
 namespace WebKit {
 

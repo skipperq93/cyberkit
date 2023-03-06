@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/SQLiteDatabase.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/SQLiteDatabase.h>
+#include <CyberCore/Timer.h>
 #include <wtf/Condition.h>
 #include <wtf/HashMap.h>
 #include <wtf/Lock.h>

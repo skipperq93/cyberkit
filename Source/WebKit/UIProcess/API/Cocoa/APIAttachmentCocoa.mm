@@ -28,8 +28,8 @@
 
 #import "PageClient.h"
 #import "WebPageProxy.h"
-#import <WebCore/MIMETypeRegistry.h>
-#import <WebCore/SharedBuffer.h>
+#import <CyberCore/MIMETypeRegistry.h>
+#import <CyberCore/SharedBuffer.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import <MobileCoreServices/MobileCoreServices.h>

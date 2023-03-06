@@ -29,7 +29,7 @@
 
 #include "CtapDriver.h"
 #include "HidConnection.h"
-#include <WebCore/FidoHidMessage.h>
+#include <CyberCore/FidoHidMessage.h>
 #include <wtf/UniqueRef.h>
 
 namespace WebKit {

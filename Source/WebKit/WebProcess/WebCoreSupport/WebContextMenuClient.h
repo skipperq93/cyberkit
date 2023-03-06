@@ -28,7 +28,7 @@
 
 #if ENABLE(CONTEXT_MENUS)
 
-#include <WebCore/ContextMenuClient.h>
+#include <CyberCore/ContextMenuClient.h>
 
 namespace WebKit {
 

@@ -28,12 +28,12 @@
 #if ENABLE(GPU_PROCESS)
 
 #include "QualifiedRenderingResourceIdentifier.h"
-#include <WebCore/DecomposedGlyphs.h>
-#include <WebCore/Font.h>
-#include <WebCore/ImageBuffer.h>
-#include <WebCore/NativeImage.h>
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/SourceImage.h>
+#include <CyberCore/DecomposedGlyphs.h>
+#include <CyberCore/Font.h>
+#include <CyberCore/ImageBuffer.h>
+#include <CyberCore/NativeImage.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/SourceImage.h>
 #include <wtf/HashMap.h>
 
 namespace WebKit {

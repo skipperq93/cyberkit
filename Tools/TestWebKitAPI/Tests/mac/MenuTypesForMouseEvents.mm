@@ -27,7 +27,7 @@
 
 #import "PlatformUtilities.h"
 #import <Carbon/Carbon.h> // For GetCurrentEventTime
-#import <WebCore/PlatformEventFactoryMac.h>
+#import <CyberCore/PlatformEventFactoryMac.h>
 #import <pal/spi/mac/NSMenuSPI.h>
 #import <wtf/RetainPtr.h>
 

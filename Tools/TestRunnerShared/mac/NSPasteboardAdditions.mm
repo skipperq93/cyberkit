@@ -29,7 +29,7 @@
 #if PLATFORM(MAC)
 
 #import <CoreServices/CoreServices.h>
-#import <WebCore/LegacyNSPasteboardTypes.h>
+#import <CyberCore/LegacyNSPasteboardTypes.h>
 #import <wtf/RetainPtr.h>
 
 @implementation NSPasteboard (TestRunnerAdditions)

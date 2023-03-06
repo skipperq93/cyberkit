@@ -28,8 +28,8 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(WEB_AUDIO) && PLATFORM(COCOA)
 
 #include "GPUProcessConnection.h"
-#include <WebCore/MediaPlayerIdentifier.h>
-#include <WebCore/WebAudioSourceProviderCocoa.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
+#include <CyberCore/WebAudioSourceProviderCocoa.h>
 #include <wtf/LoggerHelper.h>
 
 namespace WebKit {

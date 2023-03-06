@@ -28,8 +28,8 @@
 #include "APIObject.h"
 #include "Connection.h"
 #include "MessageReceiver.h"
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/InspectorClient.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/InspectorClient.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/text/WTFString.h>
 

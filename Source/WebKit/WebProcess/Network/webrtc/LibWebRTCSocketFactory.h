@@ -30,8 +30,8 @@
 #include "LibWebRTCResolver.h"
 #include "LibWebRTCSocket.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/LibWebRTCMacros.h>
-#include <WebCore/LibWebRTCSocketIdentifier.h>
+#include <CyberCore/LibWebRTCMacros.h>
+#include <CyberCore/LibWebRTCSocketIdentifier.h>
 #include <wtf/Deque.h>
 #include <wtf/Function.h>
 #include <wtf/HashMap.h>

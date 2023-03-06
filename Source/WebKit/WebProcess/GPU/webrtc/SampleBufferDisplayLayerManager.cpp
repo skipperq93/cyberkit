@@ -27,7 +27,7 @@
 #include "SampleBufferDisplayLayerManager.h"
 
 #include "Decoder.h"
-#include <WebCore/IntSize.h>
+#include <CyberCore/IntSize.h>
 
 #if PLATFORM(COCOA) && ENABLE(GPU_PROCESS) && ENABLE(MEDIA_STREAM)
 

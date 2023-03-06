@@ -30,10 +30,10 @@
 
 #import "ScrollerPairMac.h"
 #import <QuartzCore/CALayer.h>
-#import <WebCore/FloatPoint.h>
-#import <WebCore/IntRect.h>
-#import <WebCore/NSScrollerImpDetails.h>
-#import <WebCore/PlatformWheelEvent.h>
+#import <CyberCore/FloatPoint.h>
+#import <CyberCore/IntRect.h>
+#import <CyberCore/NSScrollerImpDetails.h>
+#import <CyberCore/PlatformWheelEvent.h>
 #import <pal/spi/mac/NSScrollerImpSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 

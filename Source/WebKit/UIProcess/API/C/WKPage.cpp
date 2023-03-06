@@ -83,14 +83,14 @@
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
 #include "WebProtectionSpace.h"
-#include <WebCore/ContentRuleListResults.h>
-#include <WebCore/MockRealtimeMediaSourceCenter.h>
-#include <WebCore/Page.h>
-#include <WebCore/Permissions.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/SerializedCryptoKeyWrap.h>
-#include <WebCore/WindowFeatures.h>
+#include <CyberCore/ContentRuleListResults.h>
+#include <CyberCore/MockRealtimeMediaSourceCenter.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/Permissions.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/SerializedCryptoKeyWrap.h>
+#include <CyberCore/WindowFeatures.h>
 
 #ifdef __BLOCKS__
 #include <Block.h>

@@ -29,8 +29,8 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import <WebCore/SQLiteDatabase.h>
-#import <WebCore/SQLiteStatement.h>
+#import <CyberCore/SQLiteDatabase.h>
+#import <CyberCore/SQLiteStatement.h>
 #import <CyberKit/WKFoundation.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKProcessPoolPrivate.h>

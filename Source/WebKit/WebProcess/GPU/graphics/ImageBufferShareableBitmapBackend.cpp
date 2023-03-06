@@ -27,13 +27,13 @@
 #include "ImageBufferShareableBitmapBackend.h"
 
 #include "ShareableBitmap.h"
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/PixelBuffer.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/PixelBuffer.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StdLibExtras.h>
 
 #if PLATFORM(COCOA)
-#include <WebCore/GraphicsContextCG.h>
+#include <CyberCore/GraphicsContextCG.h>
 #endif
 
 namespace WebKit {

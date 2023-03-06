@@ -30,7 +30,7 @@
 #include "GPUProcessConnection.h"
 #include "MessageReceiver.h"
 #include "RemoteAudioSessionConfiguration.h"
-#include <WebCore/AudioSession.h>
+#include <CyberCore/AudioSession.h>
 
 namespace IPC {
 class Connection;

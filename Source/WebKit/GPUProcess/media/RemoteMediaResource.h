@@ -28,7 +28,7 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
 #include "RemoteMediaResourceIdentifier.h"
-#include <WebCore/PlatformMediaResourceLoader.h>
+#include <CyberCore/PlatformMediaResourceLoader.h>
 #include <wtf/Ref.h>
 #include <wtf/WeakPtr.h>
 

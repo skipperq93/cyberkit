@@ -28,7 +28,7 @@
 
 #if HAVE(SEC_KEY_PROXY)
 
-#import <WebCore/Credential.h>
+#import <CyberCore/Credential.h>
 #import <pal/spi/cocoa/SecKeyProxySPI.h>
 
 namespace WebKit {

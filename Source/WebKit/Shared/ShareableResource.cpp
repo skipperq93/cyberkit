@@ -29,7 +29,7 @@
 #if ENABLE(SHAREABLE_RESOURCE)
 
 #include "ArgumentCoders.h"
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/CheckedArithmetic.h>
 
 namespace WebKit {

@@ -29,10 +29,10 @@
 #include "Logging.h"
 #include "PrivateClickMeasurementDebugInfo.h"
 #include "PrivateClickMeasurementManager.h"
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/SQLiteStatement.h>
-#include <WebCore/SQLiteStatementAutoResetScope.h>
-#include <WebCore/SQLiteTransaction.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/SQLiteStatement.h>
+#include <CyberCore/SQLiteStatementAutoResetScope.h>
+#include <CyberCore/SQLiteTransaction.h>
 
 namespace WebKit::PCM {
 

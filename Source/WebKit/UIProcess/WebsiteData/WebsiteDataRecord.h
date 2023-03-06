@@ -26,9 +26,9 @@
 #pragma once
 
 #include "WebsiteDataType.h"
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/SecurityOriginHash.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOriginHash.h>
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 #include <wtf/OptionSet.h>

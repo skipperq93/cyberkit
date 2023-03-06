@@ -31,9 +31,9 @@
 
 #include "ScrollingAccelerationCurve.h"
 #include "WebWheelEvent.h"
-#include <WebCore/FloatSize.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/RectEdges.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/RectEdges.h>
 #include <memory>
 #include <wtf/Deque.h>
 #include <wtf/MonotonicTime.h>

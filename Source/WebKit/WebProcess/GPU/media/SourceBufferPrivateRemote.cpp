@@ -35,8 +35,8 @@
 #include "RemoteSourceBufferProxyMessages.h"
 #include "SharedBufferReference.h"
 #include "SourceBufferPrivateRemoteMessages.h"
-#include <WebCore/PlatformTimeRanges.h>
-#include <WebCore/SourceBufferPrivateClient.h>
+#include <CyberCore/PlatformTimeRanges.h>
+#include <CyberCore/SourceBufferPrivateClient.h>
 #include <wtf/Ref.h>
 
 namespace WebCore {

@@ -30,8 +30,8 @@
 #include "MessageReceiver.h"
 #include "RemoteMediaSourceIdentifier.h"
 #include "RemoteSourceBufferProxy.h"
-#include <WebCore/MediaSourcePrivate.h>
-#include <WebCore/MediaSourcePrivateClient.h>
+#include <CyberCore/MediaSourcePrivate.h>
+#include <CyberCore/MediaSourcePrivateClient.h>
 #include <wtf/MediaTime.h>
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>

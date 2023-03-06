@@ -26,7 +26,7 @@
 #ifndef WebDiagnosticLoggingClient_h
 #define WebDiagnosticLoggingClient_h
 
-#include <WebCore/DiagnosticLoggingClient.h>
+#include <CyberCore/DiagnosticLoggingClient.h>
 
 namespace WebKit {
 

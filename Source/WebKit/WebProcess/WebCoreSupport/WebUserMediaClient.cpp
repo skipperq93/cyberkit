@@ -24,8 +24,8 @@
 
 #include "UserMediaPermissionRequestManager.h"
 #include "WebPage.h"
-#include <WebCore/UserMediaController.h>
-#include <WebCore/UserMediaRequest.h>
+#include <CyberCore/UserMediaController.h>
+#include <CyberCore/UserMediaRequest.h>
 
 namespace WebKit {
 using namespace WebCore;

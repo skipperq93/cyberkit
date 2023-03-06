@@ -30,7 +30,7 @@
 #include "GPUProcessConnection.h"
 #include "MessageReceiver.h"
 #include "RemoteRemoteCommandListenerIdentifier.h"
-#include <WebCore/RemoteCommandListener.h>
+#include <CyberCore/RemoteCommandListener.h>
 
 namespace IPC {
 class Connection;

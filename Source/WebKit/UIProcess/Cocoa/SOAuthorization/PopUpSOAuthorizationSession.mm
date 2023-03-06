@@ -35,7 +35,7 @@
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import "WKWebViewInternal.h"
 #import "WebPageProxy.h"
-#import <WebCore/ResourceResponse.h>
+#import <CyberCore/ResourceResponse.h>
 #import <wtf/BlockPtr.h>
 
 @interface WKSOSecretDelegate : NSObject <WKNavigationDelegate, WKUIDelegate> {

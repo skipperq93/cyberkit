@@ -27,7 +27,7 @@
 #import "WKWebProcessPlugInHitTestResultInternal.h"
 
 #import "WKWebProcessPlugInNodeHandleInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKWebProcessPlugInHitTestResult {
     API::ObjectStorage<WebKit::InjectedBundleHitTestResult> _hitTestResult;

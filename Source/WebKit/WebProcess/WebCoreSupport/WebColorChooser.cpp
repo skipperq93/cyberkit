@@ -32,7 +32,7 @@
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/ColorChooserClient.h>
+#include <CyberCore/ColorChooserClient.h>
 
 namespace WebKit {
 using namespace WebCore;

@@ -35,8 +35,8 @@
 #include "NetworkSession.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebErrors.h"
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Seconds.h>
 

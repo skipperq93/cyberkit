@@ -30,7 +30,7 @@
 
 #include "PlatformXRSystemProxy.h"
 #include "XRDeviceInfo.h"
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOriginData.h>
 
 using namespace PlatformXR;
 

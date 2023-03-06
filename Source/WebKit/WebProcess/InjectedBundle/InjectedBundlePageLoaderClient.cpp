@@ -38,7 +38,7 @@
 #include "WKSharedAPICast.h"
 #include "WebFrame.h"
 #include "WebPage.h"
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {

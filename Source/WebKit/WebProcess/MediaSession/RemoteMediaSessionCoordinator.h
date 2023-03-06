@@ -28,7 +28,7 @@
 #if ENABLE(MEDIA_SESSION_COORDINATOR)
 
 #include "MessageReceiver.h"
-#include <WebCore/MediaSessionCoordinatorPrivate.h>
+#include <CyberCore/MediaSessionCoordinatorPrivate.h>
 #include <wtf/RefPtr.h>
 
 namespace IPC {

@@ -34,13 +34,13 @@
 #import "WebInspector.h"
 #import "WebNodeHighlighter.h"
 #import "WebViewInternal.h"
-#import <WebCore/CertificateInfo.h>
-#import <WebCore/FloatRect.h>
-#import <WebCore/InspectorController.h>
-#import <WebCore/NotImplemented.h>
-#import <WebCore/Page.h>
-#import <WebCore/Settings.h>
-#import <WebCore/WebCoreThread.h>
+#import <CyberCore/CertificateInfo.h>
+#import <CyberCore/FloatRect.h>
+#import <CyberCore/InspectorController.h>
+#import <CyberCore/NotImplemented.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/Settings.h>
+#import <CyberCore/WebCoreThread.h>
 
 using namespace WebCore;
 

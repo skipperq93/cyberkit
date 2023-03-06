@@ -30,9 +30,9 @@
 
 #include "Logging.h"
 #include "MediaTrackReader.h"
-#include <WebCore/CMUtilities.h>
-#include <WebCore/MediaSample.h>
-#include <WebCore/SampleMap.h>
+#include <CyberCore/CMUtilities.h>
+#include <CyberCore/MediaSample.h>
+#include <CyberCore/SampleMap.h>
 #include <pal/avfoundation/MediaTimeAVFoundation.h>
 #include <variant>
 #include <wtf/CompletionHandler.h>

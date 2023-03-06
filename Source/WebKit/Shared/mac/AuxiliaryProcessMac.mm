@@ -34,8 +34,8 @@
 #import "SandboxUtilities.h"
 #import "WKFoundation.h"
 #import "XPCServiceEntryPoint.h"
-#import <WebCore/FileHandle.h>
-#import <WebCore/SystemVersion.h>
+#import <CyberCore/FileHandle.h>
+#import <CyberCore/SystemVersion.h>
 #import <mach-o/dyld.h>
 #import <mach/mach.h>
 #import <mach/task.h>

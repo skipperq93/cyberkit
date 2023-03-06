@@ -27,7 +27,7 @@
 #define WebProtectionSpace_h
 
 #include "APIObject.h"
-#include <WebCore/ProtectionSpace.h>
+#include <CyberCore/ProtectionSpace.h>
 
 namespace WebKit {
 

@@ -40,21 +40,21 @@
 #include "WebPage.h"
 #include "WebProcess.h"
 #include "WebURLSchemeHandlerProxy.h"
-#include <WebCore/ApplicationCacheHost.h>
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/DiagnosticLoggingClient.h>
-#include <WebCore/DiagnosticLoggingKeys.h>
-#include <WebCore/DocumentLoader.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/FrameLoaderClient.h>
-#include <WebCore/InspectorInstrumentationWebKit.h>
-#include <WebCore/NetworkLoadMetrics.h>
-#include <WebCore/Page.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceLoader.h>
-#include <WebCore/SubresourceLoader.h>
-#include <WebCore/SubstituteData.h>
+#include <CyberCore/ApplicationCacheHost.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/DiagnosticLoggingClient.h>
+#include <CyberCore/DiagnosticLoggingKeys.h>
+#include <CyberCore/DocumentLoader.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/FrameLoaderClient.h>
+#include <CyberCore/InspectorInstrumentationWebKit.h>
+#include <CyberCore/NetworkLoadMetrics.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceLoader.h>
+#include <CyberCore/SubresourceLoader.h>
+#include <CyberCore/SubstituteData.h>
 #include <wtf/CompletionHandler.h>
 
 #define WEBRESOURCELOADER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - [webPageID=%" PRIu64 ", frameID=%" PRIu64 ", resourceID=%" PRIu64 "] WebResourceLoader::" fmt, this, m_trackingParameters.pageID.toUInt64(), m_trackingParameters.frameID.object().toUInt64(), m_trackingParameters.resourceID.toUInt64(), ##__VA_ARGS__)

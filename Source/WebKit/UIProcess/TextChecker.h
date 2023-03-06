@@ -26,8 +26,8 @@
 #pragma once
 
 #include "TextCheckerCompletion.h"
-#include <WebCore/EditorClient.h>
-#include <WebCore/TextCheckerClient.h>
+#include <CyberCore/EditorClient.h>
+#include <CyberCore/TextCheckerClient.h>
 
 namespace WebKit {
 

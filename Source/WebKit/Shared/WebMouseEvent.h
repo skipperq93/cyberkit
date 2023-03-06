@@ -30,10 +30,10 @@
 // we can use them as the event type.
 
 #include "WebEvent.h"
-#include <WebCore/IntPoint.h>
-#include <WebCore/PlatformMouseEvent.h>
-#include <WebCore/PointerEventTypeNames.h>
-#include <WebCore/PointerID.h>
+#include <CyberCore/IntPoint.h>
+#include <CyberCore/PlatformMouseEvent.h>
+#include <CyberCore/PointerEventTypeNames.h>
+#include <CyberCore/PointerID.h>
 
 namespace WebCore {
 class NavigationAction;

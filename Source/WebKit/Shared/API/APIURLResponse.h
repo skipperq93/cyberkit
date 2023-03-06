@@ -26,7 +26,7 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/ResourceResponse.h>
 #include <wtf/Forward.h>
 
 namespace API {

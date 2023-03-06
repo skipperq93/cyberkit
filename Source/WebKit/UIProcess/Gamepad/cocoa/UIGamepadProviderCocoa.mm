@@ -28,10 +28,10 @@
 
 #if ENABLE(GAMEPAD)
 
-#import <WebCore/GameControllerGamepadProvider.h>
-#import <WebCore/HIDGamepadProvider.h>
-#import <WebCore/MockGamepadProvider.h>
-#import <WebCore/MultiGamepadProvider.h>
+#import <CyberCore/GameControllerGamepadProvider.h>
+#import <CyberCore/HIDGamepadProvider.h>
+#import <CyberCore/MockGamepadProvider.h>
+#import <CyberCore/MultiGamepadProvider.h>
 
 namespace WebKit {
 using namespace WebCore;

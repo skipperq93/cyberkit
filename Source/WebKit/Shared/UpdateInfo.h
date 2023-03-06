@@ -28,7 +28,7 @@
 #if USE(COORDINATED_GRAPHICS) || USE(TEXTURE_MAPPER)
 
 #include "ShareableBitmap.h"
-#include <WebCore/IntRect.h>
+#include <CyberCore/IntRect.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/Vector.h>
 

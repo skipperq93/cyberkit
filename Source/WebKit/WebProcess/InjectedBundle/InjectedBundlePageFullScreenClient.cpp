@@ -36,7 +36,7 @@
 #include "WebCoreArgumentCoders.h"
 #include "WebFullScreenManagerProxyMessages.h"
 #include "WebPage.h"
-#include <WebCore/Element.h>
+#include <CyberCore/Element.h>
 
 namespace WebKit {
 using namespace WebCore;

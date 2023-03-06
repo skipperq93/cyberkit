@@ -31,9 +31,9 @@
 #import "WKNSArray.h"
 #import "WebPreferences.h"
 #import "_WKFeatureInternal.h"
-#import <WebCore/SecurityOrigin.h>
-#import <WebCore/Settings.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/SecurityOrigin.h>
+#import <CyberCore/Settings.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 @implementation WKPreferences

@@ -25,15 +25,15 @@
 
 #include "config.h"
 
-#include <WebCore/AffineTransform.h>
-#include <WebCore/FloatPoint.h>
-#include <WebCore/FloatQuad.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/FloatSize.h>
-#include <WebCore/IntPoint.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/IntSize.h>
-#include <WebCore/TransformationMatrix.h>
+#include <CyberCore/AffineTransform.h>
+#include <CyberCore/FloatPoint.h>
+#include <CyberCore/FloatQuad.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/IntPoint.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/IntSize.h>
+#include <CyberCore/TransformationMatrix.h>
 
 #if USE(CG)
 #include <CoreGraphics/CoreGraphics.h>

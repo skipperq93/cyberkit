@@ -26,7 +26,7 @@
 #pragma once
 
 #include "NotificationManagerMessageHandler.h"
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 #include <pal/SessionID.h>
 #include <wtf/HashMap.h>
 

@@ -30,9 +30,9 @@
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/RuntimeApplicationChecks.h>
-#import <WebCore/WebCoreThread.h>
-#import <WebCore/WebCoreThreadInternal.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
+#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/WebCoreThreadInternal.h>
 #endif
 
 WebViewRenderingUpdateScheduler::WebViewRenderingUpdateScheduler(WebView* webView)

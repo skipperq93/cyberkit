@@ -33,12 +33,12 @@
 #include "NetworkResourceLoader.h"
 #include "NetworkSchemeRegistry.h"
 #include "WebPageMessages.h"
-#include <WebCore/ContentRuleListResults.h>
-#include <WebCore/ContentSecurityPolicy.h>
-#include <WebCore/CrossOriginAccessControl.h>
-#include <WebCore/CrossOriginEmbedderPolicy.h>
-#include <WebCore/CrossOriginPreflightResultCache.h>
-#include <WebCore/LegacySchemeRegistry.h>
+#include <CyberCore/ContentRuleListResults.h>
+#include <CyberCore/ContentSecurityPolicy.h>
+#include <CyberCore/CrossOriginAccessControl.h>
+#include <CyberCore/CrossOriginEmbedderPolicy.h>
+#include <CyberCore/CrossOriginPreflightResultCache.h>
+#include <CyberCore/LegacySchemeRegistry.h>
 #include <wtf/Scope.h>
 
 #define LOAD_CHECKER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - NetworkLoadChecker::" fmt, this, ##__VA_ARGS__)

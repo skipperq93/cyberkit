@@ -44,8 +44,8 @@
 #include "WebProcessPool.h"
 #include <JavaScriptCore/InspectorBackendDispatcher.h>
 #include <JavaScriptCore/InspectorFrontendRouter.h>
-#include <WebCore/MIMETypeRegistry.h>
-#include <WebCore/PointerEventTypeNames.h>
+#include <CyberCore/MIMETypeRegistry.h>
+#include <CyberCore/PointerEventTypeNames.h>
 #include <algorithm>
 #include <wtf/FileSystem.h>
 #include <wtf/HashMap.h>
@@ -59,7 +59,7 @@
 
 #if ENABLE(WEB_AUTHN)
 #include "VirtualAuthenticatorManager.h"
-#include <WebCore/AuthenticatorTransport.h>
+#include <CyberCore/AuthenticatorTransport.h>
 #endif // ENABLE(WEB_AUTHN)
 
 namespace WebKit {

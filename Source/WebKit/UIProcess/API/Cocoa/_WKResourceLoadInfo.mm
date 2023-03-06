@@ -31,7 +31,7 @@
 #import "ResourceLoadInfo.h"
 #import "_WKFrameHandleInternal.h"
 #import "_WKResourceLoadInfoInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 static _WKResourceLoadInfoResourceType toWKResourceLoadInfoResourceType(WebKit::ResourceLoadInfo::Type type)
 {

@@ -33,8 +33,8 @@
 #include "NetworkRTCMonitor.h"
 #include "RTCNetwork.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/LibWebRTCMacros.h>
-#include <WebCore/LibWebRTCSocketIdentifier.h>
+#include <CyberCore/LibWebRTCMacros.h>
+#include <CyberCore/LibWebRTCSocketIdentifier.h>
 #include <wtf/FunctionDispatcher.h>
 #include <wtf/HashMap.h>
 #include <wtf/StdMap.h>

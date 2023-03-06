@@ -27,7 +27,7 @@
 #include "WebModelPlayerProvider.h"
 
 #include "WebPage.h"
-#include <WebCore/ModelPlayer.h>
+#include <CyberCore/ModelPlayer.h>
 
 #if ENABLE(ARKIT_INLINE_PREVIEW_MAC)
 #include "ARKitInlinePreviewModelPlayerMac.h"
@@ -38,7 +38,7 @@
 #endif
 
 #if HAVE(SCENEKIT)
-#include <WebCore/SceneKitModelPlayer.h>
+#include <CyberCore/SceneKitModelPlayer.h>
 #endif
 
 namespace WebKit {

@@ -33,7 +33,7 @@
 #include "RemoteCDMFactoryProxyMessages.h"
 #include "RemoteCDMInstanceSession.h"
 #include "WebProcess.h"
-#include <WebCore/Settings.h>
+#include <CyberCore/Settings.h>
 
 namespace WebKit {
 

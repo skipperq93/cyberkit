@@ -36,8 +36,8 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebCore/Color.h>
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/Color.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>

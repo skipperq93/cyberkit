@@ -31,9 +31,9 @@
 #import "WebIconDatabase.h"
 
 #import <JavaScriptCore/InitializeThreading.h>
-#import <WebCore/Image.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebCoreJITOperations.h>
+#import <CyberCore/Image.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebCoreJITOperations.h>
 #import <wtf/MainThread.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RunLoop.h>

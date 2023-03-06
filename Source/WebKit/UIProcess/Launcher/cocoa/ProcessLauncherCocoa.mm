@@ -29,7 +29,7 @@
 #import "Logging.h"
 #import "WebPreferencesDefaultValues.h"
 #import "XPCUtilities.h"
-#import <WebCore/RuntimeApplicationChecks.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
 #import <crt_externs.h>
 #import <mach-o/dyld.h>
 #import <mach/mach_error.h>

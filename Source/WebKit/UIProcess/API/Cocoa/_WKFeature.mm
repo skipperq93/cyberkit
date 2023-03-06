@@ -28,7 +28,7 @@
 #import "_WKExperimentalFeature.h"
 #import "_WKInternalDebugFeature.h"
 
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation _WKFeature
 

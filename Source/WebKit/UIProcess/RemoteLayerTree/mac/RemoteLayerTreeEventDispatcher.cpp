@@ -36,10 +36,10 @@
 #include "RemoteScrollingTree.h"
 #include "WebEventConversion.h"
 #include "WebPageProxy.h"
-#include <WebCore/PlatformWheelEvent.h>
-#include <WebCore/ScrollingCoordinatorTypes.h>
-#include <WebCore/ScrollingThread.h>
-#include <WebCore/WheelEventDeltaFilter.h>
+#include <CyberCore/PlatformWheelEvent.h>
+#include <CyberCore/ScrollingCoordinatorTypes.h>
+#include <CyberCore/ScrollingThread.h>
+#include <CyberCore/WheelEventDeltaFilter.h>
 
 namespace WebKit {
 using namespace WebCore;

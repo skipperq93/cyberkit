@@ -26,11 +26,11 @@
 #import "config.h"
 #import "WKDOMInternals.h"
 
-#import <WebCore/Document.h>
-#import <WebCore/Element.h>
-#import <WebCore/Node.h>
-#import <WebCore/Range.h>
-#import <WebCore/Text.h>
+#import <CyberCore/Document.h>
+#import <CyberCore/Element.h>
+#import <CyberCore/Node.h>
+#import <CyberCore/Range.h>
+#import <CyberCore/Text.h>
 #import <wtf/NeverDestroyed.h>
 
 // Classes to instantiate.
@@ -39,7 +39,7 @@
 #import "WKDOMText.h"
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WAKAppKitStubs.h>
+#import <CyberCore/WAKAppKitStubs.h>
 #endif
 
 namespace WebKit {

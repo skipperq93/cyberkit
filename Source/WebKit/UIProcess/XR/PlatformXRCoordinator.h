@@ -29,7 +29,7 @@
 
 #include "XRDeviceIdentifier.h"
 #include "XRDeviceInfo.h"
-#include <WebCore/PlatformXR.h>
+#include <CyberCore/PlatformXR.h>
 #include <wtf/Function.h>
 
 namespace WebCore {

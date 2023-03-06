@@ -28,10 +28,10 @@
 
 #include "EditingRange.h"
 #include "WebEvent.h"
-#include <WebCore/CompositionUnderline.h>
+#include <CyberCore/CompositionUnderline.h>
 
 #if USE(APPKIT)
-#include <WebCore/KeypressCommand.h>
+#include <CyberCore/KeypressCommand.h>
 #endif
 
 namespace WebKit {

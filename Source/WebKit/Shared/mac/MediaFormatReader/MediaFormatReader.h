@@ -28,8 +28,8 @@
 #if ENABLE(WEBM_FORMAT_READER)
 
 #include "CoreMediaWrapped.h"
-#include <WebCore/SourceBufferParserWebM.h>
-#include <WebCore/SourceBufferPrivateClient.h>
+#include <CyberCore/SourceBufferParserWebM.h>
+#include <CyberCore/SourceBufferPrivateClient.h>
 #include <wtf/Condition.h>
 #include <wtf/Lock.h>
 #include <wtf/Logger.h>

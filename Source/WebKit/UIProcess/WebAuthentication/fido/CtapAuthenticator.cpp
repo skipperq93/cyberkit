@@ -31,16 +31,16 @@
 #include "CtapDriver.h"
 #include "CtapHidDriver.h"
 #include "U2fAuthenticator.h"
-#include <WebCore/AuthenticationExtensionsClientOutputs.h>
-#include <WebCore/AuthenticatorAttachment.h>
-#include <WebCore/CryptoKeyAES.h>
-#include <WebCore/CryptoKeyEC.h>
-#include <WebCore/CryptoKeyHMAC.h>
-#include <WebCore/DeviceRequestConverter.h>
-#include <WebCore/DeviceResponseConverter.h>
-#include <WebCore/ExceptionData.h>
-#include <WebCore/Pin.h>
-#include <WebCore/U2fCommandConstructor.h>
+#include <CyberCore/AuthenticationExtensionsClientOutputs.h>
+#include <CyberCore/AuthenticatorAttachment.h>
+#include <CyberCore/CryptoKeyAES.h>
+#include <CyberCore/CryptoKeyEC.h>
+#include <CyberCore/CryptoKeyHMAC.h>
+#include <CyberCore/DeviceRequestConverter.h>
+#include <CyberCore/DeviceResponseConverter.h>
+#include <CyberCore/ExceptionData.h>
+#include <CyberCore/Pin.h>
+#include <CyberCore/U2fCommandConstructor.h>
 #include <wtf/RunLoop.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 

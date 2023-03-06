@@ -36,7 +36,7 @@
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
 #import "WKWebViewConfigurationExtras.h"
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WebKit.h>
 #import <wtf/RetainPtr.h>

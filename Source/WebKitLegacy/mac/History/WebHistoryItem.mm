@@ -42,12 +42,12 @@
 #import "WebNSViewExtras.h"
 #import "WebPluginController.h"
 #import <JavaScriptCore/InitializeThreading.h>
-#import <WebCore/BackForwardCache.h>
-#import <WebCore/HistoryItem.h>
-#import <WebCore/Image.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebCoreJITOperations.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/BackForwardCache.h>
+#import <CyberCore/HistoryItem.h>
+#import <CyberCore/Image.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebCoreJITOperations.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/Assertions.h>
 #import <wtf/MainThread.h>
 #import <wtf/NeverDestroyed.h>
@@ -58,7 +58,7 @@
 #import <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WebCoreThreadMessage.h>
+#import <CyberCore/WebCoreThreadMessage.h>
 
 NSString *WebViewportInitialScaleKey = @"initial-scale";
 NSString *WebViewportMinimumScaleKey = @"minimum-scale";

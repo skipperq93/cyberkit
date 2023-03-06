@@ -29,7 +29,7 @@
 #if USE(AUTOCORRECTION_PANEL)
 
 #import <AppKit/NSSpellChecker.h>
-#import <WebCore/AlternativeTextClient.h>
+#import <CyberCore/AlternativeTextClient.h>
 #import <wtf/RetainPtr.h>
 
 @class WebView;

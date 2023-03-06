@@ -47,10 +47,10 @@
 #import <SecurityInterface/SFCertificatePanel.h>
 #import <SecurityInterface/SFCertificateView.h>
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
-#import <WebCore/CertificateInfo.h>
-#import <WebCore/Color.h>
-#import <WebCore/InspectorFrontendClientLocal.h>
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/CertificateInfo.h>
+#import <CyberCore/Color.h>
+#import <CyberCore/InspectorFrontendClientLocal.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <pal/spi/cf/CFUtilitiesSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/CompletionHandler.h>

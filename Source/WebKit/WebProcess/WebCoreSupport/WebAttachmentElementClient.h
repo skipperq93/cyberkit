@@ -27,7 +27,7 @@
 
 #if ENABLE(ATTACHMENT_ELEMENT)
 
-#include <WebCore/AttachmentElementClient.h>
+#include <CyberCore/AttachmentElementClient.h>
 
 namespace WebKit {
 

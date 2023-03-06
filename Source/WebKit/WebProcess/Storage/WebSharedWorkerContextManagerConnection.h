@@ -30,10 +30,10 @@
 #include "MessageReceiver.h"
 #include "WebPageProxyIdentifier.h"
 #include "WebPreferencesStore.h"
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/SharedWorkerContextManager.h>
-#include <WebCore/SharedWorkerIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/SharedWorkerContextManager.h>
+#include <CyberCore/SharedWorkerIdentifier.h>
 
 namespace WebCore {
 struct ClientOrigin;

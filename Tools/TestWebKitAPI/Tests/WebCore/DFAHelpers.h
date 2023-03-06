@@ -27,10 +27,10 @@
 
 #if ENABLE(CONTENT_EXTENSIONS)
 
-#include <WebCore/CombinedURLFilters.h>
-#include <WebCore/NFA.h>
-#include <WebCore/NFAToDFA.h>
-#include <WebCore/URLFilterParser.h>
+#include <CyberCore/CombinedURLFilters.h>
+#include <CyberCore/NFA.h>
+#include <CyberCore/NFAToDFA.h>
+#include <CyberCore/URLFilterParser.h>
 
 using namespace WebCore;
 

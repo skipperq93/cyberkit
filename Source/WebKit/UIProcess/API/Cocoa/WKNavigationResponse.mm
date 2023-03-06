@@ -27,7 +27,7 @@
 #import "WKNavigationResponseInternal.h"
 
 #import "WKFrameInfoInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKNavigationResponse
 

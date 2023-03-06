@@ -32,7 +32,7 @@
 #include "NetworkLoad.h"
 #include "NetworkSession.h"
 #include "PendingDownload.h"
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 #include <pal/SessionID.h>
 #include <wtf/StdLibExtras.h>
 

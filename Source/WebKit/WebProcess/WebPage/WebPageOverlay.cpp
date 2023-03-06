@@ -28,9 +28,9 @@
 
 #include "WebFrame.h"
 #include "WebPage.h"
-#include <WebCore/Frame.h>
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/PageOverlay.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/PageOverlay.h>
 #include <wtf/NeverDestroyed.h>
 
 namespace WebKit {

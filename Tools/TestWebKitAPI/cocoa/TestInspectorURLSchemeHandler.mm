@@ -26,7 +26,7 @@
 #import "config.h"
 #import "TestInspectorURLSchemeHandler.h"
 
-#import <WebCore/MIMETypeRegistry.h>
+#import <CyberCore/MIMETypeRegistry.h>
 #import <CyberKit/WKURLSchemeTask.h>
 #import <wtf/Assertions.h>
 

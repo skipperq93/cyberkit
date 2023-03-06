@@ -32,9 +32,9 @@
 #include "SandboxExtension.h"
 #include "ShareableBitmap.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/LibWebRTCEnumTraits.h>
-#include <WebCore/MediaPlayerIdentifier.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/LibWebRTCEnumTraits.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
+#include <CyberCore/Timer.h>
 #include <pal/SessionID.h>
 #include <wtf/Function.h>
 #include <wtf/MemoryPressureHandler.h>

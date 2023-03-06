@@ -37,9 +37,9 @@
 #include "SharedVideoFrame.h"
 #include "StreamClientConnection.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/GCGLSpan.h>
-#include <WebCore/GraphicsContextGL.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/GCGLSpan.h>
+#include <CyberCore/GraphicsContextGL.h>
+#include <CyberCore/NotImplemented.h>
 #include <wtf/HashMap.h>
 #include <wtf/WeakPtr.h>
 

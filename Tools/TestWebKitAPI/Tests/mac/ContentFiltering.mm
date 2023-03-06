@@ -28,7 +28,7 @@
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
 #import "TestProtocol.h"
-#import <WebCore/MockContentFilterSettings.h>
+#import <CyberCore/MockContentFilterSettings.h>
 #import <CyberKit/WebKit.h>
 #import <CyberKit/WebKitErrorsPrivate.h>
 

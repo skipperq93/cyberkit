@@ -37,7 +37,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 #import "WebViewInternal.h"
-#import <WebCore/WebCoreThreadMessage.h>
+#import <CyberCore/WebCoreThreadMessage.h>
 #endif
 
 @implementation WebView (WebDelegateImplementationCaching)

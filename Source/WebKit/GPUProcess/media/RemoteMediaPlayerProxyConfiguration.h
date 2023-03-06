@@ -27,11 +27,11 @@
 
 #if ENABLE(GPU_PROCESS)
 
-#include <WebCore/ContentType.h>
-#include <WebCore/FourCC.h>
-#include <WebCore/LayoutRect.h>
-#include <WebCore/PlatformTextTrack.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/ContentType.h>
+#include <CyberCore/FourCC.h>
+#include <CyberCore/LayoutRect.h>
+#include <CyberCore/PlatformTextTrack.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {

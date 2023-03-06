@@ -30,14 +30,14 @@
 #include "WebFrame.h"
 #include "WebFrameLoaderClient.h"
 #include "WebImage.h"
-#include <WebCore/BitmapImage.h>
-#include <WebCore/Document.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameDestructionObserverInlines.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/HTMLMediaElement.h>
+#include <CyberCore/BitmapImage.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameDestructionObserverInlines.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/HTMLMediaElement.h>
 #include <wtf/URL.h>
 
 namespace WebKit {

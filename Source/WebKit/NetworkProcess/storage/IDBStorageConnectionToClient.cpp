@@ -29,9 +29,9 @@
 #include "WebCoreArgumentCoders.h"
 #include "WebIDBConnectionToServerMessages.h"
 #include "WebIDBResult.h"
-#include <WebCore/IDBRequestData.h>
-#include <WebCore/IDBResultData.h>
-#include <WebCore/UniqueIDBDatabaseConnection.h>
+#include <CyberCore/IDBRequestData.h>
+#include <CyberCore/IDBResultData.h>
+#include <CyberCore/UniqueIDBDatabaseConnection.h>
 
 namespace WebKit {
 

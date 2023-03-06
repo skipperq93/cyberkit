@@ -28,9 +28,9 @@
 #if ENABLE(GPU_PROCESS)
 
 #include "RenderingUpdateID.h"
-#include <WebCore/DecomposedGlyphs.h>
-#include <WebCore/NativeImage.h>
-#include <WebCore/RenderingResourceIdentifier.h>
+#include <CyberCore/DecomposedGlyphs.h>
+#include <CyberCore/NativeImage.h>
+#include <CyberCore/RenderingResourceIdentifier.h>
 #include <wtf/HashMap.h>
 
 namespace WebCore {

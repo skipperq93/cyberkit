@@ -31,15 +31,15 @@
 #import "DOMHTMLDocumentInternal.h"
 #import "DOMInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/CSSStyleSheet.h>
-#import <WebCore/DOMImplementation.h>
-#import <WebCore/DocumentType.h>
-#import <WebCore/HTMLDocument.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/SVGTests.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebCoreObjCExtras.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/CSSStyleSheet.h>
+#import <CyberCore/DOMImplementation.h>
+#import <CyberCore/DocumentType.h>
+#import <CyberCore/HTMLDocument.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/SVGTests.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 
 @implementation DOMImplementation
 

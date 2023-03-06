@@ -26,7 +26,7 @@
 #ifndef WebProgressTrackerClient_h
 #define WebProgressTrackerClient_h
 
-#import <WebCore/ProgressTrackerClient.h>
+#import <CyberCore/ProgressTrackerClient.h>
 
 OBJC_CLASS WebView;
 

@@ -29,9 +29,9 @@
 
 #include "Connection.h"
 #include "SharedCARingBuffer.h"
-#include <WebCore/AudioSourceProviderClient.h>
-#include <WebCore/CAAudioStreamDescription.h>
-#include <WebCore/MediaPlayerIdentifier.h>
+#include <CyberCore/AudioSourceProviderClient.h>
+#include <CyberCore/CAAudioStreamDescription.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
 namespace WebCore {

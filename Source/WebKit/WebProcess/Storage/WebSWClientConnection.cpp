@@ -43,22 +43,22 @@
 #include "WebProcessProxyMessages.h"
 #include "WebSWOriginTable.h"
 #include "WebSWServerConnectionMessages.h"
-#include <WebCore/BackgroundFetchInformation.h>
-#include <WebCore/BackgroundFetchRequest.h>
-#include <WebCore/Document.h>
-#include <WebCore/DocumentLoader.h>
-#include <WebCore/FocusController.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameDestructionObserverInlines.h>
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SerializedScriptValue.h>
-#include <WebCore/ServiceWorkerClientData.h>
-#include <WebCore/ServiceWorkerJobData.h>
-#include <WebCore/ServiceWorkerRegistrationData.h>
-#include <WebCore/ServiceWorkerRegistrationKey.h>
-#include <WebCore/WorkerFetchResult.h>
-#include <WebCore/WorkerScriptLoader.h>
+#include <CyberCore/BackgroundFetchInformation.h>
+#include <CyberCore/BackgroundFetchRequest.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/DocumentLoader.h>
+#include <CyberCore/FocusController.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameDestructionObserverInlines.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SerializedScriptValue.h>
+#include <CyberCore/ServiceWorkerClientData.h>
+#include <CyberCore/ServiceWorkerJobData.h>
+#include <CyberCore/ServiceWorkerRegistrationData.h>
+#include <CyberCore/ServiceWorkerRegistrationKey.h>
+#include <CyberCore/WorkerFetchResult.h>
+#include <CyberCore/WorkerScriptLoader.h>
 
 namespace WebKit {
 

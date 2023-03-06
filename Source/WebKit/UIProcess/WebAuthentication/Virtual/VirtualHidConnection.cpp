@@ -30,10 +30,10 @@
 
 #include "VirtualAuthenticatorManager.h"
 #include "VirtualAuthenticatorUtils.h"
-#include <WebCore/CBORReader.h>
-#include <WebCore/CBORWriter.h>
-#include <WebCore/FidoConstants.h>
-#include <WebCore/WebAuthenticationUtils.h>
+#include <CyberCore/CBORReader.h>
+#include <CyberCore/CBORWriter.h>
+#include <CyberCore/FidoConstants.h>
+#include <CyberCore/WebAuthenticationUtils.h>
 #include <wtf/BlockPtr.h>
 #include <wtf/CryptographicallyRandomNumber.h>
 #include <wtf/RunLoop.h>

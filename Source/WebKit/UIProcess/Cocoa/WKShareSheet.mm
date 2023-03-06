@@ -30,8 +30,8 @@
 
 #import "WKWebViewInternal.h"
 #import "WebPageProxy.h"
-#import <WebCore/RuntimeApplicationChecks.h>
-#import <WebCore/ShareData.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
+#import <CyberCore/ShareData.h>
 #import <pal/spi/mac/QuarantineSPI.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Scope.h>

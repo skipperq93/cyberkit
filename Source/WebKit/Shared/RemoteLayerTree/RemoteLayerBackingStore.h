@@ -26,9 +26,9 @@
 #pragma once
 
 #include "ImageBufferBackendHandle.h"
-#include <WebCore/FloatRect.h>
-#include <WebCore/ImageBuffer.h>
-#include <WebCore/Region.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/ImageBuffer.h>
+#include <CyberCore/Region.h>
 #include <wtf/MachSendRight.h>
 #include <wtf/MonotonicTime.h>
 

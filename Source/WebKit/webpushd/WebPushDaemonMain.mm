@@ -34,7 +34,7 @@
 #import "LogInitialization.h"
 #import "WebPushDaemon.h"
 #import <Foundation/Foundation.h>
-#import <WebCore/LogInitialization.h>
+#import <CyberCore/LogInitialization.h>
 #import <getopt.h>
 #import <pal/spi/cf/CFUtilitiesSPI.h>
 #import <wtf/LogInitialization.h>

@@ -26,9 +26,9 @@
 #include "config.h"
 #include "WebsiteDataRecord.h"
 
-#include <WebCore/LocalizedStrings.h>
-#include <WebCore/PublicSuffix.h>
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/LocalizedStrings.h>
+#include <CyberCore/PublicSuffix.h>
+#include <CyberCore/SecurityOrigin.h>
 #include <wtf/CrossThreadCopier.h>
 
 #if PLATFORM(COCOA)

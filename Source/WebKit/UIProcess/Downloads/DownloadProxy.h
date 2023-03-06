@@ -31,7 +31,7 @@
 #include "DownloadID.h"
 #include "IdentifierTypes.h"
 #include "SandboxExtension.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 #include <wtf/Forward.h>
 #include <wtf/Ref.h>
 #include <wtf/WeakPtr.h>

@@ -30,7 +30,7 @@
 #if ENABLE(CONTEXT_MENUS)
 
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/GraphicsContext.h>
+#include <CyberCore/GraphicsContext.h>
 
 namespace WebKit {
 using namespace WebCore;

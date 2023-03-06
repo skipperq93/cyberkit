@@ -29,7 +29,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestURLSchemeHandler.h"
-#import <WebCore/SQLiteFileSystem.h>
+#import <CyberCore/SQLiteFileSystem.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKPreferencesRefPrivate.h>
 #import <CyberKit/WKProcessPoolPrivate.h>

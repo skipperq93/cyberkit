@@ -27,11 +27,11 @@
 
 #if ENABLE(PDFKIT_PLUGIN)
 
-#include <WebCore/FindOptions.h>
-#include <WebCore/PluginViewBase.h>
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/SharedBuffer.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/FindOptions.h>
+#include <CyberCore/PluginViewBase.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/SharedBuffer.h>
+#include <CyberCore/Timer.h>
 #include <memory>
 #include <wtf/RunLoop.h>
 

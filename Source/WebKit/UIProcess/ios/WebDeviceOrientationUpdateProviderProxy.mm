@@ -32,7 +32,7 @@
 #import "WebDeviceOrientationUpdateProviderProxyMessages.h"
 #import "WebPageProxy.h"
 #import "WebProcessProxy.h"
-#import <WebCore/WebCoreMotionManager.h>
+#import <CyberCore/WebCoreMotionManager.h>
 
 namespace WebKit {
 

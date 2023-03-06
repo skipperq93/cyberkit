@@ -27,7 +27,7 @@
 
 #if ENABLE(GAMEPAD)
 
-#include <WebCore/GamepadProviderClient.h>
+#include <CyberCore/GamepadProviderClient.h>
 #include <wtf/HashSet.h>
 #include <wtf/RunLoop.h>
 #include <wtf/Vector.h>

@@ -29,7 +29,7 @@
 
 #import "APIContextMenuClient.h"
 #import "APIUIClient.h"
-#import <WebCore/PlatformViewController.h>
+#import <CyberCore/PlatformViewController.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>
 #import <wtf/WeakPtr.h>

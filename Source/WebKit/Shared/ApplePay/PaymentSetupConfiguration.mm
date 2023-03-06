@@ -31,7 +31,7 @@
 #import "ArgumentCodersCocoa.h"
 #import "Decoder.h"
 #import "Encoder.h"
-#import <WebCore/ApplePaySetupConfiguration.h>
+#import <CyberCore/ApplePaySetupConfiguration.h>
 #import <wtf/URL.h>
 
 #import <pal/cocoa/PassKitSoftLink.h>

@@ -31,12 +31,12 @@
 #include "MessageReceiver.h"
 #include "PlaybackSessionContextIdentifier.h"
 #include "ShareableBitmap.h"
-#include <WebCore/AudioSession.h>
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/MediaPlayerIdentifier.h>
-#include <WebCore/PlatformView.h>
-#include <WebCore/VideoFullscreenChangeObserver.h>
-#include <WebCore/VideoFullscreenModel.h>
+#include <CyberCore/AudioSession.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
+#include <CyberCore/PlatformView.h>
+#include <CyberCore/VideoFullscreenChangeObserver.h>
+#include <CyberCore/VideoFullscreenModel.h>
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 #include <wtf/Observer.h>
@@ -46,10 +46,10 @@
 #include <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/VideoFullscreenInterfaceAVKit.h>
+#include <CyberCore/VideoFullscreenInterfaceAVKit.h>
 typedef WebCore::VideoFullscreenInterfaceAVKit PlatformVideoFullscreenInterface;
 #else
-#include <WebCore/VideoFullscreenInterfaceMac.h>
+#include <CyberCore/VideoFullscreenInterfaceMac.h>
 typedef WebCore::VideoFullscreenInterfaceMac PlatformVideoFullscreenInterface;
 #endif
 

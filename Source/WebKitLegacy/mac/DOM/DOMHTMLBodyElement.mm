@@ -27,11 +27,11 @@
 
 #import "DOMNodeInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/HTMLBodyElement.h>
-#import <WebCore/HTMLNames.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/HTMLBodyElement.h>
+#import <CyberCore/HTMLNames.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 

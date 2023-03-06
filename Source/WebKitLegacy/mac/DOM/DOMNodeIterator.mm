@@ -30,14 +30,14 @@
 #import "DOMNodeInternal.h"
 #import "DOMNodeIteratorInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/JSExecState.h>
-#import <WebCore/NativeNodeFilter.h>
-#import <WebCore/Node.h>
-#import <WebCore/NodeIterator.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/NativeNodeFilter.h>
+#import <CyberCore/Node.h>
+#import <CyberCore/NodeIterator.h>
 #import "ObjCNodeFilterCondition.h"
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebCoreObjCExtras.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
 #define IMPL reinterpret_cast<WebCore::NodeIterator*>(_internal)

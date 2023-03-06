@@ -25,7 +25,7 @@
 
 #import "WKBrowsingContextHandlePrivate.h"
 #import "WebPageProxyIdentifier.h"
-#import <WebCore/PageIdentifier.h>
+#import <CyberCore/PageIdentifier.h>
 #import <wtf/NakedRef.h>
 
 namespace WebKit {

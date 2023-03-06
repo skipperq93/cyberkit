@@ -30,12 +30,12 @@
 #include "UserData.h"
 #include "VisitedLinkStore.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/DocumentLoader.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/LayerHostingContextIdentifier.h>
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/DocumentLoader.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/LayerHostingContextIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebCore {

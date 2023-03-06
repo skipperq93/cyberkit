@@ -27,8 +27,8 @@
 #include "WebMediaKeyStorageManager.h"
 
 #include "WebProcessDataStoreParameters.h"
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/FileSystem.h>
 #include <wtf/URL.h>
 

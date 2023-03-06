@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/IntRect.h>
-#include <WebCore/ValidationMessageClient.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/ValidationMessageClient.h>
 
 namespace WebKit {
 

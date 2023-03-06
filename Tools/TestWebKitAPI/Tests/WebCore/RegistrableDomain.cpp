@@ -25,7 +25,7 @@
 
 #include "config.h"
 
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <wtf/URL.h>
 
 using namespace WebCore;

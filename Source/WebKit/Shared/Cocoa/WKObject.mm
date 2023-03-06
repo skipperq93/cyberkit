@@ -27,7 +27,7 @@
 #import "WKObject.h"
 
 #import "APIObject.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 @interface NSObject ()

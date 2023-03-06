@@ -27,7 +27,7 @@
 #import "_WKCustomHeaderFields.h"
 
 #import "_WKCustomHeaderFieldsInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
 

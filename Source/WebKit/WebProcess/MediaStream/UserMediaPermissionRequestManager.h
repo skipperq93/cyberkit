@@ -23,11 +23,11 @@
 
 #include "IdentifierTypes.h"
 #include "SandboxExtension.h"
-#include <WebCore/MediaCanStartListener.h>
-#include <WebCore/MediaConstraints.h>
-#include <WebCore/RealtimeMediaSourceCenter.h>
-#include <WebCore/UserMediaClient.h>
-#include <WebCore/UserMediaRequest.h>
+#include <CyberCore/MediaCanStartListener.h>
+#include <CyberCore/MediaConstraints.h>
+#include <CyberCore/RealtimeMediaSourceCenter.h>
+#include <CyberCore/UserMediaClient.h>
+#include <CyberCore/UserMediaRequest.h>
 #include <wtf/HashMap.h>
 #include <wtf/Ref.h>
 #include <wtf/RefPtr.h>

@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/UniqueIDBDatabase.h>
-#include <WebCore/UniqueIDBDatabaseManager.h>
+#include <CyberCore/UniqueIDBDatabase.h>
+#include <CyberCore/UniqueIDBDatabaseManager.h>
 
 namespace WebCore {
 class IDBRequestData;

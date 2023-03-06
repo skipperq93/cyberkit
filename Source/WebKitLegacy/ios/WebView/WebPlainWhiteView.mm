@@ -30,9 +30,9 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-#import <WebCore/Color.h>
-#import <WebCore/GraphicsContext.h>
-#import <WebCore/WKGraphics.h>
+#import <CyberCore/Color.h>
+#import <CyberCore/GraphicsContext.h>
+#import <CyberCore/WKGraphics.h>
 
 using namespace WebCore;
 

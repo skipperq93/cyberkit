@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/PrivateClickMeasurement.h>
+#include <CyberCore/PrivateClickMeasurement.h>
 #include <wtf/JSONValues.h>
 
 namespace JSC {

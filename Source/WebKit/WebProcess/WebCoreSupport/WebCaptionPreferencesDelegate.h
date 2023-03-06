@@ -27,7 +27,7 @@
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
 
-#include <WebCore/CaptionPreferencesDelegate.h>
+#include <CyberCore/CaptionPreferencesDelegate.h>
 
 namespace WebKit {
 

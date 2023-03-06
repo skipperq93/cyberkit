@@ -26,7 +26,7 @@
 #pragma once
 
 #include "Connection.h"
-#include <WebCore/DOMCacheEngine.h>
+#include <CyberCore/DOMCacheEngine.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebCore {

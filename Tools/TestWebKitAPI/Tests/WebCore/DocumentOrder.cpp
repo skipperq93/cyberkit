@@ -25,19 +25,19 @@
 
 #include "config.h"
 
-#include <WebCore/CommonAtomStrings.h>
-#include <WebCore/DocumentInlines.h>
-#include <WebCore/HTMLBodyElement.h>
-#include <WebCore/HTMLDivElement.h>
-#include <WebCore/HTMLHtmlElement.h>
-#include <WebCore/HTMLTextAreaElement.h>
-#include <WebCore/Position.h>
-#include <WebCore/ProcessWarming.h>
-#include <WebCore/Settings.h>
-#include <WebCore/ShadowRoot.h>
-#include <WebCore/SimpleRange.h>
-#include <WebCore/TextControlInnerElements.h>
-#include <WebCore/WebKitFontFamilyNames.h>
+#include <CyberCore/CommonAtomStrings.h>
+#include <CyberCore/DocumentInlines.h>
+#include <CyberCore/HTMLBodyElement.h>
+#include <CyberCore/HTMLDivElement.h>
+#include <CyberCore/HTMLHtmlElement.h>
+#include <CyberCore/HTMLTextAreaElement.h>
+#include <CyberCore/Position.h>
+#include <CyberCore/ProcessWarming.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/ShadowRoot.h>
+#include <CyberCore/SimpleRange.h>
+#include <CyberCore/TextControlInnerElements.h>
+#include <CyberCore/WebKitFontFamilyNames.h>
 
 // FIXME(https://webkit.org/b/228175): Expose the functions tested here in WebKit internals object, then replace this test with one written in JavaScript.
 // FIXME: When doing the above, don't forget to remove the many WEBCORE_EXPORT that were added so we could compile and link this test.

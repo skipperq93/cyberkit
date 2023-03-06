@@ -26,7 +26,7 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/HTMLParserIdioms.h>
+#include <CyberCore/HTMLParserIdioms.h>
 #include <wtf/text/WTFString.h>
 
 using namespace WebCore;

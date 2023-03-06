@@ -27,7 +27,7 @@
 #include "ResourceLoadStatisticsClassifier.h"
 
 #include "Logging.h"
-#include <WebCore/ResourceLoadStatistics.h>
+#include <CyberCore/ResourceLoadStatistics.h>
 
 namespace WebKit {
 using namespace WebCore;

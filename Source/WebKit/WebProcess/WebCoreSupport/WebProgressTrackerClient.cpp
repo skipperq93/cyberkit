@@ -28,9 +28,9 @@
 
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
-#include <WebCore/Frame.h>
-#include <WebCore/Page.h>
-#include <WebCore/ProgressTracker.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/ProgressTracker.h>
 
 namespace WebKit {
 using namespace WebCore;

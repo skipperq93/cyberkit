@@ -27,7 +27,7 @@
 
 #include "APIObject.h"
 #include "IdentifierTypes.h"
-#include <WebCore/AuthenticationChallenge.h>
+#include <CyberCore/AuthenticationChallenge.h>
 #include <wtf/WeakPtr.h>
 
 namespace IPC {

@@ -28,7 +28,7 @@
 #if ENABLE(SERVICE_WORKER)
 
 #include "SharedStringHashStore.h"
-#include <WebCore/SWOriginStore.h>
+#include <CyberCore/SWOriginStore.h>
 #include <wtf/WeakHashSet.h>
 
 namespace WebKit {

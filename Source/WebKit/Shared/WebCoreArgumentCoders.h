@@ -28,51 +28,51 @@
 #include "ArgumentCoders.h"
 #include "Decoder.h"
 #include "Encoder.h"
-#include <WebCore/AutoplayEvent.h>
-#include <WebCore/ColorSpace.h>
-#include <WebCore/DiagnosticLoggingClient.h>
-#include <WebCore/DisplayListItems.h>
-#include <WebCore/FloatRoundedRect.h>
-#include <WebCore/FloatSize.h>
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/IndexedDB.h>
-#include <WebCore/InputMode.h>
-#include <WebCore/LayoutPoint.h>
-#include <WebCore/LayoutSize.h>
-#include <WebCore/LengthBox.h>
-#include <WebCore/MediaSelectionOption.h>
-#include <WebCore/NetworkLoadMetrics.h>
-#include <WebCore/NotificationDirection.h>
-#include <WebCore/RealtimeMediaSource.h>
-#include <WebCore/RenderingMode.h>
-#include <WebCore/ScrollSnapOffsetsInfo.h>
-#include <WebCore/ScrollTypes.h>
-#include <WebCore/SerializedPlatformDataCueValue.h>
-#include <WebCore/ServiceWorkerTypes.h>
-#include <WebCore/StoredCredentialsPolicy.h>
-#include <WebCore/WorkerType.h>
+#include <CyberCore/AutoplayEvent.h>
+#include <CyberCore/ColorSpace.h>
+#include <CyberCore/DiagnosticLoggingClient.h>
+#include <CyberCore/DisplayListItems.h>
+#include <CyberCore/FloatRoundedRect.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/IndexedDB.h>
+#include <CyberCore/InputMode.h>
+#include <CyberCore/LayoutPoint.h>
+#include <CyberCore/LayoutSize.h>
+#include <CyberCore/LengthBox.h>
+#include <CyberCore/MediaSelectionOption.h>
+#include <CyberCore/NetworkLoadMetrics.h>
+#include <CyberCore/NotificationDirection.h>
+#include <CyberCore/RealtimeMediaSource.h>
+#include <CyberCore/RenderingMode.h>
+#include <CyberCore/ScrollSnapOffsetsInfo.h>
+#include <CyberCore/ScrollTypes.h>
+#include <CyberCore/SerializedPlatformDataCueValue.h>
+#include <CyberCore/ServiceWorkerTypes.h>
+#include <CyberCore/StoredCredentialsPolicy.h>
+#include <CyberCore/WorkerType.h>
 #include <wtf/ArgumentCoder.h>
 #include <wtf/EnumTraits.h>
 
 #if ENABLE(APPLE_PAY)
-#include <WebCore/PaymentHeaders.h>
+#include <CyberCore/PaymentHeaders.h>
 #endif
 
 #if USE(CURL)
-#include <WebCore/CurlProxySettings.h>
+#include <CyberCore/CurlProxySettings.h>
 #endif
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
-#include <WebCore/MediaPlaybackTargetContext.h>
+#include <CyberCore/MediaPlaybackTargetContext.h>
 #endif
 
 #if ENABLE(ENCRYPTED_MEDIA)
-#include <WebCore/CDMInstance.h>
-#include <WebCore/CDMInstanceSession.h>
+#include <CyberCore/CDMInstance.h>
+#include <CyberCore/CDMInstanceSession.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-#include <WebCore/InspectorOverlay.h>
+#include <CyberCore/InspectorOverlay.h>
 #endif
 
 #if PLATFORM(GTK)
@@ -80,15 +80,15 @@
 #endif
 
 #if ENABLE(GPU_PROCESS) && ENABLE(WEBGL)
-#include <WebCore/GraphicsContextGLEnums.h>
+#include <CyberCore/GraphicsContextGLEnums.h>
 #endif
 
 #if ENABLE(WEBXR)
-#include <WebCore/PlatformXR.h>
+#include <CyberCore/PlatformXR.h>
 #endif
 
 #if ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
-#include <WebCore/MockContentFilterSettings.h>
+#include <CyberCore/MockContentFilterSettings.h>
 #endif
 
 #if PLATFORM(COCOA)

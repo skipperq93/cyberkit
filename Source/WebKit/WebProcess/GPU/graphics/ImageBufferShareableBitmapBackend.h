@@ -26,8 +26,8 @@
 #pragma once
 
 #include "ImageBufferBackendHandleSharing.h"
-#include <WebCore/ImageBuffer.h>
-#include <WebCore/PlatformImageBufferBackend.h>
+#include <CyberCore/ImageBuffer.h>
+#include <CyberCore/PlatformImageBufferBackend.h>
 #include <wtf/IsoMalloc.h>
 
 namespace WebCore {

@@ -31,7 +31,7 @@
 #include "RemoteCDMInstanceIdentifier.h"
 #include "RemoteCDMInstanceSessionIdentifier.h"
 #include "WebProcessSupplement.h"
-#include <WebCore/CDMFactory.h>
+#include <CyberCore/CDMFactory.h>
 #include <wtf/HashMap.h>
 #include <wtf/WeakPtr.h>
 

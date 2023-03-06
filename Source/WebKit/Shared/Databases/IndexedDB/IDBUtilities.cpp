@@ -27,7 +27,7 @@
 #include "config.h"
 #include "IDBUtilities.h"
 
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 #include <wtf/text/StringBuilder.h>
 
 namespace WebKit {

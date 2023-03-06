@@ -27,7 +27,7 @@
 #include "PersistencyUtils.h"
 
 #include "Logging.h"
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/FileSystem.h>
 #include <wtf/RunLoop.h>
 

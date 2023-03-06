@@ -26,13 +26,13 @@
 #import "DOMInternal.h"
 
 #import "DOMNodeInternal.h"
-#import <WebCore/Document.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameDestructionObserverInlines.h>
-#import <WebCore/JSNode.h>
-#import <WebCore/ScriptController.h>
-#import <WebCore/WebScriptObjectPrivate.h>
-#import <WebCore/runtime_root.h>
+#import <CyberCore/Document.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameDestructionObserverInlines.h>
+#import <CyberCore/JSNode.h>
+#import <CyberCore/ScriptController.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
+#import <CyberCore/runtime_root.h>
 #import <wtf/HashMap.h>
 #import <wtf/Lock.h>
 #import <wtf/NeverDestroyed.h>

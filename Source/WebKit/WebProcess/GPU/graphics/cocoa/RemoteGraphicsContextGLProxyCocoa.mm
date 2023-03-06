@@ -33,10 +33,10 @@
 #import "GPUProcessConnection.h"
 #import "RemoteGraphicsContextGLMessages.h"
 #import "WebProcess.h"
-#import <WebCore/CVUtilities.h>
-#import <WebCore/GraphicsLayerContentsDisplayDelegate.h>
-#import <WebCore/IOSurface.h>
-#import <WebCore/PlatformCALayer.h>
+#import <CyberCore/CVUtilities.h>
+#import <CyberCore/GraphicsLayerContentsDisplayDelegate.h>
+#import <CyberCore/IOSurface.h>
+#import <CyberCore/PlatformCALayer.h>
 
 namespace WebKit {
 

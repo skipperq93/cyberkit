@@ -26,7 +26,7 @@
 #pragma once
 
 #include "InspectorExtensionTypes.h"
-#include <WebCore/FrameIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
 #include <wtf/Forward.h>
 
 namespace API {

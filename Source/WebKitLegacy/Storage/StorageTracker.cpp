@@ -28,10 +28,10 @@
 #include "StorageThread.h"
 #include "StorageTrackerClient.h"
 #include "WebStorageNamespaceProvider.h"
-#include <WebCore/SQLiteDatabaseTracker.h>
-#include <WebCore/SQLiteStatement.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/SQLiteDatabaseTracker.h>
+#include <CyberCore/SQLiteStatement.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <pal/text/TextEncoding.h>
 #include <wtf/FileSystem.h>
 #include <wtf/MainThread.h>

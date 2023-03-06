@@ -29,19 +29,19 @@
 #import "DOMInternal.h"
 #import "DOMNodeInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/ColorCocoa.h>
-#import <WebCore/DeprecatedCSSOMPrimitiveValue.h>
-#import <WebCore/DeprecatedCSSOMRGBColor.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebCoreObjCExtras.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/ColorCocoa.h>
+#import <CyberCore/DeprecatedCSSOMPrimitiveValue.h>
+#import <CyberCore/DeprecatedCSSOMRGBColor.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
 #if PLATFORM(MAC)
-#import <WebCore/ColorMac.h>
+#import <CyberCore/ColorMac.h>
 #else
-#import <WebCore/ColorSpace.h>
+#import <CyberCore/ColorSpace.h>
 #endif
 
 #define IMPL reinterpret_cast<WebCore::DeprecatedCSSOMRGBColor*>(_internal)

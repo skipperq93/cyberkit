@@ -29,8 +29,8 @@
 
 #include "MessageReceiver.h"
 #include "MessageSender.h"
-#include <WebCore/PaymentCoordinatorClient.h>
-#include <WebCore/PaymentHeaders.h>
+#include <CyberCore/PaymentCoordinatorClient.h>
+#include <CyberCore/PaymentHeaders.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>

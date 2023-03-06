@@ -31,10 +31,10 @@
 #import "RemoteLayerTreePropertyApplier.h"
 #import "WebProcess.h"
 #import <AVFoundation/AVFoundation.h>
-#import <WebCore/GraphicsLayerCA.h>
-#import <WebCore/PlatformCALayerCocoa.h>
-#import <WebCore/WebCoreCALayerExtras.h>
-#import <WebCore/WebLayer.h>
+#import <CyberCore/GraphicsLayerCA.h>
+#import <CyberCore/PlatformCALayerCocoa.h>
+#import <CyberCore/WebCoreCALayerExtras.h>
+#import <CyberCore/WebLayer.h>
 #import <wtf/RetainPtr.h>
 
 #import <pal/cocoa/AVFoundationSoftLink.h>

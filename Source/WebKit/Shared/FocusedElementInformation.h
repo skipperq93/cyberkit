@@ -27,15 +27,15 @@
 
 #include "ArgumentCoders.h"
 #include "IdentifierTypes.h"
-#include <WebCore/AutocapitalizeTypes.h>
-#include <WebCore/Autofill.h>
-#include <WebCore/Color.h>
-#include <WebCore/ElementContext.h>
-#include <WebCore/EnterKeyHint.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/InputMode.h>
-#include <WebCore/IntRect.h>
+#include <CyberCore/AutocapitalizeTypes.h>
+#include <CyberCore/Autofill.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/ElementContext.h>
+#include <CyberCore/EnterKeyHint.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/InputMode.h>
+#include <CyberCore/IntRect.h>
 #include <wtf/EnumTraits.h>
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>

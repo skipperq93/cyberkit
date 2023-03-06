@@ -43,8 +43,8 @@
 #include "StreamConnectionWorkQueue.h"
 #include "StreamMessageReceiver.h"
 #include "StreamServerConnection.h"
-#include <WebCore/MediaPlayerIdentifier.h>
-#include <WebCore/ProcessIdentity.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
+#include <CyberCore/ProcessIdentity.h>
 
 namespace WTF {
 enum class Critical : bool;

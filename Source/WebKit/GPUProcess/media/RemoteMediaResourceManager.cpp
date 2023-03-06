@@ -33,7 +33,7 @@
 #include "RemoteMediaResourceIdentifier.h"
 #include "SharedBufferReference.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 #include <wtf/Scope.h>
 
 namespace WebKit {

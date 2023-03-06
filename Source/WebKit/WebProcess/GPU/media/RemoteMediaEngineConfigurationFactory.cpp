@@ -31,11 +31,11 @@
 #include "GPUProcessConnection.h"
 #include "RemoteMediaEngineConfigurationFactoryProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/MediaCapabilitiesDecodingInfo.h>
-#include <WebCore/MediaCapabilitiesEncodingInfo.h>
-#include <WebCore/MediaDecodingConfiguration.h>
-#include <WebCore/MediaEncodingConfiguration.h>
-#include <WebCore/MediaEngineConfigurationFactory.h>
+#include <CyberCore/MediaCapabilitiesDecodingInfo.h>
+#include <CyberCore/MediaCapabilitiesEncodingInfo.h>
+#include <CyberCore/MediaDecodingConfiguration.h>
+#include <CyberCore/MediaEncodingConfiguration.h>
+#include <CyberCore/MediaEngineConfigurationFactory.h>
 
 namespace WebKit {
 using namespace WebCore;

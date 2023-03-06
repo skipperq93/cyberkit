@@ -27,7 +27,7 @@
 
 #include "WebPage.h"
 #include "WebSpeechRecognitionConnection.h"
-#include <WebCore/SpeechRecognitionProvider.h>
+#include <CyberCore/SpeechRecognitionProvider.h>
 
 namespace WebKit {
 

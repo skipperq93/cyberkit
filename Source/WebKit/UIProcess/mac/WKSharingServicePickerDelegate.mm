@@ -34,7 +34,7 @@
 #import "WebContextMenuProxyMac.h"
 #import "WebPageProxy.h"
 #import "_WKAttachmentInternal.h"
-#import <WebCore/LegacyNSPasteboardTypes.h>
+#import <CyberCore/LegacyNSPasteboardTypes.h>
 #import <pal/spi/mac/NSSharingServicePickerSPI.h>
 #import <pal/spi/mac/NSSharingServiceSPI.h>
 #import <wtf/text/WTFString.h>

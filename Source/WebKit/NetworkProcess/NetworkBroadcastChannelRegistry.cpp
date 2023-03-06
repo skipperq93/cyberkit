@@ -29,7 +29,7 @@
 #include "NetworkProcess.h"
 #include "NetworkProcessProxyMessages.h"
 #include "WebBroadcastChannelRegistryMessages.h"
-#include <WebCore/MessageWithMessagePorts.h>
+#include <CyberCore/MessageWithMessagePorts.h>
 #include <wtf/CallbackAggregator.h>
 
 namespace WebKit {

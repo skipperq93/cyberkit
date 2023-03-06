@@ -26,8 +26,8 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/ContentSecurityPolicy.h>
-#include <WebCore/ShouldRelaxThirdPartyCookieBlocking.h>
+#include <CyberCore/ContentSecurityPolicy.h>
+#include <CyberCore/ShouldRelaxThirdPartyCookieBlocking.h>
 #include <wtf/Forward.h>
 #include <wtf/GetPtr.h>
 #include <wtf/HashMap.h>

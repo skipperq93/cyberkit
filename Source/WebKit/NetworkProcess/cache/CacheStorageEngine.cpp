@@ -33,9 +33,9 @@
 #include "NetworkSession.h"
 #include "NetworkStorageManager.h"
 #include "WebsiteDataType.h"
-#include <WebCore/CacheQueryOptions.h>
-#include <WebCore/RetrieveRecordsOptions.h>
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/CacheQueryOptions.h>
+#include <CyberCore/RetrieveRecordsOptions.h>
+#include <CyberCore/SecurityOrigin.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Scope.h>

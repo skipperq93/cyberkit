@@ -31,9 +31,9 @@
 #include "DataReference.h"
 #include "InspectorExtensionTypes.h"
 #include "MessageReceiver.h"
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/InspectorFrontendAPIDispatcher.h>
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/InspectorFrontendAPIDispatcher.h>
+#include <CyberCore/PageIdentifier.h>
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/URL.h>

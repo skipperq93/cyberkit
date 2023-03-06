@@ -27,8 +27,8 @@
 
 #if USE(CG)
 
-#include <WebCore/DestinationColorSpace.h>
-#include <WebCore/GraphicsContextCG.h>
+#include <CyberCore/DestinationColorSpace.h>
+#include <CyberCore/GraphicsContextCG.h>
 
 namespace TestWebKitAPI {
 using namespace WebCore;

@@ -33,7 +33,7 @@
 #import "WKRetainPtr.h"
 #import "WKStringCF.h"
 #import "WKWebProcessPlugInBrowserContextControllerInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 @interface WKWebProcessPlugInController () {

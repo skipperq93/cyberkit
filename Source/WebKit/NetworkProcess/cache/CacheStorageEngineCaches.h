@@ -27,7 +27,7 @@
 
 #include "CacheStorageEngineCache.h"
 #include "NetworkCacheStorage.h"
-#include <WebCore/ClientOrigin.h>
+#include <CyberCore/ClientOrigin.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Deque.h>
 

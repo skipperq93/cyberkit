@@ -28,9 +28,9 @@
 
 #import "PageClient.h"
 #import "SafeBrowsingWarning.h"
-#import <WebCore/FontCocoa.h>
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/FontCocoa.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/URL.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/Language.h>

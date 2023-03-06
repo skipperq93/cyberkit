@@ -29,7 +29,7 @@
 #import "DOMException.h"
 #import "DOMRangeException.h"
 #import "DOMXPathException.h"
-#import <WebCore/DOMException.h>
+#import <CyberCore/DOMException.h>
 
 NSString * const DOMException = @"DOMException";
 NSString * const DOMRangeException = @"DOMRangeException";

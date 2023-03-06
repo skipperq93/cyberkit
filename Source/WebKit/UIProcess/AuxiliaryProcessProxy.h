@@ -32,7 +32,7 @@
 #include "ProcessThrottler.h"
 #include "ResponsivenessTimer.h"
 #include "SandboxExtension.h"
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/ProcessIdentifier.h>
 #include <memory>
 #include <wtf/ProcessID.h>
 #include <wtf/SystemTracing.h>

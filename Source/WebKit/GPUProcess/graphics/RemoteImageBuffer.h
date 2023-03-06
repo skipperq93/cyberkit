@@ -31,7 +31,7 @@
 #include "RemoteRenderingBackend.h"
 #include "ScopedActiveMessageReceiveQueue.h"
 #include "ScopedRenderingResourcesRequest.h"
-#include <WebCore/ImageBuffer.h>
+#include <CyberCore/ImageBuffer.h>
 
 namespace WebKit {
 

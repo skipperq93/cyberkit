@@ -27,11 +27,11 @@
 #include "IDBStorageManager.h"
 
 #include "IDBStorageRegistry.h"
-#include <WebCore/IDBRequestData.h>
-#include <WebCore/IDBServer.h>
-#include <WebCore/MemoryIDBBackingStore.h>
-#include <WebCore/SQLiteFileSystem.h>
-#include <WebCore/SQLiteIDBBackingStore.h>
+#include <CyberCore/IDBRequestData.h>
+#include <CyberCore/IDBServer.h>
+#include <CyberCore/MemoryIDBBackingStore.h>
+#include <CyberCore/SQLiteFileSystem.h>
+#include <CyberCore/SQLiteIDBBackingStore.h>
 
 namespace WebKit {
 

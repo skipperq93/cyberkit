@@ -27,7 +27,7 @@
 
 #include "APIContentWorld.h"
 #include "APIObject.h"
-#include <WebCore/UserScript.h>
+#include <CyberCore/UserScript.h>
 #include <wtf/Identified.h>
 
 namespace API {

@@ -29,7 +29,7 @@
 #include "APISecurityOrigin.h"
 #include "Connection.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/NotificationData.h>
+#include <CyberCore/NotificationData.h>
 #include <wtf/Identified.h>
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>

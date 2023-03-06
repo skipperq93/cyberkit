@@ -29,7 +29,7 @@
 
 #include "Test.h"
 #include "WTFTestUtilities.h"
-#include <WebCore/PublicSuffix.h>
+#include <CyberCore/PublicSuffix.h>
 #include <wtf/MainThread.h>
 
 using namespace WebCore;

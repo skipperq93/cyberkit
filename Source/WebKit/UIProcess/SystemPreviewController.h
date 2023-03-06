@@ -27,9 +27,9 @@
 
 #if USE(SYSTEM_PREVIEW)
 
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/ResourceError.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/ResourceError.h>
 #include <wtf/RetainPtr.h>
 #include <wtf/URL.h>
 

@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/PrivateClickMeasurement.h>
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/PrivateClickMeasurement.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <wtf/EnumTraits.h>
 
 namespace WebCore {

@@ -26,7 +26,7 @@
 #pragma once
 
 #include "IdentifierTypes.h"
-#include <WebCore/TextChecking.h>
+#include <CyberCore/TextChecking.h>
 #include <wtf/Forward.h>
 
 namespace WebKit {

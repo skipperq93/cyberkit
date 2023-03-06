@@ -27,16 +27,16 @@
 
 #import "WebKitNSStringExtras.h"
 #import "WebSecurityOriginInternal.h"
-#import <WebCore/ApplicationCache.h>
-#import <WebCore/ApplicationCacheStorage.h>
-#import <WebCore/SecurityOrigin.h>
+#import <CyberCore/ApplicationCache.h>
+#import <CyberCore/ApplicationCacheStorage.h>
+#import <CyberCore/SecurityOrigin.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/RuntimeApplicationChecks.h>
-#import <WebCore/SQLiteDatabaseTracker.h>
-#import <WebCore/WebSQLiteDatabaseTrackerClient.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
+#import <CyberCore/SQLiteDatabaseTracker.h>
+#import <CyberCore/WebSQLiteDatabaseTrackerClient.h>
 #endif
 
 @implementation WebApplicationCache

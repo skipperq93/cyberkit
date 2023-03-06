@@ -27,10 +27,10 @@
 
 #include "NetworkResourceLoadIdentifier.h"
 #include "WebResourceLoader.h"
-#include <WebCore/LoaderStrategy.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceLoader.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/LoaderStrategy.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceLoader.h>
+#include <CyberCore/ResourceResponse.h>
 #include <wtf/HashSet.h>
 #include <wtf/RunLoop.h>
 

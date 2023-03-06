@@ -31,11 +31,11 @@
 #import "PDFLayerControllerSPI.h"
 #import "PDFPlugin.h"
 #import <Quartz/Quartz.h>
-#import <WebCore/AddEventListenerOptions.h>
-#import <WebCore/Event.h>
-#import <WebCore/EventNames.h>
-#import <WebCore/HTMLElement.h>
-#import <WebCore/KeyboardEvent.h>
+#import <CyberCore/AddEventListenerOptions.h>
+#import <CyberCore/Event.h>
+#import <CyberCore/EventNames.h>
+#import <CyberCore/HTMLElement.h>
+#import <CyberCore/KeyboardEvent.h>
 
 namespace WebKit {
 using namespace WebCore;

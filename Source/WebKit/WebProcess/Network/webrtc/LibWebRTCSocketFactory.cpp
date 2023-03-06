@@ -33,7 +33,7 @@
 #include "NetworkProcessConnection.h"
 #include "NetworkRTCProviderMessages.h"
 #include "WebProcess.h"
-#include <WebCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
 #include <wtf/MainThread.h>
 
 namespace WebKit {

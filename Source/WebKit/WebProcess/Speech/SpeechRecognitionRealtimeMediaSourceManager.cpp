@@ -32,20 +32,20 @@
 #include "SpeechRecognitionRealtimeMediaSourceManagerMessages.h"
 #include "SpeechRecognitionRemoteRealtimeMediaSourceManagerMessages.h"
 #include "WebProcess.h"
-#include <WebCore/RealtimeMediaSource.h>
-#include <WebCore/SpeechRecognitionCaptureSource.h>
+#include <CyberCore/RealtimeMediaSource.h>
+#include <CyberCore/SpeechRecognitionCaptureSource.h>
 
 #if PLATFORM(COCOA)
 #include "SharedCARingBuffer.h"
-#include <WebCore/CAAudioStreamDescription.h>
-#include <WebCore/WebAudioBufferList.h>
+#include <CyberCore/CAAudioStreamDescription.h>
+#include <CyberCore/WebAudioBufferList.h>
 #else
-#include <WebCore/AudioStreamDescription.h>
-#include <WebCore/PlatformAudioData.h>
+#include <CyberCore/AudioStreamDescription.h>
+#include <CyberCore/PlatformAudioData.h>
 #endif
 
 #if USE(AUDIO_SESSION)
-#include <WebCore/AudioSession.h>
+#include <CyberCore/AudioSession.h>
 #endif
 
 namespace WebKit {

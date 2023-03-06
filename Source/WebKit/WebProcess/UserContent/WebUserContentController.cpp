@@ -37,18 +37,18 @@
 #include "WebProcess.h"
 #include "WebUserContentControllerMessages.h"
 #include "WebUserContentControllerProxyMessages.h"
-#include <WebCore/DOMWrapperWorld.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameDestructionObserverInlines.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/SerializedScriptValue.h>
-#include <WebCore/UserStyleSheet.h>
+#include <CyberCore/DOMWrapperWorld.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameDestructionObserverInlines.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/SerializedScriptValue.h>
+#include <CyberCore/UserStyleSheet.h>
 #include <wtf/NeverDestroyed.h>
 
 #if ENABLE(USER_MESSAGE_HANDLERS)
-#include <WebCore/UserMessageHandler.h>
-#include <WebCore/UserMessageHandlerDescriptor.h>
+#include <CyberCore/UserMessageHandler.h>
+#include <CyberCore/UserMessageHandlerDescriptor.h>
 #endif
 
 namespace WebKit {

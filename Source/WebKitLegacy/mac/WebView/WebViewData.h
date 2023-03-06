@@ -32,8 +32,8 @@
 #if HAVE(TOUCH_BAR)
 #import <pal/spi/cocoa/AVKitSPI.h>
 #endif
-#import <WebCore/AlternativeTextClient.h>
-#import <WebCore/WebCoreKeyboardUIMode.h>
+#import <CyberCore/AlternativeTextClient.h>
+#import <CyberCore/WebCoreKeyboardUIMode.h>
 #import <wtf/HashMap.h>
 #import <wtf/Lock.h>
 #import <wtf/RetainPtr.h>

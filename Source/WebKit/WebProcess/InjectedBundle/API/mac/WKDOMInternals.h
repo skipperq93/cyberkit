@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/Node.h>
-#import <WebCore/Range.h>
+#import <CyberCore/Node.h>
+#import <CyberCore/Range.h>
 #import <CyberKit/WKDOMNode.h>
 #import <CyberKit/WKDOMRange.h>
 #import <wtf/HashMap.h>

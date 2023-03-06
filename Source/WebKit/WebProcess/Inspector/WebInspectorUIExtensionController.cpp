@@ -36,9 +36,9 @@
 #include "WebProcess.h"
 #include <JavaScriptCore/APICast.h>
 #include <JavaScriptCore/JSCInlines.h>
-#include <WebCore/ExceptionDetails.h>
-#include <WebCore/InspectorFrontendAPIDispatcher.h>
-#include <WebCore/SerializedScriptValue.h>
+#include <CyberCore/ExceptionDetails.h>
+#include <CyberCore/InspectorFrontendAPIDispatcher.h>
+#include <CyberCore/SerializedScriptValue.h>
 
 namespace WebKit {
 

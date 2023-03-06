@@ -28,7 +28,7 @@
 #import "TestCocoa.h"
 #import "TestWKWebView.h"
 #import "Utilities.h"
-#import <WebCore/Color.h>
+#import <CyberCore/Color.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>

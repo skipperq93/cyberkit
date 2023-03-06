@@ -26,9 +26,9 @@
 #pragma once
 
 #include "MessageReceiver.h"
-#include <WebCore/ScreenOrientationLockType.h>
-#include <WebCore/ScreenOrientationProvider.h>
-#include <WebCore/ScreenOrientationType.h>
+#include <CyberCore/ScreenOrientationLockType.h>
+#include <CyberCore/ScreenOrientationProvider.h>
+#include <CyberCore/ScreenOrientationType.h>
 #include <wtf/CompletionHandler.h>
 
 #if PLATFORM(IOS_FAMILY)

@@ -26,7 +26,7 @@
 
 #pragma once
 
-#include <WebCore/NodeFilterCondition.h>
+#include <CyberCore/NodeFilterCondition.h>
 #include <wtf/RetainPtr.h>
 
 @protocol DOMNodeFilter;

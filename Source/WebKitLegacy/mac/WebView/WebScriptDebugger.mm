@@ -37,10 +37,10 @@
 #import <JavaScriptCore/JSGlobalObject.h>
 #import <JavaScriptCore/SourceProvider.h>
 #import <JavaScriptCore/StrongInlines.h>
-#import <WebCore/DOMWindow.h>
-#import <WebCore/Frame.h>
-#import <WebCore/JSDOMWindow.h>
-#import <WebCore/ScriptController.h>
+#import <CyberCore/DOMWindow.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/JSDOMWindow.h>
+#import <CyberCore/ScriptController.h>
 #import <wtf/URL.h>
 
 @interface WebScriptCallFrame (WebScriptDebugDelegateInternalForDebugger)

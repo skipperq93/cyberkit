@@ -28,7 +28,7 @@
 #if ENABLE(WEB_AUTHN)
 
 #include "FidoAuthenticator.h"
-#include <WebCore/AuthenticatorGetInfoResponse.h>
+#include <CyberCore/AuthenticatorGetInfoResponse.h>
 
 namespace fido {
 namespace pin {

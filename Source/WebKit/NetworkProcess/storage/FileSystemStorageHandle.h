@@ -27,8 +27,8 @@
 
 #include "Connection.h"
 #include "FileSystemSyncAccessHandleInfo.h"
-#include <WebCore/FileSystemHandleIdentifier.h>
-#include <WebCore/FileSystemSyncAccessHandleIdentifier.h>
+#include <CyberCore/FileSystemHandleIdentifier.h>
+#include <CyberCore/FileSystemSyncAccessHandleIdentifier.h>
 #include <wtf/WeakPtr.h>
 
 namespace IPC {

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/ModelPlayerProvider.h>
+#include <CyberCore/ModelPlayerProvider.h>
 
 namespace WebKit {
 

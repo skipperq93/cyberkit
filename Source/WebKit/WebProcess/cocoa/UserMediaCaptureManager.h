@@ -30,10 +30,10 @@
 #include "RemoteCaptureSampleManager.h"
 #include "SharedMemory.h"
 #include "WebProcessSupplement.h"
-#include <WebCore/DisplayCaptureManager.h>
-#include <WebCore/RealtimeMediaSource.h>
-#include <WebCore/RealtimeMediaSourceFactory.h>
-#include <WebCore/RealtimeMediaSourceIdentifier.h>
+#include <CyberCore/DisplayCaptureManager.h>
+#include <CyberCore/RealtimeMediaSource.h>
+#include <CyberCore/RealtimeMediaSourceFactory.h>
+#include <CyberCore/RealtimeMediaSourceIdentifier.h>
 #include <wtf/HashMap.h>
 
 namespace WebCore {

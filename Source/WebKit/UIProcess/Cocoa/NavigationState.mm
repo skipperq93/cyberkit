@@ -70,11 +70,11 @@
 #import "_WKFrameHandleInternal.h"
 #import "_WKRenderingProgressEventsInternal.h"
 #import "_WKSameDocumentNavigationTypeInternal.h"
-#import <WebCore/AuthenticationMac.h>
-#import <WebCore/ContentRuleListResults.h>
-#import <WebCore/Credential.h>
-#import <WebCore/SecurityOriginData.h>
-#import <WebCore/SerializedCryptoKeyWrap.h>
+#import <CyberCore/AuthenticationMac.h>
+#import <CyberCore/ContentRuleListResults.h>
+#import <CyberCore/Credential.h>
+#import <CyberCore/SecurityOriginData.h>
+#import <CyberCore/SerializedCryptoKeyWrap.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/URL.h>

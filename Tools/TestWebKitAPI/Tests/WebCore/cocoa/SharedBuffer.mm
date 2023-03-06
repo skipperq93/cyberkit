@@ -27,7 +27,7 @@
 
 #import "SharedBufferTest.h"
 #import "Utilities.h"
-#import <WebCore/SharedBuffer.h>
+#import <CyberCore/SharedBuffer.h>
 
 using namespace WebCore;
 

@@ -27,7 +27,7 @@
 
 #include "APIObject.h"
 
-#include <WebCore/ContentRuleListResults.h>
+#include <CyberCore/ContentRuleListResults.h>
 
 namespace API {
 

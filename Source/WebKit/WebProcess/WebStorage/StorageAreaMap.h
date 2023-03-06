@@ -29,8 +29,8 @@
 #include "StorageAreaIdentifier.h"
 #include "StorageAreaImplIdentifier.h"
 #include "StorageAreaMapIdentifier.h"
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/StorageArea.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/StorageArea.h>
 #include <wtf/Forward.h>
 #include <wtf/HashCountedSet.h>
 #include <wtf/RefCounted.h>

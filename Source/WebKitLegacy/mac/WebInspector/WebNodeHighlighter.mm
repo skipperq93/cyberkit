@@ -33,7 +33,7 @@
 #import "WebNodeHighlight.h"
 #import "WebNodeHighlightView.h"
 #import "WebViewInternal.h"
-#import <WebCore/Page.h>
+#import <CyberCore/Page.h>
 
 @implementation WebNodeHighlighter
 

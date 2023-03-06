@@ -50,34 +50,34 @@
 #include "WebSWServerConnection.h"
 #include "WebsiteDataStore.h"
 #include "WebsiteDataStoreParameters.h"
-#include <WebCore/BlobDataFileReference.h>
-#include <WebCore/COEPInheritenceViolationReportBody.h>
-#include <WebCore/CORPViolationReportBody.h>
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/ContentSecurityPolicy.h>
-#include <WebCore/CrossOriginEmbedderPolicy.h>
-#include <WebCore/DiagnosticLoggingKeys.h>
-#include <WebCore/HTTPParsers.h>
-#include <WebCore/NetworkLoadMetrics.h>
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/ReportingScope.h>
-#include <WebCore/SameSiteInfo.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SecurityPolicy.h>
-#include <WebCore/SharedBuffer.h>
-#include <WebCore/ViolationReportType.h>
+#include <CyberCore/BlobDataFileReference.h>
+#include <CyberCore/COEPInheritenceViolationReportBody.h>
+#include <CyberCore/CORPViolationReportBody.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/ContentSecurityPolicy.h>
+#include <CyberCore/CrossOriginEmbedderPolicy.h>
+#include <CyberCore/DiagnosticLoggingKeys.h>
+#include <CyberCore/HTTPParsers.h>
+#include <CyberCore/NetworkLoadMetrics.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/ReportingScope.h>
+#include <CyberCore/SameSiteInfo.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SecurityPolicy.h>
+#include <CyberCore/SharedBuffer.h>
+#include <CyberCore/ViolationReportType.h>
 #include <wtf/Expected.h>
 #include <wtf/RunLoop.h>
 
 #if USE(QUICK_LOOK)
-#include <WebCore/PreviewConverter.h>
+#include <CyberCore/PreviewConverter.h>
 #endif
 
 #if ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
-#include <WebCore/ContentFilter.h>
-#include <WebCore/ContentFilterUnblockHandler.h>
+#include <CyberCore/ContentFilter.h>
+#include <CyberCore/ContentFilterUnblockHandler.h>
 #endif
 
 #define LOADER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - [pageProxyID=%" PRIu64 ", webPageID=%" PRIu64 ", frameID=%" PRIu64 ", resourceID=%" PRIu64 ", isMainResource=%d, destination=%u, isSynchronous=%d] NetworkResourceLoader::" fmt, this, m_parameters.webPageProxyID.toUInt64(), m_parameters.webPageID.toUInt64(), m_parameters.webFrameID.object().toUInt64(), m_parameters.identifier.toUInt64(), isMainResource(), static_cast<unsigned>(m_parameters.options.destination), isSynchronous(), ##__VA_ARGS__)

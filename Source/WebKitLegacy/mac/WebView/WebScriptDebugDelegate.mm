@@ -38,10 +38,10 @@
 #import <JavaScriptCore/JSFunction.h>
 #import <JavaScriptCore/JSGlobalObject.h>
 #import <JavaScriptCore/JSLock.h>
-#import <WebCore/Frame.h>
-#import <WebCore/ScriptController.h>
-#import <WebCore/WebScriptObjectPrivate.h>
-#import <WebCore/runtime_root.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/ScriptController.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
+#import <CyberCore/runtime_root.h>
 
 // FIXME: these error strings should be public for future use by WebScriptObject and in WebScriptObject.h
 NSString * const WebScriptErrorDomain = @"WebScriptErrorDomain";

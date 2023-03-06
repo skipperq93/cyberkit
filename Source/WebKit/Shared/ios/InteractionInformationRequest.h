@@ -29,9 +29,9 @@
 
 #include "ArgumentCoders.h"
 #include "ShareableBitmap.h"
-#include <WebCore/IntPoint.h>
-#include <WebCore/SelectionGeometry.h>
-#include <WebCore/TextIndicator.h>
+#include <CyberCore/IntPoint.h>
+#include <CyberCore/SelectionGeometry.h>
+#include <CyberCore/TextIndicator.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {

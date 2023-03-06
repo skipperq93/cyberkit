@@ -28,10 +28,10 @@
 #if ENABLE(MAC_GESTURE_EVENTS)
 
 #include "WebEvent.h"
-#include <WebCore/FloatPoint.h>
-#include <WebCore/FloatSize.h>
-#include <WebCore/IntPoint.h>
-#include <WebCore/IntSize.h>
+#include <CyberCore/FloatPoint.h>
+#include <CyberCore/FloatSize.h>
+#include <CyberCore/IntPoint.h>
+#include <CyberCore/IntSize.h>
 #include <wtf/text/WTFString.h>
 
 namespace IPC {

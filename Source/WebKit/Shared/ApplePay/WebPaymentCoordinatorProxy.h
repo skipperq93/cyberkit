@@ -31,8 +31,8 @@
 #include "MessageSender.h"
 #include "PaymentAuthorizationPresenter.h"
 #include "WebPageProxyIdentifier.h"
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/PaymentHeaders.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/PaymentHeaders.h>
 #include <wtf/Forward.h>
 #include <wtf/RetainPtr.h>
 #include <wtf/WeakObjCPtr.h>

@@ -31,11 +31,11 @@
 #include "Logging.h"
 #include "RemoteVideoFrameObjectHeap.h"
 #include "RemoteVideoFrameProxy.h"
-#include <WebCore/CVUtilities.h>
-#include <WebCore/IOSurface.h>
-#include <WebCore/SharedVideoFrameInfo.h>
-#include <WebCore/VideoFrameCV.h>
-#include <WebCore/VideoFrameLibWebRTC.h>
+#include <CyberCore/CVUtilities.h>
+#include <CyberCore/IOSurface.h>
+#include <CyberCore/SharedVideoFrameInfo.h>
+#include <CyberCore/VideoFrameCV.h>
+#include <CyberCore/VideoFrameLibWebRTC.h>
 #include <wtf/Scope.h>
 
 #if USE(LIBWEBRTC)
@@ -49,7 +49,7 @@ ALLOW_COMMA_END
 #endif
 
 #include <pal/cf/CoreMediaSoftLink.h>
-#include <WebCore/CoreVideoSoftLink.h>
+#include <CyberCore/CoreVideoSoftLink.h>
 
 namespace WebKit {
 using namespace WebCore;

@@ -31,14 +31,14 @@
 #include "MessageSender.h"
 #include "WebFramePolicyListenerProxy.h"
 #include "WebPageProxy.h"
-#include <WebCore/FrameLoaderTypes.h>
+#include <CyberCore/FrameLoaderTypes.h>
 #include <wtf/Forward.h>
 #include <wtf/Function.h>
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
 #if ENABLE(CONTENT_FILTERING)
-#include <WebCore/ContentFilterUnblockHandler.h>
+#include <CyberCore/ContentFilterUnblockHandler.h>
 #endif
 
 namespace API {

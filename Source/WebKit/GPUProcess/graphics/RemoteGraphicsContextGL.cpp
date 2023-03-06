@@ -33,9 +33,9 @@
 #include "RemoteGraphicsContextGLMessages.h"
 #include "RemoteGraphicsContextGLProxyMessages.h"
 #include "StreamConnectionWorkQueue.h"
-#include <WebCore/ByteArrayPixelBuffer.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/ByteArrayPixelBuffer.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/NotImplemented.h>
 #include <wtf/MainThread.h>
 #include <wtf/NeverDestroyed.h>
 

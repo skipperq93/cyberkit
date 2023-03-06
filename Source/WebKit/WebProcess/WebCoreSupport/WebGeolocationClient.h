@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/GeolocationClient.h>
+#include <CyberCore/GeolocationClient.h>
 
 namespace WebKit {
 

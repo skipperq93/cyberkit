@@ -51,25 +51,25 @@
 #include "TrackPrivateRemoteConfiguration.h"
 #include "WebCoreArgumentCoders.h"
 #include <JavaScriptCore/Uint8Array.h>
-#include <WebCore/LayoutRect.h>
-#include <WebCore/MediaPlayer.h>
-#include <WebCore/MediaPlayerPrivate.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/LayoutRect.h>
+#include <CyberCore/MediaPlayer.h>
+#include <CyberCore/MediaPlayerPrivate.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/SecurityOrigin.h>
 
 #if ENABLE(ENCRYPTED_MEDIA)
 #include "RemoteCDMFactoryProxy.h"
 #endif
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
-#include <WebCore/MediaPlaybackTargetCocoa.h>
-#include <WebCore/MediaPlaybackTargetContext.h>
-#include <WebCore/MediaPlaybackTargetMock.h>
+#include <CyberCore/MediaPlaybackTargetCocoa.h>
+#include <CyberCore/MediaPlaybackTargetContext.h>
+#include <CyberCore/MediaPlaybackTargetMock.h>
 #endif
 
 #if PLATFORM(COCOA)
-#include <WebCore/AudioSourceProviderAVFObjC.h>
-#include <WebCore/VideoFrameCV.h>
+#include <CyberCore/AudioSourceProviderAVFObjC.h>
+#include <CyberCore/VideoFrameCV.h>
 #endif
 
 namespace WebKit {

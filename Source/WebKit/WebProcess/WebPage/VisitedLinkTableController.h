@@ -28,7 +28,7 @@
 #include "MessageReceiver.h"
 #include "SharedMemory.h"
 #include "SharedStringHashTableReadOnly.h"
-#include <WebCore/VisitedLinkStore.h>
+#include <CyberCore/VisitedLinkStore.h>
 
 namespace WebKit {
 

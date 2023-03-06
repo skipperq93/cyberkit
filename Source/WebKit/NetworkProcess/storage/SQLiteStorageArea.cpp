@@ -27,10 +27,10 @@
 #include "SQLiteStorageArea.h"
 
 #include "Logging.h"
-#include <WebCore/SQLiteFileSystem.h>
-#include <WebCore/SQLiteStatement.h>
-#include <WebCore/SQLiteTransaction.h>
-#include <WebCore/StorageMap.h>
+#include <CyberCore/SQLiteFileSystem.h>
+#include <CyberCore/SQLiteStatement.h>
+#include <CyberCore/SQLiteTransaction.h>
+#include <CyberCore/StorageMap.h>
 
 namespace WebKit {
 

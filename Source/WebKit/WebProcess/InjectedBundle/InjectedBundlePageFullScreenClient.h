@@ -30,7 +30,7 @@
 
 #include "APIClient.h"
 #include "WKBundlePageFullScreenClient.h"
-#include <WebCore/FloatSize.h>
+#include <CyberCore/FloatSize.h>
 #include <wtf/Forward.h>
 
 namespace API {

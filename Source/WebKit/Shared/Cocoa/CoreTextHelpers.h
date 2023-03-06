@@ -25,7 +25,7 @@
 
 #pragma once
 
-#import <WebCore/FontCocoa.h>
+#import <CyberCore/FontCocoa.h>
 #import <wtf/RetainPtr.h>
 
 #if USE(APPKIT)

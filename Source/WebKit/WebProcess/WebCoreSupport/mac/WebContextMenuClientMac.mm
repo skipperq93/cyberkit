@@ -31,13 +31,13 @@
 #import "WebCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebPageProxyMessages.h"
-#import <WebCore/DictionaryLookup.h>
-#import <WebCore/Editor.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/Page.h>
-#import <WebCore/TextIndicator.h>
-#import <WebCore/TranslationContextMenuInfo.h>
+#import <CyberCore/DictionaryLookup.h>
+#import <CyberCore/Editor.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/TextIndicator.h>
+#import <CyberCore/TranslationContextMenuInfo.h>
 #import <wtf/text/WTFString.h>
 
 namespace WebKit {

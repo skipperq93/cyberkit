@@ -32,7 +32,7 @@
 #include "Download.h"
 #include "NetworkConnectionToWebProcess.h"
 #include "NetworkDataTask.h"
-#include <WebCore/FetchIdentifier.h>
+#include <CyberCore/FetchIdentifier.h>
 #include <wtf/FileSystem.h>
 #include <wtf/FunctionDispatcher.h>
 

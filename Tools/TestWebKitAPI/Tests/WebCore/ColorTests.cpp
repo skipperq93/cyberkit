@@ -26,10 +26,10 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/Color.h>
-#include <WebCore/ColorConversion.h>
-#include <WebCore/ColorSerialization.h>
-#include <WebCore/ColorTypes.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/ColorConversion.h>
+#include <CyberCore/ColorSerialization.h>
+#include <CyberCore/ColorTypes.h>
 #include <wtf/Hasher.h>
 #include <wtf/MathExtras.h>
 

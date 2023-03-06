@@ -30,8 +30,8 @@
 
 #import "ContactsUISPI.h"
 #import <Contacts/Contacts.h>
-#import <WebCore/ContactInfo.h>
-#import <WebCore/ContactsRequestData.h>
+#import <CyberCore/ContactInfo.h>
+#import <CyberCore/ContactsRequestData.h>
 #import <CyberKit/WKWebView.h>
 #import <wtf/CompletionHandler.h>
 #import <wtf/RetainPtr.h>

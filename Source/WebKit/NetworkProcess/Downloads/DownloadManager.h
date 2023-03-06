@@ -32,7 +32,7 @@
 #include "PendingDownload.h"
 #include "PolicyDecision.h"
 #include "SandboxExtension.h"
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
 #include <wtf/Noncopyable.h>

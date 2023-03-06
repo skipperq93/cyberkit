@@ -29,7 +29,7 @@
 
 #include "APIArray.h"
 #include "APIString.h"
-#include <WebCore/MIMETypeRegistry.h>
+#include <CyberCore/MIMETypeRegistry.h>
 #include <wtf/Vector.h>
 
 namespace API {

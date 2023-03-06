@@ -28,7 +28,7 @@
 #if ENABLE(APPLICATION_MANIFEST)
 
 #include <JavaScriptCore/InitializeThreading.h>
-#include <WebCore/ApplicationManifestParser.h>
+#include <CyberCore/ApplicationManifestParser.h>
 #include <wtf/RunLoop.h>
 
 using namespace WebCore;

@@ -30,12 +30,12 @@
 #include "ArgumentCoders.h"
 #include "InteractionInformationRequest.h"
 #include "ShareableBitmap.h"
-#include <WebCore/Cursor.h>
-#include <WebCore/ElementContext.h>
-#include <WebCore/IntPoint.h>
-#include <WebCore/ScrollTypes.h>
-#include <WebCore/SelectionGeometry.h>
-#include <WebCore/TextIndicator.h>
+#include <CyberCore/Cursor.h>
+#include <CyberCore/ElementContext.h>
+#include <CyberCore/IntPoint.h>
+#include <CyberCore/ScrollTypes.h>
+#include <CyberCore/SelectionGeometry.h>
+#include <CyberCore/TextIndicator.h>
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 

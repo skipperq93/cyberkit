@@ -26,9 +26,9 @@
 #if PLATFORM(IOS_FAMILY) && ENABLE(ASYNC_SCROLLING)
 
 #import <UIKit/UIScrollView.h>
-#import <WebCore/ScrollingCoordinator.h>
-#import <WebCore/ScrollingTreeScrollingNode.h>
-#import <WebCore/ScrollingTreeScrollingNodeDelegate.h>
+#import <CyberCore/ScrollingCoordinator.h>
+#import <CyberCore/ScrollingTreeScrollingNode.h>
+#import <CyberCore/ScrollingTreeScrollingNodeDelegate.h>
 
 @class CALayer;
 @class UIScrollEvent;

@@ -28,8 +28,8 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#include <WebCore/ApduCommand.h>
-#include <WebCore/ApduResponse.h>
+#include <CyberCore/ApduCommand.h>
+#include <CyberCore/ApduResponse.h>
 #include <wtf/RunLoop.h>
 
 namespace WebKit {

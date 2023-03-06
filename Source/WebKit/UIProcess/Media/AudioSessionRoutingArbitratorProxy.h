@@ -28,12 +28,12 @@
 #if ENABLE(ROUTING_ARBITRATION)
 
 #include "MessageReceiver.h"
-#include <WebCore/AudioSession.h>
+#include <CyberCore/AudioSession.h>
 #include <wtf/WallTime.h>
 #include <wtf/WeakPtr.h>
 
 #if HAVE(AVAUDIO_ROUTING_ARBITER)
-#import <WebCore/SharedRoutingArbitrator.h>
+#import <CyberCore/SharedRoutingArbitrator.h>
 #endif
 
 namespace WebKit {

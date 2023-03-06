@@ -30,8 +30,8 @@
 #import "ModelIdentifier.h"
 #import "WebPage.h"
 #import "WebPageProxyMessages.h"
-#import <WebCore/ModelPlayer.h>
-#import <WebCore/ModelPlayerClient.h>
+#import <CyberCore/ModelPlayer.h>
+#import <CyberCore/ModelPlayerClient.h>
 #import <wtf/Compiler.h>
 
 namespace WebKit {

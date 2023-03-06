@@ -27,9 +27,9 @@
 
 #if ENABLE(WEBDRIVER_ACTIONS_API)
 
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/IntPoint.h>
-#include <WebCore/IntSize.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/IntPoint.h>
+#include <CyberCore/IntSize.h>
 #include <variant>
 #include <wtf/CompletionHandler.h>
 #include <wtf/ListHashSet.h>

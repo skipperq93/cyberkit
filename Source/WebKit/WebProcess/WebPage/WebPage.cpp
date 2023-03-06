@@ -153,129 +153,129 @@
 #include <JavaScriptCore/JSLock.h>
 #include <JavaScriptCore/ProfilerDatabase.h>
 #include <JavaScriptCore/SamplingProfiler.h>
-#include <WebCore/AppHighlight.h>
-#include <WebCore/ApplicationCacheStorage.h>
-#include <WebCore/ArchiveResource.h>
-#include <WebCore/BackForwardCache.h>
-#include <WebCore/BackForwardController.h>
-#include <WebCore/CachedPage.h>
-#include <WebCore/Chrome.h>
-#include <WebCore/CommonVM.h>
-#include <WebCore/ContactsRequestData.h>
-#include <WebCore/ContextMenuController.h>
-#include <WebCore/CrossOriginEmbedderPolicy.h>
-#include <WebCore/CrossOriginOpenerPolicy.h>
-#include <WebCore/DOMPasteAccess.h>
-#include <WebCore/DataTransfer.h>
-#include <WebCore/DatabaseManager.h>
-#include <WebCore/DeprecatedGlobalSettings.h>
-#include <WebCore/Document.h>
-#include <WebCore/DocumentFragment.h>
-#include <WebCore/DocumentLoader.h>
-#include <WebCore/DocumentMarkerController.h>
-#include <WebCore/DocumentStorageAccess.h>
-#include <WebCore/DragController.h>
-#include <WebCore/DragData.h>
-#include <WebCore/Editing.h>
-#include <WebCore/Editor.h>
-#include <WebCore/ElementIterator.h>
-#include <WebCore/EventHandler.h>
-#include <WebCore/EventNames.h>
-#include <WebCore/File.h>
-#include <WebCore/FocusController.h>
-#include <WebCore/FontAttributeChanges.h>
-#include <WebCore/FontAttributes.h>
-#include <WebCore/FormState.h>
-#include <WebCore/FragmentDirectiveParser.h>
-#include <WebCore/FragmentDirectiveRangeFinder.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameLoadRequest.h>
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/FullscreenManager.h>
-#include <WebCore/GeometryUtilities.h>
-#include <WebCore/HTMLAttachmentElement.h>
-#include <WebCore/HTMLFormElement.h>
-#include <WebCore/HTMLImageElement.h>
-#include <WebCore/HTMLInputElement.h>
-#include <WebCore/HTMLMenuElement.h>
-#include <WebCore/HTMLMenuItemElement.h>
-#include <WebCore/HTMLPlugInElement.h>
-#include <WebCore/HTMLSelectElement.h>
-#include <WebCore/HTMLTextFormControlElement.h>
-#include <WebCore/HTTPParsers.h>
-#include <WebCore/Highlight.h>
-#include <WebCore/HighlightRegister.h>
-#include <WebCore/HistoryController.h>
-#include <WebCore/HistoryItem.h>
-#include <WebCore/HitTestResult.h>
-#include <WebCore/ImageAnalysisQueue.h>
-#include <WebCore/ImageOverlay.h>
-#include <WebCore/InspectorController.h>
-#include <WebCore/JSDOMExceptionHandling.h>
-#include <WebCore/JSDOMWindow.h>
-#include <WebCore/KeyboardEvent.h>
-#include <WebCore/LegacySchemeRegistry.h>
-#include <WebCore/LocalizedStrings.h>
-#include <WebCore/MIMETypeRegistry.h>
-#include <WebCore/MemoryCache.h>
-#include <WebCore/MouseEvent.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/Page.h>
-#include <WebCore/PageConfiguration.h>
-#include <WebCore/PingLoader.h>
-#include <WebCore/PlatformKeyboardEvent.h>
-#include <WebCore/PlatformMediaSessionManager.h>
-#include <WebCore/PlatformStrategies.h>
-#include <WebCore/PluginDocument.h>
-#include <WebCore/PointerCaptureController.h>
-#include <WebCore/PrintContext.h>
-#include <WebCore/ProcessCapabilities.h>
-#include <WebCore/PromisedAttachmentInfo.h>
-#include <WebCore/Quirks.h>
-#include <WebCore/Range.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/RemoteDOMWindow.h>
-#include <WebCore/RemoteFrame.h>
-#include <WebCore/RenderImage.h>
-#include <WebCore/RenderLayer.h>
-#include <WebCore/RenderTheme.h>
-#include <WebCore/RenderTreeAsText.h>
-#include <WebCore/RenderVideo.h>
-#include <WebCore/RenderView.h>
-#include <WebCore/Report.h>
-#include <WebCore/ReportingScope.h>
-#include <WebCore/ResourceLoadStatistics.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/RunJavaScriptParameters.h>
-#include <WebCore/SWClientConnection.h>
-#include <WebCore/ScriptController.h>
-#include <WebCore/SecurityPolicy.h>
-#include <WebCore/SelectionRestorationMode.h>
-#include <WebCore/SerializedScriptValue.h>
-#include <WebCore/Settings.h>
-#include <WebCore/ShadowRoot.h>
-#include <WebCore/SharedBuffer.h>
-#include <WebCore/StaticRange.h>
-#include <WebCore/StyleProperties.h>
-#include <WebCore/SubframeLoader.h>
-#include <WebCore/SubstituteData.h>
-#include <WebCore/TextIterator.h>
-#include <WebCore/TextRecognitionOptions.h>
-#include <WebCore/TranslationContextMenuInfo.h>
-#include <WebCore/UserContentURLPattern.h>
-#include <WebCore/UserGestureIndicator.h>
-#include <WebCore/UserInputBridge.h>
-#include <WebCore/UserScript.h>
-#include <WebCore/UserStyleSheet.h>
-#include <WebCore/UserTypingGestureIndicator.h>
-#include <WebCore/ViolationReportType.h>
-#include <WebCore/VisiblePosition.h>
-#include <WebCore/VisibleUnits.h>
-#include <WebCore/WebGLStateTracker.h>
-#include <WebCore/WritingDirection.h>
-#include <WebCore/markup.h>
+#include <CyberCore/AppHighlight.h>
+#include <CyberCore/ApplicationCacheStorage.h>
+#include <CyberCore/ArchiveResource.h>
+#include <CyberCore/BackForwardCache.h>
+#include <CyberCore/BackForwardController.h>
+#include <CyberCore/CachedPage.h>
+#include <CyberCore/Chrome.h>
+#include <CyberCore/CommonVM.h>
+#include <CyberCore/ContactsRequestData.h>
+#include <CyberCore/ContextMenuController.h>
+#include <CyberCore/CrossOriginEmbedderPolicy.h>
+#include <CyberCore/CrossOriginOpenerPolicy.h>
+#include <CyberCore/DOMPasteAccess.h>
+#include <CyberCore/DataTransfer.h>
+#include <CyberCore/DatabaseManager.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/DocumentFragment.h>
+#include <CyberCore/DocumentLoader.h>
+#include <CyberCore/DocumentMarkerController.h>
+#include <CyberCore/DocumentStorageAccess.h>
+#include <CyberCore/DragController.h>
+#include <CyberCore/DragData.h>
+#include <CyberCore/Editing.h>
+#include <CyberCore/Editor.h>
+#include <CyberCore/ElementIterator.h>
+#include <CyberCore/EventHandler.h>
+#include <CyberCore/EventNames.h>
+#include <CyberCore/File.h>
+#include <CyberCore/FocusController.h>
+#include <CyberCore/FontAttributeChanges.h>
+#include <CyberCore/FontAttributes.h>
+#include <CyberCore/FormState.h>
+#include <CyberCore/FragmentDirectiveParser.h>
+#include <CyberCore/FragmentDirectiveRangeFinder.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameLoadRequest.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/FullscreenManager.h>
+#include <CyberCore/GeometryUtilities.h>
+#include <CyberCore/HTMLAttachmentElement.h>
+#include <CyberCore/HTMLFormElement.h>
+#include <CyberCore/HTMLImageElement.h>
+#include <CyberCore/HTMLInputElement.h>
+#include <CyberCore/HTMLMenuElement.h>
+#include <CyberCore/HTMLMenuItemElement.h>
+#include <CyberCore/HTMLPlugInElement.h>
+#include <CyberCore/HTMLSelectElement.h>
+#include <CyberCore/HTMLTextFormControlElement.h>
+#include <CyberCore/HTTPParsers.h>
+#include <CyberCore/Highlight.h>
+#include <CyberCore/HighlightRegister.h>
+#include <CyberCore/HistoryController.h>
+#include <CyberCore/HistoryItem.h>
+#include <CyberCore/HitTestResult.h>
+#include <CyberCore/ImageAnalysisQueue.h>
+#include <CyberCore/ImageOverlay.h>
+#include <CyberCore/InspectorController.h>
+#include <CyberCore/JSDOMExceptionHandling.h>
+#include <CyberCore/JSDOMWindow.h>
+#include <CyberCore/KeyboardEvent.h>
+#include <CyberCore/LegacySchemeRegistry.h>
+#include <CyberCore/LocalizedStrings.h>
+#include <CyberCore/MIMETypeRegistry.h>
+#include <CyberCore/MemoryCache.h>
+#include <CyberCore/MouseEvent.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PageConfiguration.h>
+#include <CyberCore/PingLoader.h>
+#include <CyberCore/PlatformKeyboardEvent.h>
+#include <CyberCore/PlatformMediaSessionManager.h>
+#include <CyberCore/PlatformStrategies.h>
+#include <CyberCore/PluginDocument.h>
+#include <CyberCore/PointerCaptureController.h>
+#include <CyberCore/PrintContext.h>
+#include <CyberCore/ProcessCapabilities.h>
+#include <CyberCore/PromisedAttachmentInfo.h>
+#include <CyberCore/Quirks.h>
+#include <CyberCore/Range.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/RemoteDOMWindow.h>
+#include <CyberCore/RemoteFrame.h>
+#include <CyberCore/RenderImage.h>
+#include <CyberCore/RenderLayer.h>
+#include <CyberCore/RenderTheme.h>
+#include <CyberCore/RenderTreeAsText.h>
+#include <CyberCore/RenderVideo.h>
+#include <CyberCore/RenderView.h>
+#include <CyberCore/Report.h>
+#include <CyberCore/ReportingScope.h>
+#include <CyberCore/ResourceLoadStatistics.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/RunJavaScriptParameters.h>
+#include <CyberCore/SWClientConnection.h>
+#include <CyberCore/ScriptController.h>
+#include <CyberCore/SecurityPolicy.h>
+#include <CyberCore/SelectionRestorationMode.h>
+#include <CyberCore/SerializedScriptValue.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/ShadowRoot.h>
+#include <CyberCore/SharedBuffer.h>
+#include <CyberCore/StaticRange.h>
+#include <CyberCore/StyleProperties.h>
+#include <CyberCore/SubframeLoader.h>
+#include <CyberCore/SubstituteData.h>
+#include <CyberCore/TextIterator.h>
+#include <CyberCore/TextRecognitionOptions.h>
+#include <CyberCore/TranslationContextMenuInfo.h>
+#include <CyberCore/UserContentURLPattern.h>
+#include <CyberCore/UserGestureIndicator.h>
+#include <CyberCore/UserInputBridge.h>
+#include <CyberCore/UserScript.h>
+#include <CyberCore/UserStyleSheet.h>
+#include <CyberCore/UserTypingGestureIndicator.h>
+#include <CyberCore/ViolationReportType.h>
+#include <CyberCore/VisiblePosition.h>
+#include <CyberCore/VisibleUnits.h>
+#include <CyberCore/WebGLStateTracker.h>
+#include <CyberCore/WritingDirection.h>
+#include <CyberCore/markup.h>
 #include <pal/SessionID.h>
 #include <wtf/ProcessID.h>
 #include <wtf/RunLoop.h>
@@ -285,7 +285,7 @@
 #include <wtf/text/TextStream.h>
 
 #if ENABLE(APP_HIGHLIGHTS)
-#include <WebCore/AppHighlightStorage.h>
+#include <CyberCore/AppHighlightStorage.h>
 #endif
 
 #if ENABLE(DATA_DETECTION)
@@ -293,11 +293,11 @@
 #endif
 
 #if ENABLE(MHTML)
-#include <WebCore/MHTMLArchive.h>
+#include <CyberCore/MHTMLArchive.h>
 #endif
 
 #if ENABLE(POINTER_LOCK)
-#include <WebCore/PointerLockController.h>
+#include <CyberCore/PointerLockController.h>
 #endif
 
 #if PLATFORM(COCOA)
@@ -310,8 +310,8 @@
 #include "VideoFullscreenManager.h"
 #include "WKStringCF.h"
 #include "WebRemoteObjectRegistry.h"
-#include <WebCore/LegacyWebArchive.h>
-#include <WebCore/UTIRegistry.h>
+#include <CyberCore/LegacyWebArchive.h>
+#include <CyberCore/UTIRegistry.h>
 #include <mach/mach_time.h>
 #include <wtf/MachSendRight.h>
 #include <wtf/spi/darwin/SandboxSPI.h>
@@ -324,7 +324,7 @@
 
 #if PLATFORM(GTK)
 #include "WebPrintOperationGtk.h"
-#include <WebCore/SelectionData.h>
+#include <CyberCore/SelectionData.h>
 #include <gtk/gtk.h>
 #endif
 
@@ -334,12 +334,12 @@
 #include "RemoteLayerTreeDrawingArea.h"
 #include "WebAutocorrectionContext.h"
 #include <CoreGraphics/CoreGraphics.h>
-#include <WebCore/Icon.h>
+#include <CyberCore/Icon.h>
 #include <pal/spi/cf/CoreTextSPI.h>
 #endif
 
 #if PLATFORM(MAC)
-#include <WebCore/LocalDefaultSystemAppearance.h>
+#include <CyberCore/LocalDefaultSystemAppearance.h>
 #include <pal/spi/cf/CFUtilitiesSPI.h>
 #endif
 
@@ -348,17 +348,17 @@
 #endif
 
 #if ENABLE(DATA_DETECTION)
-#include <WebCore/DataDetection.h>
-#include <WebCore/DataDetectionResultsStorage.h>
+#include <CyberCore/DataDetection.h>
+#include <CyberCore/DataDetectionResultsStorage.h>
 #endif
 
 #if ENABLE(MEDIA_STREAM) && USE(GSTREAMER)
-#include <WebCore/MockRealtimeMediaSourceCenter.h>
+#include <CyberCore/MockRealtimeMediaSourceCenter.h>
 #endif
 
 #if ENABLE(WEB_AUTHN)
 #include "WebAuthenticatorCoordinator.h"
-#include <WebCore/AuthenticatorCoordinator.h>
+#include <CyberCore/AuthenticatorCoordinator.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY) && ENABLE(DEVICE_ORIENTATION)
@@ -379,13 +379,13 @@
 #endif
 
 #if ENABLE(IMAGE_ANALYSIS)
-#include <WebCore/TextRecognitionResult.h>
+#include <CyberCore/TextRecognitionResult.h>
 #endif
 
 #if ENABLE(MEDIA_SESSION_COORDINATOR)
 #include "RemoteMediaSessionCoordinator.h"
-#include <WebCore/MediaSessionCoordinator.h>
-#include <WebCore/NavigatorMediaSession.h>
+#include <CyberCore/MediaSessionCoordinator.h>
+#include <CyberCore/NavigatorMediaSession.h>
 #endif
 
 #if ENABLE(ARKIT_INLINE_PREVIEW_IOS)
@@ -398,7 +398,7 @@
 
 #if USE(CG)
 // FIXME: Move the CG-specific PDF painting code out of WebPage.cpp.
-#include <WebCore/GraphicsContextCG.h>
+#include <CyberCore/GraphicsContextCG.h>
 #endif
 
 #if ENABLE(LOCKDOWN_MODE_API)

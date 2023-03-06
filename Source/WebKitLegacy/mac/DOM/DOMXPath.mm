@@ -27,8 +27,8 @@
 #import "DOMInternal.h" // import first to make the private/public trick work
 #import "DOMXPath.h"
 
-#import <WebCore/WebScriptObjectPrivate.h>
-#import <WebCore/XPathNSResolver.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
+#import <CyberCore/XPathNSResolver.h>
 #import <wtf/text/WTFString.h>
 
 //------------------------------------------------------------------------------------------

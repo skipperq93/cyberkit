@@ -33,7 +33,7 @@
 #import "TestURLSchemeHandler.h"
 #import "TestWKWebView.h"
 #import "VirtualGamepad.h"
-#import <WebCore/GameControllerSoftLink.h>
+#import <CyberCore/GameControllerSoftLink.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
 
 @interface GamepadMessageHandler : NSObject <WKScriptMessageHandler>

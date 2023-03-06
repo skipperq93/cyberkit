@@ -29,7 +29,7 @@
 #if USE(SYSTEM_PREVIEW)
 
 #include "WebPageProxy.h"
-#include <WebCore/MIMETypeRegistry.h>
+#include <CyberCore/MIMETypeRegistry.h>
 
 namespace WebKit {
 

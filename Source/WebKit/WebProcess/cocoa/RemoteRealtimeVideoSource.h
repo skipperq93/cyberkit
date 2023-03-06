@@ -29,8 +29,8 @@
 
 #include "RemoteRealtimeMediaSource.h"
 #include "RemoteRealtimeMediaSourceProxy.h"
-#include <WebCore/CaptureDevice.h>
-#include <WebCore/RealtimeMediaSourceIdentifier.h>
+#include <CyberCore/CaptureDevice.h>
+#include <CyberCore/RealtimeMediaSourceIdentifier.h>
 
 namespace WebCore {
 class VideoFrame;

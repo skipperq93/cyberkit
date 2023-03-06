@@ -26,8 +26,8 @@
 #include "config.h"
 #include "WebOpenPanelResultListener.h"
 
-#include <WebCore/FileChooser.h>
-#include <WebCore/Icon.h>
+#include <CyberCore/FileChooser.h>
+#include <CyberCore/Icon.h>
 
 namespace WebKit {
 

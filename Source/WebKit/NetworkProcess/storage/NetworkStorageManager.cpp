@@ -47,9 +47,9 @@
 #include "StorageUtilities.h"
 #include "UnifiedOriginStorageLevel.h"
 #include "WebsiteDataType.h"
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/UniqueIDBDatabaseConnection.h>
-#include <WebCore/UniqueIDBDatabaseTransaction.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/UniqueIDBDatabaseConnection.h>
+#include <CyberCore/UniqueIDBDatabaseTransaction.h>
 #include <pal/crypto/CryptoDigest.h>
 #include <wtf/SuspendableWorkQueue.h>
 #include <wtf/text/Base64.h>

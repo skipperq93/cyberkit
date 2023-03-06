@@ -56,37 +56,37 @@
 #import "WebsiteDataStoreParameters.h"
 #import <JavaScriptCore/ConfigFile.h>
 #import <JavaScriptCore/Options.h>
-#import <WebCore/AVAssetMIMETypeCache.h>
-#import <WebCore/AXObjectCache.h>
-#import <WebCore/CPUMonitor.h>
-#import <WebCore/DeprecatedGlobalSettings.h>
-#import <WebCore/DisplayRefreshMonitorManager.h>
-#import <WebCore/FontCache.h>
-#import <WebCore/FontCacheCoreText.h>
-#import <WebCore/FontCascade.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/HistoryController.h>
-#import <WebCore/HistoryItem.h>
-#import <WebCore/IOSurface.h>
-#import <WebCore/ImageDecoderCG.h>
-#import <WebCore/LocalizedDeviceModel.h>
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/LogInitialization.h>
-#import <WebCore/MainThreadSharedTimer.h>
-#import <WebCore/MemoryRelease.h>
-#import <WebCore/NSScrollerImpDetails.h>
-#import <WebCore/PageGroup.h>
-#import <WebCore/PerformanceLogging.h>
-#import <WebCore/PictureInPictureSupport.h>
-#import <WebCore/PlatformMediaSessionManager.h>
-#import <WebCore/PlatformScreen.h>
-#import <WebCore/ProcessCapabilities.h>
-#import <WebCore/RuntimeApplicationChecks.h>
-#import <WebCore/SWContextManager.h>
-#import <WebCore/SystemBattery.h>
-#import <WebCore/SystemSoundManager.h>
-#import <WebCore/UTIUtilities.h>
-#import <WebCore/WebMAudioUtilitiesCocoa.h>
+#import <CyberCore/AVAssetMIMETypeCache.h>
+#import <CyberCore/AXObjectCache.h>
+#import <CyberCore/CPUMonitor.h>
+#import <CyberCore/DeprecatedGlobalSettings.h>
+#import <CyberCore/DisplayRefreshMonitorManager.h>
+#import <CyberCore/FontCache.h>
+#import <CyberCore/FontCacheCoreText.h>
+#import <CyberCore/FontCascade.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/HistoryController.h>
+#import <CyberCore/HistoryItem.h>
+#import <CyberCore/IOSurface.h>
+#import <CyberCore/ImageDecoderCG.h>
+#import <CyberCore/LocalizedDeviceModel.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/LogInitialization.h>
+#import <CyberCore/MainThreadSharedTimer.h>
+#import <CyberCore/MemoryRelease.h>
+#import <CyberCore/NSScrollerImpDetails.h>
+#import <CyberCore/PageGroup.h>
+#import <CyberCore/PerformanceLogging.h>
+#import <CyberCore/PictureInPictureSupport.h>
+#import <CyberCore/PlatformMediaSessionManager.h>
+#import <CyberCore/PlatformScreen.h>
+#import <CyberCore/ProcessCapabilities.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
+#import <CyberCore/SWContextManager.h>
+#import <CyberCore/SystemBattery.h>
+#import <CyberCore/SystemSoundManager.h>
+#import <CyberCore/UTIUtilities.h>
+#import <CyberCore/WebMAudioUtilitiesCocoa.h>
 #import <algorithm>
 #import <dispatch/dispatch.h>
 #import <mach/mach.h>
@@ -146,8 +146,8 @@
 #import "AppKitSPI.h"
 #import "WKAccessibilityWebPageObjectMac.h"
 #import "WebSwitchingGPUClient.h"
-#import <WebCore/DisplayConfigurationMonitor.h>
-#import <WebCore/ScrollbarThemeMac.h>
+#import <CyberCore/DisplayConfigurationMonitor.h>
+#import <CyberCore/ScrollbarThemeMac.h>
 #import <pal/spi/cf/CoreTextSPI.h>
 #import <pal/spi/mac/HIServicesSPI.h>
 #import <pal/spi/mac/NSScrollerImpSPI.h>
@@ -155,14 +155,14 @@
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
 #import "WebCaptionPreferencesDelegate.h"
-#import <WebCore/CaptionUserPreferencesMediaAF.h>
+#import <CyberCore/CaptionUserPreferencesMediaAF.h>
 #endif
 
 #if ENABLE(DATA_DETECTION) && PLATFORM(IOS_FAMILY)
 #import <pal/spi/ios/DataDetectorsUISPI.h>
 #endif
 
-#import <WebCore/MediaAccessibilitySoftLink.h>
+#import <CyberCore/MediaAccessibilitySoftLink.h>
 #import <pal/cf/VideoToolboxSoftLink.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 #import <pal/cocoa/DataDetectorsCoreSoftLink.h>

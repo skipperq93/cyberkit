@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (C) 2020-2022 Apple Inc. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,15 +30,15 @@
 
 #include "Logging.h"
 #include "MediaTrackReader.h"
-#include <WebCore/AudioTrackPrivate.h>
-#include <WebCore/ContentType.h>
-#include <WebCore/Document.h>
-#include <WebCore/InbandTextTrackPrivate.h>
-#include <WebCore/MediaSample.h>
-#include <WebCore/MediaSampleAVFObjC.h>
-#include <WebCore/SharedBuffer.h>
-#include <WebCore/SourceBufferParserWebM.h>
-#include <WebCore/VideoTrackPrivate.h>
+#include <CyberCore/AudioTrackPrivate.h>
+#include <CyberCore/ContentType.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/InbandTextTrackPrivate.h>
+#include <CyberCore/MediaSample.h>
+#include <CyberCore/MediaSampleAVFObjC.h>
+#include <CyberCore/SharedBuffer.h>
+#include <CyberCore/SourceBufferParserWebM.h>
+#include <CyberCore/VideoTrackPrivate.h>
 #include <pal/avfoundation/MediaTimeAVFoundation.h>
 #include <wtf/CryptographicallyRandomNumber.h>
 #include <wtf/LoggerHelper.h>

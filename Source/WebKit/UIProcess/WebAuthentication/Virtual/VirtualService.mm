@@ -34,8 +34,8 @@
 #import "VirtualAuthenticatorManager.h"
 #import "VirtualHidConnection.h"
 #import "VirtualLocalConnection.h"
-#import <WebCore/FidoConstants.h>
-#import <WebCore/WebAuthenticationConstants.h>
+#import <CyberCore/FidoConstants.h>
+#import <CyberCore/WebAuthenticationConstants.h>
 #import <wtf/UniqueRef.h>
 #import <wtf/text/WTFString.h>
 

@@ -41,12 +41,12 @@
 #include "WKProtectionSpaceTypes.h"
 #include "WKResourceCacheManager.h"
 #include "WKSharedAPICast.h"
-#include <WebCore/Credential.h>
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/HTTPCookieAcceptPolicy.h>
-#include <WebCore/PluginData.h>
-#include <WebCore/ProtectionSpace.h>
-#include <WebCore/Settings.h>
+#include <CyberCore/Credential.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/HTTPCookieAcceptPolicy.h>
+#include <CyberCore/PluginData.h>
+#include <CyberCore/ProtectionSpace.h>
+#include <CyberCore/Settings.h>
 
 namespace API {
 class ContentRuleList;

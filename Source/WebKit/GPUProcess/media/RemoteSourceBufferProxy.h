@@ -33,9 +33,9 @@
 #include "RemoteSourceBufferIdentifier.h"
 #include "SharedMemory.h"
 #include "TrackPrivateRemoteIdentifier.h"
-#include <WebCore/MediaDescription.h>
-#include <WebCore/SourceBufferPrivate.h>
-#include <WebCore/SourceBufferPrivateClient.h>
+#include <CyberCore/MediaDescription.h>
+#include <CyberCore/SourceBufferPrivate.h>
+#include <CyberCore/SourceBufferPrivateClient.h>
 #include <wtf/Ref.h>
 #include <wtf/text/AtomString.h>
 

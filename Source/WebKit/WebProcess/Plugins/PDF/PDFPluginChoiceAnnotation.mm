@@ -30,15 +30,15 @@
 
 #import "PDFLayerControllerSPI.h"
 #import <Quartz/Quartz.h>
-#import <WebCore/CSSPrimitiveValue.h>
-#import <WebCore/CSSPropertyNames.h>
-#import <WebCore/ColorMac.h>
-#import <WebCore/ColorSerialization.h>
-#import <WebCore/HTMLElement.h>
-#import <WebCore/HTMLNames.h>
-#import <WebCore/HTMLOptionElement.h>
-#import <WebCore/HTMLSelectElement.h>
-#import <WebCore/Page.h>
+#import <CyberCore/CSSPrimitiveValue.h>
+#import <CyberCore/CSSPropertyNames.h>
+#import <CyberCore/ColorMac.h>
+#import <CyberCore/ColorSerialization.h>
+#import <CyberCore/HTMLElement.h>
+#import <CyberCore/HTMLNames.h>
+#import <CyberCore/HTMLOptionElement.h>
+#import <CyberCore/HTMLSelectElement.h>
+#import <CyberCore/Page.h>
 
 namespace WebKit {
 using namespace WebCore;

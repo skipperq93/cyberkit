@@ -29,9 +29,9 @@
 #include "CoordinateSystem.h"
 #include <JavaScriptCore/JSBase.h>
 #include <JavaScriptCore/PrivateName.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/PageIdentifier.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebCore {

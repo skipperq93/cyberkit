@@ -27,7 +27,7 @@
 #import "_WKWebsiteDataStoreConfigurationInternal.h"
 
 #import "UnifiedOriginStorageLevel.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 static void checkURLArgument(NSURL *url)

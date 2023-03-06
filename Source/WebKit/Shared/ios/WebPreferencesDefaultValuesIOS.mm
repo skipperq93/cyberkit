@@ -29,7 +29,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "UserInterfaceIdiom.h"
-#import <WebCore/Device.h>
+#import <CyberCore/Device.h>
 #import <pal/ios/ManagedConfigurationSoftLink.h>
 #import <pal/spi/ios/ManagedConfigurationSPI.h>
 

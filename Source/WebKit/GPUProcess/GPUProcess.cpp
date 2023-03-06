@@ -43,12 +43,12 @@
 #include "SandboxExtension.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcessPoolMessages.h"
-#include <WebCore/CommonAtomStrings.h>
-#include <WebCore/DeprecatedGlobalSettings.h>
-#include <WebCore/LogInitialization.h>
-#include <WebCore/MemoryRelease.h>
-#include <WebCore/NowPlayingManager.h>
-#include <WebCore/RuntimeApplicationChecks.h>
+#include <CyberCore/CommonAtomStrings.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/LogInitialization.h>
+#include <CyberCore/MemoryRelease.h>
+#include <CyberCore/NowPlayingManager.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
 #include <wtf/Algorithms.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/LogInitialization.h>
@@ -65,12 +65,12 @@
 #endif
 
 #if ENABLE(MEDIA_STREAM)
-#include <WebCore/MockRealtimeMediaSourceCenter.h>
+#include <CyberCore/MockRealtimeMediaSourceCenter.h>
 #endif
 
 #if PLATFORM(COCOA)
-#include <WebCore/CoreAudioSharedUnit.h>
-#include <WebCore/VP9UtilitiesCocoa.h>
+#include <CyberCore/CoreAudioSharedUnit.h>
+#include <CyberCore/VP9UtilitiesCocoa.h>
 #endif
 
 #if HAVE(CGIMAGESOURCE_WITH_SET_ALLOWABLE_TYPES)
@@ -78,11 +78,11 @@
 #endif
 
 #if HAVE(SCREEN_CAPTURE_KIT)
-#include <WebCore/ScreenCaptureKitCaptureSource.h>
+#include <CyberCore/ScreenCaptureKitCaptureSource.h>
 #endif
 
 #if HAVE(SC_CONTENT_SHARING_SESSION)
-#include <WebCore/ScreenCaptureKitSharingSessionManager.h>
+#include <CyberCore/ScreenCaptureKitSharingSessionManager.h>
 #endif
 
 namespace WebKit {

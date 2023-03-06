@@ -28,7 +28,7 @@
 #include "ArgumentCoders.h"
 #include "Decoder.h"
 #include "Encoder.h"
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/ResourceRequest.h>
 #include <wtf/ArgumentCoder.h>
 
 namespace WebKit {

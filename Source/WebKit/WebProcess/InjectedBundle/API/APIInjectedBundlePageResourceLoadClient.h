@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/ResourceLoaderIdentifier.h>
+#include <CyberCore/ResourceLoaderIdentifier.h>
 
 namespace WebKit {
 class WebFrame;

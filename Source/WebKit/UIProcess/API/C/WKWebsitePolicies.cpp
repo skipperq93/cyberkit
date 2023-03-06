@@ -33,7 +33,7 @@
 #include "WKDictionary.h"
 #include "WKRetainPtr.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/DocumentLoader.h>
+#include <CyberCore/DocumentLoader.h>
 
 using namespace WebKit;
 

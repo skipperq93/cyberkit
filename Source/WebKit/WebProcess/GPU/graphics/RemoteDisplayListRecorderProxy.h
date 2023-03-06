@@ -29,9 +29,9 @@
 
 #include "DisplayListRecorderFlushIdentifier.h"
 #include "SharedVideoFrame.h"
-#include <WebCore/DisplayListRecorder.h>
-#include <WebCore/DrawGlyphsRecorder.h>
-#include <WebCore/GraphicsContext.h>
+#include <CyberCore/DisplayListRecorder.h>
+#include <CyberCore/DrawGlyphsRecorder.h>
+#include <CyberCore/GraphicsContext.h>
 #include <wtf/WeakPtr.h>
 
 namespace IPC {

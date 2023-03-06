@@ -30,7 +30,7 @@
 #include "WebPageProxy.h"
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
-#include <WebCore/DiagnosticLoggingKeys.h>
+#include <CyberCore/DiagnosticLoggingKeys.h>
 
 namespace WebKit {
 using namespace WebCore;

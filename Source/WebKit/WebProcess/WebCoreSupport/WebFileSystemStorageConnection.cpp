@@ -27,13 +27,13 @@
 #include "WebFileSystemStorageConnection.h"
 
 #include "NetworkStorageManagerMessages.h"
-#include <WebCore/ExceptionOr.h>
-#include <WebCore/FileSystemDirectoryHandle.h>
-#include <WebCore/FileSystemFileHandle.h>
-#include <WebCore/FileSystemHandleCloseScope.h>
-#include <WebCore/ScriptExecutionContext.h>
-#include <WebCore/WorkerFileSystemStorageConnection.h>
-#include <WebCore/WorkerGlobalScope.h>
+#include <CyberCore/ExceptionOr.h>
+#include <CyberCore/FileSystemDirectoryHandle.h>
+#include <CyberCore/FileSystemFileHandle.h>
+#include <CyberCore/FileSystemHandleCloseScope.h>
+#include <CyberCore/ScriptExecutionContext.h>
+#include <CyberCore/WorkerFileSystemStorageConnection.h>
+#include <CyberCore/WorkerGlobalScope.h>
 
 namespace WebKit {
 

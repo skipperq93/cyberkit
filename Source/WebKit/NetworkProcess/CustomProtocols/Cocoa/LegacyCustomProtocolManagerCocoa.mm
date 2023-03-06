@@ -30,9 +30,9 @@
 #import "LegacyCustomProtocolManagerMessages.h"
 #import "NetworkProcess.h"
 #import <Foundation/NSURLSession.h>
-#import <WebCore/ResourceError.h>
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/ResourceResponse.h>
+#import <CyberCore/ResourceError.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/ResourceResponse.h>
 #import <pal/spi/cocoa/NSURLConnectionSPI.h>
 #import <pal/text/TextEncoding.h>
 #import <wtf/URL.h>

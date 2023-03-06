@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/DOMCacheIdentifier.h>
+#include <CyberCore/DOMCacheIdentifier.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebKit {

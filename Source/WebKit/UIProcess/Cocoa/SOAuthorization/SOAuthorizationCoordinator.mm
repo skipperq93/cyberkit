@@ -35,7 +35,7 @@
 #import "SubFrameSOAuthorizationSession.h"
 #import "WKSOAuthorizationDelegate.h"
 #import "WebPageProxy.h"
-#import <WebCore/ResourceRequest.h>
+#import <CyberCore/ResourceRequest.h>
 #import <pal/cocoa/AppSSOSoftLink.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <pal/spi/cocoa/AuthKitSPI.h>

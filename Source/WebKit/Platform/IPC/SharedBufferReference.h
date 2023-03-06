@@ -30,7 +30,7 @@
 
 #include "DataReference.h"
 #include "SharedMemory.h"
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/SharedBuffer.h>
 #include <optional>
 
 namespace IPC {

@@ -36,7 +36,7 @@
 #import "WKFormSelectControl.h"
 #import "WKWebViewPrivateForTesting.h"
 #import "WebPageProxy.h"
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/LocalizedStrings.h>
 
 using namespace WebKit;
 

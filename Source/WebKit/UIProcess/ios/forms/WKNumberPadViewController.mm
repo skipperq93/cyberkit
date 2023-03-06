@@ -30,7 +30,7 @@
 
 #import "UIKitSPI.h"
 #import "WKNumberPadView.h"
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>
 #import <wtf/text/WTFString.h>

@@ -31,7 +31,7 @@
 #import "CocoaImage.h"
 #import "Logging.h"
 #import "TransactionID.h"
-#import <WebCore/TextRecognitionResult.h>
+#import <CyberCore/TextRecognitionResult.h>
 #import <pal/spi/cocoa/FeatureFlagsSPI.h>
 #import <wtf/RobinHoodHashSet.h>
 #import <wtf/WorkQueue.h>

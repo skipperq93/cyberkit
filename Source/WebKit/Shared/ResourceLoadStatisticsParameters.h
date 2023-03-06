@@ -27,8 +27,8 @@
 
 #include "ArgumentCoders.h"
 #include "SandboxExtension.h"
-#include <WebCore/NetworkStorageSession.h>
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/NetworkStorageSession.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {

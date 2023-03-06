@@ -28,14 +28,14 @@
 #import "InstanceMethodSwizzler.h"
 #import "TestWKWebView.h"
 #import "UIKitSPI.h"
-#import <WebCore/FontCacheCoreText.h>
+#import <CyberCore/FontCacheCoreText.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKPreferencesRef.h>
 #import <CyberKit/WKWebViewPrivate.h>
 
 #if PLATFORM(IOS_FAMILY)
 
-#include <WebCore/RenderThemeIOS.h>
+#include <CyberCore/RenderThemeIOS.h>
 
 static auto contentSizeCategory = kCTFontContentSizeCategoryXXXL;
 

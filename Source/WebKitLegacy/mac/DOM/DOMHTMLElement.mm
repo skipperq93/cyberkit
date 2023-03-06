@@ -28,15 +28,15 @@
 #import "DOMElementInternal.h"
 #import "DOMHTMLCollectionInternal.h"
 #import "DOMNodeInternal.h"
-#import <WebCore/Element.h>
+#import <CyberCore/Element.h>
 #import "ExceptionHandlers.h"
-#import <WebCore/HTMLCollection.h>
-#import <WebCore/HTMLElement.h>
-#import <WebCore/HTMLNames.h>
-#import <WebCore/HitTestResult.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/HTMLCollection.h>
+#import <CyberCore/HTMLElement.h>
+#import <CyberCore/HTMLNames.h>
+#import <CyberCore/HitTestResult.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 

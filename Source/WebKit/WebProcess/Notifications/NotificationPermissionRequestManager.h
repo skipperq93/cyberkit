@@ -26,9 +26,9 @@
 #ifndef NotificationPermissionRequestManager_h
 #define NotificationPermissionRequestManager_h
 
-#include <WebCore/NotificationClient.h>
-#include <WebCore/NotificationPermissionCallback.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/NotificationClient.h>
+#include <CyberCore/NotificationPermissionCallback.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/HashMap.h>
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>

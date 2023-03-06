@@ -31,9 +31,9 @@
 #import "LayerHostingContext.h"
 #import "MediaPlayerPrivateRemote.h"
 #import "VideoLayerRemote.h"
-#import <WebCore/FloatRect.h>
-#import <WebCore/GeometryUtilities.h>
-#import <WebCore/Timer.h>
+#import <CyberCore/FloatRect.h>
+#import <CyberCore/GeometryUtilities.h>
+#import <CyberCore/Timer.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/MachSendRight.h>
 #import <wtf/WeakObjCPtr.h>

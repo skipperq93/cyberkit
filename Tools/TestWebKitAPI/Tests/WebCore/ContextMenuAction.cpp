@@ -25,7 +25,7 @@
 
 #include "config.h"
 
-#include <WebCore/ContextMenuItem.h>
+#include <CyberCore/ContextMenuItem.h>
 
 #if ENABLE(CONTEXT_MENUS)
 

@@ -29,7 +29,7 @@
 
 #include "MessageReceiver.h"
 #include "MessageSender.h"
-#include <WebCore/RealtimeMediaSourceIdentifier.h>
+#include <CyberCore/RealtimeMediaSourceIdentifier.h>
 
 #if PLATFORM(COCOA)
 #include "SharedCARingBuffer.h"

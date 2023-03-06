@@ -28,9 +28,9 @@
 
 #if HAVE(IOSURFACE)
 
-#include <WebCore/GraphicsContextCG.h>
-#include <WebCore/ImageBufferIOSurfaceBackend.h>
-#include <WebCore/PixelBuffer.h>
+#include <CyberCore/GraphicsContextCG.h>
+#include <CyberCore/ImageBufferIOSurfaceBackend.h>
+#include <CyberCore/PixelBuffer.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StdLibExtras.h>
 

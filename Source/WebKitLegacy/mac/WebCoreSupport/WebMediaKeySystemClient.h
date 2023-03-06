@@ -25,7 +25,7 @@
 
 #if ENABLE(ENCRYPTED_MEDIA)
 
-#import <WebCore/MediaKeySystemClient.h>
+#import <CyberCore/MediaKeySystemClient.h>
 
 class WebMediaKeySystemClient : public WebCore::MediaKeySystemClient {
     WTF_MAKE_FAST_ALLOCATED;

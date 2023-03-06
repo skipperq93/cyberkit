@@ -32,13 +32,13 @@
 #include "RemoteImageDecoderAVFProxyMessages.h"
 #include "SharedBufferReference.h"
 #include "WebProcess.h"
-#include <WebCore/AVAssetMIMETypeCache.h>
-#include <WebCore/DestinationColorSpace.h>
-#include <WebCore/IOSurface.h>
-#include <WebCore/ImageTypes.h>
-#include <WebCore/MIMETypeRegistry.h>
-#include <WebCore/SharedBuffer.h>
-#include <WebCore/UTIUtilities.h>
+#include <CyberCore/AVAssetMIMETypeCache.h>
+#include <CyberCore/DestinationColorSpace.h>
+#include <CyberCore/IOSurface.h>
+#include <CyberCore/ImageTypes.h>
+#include <CyberCore/MIMETypeRegistry.h>
+#include <CyberCore/SharedBuffer.h>
+#include <CyberCore/UTIUtilities.h>
 #include <wtf/MachSendRight.h>
 
 namespace WebKit {

@@ -151,51 +151,51 @@
 #include "WebViewDidMoveToWindowObserver.h"
 #include "WebWheelEventCoalescer.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/AlternativeTextClient.h>
-#include <WebCore/AppHighlight.h>
-#include <WebCore/BitmapImage.h>
-#include <WebCore/CompositionHighlight.h>
-#include <WebCore/CrossSiteNavigationDataTransfer.h>
-#include <WebCore/DOMPasteAccess.h>
-#include <WebCore/DeprecatedGlobalSettings.h>
-#include <WebCore/DiagnosticLoggingClient.h>
-#include <WebCore/DiagnosticLoggingKeys.h>
-#include <WebCore/DragController.h>
-#include <WebCore/DragData.h>
-#include <WebCore/ElementContext.h>
-#include <WebCore/EventNames.h>
-#include <WebCore/ExceptionDetails.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/FocusDirection.h>
-#include <WebCore/FontAttributeChanges.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/GlobalFrameIdentifier.h>
-#include <WebCore/GlobalWindowIdentifier.h>
-#include <WebCore/LengthBox.h>
-#include <WebCore/MIMETypeRegistry.h>
-#include <WebCore/MediaDeviceHashSalts.h>
-#include <WebCore/MediaStreamRequest.h>
-#include <WebCore/ModalContainerTypes.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/PerformanceLoggingClient.h>
-#include <WebCore/PermissionState.h>
-#include <WebCore/PlatformEvent.h>
-#include <WebCore/PrivateClickMeasurement.h>
-#include <WebCore/PublicSuffix.h>
-#include <WebCore/RealtimeMediaSourceCenter.h>
-#include <WebCore/RenderEmbeddedObject.h>
-#include <WebCore/ResourceLoadStatistics.h>
-#include <WebCore/RuntimeApplicationChecks.h>
-#include <WebCore/SerializedCryptoKeyWrap.h>
-#include <WebCore/ShareData.h>
-#include <WebCore/SharedBuffer.h>
-#include <WebCore/ShouldTreatAsContinuingLoad.h>
-#include <WebCore/StoredCredentialsPolicy.h>
-#include <WebCore/TextCheckerClient.h>
-#include <WebCore/TextIndicator.h>
-#include <WebCore/ValidationBubble.h>
-#include <WebCore/WindowFeatures.h>
-#include <WebCore/WritingDirection.h>
+#include <CyberCore/AlternativeTextClient.h>
+#include <CyberCore/AppHighlight.h>
+#include <CyberCore/BitmapImage.h>
+#include <CyberCore/CompositionHighlight.h>
+#include <CyberCore/CrossSiteNavigationDataTransfer.h>
+#include <CyberCore/DOMPasteAccess.h>
+#include <CyberCore/DeprecatedGlobalSettings.h>
+#include <CyberCore/DiagnosticLoggingClient.h>
+#include <CyberCore/DiagnosticLoggingKeys.h>
+#include <CyberCore/DragController.h>
+#include <CyberCore/DragData.h>
+#include <CyberCore/ElementContext.h>
+#include <CyberCore/EventNames.h>
+#include <CyberCore/ExceptionDetails.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/FocusDirection.h>
+#include <CyberCore/FontAttributeChanges.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/GlobalFrameIdentifier.h>
+#include <CyberCore/GlobalWindowIdentifier.h>
+#include <CyberCore/LengthBox.h>
+#include <CyberCore/MIMETypeRegistry.h>
+#include <CyberCore/MediaDeviceHashSalts.h>
+#include <CyberCore/MediaStreamRequest.h>
+#include <CyberCore/ModalContainerTypes.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/PerformanceLoggingClient.h>
+#include <CyberCore/PermissionState.h>
+#include <CyberCore/PlatformEvent.h>
+#include <CyberCore/PrivateClickMeasurement.h>
+#include <CyberCore/PublicSuffix.h>
+#include <CyberCore/RealtimeMediaSourceCenter.h>
+#include <CyberCore/RenderEmbeddedObject.h>
+#include <CyberCore/ResourceLoadStatistics.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
+#include <CyberCore/SerializedCryptoKeyWrap.h>
+#include <CyberCore/ShareData.h>
+#include <CyberCore/SharedBuffer.h>
+#include <CyberCore/ShouldTreatAsContinuingLoad.h>
+#include <CyberCore/StoredCredentialsPolicy.h>
+#include <CyberCore/TextCheckerClient.h>
+#include <CyberCore/TextIndicator.h>
+#include <CyberCore/ValidationBubble.h>
+#include <CyberCore/WindowFeatures.h>
+#include <CyberCore/WritingDirection.h>
 #include <stdio.h>
 #include <wtf/CallbackAggregator.h>
 #include <wtf/EnumTraits.h>
@@ -228,10 +228,10 @@
 #include "UserMediaCaptureManagerProxy.h"
 #include "VideoFullscreenManagerProxy.h"
 #include "VideoFullscreenManagerProxyMessages.h"
-#include <WebCore/AttributedString.h>
-#include <WebCore/CoreAudioCaptureDeviceManager.h>
-#include <WebCore/RunLoopObserver.h>
-#include <WebCore/SystemBattery.h>
+#include <CyberCore/AttributedString.h>
+#include <CyberCore/CoreAudioCaptureDeviceManager.h>
+#include <CyberCore/RunLoopObserver.h>
+#include <CyberCore/SystemBattery.h>
 #include <wtf/MachSendRight.h>
 #include <wtf/cocoa/Entitlements.h>
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
@@ -239,8 +239,8 @@
 
 #if PLATFORM(MAC)
 #include "DisplayLink.h"
-#include <WebCore/ImageUtilities.h>
-#include <WebCore/UTIUtilities.h>
+#include <CyberCore/ImageUtilities.h>
+#include <CyberCore/UTIUtilities.h>
 #endif
 
 #if HAVE(TOUCH_BAR)
@@ -254,16 +254,16 @@
 
 #if PLATFORM(GTK)
 #include "GtkSettingsManager.h"
-#include <WebCore/SelectionData.h>
+#include <CyberCore/SelectionData.h>
 #endif
 
 #if USE(CAIRO)
-#include <WebCore/CairoUtilities.h>
+#include <CyberCore/CairoUtilities.h>
 #endif
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)
-#include <WebCore/MediaPlaybackTarget.h>
-#include <WebCore/WebMediaSessionManager.h>
+#include <CyberCore/MediaPlaybackTarget.h>
+#include <CyberCore/WebMediaSessionManager.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY) || (PLATFORM(MAC) && ENABLE(VIDEO_PRESENTATION_MODE))
@@ -317,7 +317,7 @@
 #endif
 
 #if ENABLE(APP_HIGHLIGHTS)
-#include <WebCore/HighlightVisibility.h>
+#include <CyberCore/HighlightVisibility.h>
 #endif
 
 #if HAVE(SCREEN_CAPTURE_KIT)
@@ -325,11 +325,11 @@
 #endif
 
 #if HAVE(SC_CONTENT_SHARING_SESSION)
-#import <WebCore/ScreenCaptureKitSharingSessionManager.h>
+#import <CyberCore/ScreenCaptureKitSharingSessionManager.h>
 #endif
 
 #if USE(QUICK_LOOK)
-#include <WebCore/PreviewConverter.h>
+#include <CyberCore/PreviewConverter.h>
 #endif
 
 #if ENABLE(WK_WEB_EXTENSIONS)

@@ -37,11 +37,11 @@
 #import <Foundation/NSDictionary.h>
 #import <Foundation/NSURL.h>
 #import <Foundation/NSURLRequest.h>
-#import <WebCore/Document.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameLoader.h>
-#import <WebCore/FrameLoaderTypes.h>
-#import <WebCore/SecurityOrigin.h>
+#import <CyberCore/Document.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameLoader.h>
+#import <CyberCore/FrameLoaderTypes.h>
+#import <CyberCore/SecurityOrigin.h>
 #import <wtf/Assertions.h>
 #import <wtf/ObjCRuntimeExtras.h>
 

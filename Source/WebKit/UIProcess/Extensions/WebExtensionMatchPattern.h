@@ -28,7 +28,7 @@
 #if ENABLE(WK_WEB_EXTENSIONS)
 
 #include "APIObject.h"
-#include <WebCore/UserContentURLPattern.h>
+#include <CyberCore/UserContentURLPattern.h>
 #include <wtf/Forward.h>
 #include <wtf/OptionSet.h>
 #include <wtf/RetainPtr.h>

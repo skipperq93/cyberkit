@@ -25,7 +25,7 @@
 
 #include "config.h"
 #include "PlatformUtilities.h"
-#include <WebCore/YouTubePluginReplacement.h>
+#include <CyberCore/YouTubePluginReplacement.h>
 #include <wtf/MainThread.h>
 #include <wtf/URL.h>
 

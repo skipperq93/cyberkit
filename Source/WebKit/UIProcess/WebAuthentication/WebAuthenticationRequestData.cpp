@@ -28,7 +28,7 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#import <WebCore/UserVerificationRequirement.h>
+#import <CyberCore/UserVerificationRequirement.h>
 
 namespace WebKit {
 using namespace WebCore;

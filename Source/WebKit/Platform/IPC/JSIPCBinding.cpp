@@ -30,9 +30,9 @@
 
 #include <JavaScriptCore/JSCInlines.h>
 #include <JavaScriptCore/ObjectConstructor.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <wtf/URL.h>
 
 namespace IPC {

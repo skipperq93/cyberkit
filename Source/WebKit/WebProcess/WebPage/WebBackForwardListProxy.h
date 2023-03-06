@@ -26,9 +26,9 @@
 #pragma once
 
 #include "WebBackForwardListCounts.h"
-#include <WebCore/BackForwardClient.h>
-#include <WebCore/BackForwardItemIdentifier.h>
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/BackForwardClient.h>
+#include <CyberCore/BackForwardItemIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 
 namespace WebKit {
 

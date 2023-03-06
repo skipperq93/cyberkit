@@ -30,7 +30,7 @@
 #include "WebPageMessages.h"
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
-#include <WebCore/LocalizedStrings.h>
+#include <CyberCore/LocalizedStrings.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {

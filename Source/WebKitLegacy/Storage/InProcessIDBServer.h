@@ -25,9 +25,9 @@
 
 #pragma once
 
-#include <WebCore/IDBConnectionToClient.h>
-#include <WebCore/IDBConnectionToServer.h>
-#include <WebCore/IDBServer.h>
+#include <CyberCore/IDBConnectionToClient.h>
+#include <CyberCore/IDBConnectionToServer.h>
+#include <CyberCore/IDBServer.h>
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 #include <wtf/ThreadSafeRefCounted.h>

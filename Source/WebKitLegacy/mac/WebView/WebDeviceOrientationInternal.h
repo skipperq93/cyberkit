@@ -26,8 +26,8 @@
 #import "WebDeviceOrientation.h"
 
 #import "WebDeviceOrientationProvider.h"
-#import <WebCore/DeviceOrientationClientMock.h>
-#import <WebCore/DeviceOrientationData.h>
+#import <CyberCore/DeviceOrientationClientMock.h>
+#import <CyberCore/DeviceOrientationData.h>
 #import <wtf/RefPtr.h>
 
 @interface WebDeviceOrientationInternal : NSObject {

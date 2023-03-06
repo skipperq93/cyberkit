@@ -26,8 +26,8 @@
 #include "config.h"
 
 #include "Test.h"
-#include <WebCore/MarkedText.h>
-#include <WebCore/RenderedDocumentMarker.h>
+#include <CyberCore/MarkedText.h>
+#include <CyberCore/RenderedDocumentMarker.h>
 
 using namespace WebCore;
 

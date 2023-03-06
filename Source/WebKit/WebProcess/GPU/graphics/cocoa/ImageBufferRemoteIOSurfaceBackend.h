@@ -28,8 +28,8 @@
 #if HAVE(IOSURFACE)
 
 #include "ImageBufferBackendHandleSharing.h"
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/ImageBufferBackend.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/ImageBufferBackend.h>
 #include <wtf/IsoMalloc.h>
 
 namespace WebKit {

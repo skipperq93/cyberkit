@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/HashSet.h>
 #include <wtf/OptionSet.h>
 #include <wtf/Vector.h>

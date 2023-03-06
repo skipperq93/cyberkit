@@ -27,9 +27,9 @@
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/FrameView.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/PopupMenuClient.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/PopupMenuClient.h>
 
 namespace WebKit {
 using namespace WebCore;

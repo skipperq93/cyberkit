@@ -26,8 +26,8 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <WebCore/FrameLoaderClient.h>
-#import <WebCore/Timer.h>
+#import <CyberCore/FrameLoaderClient.h>
+#import <CyberCore/Timer.h>
 #import <wtf/Forward.h>
 #import <wtf/HashMap.h>
 #import <wtf/RetainPtr.h>

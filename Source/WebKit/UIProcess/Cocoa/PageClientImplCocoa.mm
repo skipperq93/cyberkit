@@ -27,7 +27,7 @@
 #import "PageClientImplCocoa.h"
 
 #import "WKWebViewInternal.h"
-#import <WebCore/AlternativeTextUIController.h>
+#import <CyberCore/AlternativeTextUIController.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <wtf/Vector.h>

@@ -29,9 +29,9 @@
 #include "MessageReceiverMap.h"
 #include "MessageSender.h"
 #include "SandboxExtension.h"
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/RuntimeApplicationChecks.h>
-#include <WebCore/UserActivity.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/RuntimeApplicationChecks.h>
+#include <CyberCore/UserActivity.h>
 #include <wtf/HashMap.h>
 #include <wtf/RunLoop.h>
 #include <wtf/text/StringHash.h>

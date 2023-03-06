@@ -29,8 +29,8 @@
 #if PLATFORM(MAC)
 
 #import "StringUtilities.h"
-#import <WebCore/LocalizedStrings.h>
-#import <WebCore/RevealUtilities.h>
+#import <CyberCore/LocalizedStrings.h>
+#import <CyberCore/RevealUtilities.h>
 
 #if ENABLE(TELEPHONE_NUMBER_DETECTION)
 #import <pal/spi/mac/TelephonyUtilitiesSPI.h>

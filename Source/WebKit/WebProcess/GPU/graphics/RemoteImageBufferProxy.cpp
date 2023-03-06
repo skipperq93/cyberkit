@@ -34,8 +34,8 @@
 #include "RemoteRenderingBackendProxy.h"
 #include "WebPage.h"
 #include "WebWorkerClient.h"
-#include <WebCore/Document.h>
-#include <WebCore/WorkerGlobalScope.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/WorkerGlobalScope.h>
 #include <wtf/SystemTracing.h>
 
 namespace WebKit {

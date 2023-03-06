@@ -58,11 +58,11 @@
 #import "WebPage.h"
 #import "WebPageProxy.h"
 #import "_WKActivatedElementInfoInternal.h"
-#import <WebCore/ColorCocoa.h>
-#import <WebCore/GraphicsContextCG.h>
-#import <WebCore/IOSurfacePool.h>
-#import <WebCore/MIMETypeRegistry.h>
-#import <WebCore/RuntimeApplicationChecks.h>
+#import <CyberCore/ColorCocoa.h>
+#import <CyberCore/GraphicsContextCG.h>
+#import <CyberCore/IOSurfacePool.h>
+#import <CyberCore/MIMETypeRegistry.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <pal/spi/ios/GraphicsServicesSPI.h>
 #import <wtf/BlockPtr.h>
@@ -78,7 +78,7 @@
 
 #if ENABLE(LOCKDOWN_MODE_API)
 #import "_WKSystemPreferencesInternal.h"
-#import <WebCore/LocalizedStrings.h>
+#import <CyberCore/LocalizedStrings.h>
 #import <wtf/spi/cf/CFBundleSPI.h>
 #endif
 

@@ -48,7 +48,7 @@
 #include "WebProcessMessages.h"
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
-#include <WebCore/ShouldTreatAsContinuingLoad.h>
+#include <CyberCore/ShouldTreatAsContinuingLoad.h>
 
 #define MESSAGE_CHECK(process, assertion) MESSAGE_CHECK_BASE(assertion, process->connection())
 

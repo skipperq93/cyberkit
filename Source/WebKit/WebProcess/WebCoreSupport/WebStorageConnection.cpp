@@ -30,10 +30,10 @@
 #include "NetworkStorageManagerMessages.h"
 #include "WebFileSystemStorageConnection.h"
 #include "WebProcess.h"
-#include <WebCore/ClientOrigin.h>
-#include <WebCore/ExceptionOr.h>
-#include <WebCore/FileSystemHandleIdentifier.h>
-#include <WebCore/StorageEstimate.h>
+#include <CyberCore/ClientOrigin.h>
+#include <CyberCore/ExceptionOr.h>
+#include <CyberCore/FileSystemHandleIdentifier.h>
+#include <CyberCore/StorageEstimate.h>
 
 namespace WebKit {
 

@@ -33,8 +33,8 @@
 #include "RemoteVideoFrameIdentifier.h"
 #include "SharedCARingBuffer.h"
 #include "SharedVideoFrame.h"
-#include <WebCore/CAAudioStreamDescription.h>
-#include <WebCore/MediaRecorderPrivateWriterCocoa.h>
+#include <CyberCore/CAAudioStreamDescription.h>
+#include <CyberCore/MediaRecorderPrivateWriterCocoa.h>
 #include <wtf/MediaTime.h>
 
 namespace IPC {

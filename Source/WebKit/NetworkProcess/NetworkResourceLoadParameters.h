@@ -29,13 +29,13 @@
 #include "PolicyDecision.h"
 #include "SandboxExtension.h"
 #include "UserContentControllerIdentifier.h"
-#include <WebCore/ContentSecurityPolicyResponseHeaders.h>
-#include <WebCore/CrossOriginAccessControl.h>
-#include <WebCore/CrossOriginEmbedderPolicy.h>
-#include <WebCore/FetchOptions.h>
-#include <WebCore/NavigationRequester.h>
-#include <WebCore/ResourceLoaderIdentifier.h>
-#include <WebCore/SecurityContext.h>
+#include <CyberCore/ContentSecurityPolicyResponseHeaders.h>
+#include <CyberCore/CrossOriginAccessControl.h>
+#include <CyberCore/CrossOriginEmbedderPolicy.h>
+#include <CyberCore/FetchOptions.h>
+#include <CyberCore/NavigationRequester.h>
+#include <CyberCore/ResourceLoaderIdentifier.h>
+#include <CyberCore/SecurityContext.h>
 #include <wtf/Seconds.h>
 
 namespace IPC {

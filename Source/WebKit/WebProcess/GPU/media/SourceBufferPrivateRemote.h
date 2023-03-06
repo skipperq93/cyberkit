@@ -31,10 +31,10 @@
 #include "MessageReceiver.h"
 #include "RemoteSourceBufferIdentifier.h"
 #include "TrackPrivateRemoteIdentifier.h"
-#include <WebCore/ContentType.h>
-#include <WebCore/MediaSample.h>
-#include <WebCore/SourceBufferPrivate.h>
-#include <WebCore/SourceBufferPrivateClient.h>
+#include <CyberCore/ContentType.h>
+#include <CyberCore/MediaSample.h>
+#include <CyberCore/SourceBufferPrivate.h>
+#include <CyberCore/SourceBufferPrivateClient.h>
 #include <wtf/LoggerHelper.h>
 #include <wtf/MediaTime.h>
 #include <wtf/Ref.h>

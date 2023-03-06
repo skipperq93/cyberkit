@@ -27,7 +27,7 @@
 
 #if PLATFORM(IOS_FAMILY) && USE(QUICK_LOOK)
 
-#include <WebCore/PreviewConverter.h>
+#include <CyberCore/PreviewConverter.h>
 #include <wtf/text/WTFString.h>
 
 using namespace WebCore;

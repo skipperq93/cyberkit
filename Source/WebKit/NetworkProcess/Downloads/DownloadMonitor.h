@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/Timer.h>
+#include <CyberCore/Timer.h>
 #include <wtf/Deque.h>
 
 namespace WebKit {

@@ -28,17 +28,17 @@
 #import "NetworkStorageSessionMap.h"
 #import "WebFrameInternal.h"
 #import "WebViewPrivate.h"
-#import <WebCore/FrameLoader.h>
-#import <WebCore/FrameLoaderClient.h>
-#import <WebCore/NetworkStorageSession.h>
-#import <WebCore/Page.h>
-#import <WebCore/ResourceError.h>
-#import <WebCore/Settings.h>
+#import <CyberCore/FrameLoader.h>
+#import <CyberCore/FrameLoaderClient.h>
+#import <CyberCore/NetworkStorageSession.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/ResourceError.h>
+#import <CyberCore/Settings.h>
 #import <pal/SessionID.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <WebCore/WebCoreThread.h>
+#import <CyberCore/WebCoreThread.h>
 #import <CyberKitLegacy/WebFrameLoadDelegate.h>
 #endif
 

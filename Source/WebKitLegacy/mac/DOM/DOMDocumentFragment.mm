@@ -28,9 +28,9 @@
 #import "DOMElementInternal.h"
 #import "DOMHTMLCollectionInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/DocumentFragment.h>
-#import <WebCore/JSExecState.h>
-#import <WebCore/ThreadCheck.h>
+#import <CyberCore/DocumentFragment.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/ThreadCheck.h>
 
 #define IMPL static_cast<WebCore::DocumentFragment*>(reinterpret_cast<WebCore::Node*>(_internal))
 

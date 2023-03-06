@@ -31,9 +31,9 @@
 #include "RemoteCDMConfiguration.h"
 #include "RemoteCDMInstanceConfiguration.h"
 #include "RemoteCDMInstanceProxy.h"
-#include <WebCore/CDMKeySystemConfiguration.h>
-#include <WebCore/CDMPrivate.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/CDMKeySystemConfiguration.h>
+#include <CyberCore/CDMPrivate.h>
+#include <CyberCore/SharedBuffer.h>
 
 namespace WebKit {
 

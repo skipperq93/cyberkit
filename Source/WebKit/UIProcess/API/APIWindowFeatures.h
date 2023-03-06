@@ -27,7 +27,7 @@
 #define APIWindowFeatures_h
 
 #include "APIObject.h"
-#include <WebCore/WindowFeatures.h>
+#include <CyberCore/WindowFeatures.h>
 
 namespace API {
 

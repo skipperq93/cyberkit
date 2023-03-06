@@ -27,7 +27,7 @@
 #import "WKContentWorldInternal.h"
 
 #import "_WKUserContentWorldInternal.h"
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation WKContentWorld
 

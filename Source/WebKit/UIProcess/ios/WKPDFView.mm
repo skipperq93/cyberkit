@@ -41,8 +41,8 @@
 #import "WebPageProxy.h"
 #import "_WKWebViewPrintFormatterInternal.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import <WebCore/DataDetection.h>
-#import <WebCore/ShareData.h>
+#import <CyberCore/DataDetection.h>
+#import <CyberCore/ShareData.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/MainThread.h>
 #import <wtf/RetainPtr.h>

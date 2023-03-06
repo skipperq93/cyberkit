@@ -26,8 +26,8 @@
 #ifndef WebVisitedLinkStore_h
 #define WebVisitedLinkStore_h
 
-#import <WebCore/SharedStringHash.h>
-#import <WebCore/VisitedLinkStore.h>
+#import <CyberCore/SharedStringHash.h>
+#import <CyberCore/VisitedLinkStore.h>
 #import <wtf/Ref.h>
 
 class WebVisitedLinkStore final : public WebCore::VisitedLinkStore {

@@ -29,8 +29,8 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "WebBackgroundTaskController.h"
-#import <WebCore/DatabaseTracker.h>
-#import <WebCore/SQLiteDatabaseTracker.h>
+#import <CyberCore/DatabaseTracker.h>
+#import <CyberCore/SQLiteDatabaseTracker.h>
 #import <wtf/Lock.h>
 #import <wtf/MainThread.h>
 #import <wtf/NeverDestroyed.h>

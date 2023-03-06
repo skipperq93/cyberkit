@@ -24,7 +24,7 @@
  */
 
 #import "WKFoundation.h"
-#import <WebCore/ColorCocoa.h>
+#import <CyberCore/ColorCocoa.h>
 #import <variant>
 #import <wtf/CompletionHandler.h>
 #import <wtf/RefPtr.h>

@@ -26,9 +26,9 @@
 #pragma once
 
 #include "APIObject.h"
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/MediaKeySystemRequest.h>
-#include <WebCore/MediaKeySystemRequestIdentifier.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/MediaKeySystemRequest.h>
+#include <CyberCore/MediaKeySystemRequestIdentifier.h>
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>

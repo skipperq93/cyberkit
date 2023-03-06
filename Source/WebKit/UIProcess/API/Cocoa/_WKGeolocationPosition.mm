@@ -29,7 +29,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import <CoreLocation/CLLocation.h>
-#import <WebCore/WebCoreObjCExtras.h>
+#import <CyberCore/WebCoreObjCExtras.h>
 
 @implementation _WKGeolocationPosition
 

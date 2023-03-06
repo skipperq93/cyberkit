@@ -25,7 +25,7 @@
 
 #import "config.h"
 #import "WKOpenPanelParametersInternal.h"
-#import <WebCore/MIMETypeRegistry.h>
+#import <CyberCore/MIMETypeRegistry.h>
 
 #if PLATFORM(MAC)
 

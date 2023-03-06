@@ -28,7 +28,7 @@
 
 #if ENABLE(PDFKIT_PLUGIN)
 
-#include <WebCore/EventListener.h>
+#include <CyberCore/EventListener.h>
 #include <wtf/RefCounted.h>
 #include <wtf/RetainPtr.h>
 

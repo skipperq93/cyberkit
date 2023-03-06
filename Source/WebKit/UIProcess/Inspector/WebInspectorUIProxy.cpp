@@ -45,9 +45,9 @@
 #include "WebPreferences.h"
 #include "WebProcessPool.h"
 #include "WebProcessProxy.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/MockRealtimeMediaSourceCenter.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/MockRealtimeMediaSourceCenter.h>
+#include <CyberCore/NotImplemented.h>
 #include <pal/text/TextEncoding.h>
 #include <wtf/SetForScope.h>
 

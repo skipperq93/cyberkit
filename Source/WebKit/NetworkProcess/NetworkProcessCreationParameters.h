@@ -28,15 +28,15 @@
 #include "AuxiliaryProcessCreationParameters.h"
 #include "CacheModel.h"
 #include "SandboxExtension.h"
-#include <WebCore/Cookie.h>
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/Cookie.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/RegistrableDomain.h>
 #include <wtf/ProcessID.h>
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
 #if USE(SOUP)
-#include <WebCore/HTTPCookieAcceptPolicy.h>
+#include <CyberCore/HTTPCookieAcceptPolicy.h>
 #include <wtf/MemoryPressureHandler.h>
 #endif
 

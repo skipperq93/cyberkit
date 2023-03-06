@@ -31,10 +31,10 @@
 #include "GPUProcessConnection.h"
 #include "MessageReceiver.h"
 #include "WebProcessSupplement.h"
-#include <WebCore/ImageDecoderIdentifier.h>
-#include <WebCore/ImageTypes.h>
-#include <WebCore/IntSize.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/ImageDecoderIdentifier.h>
+#include <CyberCore/ImageTypes.h>
+#include <CyberCore/IntSize.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/HashMap.h>
 
 namespace WebKit {

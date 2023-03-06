@@ -27,7 +27,7 @@
 
 #include "APIObject.h"
 #include "DebuggableInfoData.h"
-#include <WebCore/InspectorDebuggableType.h>
+#include <CyberCore/InspectorDebuggableType.h>
 
 namespace API {
 

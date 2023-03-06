@@ -27,7 +27,7 @@
 
 #if PLATFORM(COCOA)
 #import "Test.h"
-#import <WebCore/CAAudioStreamDescription.h>
+#import <CyberCore/CAAudioStreamDescription.h>
 
 namespace {
 

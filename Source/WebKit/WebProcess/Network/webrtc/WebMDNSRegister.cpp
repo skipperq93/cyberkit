@@ -31,7 +31,7 @@
 #include "NetworkMDNSRegisterMessages.h"
 #include "NetworkProcessConnection.h"
 #include "WebProcess.h"
-#include <WebCore/Document.h>
+#include <CyberCore/Document.h>
 
 namespace WebKit {
 using namespace WebCore;

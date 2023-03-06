@@ -28,7 +28,7 @@
 #if ENABLE(WEB_AUTHN)
 
 #include "APIObject.h"
-#include <WebCore/AuthenticatorTransport.h>
+#include <CyberCore/AuthenticatorTransport.h>
 #include <variant>
 #include <wtf/UniqueRef.h>
 #include <wtf/WeakPtr.h>

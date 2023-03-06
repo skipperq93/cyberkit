@@ -37,32 +37,32 @@
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
 #include "WebUndoStep.h"
-#include <WebCore/ArchiveResource.h>
-#include <WebCore/DOMPasteAccess.h>
-#include <WebCore/DocumentFragment.h>
-#include <WebCore/FocusController.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/HTMLInputElement.h>
-#include <WebCore/HTMLNames.h>
-#include <WebCore/HTMLTextAreaElement.h>
-#include <WebCore/KeyboardEvent.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/Page.h>
-#include <WebCore/Range.h>
-#include <WebCore/SerializedAttachmentData.h>
-#include <WebCore/SpellChecker.h>
-#include <WebCore/StyleProperties.h>
-#include <WebCore/TextIterator.h>
-#include <WebCore/UndoStep.h>
-#include <WebCore/UserTypingGestureIndicator.h>
-#include <WebCore/VisibleUnits.h>
+#include <CyberCore/ArchiveResource.h>
+#include <CyberCore/DOMPasteAccess.h>
+#include <CyberCore/DocumentFragment.h>
+#include <CyberCore/FocusController.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/HTMLInputElement.h>
+#include <CyberCore/HTMLNames.h>
+#include <CyberCore/HTMLTextAreaElement.h>
+#include <CyberCore/KeyboardEvent.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/Range.h>
+#include <CyberCore/SerializedAttachmentData.h>
+#include <CyberCore/SpellChecker.h>
+#include <CyberCore/StyleProperties.h>
+#include <CyberCore/TextIterator.h>
+#include <CyberCore/UndoStep.h>
+#include <CyberCore/UserTypingGestureIndicator.h>
+#include <CyberCore/VisibleUnits.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringView.h>
 
 #if PLATFORM(GTK)
-#include <WebCore/PlatformDisplay.h>
+#include <CyberCore/PlatformDisplay.h>
 #endif
 
 namespace WebKit {

@@ -34,13 +34,13 @@
 #import "WKSharedAPICast.h"
 #import "WKString.h"
 #import "WKStringCF.h"
-#import <WebCore/AXObjectCache.h>
-#import <WebCore/Document.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/Page.h>
-#import <WebCore/ScrollView.h>
-#import <WebCore/Scrollbar.h>
+#import <CyberCore/AXObjectCache.h>
+#import <CyberCore/Document.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/Page.h>
+#import <CyberCore/ScrollView.h>
+#import <CyberCore/Scrollbar.h>
 
 namespace ax = WebCore::Accessibility;
 

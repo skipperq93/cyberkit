@@ -25,10 +25,10 @@
 
 #pragma once
 
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/StorageArea.h>
-#include <WebCore/StorageMap.h>
-#include <WebCore/Timer.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/StorageArea.h>
+#include <CyberCore/StorageMap.h>
+#include <CyberCore/Timer.h>
 #include <wtf/HashMap.h>
 #include <wtf/RefPtr.h>
 

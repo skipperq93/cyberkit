@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/PluginInfoProvider.h>
+#include <CyberCore/PluginInfoProvider.h>
 
 namespace WebKit {
 

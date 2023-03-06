@@ -48,28 +48,28 @@
 #import "WebViewInternal.h"
 #import <Foundation/NSURLRequest.h>
 #import <JavaScriptCore/JSLock.h>
-#import <WebCore/CommonVM.h>
-#import <WebCore/DocumentLoader.h>
-#import <WebCore/Frame.h>
-#import <WebCore/FrameLoadRequest.h>
-#import <WebCore/FrameLoader.h>
-#import <WebCore/HTMLMediaElement.h>
-#import <WebCore/HTMLNames.h>
-#import <WebCore/ResourceRequest.h>
-#import <WebCore/ScriptController.h>
-#import <WebCore/UserGestureIndicator.h>
-#import <WebCore/WebCoreURLResponse.h>
+#import <CyberCore/CommonVM.h>
+#import <CyberCore/DocumentLoader.h>
+#import <CyberCore/Frame.h>
+#import <CyberCore/FrameLoadRequest.h>
+#import <CyberCore/FrameLoader.h>
+#import <CyberCore/HTMLMediaElement.h>
+#import <CyberCore/HTMLNames.h>
+#import <CyberCore/ResourceRequest.h>
+#import <CyberCore/ScriptController.h>
+#import <CyberCore/UserGestureIndicator.h>
+#import <CyberCore/WebCoreURLResponse.h>
 #import <objc/runtime.h>
 #import <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import "DOMElementInternal.h"
 #import "WebUIKitDelegate.h"
-#import <WebCore/AudioSession.h>
-#import <WebCore/FrameView.h>
-#import <WebCore/GraphicsLayer.h>
-#import <WebCore/RuntimeApplicationChecks.h>
-#import <WebCore/WebCoreThreadRun.h>
+#import <CyberCore/AudioSession.h>
+#import <CyberCore/FrameView.h>
+#import <CyberCore/GraphicsLayer.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
+#import <CyberCore/WebCoreThreadRun.h>
 #import <wtf/SoftLinking.h>
 #endif
 

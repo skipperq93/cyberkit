@@ -28,8 +28,8 @@
 #include "DataReference.h"
 #include "MessageReceiver.h"
 #include "MessageSender.h"
-#include <WebCore/SocketStreamHandle.h>
-#include <WebCore/WebSocketIdentifier.h>
+#include <CyberCore/SocketStreamHandle.h>
+#include <CyberCore/WebSocketIdentifier.h>
 
 namespace IPC {
 class Connection;

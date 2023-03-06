@@ -25,19 +25,19 @@
 
 #import "DOMCSSPrimitiveValueInternal.h"
 
-#import <WebCore/DeprecatedCSSOMCounter.h>
-#import <WebCore/DeprecatedCSSOMPrimitiveValue.h>
-#import <WebCore/DeprecatedCSSOMRGBColor.h>
-#import <WebCore/DeprecatedCSSOMRect.h>
+#import <CyberCore/DeprecatedCSSOMCounter.h>
+#import <CyberCore/DeprecatedCSSOMPrimitiveValue.h>
+#import <CyberCore/DeprecatedCSSOMRGBColor.h>
+#import <CyberCore/DeprecatedCSSOMRect.h>
 #import "DOMCSSValueInternal.h"
 #import "DOMCounterInternal.h"
 #import "DOMNodeInternal.h"
 #import "DOMRGBColorInternal.h"
 #import "DOMRectInternal.h"
 #import "ExceptionHandlers.h"
-#import <WebCore/JSExecState.h>
-#import <WebCore/ThreadCheck.h>
-#import <WebCore/WebScriptObjectPrivate.h>
+#import <CyberCore/JSExecState.h>
+#import <CyberCore/ThreadCheck.h>
+#import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 

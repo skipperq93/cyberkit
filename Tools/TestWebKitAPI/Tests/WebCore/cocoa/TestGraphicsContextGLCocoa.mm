@@ -29,9 +29,9 @@
 #if PLATFORM(COCOA) && ENABLE(WEBGL)
 #import "WebCoreTestUtilities.h"
 #import <Metal/Metal.h>
-#import <WebCore/Color.h>
-#import <WebCore/GraphicsContextGLCocoa.h>
-#import <WebCore/ProcessIdentity.h>
+#import <CyberCore/Color.h>
+#import <CyberCore/GraphicsContextGLCocoa.h>
+#import <CyberCore/ProcessIdentity.h>
 #import <optional>
 #import <wtf/HashSet.h>
 #import <wtf/MemoryFootprint.h>

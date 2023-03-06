@@ -28,8 +28,8 @@
 
 #if HAVE(PASSKIT_AUTOMATIC_RELOAD_PAYMENTS)
 
-#import <WebCore/ApplePayAutomaticReloadPaymentRequest.h>
-#import <WebCore/PaymentSummaryItems.h>
+#import <CyberCore/ApplePayAutomaticReloadPaymentRequest.h>
+#import <CyberCore/PaymentSummaryItems.h>
 #import <wtf/RetainPtr.h>
 
 #import <pal/cocoa/PassKitSoftLink.h>

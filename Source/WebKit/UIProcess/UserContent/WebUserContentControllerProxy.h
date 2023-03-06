@@ -32,7 +32,7 @@
 #include "UserContentControllerIdentifier.h"
 #include "WebPageProxyIdentifier.h"
 #include "WebUserContentControllerProxyMessages.h"
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 #include <wtf/Forward.h>
 #include <wtf/HashCountedSet.h>
 #include <wtf/HashMap.h>

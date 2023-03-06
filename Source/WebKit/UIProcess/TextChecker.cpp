@@ -30,7 +30,7 @@
 
 #if !PLATFORM(COCOA) && !PLATFORM(GTK)
 #include "TextCheckerState.h"
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 
 namespace WebKit {
 using namespace WebCore;

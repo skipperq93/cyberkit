@@ -28,9 +28,9 @@
 #include "LayerTreeContext.h"
 #include "RemoteLayerBackingStoreCollection.h"
 #include "RemoteLayerTreeTransaction.h"
-#include <WebCore/GraphicsLayerFactory.h>
-#include <WebCore/LayerPool.h>
-#include <WebCore/PlatformCALayer.h>
+#include <CyberCore/GraphicsLayerFactory.h>
+#include <CyberCore/LayerPool.h>
+#include <CyberCore/PlatformCALayer.h>
 #include <wtf/Vector.h>
 
 namespace WebKit {

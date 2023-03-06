@@ -33,9 +33,9 @@
 #include "RemoteMediaPlayerProxy.h"
 #include "RemoteMediaSourceProxyMessages.h"
 #include "RemoteSourceBufferProxy.h"
-#include <WebCore/ContentType.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/SourceBufferPrivate.h>
+#include <CyberCore/ContentType.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/SourceBufferPrivate.h>
 
 namespace WebKit {
 

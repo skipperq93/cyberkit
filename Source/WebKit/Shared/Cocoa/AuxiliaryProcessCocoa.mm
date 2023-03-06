@@ -31,8 +31,8 @@
 #import "SharedBufferReference.h"
 #import "WKCrashReporter.h"
 #import "XPCServiceEntryPoint.h"
-#import <WebCore/FloatingPointEnvironment.h>
-#import <WebCore/RuntimeApplicationChecks.h>
+#import <CyberCore/FloatingPointEnvironment.h>
+#import <CyberCore/RuntimeApplicationChecks.h>
 #import <mach/task.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <wtf/cocoa/Entitlements.h>

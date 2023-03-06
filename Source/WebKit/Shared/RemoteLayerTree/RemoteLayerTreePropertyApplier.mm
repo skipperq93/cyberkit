@@ -31,9 +31,9 @@
 #import "RemoteLayerTreeHost.h"
 #import "RemoteLayerTreeInteractionRegionLayers.h"
 #import <QuartzCore/QuartzCore.h>
-#import <WebCore/PlatformCAFilters.h>
-#import <WebCore/ScrollbarThemeMac.h>
-#import <WebCore/WebCoreCALayerExtras.h>
+#import <CyberCore/PlatformCAFilters.h>
+#import <CyberCore/ScrollbarThemeMac.h>
+#import <CyberCore/WebCoreCALayerExtras.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/cocoa/VectorCocoa.h>

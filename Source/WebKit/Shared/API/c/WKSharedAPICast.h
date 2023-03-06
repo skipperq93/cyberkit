@@ -48,17 +48,17 @@
 #include "WKUserScriptInjectionTime.h"
 #include "WebFindOptions.h"
 #include "WebMouseEvent.h"
-#include <WebCore/ContextMenuItem.h>
-#include <WebCore/DiagnosticLoggingResultType.h>
-#include <WebCore/FloatRect.h>
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/LayoutMilestone.h>
-#include <WebCore/PlatformMouseEvent.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/UserContentTypes.h>
-#include <WebCore/UserScriptTypes.h>
-#include <WebCore/VisibilityState.h>
+#include <CyberCore/ContextMenuItem.h>
+#include <CyberCore/DiagnosticLoggingResultType.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/LayoutMilestone.h>
+#include <CyberCore/PlatformMouseEvent.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/UserContentTypes.h>
+#include <CyberCore/UserScriptTypes.h>
+#include <CyberCore/VisibilityState.h>
 
 namespace API {
 class Array;

@@ -29,9 +29,9 @@
 
 #include "MessageReceiver.h"
 #include "ShareableBitmap.h"
-#include <WebCore/DestinationColorSpace.h>
-#include <WebCore/ImageDecoderAVFObjC.h>
-#include <WebCore/ImageDecoderIdentifier.h>
+#include <CyberCore/DestinationColorSpace.h>
+#include <CyberCore/ImageDecoderAVFObjC.h>
+#include <CyberCore/ImageDecoderIdentifier.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/HashMap.h>
 #include <wtf/WeakPtr.h>

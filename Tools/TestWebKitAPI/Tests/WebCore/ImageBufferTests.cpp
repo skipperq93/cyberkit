@@ -27,10 +27,10 @@
 
 #include "Test.h"
 #include "WebCoreTestUtilities.h"
-#include <WebCore/Color.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/ImageBuffer.h>
-#include <WebCore/PixelBuffer.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/ImageBuffer.h>
+#include <CyberCore/PixelBuffer.h>
 #include <cmath>
 #include <wtf/MemoryFootprint.h>
 

@@ -28,9 +28,9 @@
 #if ENABLE(SERVICE_CONTROLS)
 
 #import "WebViewInternal.h"
-#import <WebCore/FrameSelection.h>
-#import <WebCore/HTMLConverter.h>
-#import <WebCore/Range.h>
+#import <CyberCore/FrameSelection.h>
+#import <CyberCore/HTMLConverter.h>
+#import <CyberCore/Range.h>
 #import <pal/spi/mac/NSSharingServiceSPI.h>
 
 using namespace WebCore;

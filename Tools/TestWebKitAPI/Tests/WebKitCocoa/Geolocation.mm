@@ -31,7 +31,7 @@
 #import "TestUIDelegate.h"
 #import "TestWKWebView.h"
 #import <CoreLocation/CLLocation.h>
-#import <WebCore/SecurityOriginData.h>
+#import <CyberCore/SecurityOriginData.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKUIDelegatePrivate.h>
 #import <CyberKit/_WKGeolocationCoreLocationProvider.h>

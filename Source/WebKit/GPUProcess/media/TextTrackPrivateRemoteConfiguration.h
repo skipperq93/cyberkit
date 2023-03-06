@@ -27,8 +27,8 @@
 
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
-#include <WebCore/InbandTextTrackPrivate.h>
-#include <WebCore/TrackPrivateBase.h>
+#include <CyberCore/InbandTextTrackPrivate.h>
+#include <CyberCore/TrackPrivateBase.h>
 #include <wtf/MediaTime.h>
 
 namespace WebKit {

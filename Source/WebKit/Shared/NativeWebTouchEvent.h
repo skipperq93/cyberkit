@@ -38,8 +38,8 @@
 struct _UIWebTouchEvent;
 #endif
 #elif PLATFORM(GTK)
-#include <WebCore/GRefPtrGtk.h>
-#include <WebCore/GUniquePtrGtk.h>
+#include <CyberCore/GRefPtrGtk.h>
+#include <CyberCore/GUniquePtrGtk.h>
 #elif USE(LIBWPE)
 #include <wpe/wpe.h>
 #endif

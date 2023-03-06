@@ -34,7 +34,7 @@
 #include "RemoteMediaSessionCoordinatorProxyMessages.h"
 #include "WebPageProxy.h"
 #include "WebProcessProxy.h"
-#include <WebCore/ExceptionData.h>
+#include <CyberCore/ExceptionData.h>
 #include <wtf/Logger.h>
 #include <wtf/LoggerHelper.h>
 #include <wtf/MainThread.h>

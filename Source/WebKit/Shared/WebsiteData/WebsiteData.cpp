@@ -28,8 +28,8 @@
 
 #include "ArgumentCoders.h"
 #include "WebsiteDataType.h"
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/SecurityOriginData.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/SecurityOriginData.h>
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/text/StringHash.h>
 

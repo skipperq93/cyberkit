@@ -31,11 +31,11 @@
 #include "MessageReceiver.h"
 #include "RemoteVideoFrameObjectHeap.h"
 #include "UserMediaCaptureManager.h"
-#include <WebCore/CaptureDevice.h>
-#include <WebCore/OrientationNotifier.h>
-#include <WebCore/ProcessIdentity.h>
-#include <WebCore/RealtimeMediaSource.h>
-#include <WebCore/RealtimeMediaSourceIdentifier.h>
+#include <CyberCore/CaptureDevice.h>
+#include <CyberCore/OrientationNotifier.h>
+#include <CyberCore/ProcessIdentity.h>
+#include <CyberCore/RealtimeMediaSource.h>
+#include <CyberCore/RealtimeMediaSourceIdentifier.h>
 #include <pal/spi/cocoa/TCCSPI.h>
 #include <wtf/UniqueRef.h>
 

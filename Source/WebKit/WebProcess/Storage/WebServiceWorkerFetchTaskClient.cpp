@@ -35,10 +35,10 @@
 #include "SharedBufferReference.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebErrors.h"
-#include <WebCore/FetchEvent.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceResponse.h>
-#include <WebCore/SWContextManager.h>
+#include <CyberCore/FetchEvent.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceResponse.h>
+#include <CyberCore/SWContextManager.h>
 #include <wtf/RunLoop.h>
 
 namespace WebKit {

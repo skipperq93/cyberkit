@@ -28,7 +28,7 @@
 #include "NetworkCacheBlobStorage.h"
 #include "NetworkCacheData.h"
 #include "NetworkCacheKey.h"
-#include <WebCore/Timer.h>
+#include <CyberCore/Timer.h>
 #include <wtf/BloomFilter.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Deque.h>

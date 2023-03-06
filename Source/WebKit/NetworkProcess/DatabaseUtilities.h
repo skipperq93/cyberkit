@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/SQLiteDatabase.h>
-#include <WebCore/SQLiteTransaction.h>
+#include <CyberCore/SQLiteDatabase.h>
+#include <CyberCore/SQLiteTransaction.h>
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/Scope.h>
 

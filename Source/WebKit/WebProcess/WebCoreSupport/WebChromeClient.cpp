@@ -65,44 +65,44 @@
 #include "WebProcessProxyMessages.h"
 #include "WebSearchPopupMenu.h"
 #include "WebWorkerClient.h"
-#include <WebCore/AppHighlight.h>
-#include <WebCore/ApplicationCacheStorage.h>
-#include <WebCore/AXObjectCache.h>
-#include <WebCore/ColorChooser.h>
-#include <WebCore/ContentRuleListResults.h>
-#include <WebCore/CookieConsentDecisionResult.h>
-#include <WebCore/DataListSuggestionPicker.h>
-#include <WebCore/DatabaseTracker.h>
-#include <WebCore/DocumentLoader.h>
-#include <WebCore/DocumentStorageAccess.h>
-#include <WebCore/ElementInlines.h>
-#include <WebCore/FileChooser.h>
-#include <WebCore/FileIconLoader.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/FullscreenManager.h>
-#include <WebCore/HTMLInputElement.h>
-#include <WebCore/HTMLNames.h>
-#include <WebCore/HTMLParserIdioms.h>
-#include <WebCore/HTMLPlugInImageElement.h>
-#include <WebCore/Icon.h>
-#include <WebCore/ImageBuffer.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/RegistrableDomain.h>
-#include <WebCore/ScriptController.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/SecurityOriginData.h>
-#include <WebCore/Settings.h>
-#include <WebCore/TextIndicator.h>
-#include <WebCore/TextRecognitionOptions.h>
+#include <CyberCore/AppHighlight.h>
+#include <CyberCore/ApplicationCacheStorage.h>
+#include <CyberCore/AXObjectCache.h>
+#include <CyberCore/ColorChooser.h>
+#include <CyberCore/ContentRuleListResults.h>
+#include <CyberCore/CookieConsentDecisionResult.h>
+#include <CyberCore/DataListSuggestionPicker.h>
+#include <CyberCore/DatabaseTracker.h>
+#include <CyberCore/DocumentLoader.h>
+#include <CyberCore/DocumentStorageAccess.h>
+#include <CyberCore/ElementInlines.h>
+#include <CyberCore/FileChooser.h>
+#include <CyberCore/FileIconLoader.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/FullscreenManager.h>
+#include <CyberCore/HTMLInputElement.h>
+#include <CyberCore/HTMLNames.h>
+#include <CyberCore/HTMLParserIdioms.h>
+#include <CyberCore/HTMLPlugInImageElement.h>
+#include <CyberCore/Icon.h>
+#include <CyberCore/ImageBuffer.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/RegistrableDomain.h>
+#include <CyberCore/ScriptController.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOriginData.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/TextIndicator.h>
+#include <CyberCore/TextRecognitionOptions.h>
 
 #if HAVE(WEBGPU_IMPLEMENTATION)
 #import <pal/graphics/WebGPU/Impl/WebGPUCreateImpl.h>
 #endif
 
 #if ENABLE(APPLE_PAY_AMS_UI)
-#include <WebCore/ApplePayAMSUIRequest.h>
+#include <CyberCore/ApplePayAMSUIRequest.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY) || (PLATFORM(MAC) && ENABLE(VIDEO_PRESENTATION_MODE))
@@ -118,7 +118,7 @@
 #endif
 
 #if ENABLE(WEB_AUTHN)
-#include <WebCore/MockWebAuthenticationConfiguration.h>
+#include <CyberCore/MockWebAuthenticationConfiguration.h>
 #endif
 
 #if ENABLE(WEBGL) && ENABLE(GPU_PROCESS)
@@ -126,7 +126,7 @@
 #endif
 
 #if ENABLE(WEBGL)
-#include <WebCore/GraphicsContextGL.h>
+#include <CyberCore/GraphicsContextGL.h>
 #endif
 
 #if PLATFORM(MAC)

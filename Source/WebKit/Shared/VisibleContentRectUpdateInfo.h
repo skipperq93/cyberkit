@@ -28,9 +28,9 @@
 #if ENABLE(UI_SIDE_COMPOSITING)
 
 #include "TransactionID.h"
-#include <WebCore/FloatRect.h>
-#include <WebCore/LengthBox.h>
-#include <WebCore/VelocityData.h>
+#include <CyberCore/FloatRect.h>
+#include <CyberCore/LengthBox.h>
+#include <CyberCore/VelocityData.h>
 #include <wtf/MonotonicTime.h>
 #include <wtf/OptionSet.h>
 #include <wtf/text/WTFString.h>

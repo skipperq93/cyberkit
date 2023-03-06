@@ -27,8 +27,8 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#include <WebCore/AuthenticatorCoordinatorClient.h>
-#include <WebCore/FrameIdentifier.h>
+#include <CyberCore/AuthenticatorCoordinatorClient.h>
+#include <CyberCore/FrameIdentifier.h>
 
 namespace WebKit {
 

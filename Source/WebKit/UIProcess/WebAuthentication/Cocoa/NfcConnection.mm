@@ -30,7 +30,7 @@
 
 #import "NfcService.h"
 #import "WKNFReaderSessionDelegate.h"
-#import <WebCore/FidoConstants.h>
+#import <CyberCore/FidoConstants.h>
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/Base64.h>
 

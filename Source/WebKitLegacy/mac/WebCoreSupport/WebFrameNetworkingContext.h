@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/FrameNetworkingContext.h>
+#include <CyberCore/FrameNetworkingContext.h>
 
 class WebFrameNetworkingContext : public WebCore::FrameNetworkingContext {
 public:

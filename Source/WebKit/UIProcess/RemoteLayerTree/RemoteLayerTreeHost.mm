@@ -35,11 +35,11 @@
 #import "WebPageProxy.h"
 #import "WebProcessProxy.h"
 #import <QuartzCore/QuartzCore.h>
-#import <WebCore/DestinationColorSpace.h>
-#import <WebCore/GraphicsContextCG.h>
-#import <WebCore/IOSurface.h>
-#import <WebCore/PlatformLayer.h>
-#import <WebCore/WebCoreCALayerExtras.h>
+#import <CyberCore/DestinationColorSpace.h>
+#import <CyberCore/GraphicsContextCG.h>
+#import <CyberCore/IOSurface.h>
+#import <CyberCore/PlatformLayer.h>
+#import <CyberCore/WebCoreCALayerExtras.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 

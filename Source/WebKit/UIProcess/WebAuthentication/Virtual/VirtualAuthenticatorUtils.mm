@@ -29,8 +29,8 @@
 
 #if ENABLE(WEB_AUTHN)
 
-#include <WebCore/WebAuthenticationConstants.h>
-#include <WebCore/WebAuthenticationUtils.h>
+#include <CyberCore/WebAuthenticationConstants.h>
+#include <CyberCore/WebAuthenticationUtils.h>
 #include <pal/crypto/CryptoDigest.h>
 #include <wtf/cocoa/TypeCastsCocoa.h>
 #include <wtf/cocoa/VectorCocoa.h>

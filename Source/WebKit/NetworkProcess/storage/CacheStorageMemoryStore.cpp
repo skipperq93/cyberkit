@@ -26,7 +26,7 @@
 #include "config.h"
 #include "CacheStorageMemoryStore.h"
 
-#include <WebCore/DOMCacheEngine.h>
+#include <CyberCore/DOMCacheEngine.h>
 
 namespace WebKit {
 

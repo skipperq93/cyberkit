@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/ExceptionOr.h>
+#include <CyberCore/ExceptionOr.h>
 
 NO_RETURN void raiseTypeErrorException();
 NO_RETURN void raiseNotSupportedErrorException();

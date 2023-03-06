@@ -29,7 +29,7 @@
 #if ENABLE(CONTENT_EXTENSIONS)
 
 #import "SandboxUtilities.h"
-#import <WebCore/SharedBuffer.h>
+#import <CyberCore/SharedBuffer.h>
 
 namespace API {
 

@@ -31,8 +31,8 @@
 #include "MediaRecorderIdentifier.h"
 #include "SharedCARingBuffer.h"
 #include "SharedVideoFrame.h"
-#include <WebCore/CAAudioStreamDescription.h>
-#include <WebCore/MediaRecorderPrivate.h>
+#include <CyberCore/CAAudioStreamDescription.h>
+#include <CyberCore/MediaRecorderPrivate.h>
 #include <wtf/MediaTime.h>
 #include <wtf/WeakPtr.h>
 

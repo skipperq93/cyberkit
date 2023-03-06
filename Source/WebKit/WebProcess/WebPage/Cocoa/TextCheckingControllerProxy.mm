@@ -33,16 +33,16 @@
 #import "WebCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebProcess.h"
-#import <WebCore/AttributedString.h>
-#import <WebCore/DocumentMarker.h>
-#import <WebCore/DocumentMarkerController.h>
-#import <WebCore/Editing.h>
-#import <WebCore/Editor.h>
-#import <WebCore/FocusController.h>
-#import <WebCore/RenderObject.h>
-#import <WebCore/RenderedDocumentMarker.h>
-#import <WebCore/TextIterator.h>
-#import <WebCore/VisibleUnits.h>
+#import <CyberCore/AttributedString.h>
+#import <CyberCore/DocumentMarker.h>
+#import <CyberCore/DocumentMarkerController.h>
+#import <CyberCore/Editing.h>
+#import <CyberCore/Editor.h>
+#import <CyberCore/FocusController.h>
+#import <CyberCore/RenderObject.h>
+#import <CyberCore/RenderedDocumentMarker.h>
+#import <CyberCore/TextIterator.h>
+#import <CyberCore/VisibleUnits.h>
 
 // FIXME: Remove this after rdar://problem/48914153 is resolved.
 #if PLATFORM(MACCATALYST)

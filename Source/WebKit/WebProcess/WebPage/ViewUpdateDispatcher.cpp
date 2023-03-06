@@ -32,7 +32,7 @@
 #include "ViewUpdateDispatcherMessages.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/PageIdentifier.h>
 #include <wtf/RunLoop.h>
 #include <wtf/WorkQueue.h>
 

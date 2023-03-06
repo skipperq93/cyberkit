@@ -30,12 +30,12 @@
 
 #include "WebContextMenu.h"
 #include "WebPage.h"
-#include <WebCore/Editor.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/Page.h>
-#include <WebCore/UserGestureIndicator.h>
+#include <CyberCore/Editor.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/UserGestureIndicator.h>
 
 namespace WebKit {
 

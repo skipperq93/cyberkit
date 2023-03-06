@@ -27,8 +27,8 @@
 
 #if ENABLE(MEDIA_SESSION_COORDINATOR)
 
-#include <WebCore/ExceptionData.h>
-#include <WebCore/MediaSessionCoordinatorPrivate.h>
+#include <CyberCore/ExceptionData.h>
+#include <CyberCore/MediaSessionCoordinatorPrivate.h>
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 

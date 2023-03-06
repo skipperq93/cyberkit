@@ -33,8 +33,8 @@
 #include "SandboxExtension.h"
 #include "ShareableBitmap.h"
 #include "TrackPrivateRemoteIdentifier.h"
-#include <WebCore/MediaPlayer.h>
-#include <WebCore/MediaPlayerIdentifier.h>
+#include <CyberCore/MediaPlayer.h>
+#include <CyberCore/MediaPlayerIdentifier.h>
 #include <wtf/Lock.h>
 #include <wtf/Logger.h>
 #include <wtf/WeakPtr.h>

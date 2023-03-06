@@ -35,12 +35,12 @@
 #include "WebsiteMetaViewportPolicy.h"
 #include "WebsitePopUpPolicy.h"
 #include "WebsiteSimulatedMouseEventsDispatchPolicy.h"
-#include <WebCore/CustomHeaderFields.h>
-#include <WebCore/DeviceOrientationOrMotionPermissionState.h>
-#include <WebCore/DocumentLoader.h>
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/HTTPHeaderField.h>
-#include <WebCore/NetworkConnectionIntegrity.h>
+#include <CyberCore/CustomHeaderFields.h>
+#include <CyberCore/DeviceOrientationOrMotionPermissionState.h>
+#include <CyberCore/DocumentLoader.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/HTTPHeaderField.h>
+#include <CyberCore/NetworkConnectionIntegrity.h>
 #include <wtf/OptionSet.h>
 #include <wtf/Vector.h>
 

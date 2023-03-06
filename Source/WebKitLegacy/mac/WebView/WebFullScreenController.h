@@ -25,7 +25,7 @@
 
 #if ENABLE(FULLSCREEN_API) && !PLATFORM(IOS_FAMILY)
 
-#import <WebCore/IntPoint.h>
+#import <CyberCore/IntPoint.h>
 #import <wtf/RefPtr.h>
 #import <wtf/RetainPtr.h>
 

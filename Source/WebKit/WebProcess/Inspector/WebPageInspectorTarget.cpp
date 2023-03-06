@@ -28,8 +28,8 @@
 
 #include "WebPage.h"
 #include "WebPageInspectorTargetFrontendChannel.h"
-#include <WebCore/InspectorController.h>
-#include <WebCore/Page.h>
+#include <CyberCore/InspectorController.h>
+#include <CyberCore/Page.h>
 
 namespace WebKit {
 

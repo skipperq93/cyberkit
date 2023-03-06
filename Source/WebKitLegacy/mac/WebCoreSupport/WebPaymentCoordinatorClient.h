@@ -25,7 +25,7 @@
 
 #pragma once
 
-#import <WebCore/PaymentCoordinatorClient.h>
+#import <CyberCore/PaymentCoordinatorClient.h>
 
 #if ENABLE(APPLE_PAY)
 

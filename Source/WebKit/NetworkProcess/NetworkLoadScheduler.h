@@ -25,9 +25,9 @@
 
 #pragma once
 
-#include <WebCore/LoadSchedulingMode.h>
-#include <WebCore/NetworkLoadMetrics.h>
-#include <WebCore/PageIdentifier.h>
+#include <CyberCore/LoadSchedulingMode.h>
+#include <CyberCore/NetworkLoadMetrics.h>
+#include <CyberCore/PageIdentifier.h>
 #include <tuple>
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>

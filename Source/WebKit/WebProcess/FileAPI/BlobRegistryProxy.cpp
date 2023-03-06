@@ -30,9 +30,9 @@
 #include "NetworkProcessConnection.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <WebCore/BlobDataFileReference.h>
-#include <WebCore/CrossOriginOpenerPolicy.h>
-#include <WebCore/SWContextManager.h>
+#include <CyberCore/BlobDataFileReference.h>
+#include <CyberCore/CrossOriginOpenerPolicy.h>
+#include <CyberCore/SWContextManager.h>
 
 namespace WebKit {
 using namespace WebCore;

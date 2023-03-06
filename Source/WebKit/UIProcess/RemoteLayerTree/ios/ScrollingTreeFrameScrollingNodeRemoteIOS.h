@@ -29,7 +29,7 @@
 
 OBJC_CLASS UIScrollView;
 
-#include <WebCore/ScrollingTreeFrameScrollingNode.h>
+#include <CyberCore/ScrollingTreeFrameScrollingNode.h>
 
 namespace WebKit {
 

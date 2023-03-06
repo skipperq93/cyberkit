@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <WebCore/CertificateInfo.h>
+#include <CyberCore/CertificateInfo.h>
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 

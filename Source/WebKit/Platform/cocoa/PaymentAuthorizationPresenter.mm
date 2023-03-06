@@ -33,16 +33,16 @@
 #import "RecurringPaymentRequest.h"
 #import "WKPaymentAuthorizationDelegate.h"
 #import "WebPaymentCoordinatorProxyCocoa.h"
-#import <WebCore/ApplePayCouponCodeUpdate.h>
-#import <WebCore/ApplePayError.h>
-#import <WebCore/ApplePayErrorCode.h>
-#import <WebCore/ApplePayErrorContactField.h>
-#import <WebCore/ApplePayPaymentAuthorizationResult.h>
-#import <WebCore/ApplePayPaymentMethodUpdate.h>
-#import <WebCore/ApplePayShippingContactUpdate.h>
-#import <WebCore/ApplePayShippingMethodUpdate.h>
-#import <WebCore/PaymentMerchantSession.h>
-#import <WebCore/PaymentSummaryItems.h>
+#import <CyberCore/ApplePayCouponCodeUpdate.h>
+#import <CyberCore/ApplePayError.h>
+#import <CyberCore/ApplePayErrorCode.h>
+#import <CyberCore/ApplePayErrorContactField.h>
+#import <CyberCore/ApplePayPaymentAuthorizationResult.h>
+#import <CyberCore/ApplePayPaymentMethodUpdate.h>
+#import <CyberCore/ApplePayShippingContactUpdate.h>
+#import <CyberCore/ApplePayShippingMethodUpdate.h>
+#import <CyberCore/PaymentMerchantSession.h>
+#import <CyberCore/PaymentSummaryItems.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 #import <pal/cocoa/PassKitSoftLink.h>

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebPasteboardOverrides.h"
 
-#include <WebCore/PasteboardItemInfo.h>
+#include <CyberCore/PasteboardItemInfo.h>
 #include <wtf/NeverDestroyed.h>
 
 namespace WebKit {

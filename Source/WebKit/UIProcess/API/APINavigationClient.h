@@ -34,8 +34,8 @@
 #include "SameDocumentNavigationType.h"
 #include "WebFramePolicyListenerProxy.h"
 #include "WebsitePoliciesData.h"
-#include <WebCore/FrameLoaderTypes.h>
-#include <WebCore/LayoutMilestone.h>
+#include <CyberCore/FrameLoaderTypes.h>
+#include <CyberCore/LayoutMilestone.h>
 #include <wtf/Forward.h>
 
 #if HAVE(APP_SSO)

@@ -32,13 +32,13 @@
 #include "RemoteCDMFactory.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <WebCore/AudioDestination.h>
-#include <WebCore/AudioIOCallback.h>
-#include <WebCore/CDMFactory.h>
-#include <WebCore/NowPlayingManager.h>
+#include <CyberCore/AudioDestination.h>
+#include <CyberCore/AudioIOCallback.h>
+#include <CyberCore/CDMFactory.h>
+#include <CyberCore/NowPlayingManager.h>
 
 #if PLATFORM(COCOA)
-#include <WebCore/MediaSessionManagerCocoa.h>
+#include <CyberCore/MediaSessionManagerCocoa.h>
 #endif
 
 namespace WebKit {
