@@ -79,8 +79,8 @@ class CppBackendDispatcherImplementationGenerator(CppGenerator):
 
     def _generate_secondary_header_includes(self):
         header_includes = [
-            (["JavaScriptCore", "WebKit"], ("JavaScriptCore", "inspector/InspectorFrontendRouter.h")),
-            (["JavaScriptCore", "WebKit"], ("WTF", "wtf/NeverDestroyed.h")),
+            (["JavaScriptCore", "CyberKit"], ("JavaScriptCore", "inspector/InspectorFrontendRouter.h")),
+            (["JavaScriptCore", "CyberKit"], ("WTF", "wtf/NeverDestroyed.h")),
         ]
         return self.generate_includes_from_entries(header_includes)
 
