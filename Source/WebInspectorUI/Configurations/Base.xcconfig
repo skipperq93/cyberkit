@@ -103,7 +103,7 @@ SDKROOT = macosx.internal;
 COMBINE_INSPECTOR_RESOURCES = YES;
 COMBINE_TEST_RESOURCES = NO;
 
-EXCLUDED_SOURCE_FILE_NAMES = libWebKitAdditions.a JavaScriptCore.framework
+EXCLUDED_SOURCE_FILE_NAMES = libWebKitAdditions.a CyberScriptCore.framework
 
 LLVM_LTO = $(WK_LLVM_LTO_$(WK_XCODE_SUPPORTS_LTO));
 WK_LLVM_LTO_NO = NO;
