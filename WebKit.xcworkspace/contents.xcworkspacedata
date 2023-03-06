@@ -11,7 +11,7 @@
       location = "group:Source/WTF/WTF.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Source/JavaScriptCore/JavaScriptCore.xcodeproj">
+      location = "group:/Users/matthewbenedict/Documents/git/WebKit/Source/JavaScriptCore/CyberScriptCore.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Source/ThirdParty/ANGLE/ANGLE.xcodeproj">

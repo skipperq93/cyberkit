@@ -45,7 +45,7 @@
                BlueprintIdentifier = "932F5BE30822A1C700736975"
                BuildableName = "All"
                BlueprintName = "All"
-               ReferencedContainer = "container:Source/JavaScriptCore/JavaScriptCore.xcodeproj">
+               ReferencedContainer = "container:Source/JavaScriptCore/CyberScriptCore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry

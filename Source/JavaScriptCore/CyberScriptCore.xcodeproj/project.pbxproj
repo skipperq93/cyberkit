@@ -373,7 +373,7 @@
 		0F61832F1C45BF070072450B /* AirLowerAfterRegAlloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F6183261C45BF070072450B /* AirLowerAfterRegAlloc.h */; };
 		0F6183311C45BF070072450B /* AirLowerMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F6183281C45BF070072450B /* AirLowerMacros.h */; };
 		0F61833C1C45F62A0072450B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F0EB6105C86C6B00E6DF1B /* Foundation.framework */; };
-		0F61833D1C45F62A0072450B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */; };
+		0F61833D1C45F62A0072450B /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */; };
 		0F6183451C45F6600072450B /* testair.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F6183441C45F6600072450B /* testair.cpp */; settings = {COMPILER_FLAGS = "-O0 -DRELEASE_WITHOUT_OPTIMIZATIONS"; }; };
 		0F620174143FCD330068B77C /* DFGVariableAccessData.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F620172143FCD2F0068B77C /* DFGVariableAccessData.h */; };
 		0F620176143FCD3B0068B77C /* DFGBasicBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F620170143FCD2F0068B77C /* DFGBasicBlock.h */; };
@@ -453,7 +453,7 @@
 		0F919D11157F332C004A4E7D /* JSSegmentedVariableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F919D0F157F3327004A4E7D /* JSSegmentedVariableObject.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0F919D2615853CE3004A4E7D /* Watchpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F919D2315853CDE004A4E7D /* Watchpoint.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0F9327521C20BCBA00CF6564 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F0EB6105C86C6B00E6DF1B /* Foundation.framework */; };
-		0F9327531C20BCBA00CF6564 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */; };
+		0F9327531C20BCBA00CF6564 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */; };
 		0F93275B1C20BCDF00CF6564 /* dynbench.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F93275A1C20BCDF00CF6564 /* dynbench.cpp */; };
 		0F93275F1C21EF7F00CF6564 /* JSObjectInlines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F93275E1C21EF7F00CF6564 /* JSObjectInlines.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0F93329E14CA7DC50085F3C6 /* CallLinkStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F93329414CA7DC10085F3C6 /* CallLinkStatus.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -676,7 +676,7 @@
 		0FEC858F1BDACDC70080FF74 /* AirTmpInlines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FEC856A1BDACDC70080FF74 /* AirTmpInlines.h */; };
 		0FEC85911BDACDC70080FF74 /* AirValidate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FEC856C1BDACDC70080FF74 /* AirValidate.h */; };
 		0FEC85A31BDB5CF10080FF74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F0EB6105C86C6B00E6DF1B /* Foundation.framework */; };
-		0FEC85A41BDB5CF10080FF74 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */; };
+		0FEC85A41BDB5CF10080FF74 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */; };
 		0FEC85AF1BDB5D5E0080FF74 /* testb3_1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC85AE1BDB5D5E0080FF74 /* testb3_1.cpp */; settings = {COMPILER_FLAGS = "-O0 -DRELEASE_WITHOUT_OPTIMIZATIONS"; }; };
 		0FEC85B31BDED9570080FF74 /* B3ConstPtrValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FEC85B21BDED9570080FF74 /* B3ConstPtrValue.h */; };
 		0FEC85BA1BE1462F0080FF74 /* B3InsertionSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FEC85B51BE1462F0080FF74 /* B3InsertionSet.h */; };
@@ -727,7 +727,7 @@
 		1409ECC0225E178100BEDD54 /* CacheUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = 148B1418225DD1D700D6E998 /* CacheUpdate.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		1409ECC1225E178C00BEDD54 /* CachePayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 148B1416225DD1D700D6E998 /* CachePayload.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		140D17D70E8AD4A9000CD17D /* JSBasePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 140D17D60E8AD4A9000CD17D /* JSBasePrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		141211310A48794D00480255 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */; };
+		141211310A48794D00480255 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */; };
 		141211340A48795800480255 /* minidom.c in Sources */ = {isa = PBXBuildFile; fileRef = 141211020A48780900480255 /* minidom.c */; };
 		14142E511B796ECE00F4BF4B /* UnlinkedFunctionExecutable.h in Headers */ = {isa = PBXBuildFile; fileRef = 14142E501B796ECE00F4BF4B /* UnlinkedFunctionExecutable.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		14142E531B796EDD00F4BF4B /* ExecutableInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 14142E521B796EDD00F4BF4B /* ExecutableInfo.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -801,7 +801,7 @@
 		14B8EC720A5652090062BE54 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6560A4CF04B3B3E7008AE952 /* CoreFoundation.framework */; };
 		14BA78F113AAB88F005B7C2C /* SlotVisitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 14BA78F013AAB88F005B7C2C /* SlotVisitor.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		14BA7A9813AADFF8005B7C2C /* Heap.h in Headers */ = {isa = PBXBuildFile; fileRef = 14BA7A9613AADFF8005B7C2C /* Heap.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		14BD59C50A3E8F9F00BAF59C /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */; };
+		14BD59C50A3E8F9F00BAF59C /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */; };
 		14BD689D215191C10050DAFF /* LLIntSettingsExtractor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14BD689C215191B30050DAFF /* LLIntSettingsExtractor.cpp */; };
 		14BE7D3317135CF400D1807A /* WeakInlines.h in Headers */ = {isa = PBXBuildFile; fileRef = 14BE7D3217135CF400D1807A /* WeakInlines.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		14BFCE6910CDB1FC00364CCE /* WeakGCMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 14BFCE6810CDB1FC00364CCE /* WeakGCMap.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -906,7 +906,7 @@
 		52CAEC752790B8FB00DDBAAF /* SecureARM64EHashPins.h in Headers */ = {isa = PBXBuildFile; fileRef = 52CAEC742790B8F600DDBAAF /* SecureARM64EHashPins.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		52CAEC762790B90100DDBAAF /* SecureARM64EHashPinsInlines.h in Headers */ = {isa = PBXBuildFile; fileRef = 52CAEC722790B8F600DDBAAF /* SecureARM64EHashPinsInlines.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		52CD0F5D2242F569004A18A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F0EB6105C86C6B00E6DF1B /* Foundation.framework */; };
-		52CD0F5E2242F569004A18A5 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */; };
+		52CD0F5E2242F569004A18A5 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */; };
 		52CD0F682242F71C004A18A5 /* testdfg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52CD0F672242F71C004A18A5 /* testdfg.cpp */; };
 		52DD000826E039B90054E408 /* BaselineJITCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 52DD000626E039B30054E408 /* BaselineJITCode.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		52E65A1C27682760002B4C0A /* B3EstimateStaticExecutionCounts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52E65A1A27682760002B4C0A /* B3EstimateStaticExecutionCounts.cpp */; };
@@ -1165,7 +1165,7 @@
 		62F2AA381B0BEDE300610C7A /* DFGLazyNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 62A9A29F1B0BED4800BD54CA /* DFGLazyNode.h */; };
 		641DF80E2890C7D500F9895F /* WasmSIMDOpcodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 641DF80D2890C7D500F9895F /* WasmSIMDOpcodes.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6507D29E0E871E5E00D7D896 /* JSTypeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6507D2970E871E4A00D7D896 /* JSTypeInfo.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		651122FD14046A4C002B101D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */; };
+		651122FD14046A4C002B101D /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */; };
 		651122FE14046A4C002B101D /* libedit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5D8AD00E0D0EBE00F9C692 /* libedit.dylib */; };
 		6511230714046B0A002B101D /* testRegExp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 651122E5140469BA002B101D /* testRegExp.cpp */; };
 		6514F21918B3E1670098FF8B /* Bytecodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6514F21718B3E1670098FF8B /* Bytecodes.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -1225,7 +1225,7 @@
 		7919B7801E03559C005BEED8 /* B3Compile.h in Headers */ = {isa = PBXBuildFile; fileRef = 7919B77F1E03559C005BEED8 /* B3Compile.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		79233C2B1D34715700C5A834 /* JITMathIC.h in Headers */ = {isa = PBXBuildFile; fileRef = 79233C291D34715700C5A834 /* JITMathIC.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		79281BD120B62B3E002E2A60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F0EB6105C86C6B00E6DF1B /* Foundation.framework */; };
-		79281BD220B62B3E002E2A60 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */; };
+		79281BD220B62B3E002E2A60 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */; };
 		792CB34A1C4EED5C00D13AF3 /* PCToCodeOriginMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 792CB3481C4EED5C00D13AF3 /* PCToCodeOriginMap.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		7954BE0B20B62D64009BC83A /* testmem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7954BE0A20B62D63009BC83A /* testmem.mm */; };
 		795AC61820A2355E0052C76C /* JSVirtualMachinePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 795AC61720A2354B0052C76C /* JSVirtualMachinePrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -1359,7 +1359,7 @@
 		932F5BD60822A1C700736975 /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F0EC0705C86C9A00E6DF1B /* libobjc.dylib */; };
 		932F5BD70822A1C700736975 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9322A00306C341D3009067BB /* libicucore.dylib */; };
 		932F5BDD0822A1C700736975 /* jsc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45E12D8806A49B0F00E9DF84 /* jsc.cpp */; };
-		932F5BEA0822A1C700736975 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */; };
+		932F5BEA0822A1C700736975 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */; };
 		933040040E6A749400786E6A /* SmallStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 93303FEA0E6A72C000786E6A /* SmallStrings.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		95CA6AD328809E010062D5EC /* ImplementationVisibility.h in Headers */ = {isa = PBXBuildFile; fileRef = 95CA6AD228809E010062D5EC /* ImplementationVisibility.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		960097A60EBABB58007A7297 /* LabelScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 960097A50EBABB58007A7297 /* LabelScope.h */; };
@@ -2115,7 +2115,7 @@
 		FE4BFF2C1AD476E700088F87 /* FunctionOverrides.h in Headers */ = {isa = PBXBuildFile; fileRef = FE4BFF2A1AD476E700088F87 /* FunctionOverrides.h */; };
 		FE5068651AE246390009DAB7 /* DeferredSourceDump.h in Headers */ = {isa = PBXBuildFile; fileRef = FE5068641AE246390009DAB7 /* DeferredSourceDump.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		FE533CA51F217DB30016A1FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F0EB6105C86C6B00E6DF1B /* Foundation.framework */; };
-		FE533CA61F217DB30016A1FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */; };
+		FE533CA61F217DB30016A1FE /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */; };
 		FE533CAD1F217EA50016A1FE /* testmasm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE533CA01F217C310016A1FE /* testmasm.cpp */; };
 		FE54DEFB1E8C6D8800A892C5 /* DisallowVMEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = FE54DEFA1E8C6D7200A892C5 /* DisallowVMEntry.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		FE54DEFF1E8D76FA00A892C5 /* DisallowScope.h in Headers */ = {isa = PBXBuildFile; fileRef = FE54DEFE1E8D742800A892C5 /* DisallowScope.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -4609,7 +4609,7 @@
 		930DAD030FB1EB1A0082D205 /* NodeConstructors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeConstructors.h; sourceTree = "<group>"; };
 		9322A00306C341D3009067BB /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = /usr/lib/libicucore.dylib; sourceTree = "<absolute>"; };
 		932F5BD80822A1C700736975 /* Info.plist */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; tabWidth = 8; usesTabs = 1; };
-		932F5BD90822A1C700736975 /* JavaScriptCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JavaScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		932F5BD90822A1C700736975 /* CyberScriptCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CyberScriptCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		932F5BE10822A1C700736975 /* jsc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jsc; sourceTree = BUILT_PRODUCTS_DIR; };
 		93303FE80E6A72B500786E6A /* SmallStrings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmallStrings.cpp; sourceTree = "<group>"; };
 		93303FEA0E6A72C000786E6A /* SmallStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallStrings.h; sourceTree = "<group>"; };
@@ -5898,7 +5898,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F61833C1C45F62A0072450B /* Foundation.framework in Frameworks */,
-				0F61833D1C45F62A0072450B /* JavaScriptCore.framework in Frameworks */,
+				0F61833D1C45F62A0072450B /* CyberScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5907,7 +5907,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F9327521C20BCBA00CF6564 /* Foundation.framework in Frameworks */,
-				0F9327531C20BCBA00CF6564 /* JavaScriptCore.framework in Frameworks */,
+				0F9327531C20BCBA00CF6564 /* CyberScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5916,7 +5916,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FEC85A31BDB5CF10080FF74 /* Foundation.framework in Frameworks */,
-				0FEC85A41BDB5CF10080FF74 /* JavaScriptCore.framework in Frameworks */,
+				0FEC85A41BDB5CF10080FF74 /* CyberScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5933,7 +5933,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14B8EC720A5652090062BE54 /* CoreFoundation.framework in Frameworks */,
-				141211310A48794D00480255 /* JavaScriptCore.framework in Frameworks */,
+				141211310A48794D00480255 /* CyberScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5942,7 +5942,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4443AE3316E188D90076F110 /* Foundation.framework in Frameworks */,
-				14BD59C50A3E8F9F00BAF59C /* JavaScriptCore.framework in Frameworks */,
+				14BD59C50A3E8F9F00BAF59C /* CyberScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5959,7 +5959,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52CD0F5D2242F569004A18A5 /* Foundation.framework in Frameworks */,
-				52CD0F5E2242F569004A18A5 /* JavaScriptCore.framework in Frameworks */,
+				52CD0F5E2242F569004A18A5 /* CyberScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5967,7 +5967,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				651122FD14046A4C002B101D /* JavaScriptCore.framework in Frameworks */,
+				651122FD14046A4C002B101D /* CyberScriptCore.framework in Frameworks */,
 				651122FE14046A4C002B101D /* libedit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5977,7 +5977,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79281BD120B62B3E002E2A60 /* Foundation.framework in Frameworks */,
-				79281BD220B62B3E002E2A60 /* JavaScriptCore.framework in Frameworks */,
+				79281BD220B62B3E002E2A60 /* CyberScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5998,7 +5998,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				932F5BEA0822A1C700736975 /* JavaScriptCore.framework in Frameworks */,
+				932F5BEA0822A1C700736975 /* CyberScriptCore.framework in Frameworks */,
 				5D5D8AD10E0D0EBE00F9C692 /* libedit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6008,7 +6008,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE533CA51F217DB30016A1FE /* Foundation.framework in Frameworks */,
-				FE533CA61F217DB30016A1FE /* JavaScriptCore.framework in Frameworks */,
+				FE533CA61F217DB30016A1FE /* CyberScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6030,7 +6030,7 @@
 				FE533CAC1F217DB40016A1FE /* testmasm */,
 				79281BDC20B62B3E002E2A60 /* testmem */,
 				6511230514046A4C002B101D /* testRegExp */,
-				932F5BD90822A1C700736975 /* JavaScriptCore.framework */,
+				932F5BD90822A1C700736975 /* CyberScriptCore.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -11765,9 +11765,9 @@
 			productReference = 79281BDC20B62B3E002E2A60 /* testmem */;
 			productType = "com.apple.product-type.tool";
 		};
-		932F5B3E0822A1C700736975 /* JavaScriptCore */ = {
+		932F5B3E0822A1C700736975 /* CyberScriptCore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 149C275D08902AFE008A9EFC /* Build configuration list for PBXNativeTarget "JavaScriptCore" */;
+			buildConfigurationList = 149C275D08902AFE008A9EFC /* Build configuration list for PBXNativeTarget "CyberScriptCore" */;
 			buildPhases = (
 				5D2F7CF90C6875BB00B5B72B /* Update Info.plist with version information */,
 				A53F1ABF18C90F8B0072EB6D /* Resources */,
@@ -11794,10 +11794,10 @@
 				65FB3F7E09D11EF300F49DEB /* PBXTargetDependency */,
 				53B4BD141F68C2AA00D2BEA3 /* PBXTargetDependency */,
 			);
-			name = JavaScriptCore;
+			name = CyberScriptCore;
 			productInstallPath = "${SYSTEM_LIBRARY_DIR}/Frameworks/WebKit.framework/Versions/A/Frameworks";
 			productName = JavaScriptCore;
-			productReference = 932F5BD90822A1C700736975 /* JavaScriptCore.framework */;
+			productReference = 932F5BD90822A1C700736975 /* CyberScriptCore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		932F5BDA0822A1C700736975 /* jsc */ = {
@@ -11852,7 +11852,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 149C277108902AFE008A9EFC /* Build configuration list for PBXProject "JavaScriptCore" */;
+			buildConfigurationList = 149C277108902AFE008A9EFC /* Build configuration list for PBXProject "CyberScriptCore" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
@@ -11866,7 +11866,7 @@
 			projectRoot = "";
 			targets = (
 				932F5BE30822A1C700736975 /* All */,
-				932F5B3E0822A1C700736975 /* JavaScriptCore */,
+				932F5B3E0822A1C700736975 /* CyberScriptCore */,
 				65FB3F6609D11E9100F49DEB /* Derived Sources */,
 				14BD688F215191450050DAFF /* (Legacy) LLInt Settings */,
 				14BD6881215191310050DAFF /* JSCLLIntSettingsExtractor */,
@@ -12790,7 +12790,7 @@
 		};
 		932F5BE70822A1C700736975 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 932F5B3E0822A1C700736975 /* JavaScriptCore */;
+			target = 932F5B3E0822A1C700736975 /* CyberScriptCore */;
 			targetProxy = 932F5BE60822A1C700736975 /* PBXContainerItemProxy */;
 		};
 		DD41FA8B27CDE1C400394D95 /* PBXTargetDependency */ = {
@@ -12971,6 +12971,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* JavaScriptCore.xcconfig */;
 			buildSettings = {
+				PRODUCT_NAME = CyberScriptCore;
 			};
 			name = Debug;
 		};
@@ -12978,6 +12979,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* JavaScriptCore.xcconfig */;
 			buildSettings = {
+				PRODUCT_NAME = CyberScriptCore;
 			};
 			name = Release;
 		};
@@ -12986,6 +12988,7 @@
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* JavaScriptCore.xcconfig */;
 			buildSettings = {
 				BUILD_VARIANTS = normal;
+				PRODUCT_NAME = CyberScriptCore;
 			};
 			name = Production;
 		};
@@ -13434,6 +13437,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C9051430BA9E8A70081E9D0 /* JavaScriptCore.xcconfig */;
 			buildSettings = {
+				PRODUCT_NAME = CyberScriptCore;
 			};
 			name = Profiling;
 		};
@@ -13567,7 +13571,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Production;
 		};
-		149C275D08902AFE008A9EFC /* Build configuration list for PBXNativeTarget "JavaScriptCore" */ = {
+		149C275D08902AFE008A9EFC /* Build configuration list for PBXNativeTarget "CyberScriptCore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				149C275E08902AFE008A9EFC /* Debug */,
@@ -13600,7 +13604,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Production;
 		};
-		149C277108902AFE008A9EFC /* Build configuration list for PBXProject "JavaScriptCore" */ = {
+		149C277108902AFE008A9EFC /* Build configuration list for PBXProject "CyberScriptCore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				149C277208902AFE008A9EFC /* Debug */,
