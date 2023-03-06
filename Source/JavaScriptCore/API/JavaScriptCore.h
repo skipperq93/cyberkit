@@ -26,16 +26,16 @@
 #ifndef JavaScriptCore_h
 #define JavaScriptCore_h
 
-#include <JavaScriptCore/JavaScript.h>
-#include <JavaScriptCore/JSStringRefCF.h>
+#include <CyberScriptCore/JavaScript.h>
+#include <CyberScriptCore/JSStringRefCF.h>
 
 #if defined(__OBJC__) && JSC_OBJC_API_ENABLED
 
-#import <JavaScriptCore/JSContext.h>
-#import <JavaScriptCore/JSValue.h>
-#import <JavaScriptCore/JSManagedValue.h>
-#import <JavaScriptCore/JSVirtualMachine.h>
-#import <JavaScriptCore/JSExport.h>
+#import <CyberScriptCore/JSContext.h>
+#import <CyberScriptCore/JSValue.h>
+#import <CyberScriptCore/JSManagedValue.h>
+#import <CyberScriptCore/JSVirtualMachine.h>
+#import <CyberScriptCore/JSExport.h>
 
 #endif
 

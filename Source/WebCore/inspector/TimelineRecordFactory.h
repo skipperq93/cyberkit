@@ -31,7 +31,7 @@
  
 #pragma once
 
-#include <JavaScriptCore/DebuggerPrimitives.h>
+#include <CyberScriptCore/DebuggerPrimitives.h>
 #include <wtf/Forward.h>
 #include <wtf/JSONValues.h>
 #include <wtf/Seconds.h>

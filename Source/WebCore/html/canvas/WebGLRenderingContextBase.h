@@ -49,8 +49,8 @@
 #include "WebGLTransformFeedback.h"
 #include "WebGLVertexArrayObject.h"
 #include "WebGLVertexArrayObjectOES.h"
-#include <JavaScriptCore/ArrayBufferView.h>
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ArrayBufferView.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 #include <limits>
 #include <memory>
 #include <wtf/CheckedArithmetic.h>

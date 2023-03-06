@@ -31,7 +31,7 @@
 #include "JSDOMConvertInterface.h"
 #include "JSDOMWindow.h"
 #include "WindowProxy.h"
-#include <JavaScriptCore/JSProxy.h>
+#include <CyberScriptCore/JSProxy.h>
 
 namespace JSC {
 class Debugger;

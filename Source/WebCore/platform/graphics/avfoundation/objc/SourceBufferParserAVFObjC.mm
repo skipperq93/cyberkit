@@ -43,7 +43,7 @@
 #import "TimeRanges.h"
 #import "VideoTrackPrivateMediaSourceAVFObjC.h"
 #import <AVFoundation/AVAssetTrack.h>
-#import <JavaScriptCore/TypedArrayInlines.h>
+#import <CyberScriptCore/TypedArrayInlines.h>
 #import <objc/runtime.h>
 #import <pal/avfoundation/MediaTimeAVFoundation.h>
 #import <pal/spi/cocoa/AVFoundationSPI.h>

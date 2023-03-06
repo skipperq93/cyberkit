@@ -94,9 +94,9 @@
 #include "WebsiteData.h"
 #include "WebsiteDataStoreParameters.h"
 #include "WebsiteDataType.h"
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/MemoryStatistics.h>
-#include <JavaScriptCore/WasmFaultSignalHandler.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/MemoryStatistics.h>
+#include <CyberScriptCore/WasmFaultSignalHandler.h>
 #include <CyberCore/AXObjectCache.h>
 #include <CyberCore/ApplicationCacheStorage.h>
 #include <CyberCore/AuthenticationChallenge.h>
@@ -194,7 +194,7 @@
 #endif
 
 #if ENABLE(REMOTE_INSPECTOR)
-#include <JavaScriptCore/RemoteInspector.h>
+#include <CyberScriptCore/RemoteInspector.h>
 #endif
 
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

@@ -38,7 +38,7 @@
 #include "JSDOMFormData.h"
 #include "JSDOMPromiseDeferred.h"
 #include "ReadableStreamSource.h"
-#include <JavaScriptCore/ArrayBufferView.h>
+#include <CyberScriptCore/ArrayBufferView.h>
 
 namespace WebCore {
 

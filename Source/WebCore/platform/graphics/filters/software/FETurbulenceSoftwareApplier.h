@@ -29,7 +29,7 @@
 #include "FloatPoint.h"
 #include "IntRect.h"
 #include "PixelBuffer.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 
 namespace WebCore {
 

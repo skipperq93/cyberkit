@@ -56,9 +56,9 @@
 #include "VideoTrackList.h"
 #include "VideoTrackPrivate.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/VM.h>
 #include <limits>
 #include <wtf/CheckedArithmetic.h>
 #include <wtf/IsoMallocInlines.h>

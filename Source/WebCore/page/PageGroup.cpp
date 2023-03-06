@@ -32,8 +32,8 @@
 #include "Frame.h"
 #include "Page.h"
 #include "StorageNamespace.h"
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/StructureInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/StructureInlines.h>
 #include <wtf/StdLibExtras.h>
 
 #if ENABLE(VIDEO)

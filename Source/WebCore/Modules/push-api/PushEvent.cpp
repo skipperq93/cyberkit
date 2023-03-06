@@ -29,9 +29,9 @@
 #if ENABLE(SERVICE_WORKER)
 
 #include "PushMessageData.h"
-#include <JavaScriptCore/JSArrayBuffer.h>
-#include <JavaScriptCore/JSArrayBufferView.h>
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSArrayBuffer.h>
+#include <CyberScriptCore/JSArrayBufferView.h>
+#include <CyberScriptCore/JSCInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

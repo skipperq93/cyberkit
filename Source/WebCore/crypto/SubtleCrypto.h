@@ -29,7 +29,7 @@
 
 #include "ContextDestructionObserver.h"
 #include "CryptoKeyFormat.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <variant>
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>

@@ -26,7 +26,7 @@
 #pragma once
 
 #include "ResourceLoaderIdentifier.h"
-#include <JavaScriptCore/InspectorConsoleAgent.h>
+#include <CyberScriptCore/InspectorConsoleAgent.h>
 
 namespace WebCore {
 

@@ -30,9 +30,9 @@
 #include "Frame.h"
 #include "ScriptController.h"
 #include "WebCoreJSClientData.h"
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/MachineStackMarker.h>
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/MachineStackMarker.h>
+#include <CyberScriptCore/VM.h>
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 #include <wtf/text/AtomString.h>

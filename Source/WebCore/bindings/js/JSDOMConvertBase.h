@@ -26,7 +26,7 @@
 #pragma once
 
 #include "JSDOMExceptionHandling.h"
-#include <JavaScriptCore/Error.h>
+#include <CyberScriptCore/Error.h>
 
 namespace WebCore {
 

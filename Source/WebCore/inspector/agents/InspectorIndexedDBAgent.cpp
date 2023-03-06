@@ -59,11 +59,11 @@
 #include "JSDOMWindowCustom.h"
 #include "SecurityOrigin.h"
 #include "WindowOrWorkerGlobalScopeIndexedDatabase.h"
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/InjectedScript.h>
-#include <JavaScriptCore/InjectedScriptManager.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendRouter.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/InjectedScript.h>
+#include <CyberScriptCore/InjectedScriptManager.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendRouter.h>
 #include <wtf/JSONValues.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Vector.h>

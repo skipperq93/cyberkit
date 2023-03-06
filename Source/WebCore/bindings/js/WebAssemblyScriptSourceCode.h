@@ -33,8 +33,8 @@
 #include "SharedBuffer.h"
 #include "WebAssemblyCachedScriptSourceProvider.h"
 #include "WebAssemblyScriptBufferSourceProvider.h"
-#include <JavaScriptCore/SourceCode.h>
-#include <JavaScriptCore/SourceProvider.h>
+#include <CyberScriptCore/SourceCode.h>
+#include <CyberScriptCore/SourceProvider.h>
 #include <wtf/RefPtr.h>
 #include <wtf/URL.h>
 

@@ -42,11 +42,11 @@
 #include "WorkerRuntimeAgent.h"
 #include "WorkerThread.h"
 #include "WorkerToPageFrontendChannel.h"
-#include <JavaScriptCore/InspectorAgentBase.h>
-#include <JavaScriptCore/InspectorBackendDispatcher.h>
-#include <JavaScriptCore/InspectorFrontendChannel.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendRouter.h>
+#include <CyberScriptCore/InspectorAgentBase.h>
+#include <CyberScriptCore/InspectorBackendDispatcher.h>
+#include <CyberScriptCore/InspectorFrontendChannel.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendRouter.h>
 
 #if ENABLE(SERVICE_WORKER)
 #include "InspectorClient.h"

@@ -27,7 +27,7 @@
 #include "CustomEffect.h"
 
 #include "CustomEffectCallback.h"
-#include <JavaScriptCore/Exception.h>
+#include <CyberScriptCore/Exception.h>
 
 namespace WebCore {
 using namespace JSC;

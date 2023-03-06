@@ -30,7 +30,7 @@
 #include "JSXMLDocument.h"
 #include "NodeTraversal.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
 
 namespace WebCore {
 using namespace JSC;

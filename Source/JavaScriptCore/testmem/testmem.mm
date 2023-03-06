@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 #import <inttypes.h>
 #import <stdio.h>
 

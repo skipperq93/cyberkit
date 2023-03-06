@@ -85,8 +85,8 @@
 #import <wtf/text/TextStream.h>
 
 #if ENABLE(REMOTE_INSPECTOR)
-#import <JavaScriptCore/RemoteInspector.h>
-#import <JavaScriptCore/RemoteInspectorConstants.h>
+#import <CyberScriptCore/RemoteInspector.h>
+#import <CyberScriptCore/RemoteInspectorConstants.h>
 #endif
 
 #if PLATFORM(MAC)

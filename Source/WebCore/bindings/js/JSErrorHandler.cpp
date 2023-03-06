@@ -41,8 +41,8 @@
 #include "JSEvent.h"
 #include "JSExecState.h"
 #include "JSExecStateInstrumentation.h"
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/VMEntryScope.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/VMEntryScope.h>
 #include <wtf/Ref.h>
 
 namespace WebCore {

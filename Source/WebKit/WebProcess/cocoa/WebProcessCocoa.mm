@@ -54,8 +54,8 @@
 #import "WebSleepDisablerClient.h"
 #import "WebSystemSoundDelegate.h"
 #import "WebsiteDataStoreParameters.h"
-#import <JavaScriptCore/ConfigFile.h>
-#import <JavaScriptCore/Options.h>
+#import <CyberScriptCore/ConfigFile.h>
+#import <CyberScriptCore/Options.h>
 #import <CyberCore/AVAssetMIMETypeCache.h>
 #import <CyberCore/AXObjectCache.h>
 #import <CyberCore/CPUMonitor.h>
@@ -116,7 +116,7 @@
 #import <wtf/spi/cocoa/OSLogSPI.h>
 
 #if ENABLE(REMOTE_INSPECTOR)
-#import <JavaScriptCore/RemoteInspector.h>
+#import <CyberScriptCore/RemoteInspector.h>
 #endif
 
 #if PLATFORM(IOS_FAMILY)

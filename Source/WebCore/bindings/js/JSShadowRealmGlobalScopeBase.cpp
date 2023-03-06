@@ -31,10 +31,10 @@
 #include "JSShadowRealmGlobalScope.h"
 #include "ScriptModuleLoader.h"
 #include "ShadowRealmGlobalScope.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSCJSValueInlines.h>
-#include <JavaScriptCore/JSProxy.h>
-#include <JavaScriptCore/Microtask.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSProxy.h>
+#include <CyberScriptCore/Microtask.h>
 #include <wtf/Language.h>
 
 namespace WebCore {

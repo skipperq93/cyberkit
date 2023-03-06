@@ -28,7 +28,7 @@
 #include "cmakeconfig.h"
 #endif
 
-#include <JavaScriptCore/JSExportMacros.h>
+#include <CyberScriptCore/JSExportMacros.h>
 #include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #include <wtf/DisallowCType.h>

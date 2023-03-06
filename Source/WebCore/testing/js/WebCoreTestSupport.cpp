@@ -44,11 +44,11 @@
 #include "SWContextManager.h"
 #include "ServiceWorkerGlobalScope.h"
 #include "WheelEventTestMonitor.h"
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/CallFrame.h>
-#include <JavaScriptCore/IdentifierInlines.h>
-#include <JavaScriptCore/JITOperationList.h>
-#include <JavaScriptCore/JSValueRef.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/CallFrame.h>
+#include <CyberScriptCore/IdentifierInlines.h>
+#include <CyberScriptCore/JITOperationList.h>
+#include <CyberScriptCore/JSValueRef.h>
 #include <wtf/URLParser.h>
 
 #if PLATFORM(COCOA)

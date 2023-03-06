@@ -28,10 +28,10 @@
 
 #include "JSDOMBinding.h"
 #include "WebCoreJSClientData.h"
-#include <JavaScriptCore/ArrayPrototype.h>
-#include <JavaScriptCore/Error.h>
-#include <JavaScriptCore/JSGlobalObjectInlines.h>
-#include <JavaScriptCore/PropertyNameArray.h>
+#include <CyberScriptCore/ArrayPrototype.h>
+#include <CyberScriptCore/Error.h>
+#include <CyberScriptCore/JSGlobalObjectInlines.h>
+#include <CyberScriptCore/PropertyNameArray.h>
 
 using namespace WebCore;
 

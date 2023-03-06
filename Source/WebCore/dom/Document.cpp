@@ -280,10 +280,10 @@
 #include "XPathExpression.h"
 #include "XPathNSResolver.h"
 #include "XPathResult.h"
-#include <JavaScriptCore/ConsoleMessage.h>
-#include <JavaScriptCore/RegularExpression.h>
-#include <JavaScriptCore/ScriptCallStack.h>
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/RegularExpression.h>
+#include <CyberScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/VM.h>
 #include <ctime>
 #include <wtf/CryptographicallyRandomNumber.h>
 #include <wtf/HexNumber.h>

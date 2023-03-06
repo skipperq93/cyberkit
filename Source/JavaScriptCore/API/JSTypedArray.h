@@ -27,8 +27,8 @@
 #ifndef JSTypedArray_h
 #define JSTypedArray_h
 
-#include <JavaScriptCore/JSBase.h>
-#include <JavaScriptCore/JSValueRef.h>
+#include <CyberScriptCore/JSBase.h>
+#include <CyberScriptCore/JSValueRef.h>
 
 #ifdef __cplusplus
 extern "C" {

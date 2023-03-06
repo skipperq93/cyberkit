@@ -34,8 +34,8 @@
 #include "JSDOMException.h"
 #include "ScriptExecutionContext.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/Exception.h>
-#include <JavaScriptCore/JSCast.h>
+#include <CyberScriptCore/Exception.h>
+#include <CyberScriptCore/JSCast.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

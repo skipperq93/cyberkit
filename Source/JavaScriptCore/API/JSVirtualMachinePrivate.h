@@ -24,11 +24,11 @@
  */
 
 #import "JSExportMacros.h"
-#import <JavaScriptCore/JavaScript.h>
+#import <CyberScriptCore/JavaScript.h>
 
 #if JSC_OBJC_API_ENABLED
 
-#import <JavaScriptCore/JSVirtualMachine.h>
+#import <CyberScriptCore/JSVirtualMachine.h>
 
 @interface JSVirtualMachine(JSPrivate)
 

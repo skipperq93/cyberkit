@@ -30,8 +30,8 @@
 #include "IDBKey.h"
 #include "IDBKeyData.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/JSCJSValue.h>
-#include <JavaScriptCore/JSGlobalObject.h>
+#include <CyberScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/JSGlobalObject.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

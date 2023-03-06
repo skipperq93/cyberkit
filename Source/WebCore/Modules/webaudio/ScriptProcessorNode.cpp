@@ -37,7 +37,7 @@
 #include "AudioUtilities.h"
 #include "Document.h"
 #include "EventNames.h"
-#include <JavaScriptCore/Float32Array.h>
+#include <CyberScriptCore/Float32Array.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MainThread.h>
 

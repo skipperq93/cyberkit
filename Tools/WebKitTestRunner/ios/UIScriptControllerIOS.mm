@@ -36,8 +36,8 @@
 #import "TestRunnerWKWebView.h"
 #import "UIKitSPI.h"
 #import "UIScriptContext.h"
-#import <JavaScriptCore/JavaScriptCore.h>
-#import <JavaScriptCore/OpaqueJSString.h>
+#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/OpaqueJSString.h>
 #import <UIKit/UIKit.h>
 #import <CyberCore/FloatPoint.h>
 #import <CyberCore/FloatRect.h>

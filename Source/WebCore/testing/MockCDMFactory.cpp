@@ -30,7 +30,7 @@
 
 #include "InitDataRegistry.h"
 #include "SharedBuffer.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/Algorithms.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/UUID.h>

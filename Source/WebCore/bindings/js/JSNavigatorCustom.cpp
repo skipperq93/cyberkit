@@ -29,8 +29,8 @@
 #include "WebCoreJSBuiltinInternals.h"
 #include "WebCoreJSClientData.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/CatchScope.h>
-#include <JavaScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/CatchScope.h>
+#include <CyberScriptCore/JSCJSValue.h>
 
 namespace WebCore {
 

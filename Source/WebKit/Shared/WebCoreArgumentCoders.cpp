@@ -29,8 +29,8 @@
 #include "ShareableBitmap.h"
 #include "ShareableResource.h"
 #include "StreamConnectionEncoder.h"
-#include <JavaScriptCore/GenericTypedArrayViewInlines.h>
-#include <JavaScriptCore/JSGenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/GenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 #include <CyberCore/ARKitBadgeSystemImage.h>
 #include <CyberCore/ApplePayLogoSystemImage.h>
 #include <CyberCore/AuthenticationChallenge.h>

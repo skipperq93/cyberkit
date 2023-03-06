@@ -26,7 +26,7 @@
 #ifndef WKSerializedScriptValue_h
 #define WKSerializedScriptValue_h
 
-#include <JavaScriptCore/JavaScript.h>
+#include <CyberScriptCore/JavaScript.h>
 #include <CyberKit/WKBase.h>
 
 #ifdef __cplusplus

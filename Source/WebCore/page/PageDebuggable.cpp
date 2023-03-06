@@ -33,7 +33,7 @@
 #include "InspectorController.h"
 #include "Page.h"
 #include "Settings.h"
-#include <JavaScriptCore/InspectorAgentBase.h>
+#include <CyberScriptCore/InspectorAgentBase.h>
 
 namespace WebCore {
 

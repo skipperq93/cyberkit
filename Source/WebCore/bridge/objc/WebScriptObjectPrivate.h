@@ -24,7 +24,7 @@
  */
 
 #import "WebScriptObject.h"
-#import <JavaScriptCore/JSCJSValue.h>
+#import <CyberScriptCore/JSCJSValue.h>
 #import <wtf/RefPtr.h>
 
 namespace JSC {

@@ -26,7 +26,7 @@
 #import "config.h"
 #import "WebKit2Initialize.h"
 
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/CommonAtomStrings.h>
 #import <CyberCore/WebCoreJITOperations.h>
 #import <mutex>

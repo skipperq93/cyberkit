@@ -33,7 +33,7 @@
 #include "GraphicsContext.h"
 #include "ImageBuffer.h"
 #include "PixelBuffer.h"
-#include <JavaScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
 #include <wtf/MathExtras.h>
 
 #if USE(ACCELERATE)

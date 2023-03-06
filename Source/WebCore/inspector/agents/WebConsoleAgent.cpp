@@ -36,9 +36,9 @@
 #include "ResourceError.h"
 #include "ResourceResponse.h"
 #include "WebInjectedScriptManager.h"
-#include <JavaScriptCore/ConsoleMessage.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/ScriptArguments.h>
+#include <CyberScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/ScriptArguments.h>
 #include <wtf/text/StringBuilder.h>
 
 namespace WebCore {

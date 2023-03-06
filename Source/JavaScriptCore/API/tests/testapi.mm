@@ -25,7 +25,7 @@
 
 #import "config.h"
 #import "JSExportMacros.h"
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 
 #import "CurrentThisInsideBlockGetterTest.h"
 #import "DateTests.h"

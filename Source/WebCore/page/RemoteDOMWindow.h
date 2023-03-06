@@ -27,7 +27,7 @@
 
 #include "AbstractDOMWindow.h"
 #include "RemoteFrame.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/IsoMalloc.h>
 #include <wtf/TypeCasts.h>
 

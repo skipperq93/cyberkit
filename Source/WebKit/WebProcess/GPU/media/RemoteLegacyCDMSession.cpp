@@ -31,9 +31,9 @@
 #include "GPUProcessConnection.h"
 #include "RemoteLegacyCDMFactory.h"
 #include "RemoteLegacyCDMSessionProxyMessages.h"
-#include <JavaScriptCore/GenericTypedArrayViewInlines.h>
-#include <JavaScriptCore/JSGenericTypedArrayViewInlines.h>
-#include <JavaScriptCore/TypedArrayType.h>
+#include <CyberScriptCore/GenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/TypedArrayType.h>
 #include <CyberCore/SharedBuffer.h>
 
 namespace WebKit {

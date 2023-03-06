@@ -30,7 +30,7 @@
 
 #include "CryptoAlgorithmHkdfParams.h"
 #include "CryptoKeyRaw.h"
-#include <JavaScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/CrossThreadCopier.h>
 
 namespace WebCore {

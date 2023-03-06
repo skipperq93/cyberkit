@@ -31,7 +31,7 @@
 #include "Frame.h"
 #include "JSDOMPromiseDeferred.h"
 #include "SerializedScriptValue.h"
-#include <JavaScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/JSCJSValue.h>
 
 namespace WebCore {
 

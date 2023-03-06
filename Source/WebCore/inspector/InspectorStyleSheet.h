@@ -27,7 +27,7 @@
 
 #include "CSSPropertySourceData.h"
 #include "CSSStyleDeclaration.h"
-#include <JavaScriptCore/InspectorProtocolObjects.h>
+#include <CyberScriptCore/InspectorProtocolObjects.h>
 #include <wtf/HashMap.h>
 #include <wtf/JSONValues.h>
 #include <wtf/Vector.h>

@@ -25,11 +25,11 @@
 #ifndef ObjCCallbackFunction_h
 #define ObjCCallbackFunction_h 
 
-#include <JavaScriptCore/JSBase.h>
+#include <CyberScriptCore/JSBase.h>
 
 #if JSC_OBJC_API_ENABLED
 
-#import <JavaScriptCore/JSCallbackFunction.h>
+#import <CyberScriptCore/JSCallbackFunction.h>
 
 #if defined(__OBJC__)
 JSObjectRef objCCallbackFunctionForMethod(JSContext *, Class, Protocol *, BOOL isInstanceMethod, SEL, const char* types);

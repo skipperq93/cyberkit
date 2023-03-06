@@ -26,7 +26,7 @@
 #pragma once
 
 #include "InternalWritableStream.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/RefCounted.h>
 
 namespace WebCore {

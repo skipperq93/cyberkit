@@ -29,9 +29,9 @@
 #include "CustomElementReactionQueue.h"
 #include "JSDOMBinding.h"
 #include "ThreadGlobalData.h"
-#include <JavaScriptCore/CatchScope.h>
-#include <JavaScriptCore/Completion.h>
-#include <JavaScriptCore/Microtask.h>
+#include <CyberScriptCore/CatchScope.h>
+#include <CyberScriptCore/Completion.h>
+#include <CyberScriptCore/Microtask.h>
 #include <wtf/ForbidHeapAllocation.h>
 #include <wtf/MainThread.h>
 

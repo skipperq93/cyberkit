@@ -35,8 +35,8 @@
 #include "JSDOMWrapper.h"
 #include "JSElement.h"
 #include "JSHTMLElement.h"
-#include <JavaScriptCore/Snippet.h>
-#include <JavaScriptCore/SnippetParams.h>
+#include <CyberScriptCore/Snippet.h>
+#include <CyberScriptCore/SnippetParams.h>
 
 IGNORE_WARNINGS_BEGIN("frame-address");
 

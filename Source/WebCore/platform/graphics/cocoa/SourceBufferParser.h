@@ -29,7 +29,7 @@
 
 #include "MediaPlayerEnums.h"
 #include "SourceBufferPrivateClient.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <pal/spi/cocoa/MediaToolboxSPI.h>
 #include <variant>
 #include <wtf/CompletionHandler.h>

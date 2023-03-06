@@ -32,7 +32,7 @@
 #import "WebPlatformStrategies.h"
 #import "WebPreferencesDefinitions.h"
 #import "WebViewPrivate.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/BreakLines.h>
 #import <CyberCore/PathUtilities.h>
 #import <CyberCore/ResourceRequest.h>

@@ -37,7 +37,7 @@
 #import "SharedBuffer.h"
 #import "SystemBattery.h"
 #import "VideoConfiguration.h"
-#import <JavaScriptCore/DataView.h>
+#import <CyberScriptCore/DataView.h>
 #import <webm/vp9_header_parser.h>
 #import <wtf/text/StringToIntegerConversion.h>
 

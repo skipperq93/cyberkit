@@ -37,8 +37,8 @@
 #include "JSHTMLElementWrapperFactory.h"
 #include "JSNodeCustom.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/InternalFunction.h>
-#include <JavaScriptCore/JSWithScope.h>
+#include <CyberScriptCore/InternalFunction.h>
+#include <CyberScriptCore/JSWithScope.h>
 
 namespace WebCore {
 

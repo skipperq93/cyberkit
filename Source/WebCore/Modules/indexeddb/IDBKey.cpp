@@ -27,10 +27,10 @@
 #include "IDBKey.h"
 
 #include "IDBKeyData.h"
-#include <JavaScriptCore/ArrayBufferView.h>
-#include <JavaScriptCore/JSArrayBuffer.h>
-#include <JavaScriptCore/JSArrayBufferView.h>
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/ArrayBufferView.h>
+#include <CyberScriptCore/JSArrayBuffer.h>
+#include <CyberScriptCore/JSArrayBufferView.h>
+#include <CyberScriptCore/JSCInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

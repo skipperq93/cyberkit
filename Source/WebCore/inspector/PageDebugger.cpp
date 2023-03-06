@@ -39,7 +39,7 @@
 #include "PageGroup.h"
 #include "ScriptController.h"
 #include "Timer.h"
-#include <JavaScriptCore/JSLock.h>
+#include <CyberScriptCore/JSLock.h>
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 #include <wtf/StdLibExtras.h>

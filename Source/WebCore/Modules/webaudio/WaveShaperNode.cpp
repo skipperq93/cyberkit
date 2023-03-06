@@ -28,9 +28,9 @@
 #if ENABLE(WEB_AUDIO)
 
 #include "AudioContext.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/TypedArrayInlines.h>
-#include <JavaScriptCore/TypedArrays.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/TypedArrays.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MainThread.h>
 

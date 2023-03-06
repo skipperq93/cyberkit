@@ -29,7 +29,7 @@
 #include "ExceptionOr.h"
 #include "ScriptWrappable.h"
 #include "TransformationMatrix.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <variant>
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>

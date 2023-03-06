@@ -39,10 +39,10 @@
 #import "WebFrameLoaderClient.h"
 #import "WebFramePrivate.h"
 #import "WebKitNSStringExtras.h"
-#import <JavaScriptCore/APICast.h>
-#import <JavaScriptCore/JSCJSValue.h>
-#import <JavaScriptCore/JSGlobalObjectInlines.h>
-#import <JavaScriptCore/JSLock.h>
+#import <CyberScriptCore/APICast.h>
+#import <CyberScriptCore/JSCJSValue.h>
+#import <CyberScriptCore/JSGlobalObjectInlines.h>
+#import <CyberScriptCore/JSLock.h>
 #import <CyberCore/Document.h>
 #import <CyberCore/Frame.h>
 #import <CyberCore/FrameLoader.h>

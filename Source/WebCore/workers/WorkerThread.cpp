@@ -33,7 +33,7 @@
 #include "SocketProvider.h"
 #include "WorkerGlobalScope.h"
 #include "WorkerScriptFetcher.h"
-#include <JavaScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ScriptCallStack.h>
 #include <wtf/SetForScope.h>
 #include <wtf/Threading.h>
 

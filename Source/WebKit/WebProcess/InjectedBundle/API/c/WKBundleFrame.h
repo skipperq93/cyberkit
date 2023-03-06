@@ -26,7 +26,7 @@
 #ifndef WKBundleFrame_h
 #define WKBundleFrame_h
 
-#include <JavaScriptCore/JavaScript.h>
+#include <CyberScriptCore/JavaScript.h>
 #include <CyberKit/WKBase.h>
 #include <CyberKit/WKDeprecated.h>
 #include <CyberKit/WKFrame.h>

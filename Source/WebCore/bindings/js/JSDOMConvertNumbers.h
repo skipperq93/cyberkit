@@ -28,8 +28,8 @@
 #include "IDLTypes.h"
 #include "JSDOMConvertBase.h"
 #include "JSDOMExceptionHandling.h"
-#include <JavaScriptCore/JSCJSValueInlines.h>
-#include <JavaScriptCore/PureNaN.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/PureNaN.h>
 
 namespace WebCore {
 

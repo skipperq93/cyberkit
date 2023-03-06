@@ -38,7 +38,7 @@
 #import "WebNSObjectExtras.h"
 #import "WebPreferencesPrivate.h"
 #import "WebViewPrivate.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/BackForwardCache.h>
 #import <CyberCore/HistoryItem.h>
 #import <CyberCore/Settings.h>

@@ -28,7 +28,7 @@
 
 #if ENABLE(APPLE_PAY)
 
-#import <JavaScriptCore/JSONObject.h>
+#import <CyberScriptCore/JSONObject.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
 #import <pal/cocoa/PassKitSoftLink.h>

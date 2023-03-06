@@ -275,8 +275,8 @@
 #endif
 
 #if ENABLE(REMOTE_INSPECTOR)
-#include <JavaScriptCore/JSRemoteInspector.h>
-#include <JavaScriptCore/RemoteInspector.h>
+#include <CyberScriptCore/JSRemoteInspector.h>
+#include <CyberScriptCore/RemoteInspector.h>
 #endif
 
 #if HAVE(SEC_KEY_PROXY)

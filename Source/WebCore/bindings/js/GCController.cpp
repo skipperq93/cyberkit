@@ -29,10 +29,10 @@
 #include "CommonVM.h"
 #include "JSHTMLDocument.h"
 #include "Location.h"
-#include <JavaScriptCore/Heap.h>
-#include <JavaScriptCore/HeapSnapshotBuilder.h>
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/Heap.h>
+#include <CyberScriptCore/HeapSnapshotBuilder.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/VM.h>
 #include <pal/Logging.h>
 #include <wtf/FastMalloc.h>
 #include <wtf/FileSystem.h>

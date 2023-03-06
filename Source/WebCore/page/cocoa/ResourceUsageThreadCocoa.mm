@@ -29,10 +29,10 @@
 #if ENABLE(RESOURCE_USAGE)
 
 #import "WorkerThread.h"
-#import <JavaScriptCore/GCActivityCallback.h>
-#import <JavaScriptCore/Heap.h>
-#import <JavaScriptCore/SamplingProfiler.h>
-#import <JavaScriptCore/VM.h>
+#import <CyberScriptCore/GCActivityCallback.h>
+#import <CyberScriptCore/Heap.h>
+#import <CyberScriptCore/SamplingProfiler.h>
+#import <CyberScriptCore/VM.h>
 #import <mach/mach.h>
 #import <mach/vm_statistics.h>
 #import <wtf/MachSendRight.h>

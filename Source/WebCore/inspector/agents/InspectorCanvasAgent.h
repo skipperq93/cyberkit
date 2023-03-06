@@ -31,8 +31,8 @@
 #include "InspectorCanvasCallTracer.h"
 #include "InspectorWebAgentBase.h"
 #include "Timer.h"
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
 #include <initializer_list>
 #include <wtf/Forward.h>
 #include <wtf/RobinHoodHashMap.h>

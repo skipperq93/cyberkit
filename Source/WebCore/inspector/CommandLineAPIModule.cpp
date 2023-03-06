@@ -29,8 +29,8 @@
 #include "JSDOMGlobalObject.h"
 #include "WebCoreJSBuiltinInternals.h"
 #include "WebInjectedScriptManager.h"
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/InjectedScript.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/InjectedScript.h>
 
 namespace WebCore {
 

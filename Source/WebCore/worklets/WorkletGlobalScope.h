@@ -33,8 +33,8 @@
 #include "ScriptSourceCode.h"
 #include "WorkerOrWorkletGlobalScope.h"
 #include "WorkerOrWorkletScriptController.h"
-#include <JavaScriptCore/ConsoleMessage.h>
-#include <JavaScriptCore/RuntimeFlags.h>
+#include <CyberScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/RuntimeFlags.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Deque.h>
 #include <wtf/ObjectIdentifier.h>

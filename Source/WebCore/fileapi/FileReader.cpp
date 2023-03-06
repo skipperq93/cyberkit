@@ -40,7 +40,7 @@
 #include "Logging.h"
 #include "ProgressEvent.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/CString.h>
 

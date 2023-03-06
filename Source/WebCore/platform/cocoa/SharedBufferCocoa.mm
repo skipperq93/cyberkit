@@ -28,7 +28,7 @@
 
 #import "WebCoreJITOperations.h"
 #import "WebCoreObjCExtras.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <string.h>
 #import <wtf/MainThread.h>

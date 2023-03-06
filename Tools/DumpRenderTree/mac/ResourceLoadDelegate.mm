@@ -31,7 +31,7 @@
 
 #import "DumpRenderTree.h"
 #import "TestRunner.h"
-#import <JavaScriptCore/RegularExpression.h>
+#import <CyberScriptCore/RegularExpression.h>
 #import <CyberCore/ProtectionSpaceCocoa.h>
 #import <CyberKit/WebDataSourcePrivate.h>
 #import <CyberKit/WebKitLegacy.h>

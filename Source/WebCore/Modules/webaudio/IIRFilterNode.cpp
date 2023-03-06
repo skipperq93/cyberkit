@@ -31,7 +31,7 @@
 #include "BaseAudioContext.h"
 #include "IIRFilter.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/TypedArrays.h>
+#include <CyberScriptCore/TypedArrays.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

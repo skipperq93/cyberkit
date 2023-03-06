@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebKit::PCM {

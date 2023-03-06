@@ -29,7 +29,7 @@
 #include "IDLTypes.h"
 #include "JSDOMConvertBase.h"
 #include "JSDOMWrapperCache.h"
-#include <JavaScriptCore/JSTypedArrays.h>
+#include <CyberScriptCore/JSTypedArrays.h>
 
 namespace WebCore {
 

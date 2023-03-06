@@ -28,8 +28,8 @@
 #if ENABLE(WK_WEB_EXTENSIONS)
 
 #include "WebFrame.h"
-#include <JavaScriptCore/JSRetainPtr.h>
-#include <JavaScriptCore/JavaScriptCore.h>
+#include <CyberScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JavaScriptCore.h>
 #include <wtf/WeakPtr.h>
 
 OBJC_CLASS JSValue;

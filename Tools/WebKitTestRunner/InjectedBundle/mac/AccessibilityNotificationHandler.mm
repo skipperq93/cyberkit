@@ -36,9 +36,9 @@
 #import "InjectedBundle.h"
 #import "InjectedBundlePage.h"
 #import "JSWrapper.h"
-#import <JavaScriptCore/JSRetainPtr.h>
-#import <JavaScriptCore/JSStringRef.h>
-#import <JavaScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSRetainPtr.h>
+#import <CyberScriptCore/JSStringRef.h>
+#import <CyberScriptCore/JSStringRefCF.h>
 #import <CyberKit/WKBundleFrame.h>
 #import <wtf/RetainPtr.h>
 

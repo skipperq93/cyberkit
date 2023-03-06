@@ -35,7 +35,7 @@
 #include "WorkletGlobalScope.h"
 #include "WorkletGlobalScopeProxy.h"
 #include "WorkletPendingTasks.h"
-#include <JavaScriptCore/IdentifiersFactory.h>
+#include <CyberScriptCore/IdentifiersFactory.h>
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/IsoMallocInlines.h>
 

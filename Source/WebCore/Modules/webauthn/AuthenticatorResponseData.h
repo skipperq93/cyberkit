@@ -29,7 +29,7 @@
 
 #include "AuthenticationExtensionsClientOutputs.h"
 #include "AuthenticatorTransport.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/Forward.h>
 
 namespace WebCore {

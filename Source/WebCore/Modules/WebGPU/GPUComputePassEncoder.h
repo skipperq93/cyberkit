@@ -26,7 +26,7 @@
 #pragma once
 
 #include "GPUIntegralTypes.h"
-#include <JavaScriptCore/Uint32Array.h>
+#include <CyberScriptCore/Uint32Array.h>
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUComputePassEncoder.h>
 #include <wtf/Ref.h>

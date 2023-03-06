@@ -30,7 +30,7 @@
 
 #import "WebIconDatabase.h"
 
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/Image.h>
 #import <CyberCore/ThreadCheck.h>
 #import <CyberCore/WebCoreJITOperations.h>

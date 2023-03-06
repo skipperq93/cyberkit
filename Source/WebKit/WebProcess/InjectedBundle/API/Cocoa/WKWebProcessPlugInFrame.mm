@@ -36,7 +36,7 @@
 #import "WKWebProcessPlugInScriptWorldInternal.h"
 #import "WebProcess.h"
 #import "_WKFrameHandleInternal.h"
-#import <JavaScriptCore/JSValue.h>
+#import <CyberScriptCore/JSValue.h>
 #import <CyberCore/CertificateInfo.h>
 #import <CyberCore/Frame.h>
 #import <CyberCore/IntPoint.h>

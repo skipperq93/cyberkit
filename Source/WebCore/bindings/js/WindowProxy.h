@@ -20,7 +20,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/HashMap.h>
 #include <wtf/RefCounted.h>
 #include <wtf/UniqueRef.h>

@@ -27,7 +27,7 @@
 #import "TestRunner.h"
 
 #import "InjectedBundle.h"
-#import <JavaScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSStringRefCF.h>
 
 namespace WTR {
 

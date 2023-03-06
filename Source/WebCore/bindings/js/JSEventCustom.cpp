@@ -30,7 +30,7 @@
 #include "JSEvent.h"
 
 #include "JSDOMWrapperCache.h"
-#include <JavaScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/JSCJSValue.h>
 
 namespace WebCore {
 

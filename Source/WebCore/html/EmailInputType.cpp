@@ -29,7 +29,7 @@
 #include "HTMLParserIdioms.h"
 #include "InputTypeNames.h"
 #include "LocalizedStrings.h"
-#include <JavaScriptCore/RegularExpression.h>
+#include <CyberScriptCore/RegularExpression.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringBuilder.h>
 

@@ -39,8 +39,8 @@
 #include "StructuredSerializeOptions.h"
 #include "Supplementable.h"
 #include "WindowOrWorkerGlobalScope.h"
-#include <JavaScriptCore/HandleTypes.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/HandleTypes.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/FixedVector.h>
 #include <wtf/Function.h>
 #include <wtf/HashSet.h>

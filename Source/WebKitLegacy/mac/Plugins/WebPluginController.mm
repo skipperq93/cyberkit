@@ -47,7 +47,7 @@
 #import "WebUIDelegate.h"
 #import "WebViewInternal.h"
 #import <Foundation/NSURLRequest.h>
-#import <JavaScriptCore/JSLock.h>
+#import <CyberScriptCore/JSLock.h>
 #import <CyberCore/CommonVM.h>
 #import <CyberCore/DocumentLoader.h>
 #import <CyberCore/Frame.h>

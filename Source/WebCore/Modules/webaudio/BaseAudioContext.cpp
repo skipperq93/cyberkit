@@ -77,8 +77,8 @@
 #include "StereoPannerNode.h"
 #include "StereoPannerOptions.h"
 #include "WaveShaperNode.h"
-#include <JavaScriptCore/ArrayBuffer.h>
-#include <JavaScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ScriptCallStack.h>
 #include <wtf/Atomics.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MainThread.h>

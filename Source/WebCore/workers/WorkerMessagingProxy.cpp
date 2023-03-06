@@ -48,8 +48,8 @@
 #include "Worker.h"
 #include "WorkerInitializationData.h"
 #include "WorkerInspectorProxy.h"
-#include <JavaScriptCore/ConsoleTypes.h>
-#include <JavaScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ScriptCallStack.h>
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 

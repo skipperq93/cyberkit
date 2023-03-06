@@ -31,12 +31,12 @@
 #import "JSDOMConvertBufferSource.h"
 #import <AVFoundation/AVMetadataItem.h>
 #import <Foundation/NSString.h>
-#import <JavaScriptCore/APICast.h>
-#import <JavaScriptCore/ArrayBuffer.h>
-#import <JavaScriptCore/JSArrayBuffer.h>
-#import <JavaScriptCore/JSContextRef.h>
-#import <JavaScriptCore/JSObjectRef.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/APICast.h>
+#import <CyberScriptCore/ArrayBuffer.h>
+#import <CyberScriptCore/JSArrayBuffer.h>
+#import <CyberScriptCore/JSContextRef.h>
+#import <CyberScriptCore/JSObjectRef.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 #import <objc/runtime.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 

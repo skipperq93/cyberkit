@@ -29,11 +29,11 @@
 #include "JSDOMGlobalObject.h"
 #include "WorkerOrWorkletGlobalScope.h"
 #include "WorkerOrWorkletScriptController.h"
-#include <JavaScriptCore/ConsoleMessage.h>
-#include <JavaScriptCore/InjectedScript.h>
-#include <JavaScriptCore/InjectedScriptManager.h>
-#include <JavaScriptCore/ScriptCallStack.h>
-#include <JavaScriptCore/ScriptCallStackFactory.h>
+#include <CyberScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/InjectedScript.h>
+#include <CyberScriptCore/InjectedScriptManager.h>
+#include <CyberScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ScriptCallStackFactory.h>
 
 namespace WebCore {
 

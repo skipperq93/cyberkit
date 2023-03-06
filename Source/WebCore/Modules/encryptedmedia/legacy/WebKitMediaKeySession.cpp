@@ -38,7 +38,7 @@
 #include "WebKitMediaKeyError.h"
 #include "WebKitMediaKeyMessageEvent.h"
 #include "WebKitMediaKeys.h"
-#include <JavaScriptCore/Uint8Array.h>
+#include <CyberScriptCore/Uint8Array.h>
 #include <wtf/FileSystem.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/LoggerHelper.h>

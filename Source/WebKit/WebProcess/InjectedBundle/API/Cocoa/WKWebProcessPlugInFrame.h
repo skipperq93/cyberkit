@@ -27,7 +27,7 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 
 @class _WKFrameHandle;
 @class WKWebProcessPlugInCSSStyleDeclarationHandle;

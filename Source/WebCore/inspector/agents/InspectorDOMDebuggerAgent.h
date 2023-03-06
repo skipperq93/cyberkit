@@ -32,9 +32,9 @@
 #pragma once
 
 #include "InspectorWebAgentBase.h"
-#include <JavaScriptCore/Breakpoint.h>
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
-#include <JavaScriptCore/InspectorDebuggerAgent.h>
+#include <CyberScriptCore/Breakpoint.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorDebuggerAgent.h>
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 #include <wtf/JSONValues.h>

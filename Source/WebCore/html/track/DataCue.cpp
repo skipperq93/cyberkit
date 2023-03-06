@@ -34,8 +34,8 @@
 #include "Logging.h"
 #include "TextTrack.h"
 #include "TextTrackCueList.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/StrongInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

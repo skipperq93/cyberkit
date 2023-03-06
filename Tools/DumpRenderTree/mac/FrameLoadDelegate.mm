@@ -45,7 +45,7 @@
 #import "WorkQueue.h"
 #import "WorkQueueItem.h"
 #import <Foundation/NSNotification.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 #import <CyberKit/WebFramePrivate.h>
 #import <CyberKit/WebHTMLViewPrivate.h>
 #import <CyberKit/WebNSURLExtras.h>

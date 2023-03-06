@@ -46,9 +46,9 @@
 #include "SQLiteStatement.h"
 #include "SQLiteTransaction.h"
 #include "ThreadSafeDataBuffer.h"
-#include <JavaScriptCore/AuxiliaryBarrierInlines.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/AuxiliaryBarrierInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/StrongInlines.h>
 #include <wtf/FileSystem.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringConcatenateNumbers.h>

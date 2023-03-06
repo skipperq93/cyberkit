@@ -28,8 +28,8 @@
 
 #if ENABLE(WEB_RTC)
 
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/StrongInlines.h>
 
 namespace WebCore {
 

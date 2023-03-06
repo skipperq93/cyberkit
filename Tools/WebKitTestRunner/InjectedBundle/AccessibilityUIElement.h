@@ -31,8 +31,8 @@
 #include "InjectedBundlePage.h"
 #include "JSWrappable.h"
 
-#include <JavaScriptCore/JSObjectRef.h>
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <CyberKit/WKBundleFrame.h>
 #include <CyberKit/WKBundlePage.h>
 #include <wtf/Platform.h>

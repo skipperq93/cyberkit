@@ -27,10 +27,10 @@
 
 #include "ActiveDOMCallback.h"
 #include "JSDOMGlobalObject.h"
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/JSCell.h>
-#include <JavaScriptCore/SlotVisitorInlines.h>
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/JSCell.h>
+#include <CyberScriptCore/SlotVisitorInlines.h>
+#include <CyberScriptCore/StrongInlines.h>
 
 namespace WebCore {
 

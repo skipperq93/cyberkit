@@ -28,7 +28,7 @@
 #if ENABLE(CONTENT_EXTENSIONS)
 
 #include "Utilities.h"
-#include <JavaScriptCore/InitializeThreading.h>
+#include <CyberScriptCore/InitializeThreading.h>
 #include <CyberCore/CSSParserContext.h>
 #include <CyberCore/CombinedURLFilters.h>
 #include <CyberCore/CommonAtomStrings.h>

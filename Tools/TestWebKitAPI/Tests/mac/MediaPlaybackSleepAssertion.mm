@@ -31,8 +31,8 @@
 #import "WebCoreTestSupport.h"
 #import <Carbon/Carbon.h>
 #import <IOKit/pwr_mgt/IOPMLib.h>
-#import <JavaScriptCore/JSCConfig.h>
-#import <JavaScriptCore/JSContext.h>
+#import <CyberScriptCore/JSCConfig.h>
+#import <CyberScriptCore/JSContext.h>
 #import <CyberCore/Settings.h>
 #import <CyberKit/WebKitLegacy.h>
 #import <wtf/RetainPtr.h>

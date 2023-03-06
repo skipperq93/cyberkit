@@ -29,10 +29,10 @@
 #include "JSDOMIterator.h"
 #include "JSDOMPromise.h"
 #include "JSDOMPromiseDeferred.h"
-#include <JavaScriptCore/AsyncIteratorPrototype.h>
-#include <JavaScriptCore/IteratorOperations.h>
-#include <JavaScriptCore/JSBoundFunction.h>
-#include <JavaScriptCore/PropertySlot.h>
+#include <CyberScriptCore/AsyncIteratorPrototype.h>
+#include <CyberScriptCore/IteratorOperations.h>
+#include <CyberScriptCore/JSBoundFunction.h>
+#include <CyberScriptCore/PropertySlot.h>
 #include <type_traits>
 #include <wtf/CompletionHandler.h>
 

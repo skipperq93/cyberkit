@@ -69,8 +69,8 @@
 #include "WorkerScriptLoader.h"
 #include "WorkerStorageConnection.h"
 #include "WorkerThread.h"
-#include <JavaScriptCore/ScriptArguments.h>
-#include <JavaScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ScriptArguments.h>
+#include <CyberScriptCore/ScriptCallStack.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Lock.h>
 #include <wtf/WorkQueue.h>

@@ -24,7 +24,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>

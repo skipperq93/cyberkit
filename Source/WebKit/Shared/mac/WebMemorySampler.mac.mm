@@ -28,9 +28,9 @@
 
 #if ENABLE(MEMORY_SAMPLER)
 
-#import <JavaScriptCore/JSLock.h>
-#import <JavaScriptCore/MemoryStatistics.h>
-#import <JavaScriptCore/VM.h>
+#import <CyberScriptCore/JSLock.h>
+#import <CyberScriptCore/MemoryStatistics.h>
+#import <CyberScriptCore/VM.h>
 #import <CyberCore/CommonVM.h>
 #import <mach/mach.h>
 #import <mach/mach_types.h>

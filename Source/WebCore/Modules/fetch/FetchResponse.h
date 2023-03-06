@@ -32,7 +32,7 @@
 #include "FetchHeaders.h"
 #include "ReadableStreamSink.h"
 #include "ResourceResponse.h"
-#include <JavaScriptCore/TypedArrays.h>
+#include <CyberScriptCore/TypedArrays.h>
 #include <wtf/Span.h>
 #include <wtf/WeakPtr.h>
 

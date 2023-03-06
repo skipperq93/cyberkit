@@ -41,7 +41,7 @@
 #import "WebNSObjectExtras.h"
 #import "WebView.h"
 #import <Foundation/NSURLResponse.h>
-#import <JavaScriptCore/RegularExpression.h>
+#import <CyberScriptCore/RegularExpression.h>
 #import <CyberCore/Document.h>
 #import <CyberCore/DocumentLoader.h>
 #import <CyberCore/Editor.h>

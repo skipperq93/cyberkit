@@ -33,11 +33,11 @@
 #import "objc_instance.h"
 #import "runtime_array.h"
 #import "runtime_object.h"
-#import <JavaScriptCore/Error.h>
-#import <JavaScriptCore/IsoSubspacePerVM.h>
-#import <JavaScriptCore/JSDestructibleObjectHeapCellType.h>
-#import <JavaScriptCore/JSGlobalObject.h>
-#import <JavaScriptCore/JSLock.h>
+#import <CyberScriptCore/Error.h>
+#import <CyberScriptCore/IsoSubspacePerVM.h>
+#import <CyberScriptCore/JSDestructibleObjectHeapCellType.h>
+#import <CyberScriptCore/JSGlobalObject.h>
+#import <CyberScriptCore/JSLock.h>
 #import <wtf/RetainPtr.h>
 
 using namespace WebCore;

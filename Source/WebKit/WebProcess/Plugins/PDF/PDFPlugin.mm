@@ -53,9 +53,9 @@
 #import "WebPasteboardProxyMessages.h"
 #import "WebProcess.h"
 #import "WebWheelEvent.h"
-#import <JavaScriptCore/JSContextRef.h>
-#import <JavaScriptCore/JSObjectRef.h>
-#import <JavaScriptCore/OpaqueJSString.h>
+#import <CyberScriptCore/JSContextRef.h>
+#import <CyberScriptCore/JSObjectRef.h>
+#import <CyberScriptCore/OpaqueJSString.h>
 #import <Quartz/Quartz.h>
 #import <QuartzCore/QuartzCore.h>
 #import <CyberCore/AXObjectCache.h>

@@ -31,7 +31,7 @@
 #import "WKProcessPool.h"
 #import "_WKAutomationDelegate.h"
 #import "_WKAutomationSessionConfiguration.h"
-#import <JavaScriptCore/RemoteInspector.h>
+#import <CyberScriptCore/RemoteInspector.h>
 #import <wtf/RunLoop.h>
 #import <wtf/spi/cf/CFBundleSPI.h>
 #import <wtf/text/WTFString.h>

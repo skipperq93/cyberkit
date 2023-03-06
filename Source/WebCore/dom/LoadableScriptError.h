@@ -25,10 +25,10 @@
 
 #pragma once
 
-#include <JavaScriptCore/ConsoleTypes.h>
-#include <JavaScriptCore/JSCJSValue.h>
-#include <JavaScriptCore/Strong.h>
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/Strong.h>
+#include <CyberScriptCore/StrongInlines.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebCore {

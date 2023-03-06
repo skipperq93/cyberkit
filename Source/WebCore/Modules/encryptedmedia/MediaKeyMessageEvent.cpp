@@ -32,7 +32,7 @@
 #if ENABLE(ENCRYPTED_MEDIA)
 
 #include "MediaKeyMessageEventInit.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

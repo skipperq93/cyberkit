@@ -26,8 +26,8 @@
 #include "config.h"
 #include "GCObservation.h"
 
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/WeakInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/WeakInlines.h>
 
 namespace WebCore {
 

@@ -35,8 +35,8 @@
 #include "TransactionID.h"
 #include "WKBase.h"
 #include "WebFrameLoaderClient.h"
-#include <JavaScriptCore/ConsoleTypes.h>
-#include <JavaScriptCore/JSBase.h>
+#include <CyberScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/JSBase.h>
 #include <CyberCore/FrameLoaderClient.h>
 #include <CyberCore/FrameLoaderTypes.h>
 #include <CyberCore/HitTestRequest.h>

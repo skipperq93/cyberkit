@@ -70,7 +70,7 @@
 #import "WebTextCompletionController.h"
 #import "WebUIDelegatePrivate.h"
 #import "WebViewInternal.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <QuartzCore/QuartzCore.h>
 #import <CyberCore/CSSStyleDeclaration.h>
 #import <CyberCore/CachedImage.h>

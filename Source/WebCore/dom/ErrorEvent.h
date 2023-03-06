@@ -34,7 +34,7 @@
 #include "Event.h"
 #include "JSValueInWrappedObject.h"
 #include "SerializedScriptValue.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebCore {

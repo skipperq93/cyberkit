@@ -27,8 +27,8 @@
 
 #if ENABLE(PAYMENT_REQUEST)
 
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebCore {

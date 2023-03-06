@@ -36,7 +36,7 @@
 #import "WebCoreNSErrorExtras.h"
 #import <AVFoundation/AVError.h>
 #import <CoreMedia/CMBase.h>
-#import <JavaScriptCore/TypedArrayInlines.h>
+#import <CyberScriptCore/TypedArrayInlines.h>
 #import <objc/objc-runtime.h>
 #import <pal/spi/cocoa/AVFoundationSPI.h>
 #import <wtf/FileSystem.h>

@@ -42,7 +42,7 @@
 #import "WebSecurityOriginPrivate.h"
 #import "WebUIDelegatePrivate.h"
 #import "WebViewInternal.h"
-#import <JavaScriptCore/InspectorAgentBase.h>
+#import <CyberScriptCore/InspectorAgentBase.h>
 #import <SecurityInterface/SFCertificatePanel.h>
 #import <SecurityInterface/SFCertificateView.h>
 #import <CyberCore/CertificateInfo.h>

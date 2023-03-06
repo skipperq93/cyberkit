@@ -36,7 +36,7 @@
 #import "WebCoreNSErrorExtras.h"
 #import <AVFoundation/AVAsset.h>
 #import <AVFoundation/AVAssetResourceLoader.h>
-#import <JavaScriptCore/TypedArrayInlines.h>
+#import <CyberScriptCore/TypedArrayInlines.h>
 #import <objc/objc-runtime.h>
 #import <wtf/LoggerHelper.h>
 #import <wtf/MainThread.h>

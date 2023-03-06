@@ -28,7 +28,7 @@
 #include "ElementInlines.h"
 #include "HTMLInputElement.h"
 #include "HTMLNames.h"
-#include <JavaScriptCore/RegularExpression.h>
+#include <CyberScriptCore/RegularExpression.h>
 
 namespace WebCore {
 

@@ -35,7 +35,7 @@
 #import "WebKitLogging.h"
 #import "WebView.h"
 #import "WebViewPrivate.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/DragController.h>
 #import <CyberCore/Frame.h>
 #import <CyberCore/HitTestResult.h>

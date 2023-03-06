@@ -29,8 +29,8 @@
 #include "JSDOMConvert.h"
 #include "JSDOMGuardedObject.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/CatchScope.h>
-#include <JavaScriptCore/JSPromise.h>
+#include <CyberScriptCore/CatchScope.h>
+#include <CyberScriptCore/JSPromise.h>
 
 namespace WebCore {
 

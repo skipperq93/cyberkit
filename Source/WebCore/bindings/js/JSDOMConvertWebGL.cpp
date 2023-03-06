@@ -81,7 +81,7 @@
 #include "JSWebGLTransformFeedback.h"
 #include "JSWebGLVertexArrayObject.h"
 #include "JSWebGLVertexArrayObjectOES.h"
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
 
 namespace WebCore {
 using namespace JSC;

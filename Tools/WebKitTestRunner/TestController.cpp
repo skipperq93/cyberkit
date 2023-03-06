@@ -34,7 +34,7 @@
 #include "TestCommand.h"
 #include "TestInvocation.h"
 #include "WebCoreTestSupport.h"
-#include <JavaScriptCore/InitializeThreading.h>
+#include <CyberScriptCore/InitializeThreading.h>
 #include <CyberKit/WKArray.h>
 #include <CyberKit/WKAuthenticationChallenge.h>
 #include <CyberKit/WKAuthenticationDecisionListener.h>

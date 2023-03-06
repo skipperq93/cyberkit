@@ -50,13 +50,13 @@
 #include "Settings.h"
 #include "WebCoreJSClientData.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/BuiltinNames.h>
-#include <JavaScriptCore/HeapAnalyzer.h>
-#include <JavaScriptCore/InternalFunction.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSFunction.h>
-#include <JavaScriptCore/Lookup.h>
-#include <JavaScriptCore/Structure.h>
+#include <CyberScriptCore/BuiltinNames.h>
+#include <CyberScriptCore/HeapAnalyzer.h>
+#include <CyberScriptCore/InternalFunction.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSFunction.h>
+#include <CyberScriptCore/Lookup.h>
+#include <CyberScriptCore/Structure.h>
 
 #if ENABLE(USER_MESSAGE_HANDLERS)
 #include "JSWebKitNamespace.h"

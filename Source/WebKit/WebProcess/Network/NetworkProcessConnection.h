@@ -27,7 +27,7 @@
 
 #include "Connection.h"
 #include "ShareableResource.h"
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 #include <CyberCore/MessagePortChannelProvider.h>
 #include <CyberCore/RTCDataChannelIdentifier.h>
 #include <CyberCore/ResourceLoaderIdentifier.h>

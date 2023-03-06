@@ -26,11 +26,11 @@
 #import "config.h"
 #import "APISerializedScriptValue.h"
 
-#import <JavaScriptCore/APICast.h>
-#import <JavaScriptCore/JSContextPrivate.h>
-#import <JavaScriptCore/JSGlobalObjectInlines.h>
-#import <JavaScriptCore/JSRemoteInspector.h>
-#import <JavaScriptCore/JSValue.h>
+#import <CyberScriptCore/APICast.h>
+#import <CyberScriptCore/JSContextPrivate.h>
+#import <CyberScriptCore/JSGlobalObjectInlines.h>
+#import <CyberScriptCore/JSRemoteInspector.h>
+#import <CyberScriptCore/JSValue.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RunLoop.h>
 

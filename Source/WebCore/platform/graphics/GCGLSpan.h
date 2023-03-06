@@ -26,7 +26,7 @@
 #pragma once
 
 #include "GraphicsTypesGL.h"
-#include <JavaScriptCore/ArrayBufferView.h>
+#include <CyberScriptCore/ArrayBufferView.h>
 #include <limits>
 #include <type_traits>
 #include <wtf/Vector.h>

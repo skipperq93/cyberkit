@@ -27,7 +27,7 @@
 #include "BufferSource.h"
 #include "ExceptionOr.h"
 #include "Formats.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>

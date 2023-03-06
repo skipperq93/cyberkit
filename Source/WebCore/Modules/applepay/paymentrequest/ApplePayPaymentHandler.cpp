@@ -71,7 +71,7 @@
 #include "PaymentResponse.h"
 #include "PaymentValidationErrors.h"
 #include "Settings.h"
-#include <JavaScriptCore/JSONObject.h>
+#include <CyberScriptCore/JSONObject.h>
 
 namespace WebCore {
 

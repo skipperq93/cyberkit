@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import "Test.h"
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/RunLoop.h>
 #import <wtf/URL.h>

@@ -25,7 +25,7 @@
 
 #import "config.h"
 
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/StringUtilities.h>
 #import <wtf/text/WTFString.h>
 

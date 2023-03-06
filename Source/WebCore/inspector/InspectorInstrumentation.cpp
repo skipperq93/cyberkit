@@ -72,11 +72,11 @@
 #include "WebSocketFrame.h"
 #include "WorkerInspectorController.h"
 #include "WorkerOrWorkletGlobalScope.h"
-#include <JavaScriptCore/ConsoleMessage.h>
-#include <JavaScriptCore/ConsoleTypes.h>
-#include <JavaScriptCore/InspectorDebuggerAgent.h>
-#include <JavaScriptCore/ScriptArguments.h>
-#include <JavaScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/InspectorDebuggerAgent.h>
+#include <CyberScriptCore/ScriptArguments.h>
+#include <CyberScriptCore/ScriptCallStack.h>
 #include <wtf/StdLibExtras.h>
 
 namespace WebCore {

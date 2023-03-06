@@ -36,7 +36,7 @@
 #include "QualifiedName.h"
 #include "ShadowRoot.h"
 #include "TypedElementDescendantIterator.h"
-#include <JavaScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/text/AtomString.h>
 
 namespace WebCore {

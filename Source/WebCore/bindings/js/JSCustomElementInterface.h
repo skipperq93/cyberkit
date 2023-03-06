@@ -29,9 +29,9 @@
 #include "ActiveDOMCallback.h"
 #include "CustomElementFormValue.h"
 #include "QualifiedName.h"
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/Weak.h>
-#include <JavaScriptCore/WeakInlines.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/Weak.h>
+#include <CyberScriptCore/WeakInlines.h>
 #include <wtf/Forward.h>
 #include <wtf/Function.h>
 #include <wtf/RefCounted.h>

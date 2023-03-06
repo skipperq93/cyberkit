@@ -41,7 +41,7 @@
 #import "WebNSURLRequestExtras.h"
 #import "WebNSViewExtras.h"
 #import "WebPluginController.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/BackForwardCache.h>
 #import <CyberCore/HistoryItem.h>
 #import <CyberCore/Image.h>

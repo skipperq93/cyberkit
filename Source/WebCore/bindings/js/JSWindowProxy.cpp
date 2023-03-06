@@ -38,9 +38,9 @@
 #include "JSRemoteDOMWindow.h"
 #include "ScriptController.h"
 #include "WebCoreJSClientData.h"
-#include <JavaScriptCore/Debugger.h>
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/Debugger.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/StrongInlines.h>
 
 #if PLATFORM(COCOA)
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>

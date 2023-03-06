@@ -40,7 +40,7 @@
 #include "VideoLayerRemote.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebProcess.h"
-#include <JavaScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
 #include <CyberCore/DeprecatedGlobalSettings.h>
 #include <CyberCore/GraphicsContext.h>
 #include <CyberCore/MediaPlayer.h>

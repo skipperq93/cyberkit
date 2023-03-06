@@ -38,8 +38,8 @@
 #include "HRTFDatabaseLoader.h"
 #include "OfflineAudioContext.h"
 #include "WorkerRunLoop.h"
-#include <JavaScriptCore/GenericTypedArrayViewInlines.h>
-#include <JavaScriptCore/JSGenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/GenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 #include <algorithm>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MainThread.h>

@@ -32,7 +32,7 @@
 
 #include "Event.h"
 #include "MediaKeyMessageType.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 
 namespace WebCore {
 

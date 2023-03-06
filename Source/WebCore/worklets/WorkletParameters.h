@@ -26,7 +26,7 @@
 #pragma once
 
 #include "Settings.h"
-#include <JavaScriptCore/RuntimeFlags.h>
+#include <CyberScriptCore/RuntimeFlags.h>
 #include <wtf/URL.h>
 
 namespace WebCore {

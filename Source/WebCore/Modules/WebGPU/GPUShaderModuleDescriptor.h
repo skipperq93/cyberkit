@@ -27,8 +27,8 @@
 
 #include "GPUObjectDescriptorBase.h"
 #include "GPUShaderModuleCompilationHint.h"
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/Strong.h>
 #include <pal/graphics/WebGPU/WebGPUShaderModuleDescriptor.h>
 #include <wtf/text/WTFString.h>
 

@@ -49,8 +49,8 @@
 #include "PaymentRequestUtilities.h"
 #include "PaymentValidationErrors.h"
 #include "ScriptController.h"
-#include <JavaScriptCore/JSONObject.h>
-#include <JavaScriptCore/ThrowScope.h>
+#include <CyberScriptCore/JSONObject.h>
+#include <CyberScriptCore/ThrowScope.h>
 #include <wtf/ASCIICType.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/RunLoop.h>

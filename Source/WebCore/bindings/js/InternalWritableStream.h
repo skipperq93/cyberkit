@@ -27,7 +27,7 @@
 
 #include "ExceptionOr.h"
 #include "JSDOMGuardedObject.h"
-#include <JavaScriptCore/JSObject.h>
+#include <CyberScriptCore/JSObject.h>
 
 namespace WebCore {
 class InternalWritableStream final : public DOMGuarded<JSC::JSObject> {

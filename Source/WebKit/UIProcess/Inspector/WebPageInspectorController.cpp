@@ -33,11 +33,11 @@
 #include "WebPageInspectorAgentBase.h"
 #include "WebPageInspectorTarget.h"
 #include "WebPageProxy.h"
-#include <JavaScriptCore/InspectorAgentBase.h>
-#include <JavaScriptCore/InspectorBackendDispatcher.h>
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendRouter.h>
-#include <JavaScriptCore/InspectorTargetAgent.h>
+#include <CyberScriptCore/InspectorAgentBase.h>
+#include <CyberScriptCore/InspectorBackendDispatcher.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendRouter.h>
+#include <CyberScriptCore/InspectorTargetAgent.h>
 #include <wtf/HashMap.h>
 
 namespace WebKit {

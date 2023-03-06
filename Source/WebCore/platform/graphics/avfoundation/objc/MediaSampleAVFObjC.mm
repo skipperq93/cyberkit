@@ -31,8 +31,8 @@
 #import "PixelBufferConformerCV.h"
 #import "ProcessIdentity.h"
 #import "VideoFrameCV.h"
-#import <JavaScriptCore/JSCInlines.h>
-#import <JavaScriptCore/TypedArrayInlines.h>
+#import <CyberScriptCore/JSCInlines.h>
+#import <CyberScriptCore/TypedArrayInlines.h>
 #import <wtf/PrintStream.h>
 #import <wtf/cf/TypeCastsCF.h>
 

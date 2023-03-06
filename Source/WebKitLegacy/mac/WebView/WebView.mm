@@ -121,16 +121,16 @@
 #import "WebVisitedLinkStore.h"
 #import <CoreFoundation/CFSet.h>
 #import <Foundation/NSURLConnection.h>
-#import <JavaScriptCore/APICast.h>
-#import <JavaScriptCore/ArrayPrototype.h>
-#import <JavaScriptCore/CatchScope.h>
-#import <JavaScriptCore/DateInstance.h>
-#import <JavaScriptCore/Exception.h>
-#import <JavaScriptCore/InitializeThreading.h>
-#import <JavaScriptCore/JSCJSValue.h>
-#import <JavaScriptCore/JSGlobalObjectInlines.h>
-#import <JavaScriptCore/JSLock.h>
-#import <JavaScriptCore/JSValueRef.h>
+#import <CyberScriptCore/APICast.h>
+#import <CyberScriptCore/ArrayPrototype.h>
+#import <CyberScriptCore/CatchScope.h>
+#import <CyberScriptCore/DateInstance.h>
+#import <CyberScriptCore/Exception.h>
+#import <CyberScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/JSCJSValue.h>
+#import <CyberScriptCore/JSGlobalObjectInlines.h>
+#import <CyberScriptCore/JSLock.h>
+#import <CyberScriptCore/JSValueRef.h>
 #import <CyberCore/AlternativeTextUIController.h>
 #import <CyberCore/ApplicationCacheStorage.h>
 #import <CyberCore/BackForwardCache.h>
@@ -328,7 +328,7 @@
 #endif
 
 #if ENABLE(REMOTE_INSPECTOR)
-#import <JavaScriptCore/RemoteInspector.h>
+#import <CyberScriptCore/RemoteInspector.h>
 #if PLATFORM(IOS_FAMILY)
 #import "WebIndicateLayer.h"
 #endif

@@ -38,7 +38,7 @@
 #include "WebPageProxyIdentifier.h"
 #include "WebPaymentCoordinatorProxy.h"
 #include "WebResourceLoadObserver.h"
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 #include <CyberCore/FrameIdentifier.h>
 #include <CyberCore/LayoutMilestone.h>
 #include <CyberCore/LoadSchedulingMode.h>

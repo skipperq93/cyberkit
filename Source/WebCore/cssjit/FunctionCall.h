@@ -29,9 +29,9 @@
 
 #include "RegisterAllocator.h"
 #include "StackAllocator.h"
-#include <JavaScriptCore/GPRInfo.h>
-#include <JavaScriptCore/JSCPtrTag.h>
-#include <JavaScriptCore/MacroAssembler.h>
+#include <CyberScriptCore/GPRInfo.h>
+#include <CyberScriptCore/JSCPtrTag.h>
+#include <CyberScriptCore/MacroAssembler.h>
 
 namespace WebCore {
 

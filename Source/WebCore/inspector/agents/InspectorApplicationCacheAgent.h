@@ -26,8 +26,8 @@
 
 #include "ApplicationCacheHost.h"
 #include "InspectorWebAgentBase.h"
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
 #include <wtf/Noncopyable.h>
 
 namespace Inspector {

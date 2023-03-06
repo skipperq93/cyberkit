@@ -28,10 +28,10 @@
 
 #include "WebCoreJSBuiltinInternals.h"
 #include "WebCoreJSClientData.h"
-#include <JavaScriptCore/CatchScope.h>
-#include <JavaScriptCore/HashMapImplInlines.h>
-#include <JavaScriptCore/JSMap.h>
-#include <JavaScriptCore/VMTrapsInlines.h>
+#include <CyberScriptCore/CatchScope.h>
+#include <CyberScriptCore/HashMapImplInlines.h>
+#include <CyberScriptCore/JSMap.h>
+#include <CyberScriptCore/VMTrapsInlines.h>
 
 namespace WebCore {
 

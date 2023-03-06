@@ -35,7 +35,7 @@
 #import "CocoaHelpers.h"
 #import "JSWebExtensionWrappable.h"
 #import "WebExtensionAPIRuntime.h"
-#import <JavaScriptCore/JSObjectRef.h>
+#import <CyberScriptCore/JSObjectRef.h>
 
 namespace WebKit {
 

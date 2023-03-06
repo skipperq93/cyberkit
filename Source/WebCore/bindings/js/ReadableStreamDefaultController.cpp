@@ -32,10 +32,10 @@
 #include "ReadableStreamDefaultController.h"
 
 #include "WebCoreJSClientData.h"
-#include <JavaScriptCore/CatchScope.h>
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/IdentifierInlines.h>
-#include <JavaScriptCore/JSObjectInlines.h>
+#include <CyberScriptCore/CatchScope.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/IdentifierInlines.h>
+#include <CyberScriptCore/JSObjectInlines.h>
 
 namespace WebCore {
 

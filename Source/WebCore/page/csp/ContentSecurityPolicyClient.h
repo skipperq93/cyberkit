@@ -26,7 +26,7 @@
 #pragma once
 
 #include "SecurityPolicyViolationEvent.h"
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebCore {

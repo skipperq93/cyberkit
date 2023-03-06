@@ -41,7 +41,7 @@
 #import "WorkQueue.h"
 #import "WorkQueueItem.h"
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSStringRefCF.h>
 #import <CyberCore/GeolocationPositionData.h>
 #import <CyberKit/DOMDocument.h>
 #import <CyberKit/DOMElement.h>

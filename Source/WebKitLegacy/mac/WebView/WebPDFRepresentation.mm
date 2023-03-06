@@ -35,8 +35,8 @@
 #import "WebJSPDFDoc.h"
 #import "WebPDFDocumentExtras.h"
 #import "WebPDFView.h"
-#import <JavaScriptCore/JSContextRef.h>
-#import <JavaScriptCore/OpaqueJSString.h>
+#import <CyberScriptCore/JSContextRef.h>
+#import <CyberScriptCore/OpaqueJSString.h>
 #import <wtf/Assertions.h>
 #import <wtf/RetainPtr.h>
 

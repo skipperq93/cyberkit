@@ -27,7 +27,7 @@
 
 #include "ModuleScriptLoader.h"
 #include "ModuleScriptLoaderClient.h"
-#include <JavaScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/JSCJSValue.h>
 #include <wtf/HashSet.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/RobinHoodHashMap.h>

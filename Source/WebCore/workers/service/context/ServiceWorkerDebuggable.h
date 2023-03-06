@@ -29,7 +29,7 @@
 #if ENABLE(SERVICE_WORKER)
 
 #include "ServiceWorkerContextData.h"
-#include <JavaScriptCore/RemoteInspectionTarget.h>
+#include <CyberScriptCore/RemoteInspectionTarget.h>
 #include <wtf/Noncopyable.h>
 
 namespace WebCore {

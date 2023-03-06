@@ -33,7 +33,7 @@
 
 #include "Document.h"
 #include "SubtleCrypto.h"
-#include <JavaScriptCore/ArrayBufferView.h>
+#include <CyberScriptCore/ArrayBufferView.h>
 #include <wtf/CryptographicallyRandomNumber.h>
 #include <wtf/UUID.h>
 

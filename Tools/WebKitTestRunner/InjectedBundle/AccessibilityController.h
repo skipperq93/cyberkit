@@ -26,8 +26,8 @@
 #pragma once
 
 #include "JSWrappable.h"
-#include <JavaScriptCore/JSObjectRef.h>
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <wtf/Condition.h>
 #include <wtf/FastMalloc.h>
 #include <wtf/Platform.h>

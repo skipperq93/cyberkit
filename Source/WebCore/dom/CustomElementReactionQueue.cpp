@@ -34,8 +34,8 @@
 #include "JSCustomElementInterface.h"
 #include "JSDOMBinding.h"
 #include "WindowEventLoop.h"
-#include <JavaScriptCore/CatchScope.h>
-#include <JavaScriptCore/Heap.h>
+#include <CyberScriptCore/CatchScope.h>
+#include <CyberScriptCore/Heap.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Ref.h>
 #include <wtf/SetForScope.h>

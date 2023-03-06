@@ -44,8 +44,8 @@
 #include "JSExecStateInstrumentation.h"
 #include "JSHTMLElement.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/WeakInlines.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/WeakInlines.h>
 
 namespace WebCore {
 using namespace JSC;

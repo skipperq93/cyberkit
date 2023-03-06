@@ -60,10 +60,10 @@
 #import "WorkQueue.h"
 #import "WorkQueueItem.h"
 #import <CoreFoundation/CoreFoundation.h>
-#import <JavaScriptCore/InitializeThreading.h>
-#import <JavaScriptCore/JSCConfig.h>
-#import <JavaScriptCore/Options.h>
-#import <JavaScriptCore/TestRunnerUtils.h>
+#import <CyberScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/JSCConfig.h>
+#import <CyberScriptCore/Options.h>
+#import <CyberScriptCore/TestRunnerUtils.h>
 #import <CyberCore/LogInitialization.h>
 #import <CyberCore/NetworkStorageSession.h>
 #import <CyberKit/DOMElement.h>

@@ -32,9 +32,9 @@
 #include "InbandTextTrackPrivateClient.h"
 #include "Logging.h"
 #include "MediaPlayer.h"
-#include <JavaScriptCore/ArrayBuffer.h>
-#include <JavaScriptCore/DataView.h>
-#include <JavaScriptCore/Int8Array.h>
+#include <CyberScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/DataView.h>
+#include <CyberScriptCore/Int8Array.h>
 #include <pal/avfoundation/MediaTimeAVFoundation.h>
 #include <wtf/MediaTime.h>
 #include <wtf/StringPrintStream.h>

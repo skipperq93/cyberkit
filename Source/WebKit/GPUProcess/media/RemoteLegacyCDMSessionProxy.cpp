@@ -32,8 +32,8 @@
 #include "Logging.h"
 #include "RemoteLegacyCDMFactoryProxy.h"
 #include "RemoteLegacyCDMSessionMessages.h"
-#include <JavaScriptCore/GenericTypedArrayViewInlines.h>
-#include <JavaScriptCore/TypedArrayAdaptors.h>
+#include <CyberScriptCore/GenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/TypedArrayAdaptors.h>
 #include <CyberCore/LegacyCDM.h>
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/LoggerHelper.h>

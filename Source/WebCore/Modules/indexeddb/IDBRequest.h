@@ -36,7 +36,7 @@
 #include "IDBValue.h"
 #include "IndexedDB.h"
 #include "JSValueInWrappedObject.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/Function.h>
 #include <wtf/IsoMalloc.h>
 #include <wtf/Scope.h>

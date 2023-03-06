@@ -28,8 +28,8 @@
 
 #include "DOMWrapperWorld.h"
 #include "JSDOMPromise.h"
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/StrongInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

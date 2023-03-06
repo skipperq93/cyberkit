@@ -37,10 +37,10 @@
 #include "ScriptController.h"
 #include "WebCoreJSClientData.h"
 #include "WorkerGlobalScope.h"
-#include <JavaScriptCore/ExceptionHelpers.h>
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/VMEntryScope.h>
-#include <JavaScriptCore/Watchdog.h>
+#include <CyberScriptCore/ExceptionHelpers.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/VMEntryScope.h>
+#include <CyberScriptCore/Watchdog.h>
 #include <wtf/Ref.h>
 #include <wtf/Scope.h>
 

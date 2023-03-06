@@ -23,11 +23,11 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 
 #if JSC_OBJC_API_ENABLED
 
-#import <JavaScriptCore/JSContextPrivate.h>
+#import <CyberScriptCore/JSContextPrivate.h>
 
 struct CallbackData {
     CallbackData* next;

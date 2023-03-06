@@ -31,7 +31,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/InspectorEnvironment.h>
+#include <CyberScriptCore/InspectorEnvironment.h>
 #include <wtf/FastMalloc.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/RefCounted.h>

@@ -26,7 +26,7 @@
 #pragma once
 
 #include "IDLTypes.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/IsoMalloc.h>
 #include <wtf/WeakPtr.h>
 

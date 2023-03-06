@@ -40,8 +40,8 @@
 #include "InitDataRegistry.h"
 #include "Logging.h"
 #include "NotImplemented.h"
-#include <JavaScriptCore/ArrayBuffer.h>
-#include <JavaScriptCore/DataView.h>
+#include <CyberScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/DataView.h>
 #include <wtf/Algorithms.h>
 #include <wtf/JSONValues.h>
 #include <wtf/LoggerHelper.h>

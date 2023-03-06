@@ -32,8 +32,8 @@
 #include "WPTFunctions.h"
 #include "WebCoreTestSupport.h"
 #include <cmath>
-#include <JavaScriptCore/JSRetainPtr.h>
-#include <JavaScriptCore/RegularExpression.h>
+#include <CyberScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/RegularExpression.h>
 #include <CyberKit/WKArray.h>
 #include <CyberKit/WKBundle.h>
 #include <CyberKit/WKBundleBackForwardList.h>

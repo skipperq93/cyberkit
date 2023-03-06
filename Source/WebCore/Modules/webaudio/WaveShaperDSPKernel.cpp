@@ -30,7 +30,7 @@
 
 #include "AudioUtilities.h"
 #include "WaveShaperProcessor.h"
-#include <JavaScriptCore/Float32Array.h>
+#include <CyberScriptCore/Float32Array.h>
 #include <algorithm>
 #include <wtf/MainThread.h>
 #include <wtf/Threading.h>

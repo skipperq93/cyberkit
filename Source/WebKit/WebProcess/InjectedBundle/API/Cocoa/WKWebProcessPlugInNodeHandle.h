@@ -26,7 +26,7 @@
 #import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 #import <CyberKit/WKImage.h>
 
 #if TARGET_OS_IPHONE

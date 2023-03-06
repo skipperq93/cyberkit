@@ -53,7 +53,7 @@
 #import "WebNSURLExtras.h"
 #import "WebResourceInternal.h"
 #import "WebViewInternal.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/ArchiveResource.h>
 #import <CyberCore/DeprecatedGlobalSettings.h>
 #import <CyberCore/Document.h>

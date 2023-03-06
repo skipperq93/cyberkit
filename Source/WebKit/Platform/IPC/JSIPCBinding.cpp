@@ -28,8 +28,8 @@
 
 #if ENABLE(IPC_TESTING_API)
 
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/ObjectConstructor.h>
 #include <CyberCore/FloatRect.h>
 #include <CyberCore/IntRect.h>
 #include <CyberCore/RegistrableDomain.h>

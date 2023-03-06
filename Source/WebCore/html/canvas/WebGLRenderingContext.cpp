@@ -78,11 +78,11 @@
 #include "WebGLTransformFeedback.h"
 #include "WebGLVertexArrayObject.h"
 #include "WebGLVertexArrayObjectOES.h"
-#include <JavaScriptCore/GenericTypedArrayViewInlines.h>
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/JSCJSValueInlines.h>
-#include <JavaScriptCore/JSCellInlines.h>
-#include <JavaScriptCore/JSGenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/GenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSCellInlines.h>
+#include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

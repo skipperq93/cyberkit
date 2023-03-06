@@ -43,17 +43,17 @@
 
 // CMake path
 #if defined(BUILDING_TestJSC) || defined(BUILDING_TestJavaScriptCore)
-#include <JavaScriptCore/JSExportMacros.h>
+#include <CyberScriptCore/JSExportMacros.h>
 #endif
 
 #if defined(BUILDING_TestWebCore)
-#include <JavaScriptCore/JSExportMacros.h>
+#include <CyberScriptCore/JSExportMacros.h>
 #include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #endif
 
 #if defined(BUILDING_TestWebKit)
-#include <JavaScriptCore/JSExportMacros.h>
+#include <CyberScriptCore/JSExportMacros.h>
 #include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #include <CyberKit/WebKit2_C.h>
@@ -62,7 +62,7 @@
 #else
 
 // XCode path
-#include <JavaScriptCore/JSExportMacros.h>
+#include <CyberScriptCore/JSExportMacros.h>
 #include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #if !PLATFORM(IOS_FAMILY)

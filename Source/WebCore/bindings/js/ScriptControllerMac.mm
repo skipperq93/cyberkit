@@ -40,9 +40,9 @@
 #import "Widget.h"
 #import "objc_instance.h"
 #import "runtime_root.h"
-#import <JavaScriptCore/APICast.h>
-#import <JavaScriptCore/JSContextInternal.h>
-#import <JavaScriptCore/JSLock.h>
+#import <CyberScriptCore/APICast.h>
+#import <CyberScriptCore/JSContextInternal.h>
+#import <CyberScriptCore/JSLock.h>
 
 @interface NSObject (WebPlugin)
 - (id)objectForWebScript;

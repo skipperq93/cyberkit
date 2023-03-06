@@ -31,7 +31,7 @@
 #include "InspectorWebAgentBase.h"
 #include "SecurityContext.h"
 #include "Timer.h"
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 #include <wtf/JSONValues.h>

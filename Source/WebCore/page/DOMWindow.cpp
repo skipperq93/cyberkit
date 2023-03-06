@@ -119,8 +119,8 @@
 #include "WindowFeatures.h"
 #include "WindowFocusAllowedIndicator.h"
 #include "WindowProxy.h"
-#include <JavaScriptCore/ScriptCallStack.h>
-#include <JavaScriptCore/ScriptCallStackFactory.h>
+#include <CyberScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ScriptCallStackFactory.h>
 #include <algorithm>
 #include <memory>
 #include <variant>

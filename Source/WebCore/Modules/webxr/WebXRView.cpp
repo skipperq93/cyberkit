@@ -30,7 +30,7 @@
 
 #include "WebXRFrame.h"
 #include "WebXRRigidTransform.h"
-#include <JavaScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

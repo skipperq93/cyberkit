@@ -32,7 +32,7 @@
 #include "AudioParamTimeline.h"
 #include "AudioSummingJunction.h"
 #include "AutomationRate.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <sys/types.h>
 #include <wtf/LoggerHelper.h>
 #include <wtf/RefCounted.h>

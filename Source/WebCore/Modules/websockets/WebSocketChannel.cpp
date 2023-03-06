@@ -54,7 +54,7 @@
 #include "UserContentProvider.h"
 #include "WebSocketChannelClient.h"
 #include "WebSocketHandshake.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/FastMalloc.h>
 #include <wtf/text/CString.h>
 

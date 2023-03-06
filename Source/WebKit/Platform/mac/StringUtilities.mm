@@ -28,7 +28,7 @@
 
 #import "WKSharedAPICast.h"
 #import "WKStringCF.h"
-#import <JavaScriptCore/RegularExpression.h>
+#import <CyberScriptCore/RegularExpression.h>
 #import <wtf/SoftLinking.h>
 #import <wtf/text/StringBuilder.h>
 

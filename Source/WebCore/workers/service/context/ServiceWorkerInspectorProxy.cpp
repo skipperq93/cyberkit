@@ -34,8 +34,8 @@
 #include "ServiceWorkerThreadProxy.h"
 #include "WorkerInspectorController.h"
 #include "WorkerRunLoop.h"
-#include <JavaScriptCore/InspectorAgentBase.h>
-#include <JavaScriptCore/InspectorFrontendChannel.h>
+#include <CyberScriptCore/InspectorAgentBase.h>
+#include <CyberScriptCore/InspectorFrontendChannel.h>
 
 namespace WebCore {
 

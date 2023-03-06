@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ISOOriginalFormatBox.h"
 
-#include <JavaScriptCore/DataView.h>
+#include <CyberScriptCore/DataView.h>
 
 using JSC::DataView;
 

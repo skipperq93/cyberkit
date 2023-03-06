@@ -28,7 +28,7 @@
 #if ENABLE(WEBASSEMBLY)
 
 #include "ScriptBufferSourceProvider.h"
-#include <JavaScriptCore/SourceProvider.h>
+#include <CyberScriptCore/SourceProvider.h>
 
 namespace WebCore {
 

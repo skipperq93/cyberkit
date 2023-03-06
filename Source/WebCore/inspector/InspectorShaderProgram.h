@@ -27,7 +27,7 @@
 
 #if ENABLE(WEBGL)
 
-#include <JavaScriptCore/InspectorProtocolObjects.h>
+#include <CyberScriptCore/InspectorProtocolObjects.h>
 
 namespace WebCore {
 

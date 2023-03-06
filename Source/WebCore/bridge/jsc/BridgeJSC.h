@@ -27,7 +27,7 @@
 #pragma once
 
 #include "Bridge.h"
-#include <JavaScriptCore/JSString.h>
+#include <CyberScriptCore/JSString.h>
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 

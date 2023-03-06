@@ -31,9 +31,9 @@
 #include "JSDOMBinding.h"
 #include "JSDOMGlobalObject.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/Strong.h>
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/Strong.h>
+#include <CyberScriptCore/StrongInlines.h>
 #include <wtf/Threading.h>
 
 namespace WebCore {

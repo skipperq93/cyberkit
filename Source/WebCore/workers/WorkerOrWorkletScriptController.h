@@ -28,8 +28,8 @@
 
 #include "FetchOptions.h"
 #include "WorkerThreadType.h"
-#include <JavaScriptCore/Debugger.h>
-#include <JavaScriptCore/JSRunLoopTimer.h>
+#include <CyberScriptCore/Debugger.h>
+#include <CyberScriptCore/JSRunLoopTimer.h>
 #include <wtf/Forward.h>
 #include <wtf/Lock.h>
 #include <wtf/MessageQueue.h>

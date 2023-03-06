@@ -28,9 +28,9 @@
 
 #pragma once
 
-#include <JavaScriptCore/JSContextRef.h>
-#include <JavaScriptCore/JSObjectRef.h>
-#include <JavaScriptCore/JSStringRef.h>
+#include <CyberScriptCore/JSContextRef.h>
+#include <CyberScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSStringRef.h>
 #include <algorithm>
 #include <utility>
 

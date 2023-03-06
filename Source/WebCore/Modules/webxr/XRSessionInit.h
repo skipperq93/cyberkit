@@ -27,7 +27,7 @@
 
 #if ENABLE(WEBXR)
 
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/Forward.h>
 
 namespace JSC {

@@ -38,8 +38,8 @@
 #include "JSDOMWindow.h"
 #include "JSEventTarget.h"
 #include "JSMessagePort.h"
-#include <JavaScriptCore/JSArray.h>
-#include <JavaScriptCore/JSArrayBuffer.h>
+#include <CyberScriptCore/JSArray.h>
+#include <CyberScriptCore/JSArrayBuffer.h>
 
 namespace WebCore {
 

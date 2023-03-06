@@ -28,8 +28,8 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import <Carbon/Carbon.h>
-#import <JavaScriptCore/JSContext.h>
-#import <JavaScriptCore/JSExport.h>
+#import <CyberScriptCore/JSContext.h>
+#import <CyberScriptCore/JSExport.h>
 #import <CyberKit/WebHTMLView.h>
 #import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>

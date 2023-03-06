@@ -26,7 +26,7 @@
 #pragma once
 
 #include "FontLoadRequest.h"
-#include <JavaScriptCore/ArrayBufferView.h>
+#include <CyberScriptCore/ArrayBufferView.h>
 #include <wtf/WeakPtr.h>
 #include <wtf/text/AtomString.h>
 

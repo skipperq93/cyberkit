@@ -33,8 +33,8 @@
 #include "JSEventTargetCustom.h"
 #include "PlatformMouseEvent.h"
 #include "RuntimeApplicationChecks.h"
-#include <JavaScriptCore/CallFrame.h>
-#include <JavaScriptCore/JSGlobalObjectInlines.h>
+#include <CyberScriptCore/CallFrame.h>
+#include <CyberScriptCore/JSGlobalObjectInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

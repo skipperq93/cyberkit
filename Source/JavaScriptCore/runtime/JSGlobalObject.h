@@ -47,7 +47,7 @@
 #include "VM.h"
 #include "Watchpoint.h"
 #include "WeakGCSet.h"
-#include <JavaScriptCore/JSBase.h>
+#include <CyberScriptCore/JSBase.h>
 #include <array>
 #include <wtf/FixedVector.h>
 #include <wtf/HashSet.h>

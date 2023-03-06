@@ -54,8 +54,8 @@
 #include "SubframeLoader.h"
 #include "TypedElementDescendantIterator.h"
 #include "UserGestureIndicator.h"
-#include <JavaScriptCore/CatchScope.h>
-#include <JavaScriptCore/JSGlobalObjectInlines.h>
+#include <CyberScriptCore/CatchScope.h>
+#include <CyberScriptCore/JSGlobalObjectInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

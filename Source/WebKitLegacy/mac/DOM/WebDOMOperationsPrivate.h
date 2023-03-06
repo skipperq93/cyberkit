@@ -28,7 +28,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CyberKitLegacy/WebDOMOperations.h>
-#import <JavaScriptCore/JSBase.h>
+#import <CyberScriptCore/JSBase.h>
 
 #if TARGET_OS_IPHONE
 #import <CyberKitLegacy/WAKAppKitStubs.h>

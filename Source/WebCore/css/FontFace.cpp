@@ -36,9 +36,9 @@
 #include "DOMPromiseProxy.h"
 #include "Document.h"
 #include "JSFontFace.h"
-#include <JavaScriptCore/ArrayBuffer.h>
-#include <JavaScriptCore/ArrayBufferView.h>
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBufferView.h>
+#include <CyberScriptCore/JSCInlines.h>
 
 namespace WebCore {
 

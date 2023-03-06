@@ -50,7 +50,7 @@
 #include "RTCRtpTransceiver.h"
 #include "RTCSessionDescriptionInit.h"
 #include "RTCSignalingState.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <wtf/LoggerHelper.h>
 #include <wtf/WeakPtr.h>
 

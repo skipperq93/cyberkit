@@ -26,7 +26,7 @@
 #include "config.h"
 #include "InjectedBundleCSSStyleDeclarationHandle.h"
 
-#include <JavaScriptCore/APICast.h>
+#include <CyberScriptCore/APICast.h>
 #include <CyberCore/CSSStyleDeclaration.h>
 #include <CyberCore/JSCSSStyleDeclaration.h>
 #include <wtf/HashMap.h>

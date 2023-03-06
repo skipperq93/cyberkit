@@ -26,7 +26,7 @@
 #pragma once
 
 #include "CommandLineAPIHost.h"
-#include <JavaScriptCore/InjectedScriptManager.h>
+#include <CyberScriptCore/InjectedScriptManager.h>
 #include <wtf/RefPtr.h>
 
 namespace WebCore {

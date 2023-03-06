@@ -26,9 +26,9 @@
 #include "DecompressionStreamDecoder.h"
 
 #include "BufferSource.h"
-#include <JavaScriptCore/GenericTypedArrayViewInlines.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSGenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/GenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 
 namespace WebCore {
 

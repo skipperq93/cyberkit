@@ -60,12 +60,12 @@
 #include "Page.h"
 #include "ScriptableDocumentParser.h"
 #include "Settings.h"
-#include <JavaScriptCore/ConsoleMessage.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/ScriptArguments.h>
-#include <JavaScriptCore/ScriptCallStack.h>
-#include <JavaScriptCore/ScriptCallStackFactory.h>
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/ScriptArguments.h>
+#include <CyberScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ScriptCallStackFactory.h>
+#include <CyberScriptCore/StrongInlines.h>
 #include <wtf/Stopwatch.h>
 #include <wtf/text/WTFString.h>
 

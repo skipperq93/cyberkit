@@ -29,7 +29,7 @@
 
 #include "SharedBufferTest.h"
 #include "Test.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <CyberCore/SharedBuffer.h>
 #if ENABLE(MHTML)
 #include <CyberCore/SharedBufferChunkReader.h>

@@ -40,10 +40,10 @@
 #include "ScriptDisallowedScope.h"
 #include "Settings.h"
 #include <CoreMedia/CoreMedia.h>
-#include <JavaScriptCore/DataView.h>
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/TypedArrayInlines.h>
-#include <JavaScriptCore/Uint16Array.h>
+#include <CyberScriptCore/DataView.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/Uint16Array.h>
 #include <wtf/MainThread.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/SoftLinking.h>

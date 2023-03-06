@@ -82,7 +82,7 @@
 #include "WheelEvent.h"
 #include "XMLNSNames.h"
 #include "XMLNames.h"
-#include <JavaScriptCore/HeapInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
 #include <variant>
 #include <wtf/HexNumber.h>
 #include <wtf/IsoMallocInlines.h>

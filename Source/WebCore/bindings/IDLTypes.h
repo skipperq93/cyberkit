@@ -26,8 +26,8 @@
 #pragma once
 
 #include "StringAdaptors.h"
-#include <JavaScriptCore/HandleTypes.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/HandleTypes.h>
+#include <CyberScriptCore/Strong.h>
 #include <variant>
 #include <wtf/Brigand.h>
 #include <wtf/Markable.h>

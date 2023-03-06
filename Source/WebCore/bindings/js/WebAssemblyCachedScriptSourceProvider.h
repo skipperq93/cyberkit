@@ -32,7 +32,7 @@
 #include "CachedScript.h"
 #include "CachedScriptFetcher.h"
 #include "SharedBuffer.h"
-#include <JavaScriptCore/SourceProvider.h>
+#include <CyberScriptCore/SourceProvider.h>
 #include <wtf/RefPtr.h>
 
 namespace WebCore {

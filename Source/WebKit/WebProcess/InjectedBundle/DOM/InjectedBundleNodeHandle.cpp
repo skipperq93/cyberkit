@@ -31,7 +31,7 @@
 #include "WebFrame.h"
 #include "WebFrameLoaderClient.h"
 #include "WebImage.h"
-#include <JavaScriptCore/APICast.h>
+#include <CyberScriptCore/APICast.h>
 #include <CyberCore/Document.h>
 #include <CyberCore/Frame.h>
 #include <CyberCore/FrameLoader.h>

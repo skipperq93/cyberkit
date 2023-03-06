@@ -26,9 +26,9 @@
 #include "LoadableScript.h"
 #include "SerializedScriptValue.h"
 #include "WindowProxy.h"
-#include <JavaScriptCore/JSBase.h>
-#include <JavaScriptCore/ScriptFetchParameters.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/JSBase.h>
+#include <CyberScriptCore/ScriptFetchParameters.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>

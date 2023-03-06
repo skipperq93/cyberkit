@@ -32,7 +32,7 @@
 #import "LaunchServicesSPI.h"
 #import "PushClientConnection.h"
 #import "WebPushDaemon.h"
-#import <JavaScriptCore/ConsoleTypes.h>
+#import <CyberScriptCore/ConsoleTypes.h>
 #import <pal/crypto/CryptoDigest.h>
 #import <wtf/MainThread.h>
 #import <wtf/text/Base64.h>

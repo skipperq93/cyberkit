@@ -36,7 +36,7 @@
 #import "DOMNodeInternal.h"
 #import "DOMPrivate.h"
 #import "DOMRangeInternal.h"
-#import <JavaScriptCore/APICast.h>
+#import <CyberScriptCore/APICast.h>
 #import <CyberCore/CachedImage.h>
 #import <CyberCore/DragImage.h>
 #import <CyberCore/FocusController.h>

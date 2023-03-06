@@ -28,8 +28,8 @@
 #include "JSPromiseRejectionEvent.h"
 
 #include "PromiseRejectionEvent.h"
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
 
 namespace WebCore {
 

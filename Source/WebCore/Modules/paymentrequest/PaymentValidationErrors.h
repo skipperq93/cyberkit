@@ -29,7 +29,7 @@
 
 #include "AddressErrors.h"
 #include "PayerErrorFields.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 
 namespace WebCore {
 

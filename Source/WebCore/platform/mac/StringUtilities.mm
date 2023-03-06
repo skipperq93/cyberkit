@@ -26,7 +26,7 @@
 #import "config.h"
 #import "StringUtilities.h"
 
-#import <JavaScriptCore/RegularExpression.h>
+#import <CyberScriptCore/RegularExpression.h>
 #import <wtf/text/StringBuilder.h>
 
 namespace WebCore {

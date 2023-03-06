@@ -28,8 +28,8 @@
 #include <CoreFoundation/CoreFoundation.h>
 
 #include "objc_header.h"
-#include <JavaScriptCore/Error.h>
-#include <JavaScriptCore/JSObject.h>
+#include <CyberScriptCore/Error.h>
+#include <CyberScriptCore/JSObject.h>
 
 OBJC_CLASS NSString;
 

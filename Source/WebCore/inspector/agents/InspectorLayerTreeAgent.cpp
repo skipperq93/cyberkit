@@ -40,7 +40,7 @@
 #include "RenderLayerBacking.h"
 #include "RenderLayerCompositor.h"
 #include "RenderView.h"
-#include <JavaScriptCore/IdentifiersFactory.h>
+#include <CyberScriptCore/IdentifiersFactory.h>
 
 namespace WebCore {
 

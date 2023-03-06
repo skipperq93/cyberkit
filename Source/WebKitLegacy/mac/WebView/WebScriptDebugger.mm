@@ -32,11 +32,11 @@
 #import "WebFrameInternal.h"
 #import "WebScriptDebugDelegate.h"
 #import "WebViewInternal.h"
-#import <JavaScriptCore/Breakpoint.h>
-#import <JavaScriptCore/DebuggerCallFrame.h>
-#import <JavaScriptCore/JSGlobalObject.h>
-#import <JavaScriptCore/SourceProvider.h>
-#import <JavaScriptCore/StrongInlines.h>
+#import <CyberScriptCore/Breakpoint.h>
+#import <CyberScriptCore/DebuggerCallFrame.h>
+#import <CyberScriptCore/JSGlobalObject.h>
+#import <CyberScriptCore/SourceProvider.h>
+#import <CyberScriptCore/StrongInlines.h>
 #import <CyberCore/DOMWindow.h>
 #import <CyberCore/Frame.h>
 #import <CyberCore/JSDOMWindow.h>

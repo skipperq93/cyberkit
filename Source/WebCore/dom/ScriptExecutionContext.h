@@ -35,8 +35,8 @@
 #include "ServiceWorkerIdentifier.h"
 #include "Settings.h"
 #include "StorageBlockingPolicy.h"
-#include <JavaScriptCore/ConsoleTypes.h>
-#include <JavaScriptCore/HandleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/HandleTypes.h>
 #include <pal/SessionID.h>
 #include <wtf/CrossThreadTask.h>
 #include <wtf/Function.h>

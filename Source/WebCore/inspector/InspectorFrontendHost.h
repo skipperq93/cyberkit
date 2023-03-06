@@ -32,7 +32,7 @@
 #include "ContextMenuProvider.h"
 #include "ExceptionOr.h"
 #include "InspectorFrontendClient.h"
-#include <JavaScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/JSCJSValue.h>
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>

@@ -63,7 +63,7 @@
 #include "WebUndoStepID.h"
 #include "WebUserContentController.h"
 #include "WebsitePoliciesData.h"
-#include <JavaScriptCore/InspectorFrontendChannel.h>
+#include <CyberScriptCore/InspectorFrontendChannel.h>
 #include <CyberCore/ActivityState.h>
 #include <CyberCore/AppHighlight.h>
 #include <CyberCore/DiagnosticLoggingClient.h>

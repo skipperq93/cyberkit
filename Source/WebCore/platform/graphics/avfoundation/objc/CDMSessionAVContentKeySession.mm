@@ -37,10 +37,10 @@
 #import "WebCoreNSErrorExtras.h"
 #import <AVFoundation/AVError.h>
 #import <CoreMedia/CMBase.h>
-#import <JavaScriptCore/HeapInlines.h>
-#import <JavaScriptCore/JSCellInlines.h>
-#import <JavaScriptCore/JSGlobalObjectInlines.h>
-#import <JavaScriptCore/TypedArrayInlines.h>
+#import <CyberScriptCore/HeapInlines.h>
+#import <CyberScriptCore/JSCellInlines.h>
+#import <CyberScriptCore/JSGlobalObjectInlines.h>
+#import <CyberScriptCore/TypedArrayInlines.h>
 #import <objc/objc-runtime.h>
 #import <pal/spi/cocoa/AVFoundationSPI.h>
 #import <wtf/FileSystem.h>

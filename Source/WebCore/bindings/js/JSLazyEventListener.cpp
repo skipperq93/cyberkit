@@ -29,9 +29,9 @@
 #include "QualifiedName.h"
 #include "SVGElement.h"
 #include "ScriptController.h"
-#include <JavaScriptCore/CatchScope.h>
-#include <JavaScriptCore/FunctionConstructor.h>
-#include <JavaScriptCore/IdentifierInlines.h>
+#include <CyberScriptCore/CatchScope.h>
+#include <CyberScriptCore/FunctionConstructor.h>
+#include <CyberScriptCore/IdentifierInlines.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/RefCountedLeakCounter.h>
 #include <wtf/StdLibExtras.h>

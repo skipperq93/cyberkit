@@ -30,7 +30,7 @@
 
 #include "AudioBuffer.h"
 #include "AudioBufferCallback.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/MainThread.h>
 
 namespace WebCore {

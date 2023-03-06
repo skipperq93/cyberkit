@@ -30,7 +30,7 @@
 
 #include "JSCryptoKey.h"
 #include "JSDOMPromiseDeferred.h"
-#include <JavaScriptCore/JSBigInt.h>
+#include <CyberScriptCore/JSBigInt.h>
 
 namespace WebCore {
 using namespace JSC;

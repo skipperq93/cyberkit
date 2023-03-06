@@ -37,8 +37,8 @@
 #include "AudioFileReader.h"
 #include "AudioUtilities.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
 
 namespace WebCore {
 

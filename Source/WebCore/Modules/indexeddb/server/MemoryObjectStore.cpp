@@ -35,9 +35,9 @@
 #include "Logging.h"
 #include "MemoryBackingStoreTransaction.h"
 #include "UniqueIDBDatabase.h"
-#include <JavaScriptCore/JSCJSValue.h>
-#include <JavaScriptCore/JSCJSValueInlines.h>
-#include <JavaScriptCore/JSLock.h>
+#include <CyberScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSLock.h>
 
 namespace WebCore {
 using namespace JSC;

@@ -30,7 +30,7 @@
 
 #include "InstrumentingAgents.h"
 #include "ResourceUsageThread.h"
-#include <JavaScriptCore/InspectorEnvironment.h>
+#include <CyberScriptCore/InspectorEnvironment.h>
 #include <wtf/Stopwatch.h>
 
 namespace WebCore {

@@ -29,10 +29,10 @@
 #import <CyberKit/WebFramePrivate.h>
 #import <CyberKit/WebPreferencesPrivate.h>
 #import <CyberKit/WebScriptWorld.h>
-#import <JavaScriptCore/JSContextRef.h>
-#import <JavaScriptCore/JSRetainPtr.h>
-#import <JavaScriptCore/JSStringRef.h>
-#import <JavaScriptCore/JSValueRef.h>
+#import <CyberScriptCore/JSContextRef.h>
+#import <CyberScriptCore/JSRetainPtr.h>
+#import <CyberScriptCore/JSStringRef.h>
+#import <CyberScriptCore/JSValueRef.h>
 #import <wtf/RetainPtr.h>
 
 @interface JSWrapperForNodeFrameLoadDelegate : NSObject <WebFrameLoadDelegate> {

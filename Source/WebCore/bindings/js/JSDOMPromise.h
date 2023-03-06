@@ -27,7 +27,7 @@
 #pragma once
 
 #include "JSDOMGuardedObject.h"
-#include <JavaScriptCore/JSPromise.h>
+#include <CyberScriptCore/JSPromise.h>
 
 namespace WebCore {
 

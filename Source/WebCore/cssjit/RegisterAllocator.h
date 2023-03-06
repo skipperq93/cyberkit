@@ -27,7 +27,7 @@
 
 #if ENABLE(CSS_SELECTOR_JIT)
 
-#include <JavaScriptCore/MacroAssembler.h>
+#include <CyberScriptCore/MacroAssembler.h>
 #include <wtf/Deque.h>
 #include <wtf/Vector.h>
 

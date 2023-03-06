@@ -29,7 +29,7 @@
 
 #include "JSValueInWrappedObject.h"
 #include "PaymentRequestUpdateEvent.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <variant>
 #include <wtf/text/WTFString.h>
 

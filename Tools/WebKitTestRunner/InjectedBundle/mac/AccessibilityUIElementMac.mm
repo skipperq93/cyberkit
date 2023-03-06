@@ -35,8 +35,8 @@
 #import "JSBasics.h"
 #import <AppKit/NSAccessibility.h>
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <JavaScriptCore/JSObjectRef.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSObjectRef.h>
 #import <CyberKit/WKBundleFrame.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>

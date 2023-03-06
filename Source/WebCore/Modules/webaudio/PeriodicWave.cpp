@@ -32,7 +32,7 @@
 
 #include "PeriodicWave.h"
 
-#include <JavaScriptCore/TypedArrays.h>
+#include <CyberScriptCore/TypedArrays.h>
 #include "BaseAudioContext.h"
 #include "FFTFrame.h"
 #include "VectorMath.h"

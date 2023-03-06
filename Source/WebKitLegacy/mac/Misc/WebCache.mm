@@ -31,7 +31,7 @@
 #import "WebPreferences.h"
 #import "WebView.h"
 #import "WebViewInternal.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/ApplicationCacheStorage.h>
 #import <CyberCore/CookieJar.h>
 #import <CyberCore/CredentialStorage.h>

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/MarkingConstraint.h>
+#include <CyberScriptCore/MarkingConstraint.h>
 
 namespace JSC {
 class VM;

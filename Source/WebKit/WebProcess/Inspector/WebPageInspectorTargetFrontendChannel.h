@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/InspectorFrontendChannel.h>
+#include <CyberScriptCore/InspectorFrontendChannel.h>
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 

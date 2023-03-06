@@ -33,8 +33,8 @@
 #include "ScriptController.h"
 #include "ScriptDisallowedScope.h"
 #include "ScriptSourceCode.h"
-#include <JavaScriptCore/FrameTracers.h>
-#include <JavaScriptCore/JSPromise.h>
+#include <CyberScriptCore/FrameTracers.h>
+#include <CyberScriptCore/JSPromise.h>
 #include <wtf/RunLoop.h>
 
 namespace WebCore {

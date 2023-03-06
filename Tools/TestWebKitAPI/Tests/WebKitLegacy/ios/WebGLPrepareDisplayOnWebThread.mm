@@ -29,8 +29,8 @@
 
 #import "DeprecatedGlobalValues.h"
 #import "PlatformUtilities.h"
-#import <JavaScriptCore/JSVirtualMachine.h>
-#import <JavaScriptCore/JSVirtualMachineInternal.h>
+#import <CyberScriptCore/JSVirtualMachine.h>
+#import <CyberScriptCore/JSVirtualMachineInternal.h>
 #import <UIKit/UIKit.h>
 #import <CyberCore/WebCoreThread.h>
 #import <stdlib.h>

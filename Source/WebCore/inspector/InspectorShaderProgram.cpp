@@ -35,10 +35,10 @@
 #include "WebGLRenderingContextBase.h"
 #include "WebGLSampler.h"
 #include "WebGLShader.h"
-#include <JavaScriptCore/ConsoleMessage.h>
-#include <JavaScriptCore/IdentifiersFactory.h>
-#include <JavaScriptCore/ScriptCallStack.h>
-#include <JavaScriptCore/ScriptCallStackFactory.h>
+#include <CyberScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/IdentifiersFactory.h>
+#include <CyberScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ScriptCallStackFactory.h>
 
 namespace WebCore {
 

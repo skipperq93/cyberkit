@@ -31,7 +31,7 @@
 #include "ContextDestructionObserver.h"
 #include "EventTarget.h"
 #include "ServiceWorkerData.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/RefCounted.h>
 #include <wtf/URL.h>
 

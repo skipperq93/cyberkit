@@ -31,11 +31,11 @@
 #import "WebScriptObject.h"
 #import "WebScriptObjectProtocol.h"
 #import "runtime_method.h"
-#import <JavaScriptCore/Error.h>
-#import <JavaScriptCore/FunctionPrototype.h>
-#import <JavaScriptCore/JSGlobalObjectInlines.h>
-#import <JavaScriptCore/JSLock.h>
-#import <JavaScriptCore/ObjectPrototype.h>
+#import <CyberScriptCore/Error.h>
+#import <CyberScriptCore/FunctionPrototype.h>
+#import <CyberScriptCore/JSGlobalObjectInlines.h>
+#import <CyberScriptCore/JSLock.h>
+#import <CyberScriptCore/ObjectPrototype.h>
 #import <wtf/Assertions.h>
 #import <wtf/HashMap.h>
 #import <wtf/MainThread.h>

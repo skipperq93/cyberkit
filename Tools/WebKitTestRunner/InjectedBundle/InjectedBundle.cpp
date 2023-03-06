@@ -30,7 +30,7 @@
 #include "DictionaryFunctions.h"
 #include "InjectedBundlePage.h"
 #include "WebCoreTestSupport.h"
-#include <JavaScriptCore/Options.h>
+#include <CyberScriptCore/Options.h>
 #include <CyberKit/WKBundle.h>
 #include <CyberKit/WKBundlePage.h>
 #include <CyberKit/WKBundlePagePrivate.h>

@@ -28,7 +28,7 @@
 #if ENABLE(SERVICE_WORKER)
 
 #include "InspectorWebAgentBase.h"
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
 
 namespace WebCore {
 

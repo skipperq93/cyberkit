@@ -33,8 +33,8 @@
 #import "JSBasics.h"
 #import <AppKit/NSColor.h>
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSStringRef.h>
-#import <JavaScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSStringRef.h>
+#import <CyberScriptCore/JSStringRefCF.h>
 #import <CyberKit/WebFramePrivate.h>
 #import <CyberKit/WebFrameView.h>
 #import <CyberKit/WebHTMLView.h>

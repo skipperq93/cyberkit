@@ -55,7 +55,7 @@
 
 #if ENABLE(REMOTE_INSPECTOR)
 #import "WebInspectorUtilities.h"
-#import <JavaScriptCore/RemoteInspectorConstants.h>
+#import <CyberScriptCore/RemoteInspectorConstants.h>
 #endif
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)

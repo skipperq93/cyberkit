@@ -27,7 +27,7 @@
 #define WebScriptObject_h
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSBase.h>
+#import <CyberScriptCore/JSBase.h>
 #import <CyberCore/WebKitAvailability.h>
 
 // NSObject (WebScripting) -----------------------------------------------------

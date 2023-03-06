@@ -26,7 +26,7 @@
 #pragma once
 
 #include "WebEvent.h"
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 
 namespace WebCore {
 class HitTestResult;

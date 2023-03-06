@@ -28,7 +28,7 @@
 #include "CachedResourceHandle.h"
 #include "ReferrerPolicy.h"
 #include "ResourceLoadPriority.h"
-#include <JavaScriptCore/ScriptFetcher.h>
+#include <CyberScriptCore/ScriptFetcher.h>
 #include <wtf/text/WTFString.h>
 
 namespace WebCore {

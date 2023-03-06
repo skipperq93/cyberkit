@@ -35,7 +35,7 @@
 #include "ResizeObserverEntry.h"
 #include "ResizeObserverOptions.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/AbstractSlotVisitorInlines.h>
+#include <CyberScriptCore/AbstractSlotVisitorInlines.h>
 #include <wtf/text/TextStream.h>
 
 namespace WebCore {

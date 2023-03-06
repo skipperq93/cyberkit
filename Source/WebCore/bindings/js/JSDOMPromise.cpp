@@ -28,11 +28,11 @@
 
 #include "DOMWindow.h"
 #include "JSDOMWindow.h"
-#include <JavaScriptCore/BuiltinNames.h>
-#include <JavaScriptCore/CatchScope.h>
-#include <JavaScriptCore/Exception.h>
-#include <JavaScriptCore/JSNativeStdFunction.h>
-#include <JavaScriptCore/JSPromiseConstructor.h>
+#include <CyberScriptCore/BuiltinNames.h>
+#include <CyberScriptCore/CatchScope.h>
+#include <CyberScriptCore/Exception.h>
+#include <CyberScriptCore/JSNativeStdFunction.h>
+#include <CyberScriptCore/JSPromiseConstructor.h>
 
 using namespace JSC;
 

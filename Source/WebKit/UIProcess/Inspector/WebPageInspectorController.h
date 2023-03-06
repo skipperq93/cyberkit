@@ -26,8 +26,8 @@
 #pragma once
 
 #include "InspectorTargetProxy.h"
-#include <JavaScriptCore/InspectorAgentRegistry.h>
-#include <JavaScriptCore/InspectorTargetAgent.h>
+#include <CyberScriptCore/InspectorAgentRegistry.h>
+#include <CyberScriptCore/InspectorTargetAgent.h>
 #include <CyberCore/PageIdentifier.h>
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>

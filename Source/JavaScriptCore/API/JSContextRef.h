@@ -26,9 +26,9 @@
 #ifndef JSContextRef_h
 #define JSContextRef_h
 
-#include <JavaScriptCore/JSObjectRef.h>
-#include <JavaScriptCore/JSValueRef.h>
-#include <JavaScriptCore/WebKitAvailability.h>
+#include <CyberScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSValueRef.h>
+#include <CyberScriptCore/WebKitAvailability.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>

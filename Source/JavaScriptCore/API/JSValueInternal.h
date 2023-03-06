@@ -26,7 +26,7 @@
 #ifndef JSValueInternal_h
 #define JSValueInternal_h
 
-#import <JavaScriptCore/JSValuePrivate.h>
+#import <CyberScriptCore/JSValuePrivate.h>
 
 #if JSC_OBJC_API_ENABLED
 

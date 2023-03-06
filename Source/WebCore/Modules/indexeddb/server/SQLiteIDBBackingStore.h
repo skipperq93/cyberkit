@@ -32,7 +32,7 @@
 #include "IDBResourceIdentifier.h"
 #include "SQLiteIDBTransaction.h"
 #include "SQLiteStatementAutoResetScope.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <pal/SessionID.h>
 #include <wtf/HashMap.h>
 

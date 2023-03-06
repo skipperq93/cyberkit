@@ -26,7 +26,7 @@
 #include "config.h"
 #include "StyleMedia.h"
 
-#include <JavaScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/ConsoleMessage.h>
 
 namespace WebCore {
 

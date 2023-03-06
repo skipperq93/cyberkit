@@ -26,7 +26,7 @@
 #pragma once
 
 #include "ScriptBuffer.h"
-#include <JavaScriptCore/SourceProvider.h>
+#include <CyberScriptCore/SourceProvider.h>
 #include <wtf/WeakPtr.h>
 
 namespace WebCore {

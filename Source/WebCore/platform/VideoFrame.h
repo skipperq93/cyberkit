@@ -31,7 +31,7 @@
 #include "PlaneLayout.h"
 #include "PlatformVideoColorSpace.h"
 #include "VideoPixelFormat.h"
-#include <JavaScriptCore/TypedArrays.h>
+#include <CyberScriptCore/TypedArrays.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/MediaTime.h>
 #include <wtf/ThreadSafeRefCounted.h>

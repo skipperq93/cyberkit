@@ -32,7 +32,7 @@
 #include "WebGL2RenderingContext.h"
 #include "WebGLBuffer.h"
 #include "WebGLContextGroup.h"
-#include <JavaScriptCore/AbstractSlotVisitorInlines.h>
+#include <CyberScriptCore/AbstractSlotVisitorInlines.h>
 #include <wtf/Lock.h>
 #include <wtf/Locker.h>
 

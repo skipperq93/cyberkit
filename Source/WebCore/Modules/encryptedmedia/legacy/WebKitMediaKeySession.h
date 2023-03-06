@@ -32,7 +32,7 @@
 #include "ExceptionOr.h"
 #include "LegacyCDMSession.h"
 #include "Timer.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <wtf/Deque.h>
 
 namespace WebCore {

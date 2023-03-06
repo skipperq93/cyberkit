@@ -27,7 +27,7 @@
  */
 
 #import <CyberKitLegacy/WebFrame.h>
-#import <JavaScriptCore/JSBase.h>
+#import <CyberScriptCore/JSBase.h>
 
 #if TARGET_OS_IPHONE
 #import <CoreText/CoreText.h>

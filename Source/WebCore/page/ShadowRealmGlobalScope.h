@@ -26,7 +26,7 @@
 #pragma once
 
 #include "JSShadowRealmGlobalScopeBase.h"
-#include <JavaScriptCore/Weak.h>
+#include <CyberScriptCore/Weak.h>
 #include <memory>
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>

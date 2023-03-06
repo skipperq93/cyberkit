@@ -27,7 +27,7 @@
 
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
 
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <wtf/Forward.h>
 #include <wtf/WeakPtr.h>
 

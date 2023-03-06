@@ -30,7 +30,7 @@
 #include "DOMException.h"
 #include "ReadableStream.h"
 #include "SharedBuffer.h"
-#include <JavaScriptCore/Uint8Array.h>
+#include <CyberScriptCore/Uint8Array.h>
 
 namespace WebCore {
 

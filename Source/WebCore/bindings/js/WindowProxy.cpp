@@ -31,9 +31,9 @@
 #include "RemoteFrame.h"
 #include "ScriptController.h"
 #include "runtime_root.h"
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/StrongInlines.h>
-#include <JavaScriptCore/WeakGCMapInlines.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/StrongInlines.h>
+#include <CyberScriptCore/WeakGCMapInlines.h>
 #include <wtf/MemoryPressureHandler.h>
 
 namespace WebCore {

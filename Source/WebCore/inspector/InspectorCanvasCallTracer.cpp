@@ -60,9 +60,9 @@
 #include "WebGLTransformFeedback.h"
 #include "WebGLUniformLocation.h"
 #include "WebGLVertexArrayObject.h"
-#include <JavaScriptCore/ArrayBuffer.h>
-#include <JavaScriptCore/ArrayBufferView.h>
-#include <JavaScriptCore/TypedArrays.h>
+#include <CyberScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBufferView.h>
+#include <CyberScriptCore/TypedArrays.h>
 #include <variant>
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>

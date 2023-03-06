@@ -27,7 +27,7 @@
 #define InjectedBundleCSSStyleDeclarationHandle_h
 
 #include "APIObject.h"
-#include <JavaScriptCore/JSBase.h>
+#include <CyberScriptCore/JSBase.h>
 #include <wtf/Ref.h>
 #include <wtf/RefPtr.h>
 

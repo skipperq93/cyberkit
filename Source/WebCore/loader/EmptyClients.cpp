@@ -81,7 +81,7 @@
 #include "UserContentProvider.h"
 #include "VisitedLinkStore.h"
 #include "WebRTCProvider.h"
-#include <JavaScriptCore/HeapInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
 #include <pal/SessionID.h>
 #include <wtf/NeverDestroyed.h>
 

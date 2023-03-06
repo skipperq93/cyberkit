@@ -52,7 +52,7 @@ class ObjCInternalHeaderGenerator(ObjCGenerator):
         headers = set([
             '"%s.h"' % self.protocol_name(),
             '"%sJSONObjectPrivate.h"' % self.protocol_name(),
-            '<JavaScriptCore/AugmentableInspectorController.h>',
+            '<CyberScriptCore/AugmentableInspectorController.h>',
             '<wtf/JSONValues.h>',
         ])
 

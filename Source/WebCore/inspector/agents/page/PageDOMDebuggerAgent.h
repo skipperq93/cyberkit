@@ -26,8 +26,8 @@
 #pragma once
 
 #include "InspectorDOMDebuggerAgent.h"
-#include <JavaScriptCore/Breakpoint.h>
-#include <JavaScriptCore/InspectorProtocolObjects.h>
+#include <CyberScriptCore/Breakpoint.h>
+#include <CyberScriptCore/InspectorProtocolObjects.h>
 #include <wtf/RefPtr.h>
 
 namespace WebCore {

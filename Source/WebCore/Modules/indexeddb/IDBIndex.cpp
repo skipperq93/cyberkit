@@ -35,7 +35,7 @@
 #include "IDBTransaction.h"
 #include "Logging.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/HeapInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

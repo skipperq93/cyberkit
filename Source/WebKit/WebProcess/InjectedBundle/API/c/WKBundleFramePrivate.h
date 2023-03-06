@@ -26,7 +26,7 @@
 #ifndef WKBundleFramePrivate_h
 #define WKBundleFramePrivate_h
 
-#include <JavaScriptCore/JavaScript.h>
+#include <CyberScriptCore/JavaScript.h>
 #include <CyberKit/WKBase.h>
 #include <CyberKit/WKGeometry.h>
 

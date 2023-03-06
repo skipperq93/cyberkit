@@ -35,9 +35,9 @@
 #include "Event.h"
 #include "FloatQuad.h"
 #include "JSExecState.h"
-#include <JavaScriptCore/InspectorProtocolObjects.h>
-#include <JavaScriptCore/ScriptCallStack.h>
-#include <JavaScriptCore/ScriptCallStackFactory.h>
+#include <CyberScriptCore/InspectorProtocolObjects.h>
+#include <CyberScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ScriptCallStackFactory.h>
 
 namespace WebCore {
 

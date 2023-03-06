@@ -52,7 +52,7 @@
 #include "MessagePort.h"
 #include "SerializedScriptValue.h"
 #include "WorkerRunLoop.h"
-#include <JavaScriptCore/JSLock.h>
+#include <CyberScriptCore/JSLock.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

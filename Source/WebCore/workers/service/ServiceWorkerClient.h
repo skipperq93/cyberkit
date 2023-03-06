@@ -31,7 +31,7 @@
 #include "ExceptionOr.h"
 #include "ScriptExecutionContextIdentifier.h"
 #include "ServiceWorkerClientData.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/RefCounted.h>
 
 namespace JSC {

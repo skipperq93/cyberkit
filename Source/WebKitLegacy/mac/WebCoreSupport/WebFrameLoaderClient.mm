@@ -73,8 +73,8 @@
 #import "WebUIDelegate.h"
 #import "WebUIDelegatePrivate.h"
 #import "WebViewInternal.h"
-#import <JavaScriptCore/InitializeThreading.h>
-#import <JavaScriptCore/JSContextInternal.h>
+#import <CyberScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/JSContextInternal.h>
 #import <CyberCore/AuthenticationMac.h>
 #import <CyberCore/BackForwardController.h>
 #import <CyberCore/BitmapImage.h>

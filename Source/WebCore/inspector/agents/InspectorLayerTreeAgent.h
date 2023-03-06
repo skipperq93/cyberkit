@@ -29,9 +29,9 @@
 #pragma once
 
 #include "InspectorWebAgentBase.h"
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
-#include <JavaScriptCore/InspectorProtocolObjects.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/InspectorProtocolObjects.h>
 #include <wtf/WeakHashMap.h>
 #include <wtf/text/WTFString.h>
 

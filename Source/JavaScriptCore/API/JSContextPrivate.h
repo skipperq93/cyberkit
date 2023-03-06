@@ -28,7 +28,7 @@
 
 #if JSC_OBJC_API_ENABLED
 
-#import <JavaScriptCore/JSContext.h>
+#import <CyberScriptCore/JSContext.h>
 
 @protocol JSModuleLoaderDelegate <NSObject>
 

@@ -24,9 +24,9 @@
  */
 
 #include "config.h"
-#include <JavaScriptCore/DisallowVMEntry.h>
-#include <JavaScriptCore/InitializeThreading.h>
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/DisallowVMEntry.h>
+#include <CyberScriptCore/InitializeThreading.h>
+#include <CyberScriptCore/VM.h>
 
 namespace TestWebKitAPI {
 

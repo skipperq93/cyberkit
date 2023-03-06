@@ -28,7 +28,7 @@
 #include "GPUIntegralTypes.h"
 #include "GPUMapMode.h"
 #include "JSDOMPromiseDeferredForward.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <cstdint>
 #include <optional>
 #include <pal/graphics/WebGPU/WebGPUBuffer.h>

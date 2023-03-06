@@ -41,7 +41,7 @@
 #include "JSAudioWorkletProcessorConstructor.h"
 #include "JSDOMConvert.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/JSLock.h>
+#include <CyberScriptCore/JSLock.h>
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/IsoMallocInlines.h>
 

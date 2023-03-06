@@ -28,8 +28,8 @@
 #if ENABLE(SERVICE_WORKER)
 
 #include "ExceptionOr.h"
-#include <JavaScriptCore/ArrayBuffer.h>
-#include <JavaScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/JSCJSValue.h>
 #include <wtf/IsoMalloc.h>
 #include <wtf/Vector.h>
 

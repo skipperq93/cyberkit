@@ -26,7 +26,7 @@
 #pragma once
 
 #include "Timer.h"
-#include <JavaScriptCore/DeleteAllCodeEffort.h>
+#include <CyberScriptCore/DeleteAllCodeEffort.h>
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 

@@ -58,7 +58,7 @@ class ObjCBackendDispatcherHeaderGenerator(ObjCGenerator):
 
     def generate_output(self):
         headers = [
-            '<JavaScriptCore/InspectorAlternateBackendDispatchers.h>',
+            '<CyberScriptCore/InspectorAlternateBackendDispatchers.h>',
             '<wtf/RetainPtr.h>',
         ]
 

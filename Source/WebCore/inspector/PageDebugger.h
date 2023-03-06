@@ -26,7 +26,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/Debugger.h>
+#include <CyberScriptCore/Debugger.h>
 
 namespace WebCore {
 

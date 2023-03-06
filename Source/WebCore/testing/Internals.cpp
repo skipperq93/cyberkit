@@ -239,11 +239,11 @@
 #include "WorkletGlobalScope.h"
 #include "WritingDirection.h"
 #include "XMLHttpRequest.h"
-#include <JavaScriptCore/CodeBlock.h>
-#include <JavaScriptCore/InspectorAgentBase.h>
-#include <JavaScriptCore/InspectorFrontendChannel.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/CodeBlock.h>
+#include <CyberScriptCore/InspectorAgentBase.h>
+#include <CyberScriptCore/InspectorFrontendChannel.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSCJSValue.h>
 #include <wtf/FileSystem.h>
 #include <wtf/HexNumber.h>
 #include <wtf/JSONValues.h>

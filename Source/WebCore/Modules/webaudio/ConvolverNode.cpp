@@ -34,7 +34,7 @@
 #include "AudioNodeOutput.h"
 #include "AudioUtilities.h"
 #include "Reverb.h"
-#include <JavaScriptCore/TypedArrays.h>
+#include <CyberScriptCore/TypedArrays.h>
 #include <wtf/IsoMallocInlines.h>
 
 // Note about empirical tuning:

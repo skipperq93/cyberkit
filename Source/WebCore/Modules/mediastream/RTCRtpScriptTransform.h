@@ -30,9 +30,9 @@
 #include "ActiveDOMObject.h"
 #include "EventTarget.h"
 #include "RTCRtpScriptTransformer.h"
-#include <JavaScriptCore/JSCJSValue.h>
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/Lock.h>
 #include <wtf/ThreadSafeRefCounted.h>
 

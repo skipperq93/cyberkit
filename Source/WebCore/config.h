@@ -30,7 +30,7 @@
 #endif
 
 #include "PlatformExportMacros.h"
-#include <JavaScriptCore/JSExportMacros.h>
+#include <CyberScriptCore/JSExportMacros.h>
 #include <pal/ExportMacros.h>
 
 // Using CMake with Unix makefiles does not use prefix headers.

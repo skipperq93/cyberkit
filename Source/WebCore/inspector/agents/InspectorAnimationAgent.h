@@ -28,9 +28,9 @@
 #include "ComputedEffectTiming.h"
 #include "InspectorWebAgentBase.h"
 #include "Timer.h"
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
-#include <JavaScriptCore/InspectorProtocolObjects.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/InspectorProtocolObjects.h>
 #include <wtf/Forward.h>
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/WeakHashMap.h>

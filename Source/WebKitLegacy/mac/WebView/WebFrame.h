@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSBase.h>
+#import <CyberScriptCore/JSBase.h>
 #import <CyberKitLegacy/WebKitAvailability.h>
 
 @class DOMDocument;

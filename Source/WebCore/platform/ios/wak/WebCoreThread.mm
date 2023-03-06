@@ -42,8 +42,8 @@
 #import "WebCoreThreadMessage.h"
 #import "WebCoreThreadRun.h"
 #import <Foundation/NSInvocation.h>
-#import <JavaScriptCore/InitializeThreading.h>
-#import <JavaScriptCore/JSLock.h>
+#import <CyberScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/JSLock.h>
 #import <libkern/OSAtomic.h>
 #import <objc/runtime.h>
 #import <wtf/Assertions.h>

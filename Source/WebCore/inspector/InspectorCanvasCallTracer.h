@@ -28,7 +28,7 @@
 #include "CanvasRenderingContext2DBase.h"
 #include "WebGL2RenderingContext.h"
 #include "WebGLRenderingContextBase.h"
-#include <JavaScriptCore/TypedArrays.h>
+#include <CyberScriptCore/TypedArrays.h>
 #include <initializer_list>
 #include <wtf/JSONValues.h>
 #include <wtf/Ref.h>

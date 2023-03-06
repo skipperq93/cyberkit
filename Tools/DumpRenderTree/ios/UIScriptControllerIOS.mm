@@ -30,7 +30,7 @@
 
 #import "DumpRenderTreeBrowserView.h"
 #import "UIScriptContext.h"
-#import <JavaScriptCore/OpaqueJSString.h>
+#import <CyberScriptCore/OpaqueJSString.h>
 #import <CyberCore/FloatRect.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/MainThread.h>

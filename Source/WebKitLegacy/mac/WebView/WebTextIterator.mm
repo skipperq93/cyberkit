@@ -27,7 +27,7 @@
 
 #import "DOMNodeInternal.h"
 #import "DOMRangeInternal.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/Range.h>
 #import <CyberCore/TextIterator.h>
 #import <CyberCore/WebCoreJITOperations.h>

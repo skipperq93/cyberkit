@@ -34,10 +34,10 @@
 
 #include "InspectorWebAgentBase.h"
 #include "LayoutRect.h"
-#include <JavaScriptCore/Debugger.h>
-#include <JavaScriptCore/DebuggerPrimitives.h>
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/Debugger.h>
+#include <CyberScriptCore/DebuggerPrimitives.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
 #include <wtf/JSONValues.h>
 #include <wtf/RunLoop.h>
 #include <wtf/Vector.h>

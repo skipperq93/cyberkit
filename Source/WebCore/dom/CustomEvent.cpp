@@ -27,7 +27,7 @@
 #include "config.h"
 #include "CustomEvent.h"
 
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

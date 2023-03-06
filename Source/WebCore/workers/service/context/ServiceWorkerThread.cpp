@@ -51,8 +51,8 @@
 #include "WorkerDebuggerProxy.h"
 #include "WorkerLoaderProxy.h"
 #include "WorkerObjectProxy.h"
-#include <JavaScriptCore/IdentifiersFactory.h>
-#include <JavaScriptCore/RuntimeFlags.h>
+#include <CyberScriptCore/IdentifiersFactory.h>
+#include <CyberScriptCore/RuntimeFlags.h>
 #include <wtf/NeverDestroyed.h>
 
 using namespace PAL;

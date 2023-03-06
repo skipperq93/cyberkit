@@ -49,10 +49,10 @@
 #include "WebStorageNamespaceProvider.h"
 #include "WebUserContentController.h"
 #include "WebsiteDataStoreParameters.h"
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/Exception.h>
-#include <JavaScriptCore/JSGlobalObjectInlines.h>
-#include <JavaScriptCore/JSLock.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/Exception.h>
+#include <CyberScriptCore/JSGlobalObjectInlines.h>
+#include <CyberScriptCore/JSLock.h>
 #include <CyberCore/ApplicationCache.h>
 #include <CyberCore/ApplicationCacheStorage.h>
 #include <CyberCore/CommonVM.h>

@@ -24,7 +24,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 
 #if JSC_OBJC_API_ENABLED
 

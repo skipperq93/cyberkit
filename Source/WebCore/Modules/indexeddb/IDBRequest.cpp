@@ -45,7 +45,7 @@
 #include "ScriptExecutionContext.h"
 #include "ThreadSafeDataBuffer.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/StrongInlines.h>
 #include <variant>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/Scope.h>

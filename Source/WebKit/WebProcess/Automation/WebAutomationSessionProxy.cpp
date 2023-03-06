@@ -37,11 +37,11 @@
 #include "WebImage.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/Exception.h>
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/JSStringRefPrivate.h>
-#include <JavaScriptCore/OpaqueJSString.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/Exception.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/JSStringRefPrivate.h>
+#include <CyberScriptCore/OpaqueJSString.h>
 #include <CyberCore/AXObjectCache.h>
 #include <CyberCore/AccessibilityObject.h>
 #include <CyberCore/CookieJar.h>

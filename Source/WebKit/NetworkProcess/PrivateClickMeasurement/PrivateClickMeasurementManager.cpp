@@ -30,7 +30,7 @@
 #include "NetworkSession.h"
 #include "PrivateClickMeasurementDebugInfo.h"
 #include "PrivateClickMeasurementNetworkLoader.h"
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 #include <CyberCore/FetchOptions.h>
 #include <CyberCore/FormData.h>
 #include <CyberCore/ResourceError.h>

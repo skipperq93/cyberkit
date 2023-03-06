@@ -30,7 +30,7 @@
 #import "InjectedBundle.h"
 #import "InjectedBundlePage.h"
 
-#import <JavaScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSStringRefCF.h>
 #import <UIKit/UIAccessibility.h>
 #import <CyberKit/WKBundle.h>
 #import <CyberKit/WKBundlePage.h>

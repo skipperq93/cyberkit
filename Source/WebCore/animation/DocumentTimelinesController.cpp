@@ -37,7 +37,7 @@
 #include "Settings.h"
 #include "WebAnimation.h"
 #include "WebAnimationTypes.h"
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/VM.h>
 #include <wtf/text/TextStream.h>
 
 namespace WebCore {

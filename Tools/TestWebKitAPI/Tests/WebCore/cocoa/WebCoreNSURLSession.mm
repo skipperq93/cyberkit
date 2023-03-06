@@ -28,7 +28,7 @@
 #if !PLATFORM(IOS_FAMILY)
 
 #import "Utilities.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/Frame.h>
 #import <CyberCore/FrameLoadRequest.h>
 #import <CyberCore/Page.h>

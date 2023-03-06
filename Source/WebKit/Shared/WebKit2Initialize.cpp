@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebKit2Initialize.h"
 
-#include <JavaScriptCore/InitializeThreading.h>
+#include <CyberScriptCore/InitializeThreading.h>
 #include <CyberCore/CommonAtomStrings.h>
 #include <CyberCore/WebCoreJITOperations.h>
 #include <wtf/GenerateProfiles.h>

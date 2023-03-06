@@ -33,7 +33,7 @@
 #include "PerformanceMeasureOptions.h"
 #include "PerformanceTiming.h"
 #include "SerializedScriptValue.h"
-#include <JavaScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/SortedArrayMap.h>
 
 namespace WebCore {

@@ -30,7 +30,7 @@
 
 #include "WebCoreOpaqueRoot.h"
 #include "WebGLRenderingContextBase.h"
-#include <JavaScriptCore/AbstractSlotVisitorInlines.h>
+#include <CyberScriptCore/AbstractSlotVisitorInlines.h>
 #include <wtf/Locker.h>
 
 namespace WebCore {

@@ -24,11 +24,11 @@
  */
 
 // umbrella header
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 
 // private headers
-#import <JavaScriptCore/JSContextPrivate.h>
-#import <JavaScriptCore/JSScript.h>
-#import <JavaScriptCore/JSValuePrivate.h>
-#import <JavaScriptCore/JSVirtualMachinePrivate.h>
+#import <CyberScriptCore/JSContextPrivate.h>
+#import <CyberScriptCore/JSScript.h>
+#import <CyberScriptCore/JSValuePrivate.h>
+#import <CyberScriptCore/JSVirtualMachinePrivate.h>
 

@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import "ServiceWorkerPageProtocol.h"
-#import <JavaScriptCore/JSContextRef.h>
+#import <CyberScriptCore/JSContextRef.h>
 #import <CyberKit/WKBundlePage.h>
 #import <CyberKit/WKWebProcessPlugIn.h>
 #import <CyberKit/WKWebProcessPlugInBrowserContextControllerPrivate.h>

@@ -39,7 +39,7 @@
 #include "JSDOMExceptionHandling.h"
 #include "MessagePort.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/JSTypedArrays.h>
+#include <CyberScriptCore/JSTypedArrays.h>
 #include <wtf/GetPtr.h>
 #include <wtf/IsoMallocInlines.h>
 

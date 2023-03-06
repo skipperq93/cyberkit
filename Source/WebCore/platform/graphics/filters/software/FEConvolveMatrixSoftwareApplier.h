@@ -27,7 +27,7 @@
 #include "IntPoint.h"
 #include "IntSize.h"
 #include "PixelBuffer.h"
-#include <JavaScriptCore/TypedArrayAdaptersForwardDeclarations.h>
+#include <CyberScriptCore/TypedArrayAdaptersForwardDeclarations.h>
 #include <wtf/Vector.h>
 
 namespace WebCore {

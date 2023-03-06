@@ -28,7 +28,7 @@
 
 #import "WebStringTruncator.h"
 
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/FontCascade.h>
 #import <CyberCore/FontPlatformData.h>
 #import <CyberCore/StringTruncator.h>

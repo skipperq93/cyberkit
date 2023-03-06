@@ -33,7 +33,7 @@
 #include "JSDOMBinding.h"
 #include "JSExecState.h"
 #include "JSExecStateInstrumentation.h"
-#include <JavaScriptCore/Exception.h>
+#include <CyberScriptCore/Exception.h>
 
 namespace WebCore {
 using namespace JSC;

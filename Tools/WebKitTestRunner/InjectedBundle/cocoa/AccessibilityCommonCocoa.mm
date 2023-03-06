@@ -34,7 +34,7 @@
 
 #import "JSWrapper.h"
 #import "StringFunctions.h"
-#import <JavaScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSStringRefCF.h>
 #import <objc/runtime.h>
 
 @implementation NSString (JSStringRefAdditions)

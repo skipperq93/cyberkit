@@ -81,7 +81,7 @@ typedef float CGFloat;
 #endif
 #endif
 
-#include <JavaScriptCore/JSExportMacros.h>
+#include <CyberScriptCore/JSExportMacros.h>
 #include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #include <wtf/ExportMacros.h>

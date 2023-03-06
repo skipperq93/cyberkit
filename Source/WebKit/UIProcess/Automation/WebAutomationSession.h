@@ -41,7 +41,7 @@
 #include <wtf/RunLoop.h>
 
 #if ENABLE(REMOTE_INSPECTOR)
-#include <JavaScriptCore/RemoteAutomationTarget.h>
+#include <CyberScriptCore/RemoteAutomationTarget.h>
 #endif
 
 namespace API {

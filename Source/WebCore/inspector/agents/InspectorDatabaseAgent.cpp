@@ -45,7 +45,7 @@
 #include "SQLTransactionErrorCallback.h"
 #include "SQLValue.h"
 #include "VoidCallback.h"
-#include <JavaScriptCore/InspectorFrontendRouter.h>
+#include <CyberScriptCore/InspectorFrontendRouter.h>
 #include <wtf/JSONValues.h>
 #include <wtf/Vector.h>
 

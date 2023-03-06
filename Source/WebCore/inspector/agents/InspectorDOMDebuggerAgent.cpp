@@ -41,11 +41,11 @@
 #include "ResourceRequest.h"
 #include "ScriptDisallowedScope.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/ContentSearchUtilities.h>
-#include <JavaScriptCore/InjectedScript.h>
-#include <JavaScriptCore/InjectedScriptManager.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
-#include <JavaScriptCore/RegularExpression.h>
+#include <CyberScriptCore/ContentSearchUtilities.h>
+#include <CyberScriptCore/InjectedScript.h>
+#include <CyberScriptCore/InjectedScriptManager.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/RegularExpression.h>
 #include <wtf/JSONValues.h>
 
 namespace WebCore {

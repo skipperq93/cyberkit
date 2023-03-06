@@ -32,10 +32,10 @@
 #import "EventSendingController.h"
 #import "LayoutTestSpellChecker.h"
 #import "UIScriptContext.h"
-#import <JavaScriptCore/JSContext.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <JavaScriptCore/JSValue.h>
-#import <JavaScriptCore/OpaqueJSString.h>
+#import <CyberScriptCore/JSContext.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSValue.h>
+#import <CyberScriptCore/OpaqueJSString.h>
 #import <CyberKit/WebPreferences.h>
 #import <CyberKit/WebViewPrivate.h>
 #import <mach/mach_time.h>

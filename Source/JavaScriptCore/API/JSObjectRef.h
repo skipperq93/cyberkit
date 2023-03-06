@@ -27,9 +27,9 @@
 #ifndef JSObjectRef_h
 #define JSObjectRef_h
 
-#include <JavaScriptCore/JSBase.h>
-#include <JavaScriptCore/JSValueRef.h>
-#include <JavaScriptCore/WebKitAvailability.h>
+#include <CyberScriptCore/JSBase.h>
+#include <CyberScriptCore/JSValueRef.h>
+#include <CyberScriptCore/WebKitAvailability.h>
 
 #ifndef __cplusplus
 #include <stdbool.h>

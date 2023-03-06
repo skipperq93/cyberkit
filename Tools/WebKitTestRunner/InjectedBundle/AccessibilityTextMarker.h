@@ -26,7 +26,7 @@
 #pragma once
 
 #include "JSWrappable.h"
-#include <JavaScriptCore/JSObjectRef.h>
+#include <CyberScriptCore/JSObjectRef.h>
 #include <wtf/Platform.h>
 #include <wtf/Ref.h>
 

@@ -32,7 +32,7 @@
 #pragma once
 
 #include "InspectorWebAgentBase.h"
-#include <JavaScriptCore/InspectorRuntimeAgent.h>
+#include <CyberScriptCore/InspectorRuntimeAgent.h>
 
 namespace WebCore {
 

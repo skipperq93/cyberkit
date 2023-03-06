@@ -51,10 +51,10 @@
 #include "SharedBuffer.h"
 #include "ThreadSafeDataBuffer.h"
 #include "WebCoreJSClientData.h"
-#include <JavaScriptCore/ArrayBuffer.h>
-#include <JavaScriptCore/DateInstance.h>
-#include <JavaScriptCore/ObjectConstructor.h>
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/DateInstance.h>
+#include <CyberScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/StrongInlines.h>
 #include <wtf/AutodrainedPool.h>
 #include <wtf/MessageQueue.h>
 #include <wtf/threads/BinarySemaphore.h>

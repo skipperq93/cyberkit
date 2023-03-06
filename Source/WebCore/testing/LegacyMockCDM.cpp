@@ -31,9 +31,9 @@
 #include "LegacyCDM.h"
 #include "LegacyCDMSession.h"
 #include "WebKitMediaKeyError.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/TypedArrayInlines.h>
-#include <JavaScriptCore/Uint8Array.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/Uint8Array.h>
 
 namespace WebCore {
 

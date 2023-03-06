@@ -35,10 +35,10 @@
 #include "JSInspectorAuditResourcesObject.h"
 #include "Page.h"
 #include "PageConsoleClient.h"
-#include <JavaScriptCore/CallFrame.h>
-#include <JavaScriptCore/InjectedScript.h>
-#include <JavaScriptCore/InjectedScriptManager.h>
-#include <JavaScriptCore/JSLock.h>
+#include <CyberScriptCore/CallFrame.h>
+#include <CyberScriptCore/InjectedScript.h>
+#include <CyberScriptCore/InjectedScriptManager.h>
+#include <CyberScriptCore/JSLock.h>
 #include <wtf/Ref.h>
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>

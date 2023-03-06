@@ -33,7 +33,7 @@
 #include "JSDOMConvertSequences.h"
 #include "JSElement.h"
 #include "WebCoreJSClientData.h"
-#include <JavaScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/ObjectConstructor.h>
 
 namespace WebCore {
 using namespace JSC;

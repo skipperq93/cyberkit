@@ -30,7 +30,7 @@
 
 #include "CombinedURLFilters.h"
 #include "Term.h"
-#include <JavaScriptCore/YarrParser.h>
+#include <CyberScriptCore/YarrParser.h>
 #include <wtf/Deque.h>
 #include <wtf/text/CString.h>
 

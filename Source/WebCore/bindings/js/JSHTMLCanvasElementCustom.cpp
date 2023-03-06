@@ -27,8 +27,8 @@
 #include "JSHTMLCanvasElement.h"
 
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/SlotVisitor.h>
-#include <JavaScriptCore/SlotVisitorInlines.h>
+#include <CyberScriptCore/SlotVisitor.h>
+#include <CyberScriptCore/SlotVisitorInlines.h>
 
 namespace WebCore {
 

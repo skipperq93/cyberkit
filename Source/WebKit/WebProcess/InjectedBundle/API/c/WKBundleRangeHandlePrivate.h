@@ -26,7 +26,7 @@
 #ifndef WKBundleRangeHandlePrivate_h
 #define WKBundleRangeHandlePrivate_h
 
-#include <JavaScriptCore/JavaScript.h>
+#include <CyberScriptCore/JavaScript.h>
 #include <CyberKit/WKBase.h>
 #include <CyberKit/WKGeometry.h>
 #include <CyberKit/WKImage.h>

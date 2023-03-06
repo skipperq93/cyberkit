@@ -26,7 +26,7 @@
 #pragma once
 
 #include "PixelBuffer.h"
-#include <JavaScriptCore/Uint8ClampedArray.h>
+#include <CyberScriptCore/Uint8ClampedArray.h>
 
 namespace WebCore {
 

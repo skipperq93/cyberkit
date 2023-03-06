@@ -36,7 +36,7 @@
 #include "ShadowRootMode.h"
 #include "SimulatedClickOptions.h"
 #include "WebAnimationTypes.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 
 #define DUMP_NODE_STATISTICS 0
 

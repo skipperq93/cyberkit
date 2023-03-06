@@ -46,7 +46,7 @@
 #include "StorageNamespaceProvider.h"
 #include "StorageType.h"
 #include "VoidCallback.h"
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
 #include <wtf/JSONValues.h>
 
 

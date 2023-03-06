@@ -42,7 +42,7 @@
 #include "ServiceWorkerThread.h"
 #include "StructuredSerializeOptions.h"
 #include "WorkerSWClientConnection.h"
-#include <JavaScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/NeverDestroyed.h>
 

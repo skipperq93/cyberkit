@@ -52,8 +52,8 @@
 #include "Timer.h"
 #include "UserGestureIndicator.h"
 #include "WindowFeatures.h"
-#include <JavaScriptCore/FrameTracers.h>
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/FrameTracers.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
 #include <wtf/Deque.h>
 #include <wtf/RunLoop.h>
 #include <wtf/text/CString.h>

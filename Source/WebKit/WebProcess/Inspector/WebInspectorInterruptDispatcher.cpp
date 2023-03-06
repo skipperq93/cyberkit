@@ -28,7 +28,7 @@
 
 #include "Connection.h"
 #include "WebInspectorInterruptDispatcherMessages.h"
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/VM.h>
 #include <CyberCore/CommonVM.h>
 #include <wtf/WorkQueue.h>
 

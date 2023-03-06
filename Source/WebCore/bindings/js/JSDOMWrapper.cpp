@@ -32,7 +32,7 @@
 #include "JSRemoteDOMWindow.h"
 #include "SerializedScriptValue.h"
 #include "WebCoreJSClientData.h"
-#include <JavaScriptCore/Error.h>
+#include <CyberScriptCore/Error.h>
 
 namespace WebCore {
 

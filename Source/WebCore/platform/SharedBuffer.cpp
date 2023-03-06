@@ -28,7 +28,7 @@
 #include "config.h"
 #include "SharedBuffer.h"
 
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <algorithm>
 #include <wtf/HexNumber.h>
 #include <wtf/persistence/PersistentCoders.h>

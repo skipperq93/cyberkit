@@ -46,7 +46,7 @@
 #include "SecurityOrigin.h"
 #include "VideoFrame.h"
 #include "VideoFrameMetadata.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/Lock.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/CString.h>

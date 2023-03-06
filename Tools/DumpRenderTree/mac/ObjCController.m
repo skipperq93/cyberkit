@@ -32,7 +32,7 @@
 // Avoid compile error in DOMPrivate.h.
 @class NSFont;
 
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 #import <CyberKit/DOMAbstractView.h>
 #import <CyberKit/DOMPrivate.h>
 #import <CyberKit/WebScriptObject.h>

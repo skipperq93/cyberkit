@@ -30,7 +30,7 @@
 
 #include "WebGLContextGroup.h"
 #include "WebGLRenderingContextBase.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/Lock.h>
 #include <wtf/Locker.h>
 

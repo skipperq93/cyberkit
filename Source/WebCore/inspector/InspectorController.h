@@ -32,8 +32,8 @@
 #pragma once
 
 #include "InspectorOverlay.h"
-#include <JavaScriptCore/InspectorAgentRegistry.h>
-#include <JavaScriptCore/InspectorEnvironment.h>
+#include <CyberScriptCore/InspectorAgentRegistry.h>
+#include <CyberScriptCore/InspectorEnvironment.h>
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/text/WTFString.h>

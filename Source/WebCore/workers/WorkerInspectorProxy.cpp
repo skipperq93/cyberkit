@@ -32,7 +32,7 @@
 #include "WorkerInspectorController.h"
 #include "WorkerRunLoop.h"
 #include "WorkerThread.h"
-#include <JavaScriptCore/InspectorAgentBase.h>
+#include <CyberScriptCore/InspectorAgentBase.h>
 #include <wtf/NeverDestroyed.h>
 
 

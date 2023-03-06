@@ -47,21 +47,21 @@
 #include "WorkerOrWorkletThread.h"
 #include "WorkerRunLoop.h"
 #include "WorkerScriptFetcher.h"
-#include <JavaScriptCore/AbstractModuleRecord.h>
-#include <JavaScriptCore/Completion.h>
-#include <JavaScriptCore/DeferTermination.h>
-#include <JavaScriptCore/DeferredWorkTimer.h>
-#include <JavaScriptCore/Exception.h>
-#include <JavaScriptCore/ExceptionHelpers.h>
-#include <JavaScriptCore/GCActivityCallback.h>
-#include <JavaScriptCore/JSInternalPromise.h>
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/JSNativeStdFunction.h>
-#include <JavaScriptCore/JSScriptFetchParameters.h>
-#include <JavaScriptCore/JSScriptFetcher.h>
-#include <JavaScriptCore/ScriptCallStack.h>
-#include <JavaScriptCore/StrongInlines.h>
-#include <JavaScriptCore/VMTrapsInlines.h>
+#include <CyberScriptCore/AbstractModuleRecord.h>
+#include <CyberScriptCore/Completion.h>
+#include <CyberScriptCore/DeferTermination.h>
+#include <CyberScriptCore/DeferredWorkTimer.h>
+#include <CyberScriptCore/Exception.h>
+#include <CyberScriptCore/ExceptionHelpers.h>
+#include <CyberScriptCore/GCActivityCallback.h>
+#include <CyberScriptCore/JSInternalPromise.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/JSNativeStdFunction.h>
+#include <CyberScriptCore/JSScriptFetchParameters.h>
+#include <CyberScriptCore/JSScriptFetcher.h>
+#include <CyberScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/StrongInlines.h>
+#include <CyberScriptCore/VMTrapsInlines.h>
 
 namespace WebCore {
 

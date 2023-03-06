@@ -41,7 +41,7 @@
 #import "WebNSURLExtras.h"
 #import "WebPreferenceKeysPrivate.h"
 #import "WebPreferencesDefinitions.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/ApplicationCacheStorage.h>
 #import <CyberCore/AudioSession.h>
 #import <CyberCore/MediaPlayerEnums.h>

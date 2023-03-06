@@ -29,10 +29,10 @@
 #include "ScriptWrappable.h"
 #include "ScriptWrappableInlines.h"
 #include "WebCoreTypedArrayController.h"
-#include <JavaScriptCore/JSArrayBuffer.h>
-#include <JavaScriptCore/TypedArrayInlines.h>
-#include <JavaScriptCore/Weak.h>
-#include <JavaScriptCore/WeakInlines.h>
+#include <CyberScriptCore/JSArrayBuffer.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/Weak.h>
+#include <CyberScriptCore/WeakInlines.h>
 
 namespace WebCore {
 

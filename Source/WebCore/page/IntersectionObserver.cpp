@@ -40,7 +40,7 @@
 #include "Logging.h"
 #include "Performance.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/AbstractSlotVisitorInlines.h>
+#include <CyberScriptCore/AbstractSlotVisitorInlines.h>
 #include <wtf/Vector.h>
 
 namespace WebCore {

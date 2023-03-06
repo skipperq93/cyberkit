@@ -28,7 +28,7 @@
 #if ENABLE(WEB_AUDIO)
 
 #include "BiquadFilterNode.h"
-#include <JavaScriptCore/Float32Array.h>
+#include <CyberScriptCore/Float32Array.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

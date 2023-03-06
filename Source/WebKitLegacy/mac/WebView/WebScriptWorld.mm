@@ -27,8 +27,8 @@
 #import "WebScriptWorldInternal.h"
 #import <CyberCore/JSDOMBinding.h>
 #import <CyberCore/ScriptController.h>
-#import <JavaScriptCore/APICast.h>
-#import <JavaScriptCore/JSContextInternal.h>
+#import <CyberScriptCore/APICast.h>
+#import <CyberScriptCore/JSContextInternal.h>
 #import <wtf/RefPtr.h>
 
 @interface WebScriptWorldPrivate : NSObject {

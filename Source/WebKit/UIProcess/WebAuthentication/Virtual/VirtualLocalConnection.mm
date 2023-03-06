@@ -29,7 +29,7 @@
 #if ENABLE(WEB_AUTHN)
 
 #import "VirtualAuthenticatorConfiguration.h"
-#import <JavaScriptCore/ArrayBuffer.h>
+#import <CyberScriptCore/ArrayBuffer.h>
 #import <Security/SecItem.h>
 #import <CyberCore/AuthenticatorAssertionResponse.h>
 #import <CyberCore/ExceptionData.h>

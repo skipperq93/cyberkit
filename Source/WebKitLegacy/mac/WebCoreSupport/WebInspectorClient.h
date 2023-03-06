@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <JavaScriptCore/InspectorFrontendChannel.h>
+#import <CyberScriptCore/InspectorFrontendChannel.h>
 #import <CyberCore/FloatRect.h>
 #import <CyberCore/InspectorClient.h>
 #import <CyberCore/InspectorDebuggableType.h>

@@ -85,7 +85,7 @@
 #include "WebUserContentControllerProxy.h"
 #include "WebsiteDataStore.h"
 #include "WebsiteDataStoreParameters.h"
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
 #include <CyberCore/ApplicationCacheStorage.h>
 #include <CyberCore/GamepadProvider.h>
 #include <CyberCore/MockRealtimeMediaSourceCenter.h>
@@ -120,7 +120,7 @@
 #endif
 
 #if ENABLE(REMOTE_INSPECTOR)
-#include <JavaScriptCore/RemoteInspector.h>
+#include <CyberScriptCore/RemoteInspector.h>
 #endif
 
 #if OS(LINUX)

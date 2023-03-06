@@ -32,7 +32,7 @@
 #include "IDBRequest.h"
 #include "IDBValue.h"
 #include "JSValueInWrappedObject.h"
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Strong.h>
 #include <variant>
 #include <wtf/WeakPtr.h>
 

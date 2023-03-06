@@ -26,7 +26,7 @@
 #pragma once
 
 #include "MediaSample.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <pal/avfoundation/MediaTimeAVFoundation.h>
 #include <wtf/Forward.h>
 #include <wtf/TypeCasts.h>

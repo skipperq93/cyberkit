@@ -33,9 +33,9 @@
 #include "InspectorOverlay.h"
 #include "InspectorWebAgentBase.h"
 #include "Timer.h"
-#include <JavaScriptCore/Breakpoint.h>
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/Breakpoint.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 #include <wtf/JSONValues.h>

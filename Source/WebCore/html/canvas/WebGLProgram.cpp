@@ -34,8 +34,8 @@
 #include "WebGLContextGroup.h"
 #include "WebGLRenderingContextBase.h"
 #include "WebGLShader.h"
-#include <JavaScriptCore/SlotVisitor.h>
-#include <JavaScriptCore/SlotVisitorInlines.h>
+#include <CyberScriptCore/SlotVisitor.h>
+#include <CyberScriptCore/SlotVisitorInlines.h>
 #include <wtf/Lock.h>
 #include <wtf/Locker.h>
 #include <wtf/NeverDestroyed.h>

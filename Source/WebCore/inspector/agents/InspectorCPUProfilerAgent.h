@@ -29,8 +29,8 @@
 
 #include "InspectorWebAgentBase.h"
 #include "ResourceUsageData.h"
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
 
 namespace WebCore {
 

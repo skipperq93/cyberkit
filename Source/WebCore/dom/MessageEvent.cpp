@@ -31,7 +31,7 @@
 #include "Blob.h"
 #include "EventNames.h"
 #include "JSMessageEvent.h"
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

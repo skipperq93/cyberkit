@@ -28,7 +28,7 @@
 
 // This header contains WebView declarations that can be used anywhere in WebKit, but are neither SPI nor API.
 
-#import <JavaScriptCore/JSBase.h>
+#import <CyberScriptCore/JSBase.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import <CyberKitLegacy/WAKAppKitStubs.h>

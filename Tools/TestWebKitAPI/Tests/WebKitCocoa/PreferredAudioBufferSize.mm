@@ -31,7 +31,7 @@
 #import "Test.h"
 #import "TestWKWebView.h"
 #import "WebCoreTestSupport.h"
-#import <JavaScriptCore/JSContext.h>
+#import <CyberScriptCore/JSContext.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKUIDelegatePrivate.h>
 #import <CyberKit/_WKFullscreenDelegate.h>

@@ -26,8 +26,8 @@
 #pragma once
 
 #include "CryptoAlgorithmRsaKeyGenParams.h"
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/Strong.h>
 #include <variant>
 
 #if ENABLE(WEB_CRYPTO)

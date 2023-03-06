@@ -50,7 +50,7 @@
 #include "TextTrackPrivateRemoteConfiguration.h"
 #include "TrackPrivateRemoteConfiguration.h"
 #include "WebCoreArgumentCoders.h"
-#include <JavaScriptCore/Uint8Array.h>
+#include <CyberScriptCore/Uint8Array.h>
 #include <CyberCore/LayoutRect.h>
 #include <CyberCore/MediaPlayer.h>
 #include <CyberCore/MediaPlayerPrivate.h>

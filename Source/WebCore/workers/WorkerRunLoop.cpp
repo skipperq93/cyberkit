@@ -40,7 +40,7 @@
 #include "WorkerOrWorkletGlobalScope.h"
 #include "WorkerOrWorkletScriptController.h"
 #include "WorkerThread.h"
-#include <JavaScriptCore/JSRunLoopTimer.h>
+#include <CyberScriptCore/JSRunLoopTimer.h>
 
 #if USE(GLIB)
 #include <glib.h>

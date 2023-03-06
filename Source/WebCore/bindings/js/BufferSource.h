@@ -26,8 +26,8 @@
 
 #pragma once
 
-#include <JavaScriptCore/ArrayBuffer.h>
-#include <JavaScriptCore/ArrayBufferView.h>
+#include <CyberScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBufferView.h>
 #include <variant>
 #include <wtf/RefPtr.h>
 #include <wtf/Span.h>

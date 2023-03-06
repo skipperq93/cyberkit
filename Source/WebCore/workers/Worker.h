@@ -34,7 +34,7 @@
 #include "WorkerOptions.h"
 #include "WorkerScriptLoaderClient.h"
 #include "WorkerType.h"
-#include <JavaScriptCore/RuntimeFlags.h>
+#include <CyberScriptCore/RuntimeFlags.h>
 #include <wtf/Deque.h>
 #include <wtf/MonotonicTime.h>
 #include <wtf/text/AtomStringHash.h>

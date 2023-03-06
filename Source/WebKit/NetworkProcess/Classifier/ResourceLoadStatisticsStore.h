@@ -29,7 +29,7 @@
 
 #include "ResourceLoadStatisticsClassifier.h"
 #include "WebResourceLoadStatisticsStore.h"
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 #include <CyberCore/FrameIdentifier.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Forward.h>

@@ -48,7 +48,7 @@
 #include "WorkerFetchResult.h"
 #include "WorkerInitializationData.h"
 #include "WorkerThread.h"
-#include <JavaScriptCore/IdentifiersFactory.h>
+#include <CyberScriptCore/IdentifiersFactory.h>
 
 namespace WebCore {
 

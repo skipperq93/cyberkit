@@ -51,13 +51,13 @@
 #include "SecurityOrigin.h"
 #include "Settings.h"
 #include "WebCoreJSClientData.h"
-#include <JavaScriptCore/CodeBlock.h>
-#include <JavaScriptCore/DeferredWorkTimer.h>
-#include <JavaScriptCore/JSInternalPromise.h>
-#include <JavaScriptCore/JSWebAssembly.h>
-#include <JavaScriptCore/Microtask.h>
-#include <JavaScriptCore/StrongInlines.h>
-#include <JavaScriptCore/VMTrapsInlines.h>
+#include <CyberScriptCore/CodeBlock.h>
+#include <CyberScriptCore/DeferredWorkTimer.h>
+#include <CyberScriptCore/JSInternalPromise.h>
+#include <CyberScriptCore/JSWebAssembly.h>
+#include <CyberScriptCore/Microtask.h>
+#include <CyberScriptCore/StrongInlines.h>
+#include <CyberScriptCore/VMTrapsInlines.h>
 #include <wtf/Language.h>
 #include <wtf/MainThread.h>
 

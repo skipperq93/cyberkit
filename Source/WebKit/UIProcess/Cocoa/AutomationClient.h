@@ -28,7 +28,7 @@
 #if ENABLE(REMOTE_INSPECTOR)
 
 #import "APIAutomationClient.h"
-#import <JavaScriptCore/RemoteInspector.h>
+#import <CyberScriptCore/RemoteInspector.h>
 #import <wtf/WeakObjCPtr.h>
 
 @class WKProcessPool;

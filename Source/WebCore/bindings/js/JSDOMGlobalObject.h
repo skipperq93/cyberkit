@@ -26,8 +26,8 @@
 
 #pragma once
 
-#include <JavaScriptCore/JSGlobalObject.h>
-#include <JavaScriptCore/WeakGCMap.h>
+#include <CyberScriptCore/JSGlobalObject.h>
+#include <CyberScriptCore/WeakGCMap.h>
 #include <wtf/Forward.h>
 
 namespace WebCore {

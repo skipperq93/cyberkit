@@ -36,7 +36,7 @@
 #include "AudioUtilities.h"
 #include "FloatConversion.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/JSGenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/JSGenericTypedArrayViewInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

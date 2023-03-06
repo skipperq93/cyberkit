@@ -28,7 +28,7 @@
 
 #include "IDBBindingUtilities.h"
 #include "IDBCursorWithValue.h"
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
 
 namespace WebCore {
 using namespace JSC;

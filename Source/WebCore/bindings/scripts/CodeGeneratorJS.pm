@@ -681,7 +681,7 @@ sub AddToIncludesForIDLType
     }
 
     if ($codeGenerator->IsSequenceOrFrozenArrayType($type)) {
-        AddToIncludes("<JavaScriptCore/JSArray.h>", $includesRef, $conditional);
+        AddToIncludes("<CyberScriptCore/JSArray.h>", $includesRef, $conditional);
         AddToIncludes("JSDOMConvertSequences.h", $includesRef, $conditional);
 
         AddToIncludesForIDLType(@{$type->subtypes}[0], $includesRef, $conditional);
@@ -2361,8 +2361,8 @@ sub GenerateEnumerationImplementationContent
     my ($enumeration, $className, $interface, $conditionalString) = @_;
 
     # FIXME: A little ugly to have this be a side effect instead of a return value.
-    AddToImplIncludes("<JavaScriptCore/JSString.h>");
-    AddToImplIncludes("<JavaScriptCore/JSCInlines.h>");
+    AddToImplIncludes("<CyberScriptCore/JSString.h>");
+    AddToImplIncludes("<CyberScriptCore/JSCInlines.h>");
     AddToImplIncludes("JSDOMConvertEnumeration.h");
     AddToImplIncludes("<wtf/SortedArrayMap.h>");
 
@@ -2615,7 +2615,7 @@ sub GenerateDictionaryImplementationContent
     }
 
     # FIXME: A little ugly to have this be a side effect instead of a return value.
-    AddToImplIncludes("<JavaScriptCore/JSCInlines.h>");
+    AddToImplIncludes("<CyberScriptCore/JSCInlines.h>");
     AddToImplIncludes("JSDOMConvertDictionary.h");
 
     # https://webidl.spec.whatwg.org/#es-dictionary
@@ -2725,7 +2725,7 @@ sub GenerateDictionaryImplementationContent
 
     if ($dictionary->extendedAttributes->{JSGenerateToJSObject}) {
         AddToImplIncludes("JSDOMGlobalObject.h");
-        AddToImplIncludes("<JavaScriptCore/ObjectConstructor.h>");
+        AddToImplIncludes("<CyberScriptCore/ObjectConstructor.h>");
 
         my $hasUnconditionalMember = 0;
 
@@ -2875,7 +2875,7 @@ sub GenerateHeader
     } else {
         $headerIncludes{"JSDOMWrapper.h"} = 1;
         if ($interface->extendedAttributes->{Exception}) {
-            $headerIncludes{"<JavaScriptCore/ErrorPrototype.h>"} = 1;
+            $headerIncludes{"<CyberScriptCore/ErrorPrototype.h>"} = 1;
         }
     }
 
@@ -3027,7 +3027,7 @@ sub GenerateHeader
 
     if (InstanceOverridesGetCallData($interface)) {
         push(@headerContent, "    static JSC::CallData getCallData(JSC::JSCell*);\n\n");
-        $headerIncludes{"<JavaScriptCore/CallData.h>"} = 1;
+        $headerIncludes{"<CyberScriptCore/CallData.h>"} = 1;
         $structureFlags{"JSC::OverridesGetCallData"} = 1;
     }
     
@@ -3302,14 +3302,14 @@ sub GenerateHeader
 
     # CheckJSCast Snippet function.
     if ($interface->extendedAttributes->{DOMJIT}) {
-        $headerIncludes{"<JavaScriptCore/Snippet.h>"} = 1;
+        $headerIncludes{"<CyberScriptCore/Snippet.h>"} = 1;
         push(@headerContent, "#if ENABLE(JIT)\n");
         push(@headerContent, "Ref<JSC::Snippet> checkSubClassSnippetFor${className}();\n");
         push(@headerContent, "#endif\n");
     }
 
     if ($hasDOMJITAttributes) {
-        $headerIncludes{"<JavaScriptCore/DOMJITGetterSetter.h>"} = 1;
+        $headerIncludes{"<CyberScriptCore/DOMJITGetterSetter.h>"} = 1;
         push(@headerContent,"// DOM JIT Attributes\n\n");
         foreach my $attribute (@{$interface->attributes}) {
             next unless $attribute->extendedAttributes->{DOMJIT};
@@ -3795,7 +3795,7 @@ sub GenerateOverloadDispatcher
 
             # FIXME: Avoid invoking GetMethod(object, Symbol.iterator) again in convert<IDLSequence<T>>(...).
             $overload = GetOverloadThatMatches($S, $d, \&$isSequenceOrFrozenArrayParameter);
-            &$generateOverloadCallIfNecessary($overload, "hasIteratorMethod(lexicalGlobalObject, distinguishingArg)", 1, "<JavaScriptCore/IteratorOperations.h>");
+            &$generateOverloadCallIfNecessary($overload, "hasIteratorMethod(lexicalGlobalObject, distinguishingArg)", 1, "<CyberScriptCore/IteratorOperations.h>");
 
             $overload = GetOverloadThatMatches($S, $d, \&$isDictionaryOrRecordOrObjectOrCallbackInterfaceParameter);
             &$generateOverloadCallIfNecessary($overload, "distinguishingArg.isObject()");
@@ -4196,7 +4196,7 @@ sub addUnscopableProperties
     }
     return if scalar(@unscopables) == 0;
 
-    AddToImplIncludes("<JavaScriptCore/ObjectConstructor.h>");
+    AddToImplIncludes("<CyberScriptCore/ObjectConstructor.h>");
     push(@implContent, "    JSObject& unscopables = *constructEmptyObject(globalObject()->vm(), globalObject()->nullPrototypeObjectStructure());\n");
     foreach my $unscopable (@unscopables) {
         push(@implContent, "    unscopables.putDirect(vm, Identifier::fromString(vm, \"$unscopable\"_s), jsBoolean(true));\n");
@@ -4279,13 +4279,13 @@ sub GenerateImplementation
     # - Add default header template
     push(@implContentHeader, GenerateImplementationContentHeader($interface));
 
-    AddToImplIncludes("<JavaScriptCore/JSCInlines.h>");
+    AddToImplIncludes("<CyberScriptCore/JSCInlines.h>");
     AddToImplIncludes("JSDOMBinding.h");
     AddToImplIncludes("JSDOMExceptionHandling.h");
     AddToImplIncludes("JSDOMWrapperCache.h");
     AddToImplIncludes("<wtf/GetPtr.h>");
     AddToImplIncludes("<wtf/PointerPreparations.h>");
-    AddToImplIncludes("<JavaScriptCore/PropertyNameArray.h>") if $indexedGetterOperation;
+    AddToImplIncludes("<CyberScriptCore/PropertyNameArray.h>") if $indexedGetterOperation;
     AddToImplIncludes("JSDOMMapLike.h") if $interface->mapLike;
     AddToImplIncludes("JSDOMSetLike.h") if $interface->setLike;
     AddJSBuiltinIncludesIfNeeded($interface);
@@ -4658,18 +4658,18 @@ sub GenerateImplementation
         }
 
         if (InterfaceNeedsIterator($interface)) {
-            AddToImplIncludes("<JavaScriptCore/BuiltinNames.h>");
+            AddToImplIncludes("<CyberScriptCore/BuiltinNames.h>");
             if (IsKeyValueIterableInterface($interface) or $interface->mapLike) {
                 push(@implContent, "    putDirect(vm, vm.propertyNames->iteratorSymbol, getDirect(vm, vm.propertyNames->builtinNames().entriesPublicName()), static_cast<unsigned>(JSC::PropertyAttribute::DontEnum));\n");
             } elsif ($interface->setLike) {
                 push(@implContent, "    putDirect(vm, vm.propertyNames->iteratorSymbol, getDirect(vm, vm.propertyNames->builtinNames().valuesPublicName()), static_cast<unsigned>(JSC::PropertyAttribute::DontEnum));\n");
             } else {
-                AddToImplIncludes("<JavaScriptCore/ArrayPrototype.h>");
+                AddToImplIncludes("<CyberScriptCore/ArrayPrototype.h>");
                 push(@implContent, "    putDirect(vm, vm.propertyNames->iteratorSymbol, globalObject()->arrayPrototype()->getDirect(vm, vm.propertyNames->builtinNames().valuesPrivateName()), static_cast<unsigned>(JSC::PropertyAttribute::DontEnum));\n");
             }
         }
         if (InterfaceNeedsAsyncIterator($interface)) {
-            AddToImplIncludes("<JavaScriptCore/BuiltinNames.h>");
+            AddToImplIncludes("<CyberScriptCore/BuiltinNames.h>");
             if (IsKeyValueIterableInterface($interface)) {
                 push(@implContent, "    putDirect(vm, vm.propertyNames->asyncIteratorSymbol, getDirect(vm, vm.propertyNames->builtinNames().entriesPublicName()), static_cast<unsigned>(JSC::PropertyAttribute::DontEnum));\n");
             } else {
@@ -4935,9 +4935,9 @@ sub GenerateImplementation
     AddToImplIncludes("ExtendedDOMClientIsoSubspaces.h");
     AddToImplIncludes("ExtendedDOMIsoSubspaces.h");
     AddToImplIncludes("WebCoreJSClientData.h");
-    AddToImplIncludes("<JavaScriptCore/JSDestructibleObjectHeapCellType.h>");
-    AddToImplIncludes("<JavaScriptCore/SlotVisitorMacros.h>");
-    AddToImplIncludes("<JavaScriptCore/SubspaceInlines.h>");
+    AddToImplIncludes("<CyberScriptCore/JSDestructibleObjectHeapCellType.h>");
+    AddToImplIncludes("<CyberScriptCore/SlotVisitorMacros.h>");
+    AddToImplIncludes("<CyberScriptCore/SubspaceInlines.h>");
     push(@implContent, "JSC::GCClient::IsoSubspace* ${className}::subspaceForImpl(JSC::VM& vm)\n");
     push(@implContent, "{\n");
 
@@ -5010,7 +5010,7 @@ sub GenerateImplementation
     }
 
     if (NeedsImplementationClass($interface) && !$interface->extendedAttributes->{CustomHeapSnapshot}) {
-        AddToImplIncludes("<JavaScriptCore/HeapAnalyzer.h>");
+        AddToImplIncludes("<CyberScriptCore/HeapAnalyzer.h>");
         AddToImplIncludes("ScriptExecutionContext.h");
         AddToImplIncludes("<wtf/URL.h>");
         push(@implContent, "void ${className}::analyzeHeap(JSCell* cell, HeapAnalyzer& analyzer)\n");
@@ -5809,7 +5809,7 @@ sub GenerateOperationDefinition
             push(@$outputArray, "#if ${conditionalString}\n");
         }
 
-        AddToImplIncludes("<JavaScriptCore/FrameTracers.h>", $conditional);
+        AddToImplIncludes("<CyberScriptCore/FrameTracers.h>", $conditional);
         my $nameOfFunctionWithoutTypeCheck = $codeGenerator->WK_lcfirst($functionName) . "WithoutTypeCheck";
         push(@$outputArray, "JSC_DEFINE_JIT_OPERATION(${nameOfFunctionWithoutTypeCheck}, JSC::EncodedJSValue, (JSC::JSGlobalObject* lexicalGlobalObject, $className* castedThis");
         foreach my $argument (@{$operation->arguments}) {
@@ -5896,7 +5896,7 @@ sub GenerateDefaultToJSONOperationDefinition
     push(@implContent, "    UNUSED_PARAM(throwScope);\n");
     push(@implContent, "    auto& impl = castedThis->wrapped();\n");
 
-    AddToImplIncludes("<JavaScriptCore/ObjectConstructor.h>");
+    AddToImplIncludes("<CyberScriptCore/ObjectConstructor.h>");
     push(@implContent, "    auto* result = constructEmptyObject(lexicalGlobalObject);\n");
 
      while (@inheritenceStack) {
@@ -6841,7 +6841,7 @@ sub GenerateGenericIterableDefinition
         AddToImplIncludes("JSDOMAsyncIterator.h");
     }
 
-    AddToImplIncludes("<JavaScriptCore/SlotVisitorMacros.h>");
+    AddToImplIncludes("<CyberScriptCore/SlotVisitorMacros.h>");
 
     return unless IsKeyValueIterableInterface($interface);
 
@@ -7941,11 +7941,11 @@ sub GenerateConstructorHelperMethods
         my $parentClassName = "JS" . $interface->parentType->name;
         push(@$outputArray, "    return ${parentClassName}::getConstructor(vm, &globalObject);\n");
     } elsif (ShouldUseOrdinaryObjectPrototype($interface)) {
-        AddToImplIncludes("<JavaScriptCore/ObjectPrototype.h>");
+        AddToImplIncludes("<CyberScriptCore/ObjectPrototype.h>");
         push(@$outputArray, "    UNUSED_PARAM(vm);\n");
         push(@$outputArray, "    return globalObject.objectPrototype();\n");
     } else {
-        AddToImplIncludes("<JavaScriptCore/FunctionPrototype.h>");
+        AddToImplIncludes("<CyberScriptCore/FunctionPrototype.h>");
         push(@$outputArray, "    UNUSED_PARAM(vm);\n");
         push(@$outputArray, "    return globalObject.functionPrototype();\n");
     }

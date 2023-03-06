@@ -32,7 +32,7 @@
 #include "MessageReceiver.h"
 #include "WebInspectorUtilities.h"
 #include "WebPageProxyIdentifier.h"
-#include <JavaScriptCore/InspectorFrontendChannel.h>
+#include <CyberScriptCore/InspectorFrontendChannel.h>
 #include <CyberCore/Color.h>
 #include <CyberCore/FloatRect.h>
 #include <CyberCore/InspectorClient.h>

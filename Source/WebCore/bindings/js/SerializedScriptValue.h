@@ -29,9 +29,9 @@
 #include "Blob.h"
 #include "DetachedRTCDataChannel.h"
 #include "ExceptionOr.h"
-#include <JavaScriptCore/ArrayBuffer.h>
-#include <JavaScriptCore/JSCJSValue.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/Forward.h>
 #include <wtf/Function.h>
 #include <wtf/Gigacage.h>

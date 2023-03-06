@@ -31,7 +31,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/Weak.h>
+#include <CyberScriptCore/Weak.h>
 #include <wtf/IsoMalloc.h>
 
 namespace JSC {

@@ -46,8 +46,8 @@
 #include "WorkerInitializationData.h"
 #include "WorkerScriptLoader.h"
 #include "WorkerThread.h"
-#include <JavaScriptCore/IdentifiersFactory.h>
-#include <JavaScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/IdentifiersFactory.h>
+#include <CyberScriptCore/ScriptCallStack.h>
 #include <wtf/HashSet.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MainThread.h>

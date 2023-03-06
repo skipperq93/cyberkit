@@ -27,7 +27,7 @@
 
 #import "AuxiliaryProcess.h"
 #import "WebKit2Initialize.h"
-#import <JavaScriptCore/ExecutableAllocator.h>
+#import <CyberScriptCore/ExecutableAllocator.h>
 #import <wtf/OSObjectPtr.h>
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 

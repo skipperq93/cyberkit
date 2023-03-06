@@ -45,10 +45,10 @@
 #include "PageDebugger.h"
 #include "ScriptExecutionContext.h"
 #include "UserGestureEmulationScope.h"
-#include <JavaScriptCore/InjectedScript.h>
-#include <JavaScriptCore/InjectedScriptManager.h>
-#include <JavaScriptCore/ScriptCallStack.h>
-#include <JavaScriptCore/ScriptCallStackFactory.h>
+#include <CyberScriptCore/InjectedScript.h>
+#include <CyberScriptCore/InjectedScriptManager.h>
+#include <CyberScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ScriptCallStackFactory.h>
 #include <wtf/NeverDestroyed.h>
 
 namespace WebCore {

@@ -34,8 +34,8 @@
 #include "WebInspectorUIExtensionControllerProxyMessages.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/JSCInlines.h>
 #include <CyberCore/ExceptionDetails.h>
 #include <CyberCore/InspectorFrontendAPIDispatcher.h>
 #include <CyberCore/SerializedScriptValue.h>

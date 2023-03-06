@@ -34,7 +34,7 @@
 #include "WebXRReferenceSpace.h"
 #include "WebXRSession.h"
 #include "WebXRViewerPose.h"
-#include <JavaScriptCore/GenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/GenericTypedArrayViewInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

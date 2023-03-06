@@ -29,7 +29,7 @@
 
 #include "CompiledSelector.h"
 #include "SelectorChecker.h"
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/VM.h>
 
 namespace WebCore {
 

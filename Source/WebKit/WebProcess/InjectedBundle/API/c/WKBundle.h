@@ -26,7 +26,7 @@
 #ifndef WKBundle_h
 #define WKBundle_h
 
-#include <JavaScriptCore/JavaScript.h>
+#include <CyberScriptCore/JavaScript.h>
 #include <CyberKit/WKBase.h>
 #include <CyberKit/WKDeprecated.h>
 

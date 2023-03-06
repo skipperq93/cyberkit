@@ -27,7 +27,7 @@
 
 #include "APIObject.h"
 #include "ImageOptions.h"
-#include <JavaScriptCore/JSBase.h>
+#include <CyberScriptCore/JSBase.h>
 #include <CyberCore/ActiveDOMObject.h>
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>

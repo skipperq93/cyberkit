@@ -28,7 +28,7 @@
 
 #include "FourCC.h"
 #include "SharedBuffer.h"
-#include <JavaScriptCore/DataView.h>
+#include <CyberScriptCore/DataView.h>
 #include <wtf/HexNumber.h>
 #include <wtf/MathExtras.h>
 #include <wtf/NeverDestroyed.h>

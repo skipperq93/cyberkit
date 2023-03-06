@@ -30,8 +30,8 @@
 #include "config.h"
 #include "ImageData.h"
 
-#include <JavaScriptCore/GenericTypedArrayViewInlines.h>
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/GenericTypedArrayViewInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
 #include <wtf/text/TextStream.h>
 
 namespace WebCore {

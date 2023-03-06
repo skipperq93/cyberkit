@@ -123,8 +123,8 @@
 #include "VideoTrackList.h"
 #include "VideoTrackPrivate.h"
 #include "WebCoreJSClientData.h"
-#include <JavaScriptCore/ScriptObject.h>
-#include <JavaScriptCore/Uint8Array.h>
+#include <CyberScriptCore/ScriptObject.h>
+#include <CyberScriptCore/Uint8Array.h>
 #include <limits>
 #include <pal/SessionID.h>
 #include <wtf/Algorithms.h>

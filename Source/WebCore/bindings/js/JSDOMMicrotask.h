@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <JavaScriptCore/JSCJSValue.h>
-#include <JavaScriptCore/Microtask.h>
+#include <CyberScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/Microtask.h>
 
 namespace WebCore {
 

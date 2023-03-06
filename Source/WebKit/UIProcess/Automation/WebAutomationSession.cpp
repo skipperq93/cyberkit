@@ -42,8 +42,8 @@
 #include "WebOpenPanelResultListenerProxy.h"
 #include "WebPageProxy.h"
 #include "WebProcessPool.h"
-#include <JavaScriptCore/InspectorBackendDispatcher.h>
-#include <JavaScriptCore/InspectorFrontendRouter.h>
+#include <CyberScriptCore/InspectorBackendDispatcher.h>
+#include <CyberScriptCore/InspectorFrontendRouter.h>
 #include <CyberCore/MIMETypeRegistry.h>
 #include <CyberCore/PointerEventTypeNames.h>
 #include <algorithm>

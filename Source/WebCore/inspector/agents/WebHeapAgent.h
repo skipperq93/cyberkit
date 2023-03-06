@@ -26,7 +26,7 @@
 #pragma once
 
 #include "InspectorWebAgentBase.h"
-#include <JavaScriptCore/InspectorHeapAgent.h>
+#include <CyberScriptCore/InspectorHeapAgent.h>
 #include <wtf/Forward.h>
 
 namespace WebCore {

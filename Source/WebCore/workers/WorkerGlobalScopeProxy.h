@@ -33,7 +33,7 @@
 
 #include "FetchRequestCredentials.h"
 #include "MessageWithMessagePorts.h"
-#include <JavaScriptCore/RuntimeFlags.h>
+#include <CyberScriptCore/RuntimeFlags.h>
 #include <wtf/Function.h>
 #include <wtf/MonotonicTime.h>
 

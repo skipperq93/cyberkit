@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/InspectorTarget.h>
+#include <CyberScriptCore/InspectorTarget.h>
 #include <CyberCore/PageIdentifier.h>
 #include <wtf/Noncopyable.h>
 

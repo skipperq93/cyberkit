@@ -30,7 +30,7 @@
 #import "WebFrame.h"
 #import "WebUIDelegate.h"
 #import "WebView.h"
-#import <JavaScriptCore/JSObjectRef.h>
+#import <CyberScriptCore/JSObjectRef.h>
 
 static void jsPDFDocInitialize(JSContextRef ctx, JSObjectRef object)
 {

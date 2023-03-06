@@ -48,7 +48,7 @@
 #import "WebResourceInternal.h"
 #import "WebResourceLoadDelegate.h"
 #import "WebViewInternal.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/ApplicationCacheStorage.h>
 #import <CyberCore/FrameLoader.h>
 #import <CyberCore/LegacyWebArchive.h>

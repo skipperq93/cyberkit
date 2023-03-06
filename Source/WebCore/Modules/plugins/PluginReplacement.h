@@ -26,8 +26,8 @@
 #pragma once
 
 #include "RenderPtr.h"
-#include <JavaScriptCore/JSCJSValue.h>
-#include <JavaScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/text/WTFString.h>
 
 namespace JSC {

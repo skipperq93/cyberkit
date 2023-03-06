@@ -61,7 +61,7 @@
 #include "UserGestureIndicator.h"
 #include "VTTCue.h"
 #include "VoidCallback.h"
-#include <JavaScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
 #include <variant>
 #include <wtf/Function.h>
 #include <wtf/JSONValues.h>

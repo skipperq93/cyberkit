@@ -64,21 +64,21 @@
 #include "WebCoreJSClientData.h"
 #include "WorkerGlobalScope.h"
 #include "WorkletGlobalScope.h"
-#include <JavaScriptCore/BuiltinNames.h>
-#include <JavaScriptCore/CodeBlock.h>
-#include <JavaScriptCore/GetterSetter.h>
-#include <JavaScriptCore/JSCustomGetterFunction.h>
-#include <JavaScriptCore/JSCustomSetterFunction.h>
-#include <JavaScriptCore/JSInternalPromise.h>
-#include <JavaScriptCore/StructureInlines.h>
-#include <JavaScriptCore/VMEntryScope.h>
-#include <JavaScriptCore/VMTrapsInlines.h>
-#include <JavaScriptCore/WasmStreamingCompiler.h>
-#include <JavaScriptCore/WeakGCMapInlines.h>
+#include <CyberScriptCore/BuiltinNames.h>
+#include <CyberScriptCore/CodeBlock.h>
+#include <CyberScriptCore/GetterSetter.h>
+#include <CyberScriptCore/JSCustomGetterFunction.h>
+#include <CyberScriptCore/JSCustomSetterFunction.h>
+#include <CyberScriptCore/JSInternalPromise.h>
+#include <CyberScriptCore/StructureInlines.h>
+#include <CyberScriptCore/VMEntryScope.h>
+#include <CyberScriptCore/VMTrapsInlines.h>
+#include <CyberScriptCore/WasmStreamingCompiler.h>
+#include <CyberScriptCore/WeakGCMapInlines.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
 #if ENABLE(REMOTE_INSPECTOR)
-#include <JavaScriptCore/JSRemoteInspector.h>
+#include <CyberScriptCore/JSRemoteInspector.h>
 #endif
 
 namespace WebCore {

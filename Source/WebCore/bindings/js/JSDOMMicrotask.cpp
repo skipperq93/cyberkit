@@ -29,11 +29,11 @@
 #include "JSDOMExceptionHandling.h"
 #include "JSExecState.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/Debugger.h>
-#include <JavaScriptCore/JSGlobalObject.h>
-#include <JavaScriptCore/JSObjectInlines.h>
-#include <JavaScriptCore/StrongInlines.h>
-#include <JavaScriptCore/VMTrapsInlines.h>
+#include <CyberScriptCore/Debugger.h>
+#include <CyberScriptCore/JSGlobalObject.h>
+#include <CyberScriptCore/JSObjectInlines.h>
+#include <CyberScriptCore/StrongInlines.h>
+#include <CyberScriptCore/VMTrapsInlines.h>
 
 namespace WebCore {
 using namespace JSC;

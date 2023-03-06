@@ -28,7 +28,7 @@
 #include "JSWrappable.h"
 #include "StringFunctions.h"
 #include "WhatToDump.h"
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <CyberKit/WKBundleScriptWorld.h>
 #include <CyberKit/WKRetainPtr.h>
 #include <string>

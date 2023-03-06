@@ -29,7 +29,7 @@
 
 #include "JSNodeCustom.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
 
 namespace WebCore {
 

@@ -32,7 +32,7 @@
 #include "Color.h"
 #include "Document.h"
 #include "SecurityOrigin.h"
-#include <JavaScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/ConsoleMessage.h>
 #include <wtf/SortedArrayMap.h>
 
 namespace WebCore {

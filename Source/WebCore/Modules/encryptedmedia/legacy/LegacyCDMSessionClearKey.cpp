@@ -30,11 +30,11 @@
 #include "Logging.h"
 #include <pal/text/TextEncoding.h>
 #include "WebKitMediaKeyError.h"
-#include <JavaScriptCore/BuiltinNames.h>
-#include <JavaScriptCore/JSGlobalObjectInlines.h>
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/JSONObject.h>
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/BuiltinNames.h>
+#include <CyberScriptCore/JSGlobalObjectInlines.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/JSONObject.h>
+#include <CyberScriptCore/VM.h>
 #include <wtf/UUID.h>
 #include <wtf/text/Base64.h>
 

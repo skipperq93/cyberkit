@@ -29,7 +29,7 @@
 #include "IntRect.h"
 #include "PixelBuffer.h"
 #include "RenderingMode.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 

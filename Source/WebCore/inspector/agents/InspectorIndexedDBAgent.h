@@ -32,7 +32,7 @@
 #pragma once
 
 #include "InspectorWebAgentBase.h"
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
 #include <wtf/text/WTFString.h>
 
 namespace Inspector {

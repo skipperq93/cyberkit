@@ -40,7 +40,7 @@
 #include "Node.h"
 #include "Page.h"
 #include "WebInjectedScriptManager.h"
-#include <JavaScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/ConsoleMessage.h>
 
 namespace WebCore {
 

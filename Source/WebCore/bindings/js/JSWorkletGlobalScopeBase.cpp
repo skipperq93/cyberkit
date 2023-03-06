@@ -31,8 +31,8 @@
 #include "JSDOMGuardedObject.h"
 #include "WorkerOrWorkletScriptController.h"
 #include "WorkletGlobalScope.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/Language.h>
 
 namespace WebCore {

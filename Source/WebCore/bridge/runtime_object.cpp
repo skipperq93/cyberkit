@@ -29,7 +29,7 @@
 #include "JSDOMBinding.h"
 #include "WebCoreJSClientData.h"
 #include "runtime_method.h"
-#include <JavaScriptCore/Error.h>
+#include <CyberScriptCore/Error.h>
 
 using namespace WebCore;
 

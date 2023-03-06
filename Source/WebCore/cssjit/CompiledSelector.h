@@ -28,8 +28,8 @@
 #if ENABLE(CSS_SELECTOR_JIT)
 
 #include "CSSSelector.h"
-#include <JavaScriptCore/JSCPtrTag.h>
-#include <JavaScriptCore/MacroAssemblerCodeRef.h>
+#include <CyberScriptCore/JSCPtrTag.h>
+#include <CyberScriptCore/MacroAssemblerCodeRef.h>
 
 #define CSS_SELECTOR_JIT_PROFILING 0
 

@@ -31,9 +31,9 @@
 #include "JSPluginElementFunctions.h"
 #include "WebCoreJSClientData.h"
 #include "runtime_object.h"
-#include <JavaScriptCore/Error.h>
-#include <JavaScriptCore/FunctionPrototype.h>
-#include <JavaScriptCore/JSGlobalObjectInlines.h>
+#include <CyberScriptCore/Error.h>
+#include <CyberScriptCore/FunctionPrototype.h>
+#include <CyberScriptCore/JSGlobalObjectInlines.h>
 
 using namespace WebCore;
 

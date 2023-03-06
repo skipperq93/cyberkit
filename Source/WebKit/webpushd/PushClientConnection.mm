@@ -33,7 +33,7 @@
 #import "WebPushDaemon.h"
 #import "WebPushDaemonConnectionConfiguration.h"
 #import "WebPushDaemonConstants.h"
-#import <JavaScriptCore/ConsoleTypes.h>
+#import <CyberScriptCore/ConsoleTypes.h>
 #import <wtf/HexNumber.h>
 #import <wtf/Vector.h>
 #import <wtf/cocoa/Entitlements.h>

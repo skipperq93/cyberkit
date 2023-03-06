@@ -32,7 +32,7 @@
 #import "WebKitLogging.h"
 #import "WebNSObjectExtras.h"
 #import "WebResourceInternal.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/ArchiveResource.h>
 #import <CyberCore/LegacyWebArchive.h>
 #import <CyberCore/ThreadCheck.h>

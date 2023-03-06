@@ -35,7 +35,7 @@
 #include "Blob.h"
 #include "BlobURL.h"
 #include "FileReaderLoader.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 
 namespace WebCore {
 

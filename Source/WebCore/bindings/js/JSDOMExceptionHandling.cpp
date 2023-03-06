@@ -29,11 +29,11 @@
 #include "JSDOMPromiseDeferred.h"
 #include "JSDOMWindow.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/ErrorHandlingScope.h>
-#include <JavaScriptCore/Exception.h>
-#include <JavaScriptCore/ExceptionHelpers.h>
-#include <JavaScriptCore/ScriptCallStack.h>
-#include <JavaScriptCore/ScriptCallStackFactory.h>
+#include <CyberScriptCore/ErrorHandlingScope.h>
+#include <CyberScriptCore/Exception.h>
+#include <CyberScriptCore/ExceptionHelpers.h>
+#include <CyberScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ScriptCallStackFactory.h>
 
 namespace WebCore {
 using namespace JSC;

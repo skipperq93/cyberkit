@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebCoreJITOperations.h"
 
-#include <JavaScriptCore/JITOperationList.h>
+#include <CyberScriptCore/JITOperationList.h>
 
 namespace WebCore {
 

@@ -29,7 +29,7 @@
 #import "WebScriptObject.h"
 #import "WebScriptObjectProtocol.h"
 #import "objc_instance.h"
-#import <JavaScriptCore/JSGlobalObjectInlines.h>
+#import <CyberScriptCore/JSGlobalObjectInlines.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 

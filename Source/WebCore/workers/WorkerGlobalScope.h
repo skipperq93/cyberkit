@@ -37,7 +37,7 @@
 #include "WorkerOrWorkletGlobalScope.h"
 #include "WorkerOrWorkletScriptController.h"
 #include "WorkerType.h"
-#include <JavaScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/ConsoleMessage.h>
 #include <memory>
 #include <wtf/FixedVector.h>
 #include <wtf/MemoryPressureHandler.h>

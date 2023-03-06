@@ -31,7 +31,7 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <JavaScriptCore/JSContextRef.h>
+#include <CyberScriptCore/JSContextRef.h>
 #include <CyberKit/WKContextPrivate.h>
 #include <CyberKit/WKPagePrivate.h>
 #include <CyberKit/WKPreferencesRefPrivate.h>

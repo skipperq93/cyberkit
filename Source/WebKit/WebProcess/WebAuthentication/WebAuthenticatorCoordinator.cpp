@@ -34,7 +34,7 @@
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebProcess.h"
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 #include <CyberCore/AuthenticatorAttachment.h>
 #include <CyberCore/AuthenticatorResponseData.h>
 #include <CyberCore/Frame.h>

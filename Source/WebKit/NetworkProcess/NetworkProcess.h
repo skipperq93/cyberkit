@@ -39,7 +39,7 @@
 #include "WebPageProxyIdentifier.h"
 #include "WebResourceLoadStatisticsStore.h"
 #include "WebsiteData.h"
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 #include <CyberCore/ClientOrigin.h>
 #include <CyberCore/CrossSiteNavigationDataTransfer.h>
 #include <CyberCore/DiagnosticLoggingClient.h>

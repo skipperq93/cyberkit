@@ -29,8 +29,8 @@
 
 #include "CSSPaintCallback.h"
 #include "WorkletGlobalScope.h"
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/Lock.h>
 
 namespace JSC {

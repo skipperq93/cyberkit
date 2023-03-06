@@ -24,9 +24,9 @@
 #include "EventListener.h"
 #include "EventNames.h"
 #include "HTMLElement.h"
-#include <JavaScriptCore/StrongInlines.h>
-#include <JavaScriptCore/Weak.h>
-#include <JavaScriptCore/WeakInlines.h>
+#include <CyberScriptCore/StrongInlines.h>
+#include <CyberScriptCore/Weak.h>
+#include <CyberScriptCore/WeakInlines.h>
 #include <wtf/Ref.h>
 #include <wtf/TypeCasts.h>
 #include <wtf/text/TextPosition.h>

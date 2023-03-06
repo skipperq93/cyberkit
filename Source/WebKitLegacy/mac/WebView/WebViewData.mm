@@ -35,7 +35,7 @@
 #import "WebViewGroup.h"
 #import "WebViewInternal.h"
 #import "WebViewRenderingUpdateScheduler.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/AlternativeTextUIController.h>
 #import <CyberCore/HistoryItem.h>
 #import <CyberCore/RunLoopObserver.h>

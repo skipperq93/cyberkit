@@ -42,8 +42,8 @@
 #include "WebCoreOpaqueRoot.h"
 #include "WorkerClient.h"
 #include "WorkerGlobalScope.h"
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/JSLock.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSLock.h>
 #include <atomic>
 #include <wtf/Vector.h>
 

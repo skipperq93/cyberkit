@@ -35,8 +35,8 @@
 #include "CachedScriptFetcher.h"
 #include "CachedScriptSourceProvider.h"
 #include "ScriptBufferSourceProvider.h"
-#include <JavaScriptCore/SourceCode.h>
-#include <JavaScriptCore/SourceProvider.h>
+#include <CyberScriptCore/SourceCode.h>
+#include <CyberScriptCore/SourceProvider.h>
 #include <wtf/RefPtr.h>
 #include <wtf/URL.h>
 #include <wtf/text/TextPosition.h>

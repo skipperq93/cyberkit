@@ -27,7 +27,7 @@
 
 #if ENABLE(APPLICATION_MANIFEST)
 
-#include <JavaScriptCore/InitializeThreading.h>
+#include <CyberScriptCore/InitializeThreading.h>
 #include <CyberCore/ApplicationManifestParser.h>
 #include <wtf/RunLoop.h>
 

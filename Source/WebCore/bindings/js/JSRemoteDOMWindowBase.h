@@ -27,7 +27,7 @@
 
 #include "JSDOMGlobalObjectInlines.h"
 #include "RemoteDOMWindow.h"
-#include <JavaScriptCore/StructureInlines.h>
+#include <CyberScriptCore/StructureInlines.h>
 
 namespace WebCore {
 

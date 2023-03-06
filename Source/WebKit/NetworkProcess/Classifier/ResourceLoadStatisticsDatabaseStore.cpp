@@ -35,7 +35,7 @@
 #include "StorageAccessStatus.h"
 #include "WebProcessProxy.h"
 #include "WebsiteDataStore.h"
-#include <JavaScriptCore/ConsoleTypes.h>
+#include <CyberScriptCore/ConsoleTypes.h>
 #include <CyberCore/DocumentStorageAccess.h>
 #include <CyberCore/KeyedCoding.h>
 #include <CyberCore/NetworkStorageSession.h>

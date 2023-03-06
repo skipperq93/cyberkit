@@ -51,7 +51,7 @@
 #include "StorageArea.h"
 #include "WebAnimation.h"
 #include "WorkerInspectorProxy.h"
-#include <JavaScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/ConsoleMessage.h>
 #include <initializer_list>
 #include <wtf/CompletionHandler.h>
 #include <wtf/Function.h>

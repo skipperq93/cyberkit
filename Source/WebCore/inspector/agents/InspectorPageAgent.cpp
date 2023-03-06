@@ -67,9 +67,9 @@
 #include "Theme.h"
 #include <pal/text/TextEncoding.h>
 #include "UserGestureIndicator.h"
-#include <JavaScriptCore/ContentSearchUtilities.h>
-#include <JavaScriptCore/IdentifiersFactory.h>
-#include <JavaScriptCore/RegularExpression.h>
+#include <CyberScriptCore/ContentSearchUtilities.h>
+#include <CyberScriptCore/IdentifiersFactory.h>
+#include <CyberScriptCore/RegularExpression.h>
 #include <wtf/ListHashSet.h>
 #include <wtf/Stopwatch.h>
 #include <wtf/text/Base64.h>

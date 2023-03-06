@@ -45,7 +45,7 @@
 #include "TextDirectionSubmenuInclusionBehavior.h"
 #include "Timer.h"
 #include "UserInterfaceDirectionPolicy.h"
-#include <JavaScriptCore/RuntimeFlags.h>
+#include <CyberScriptCore/RuntimeFlags.h>
 #include <unicode/uscript.h>
 #include <wtf/RefCounted.h>
 #include <wtf/Seconds.h>

@@ -50,11 +50,11 @@
 #include "WebProcess.h"
 #include "WebRemoteFrameClient.h"
 #include "WebsitePoliciesData.h"
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/JSContextRef.h>
-#include <JavaScriptCore/JSGlobalObjectInlines.h>
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/JSValueRef.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/JSContextRef.h>
+#include <CyberScriptCore/JSGlobalObjectInlines.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/JSValueRef.h>
 #include <CyberCore/ArchiveResource.h>
 #include <CyberCore/CertificateInfo.h>
 #include <CyberCore/Chrome.h>

@@ -32,7 +32,7 @@
 #if ENABLE(WEB_AUTHN)
 
 #include "FidoTestData.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <CyberCore/AuthenticatorAttachment.h>
 #include <CyberCore/AuthenticatorTransport.h>
 #include <CyberCore/BufferSource.h>

@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <JavaScriptCore/JSBase.h>
-#include <JavaScriptCore/WebKitAvailability.h>
+#include <CyberScriptCore/JSBase.h>
+#include <CyberScriptCore/WebKitAvailability.h>
 
 namespace JSC {
 class CallFrame;

@@ -28,7 +28,7 @@
 #if ENABLE(CSS_SELECTOR_JIT)
 
 #include "RegisterAllocator.h"
-#include <JavaScriptCore/MacroAssembler.h>
+#include <CyberScriptCore/MacroAssembler.h>
 #include <limits>
 
 namespace WebCore {

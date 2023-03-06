@@ -50,7 +50,7 @@
 #import "VideoTrackPrivateMediaSourceAVFObjC.h"
 #import "WebCoreDecompressionSession.h"
 #import <AVFoundation/AVAssetTrack.h>
-#import <JavaScriptCore/TypedArrayInlines.h>
+#import <CyberScriptCore/TypedArrayInlines.h>
 #import <QuartzCore/CALayer.h>
 #import <objc/runtime.h>
 #import <pal/avfoundation/MediaTimeAVFoundation.h>

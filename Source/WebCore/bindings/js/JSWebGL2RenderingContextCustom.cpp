@@ -29,7 +29,7 @@
 
 #include "JSWebGL2RenderingContext.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/HeapInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
 
 namespace WebCore {
 using namespace JSC;

@@ -74,14 +74,14 @@
 #include "SharedBuffer.h"
 #include "WebInjectedScriptHost.h"
 #include "WebInjectedScriptManager.h"
-#include <JavaScriptCore/IdentifiersFactory.h>
-#include <JavaScriptCore/InspectorAgent.h>
-#include <JavaScriptCore/InspectorBackendDispatcher.h>
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendRouter.h>
-#include <JavaScriptCore/InspectorScriptProfilerAgent.h>
-#include <JavaScriptCore/JSLock.h>
+#include <CyberScriptCore/IdentifiersFactory.h>
+#include <CyberScriptCore/InspectorAgent.h>
+#include <CyberScriptCore/InspectorBackendDispatcher.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendRouter.h>
+#include <CyberScriptCore/InspectorScriptProfilerAgent.h>
+#include <CyberScriptCore/JSLock.h>
 #include <wtf/Stopwatch.h>
 
 #if ENABLE(REMOTE_INSPECTOR)

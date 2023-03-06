@@ -27,7 +27,7 @@
 
 #if ENABLE(REMOTE_INSPECTOR)
 
-#include <JavaScriptCore/RemoteInspectionTarget.h>
+#include <CyberScriptCore/RemoteInspectionTarget.h>
 #include <wtf/Noncopyable.h>
 
 namespace WebKit {

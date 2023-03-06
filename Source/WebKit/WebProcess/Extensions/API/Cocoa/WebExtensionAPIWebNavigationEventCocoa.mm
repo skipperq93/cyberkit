@@ -34,9 +34,9 @@
 #import "WebPageProxy.h"
 #import "WebProcess.h"
 #import "_WKWebExtensionWebNavigationURLFilter.h"
-#import <JavaScriptCore/APICast.h>
-#import <JavaScriptCore/ScriptCallStack.h>
-#import <JavaScriptCore/ScriptCallStackFactory.h>
+#import <CyberScriptCore/APICast.h>
+#import <CyberScriptCore/ScriptCallStack.h>
+#import <CyberScriptCore/ScriptCallStackFactory.h>
 
 #if ENABLE(WK_WEB_EXTENSIONS)
 

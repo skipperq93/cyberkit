@@ -29,8 +29,8 @@
 #include "JSDOMWindowCustom.h"
 #include "RuntimeApplicationChecks.h"
 #include "WebCoreJSClientData.h"
-#include <JavaScriptCore/JSFunction.h>
-#include <JavaScriptCore/Lookup.h>
+#include <CyberScriptCore/JSFunction.h>
+#include <CyberScriptCore/Lookup.h>
 
 namespace WebCore {
 using namespace JSC;

@@ -28,7 +28,7 @@
 #if ENABLE(VIDEO)
 
 #include "SerializedPlatformDataCueValue.h"
-#include <JavaScriptCore/JSCInlines.h>
+#include <CyberScriptCore/JSCInlines.h>
 #include <wtf/RefCounted.h>
 
 namespace WebCore {

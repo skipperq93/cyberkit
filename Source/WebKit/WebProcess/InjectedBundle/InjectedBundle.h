@@ -29,7 +29,7 @@
 #include "APIObject.h"
 #include "DataReference.h"
 #include "SandboxExtension.h"
-#include <JavaScriptCore/JavaScript.h>
+#include <CyberScriptCore/JavaScript.h>
 #include <CyberCore/UserContentTypes.h>
 #include <CyberCore/UserScriptTypes.h>
 #include <wtf/RefPtr.h>

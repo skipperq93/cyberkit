@@ -38,7 +38,7 @@
 #include "WorkerOrWorkletScriptController.h"
 #include "WorkerRunLoop.h"
 #include "WorkerThread.h"
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/VM.h>
 
 namespace WebCore {
 

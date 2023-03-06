@@ -33,7 +33,7 @@
 #include "ImageDataSettings.h"
 #include "IntSize.h"
 #include "PredefinedColorSpace.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <wtf/Forward.h>
 
 namespace WebCore {

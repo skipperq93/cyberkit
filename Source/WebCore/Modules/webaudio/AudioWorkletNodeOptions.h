@@ -31,8 +31,8 @@
 #if ENABLE(WEB_AUDIO)
 
 #include "AudioNodeOptions.h"
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/Strong.h>
 #include <wtf/Forward.h>
 #include <wtf/KeyValuePair.h>
 

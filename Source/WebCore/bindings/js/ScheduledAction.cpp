@@ -41,7 +41,7 @@
 #include "ScriptSourceCode.h"
 #include "WorkerGlobalScope.h"
 #include "WorkerThread.h"
-#include <JavaScriptCore/JSLock.h>
+#include <CyberScriptCore/JSLock.h>
 
 namespace WebCore {
 using namespace JSC;

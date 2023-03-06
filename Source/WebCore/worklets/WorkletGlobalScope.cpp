@@ -37,9 +37,9 @@
 #include "WorkerOrWorkletThread.h"
 #include "WorkerScriptLoader.h"
 #include "WorkletParameters.h"
-#include <JavaScriptCore/Exception.h>
-#include <JavaScriptCore/JSLock.h>
-#include <JavaScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/Exception.h>
+#include <CyberScriptCore/JSLock.h>
+#include <CyberScriptCore/ScriptCallStack.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

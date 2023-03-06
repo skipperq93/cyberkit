@@ -26,7 +26,7 @@
 #import <CyberKit/WKFoundation.h>
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 
 WK_CLASS_AVAILABLE(macos(13.0), ios(16.0))
 @interface WKWebProcessPlugInCSSStyleDeclarationHandle : NSObject

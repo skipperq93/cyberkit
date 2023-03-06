@@ -30,7 +30,7 @@
 #include "Event.h"
 #include "EventTarget.h"
 #include "RTCDtlsTransportBackend.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 
 namespace WebCore {
 

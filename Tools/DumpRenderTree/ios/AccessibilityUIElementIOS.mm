@@ -31,7 +31,7 @@
 #import "DumpRenderTree.h"
 #import "JSBasics.h"
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSStringRefCF.h>
 #import <CyberCore/TextGranularity.h>
 #import <CyberKit/WebFrame.h>
 #import <CyberKit/WebHTMLView.h>

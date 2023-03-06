@@ -26,8 +26,8 @@
 #include "config.h"
 #include "JSDOMIterator.h"
 
-#include <JavaScriptCore/ArrayPrototype.h>
-#include <JavaScriptCore/BuiltinNames.h>
+#include <CyberScriptCore/ArrayPrototype.h>
+#include <CyberScriptCore/BuiltinNames.h>
 
 namespace WebCore {
 

@@ -28,8 +28,8 @@
 #include "WKStringPrivate.h"
 
 #include "WKAPICast.h"
-#include <JavaScriptCore/InitializeThreading.h>
-#include <JavaScriptCore/OpaqueJSString.h>
+#include <CyberScriptCore/InitializeThreading.h>
+#include <CyberScriptCore/OpaqueJSString.h>
 #include <CyberCore/WebCoreJITOperations.h>
 #include <wtf/unicode/UTF8Conversion.h>
 

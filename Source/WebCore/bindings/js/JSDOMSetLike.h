@@ -28,8 +28,8 @@
 #include "JSDOMBinding.h"
 #include "JSDOMConvert.h"
 #include "JSDOMGlobalObject.h"
-#include <JavaScriptCore/BuiltinNames.h>
-#include <JavaScriptCore/CommonIdentifiers.h>
+#include <CyberScriptCore/BuiltinNames.h>
+#include <CyberScriptCore/CommonIdentifiers.h>
 
 namespace WebCore {
 

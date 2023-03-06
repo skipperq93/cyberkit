@@ -33,18 +33,18 @@
 #include "JSDOMPromise.h"
 #include "PromiseRejectionEvent.h"
 #include "ScriptExecutionContext.h"
-#include <JavaScriptCore/Exception.h>
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/JSCJSValueInlines.h>
-#include <JavaScriptCore/JSGlobalObject.h>
-#include <JavaScriptCore/JSPromise.h>
-#include <JavaScriptCore/ScriptCallStack.h>
-#include <JavaScriptCore/ScriptCallStackFactory.h>
-#include <JavaScriptCore/Strong.h>
-#include <JavaScriptCore/StrongInlines.h>
-#include <JavaScriptCore/Weak.h>
-#include <JavaScriptCore/WeakGCMapInlines.h>
-#include <JavaScriptCore/WeakInlines.h>
+#include <CyberScriptCore/Exception.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSGlobalObject.h>
+#include <CyberScriptCore/JSPromise.h>
+#include <CyberScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ScriptCallStackFactory.h>
+#include <CyberScriptCore/Strong.h>
+#include <CyberScriptCore/StrongInlines.h>
+#include <CyberScriptCore/Weak.h>
+#include <CyberScriptCore/WeakGCMapInlines.h>
+#include <CyberScriptCore/WeakInlines.h>
 
 namespace WebCore {
 using namespace JSC;

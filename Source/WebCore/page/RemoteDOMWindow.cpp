@@ -27,8 +27,8 @@
 #include "RemoteDOMWindow.h"
 
 #include "RemoteFrame.h"
-#include <JavaScriptCore/JSCJSValue.h>
-#include <JavaScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

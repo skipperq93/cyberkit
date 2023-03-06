@@ -30,13 +30,13 @@
 #include "Decoder.h"
 #include "HandleMessage.h"
 #include "SharedMemory.h"
-#include <JavaScriptCore/JSArray.h>
-#include <JavaScriptCore/JSArrayBuffer.h>
-#include <JavaScriptCore/JSCJSValueInlines.h>
-#include <JavaScriptCore/JSGlobalObject.h>
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/JSObjectInlines.h>
-#include <JavaScriptCore/ObjectConstructor.h>
+#include <CyberScriptCore/JSArray.h>
+#include <CyberScriptCore/JSArrayBuffer.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/JSGlobalObject.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/JSObjectInlines.h>
+#include <CyberScriptCore/ObjectConstructor.h>
 #include <wtf/ObjectIdentifier.h>
 #include <wtf/text/WTFString.h>
 

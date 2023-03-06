@@ -52,7 +52,7 @@
 #include "StorageNamespaceProvider.h"
 #include "WindowFeatures.h"
 #include "WorkerClient.h"
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/VM.h>
 #include <wtf/SetForScope.h>
 #include <wtf/Vector.h>
 

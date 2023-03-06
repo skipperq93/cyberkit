@@ -29,7 +29,7 @@
 #import "ICAppBundle.h"
 #import "MockAppBundleForTesting.h"
 #import "WebPushDaemon.h"
-#import <JavaScriptCore/ConsoleTypes.h>
+#import <CyberScriptCore/ConsoleTypes.h>
 
 namespace WebPushD {
 

@@ -33,8 +33,8 @@
 #import "WebKitVersionChecks.h"
 #import "WebPDFDocumentExtras.h"
 #import "WebPDFViewPlaceholder.h"
-#import <JavaScriptCore/JSContextRef.h>
-#import <JavaScriptCore/OpaqueJSString.h>
+#import <CyberScriptCore/JSContextRef.h>
+#import <CyberScriptCore/OpaqueJSString.h>
 #import <CyberCore/Color.h>
 #import <CyberCore/Frame.h>
 #import <CyberCore/FrameLoader.h>

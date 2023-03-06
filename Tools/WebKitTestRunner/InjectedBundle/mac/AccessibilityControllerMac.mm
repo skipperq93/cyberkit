@@ -36,7 +36,7 @@
 #import "InjectedBundle.h"
 #import "InjectedBundlePage.h"
 #import "JSBasics.h"
-#import <JavaScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSStringRefCF.h>
 #import <CyberKit/WKBundle.h>
 #import <CyberKit/WKBundlePage.h>
 #import <CyberKit/WKBundlePagePrivate.h>

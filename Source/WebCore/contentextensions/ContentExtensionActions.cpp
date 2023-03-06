@@ -30,8 +30,8 @@
 
 #include "ContentExtensionError.h"
 #include "ResourceRequest.h"
-#include <JavaScriptCore/JSRetainPtr.h>
-#include <JavaScriptCore/JavaScript.h>
+#include <CyberScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JavaScript.h>
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/URL.h>
 #include <wtf/URLParser.h>

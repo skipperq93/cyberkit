@@ -31,8 +31,8 @@
 
 #import "PlatformUtilities.h"
 #import "TestBrowsingContextLoadDelegate.h"
-#import <JavaScriptCore/JSRetainPtr.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/JSRetainPtr.h>
+#import <CyberScriptCore/JavaScriptCore.h>
 #import <CyberKit/WKSerializedScriptValue.h>
 #import <CyberKit/WKUserContentControllerPrivate.h>
 #import <CyberKit/WKWebViewPrivate.h>

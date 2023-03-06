@@ -32,8 +32,8 @@
 #include "ExceptionOr.h"
 #include "Formats.h"
 #include "SharedBuffer.h"
-#include <JavaScriptCore/ArrayBuffer.h>
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/Forward.h>
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 #include <zlib.h>

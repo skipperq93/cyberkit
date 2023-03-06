@@ -27,8 +27,8 @@
 
 #if ENABLE(WEBGL)
 
-#include <JavaScriptCore/Forward.h>
-#include <JavaScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/Forward.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
 
 namespace JSC {
 class CallFrame;

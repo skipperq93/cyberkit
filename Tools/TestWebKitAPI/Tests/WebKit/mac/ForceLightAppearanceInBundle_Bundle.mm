@@ -30,7 +30,7 @@
 #import "InjectedBundleTest.h"
 
 #import "PlatformUtilities.h"
-#import <JavaScriptCore/JSRetainPtr.h>
+#import <CyberScriptCore/JSRetainPtr.h>
 #import <CyberKit/WKBundleFrame.h>
 #import <CyberKit/WKBundlePage.h>
 #import <CyberKit/WKBundlePagePrivate.h>

@@ -28,7 +28,7 @@
 
 #import <CyberKitLegacy/WebView.h>
 #import <CyberKitLegacy/WebFramePrivate.h>
-#import <JavaScriptCore/JSBase.h>
+#import <CyberScriptCore/JSBase.h>
 
 #if TARGET_OS_IPHONE
 #import <CoreGraphics/CGColor.h>

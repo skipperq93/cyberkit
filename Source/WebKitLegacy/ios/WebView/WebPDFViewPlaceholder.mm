@@ -29,8 +29,8 @@
 
 #import "WebFrameInternal.h"
 #import "WebPDFViewIOS.h"
-#import <JavaScriptCore/JSContextRef.h>
-#import <JavaScriptCore/OpaqueJSString.h>
+#import <CyberScriptCore/JSContextRef.h>
+#import <CyberScriptCore/OpaqueJSString.h>
 #import <CyberCore/DataTransfer.h>
 #import <CyberCore/EventHandler.h>
 #import <CyberCore/EventNames.h>

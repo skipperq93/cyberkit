@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ByteArrayPixelBuffer.h"
 
-#include <JavaScriptCore/TypedArrayInlines.h>
+#include <CyberScriptCore/TypedArrayInlines.h>
 
 namespace WebCore {
 

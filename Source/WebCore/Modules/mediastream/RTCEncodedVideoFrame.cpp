@@ -28,7 +28,7 @@
 #if ENABLE(WEB_RTC)
 #include "RTCEncodedVideoFrame.h"
 
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 
 namespace WebCore {
 

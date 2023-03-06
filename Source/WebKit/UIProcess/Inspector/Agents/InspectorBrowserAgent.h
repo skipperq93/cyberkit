@@ -26,8 +26,8 @@
 #pragma once
 
 #include "WebPageInspectorAgentBase.h"
-#include <JavaScriptCore/InspectorBackendDispatchers.h>
-#include <JavaScriptCore/InspectorFrontendDispatchers.h>
+#include <CyberScriptCore/InspectorBackendDispatchers.h>
+#include <CyberScriptCore/InspectorFrontendDispatchers.h>
 #include <wtf/Forward.h>
 
 namespace WebKit {

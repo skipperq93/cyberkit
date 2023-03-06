@@ -28,8 +28,8 @@
 
 #pragma once
 
-#include <JavaScriptCore/ConsoleClient.h>
-#include <JavaScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/ConsoleClient.h>
+#include <CyberScriptCore/ScriptCallStack.h>
 #include <wtf/Forward.h>
 
 namespace Inspector {

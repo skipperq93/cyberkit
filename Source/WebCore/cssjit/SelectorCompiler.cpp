@@ -51,10 +51,10 @@
 #include "StackAllocator.h"
 #include "StyleRelations.h"
 #include "StyledElement.h"
-#include <JavaScriptCore/GPRInfo.h>
-#include <JavaScriptCore/LinkBuffer.h>
-#include <JavaScriptCore/MacroAssembler.h>
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/GPRInfo.h>
+#include <CyberScriptCore/LinkBuffer.h>
+#include <CyberScriptCore/MacroAssembler.h>
+#include <CyberScriptCore/VM.h>
 #include <limits>
 #include <wtf/Deque.h>
 #include <wtf/HashSet.h>

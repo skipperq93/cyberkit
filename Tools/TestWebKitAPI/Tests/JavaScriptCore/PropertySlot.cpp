@@ -24,10 +24,10 @@
  */
 
 #include "config.h"
-#include <JavaScriptCore/InitializeThreading.h>
-#include <JavaScriptCore/JSCJSValueInlines.h>
-#include <JavaScriptCore/PropertySlot.h>
-#include <JavaScriptCore/VM.h>
+#include <CyberScriptCore/InitializeThreading.h>
+#include <CyberScriptCore/JSCJSValueInlines.h>
+#include <CyberScriptCore/PropertySlot.h>
+#include <CyberScriptCore/VM.h>
 #include <wtf/Platform.h>
 
 namespace TestWebKitAPI {

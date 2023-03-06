@@ -34,7 +34,7 @@
 #include "PushSubscriptionOptions.h"
 #include "ScriptExecutionContext.h"
 #include "ServiceWorkerContainer.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/Base64.h>
 

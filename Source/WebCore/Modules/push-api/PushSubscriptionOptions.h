@@ -30,7 +30,7 @@
 #include "EpochTimeStamp.h"
 #include "ExceptionOr.h"
 
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <optional>
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>

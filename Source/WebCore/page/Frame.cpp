@@ -104,8 +104,8 @@
 #include "VisibleUnits.h"
 #include "markup.h"
 #include "runtime_root.h"
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/RegularExpression.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/RegularExpression.h>
 #include <wtf/HexNumber.h>
 #include <wtf/RefCountedLeakCounter.h>
 #include <wtf/StdLibExtras.h>

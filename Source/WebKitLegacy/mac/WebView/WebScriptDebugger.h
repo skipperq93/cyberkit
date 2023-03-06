@@ -29,8 +29,8 @@
 #ifndef WebScriptDebugger_h
 #define WebScriptDebugger_h
 
-#include <JavaScriptCore/Debugger.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/Debugger.h>
+#include <CyberScriptCore/Strong.h>
 
 #include <wtf/Forward.h>
 #include <wtf/RetainPtr.h>

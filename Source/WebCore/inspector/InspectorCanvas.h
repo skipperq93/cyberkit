@@ -26,11 +26,11 @@
 #pragma once
 
 #include "InspectorCanvasCallTracer.h"
-#include <JavaScriptCore/AsyncStackTrace.h>
-#include <JavaScriptCore/InspectorProtocolObjects.h>
-#include <JavaScriptCore/JSCInlines.h>
-#include <JavaScriptCore/ScriptCallFrame.h>
-#include <JavaScriptCore/ScriptCallStack.h>
+#include <CyberScriptCore/AsyncStackTrace.h>
+#include <CyberScriptCore/InspectorProtocolObjects.h>
+#include <CyberScriptCore/JSCInlines.h>
+#include <CyberScriptCore/ScriptCallFrame.h>
+#include <CyberScriptCore/ScriptCallStack.h>
 #include <variant>
 #include <wtf/HashSet.h>
 

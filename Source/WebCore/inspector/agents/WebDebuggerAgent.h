@@ -26,7 +26,7 @@
 #pragma once
 
 #include "InspectorWebAgentBase.h"
-#include <JavaScriptCore/InspectorDebuggerAgent.h>
+#include <CyberScriptCore/InspectorDebuggerAgent.h>
 
 namespace WebCore {
 

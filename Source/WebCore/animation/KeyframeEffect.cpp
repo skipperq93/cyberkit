@@ -66,7 +66,7 @@
 #include "TimingFunction.h"
 #include "TranslateTransformOperation.h"
 #include "WillChangeData.h"
-#include <JavaScriptCore/Exception.h>
+#include <CyberScriptCore/Exception.h>
 #include <wtf/UUID.h>
 #include <wtf/text/TextStream.h>
 

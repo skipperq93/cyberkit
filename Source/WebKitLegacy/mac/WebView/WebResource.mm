@@ -34,7 +34,7 @@
 #import "WebNSDictionaryExtras.h"
 #import "WebNSObjectExtras.h"
 #import "WebNSURLExtras.h"
-#import <JavaScriptCore/InitializeThreading.h>
+#import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/ArchiveResource.h>
 #import <CyberCore/LegacyWebArchive.h>
 #import <CyberCore/RuntimeApplicationChecks.h>

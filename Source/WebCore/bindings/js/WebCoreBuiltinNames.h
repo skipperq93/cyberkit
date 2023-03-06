@@ -27,7 +27,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/BuiltinUtils.h>
+#include <CyberScriptCore/BuiltinUtils.h>
 
 #if USE(APPLE_INTERNAL_SDK)
 #include <WebKitAdditions/WebCoreBuiltinNamesAdditions.h>

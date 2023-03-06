@@ -30,8 +30,8 @@
 #import "objc_instance.h"
 #import "runtime_array.h"
 #import "runtime_object.h"
-#import <JavaScriptCore/JSGlobalObjectInlines.h>
-#import <JavaScriptCore/JSLock.h>
+#import <CyberScriptCore/JSGlobalObjectInlines.h>
+#import <CyberScriptCore/JSLock.h>
 #import <wtf/Assertions.h>
 
 #if !defined(_C_LNG_LNG)

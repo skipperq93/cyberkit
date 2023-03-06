@@ -26,7 +26,7 @@
 #ifndef WKUserContentURLPattern_h
 #define WKUserContentURLPattern_h
 
-#include <JavaScriptCore/JavaScript.h>
+#include <CyberScriptCore/JavaScript.h>
 #include <CyberKit/WKBase.h>
 
 #ifdef __cplusplus

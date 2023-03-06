@@ -30,7 +30,7 @@
 #include "PlatformUtilities.h"
 #include "PlatformWebView.h"
 #include "Test.h"
-#include <JavaScriptCore/JavaScriptCore.h>
+#include <CyberScriptCore/JavaScriptCore.h>
 #include <CyberKit/WKSerializedScriptValue.h>
 #include <CyberKit/WKPagePrivate.h>
 #include <CyberKit/WKPreferencesRef.h>

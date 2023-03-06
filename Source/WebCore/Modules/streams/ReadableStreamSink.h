@@ -27,7 +27,7 @@
 #pragma once
 
 #include "ExceptionOr.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <wtf/Function.h>
 #include <wtf/RefCounted.h>
 #include <wtf/Span.h>

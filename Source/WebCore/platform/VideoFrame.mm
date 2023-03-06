@@ -30,7 +30,7 @@
 
 #import "PixelBufferConformerCV.h"
 #include "VideoFrameCV.h"
-#import <JavaScriptCore/TypedArrayInlines.h>
+#import <CyberScriptCore/TypedArrayInlines.h>
 
 #import <pal/cf/CoreMediaSoftLink.h>
 #import "CoreVideoSoftLink.h"

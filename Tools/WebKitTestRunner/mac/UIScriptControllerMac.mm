@@ -37,11 +37,11 @@
 #import "TestController.h"
 #import "TestRunnerWKWebView.h"
 #import "UIScriptContext.h"
-#import <JavaScriptCore/JSContext.h>
-#import <JavaScriptCore/JSStringRefCF.h>
-#import <JavaScriptCore/JSValue.h>
-#import <JavaScriptCore/JavaScriptCore.h>
-#import <JavaScriptCore/OpaqueJSString.h>
+#import <CyberScriptCore/JSContext.h>
+#import <CyberScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSValue.h>
+#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/OpaqueJSString.h>
 #import <CyberKit/WKWebViewPrivate.h>
 #import <CyberKit/WKWebViewPrivateForTesting.h>
 #import <mach/mach_time.h>

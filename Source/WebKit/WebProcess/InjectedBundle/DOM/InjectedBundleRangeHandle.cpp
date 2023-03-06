@@ -29,8 +29,8 @@
 #include "InjectedBundleNodeHandle.h"
 #include "ShareableBitmap.h"
 #include "WebImage.h"
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/HeapInlines.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/HeapInlines.h>
 #include <CyberCore/Document.h>
 #include <CyberCore/FloatRect.h>
 #include <CyberCore/Frame.h>

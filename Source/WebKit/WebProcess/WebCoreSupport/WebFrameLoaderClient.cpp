@@ -61,8 +61,8 @@
 #include "WebProcess.h"
 #include "WebProcessPoolMessages.h"
 #include "WebsitePoliciesData.h"
-#include <JavaScriptCore/APICast.h>
-#include <JavaScriptCore/JSObject.h>
+#include <CyberScriptCore/APICast.h>
+#include <CyberScriptCore/JSObject.h>
 #include <CyberCore/CachedFrame.h>
 #include <CyberCore/CertificateInfo.h>
 #include <CyberCore/Chrome.h>

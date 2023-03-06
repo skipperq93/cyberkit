@@ -25,7 +25,7 @@
 
 #include "config.h"
 
-#include <JavaScriptCore/InitializeThreading.h>
+#include <CyberScriptCore/InitializeThreading.h>
 #include <CyberCore/ComplexTextController.h>
 #include <CyberCore/FontCascade.h>
 #include <wtf/MainThread.h>

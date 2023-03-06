@@ -67,8 +67,8 @@
 #include "StyleRuleImport.h"
 #include "StyleSheetContents.h"
 #include "StyleSheetList.h"
-#include <JavaScriptCore/ContentSearchUtilities.h>
-#include <JavaScriptCore/RegularExpression.h>
+#include <CyberScriptCore/ContentSearchUtilities.h>
+#include <CyberScriptCore/RegularExpression.h>
 #include <wtf/NotFound.h>
 #include <wtf/text/StringBuilder.h>
 

@@ -32,7 +32,7 @@
 #include "WebFakeXRDevice.h"
 #include "XRSessionMode.h"
 #include "XRSimulateUserActivationFunction.h"
-#include <JavaScriptCore/JSCJSValue.h>
+#include <CyberScriptCore/JSCJSValue.h>
 #include <wtf/RefCounted.h>
 
 namespace WebCore {

@@ -38,7 +38,7 @@
 #include "SharedWorkerObjectConnection.h"
 #include "SharedWorkerProvider.h"
 #include "WorkerOptions.h"
-#include <JavaScriptCore/IdentifiersFactory.h>
+#include <CyberScriptCore/IdentifiersFactory.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

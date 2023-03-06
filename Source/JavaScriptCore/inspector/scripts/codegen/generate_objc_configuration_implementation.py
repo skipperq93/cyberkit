@@ -52,10 +52,10 @@ class ObjCConfigurationImplementationGenerator(ObjCGenerator):
         secondary_headers = [
             '"%sInternal.h"' % self.protocol_name(),
             '"%sBackendDispatchers.h"' % self.protocol_name(),
-            '<JavaScriptCore/AlternateDispatchableAgent.h>',
-            '<JavaScriptCore/AugmentableInspectorController.h>',
-            '<JavaScriptCore/InspectorAlternateBackendDispatchers.h>',
-            '<JavaScriptCore/InspectorBackendDispatchers.h>',
+            '<CyberScriptCore/AlternateDispatchableAgent.h>',
+            '<CyberScriptCore/AugmentableInspectorController.h>',
+            '<CyberScriptCore/InspectorAlternateBackendDispatchers.h>',
+            '<CyberScriptCore/InspectorBackendDispatchers.h>',
         ]
 
         header_args = {

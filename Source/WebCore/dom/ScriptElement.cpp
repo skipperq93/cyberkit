@@ -58,7 +58,7 @@
 #include "ScriptableDocumentParser.h"
 #include "Settings.h"
 #include "TextNodeTraversal.h"
-#include <JavaScriptCore/ImportMap.h>
+#include <CyberScriptCore/ImportMap.h>
 #include <wtf/Scope.h>
 #include <wtf/SortedArrayMap.h>
 #include <wtf/StdLibExtras.h>

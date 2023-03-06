@@ -25,8 +25,8 @@
 
 #import "config.h"
 #import "PlatformUtilities.h"
-#import <JavaScriptCore/JSExport.h>
-#import <JavaScriptCore/JSContext.h>
+#import <CyberScriptCore/JSExport.h>
+#import <CyberScriptCore/JSContext.h>
 #import <CyberKit/WebFrameLoadDelegatePrivate.h>
 #import <CyberKit/WebViewPrivate.h>
 #import <wtf/RetainPtr.h>

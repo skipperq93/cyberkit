@@ -27,8 +27,8 @@
 
 #include "Connection.h"
 #include "CoordinateSystem.h"
-#include <JavaScriptCore/JSBase.h>
-#include <JavaScriptCore/PrivateName.h>
+#include <CyberScriptCore/JSBase.h>
+#include <CyberScriptCore/PrivateName.h>
 #include <CyberCore/FrameIdentifier.h>
 #include <CyberCore/IntRect.h>
 #include <CyberCore/PageIdentifier.h>

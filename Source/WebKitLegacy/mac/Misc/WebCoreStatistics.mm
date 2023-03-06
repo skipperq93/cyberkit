@@ -31,8 +31,8 @@
 #import "DOMElementInternal.h"
 #import "WebCache.h"
 #import "WebFrameInternal.h"
-#import <JavaScriptCore/JSLock.h>
-#import <JavaScriptCore/MemoryStatistics.h>
+#import <CyberScriptCore/JSLock.h>
+#import <CyberScriptCore/MemoryStatistics.h>
 #import <CyberCore/BackForwardCache.h>
 #import <CyberCore/CommonVM.h>
 #import <CyberCore/FontCache.h>

@@ -33,8 +33,8 @@
 #include "AudioUtilities.h"
 #include "FFTFrame.h"
 #include "VectorMath.h"
-#include <JavaScriptCore/Float32Array.h>
-#include <JavaScriptCore/Uint8Array.h>
+#include <CyberScriptCore/Float32Array.h>
+#include <CyberScriptCore/Uint8Array.h>
 #include <algorithm>
 #include <complex>
 #include <wtf/MainThread.h>

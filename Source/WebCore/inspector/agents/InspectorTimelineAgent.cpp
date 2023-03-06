@@ -52,10 +52,10 @@
 #include "TimelineRecordFactory.h"
 #include "WebConsoleAgent.h"
 #include "WebDebuggerAgent.h"
-#include <JavaScriptCore/Breakpoint.h>
-#include <JavaScriptCore/ConsoleMessage.h>
-#include <JavaScriptCore/InspectorScriptProfilerAgent.h>
-#include <JavaScriptCore/ScriptArguments.h>
+#include <CyberScriptCore/Breakpoint.h>
+#include <CyberScriptCore/ConsoleMessage.h>
+#include <CyberScriptCore/InspectorScriptProfilerAgent.h>
+#include <CyberScriptCore/ScriptArguments.h>
 #include <wtf/SetForScope.h>
 #include <wtf/Stopwatch.h>
 

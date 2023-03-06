@@ -27,7 +27,7 @@
 #include "TransactionOperation.h"
 
 #include "IDBCursor.h"
-#include <JavaScriptCore/HeapInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
 namespace WebCore {

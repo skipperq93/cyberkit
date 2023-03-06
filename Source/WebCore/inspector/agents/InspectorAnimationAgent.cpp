@@ -53,10 +53,10 @@
 #include "TimingFunction.h"
 #include "WebAnimation.h"
 #include "WebAnimationTypes.h"
-#include <JavaScriptCore/IdentifiersFactory.h>
-#include <JavaScriptCore/InjectedScriptManager.h>
-#include <JavaScriptCore/InspectorEnvironment.h>
-#include <JavaScriptCore/ScriptCallStackFactory.h>
+#include <CyberScriptCore/IdentifiersFactory.h>
+#include <CyberScriptCore/InjectedScriptManager.h>
+#include <CyberScriptCore/InspectorEnvironment.h>
+#include <CyberScriptCore/ScriptCallStackFactory.h>
 #include <wtf/HashMap.h>
 #include <wtf/Seconds.h>
 #include <wtf/Stopwatch.h>

@@ -26,7 +26,7 @@
 #pragma once
 
 #include "CryptoAlgorithmParameters.h"
-#include <JavaScriptCore/Uint8Array.h>
+#include <CyberScriptCore/Uint8Array.h>
 #include <wtf/Vector.h>
 
 #if ENABLE(WEB_CRYPTO)

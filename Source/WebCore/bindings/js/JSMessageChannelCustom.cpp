@@ -32,7 +32,7 @@
 #include "JSNodeCustom.h"
 #include "MessagePort.h"
 #include "WebCoreOpaqueRoot.h"
-#include <JavaScriptCore/SlotVisitorInlines.h>
+#include <CyberScriptCore/SlotVisitorInlines.h>
 
 namespace WebCore {
 

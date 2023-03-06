@@ -23,8 +23,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <JavaScriptCore/JavaScript.h>
-#import <JavaScriptCore/WebKitAvailability.h>
+#import <CyberScriptCore/JavaScript.h>
+#import <CyberScriptCore/WebKitAvailability.h>
 
 #if JSC_OBJC_API_ENABLED
 

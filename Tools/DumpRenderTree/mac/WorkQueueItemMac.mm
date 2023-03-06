@@ -30,8 +30,8 @@
 #import "DumpRenderTree.h"
 #import "WorkQueueItem.h"
 
-#import <JavaScriptCore/JSStringRef.h>
-#import <JavaScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSStringRef.h>
+#import <CyberScriptCore/JSStringRefCF.h>
 #import <CyberKit/WebBackForwardList.h>
 #import <CyberKit/WebFrame.h>
 #import <CyberKit/WebScriptObject.h>

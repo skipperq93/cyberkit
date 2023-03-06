@@ -28,8 +28,8 @@
 #if ENABLE(WEB_CRYPTO)
 
 #include "CryptoAlgorithmParameters.h"
-#include <JavaScriptCore/JSObject.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/JSObject.h>
+#include <CyberScriptCore/Strong.h>
 #include <variant>
 
 namespace WebCore {

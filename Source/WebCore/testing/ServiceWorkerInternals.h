@@ -31,7 +31,7 @@
 #include "IDLTypes.h"
 #include "JSDOMPromiseDeferredForward.h"
 #include "ServiceWorkerIdentifier.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <wtf/RefCounted.h>
 
 namespace WebCore {

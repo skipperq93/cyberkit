@@ -29,7 +29,7 @@
 
 #include "LibWebRTCIceTransportBackend.h"
 #include "LibWebRTCProvider.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <webrtc/api/dtls_transport_interface.h>
 
 namespace WebCore {

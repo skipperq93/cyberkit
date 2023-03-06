@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include <JavaScriptCore/Strong.h>
-#include <JavaScriptCore/StrongInlines.h>
+#include <CyberScriptCore/Strong.h>
+#include <CyberScriptCore/StrongInlines.h>
 #include <memory>
 #include <wtf/text/WTFString.h>
 

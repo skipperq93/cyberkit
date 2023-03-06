@@ -29,7 +29,7 @@
 #if ENABLE(ENCRYPTED_MEDIA)
 
 #include "ISOProtectionSystemSpecificHeaderBox.h"
-#include <JavaScriptCore/DataView.h>
+#include <CyberScriptCore/DataView.h>
 #include "NotImplemented.h"
 #include "SharedBuffer.h"
 #include <wtf/JSONValues.h>

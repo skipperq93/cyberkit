@@ -28,9 +28,9 @@
 
 #include "JSDOMConvert.h"
 #include "JSDOMWrapperCache.h"
-#include <JavaScriptCore/HeapInlines.h>
-#include <JavaScriptCore/IdentifierInlines.h>
-#include <JavaScriptCore/JSObjectInlines.h>
+#include <CyberScriptCore/HeapInlines.h>
+#include <CyberScriptCore/IdentifierInlines.h>
+#include <CyberScriptCore/JSObjectInlines.h>
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/WTFString.h>
 

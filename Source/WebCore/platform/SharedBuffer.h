@@ -26,7 +26,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <utility>
 #include <variant>
 #include <wtf/FileSystem.h>

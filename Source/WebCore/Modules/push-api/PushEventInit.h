@@ -28,7 +28,7 @@
 #if ENABLE(SERVICE_WORKER)
 
 #include "ExtendableEventInit.h"
-#include <JavaScriptCore/ArrayBuffer.h>
+#include <CyberScriptCore/ArrayBuffer.h>
 #include <variant>
 
 namespace WebCore {

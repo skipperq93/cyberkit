@@ -32,7 +32,7 @@
 #import "AccessibilityCommonMac.h"
 
 #import "JSBasics.h"
-#import <JavaScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSStringRefCF.h>
 
 @implementation NSString (JSStringRefAdditions)
 

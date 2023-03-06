@@ -31,7 +31,7 @@
 #import "InjectedBundle.h"
 #import "InjectedBundlePage.h"
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JSStringRefCF.h>
+#import <CyberScriptCore/JSStringRefCF.h>
 #import <UIKit/UIKit.h>
 #import <CyberCore/TextGranularity.h>
 #import <CyberKit/WKBundleFrame.h>

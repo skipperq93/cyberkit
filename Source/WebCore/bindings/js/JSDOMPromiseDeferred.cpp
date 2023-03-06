@@ -33,11 +33,11 @@
 #include "JSDOMWindow.h"
 #include "ScriptController.h"
 #include "WorkerGlobalScope.h"
-#include <JavaScriptCore/BuiltinNames.h>
-#include <JavaScriptCore/Exception.h>
-#include <JavaScriptCore/JSONObject.h>
-#include <JavaScriptCore/JSPromiseConstructor.h>
-#include <JavaScriptCore/Strong.h>
+#include <CyberScriptCore/BuiltinNames.h>
+#include <CyberScriptCore/Exception.h>
+#include <CyberScriptCore/JSONObject.h>
+#include <CyberScriptCore/JSPromiseConstructor.h>
+#include <CyberScriptCore/Strong.h>
 
 namespace WebCore {
 using namespace JSC;

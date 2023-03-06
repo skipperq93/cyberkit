@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <JavaScriptCore/JSValue.h>
+#import <CyberScriptCore/JSValue.h>
 
 #if JSC_OBJC_API_ENABLED
 

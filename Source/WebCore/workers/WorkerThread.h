@@ -35,7 +35,7 @@
 #include "WorkerOrWorkletThread.h"
 #include "WorkerRunLoop.h"
 #include "WorkerType.h"
-#include <JavaScriptCore/RuntimeFlags.h>
+#include <CyberScriptCore/RuntimeFlags.h>
 #include <memory>
 #include <pal/SessionID.h>
 #include <wtf/URL.h>

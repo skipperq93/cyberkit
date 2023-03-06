@@ -31,8 +31,8 @@
 
 #include "PlatformUtilities.h"
 #include "Test.h"
-#include <JavaScriptCore/JSContextRef.h>
-#include <JavaScriptCore/JSRetainPtr.h>
+#include <CyberScriptCore/JSContextRef.h>
+#include <CyberScriptCore/JSRetainPtr.h>
 #include <CyberKit/WKRetainPtr.h>
 #include <CyberKit/WKSerializedScriptValue.h>
 #include <wtf/StdLibExtras.h>

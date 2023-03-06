@@ -27,7 +27,7 @@
 #include "AudioArray.h"
 #include "AudioBus.h"
 #include "NoiseInjectionPolicy.h"
-#include <JavaScriptCore/Forward.h>
+#include <CyberScriptCore/Forward.h>
 #include <memory>
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>

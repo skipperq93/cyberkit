@@ -28,9 +28,9 @@
 #include "APICast.h"
 #include "JSGlobalObjectInlines.h"
 #include "MarkedJSValueRefArray.h"
-#include <JavaScriptCore/JSContextRefPrivate.h>
-#include <JavaScriptCore/JSObjectRefPrivate.h>
-#include <JavaScriptCore/JavaScript.h>
+#include <CyberScriptCore/JSContextRefPrivate.h>
+#include <CyberScriptCore/JSObjectRefPrivate.h>
+#include <CyberScriptCore/JavaScript.h>
 #include <wtf/DataLog.h>
 #include <wtf/Expected.h>
 #include <wtf/Noncopyable.h>

@@ -33,7 +33,7 @@
 #import "ContentType.h"
 #import "LegacyCDM.h"
 #import "MediaPlayerPrivateMediaSourceAVFObjC.h"
-#import <JavaScriptCore/RegularExpression.h>
+#import <CyberScriptCore/RegularExpression.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/text/StringToIntegerConversion.h>
 #import <wtf/text/StringView.h>
