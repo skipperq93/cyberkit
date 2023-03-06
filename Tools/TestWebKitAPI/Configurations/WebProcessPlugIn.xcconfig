@@ -34,6 +34,6 @@ WK_WEBCORE_LDFLAGS_iphonesimulator = -framework CyberCore
 WK_WEBCORE_LDFLAGS_watchos = -framework CyberCore
 WK_WEBCORE_LDFLAGS_watchsimulator = -framework CyberCore
 
-OTHER_LDFLAGS = $(inherited) -framework JavaScriptCore -framework CyberKit -lWebCoreTestSupport $(WK_WEBCORE_LDFLAGS);
+OTHER_LDFLAGS = $(inherited) -framework CyberScriptCore -framework CyberKit -lWebCoreTestSupport $(WK_WEBCORE_LDFLAGS);
 LD_RUNPATH_SEARCH_PATHS[sdk=macosx*] = "@loader_path/../../..";
 LD_RUNPATH_SEARCH_PATHS[sdk=embedded*] = "@loader_path/..";

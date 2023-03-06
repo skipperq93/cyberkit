@@ -30,7 +30,7 @@ LD_RUNPATH_SEARCH_PATHS = "@loader_path";
 PRODUCT_NAME = WebKitTestRunner;
 PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKit.WebKitTestRunner;
 GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-OTHER_LDFLAGS[sdk=macosx*] = $(inherited) -lWebKitTestRunner -framework Carbon -framework Cocoa -framework JavaScriptCore -framework CyberKit;
+OTHER_LDFLAGS[sdk=macosx*] = $(inherited) -lWebKitTestRunner -framework Carbon -framework Cocoa -framework CyberScriptCore -framework CyberKit;
 STRIP_STYLE = debugging;
 SKIP_INSTALL[sdk=embedded*] = YES;
 

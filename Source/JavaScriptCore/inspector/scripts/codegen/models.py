@@ -62,7 +62,7 @@ def validate_target_types(debuggable_types, target_types):
 _FRAMEWORK_CONFIG_MAP = {
     "Global": {
     },
-    "JavaScriptCore": {
+    "CyberScriptCore": {
         "cpp_protocol_group": "Inspector",
         "export_macro": "JS_EXPORT_PRIVATE",
         "alternate_dispatchers": True,
@@ -112,8 +112,8 @@ class Framework:
         if frameworkString == "Global":
             return Frameworks.Global
 
-        if frameworkString == "JavaScriptCore":
-            return Frameworks.JavaScriptCore
+        if frameworkString == "CyberScriptCore":
+            return Frameworks.CyberScriptCore
 
         if frameworkString == "CyberKit":
             return Frameworks.CyberKit
@@ -132,7 +132,7 @@ class Framework:
 
 class Frameworks:
     Global = Framework("Global")
-    JavaScriptCore = Framework("JavaScriptCore")
+    CyberScriptCore = Framework("CyberScriptCore")
     CyberKit = Framework("CyberKit")
     WebInspector = Framework("WebInspector")
     WebInspectorUI = Framework("WebInspectorUI")

@@ -88,7 +88,7 @@ class Framework:
 
 
 class Frameworks:
-    JavaScriptCore = Framework("CyberScriptCore")
+    CyberScriptCore = Framework("CyberScriptCore")
     CyberCore = Framework("CyberCore")
 
 

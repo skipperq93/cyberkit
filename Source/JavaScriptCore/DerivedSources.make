@@ -150,7 +150,7 @@ JavaScriptCore_BUILTINS_DEPENDENCIES_LIST : $(JavaScriptCore_SCRIPTS_DIR)/Update
 JSC_BUILTINS_FILES_PATTERNS = $(subst .,%,$(JSC_BUILTINS_FILES))
 
 $(JSC_BUILTINS_FILES_PATTERNS) : $(BUILTINS_GENERATOR_SCRIPTS) $(JavaScriptCore_BUILTINS_SOURCES) JavaScriptCore_BUILTINS_DEPENDENCIES_LIST
-	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/generate-js-builtins.py --combined --output-directory . --framework JavaScriptCore $(JavaScriptCore_BUILTINS_SOURCES)
+	$(PYTHON) $(JavaScriptCore_SCRIPTS_DIR)/generate-js-builtins.py --combined --output-directory . --framework CyberScriptCore $(JavaScriptCore_BUILTINS_SOURCES)
 
 # Perfect hash lookup tables for JavaScript classes.
 
@@ -366,7 +366,7 @@ CombinedDomains.json : $(JavaScriptCore_SCRIPTS_DIR)/generate-combined-inspector
 
 # Inspector Backend Dispatchers, Frontend Dispatchers, Type Builders
 $(INSPECTOR_DISPATCHER_FILES_PATTERNS) : CombinedDomains.json $(INSPECTOR_GENERATOR_SCRIPTS)
-	$(PYTHON) $(JavaScriptCore)/inspector/scripts/generate-inspector-protocol-bindings.py --framework JavaScriptCore --outputDir inspector ./CombinedDomains.json
+	$(PYTHON) $(JavaScriptCore)/inspector/scripts/generate-inspector-protocol-bindings.py --framework CyberScriptCore --outputDir inspector ./CombinedDomains.json
 
 AIR_OPCODE_FILES = \
     AirOpcode.h \

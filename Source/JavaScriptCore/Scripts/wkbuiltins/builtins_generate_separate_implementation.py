@@ -68,7 +68,7 @@ class BuiltinsSeparateImplementationGenerator(BuiltinsGenerator):
         sections.append(Template(Templates.NamespaceTop).substitute(args))
         for function in self.object.functions:
             sections.append(self.generate_embedded_code_string_section_for_data(self.generate_embedded_code_data_for_function(function)))
-        if self.model().framework is Frameworks.JavaScriptCore:
+        if self.model().framework is Frameworks.CyberScriptCore:
             sections.append(Template(Templates.SeparateJSCImplementationStaticMacros).substitute(args))
         elif self.model().framework is Frameworks.CyberCore:
             sections.append(Template(Templates.SeparateWebCoreImplementationStaticMacros).substitute(args))
