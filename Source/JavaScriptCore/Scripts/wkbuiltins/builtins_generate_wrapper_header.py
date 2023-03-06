@@ -60,7 +60,7 @@ class BuiltinsWrapperHeaderGenerator(BuiltinsGenerator):
     def generate_secondary_header_includes(self):
         header_includes = [
             (["CyberCore"],
-                ("JavaScriptCore", "runtime/VM.h"),
+                ("CyberScriptCore", "runtime/VM.h"),
             ),
         ]
         for object in self.model().objects:

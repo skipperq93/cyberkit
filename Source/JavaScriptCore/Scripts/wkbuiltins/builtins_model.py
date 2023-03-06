@@ -32,7 +32,7 @@ from builtins_templates import BuiltinsGeneratorTemplates as Templates
 log = logging.getLogger('global')
 
 _FRAMEWORK_CONFIG_MAP = {
-    "JavaScriptCore": {
+    "CyberScriptCore": {
         "macro_prefix": "JSC",
         "namespace": "JSC",
     },
@@ -78,8 +78,8 @@ class Framework:
 
     @staticmethod
     def fromString(frameworkString):
-        if frameworkString == "JavaScriptCore":
-            return Frameworks.JavaScriptCore
+        if frameworkString == "CyberScriptCore":
+            return Frameworks.CyberScriptCore
 
         if frameworkString == "CyberCore":
             return Frameworks.CyberCore
@@ -88,7 +88,7 @@ class Framework:
 
 
 class Frameworks:
-    JavaScriptCore = Framework("JavaScriptCore")
+    JavaScriptCore = Framework("CyberScriptCore")
     CyberCore = Framework("CyberCore")
 
 

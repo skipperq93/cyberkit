@@ -160,7 +160,7 @@ def generate_from_specification(primary_specification_filepath=None,
         generators.append(ObjCProtocolTypeConversionsImplementationGenerator(*generator_arguments))
         generators.append(ObjCProtocolTypesImplementationGenerator(*generator_arguments))
 
-    elif protocol.framework is Frameworks.JavaScriptCore:
+    elif protocol.framework is Frameworks.CyberScriptCore:
         generators.append(JSBackendCommandsGenerator(*generator_arguments))
         generators.append(CppAlternateBackendDispatcherHeaderGenerator(*generator_arguments))
         generators.append(CppBackendDispatcherHeaderGenerator(*generator_arguments))

@@ -60,8 +60,8 @@ class BuiltinsInternalsWrapperHeaderGenerator(BuiltinsGenerator):
 
     def generate_secondary_header_includes(self):
         header_includes = [
-            (["CyberCore"], ("JavaScriptCore", "heap/WeakInlines.h")),
-            (["CyberCore"], ("JavaScriptCore", "runtime/VM.h"))
+            (["CyberCore"], ("CyberScriptCore", "heap/WeakInlines.h")),
+            (["CyberCore"], ("CyberScriptCore", "runtime/VM.h"))
         ]
         for object in self.internals:
             header_includes.append((["CyberCore"], ("CyberCore", object.object_name + "Builtins.h")))

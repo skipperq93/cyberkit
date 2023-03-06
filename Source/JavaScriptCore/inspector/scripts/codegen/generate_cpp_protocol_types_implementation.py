@@ -82,7 +82,7 @@ class CppProtocolTypesImplementationGenerator(CppGenerator):
 
     def _generate_secondary_header_includes(self):
         header_includes = [
-            (["JavaScriptCore", "CyberKit"], ("WTF", "wtf/Assertions.h")),
+            (["CyberScriptCore", "CyberKit"], ("WTF", "wtf/Assertions.h")),
         ]
         return '\n'.join(self.generate_includes_from_entries(header_includes))
 

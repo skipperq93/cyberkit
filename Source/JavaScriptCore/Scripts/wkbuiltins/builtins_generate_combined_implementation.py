@@ -77,7 +77,7 @@ class BuiltinsCombinedImplementationGenerator(BuiltinsGenerator):
         for data in function_data:
             sections.append(self.generate_embedded_code_string_section_for_data(data))
 
-        if self.model().framework is Frameworks.JavaScriptCore:
+        if self.model().framework is Frameworks.CyberScriptCore:
             sections.append(Template(Templates.CombinedJSCImplementationStaticMacros).substitute(args))
         elif self.model().framework is Frameworks.CyberCore:
             sections.append(Template(Templates.CombinedWebCoreImplementationStaticMacros).substitute(args))
@@ -87,35 +87,35 @@ class BuiltinsCombinedImplementationGenerator(BuiltinsGenerator):
 
     def generate_secondary_header_includes(self):
         header_includes = [
-            (["JavaScriptCore"],
-                ("JavaScriptCore", "builtins/BuiltinExecutables.h"),
+            (["CyberScriptCore"],
+                ("CyberScriptCore", "builtins/BuiltinExecutables.h"),
             ),
-            (["JavaScriptCore", "CyberCore"],
-                ("JavaScriptCore", "heap/HeapInlines.h"),
+            (["CyberScriptCore", "CyberCore"],
+                ("CyberScriptCore", "heap/HeapInlines.h"),
             ),
-            (["JavaScriptCore", "CyberCore"],
-                ("JavaScriptCore", "runtime/UnlinkedFunctionExecutable.h"),
+            (["CyberScriptCore", "CyberCore"],
+                ("CyberScriptCore", "runtime/UnlinkedFunctionExecutable.h"),
             ),
-            (["JavaScriptCore", "CyberCore"],
-                ("JavaScriptCore", "runtime/JSCellInlines.h"),
-            ),
-            (["CyberCore"],
-                ("JavaScriptCore", "runtime/StructureInlines.h"),
+            (["CyberScriptCore", "CyberCore"],
+                ("CyberScriptCore", "runtime/JSCellInlines.h"),
             ),
             (["CyberCore"],
-                ("JavaScriptCore", "runtime/JSCJSValueInlines.h"),
+                ("CyberScriptCore", "runtime/StructureInlines.h"),
             ),
-            (["JavaScriptCore", "CyberCore"],
-                ("JavaScriptCore", "runtime/VM.h"),
+            (["CyberCore"],
+                ("CyberScriptCore", "runtime/JSCJSValueInlines.h"),
             ),
-            (["JavaScriptCore", "CyberCore"],
-                ("JavaScriptCore", "runtime/IdentifierInlines.h"),
+            (["CyberScriptCore", "CyberCore"],
+                ("CyberScriptCore", "runtime/VM.h"),
             ),
-            (["JavaScriptCore", "CyberCore"],
-                ("JavaScriptCore", "runtime/ImplementationVisibility.h"),
+            (["CyberScriptCore", "CyberCore"],
+                ("CyberScriptCore", "runtime/IdentifierInlines.h"),
             ),
-            (["JavaScriptCore", "CyberCore"],
-                ("JavaScriptCore", "runtime/Intrinsic.h"),
+            (["CyberScriptCore", "CyberCore"],
+                ("CyberScriptCore", "runtime/ImplementationVisibility.h"),
+            ),
+            (["CyberScriptCore", "CyberCore"],
+                ("CyberScriptCore", "runtime/Intrinsic.h"),
             ),
         ]
 

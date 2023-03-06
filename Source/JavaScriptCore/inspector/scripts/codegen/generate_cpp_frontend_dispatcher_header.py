@@ -71,9 +71,9 @@ class CppFrontendDispatcherHeaderGenerator(CppGenerator):
 
     def _generate_secondary_header_includes(self):
         header_includes = [
-            (["JavaScriptCore", "CyberKit"], (self.model().framework.name, "%sProtocolObjects.h" % self.protocol_name())),
-            (["JavaScriptCore", "CyberKit"], ("WTF", "wtf/JSONValues.h")),
-            (["JavaScriptCore", "CyberKit"], ("WTF", "wtf/text/WTFString.h")),
+            (["CyberScriptCore", "CyberKit"], (self.model().framework.name, "%sProtocolObjects.h" % self.protocol_name())),
+            (["CyberScriptCore", "CyberKit"], ("WTF", "wtf/JSONValues.h")),
+            (["CyberScriptCore", "CyberKit"], ("WTF", "wtf/text/WTFString.h")),
         ]
         return '\n'.join(self.generate_includes_from_entries(header_includes))
 

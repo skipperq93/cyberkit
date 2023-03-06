@@ -89,19 +89,19 @@ class FunctionExecutable;
     def generate_secondary_header_includes(self):
         header_includes = [
             (["CyberCore"],
-                ("JavaScriptCore", "bytecode/UnlinkedFunctionExecutable.h"),
+                ("CyberScriptCore", "bytecode/UnlinkedFunctionExecutable.h"),
             ),
 
             (["CyberCore"],
-                ("JavaScriptCore", "builtins/BuiltinUtils.h"),
+                ("CyberScriptCore", "builtins/BuiltinUtils.h"),
             ),
 
             (["CyberCore"],
-                ("JavaScriptCore", "runtime/Identifier.h"),
+                ("CyberScriptCore", "runtime/Identifier.h"),
             ),
 
             (["CyberCore"],
-                ("JavaScriptCore", "runtime/JSFunction.h"),
+                ("CyberScriptCore", "runtime/JSFunction.h"),
             ),
         ]
 

@@ -70,7 +70,7 @@ class CppFrontendDispatcherImplementationGenerator(CppGenerator):
 
     def _generate_secondary_header_includes(self):
         header_includes = [
-            (["JavaScriptCore", "CyberKit"], ("JavaScriptCore", "inspector/InspectorFrontendRouter.h")),
+            (["CyberScriptCore", "CyberKit"], ("CyberScriptCore", "inspector/InspectorFrontendRouter.h")),
         ]
         return '\n'.join(self.generate_includes_from_entries(header_includes))
 

@@ -76,11 +76,11 @@ class CppBackendDispatcherHeaderGenerator(CppGenerator):
 
     def _generate_secondary_header_includes(self):
         header_includes = [
-            (["JavaScriptCore", "CyberKit"], (self.model().framework.name, "%sProtocolObjects.h" % self.protocol_name())),
-            (["JavaScriptCore", "CyberKit"], ("JavaScriptCore", "inspector/InspectorBackendDispatcher.h")),
-            (["JavaScriptCore", "CyberKit"], ("WTF", "wtf/Expected.h")),
-            (["JavaScriptCore", "CyberKit"], ("WTF", "wtf/text/WTFString.h")),
-            (["JavaScriptCore", "CyberKit"], ("std", "tuple")),
+            (["CyberScriptCore", "CyberKit"], (self.model().framework.name, "%sProtocolObjects.h" % self.protocol_name())),
+            (["CyberScriptCore", "CyberKit"], ("CyberScriptCore", "inspector/InspectorBackendDispatcher.h")),
+            (["CyberScriptCore", "CyberKit"], ("WTF", "wtf/Expected.h")),
+            (["CyberScriptCore", "CyberKit"], ("WTF", "wtf/text/WTFString.h")),
+            (["CyberScriptCore", "CyberKit"], ("std", "tuple")),
         ]
         return '\n'.join(self.generate_includes_from_entries(header_includes))
 

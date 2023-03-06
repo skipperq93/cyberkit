@@ -129,7 +129,7 @@ def generate_bindings_for_builtins_files(builtins_files=[],
         output_file.close()
 
 if __name__ == '__main__':
-    allowed_framework_names = ['JavaScriptCore', 'CyberCore']
+    allowed_framework_names = ['CyberScriptCore', 'CyberCore']
     cli_parser = optparse.OptionParser(usage="usage: %prog [options] Builtin1.js [, Builtin2.js, ...]")
     cli_parser.add_option("-i", "--input-directory", help="If specified, generates builtins from all JavaScript files in the specified directory in addition to specific files passed as arguments.")
     cli_parser.add_option("-o", "--output-directory", help="Directory where generated files should be written.")
