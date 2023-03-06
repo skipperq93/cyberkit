@@ -748,7 +748,7 @@ class WebCoreGenerator(BaseGenerator):
 
     @util.LogEntryExit
     def _get_project_file_path(self):
-        return os.path.join(self.application.get_opensource_dir(), "Source", "WebCore", "WebCore.xcodeproj")
+        return os.path.join(self.application.get_opensource_dir(), "Source", "WebCore", "CyberCore.xcodeproj")
 
     @util.LogEntryExit
     def _get_generate_derived_sources_script(self):

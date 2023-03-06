@@ -109,7 +109,7 @@ case "${INPUT_FILE_PATH}" in
         exit 0
     fi
     ;;
-*/WebCore.framework/*)
+*/CyberCore.framework/*)
     if [ "${WK_PLATFORM_NAME}" = macosx ]; then
         SED_OPTIONS+=(-e 's/<WebCore\//<WebKit\//' -e "s/(^ *)WEBCORE_EXPORT /\1/")
     else

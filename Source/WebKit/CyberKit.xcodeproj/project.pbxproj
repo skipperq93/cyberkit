@@ -865,7 +865,6 @@
 		37A709A71E3EA0FD00CA5969 /* WKDataDetectorTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A709A61E3EA0FD00CA5969 /* WKDataDetectorTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37A709A91E3EA40C00CA5969 /* WKDataDetectorTypesInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A709A81E3EA40C00CA5969 /* WKDataDetectorTypesInternal.h */; };
 		37B5045219EEF31300CE2CF8 /* WKErrorPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 37B5045119EEF31300CE2CF8 /* WKErrorPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		37BEC4DD1948FC6A008B4286 /* WebCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA1C79A100E7FC50078DEBC /* WebCore.framework */; };
 		37BEC4E119491486008B4286 /* CompletionHandlerCallChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 37BEC4DF19491486008B4286 /* CompletionHandlerCallChecker.h */; };
 		37BF2F061947DEB400723C48 /* WKNSURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 37BF2F041947DEB400723C48 /* WKNSURLRequest.h */; };
 		37C21CAE1E994C0C0029D5F9 /* CorePredictionSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 37C21CAD1E994C0C0029D5F9 /* CorePredictionSPI.h */; };
@@ -970,6 +969,7 @@
 		46EE3E8B2763FD2F0060C70F /* WebSharedWorkerServerConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 468386672763FAB100CF9182 /* WebSharedWorkerServerConnection.h */; };
 		46F38E8C2416E6730059375A /* RunningBoardServicesSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 46F38E8B2416E66D0059375A /* RunningBoardServicesSPI.h */; };
 		46F9B26323526EF3006FE5FA /* WebBackForwardCacheEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 46F9B26223526ED0006FE5FA /* WebBackForwardCacheEntry.h */; };
+		48DA670329AB7AB30015A1DD /* CyberCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DA670229AB7AB30015A1DD /* CyberCore.framework */; };
 		493102BD2683F3D0002BB885 /* AppPrivacyReport.h in Headers */ = {isa = PBXBuildFile; fileRef = 493102BC2683F3A5002BB885 /* AppPrivacyReport.h */; };
 		4955A6E628076D4D00BB91C4 /* ArrayReferenceTuple.h in Headers */ = {isa = PBXBuildFile; fileRef = 4955A6E528076D4C00BB91C4 /* ArrayReferenceTuple.h */; };
 		4973DF482422941F00E4C26A /* NavigatingToAppBoundDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 4973DF472422941F00E4C26A /* NavigatingToAppBoundDomain.h */; };
@@ -2589,16 +2589,6 @@
 				1A07D2FB1919B3A900ECDA16 /* parser.py in Copy Message Generation Scripts */,
 			);
 			name = "Copy Message Generation Scripts";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		372589431C1E496800C92CA9 /* Copy Shims */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Copy Shims";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		650994D628C942B7006EE6DB /* Copy Plug-ins */ = {
@@ -4674,6 +4664,7 @@
 		46EE3E8A2763FD2A0060C70F /* WebSharedWorkerServerConnection.messages.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = WebSharedWorkerServerConnection.messages.in; sourceTree = "<group>"; };
 		46F38E8B2416E66D0059375A /* RunningBoardServicesSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningBoardServicesSPI.h; sourceTree = "<group>"; };
 		46F9B26223526ED0006FE5FA /* WebBackForwardCacheEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBackForwardCacheEntry.h; sourceTree = "<group>"; };
+		48DA670229AB7AB30015A1DD /* CyberCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CyberCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		493102BC2683F3A5002BB885 /* AppPrivacyReport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppPrivacyReport.h; sourceTree = "<group>"; };
 		4955A6E528076D4C00BB91C4 /* ArrayReferenceTuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayReferenceTuple.h; sourceTree = "<group>"; };
 		4973DF472422941F00E4C26A /* NavigatingToAppBoundDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigatingToAppBoundDomain.h; sourceTree = "<group>"; };
@@ -7247,8 +7238,8 @@
 				3766F9F1189A1254003CF19B /* libicucore.dylib in Frameworks */,
 				7B9FC5BB28A5233B007570E7 /* libCyberKitPlatform.a in Frameworks */,
 				3766F9EF189A1244003CF19B /* QuartzCore.framework in Frameworks */,
+				48DA670329AB7AB30015A1DD /* CyberCore.framework in Frameworks */,
 				37694525184FC6B600CDE21F /* Security.framework in Frameworks */,
-				37BEC4DD1948FC6A008B4286 /* WebCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10837,6 +10828,7 @@
 		5750F3292032D4E300389347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48DA670229AB7AB30015A1DD /* CyberCore.framework */,
 				DDAB377528234B2100890546 /* AuthenticationServicesCore.framework */,
 				52A69BE9286CFFAC00893E8F /* CryptoTokenKit.framework */,
 				E34B110C27C46BC6006D2F2E /* libWebCoreTestShim.dylib */,
@@ -15504,7 +15496,6 @@
 				DDC907B5298B2DE800ECA4D6 /* Migrate WebCore and WebKitLegacy Headers */,
 				2E16B6F42019BC25008996D6 /* Copy Additional Resources */,
 				8DC2EF520486A6940098B216 /* Resources */,
-				372589431C1E496800C92CA9 /* Copy Shims */,
 				37E531011B2391090074F0DF /* Copy iOS Sandbox Profiles for Manual Sandboxing */,
 				1A07D2F71919B36500ECDA16 /* Copy Message Generation Scripts */,
 				8DC2EF540486A6940098B216 /* Sources */,

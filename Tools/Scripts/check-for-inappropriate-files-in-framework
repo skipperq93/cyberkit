@@ -32,7 +32,7 @@ $INAPPROPRIATE_FILES = {
     "Headers" => ["*.tmp"],
     "Resources" => ["*.txt", "*.in", "*.idl", "*.h"],
   },
-  "WebCore" => {
+  "CyberCore" => {
     "Resources" => ["*.txt", "*.in", "*.idl", "*.h"],
   },
   "CyberKitLegacy" => {
