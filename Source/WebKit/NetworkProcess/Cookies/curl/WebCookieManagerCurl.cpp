@@ -27,8 +27,8 @@
 #include "WebCookieManager.h"
 
 #include "NetworkProcess.h"
-#include <WebCore/HTTPCookieAcceptPolicy.h>
-#include <WebCore/NetworkStorageSession.h>
+#include <CyberCore/HTTPCookieAcceptPolicy.h>
+#include <CyberCore/NetworkStorageSession.h>
 
 namespace WebKit {
 

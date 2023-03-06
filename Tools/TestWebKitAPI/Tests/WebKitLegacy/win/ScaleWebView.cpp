@@ -26,7 +26,7 @@
 
 #include "HostWindow.h"
 #include "Test.h"
-#include <WebCore/COMPtr.h>
+#include <CyberCore/COMPtr.h>
 #include <WebKitLegacy/WebKit.h>
 #include <WebKitLegacy/WebKitCOMAPI.h>
 

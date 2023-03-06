@@ -22,7 +22,7 @@
 #include "WebFrame.h"
 #include "WebKitFrame.h"
 #include "WebKitScriptWorld.h"
-#include <WebCore/Element.h>
+#include <CyberCore/Element.h>
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 #include <wtf/glib/GRefPtr.h>

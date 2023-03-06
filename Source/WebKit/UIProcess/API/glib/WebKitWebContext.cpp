@@ -56,8 +56,8 @@
 #include "WebsiteDataStore.h"
 #include "WebsiteDataType.h"
 #include <JavaScriptCore/RemoteInspector.h>
-#include <WebCore/ContentSecurityPolicy.h>
-#include <WebCore/ResourceLoaderIdentifier.h>
+#include <CyberCore/ContentSecurityPolicy.h>
+#include <CyberCore/ResourceLoaderIdentifier.h>
 #include <cstdlib>
 #include <glib/gi18n-lib.h>
 #include <libintl.h>

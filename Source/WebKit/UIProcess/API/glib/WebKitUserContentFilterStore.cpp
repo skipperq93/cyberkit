@@ -32,7 +32,7 @@
 #include "WebKitInitialize.h"
 #include "WebKitUserContent.h"
 #include "WebKitUserContentPrivate.h"
-#include <WebCore/ContentExtensionError.h>
+#include <CyberCore/ContentExtensionError.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/FileSystem.h>

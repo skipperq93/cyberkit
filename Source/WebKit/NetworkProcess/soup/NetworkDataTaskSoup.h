@@ -27,12 +27,12 @@
 
 #include "NetworkDataTask.h"
 #include "NetworkLoadParameters.h"
-#include <WebCore/DataURLDecoder.h>
-#include <WebCore/FrameIdentifier.h>
-#include <WebCore/NetworkLoadMetrics.h>
-#include <WebCore/PageIdentifier.h>
-#include <WebCore/ProtectionSpace.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/DataURLDecoder.h>
+#include <CyberCore/FrameIdentifier.h>
+#include <CyberCore/NetworkLoadMetrics.h>
+#include <CyberCore/PageIdentifier.h>
+#include <CyberCore/ProtectionSpace.h>
+#include <CyberCore/ResourceResponse.h>
 #include <wtf/RunLoop.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/CString.h>

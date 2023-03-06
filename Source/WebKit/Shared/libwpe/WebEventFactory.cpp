@@ -26,8 +26,8 @@
 #include "config.h"
 #include "WebEventFactory.h"
 
-#include <WebCore/PlatformKeyboardEvent.h>
-#include <WebCore/Scrollbar.h>
+#include <CyberCore/PlatformKeyboardEvent.h>
+#include <CyberCore/Scrollbar.h>
 #include <cmath>
 #include <wpe/wpe.h>
 

@@ -21,7 +21,7 @@
 
 #include "WebKitTestServer.h"
 #include "WebViewTest.h"
-#include <WebCore/SoupVersioning.h>
+#include <CyberCore/SoupVersioning.h>
 #include <cstdarg>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>

@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLHtmlElementPrivate_h
 #define WebKitDOMHTMLHtmlElementPrivate_h
 
-#include <WebCore/HTMLHtmlElement.h>
+#include <CyberCore/HTMLHtmlElement.h>
 #include <webkitdom/WebKitDOMHTMLHtmlElement.h>
 
 namespace WebKit {

@@ -28,7 +28,7 @@
 
 #if ENABLE(ACCESSIBILITY)
 
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 
 namespace WTR {
 

@@ -36,13 +36,13 @@
 #include "WebPageCreationParameters.h"
 #include "WebPreferencesKeys.h"
 #include "WebProcess.h"
-#include <WebCore/Frame.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/Page.h>
-#include <WebCore/PageOverlayController.h>
-#include <WebCore/Region.h>
-#include <WebCore/Settings.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PageOverlayController.h>
+#include <CyberCore/Region.h>
+#include <CyberCore/Settings.h>
 
 #if USE(GLIB_EVENT_LOOP)
 #include <wtf/glib/RunLoopSourcePriority.h>

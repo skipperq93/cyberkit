@@ -21,7 +21,7 @@
 
 #include "APISecurityOrigin.h"
 #include "WebKitPermissionStateQuery.h"
-#include <WebCore/PermissionState.h>
+#include <CyberCore/PermissionState.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
 

@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLFieldSetElementPrivate_h
 #define WebKitDOMHTMLFieldSetElementPrivate_h
 
-#include <WebCore/HTMLFieldSetElement.h>
+#include <CyberCore/HTMLFieldSetElement.h>
 #include <webkitdom/WebKitDOMHTMLFieldSetElement.h>
 
 namespace WebKit {

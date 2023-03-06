@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLFontElementPrivate_h
 #define WebKitDOMHTMLFontElementPrivate_h
 
-#include <WebCore/HTMLFontElement.h>
+#include <CyberCore/HTMLFontElement.h>
 #include <webkitdom/WebKitDOMHTMLFontElement.h>
 
 namespace WebKit {

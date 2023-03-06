@@ -30,8 +30,8 @@
 #include "WCBackingStore.h"
 #include "WCContentBufferIdentifier.h"
 #include "WebCoreArgumentCoders.h"
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/TextureMapperSparseBackingStore.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/TextureMapperSparseBackingStore.h>
 #include <optional>
 #include <wtf/EnumTraits.h>
 #include <wtf/OptionSet.h>

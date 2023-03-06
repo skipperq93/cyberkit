@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLMarqueeElementPrivate_h
 #define WebKitDOMHTMLMarqueeElementPrivate_h
 
-#include <WebCore/HTMLMarqueeElement.h>
+#include <CyberCore/HTMLMarqueeElement.h>
 #include <webkitdom/WebKitDOMHTMLMarqueeElement.h>
 
 namespace WebKit {

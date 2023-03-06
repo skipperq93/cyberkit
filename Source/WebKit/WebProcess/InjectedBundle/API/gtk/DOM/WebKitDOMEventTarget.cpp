@@ -32,7 +32,7 @@
 #include "WebKitDOMEventTarget.h"
 
 #include "DOMObjectCache.h"
-#include <WebCore/EventTarget.h>
+#include <CyberCore/EventTarget.h>
 #include "WebKitDOMEvent.h"
 #include "WebKitDOMEventTargetPrivate.h"
 #include "WebKitDOMPrivate.h"

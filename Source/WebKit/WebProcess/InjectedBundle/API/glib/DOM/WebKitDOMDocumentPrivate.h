@@ -20,7 +20,7 @@
 #pragma once
 
 #include "WebKitDOMDocument.h"
-#include <WebCore/Document.h>
+#include <CyberCore/Document.h>
 
 namespace WebKit {
 WebKitDOMDocument* wrapDocument(WebCore::Document*);

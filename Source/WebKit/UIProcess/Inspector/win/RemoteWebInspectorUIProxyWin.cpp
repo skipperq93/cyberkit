@@ -34,8 +34,8 @@
 #include "WebPageGroup.h"
 #include "WebPageProxy.h"
 #include "WebView.h"
-#include <WebCore/InspectorFrontendClient.h>
-#include <WebCore/IntRect.h>
+#include <CyberCore/InspectorFrontendClient.h>
+#include <CyberCore/IntRect.h>
 
 namespace WebKit {
 

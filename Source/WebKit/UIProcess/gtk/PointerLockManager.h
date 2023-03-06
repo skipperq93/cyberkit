@@ -26,7 +26,7 @@
 #pragma once
 
 #include "WebMouseEvent.h"
-#include <WebCore/FloatPoint.h>
+#include <CyberCore/FloatPoint.h>
 #include <wtf/Noncopyable.h>
 
 typedef struct _GdkDevice GdkDevice;

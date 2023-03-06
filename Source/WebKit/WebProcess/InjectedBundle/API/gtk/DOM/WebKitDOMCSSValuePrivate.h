@@ -20,7 +20,7 @@
 #ifndef WebKitDOMCSSValuePrivate_h
 #define WebKitDOMCSSValuePrivate_h
 
-#include <WebCore/DeprecatedCSSOMValue.h>
+#include <CyberCore/DeprecatedCSSOMValue.h>
 #include <webkitdom/WebKitDOMCSSValue.h>
 
 namespace WebKit {

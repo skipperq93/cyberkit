@@ -28,11 +28,11 @@
 #include "config.h"
 #include "WebEventFactory.h"
 
-#include <WebCore/GtkUtilities.h>
-#include <WebCore/GtkVersioning.h>
-#include <WebCore/PlatformKeyboardEvent.h>
-#include <WebCore/Scrollbar.h>
-#include <WebCore/WindowsKeyboardCodes.h>
+#include <CyberCore/GtkUtilities.h>
+#include <CyberCore/GtkVersioning.h>
+#include <CyberCore/PlatformKeyboardEvent.h>
+#include <CyberCore/Scrollbar.h>
+#include <CyberCore/WindowsKeyboardCodes.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 #include <wtf/ASCIICType.h>

@@ -30,8 +30,8 @@
 
 #include "CompositingRunLoop.h"
 #include "ThreadedDisplayRefreshMonitor.h"
-#include <WebCore/PlatformDisplay.h>
-#include <WebCore/TransformationMatrix.h>
+#include <CyberCore/PlatformDisplay.h>
+#include <CyberCore/TransformationMatrix.h>
 #include <wtf/SetForScope.h>
 
 #if USE(LIBEPOXY)

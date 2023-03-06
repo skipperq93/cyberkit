@@ -20,6 +20,6 @@
 #pragma once
 
 #include "WebKitNetworkProxySettings.h"
-#include <WebCore/SoupNetworkProxySettings.h>
+#include <CyberCore/SoupNetworkProxySettings.h>
 
 const WebCore::SoupNetworkProxySettings& webkitNetworkProxySettingsGetNetworkProxySettings(WebKitNetworkProxySettings*);

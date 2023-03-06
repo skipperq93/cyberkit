@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLModElementPrivate_h
 #define WebKitDOMHTMLModElementPrivate_h
 
-#include <WebCore/HTMLModElement.h>
+#include <CyberCore/HTMLModElement.h>
 #include <webkitdom/WebKitDOMHTMLModElement.h>
 
 namespace WebKit {

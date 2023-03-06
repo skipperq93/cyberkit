@@ -28,9 +28,9 @@
 #if USE(GRAPHICS_LAYER_WC)
 
 #include "UpdateInfo.h"
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/TextureMapperFPSCounter.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/TextureMapperFPSCounter.h>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
 

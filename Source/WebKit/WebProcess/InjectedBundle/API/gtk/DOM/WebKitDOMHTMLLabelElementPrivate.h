@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLLabelElementPrivate_h
 #define WebKitDOMHTMLLabelElementPrivate_h
 
-#include <WebCore/HTMLLabelElement.h>
+#include <CyberCore/HTMLLabelElement.h>
 #include <webkitdom/WebKitDOMHTMLLabelElement.h>
 
 namespace WebKit {

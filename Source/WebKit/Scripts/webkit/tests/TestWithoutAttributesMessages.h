@@ -33,9 +33,9 @@
 #endif
 #include "MessageNames.h"
 #include "Plugin.h"
-#include <WebCore/GraphicsLayer.h>
-#include <WebCore/KeyboardEvent.h>
-#include <WebCore/PluginData.h>
+#include <CyberCore/GraphicsLayer.h>
+#include <CyberCore/KeyboardEvent.h>
+#include <CyberCore/PluginData.h>
 #include <utility>
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>

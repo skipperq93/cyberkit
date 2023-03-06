@@ -22,7 +22,7 @@
 #include "WebKitDOMEvent.h"
 #include "WebKitDOMEventPrivate.h"
 #include "WebKitDOMEventTarget.h"
-#include <WebCore/Event.h>
+#include <CyberCore/Event.h>
 #include <wtf/HashMap.h>
 
 namespace WebKit {

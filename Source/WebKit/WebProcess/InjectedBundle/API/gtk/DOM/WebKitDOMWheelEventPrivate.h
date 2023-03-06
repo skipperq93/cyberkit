@@ -20,7 +20,7 @@
 #ifndef WebKitDOMWheelEventPrivate_h
 #define WebKitDOMWheelEventPrivate_h
 
-#include <WebCore/WheelEvent.h>
+#include <CyberCore/WheelEvent.h>
 #include <webkitdom/WebKitDOMWheelEvent.h>
 
 namespace WebKit {

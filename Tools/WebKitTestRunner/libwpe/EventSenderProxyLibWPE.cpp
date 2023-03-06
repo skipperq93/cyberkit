@@ -29,7 +29,7 @@
 #include "PlatformWebView.h"
 #include "TestController.h"
 #include <WPEToolingBackends/HeadlessViewBackend.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 #include <wpe/wpe.h>
 #include <wtf/MonotonicTime.h>
 #include <wtf/UniqueArray.h>

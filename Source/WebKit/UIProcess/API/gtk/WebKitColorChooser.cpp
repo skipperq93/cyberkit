@@ -22,8 +22,8 @@
 
 #include "WebKitColorChooserRequestPrivate.h"
 #include "WebKitWebViewPrivate.h"
-#include <WebCore/Color.h>
-#include <WebCore/IntRect.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/IntRect.h>
 
 namespace WebKit {
 using namespace WebCore;

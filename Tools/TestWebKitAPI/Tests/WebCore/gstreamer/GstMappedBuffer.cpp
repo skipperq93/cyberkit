@@ -30,8 +30,8 @@
 
 #include "GStreamerTest.h"
 #include "Test.h"
-#include <WebCore/GStreamerCommon.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/GStreamerCommon.h>
+#include <CyberCore/SharedBuffer.h>
 
 using namespace WebCore;
 

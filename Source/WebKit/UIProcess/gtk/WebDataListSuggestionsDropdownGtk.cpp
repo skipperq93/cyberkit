@@ -29,10 +29,10 @@
 #if ENABLE(DATALIST_ELEMENT)
 
 #include "WebPageProxy.h"
-#include <WebCore/DataListSuggestionInformation.h>
-#include <WebCore/GtkUtilities.h>
-#include <WebCore/GtkVersioning.h>
-#include <WebCore/IntPoint.h>
+#include <CyberCore/DataListSuggestionInformation.h>
+#include <CyberCore/GtkUtilities.h>
+#include <CyberCore/GtkVersioning.h>
+#include <CyberCore/IntPoint.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 

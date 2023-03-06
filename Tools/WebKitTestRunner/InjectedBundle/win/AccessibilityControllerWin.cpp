@@ -29,7 +29,7 @@
 #if ENABLE(ACCESSIBILITY)
 
 #include "AccessibilityUIElement.h"
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 
 namespace WTR {
 

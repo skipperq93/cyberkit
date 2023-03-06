@@ -27,7 +27,7 @@
 #include "AuxiliaryProcessMain.h"
 
 #include <JavaScriptCore/Options.h>
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/ProcessIdentifier.h>
 #include <signal.h>
 #include <stdlib.h>
 #include <string.h>

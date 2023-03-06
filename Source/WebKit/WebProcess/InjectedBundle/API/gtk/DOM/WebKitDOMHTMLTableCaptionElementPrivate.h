@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLTableCaptionElementPrivate_h
 #define WebKitDOMHTMLTableCaptionElementPrivate_h
 
-#include <WebCore/HTMLTableCaptionElement.h>
+#include <CyberCore/HTMLTableCaptionElement.h>
 #include <webkitdom/WebKitDOMHTMLTableCaptionElement.h>
 
 namespace WebKit {

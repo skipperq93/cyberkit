@@ -28,8 +28,8 @@
 
 #if USE(GRAPHICS_LAYER_WC)
 
-#include <WebCore/GLContext.h>
-#include <WebCore/TextureMapperGL.h>
+#include <CyberCore/GLContext.h>
+#include <CyberCore/TextureMapperGL.h>
 
 namespace WebKit {
 

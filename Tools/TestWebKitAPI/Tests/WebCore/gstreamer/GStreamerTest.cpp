@@ -29,7 +29,7 @@
 #if USE(GSTREAMER)
 #include "GStreamerTest.h"
 
-#include <WebCore/GStreamerCommon.h>
+#include <CyberCore/GStreamerCommon.h>
 #include <gst/gst.h>
 
 using namespace WebCore;

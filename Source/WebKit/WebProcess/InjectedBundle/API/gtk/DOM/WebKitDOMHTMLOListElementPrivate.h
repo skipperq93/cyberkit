@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLOListElementPrivate_h
 #define WebKitDOMHTMLOListElementPrivate_h
 
-#include <WebCore/HTMLOListElement.h>
+#include <CyberCore/HTMLOListElement.h>
 #include <webkitdom/WebKitDOMHTMLOListElement.h>
 
 namespace WebKit {

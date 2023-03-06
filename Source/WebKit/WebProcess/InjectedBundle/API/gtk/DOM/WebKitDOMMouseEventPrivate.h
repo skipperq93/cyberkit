@@ -20,7 +20,7 @@
 #ifndef WebKitDOMMouseEventPrivate_h
 #define WebKitDOMMouseEventPrivate_h
 
-#include <WebCore/MouseEvent.h>
+#include <CyberCore/MouseEvent.h>
 #include <webkitdom/WebKitDOMMouseEvent.h>
 
 namespace WebKit {

@@ -31,9 +31,9 @@
 #include "DrawingAreaProxyCoordinatedGraphics.h"
 #include "LayerTreeContext.h"
 #include "WebPageProxy.h"
-#include <WebCore/CairoUtilities.h>
-#include <WebCore/PlatformDisplayX11.h>
-#include <WebCore/XErrorTrapper.h>
+#include <CyberCore/CairoUtilities.h>
+#include <CyberCore/PlatformDisplayX11.h>
+#include <CyberCore/XErrorTrapper.h>
 #include <X11/Xlib.h>
 #include <X11/extensions/Xdamage.h>
 #include <cairo-xlib.h>

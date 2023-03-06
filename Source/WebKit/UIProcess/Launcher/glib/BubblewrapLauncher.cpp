@@ -21,7 +21,7 @@
 #if ENABLE(BUBBLEWRAP_SANDBOX)
 
 #include "XDGDBusProxy.h"
-#include <WebCore/PlatformDisplay.h>
+#include <CyberCore/PlatformDisplay.h>
 #include <fcntl.h>
 #include <glib.h>
 #include <seccomp.h>

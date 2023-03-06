@@ -27,7 +27,7 @@
 #define WebGrammarDetail_h
 
 #include "APIObject.h"
-#include <WebCore/TextCheckerClient.h>
+#include <CyberCore/TextCheckerClient.h>
 #include <wtf/Forward.h>
 #include <wtf/Ref.h>
 

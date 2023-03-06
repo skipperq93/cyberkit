@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebCoreArgumentCoders.h"
 
-#include <WebCore/Font.h>
+#include <CyberCore/Font.h>
 
 namespace IPC {
 

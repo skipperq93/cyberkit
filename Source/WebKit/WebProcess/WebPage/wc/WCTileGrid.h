@@ -27,8 +27,8 @@
 
 #if USE(GRAPHICS_LAYER_WC)
 
-#include <WebCore/IntRect.h>
-#include <WebCore/TextureMapperSparseBackingStore.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/TextureMapperSparseBackingStore.h>
 
 namespace WebKit {
 

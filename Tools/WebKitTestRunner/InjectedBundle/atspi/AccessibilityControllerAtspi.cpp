@@ -34,8 +34,8 @@
 #include "InjectedBundle.h"
 #include "InjectedBundlePage.h"
 #include "StringFunctions.h"
-#include <WebCore/AccessibilityObjectAtspi.h>
-#include <WebCore/AccessibilityRootAtspi.h>
+#include <CyberCore/AccessibilityObjectAtspi.h>
+#include <CyberCore/AccessibilityRootAtspi.h>
 #include <WebKit/WKBundlePagePrivate.h>
 
 namespace WTR {

@@ -28,11 +28,11 @@
 #include "WebProcessPool.h"
 
 #include "WebProcessCreationParameters.h"
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 
 #if ENABLE(REMOTE_INSPECTOR)
 #include <JavaScriptCore/RemoteInspectorServer.h>
-#include <WebCore/WebCoreBundleWin.h>
+#include <CyberCore/WebCoreBundleWin.h>
 #include <wtf/text/StringToIntegerConversion.h>
 #endif
 

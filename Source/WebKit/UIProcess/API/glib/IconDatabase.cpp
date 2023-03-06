@@ -21,10 +21,10 @@
 #include "IconDatabase.h"
 
 #include "Logging.h"
-#include <WebCore/BitmapImage.h>
-#include <WebCore/Image.h>
-#include <WebCore/SQLiteTransaction.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/BitmapImage.h>
+#include <CyberCore/Image.h>
+#include <CyberCore/SQLiteTransaction.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/FileSystem.h>
 #include <wtf/RunLoop.h>
 #include <wtf/glib/RunLoopSourcePriority.h>

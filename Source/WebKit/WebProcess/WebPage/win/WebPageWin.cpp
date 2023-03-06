@@ -32,22 +32,22 @@
 #include "WebKeyboardEvent.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
-#include <WebCore/BackForwardController.h>
-#include <WebCore/Editor.h>
-#include <WebCore/EventHandler.h>
-#include <WebCore/EventNames.h>
-#include <WebCore/FocusController.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/KeyboardEvent.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/Page.h>
-#include <WebCore/PlatformKeyboardEvent.h>
-#include <WebCore/PointerCharacteristics.h>
-#include <WebCore/Settings.h>
-#include <WebCore/SharedBuffer.h>
-#include <WebCore/UserAgent.h>
-#include <WebCore/WindowsKeyboardCodes.h>
+#include <CyberCore/BackForwardController.h>
+#include <CyberCore/Editor.h>
+#include <CyberCore/EventHandler.h>
+#include <CyberCore/EventNames.h>
+#include <CyberCore/FocusController.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/KeyboardEvent.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/Page.h>
+#include <CyberCore/PlatformKeyboardEvent.h>
+#include <CyberCore/PointerCharacteristics.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/SharedBuffer.h>
+#include <CyberCore/UserAgent.h>
+#include <CyberCore/WindowsKeyboardCodes.h>
 
 namespace WebKit {
 using namespace WebCore;

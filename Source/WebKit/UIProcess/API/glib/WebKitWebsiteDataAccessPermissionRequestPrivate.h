@@ -19,6 +19,6 @@
 #pragma once
 
 #include "WebKitWebsiteDataAccessPermissionRequest.h"
-#include <WebCore/RegistrableDomain.h>
+#include <CyberCore/RegistrableDomain.h>
 
 WebKitWebsiteDataAccessPermissionRequest* webkitWebsiteDataAccessPermissionRequestCreate(const WebCore::RegistrableDomain& requestingDomain, const WebCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&&);

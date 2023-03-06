@@ -30,8 +30,8 @@
 
 #include "LayerTreeContext.h"
 #include "WebPageProxy.h"
-#include <WebCore/CairoUtilities.h>
-#include <WebCore/GLContext.h>
+#include <CyberCore/CairoUtilities.h>
+#include <CyberCore/GLContext.h>
 
 // These includes need to be in this order because wayland-egl.h defines WL_EGL_PLATFORM
 // and eglplatform.h, included by egl.h, checks that to decide whether it's Wayland platform.
@@ -53,7 +53,7 @@
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
 #else
-#include <WebCore/OpenGLShims.h>
+#include <CyberCore/OpenGLShims.h>
 #endif
 
 #include <wpe/wpe.h>

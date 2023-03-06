@@ -27,9 +27,9 @@
 #include "WebErrors.h"
 
 #include "APIError.h"
-#include <WebCore/LocalizedStrings.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/LocalizedStrings.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceResponse.h>
 
 namespace WebKit {
 using namespace WebCore;

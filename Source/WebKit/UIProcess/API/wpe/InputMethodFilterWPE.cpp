@@ -21,7 +21,7 @@
 #include "InputMethodFilter.h"
 
 #include "WebKitInputMethodContextPrivate.h"
-#include <WebCore/IntRect.h>
+#include <CyberCore/IntRect.h>
 #include <wpe/wpe.h>
 
 namespace WebKit {

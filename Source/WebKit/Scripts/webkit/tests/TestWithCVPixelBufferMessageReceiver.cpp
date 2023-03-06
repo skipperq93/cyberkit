@@ -32,7 +32,7 @@
 #include "HandleMessage.h" // NOLINT
 #include "TestWithCVPixelBufferMessages.h" // NOLINT
 #if USE(AVFOUNDATION)
-#include <WebCore/CVUtilities.h> // NOLINT
+#include <CyberCore/CVUtilities.h> // NOLINT
 #endif
 #if USE(AVFOUNDATION)
 #include <wtf/RetainPtr.h> // NOLINT

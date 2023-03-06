@@ -20,7 +20,7 @@
 #ifndef WebKitDOMKeyboardEventPrivate_h
 #define WebKitDOMKeyboardEventPrivate_h
 
-#include <WebCore/KeyboardEvent.h>
+#include <CyberCore/KeyboardEvent.h>
 #include <webkitdom/WebKitDOMKeyboardEvent.h>
 
 namespace WebKit {

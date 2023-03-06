@@ -29,8 +29,8 @@
 
 #include "WebContextMenuItemGlib.h"
 #include "WebContextMenuProxy.h"
-#include <WebCore/GtkVersioning.h>
-#include <WebCore/IntPoint.h>
+#include <CyberCore/GtkVersioning.h>
+#include <CyberCore/IntPoint.h>
 #include <wtf/HashMap.h>
 #include <wtf/glib/GRefPtr.h>
 

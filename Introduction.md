@@ -1790,7 +1790,7 @@ If you want to do more advanced operations, like searching through the list of l
 
 ```
 #include "LogInitialization.h"
-#include <WebCore/LogInitialization.h>
+#include <CyberCore/LogInitialization.h>
 #include <WTF/LogInitialization.h>
 ```
 

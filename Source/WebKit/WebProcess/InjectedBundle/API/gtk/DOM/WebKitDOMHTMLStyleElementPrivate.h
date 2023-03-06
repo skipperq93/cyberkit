@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLStyleElementPrivate_h
 #define WebKitDOMHTMLStyleElementPrivate_h
 
-#include <WebCore/HTMLStyleElement.h>
+#include <CyberCore/HTMLStyleElement.h>
 #include <webkitdom/WebKitDOMHTMLStyleElement.h>
 
 namespace WebKit {

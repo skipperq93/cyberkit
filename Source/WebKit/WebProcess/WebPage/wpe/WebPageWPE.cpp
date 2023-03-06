@@ -28,9 +28,9 @@
 
 #include "WebPageProxy.h"
 #include "WebPageProxyMessages.h"
-#include <WebCore/NotImplemented.h>
-#include <WebCore/PlatformScreen.h>
-#include <WebCore/PointerCharacteristics.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/PlatformScreen.h>
+#include <CyberCore/PointerCharacteristics.h>
 
 namespace WebKit {
 using namespace WebCore;

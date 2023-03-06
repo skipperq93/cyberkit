@@ -29,9 +29,9 @@
 #include "WebAutomationSessionMacros.h"
 #include "WebKitWebViewBaseInternal.h"
 #include "WebPageProxy.h"
-#include <WebCore/GtkUtilities.h>
-#include <WebCore/GtkVersioning.h>
-#include <WebCore/Scrollbar.h>
+#include <CyberCore/GtkUtilities.h>
+#include <CyberCore/GtkVersioning.h>
+#include <CyberCore/Scrollbar.h>
 
 namespace WebKit {
 using namespace WebCore;

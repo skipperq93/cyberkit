@@ -37,10 +37,10 @@
 #endif
 
 #include "WebProcess.h"
-#include <WebCore/DMABufObject.h>
-#include <WebCore/GraphicsLayerContentsDisplayDelegate.h>
-#include <WebCore/NicosiaContentLayerTextureMapperImpl.h>
-#include <WebCore/TextureMapperPlatformLayerProxyDMABuf.h>
+#include <CyberCore/DMABufObject.h>
+#include <CyberCore/GraphicsLayerContentsDisplayDelegate.h>
+#include <CyberCore/NicosiaContentLayerTextureMapperImpl.h>
+#include <CyberCore/TextureMapperPlatformLayerProxyDMABuf.h>
 
 namespace WebKit {
 

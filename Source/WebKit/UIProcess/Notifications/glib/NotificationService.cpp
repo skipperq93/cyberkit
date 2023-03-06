@@ -27,9 +27,9 @@
 #include "NotificationService.h"
 
 #include "WebNotification.h"
-#include <WebCore/Image.h>
-#include <WebCore/NotificationResources.h>
-#include <WebCore/RefPtrCairo.h>
+#include <CyberCore/Image.h>
+#include <CyberCore/NotificationResources.h>
+#include <CyberCore/RefPtrCairo.h>
 #include <cairo.h>
 #include <gio/gio.h>
 #include <glib/gi18n-lib.h>
@@ -47,7 +47,7 @@
 #include <wtf/text/CString.h>
 
 #if PLATFORM(GTK)
-#include <WebCore/GtkVersioning.h>
+#include <CyberCore/GtkVersioning.h>
 #endif
 
 #if HAVE(GDESKTOPAPPINFO)

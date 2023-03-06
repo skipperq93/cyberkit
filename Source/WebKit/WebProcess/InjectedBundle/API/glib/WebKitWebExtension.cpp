@@ -28,7 +28,7 @@
 #include "WebKitWebPagePrivate.h"
 #include "WebProcess.h"
 #include "WebProcessProxyMessages.h"
-#include <WebCore/GCController.h>
+#include <CyberCore/GCController.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/HashMap.h>
 #include <wtf/glib/GRefPtr.h>

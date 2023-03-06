@@ -29,7 +29,7 @@
 #include "WebKitWebsiteDataManagerPrivate.h"
 #include "WebKitWebsiteDataPrivate.h"
 #include "WebsiteDataRecord.h"
-#include <WebCore/HTTPCookieAcceptPolicy.h>
+#include <CyberCore/HTTPCookieAcceptPolicy.h>
 #include <glib/gi18n-lib.h>
 #include <pal/SessionID.h>
 #include <wtf/glib/GRefPtr.h>

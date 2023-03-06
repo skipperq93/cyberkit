@@ -27,7 +27,7 @@
 
 #if USE(CURL)
 
-#include <WebCore/OpenSSLHelper.h>
+#include <CyberCore/OpenSSLHelper.h>
 
 using namespace WebCore;
 

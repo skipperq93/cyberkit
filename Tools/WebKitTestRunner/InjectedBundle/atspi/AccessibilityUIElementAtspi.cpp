@@ -32,8 +32,8 @@
 #include "InjectedBundlePage.h"
 #include <JavaScriptCore/JSStringRef.h>
 #include <JavaScriptCore/OpaqueJSString.h>
-#include <WebCore/AccessibilityAtspiEnums.h>
-#include <WebCore/AccessibilityObjectAtspi.h>
+#include <CyberCore/AccessibilityAtspiEnums.h>
+#include <CyberCore/AccessibilityObjectAtspi.h>
 #include <WebKit/WKBundleFrame.h>
 #include <wtf/HashSet.h>
 #include <wtf/NeverDestroyed.h>

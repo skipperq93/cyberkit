@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLDocumentPrivate_h
 #define WebKitDOMHTMLDocumentPrivate_h
 
-#include <WebCore/HTMLDocument.h>
+#include <CyberCore/HTMLDocument.h>
 #include <webkitdom/WebKitDOMHTMLDocument.h>
 
 namespace WebKit {

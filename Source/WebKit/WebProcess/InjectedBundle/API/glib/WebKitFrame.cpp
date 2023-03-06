@@ -26,10 +26,10 @@
 #include <JavaScriptCore/APICast.h>
 #include <JavaScriptCore/JSGlobalObjectInlines.h>
 #include <JavaScriptCore/JSLock.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameLoader.h>
-#include <WebCore/JSNode.h>
-#include <WebCore/ScriptController.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameLoader.h>
+#include <CyberCore/JSNode.h>
+#include <CyberCore/ScriptController.h>
 #include <jsc/JSCContextPrivate.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>

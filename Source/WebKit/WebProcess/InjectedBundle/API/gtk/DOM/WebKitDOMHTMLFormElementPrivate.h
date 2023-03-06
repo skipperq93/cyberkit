@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLFormElementPrivate_h
 #define WebKitDOMHTMLFormElementPrivate_h
 
-#include <WebCore/HTMLFormElement.h>
+#include <CyberCore/HTMLFormElement.h>
 #include <webkitdom/WebKitDOMHTMLFormElement.h>
 
 namespace WebKit {

@@ -36,8 +36,8 @@
 #include "PlatformWebView.h"
 #include "StringFunctions.h"
 #include "TestController.h"
-#include <WebCore/GtkUtilities.h>
-#include <WebCore/GtkVersioning.h>
+#include <CyberCore/GtkUtilities.h>
+#include <CyberCore/GtkVersioning.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 #include <webkit/WebKitWebViewBaseInternal.h>

@@ -20,7 +20,7 @@
 #pragma once
 
 #include "WebKitSecurityOrigin.h"
-#include <WebCore/SecurityOrigin.h>
+#include <CyberCore/SecurityOrigin.h>
 
 WebKitSecurityOrigin* webkitSecurityOriginCreate(WebCore::SecurityOriginData&&);
 const WebCore::SecurityOriginData& webkitSecurityOriginGetSecurityOriginData(WebKitSecurityOrigin*);

@@ -28,7 +28,7 @@
 #include "WebPreferences.h"
 
 #include "HardwareAccelerationManager.h"
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 
 namespace WebKit {
 

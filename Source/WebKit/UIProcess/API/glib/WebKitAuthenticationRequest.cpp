@@ -27,8 +27,8 @@
 #include "WebKitCredentialPrivate.h"
 #include "WebKitSecurityOriginPrivate.h"
 #include "WebProtectionSpace.h"
-#include <WebCore/AuthenticationChallenge.h>
-#include <WebCore/ProtectionSpace.h>
+#include <CyberCore/AuthenticationChallenge.h>
+#include <CyberCore/ProtectionSpace.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>

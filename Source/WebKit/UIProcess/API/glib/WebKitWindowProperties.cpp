@@ -24,8 +24,8 @@
 #include "APINumber.h"
 #include "APIURLRequest.h"
 #include "WebKitWindowPropertiesPrivate.h"
-#include <WebCore/IntRect.h>
-#include <WebCore/WindowFeatures.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/WindowFeatures.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 

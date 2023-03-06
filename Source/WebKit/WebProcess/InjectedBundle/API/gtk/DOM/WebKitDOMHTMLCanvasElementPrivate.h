@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLCanvasElementPrivate_h
 #define WebKitDOMHTMLCanvasElementPrivate_h
 
-#include <WebCore/HTMLCanvasElement.h>
+#include <CyberCore/HTMLCanvasElement.h>
 #include <webkitdom/WebKitDOMHTMLCanvasElement.h>
 
 namespace WebKit {

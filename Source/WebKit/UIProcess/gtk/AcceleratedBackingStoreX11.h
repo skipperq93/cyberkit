@@ -29,8 +29,8 @@
 
 #if PLATFORM(X11)
 
-#include <WebCore/RefPtrCairo.h>
-#include <WebCore/XUniqueResource.h>
+#include <CyberCore/RefPtrCairo.h>
+#include <CyberCore/XUniqueResource.h>
 
 namespace WebKit {
 

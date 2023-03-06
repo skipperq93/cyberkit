@@ -20,7 +20,7 @@
 #include "config.h"
 #include "LoadTrackingTest.h"
 #include "WebKitTestServer.h"
-#include <WebCore/SoupVersioning.h>
+#include <CyberCore/SoupVersioning.h>
 #include <wtf/glib/GRefPtr.h>
 
 static WebKitTestServer* kServer;

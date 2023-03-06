@@ -29,7 +29,7 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
 #include "LayerHostingContext.h"
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 
 namespace WebKit {
 

@@ -28,7 +28,7 @@
 #include "config.h"
 #include "PlatformWebView.h"
 
-#include <WebCore/GtkVersioning.h>
+#include <CyberCore/GtkVersioning.h>
 #include <WebKit/WKImageCairo.h>
 #include <WebKit/WKPageConfigurationRef.h>
 #include <WebKit/WKView.h>

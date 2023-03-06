@@ -28,7 +28,7 @@
 #include "Connection.h"
 #include "MessageNames.h"
 #if PLATFORM(COCOA)
-#include <WebCore/CVUtilities.h>
+#include <CyberCore/CVUtilities.h>
 #endif
 #include <wtf/Forward.h>
 #include <wtf/RetainPtr.h>

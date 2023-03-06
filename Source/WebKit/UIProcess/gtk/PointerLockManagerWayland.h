@@ -30,7 +30,7 @@
 #if PLATFORM(WAYLAND)
 
 #include "relative-pointer-unstable-v1-client-protocol.h"
-#include <WebCore/WlUniquePtr.h>
+#include <CyberCore/WlUniquePtr.h>
 #include <wayland-client.h>
 
 struct zwp_locked_pointer_v1;

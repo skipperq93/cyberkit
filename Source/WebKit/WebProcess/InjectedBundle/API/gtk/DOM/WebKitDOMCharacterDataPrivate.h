@@ -20,7 +20,7 @@
 #ifndef WebKitDOMCharacterDataPrivate_h
 #define WebKitDOMCharacterDataPrivate_h
 
-#include <WebCore/CharacterData.h>
+#include <CyberCore/CharacterData.h>
 #include <webkitdom/WebKitDOMCharacterData.h>
 
 namespace WebKit {

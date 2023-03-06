@@ -35,7 +35,7 @@
 #include "UpdateInfo.h"
 #include "WebCoreArgumentCoders.h"
 #include "WebPageProxy.h"
-#include <WebCore/Region.h>
+#include <CyberCore/Region.h>
 
 namespace WebKit {
 

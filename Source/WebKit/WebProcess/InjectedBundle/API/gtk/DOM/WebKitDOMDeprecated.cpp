@@ -20,11 +20,11 @@
 #include "WebKitDOMDeprecated.h"
 
 #include "ConvertToUTF8String.h"
-#include <WebCore/DOMException.h>
-#include <WebCore/Document.h>
-#include <WebCore/Element.h>
-#include <WebCore/JSExecState.h>
-#include <WebCore/HTMLCollection.h>
+#include <CyberCore/DOMException.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Element.h>
+#include <CyberCore/JSExecState.h>
+#include <CyberCore/HTMLCollection.h>
 #include "WebKitDOMDocumentPrivate.h"
 #include "WebKitDOMElementPrivate.h"
 #include "WebKitDOMHTMLDocumentPrivate.h"

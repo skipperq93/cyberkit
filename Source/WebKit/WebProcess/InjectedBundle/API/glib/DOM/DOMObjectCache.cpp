@@ -19,12 +19,12 @@
 #include "config.h"
 #include "DOMObjectCache.h"
 
-#include <WebCore/DOMWindow.h>
-#include <WebCore/Document.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameDestructionObserver.h>
-#include <WebCore/FrameDestructionObserverInlines.h>
-#include <WebCore/Node.h>
+#include <CyberCore/DOMWindow.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameDestructionObserver.h>
+#include <CyberCore/FrameDestructionObserverInlines.h>
+#include <CyberCore/Node.h>
 #include <glib-object.h>
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>

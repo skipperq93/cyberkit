@@ -20,7 +20,7 @@
 #ifndef WebKitDOMXPathExpressionPrivate_h
 #define WebKitDOMXPathExpressionPrivate_h
 
-#include <WebCore/XPathExpression.h>
+#include <CyberCore/XPathExpression.h>
 #include <webkitdom/WebKitDOMXPathExpression.h>
 
 namespace WebKit {

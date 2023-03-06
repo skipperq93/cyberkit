@@ -20,8 +20,8 @@
 #pragma once
 
 #include "InputMethodState.h"
-#include <WebCore/CompositionUnderline.h>
-#include <WebCore/IntPoint.h>
+#include <CyberCore/CompositionUnderline.h>
+#include <CyberCore/IntPoint.h>
 #include <wtf/Noncopyable.h>
 #include <wtf/Vector.h>
 #include <wtf/glib/GRefPtr.h>

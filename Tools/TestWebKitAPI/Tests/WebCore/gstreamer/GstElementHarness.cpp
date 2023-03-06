@@ -29,8 +29,8 @@
 
 #include "GStreamerTest.h"
 #include "Test.h"
-#include <WebCore/GStreamerCommon.h>
-#include <WebCore/GStreamerElementHarness.h>
+#include <CyberCore/GStreamerCommon.h>
+#include <CyberCore/GStreamerElementHarness.h>
 #include <wtf/FileSystem.h>
 
 using namespace WebCore;

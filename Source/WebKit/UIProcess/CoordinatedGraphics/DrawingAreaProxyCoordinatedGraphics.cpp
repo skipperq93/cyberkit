@@ -35,8 +35,8 @@
 #include "WebPageProxy.h"
 #include "WebPreferences.h"
 #include "WebProcessProxy.h"
-#include <WebCore/PlatformDisplay.h>
-#include <WebCore/Region.h>
+#include <CyberCore/PlatformDisplay.h>
+#include <CyberCore/Region.h>
 
 #if PLATFORM(GTK)
 #include <gtk/gtk.h>

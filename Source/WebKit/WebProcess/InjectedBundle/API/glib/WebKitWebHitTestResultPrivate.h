@@ -21,7 +21,7 @@
 #define WebKitWebHitTestResultPrivate_h
 
 #include "WebKitWebHitTestResult.h"
-#include <WebCore/HitTestResult.h>
+#include <CyberCore/HitTestResult.h>
 
 WebKitWebHitTestResult* webkitWebHitTestResultCreate(const WebCore::HitTestResult&);
 

@@ -32,7 +32,7 @@
 #include "MemoryPressureMonitor.h"
 #include "WebMemoryPressureHandler.h"
 #include "WebProcessCreationParameters.h"
-#include <WebCore/PlatformDisplay.h>
+#include <CyberCore/PlatformDisplay.h>
 #include <wtf/FileSystem.h>
 #include <wtf/glib/Sandbox.h>
 
@@ -41,7 +41,7 @@
 #endif
 
 #if USE(GSTREAMER)
-#include <WebCore/GStreamerCommon.h>
+#include <CyberCore/GStreamerCommon.h>
 #endif
 
 #if PLATFORM(WAYLAND)

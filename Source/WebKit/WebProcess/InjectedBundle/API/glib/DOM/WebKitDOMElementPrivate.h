@@ -20,7 +20,7 @@
 #pragma once
 
 #include "WebKitDOMElement.h"
-#include <WebCore/Element.h>
+#include <CyberCore/Element.h>
 
 namespace WebKit {
 WebKitDOMElement* wrapElement(WebCore::Element*);

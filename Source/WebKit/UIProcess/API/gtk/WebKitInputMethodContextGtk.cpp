@@ -21,7 +21,7 @@
 #include "WebKitInputMethodContext.h"
 
 #include "WebKitInputMethodContextPrivate.h"
-#include <WebCore/Color.h>
+#include <CyberCore/Color.h>
 
 using namespace WebCore;
 

@@ -29,7 +29,7 @@
 
 #include <JavaScriptCore/RemoteControllableTarget.h>
 #include <JavaScriptCore/RemoteInspectorConnectionClient.h>
-#include <WebCore/InspectorDebuggableType.h>
+#include <CyberCore/InspectorDebuggableType.h>
 #include <wtf/HashMap.h>
 #include <wtf/URL.h>
 #include <wtf/Vector.h>

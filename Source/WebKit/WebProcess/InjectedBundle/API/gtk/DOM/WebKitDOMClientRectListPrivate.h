@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include <WebCore/DOMRectList.h>
+#include <CyberCore/DOMRectList.h>
 #include <webkitdom/WebKitDOMClientRectList.h>
 
 namespace WebKit {

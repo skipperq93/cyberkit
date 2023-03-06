@@ -26,10 +26,10 @@
 #include "config.h"
 #include "WebCoreArgumentCoders.h"
 
-#include <WebCore/Font.h>
-#include <WebCore/FontCache.h>
-#include <WebCore/FontCustomPlatformData.h>
-#include <WebCore/FontDescription.h>
+#include <CyberCore/Font.h>
+#include <CyberCore/FontCache.h>
+#include <CyberCore/FontCustomPlatformData.h>
+#include <CyberCore/FontDescription.h>
 #include <wtf/win/GDIObject.h>
 
 namespace IPC {

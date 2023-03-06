@@ -20,7 +20,7 @@
 #ifndef WebKitDOMProcessingInstructionPrivate_h
 #define WebKitDOMProcessingInstructionPrivate_h
 
-#include <WebCore/ProcessingInstruction.h>
+#include <CyberCore/ProcessingInstruction.h>
 #include <webkitdom/WebKitDOMProcessingInstruction.h>
 
 namespace WebKit {

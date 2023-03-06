@@ -21,7 +21,7 @@
 
 #include "AuthenticationChallengeProxy.h"
 #include "WebKitAuthenticationRequest.h"
-#include <WebCore/Credential.h>
+#include <CyberCore/Credential.h>
 
 WebKitAuthenticationRequest* webkitAuthenticationRequestCreate(WebKit::AuthenticationChallengeProxy*, bool privateBrowsingEnabled, bool persistentCredentialStorageEnabled);
 WebKit::AuthenticationChallengeProxy* webkitAuthenticationRequestGetAuthenticationChallenge(WebKitAuthenticationRequest*);

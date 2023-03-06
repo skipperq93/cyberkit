@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLFrameElementPrivate_h
 #define WebKitDOMHTMLFrameElementPrivate_h
 
-#include <WebCore/HTMLFrameElement.h>
+#include <CyberCore/HTMLFrameElement.h>
 #include <webkitdom/WebKitDOMHTMLFrameElement.h>
 
 namespace WebKit {

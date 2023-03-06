@@ -28,8 +28,8 @@
 #if USE(GRAPHICS_LAYER_WC)
 
 #include "WCContentBufferIdentifier.h"
-#include <WebCore/PlatformLayer.h>
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/PlatformLayer.h>
+#include <CyberCore/ProcessIdentifier.h>
 #include <wtf/HashMap.h>
 
 namespace WebCore {

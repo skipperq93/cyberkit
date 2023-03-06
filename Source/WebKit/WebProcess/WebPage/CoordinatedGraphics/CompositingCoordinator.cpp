@@ -29,18 +29,18 @@
 
 #if USE(COORDINATED_GRAPHICS)
 
-#include <WebCore/DOMWindow.h>
-#include <WebCore/Document.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/GraphicsContext.h>
-#include <WebCore/InspectorController.h>
-#include <WebCore/NicosiaBackingStoreTextureMapperImpl.h>
-#include <WebCore/NicosiaContentLayerTextureMapperImpl.h>
-#include <WebCore/NicosiaImageBackingStore.h>
-#include <WebCore/NicosiaImageBackingTextureMapperImpl.h>
-#include <WebCore/NicosiaPaintingEngine.h>
-#include <WebCore/Page.h>
+#include <CyberCore/DOMWindow.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/GraphicsContext.h>
+#include <CyberCore/InspectorController.h>
+#include <CyberCore/NicosiaBackingStoreTextureMapperImpl.h>
+#include <CyberCore/NicosiaContentLayerTextureMapperImpl.h>
+#include <CyberCore/NicosiaImageBackingStore.h>
+#include <CyberCore/NicosiaImageBackingTextureMapperImpl.h>
+#include <CyberCore/NicosiaPaintingEngine.h>
+#include <CyberCore/Page.h>
 #include <wtf/MemoryPressureHandler.h>
 #include <wtf/SetForScope.h>
 

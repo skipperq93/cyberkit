@@ -29,8 +29,8 @@
 
 #include "WCContentBufferIdentifier.h"
 #include "WCContentBufferManager.h"
-#include <WebCore/ProcessIdentifier.h>
-#include <WebCore/TextureMapperPlatformLayer.h>
+#include <CyberCore/ProcessIdentifier.h>
+#include <CyberCore/TextureMapperPlatformLayer.h>
 
 namespace WebKit {
 

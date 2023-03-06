@@ -32,7 +32,7 @@
 #include "InjectedBundlePage.h"
 #include "JSWrapper.h"
 #include <JavaScriptCore/OpaqueJSString.h>
-#include <WebCore/AccessibilityObjectAtspi.h>
+#include <CyberCore/AccessibilityObjectAtspi.h>
 #include <WebKit/WKBundleFrame.h>
 #include <WebKit/WKBundlePage.h>
 #include <WebKit/WKBundlePagePrivate.h>

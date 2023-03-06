@@ -28,7 +28,7 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
 #include "ObjectIdentifierReferenceTracker.h"
-#include <WebCore/RemoteVideoFrameIdentifier.h>
+#include <CyberCore/RemoteVideoFrameIdentifier.h>
 
 namespace WebKit {
 

@@ -25,7 +25,7 @@
 
 #include "config.h"
 
-#include <WebCore/DIBPixelData.h>
+#include <CyberCore/DIBPixelData.h>
 
 using namespace WebCore;
 

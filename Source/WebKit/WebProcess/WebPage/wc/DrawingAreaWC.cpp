@@ -37,9 +37,9 @@
 #include "WebFrame.h"
 #include "WebPageCreationParameters.h"
 #include "WebProcess.h"
-#include <WebCore/Frame.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/ImageBuffer.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/ImageBuffer.h>
 
 namespace WebKit {
 using namespace WebCore;

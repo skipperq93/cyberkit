@@ -34,14 +34,14 @@
 #include "DrawingArea.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
-#include <WebCore/AsyncScrollingCoordinator.h>
-#include <WebCore/Chrome.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/PageOverlayController.h>
-#include <WebCore/RenderLayerBacking.h>
-#include <WebCore/RenderView.h>
-#include <WebCore/ThreadedScrollingTree.h>
+#include <CyberCore/AsyncScrollingCoordinator.h>
+#include <CyberCore/Chrome.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/PageOverlayController.h>
+#include <CyberCore/RenderLayerBacking.h>
+#include <CyberCore/RenderView.h>
+#include <CyberCore/ThreadedScrollingTree.h>
 
 #if USE(GLIB_EVENT_LOOP)
 #include <wtf/glib/RunLoopSourcePriority.h>

@@ -21,7 +21,7 @@
 
 #include "LoadTrackingTest.h"
 #include "WebKitTestServer.h"
-#include <WebCore/SoupVersioning.h>
+#include <CyberCore/SoupVersioning.h>
 
 static WebKitTestServer* kHttpsServer;
 static WebKitTestServer* kHttpServer;

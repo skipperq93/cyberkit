@@ -27,13 +27,13 @@
 #include "WebCoreArgumentCoders.h"
 
 #include "DataReference.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/CurlProxySettings.h>
-#include <WebCore/DictionaryPopupInfo.h>
-#include <WebCore/ProtectionSpace.h>
-#include <WebCore/ResourceError.h>
-#include <WebCore/ResourceRequest.h>
-#include <WebCore/ResourceResponse.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/CurlProxySettings.h>
+#include <CyberCore/DictionaryPopupInfo.h>
+#include <CyberCore/ProtectionSpace.h>
+#include <CyberCore/ResourceError.h>
+#include <CyberCore/ResourceRequest.h>
+#include <CyberCore/ResourceResponse.h>
 #include <wtf/text/CString.h>
 
 namespace IPC {

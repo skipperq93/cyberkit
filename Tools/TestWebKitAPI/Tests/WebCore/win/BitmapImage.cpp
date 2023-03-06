@@ -25,8 +25,8 @@
  */
 
 #include "config.h"
-#include <WebCore/BitmapImage.h>
-#include <WebCore/BitmapInfo.h>
+#include <CyberCore/BitmapImage.h>
+#include <CyberCore/BitmapInfo.h>
 #include <wtf/win/GDIObject.h>
 
 using namespace WebCore;

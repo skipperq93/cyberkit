@@ -26,8 +26,8 @@
 #include "WebKitContextMenuActionsPrivate.h"
 #include "WebKitContextMenuItemPrivate.h"
 #include "WebKitContextMenuPrivate.h"
-#include <WebCore/ContextMenu.h>
-#include <WebCore/ContextMenuItem.h>
+#include <CyberCore/ContextMenu.h>
+#include <CyberCore/ContextMenuItem.h>
 #include <memory>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>

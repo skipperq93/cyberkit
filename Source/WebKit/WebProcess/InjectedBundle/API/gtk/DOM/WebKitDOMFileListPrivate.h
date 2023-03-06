@@ -20,7 +20,7 @@
 #ifndef WebKitDOMFileListPrivate_h
 #define WebKitDOMFileListPrivate_h
 
-#include <WebCore/FileList.h>
+#include <CyberCore/FileList.h>
 #include <webkitdom/WebKitDOMFileList.h>
 
 namespace WebKit {

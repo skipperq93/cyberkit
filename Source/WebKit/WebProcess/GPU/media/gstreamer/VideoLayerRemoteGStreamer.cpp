@@ -28,15 +28,15 @@
 
 #if ENABLE(GPU_PROCESS)
 
-#include <WebCore/NotImplemented.h>
-#include <WebCore/PlatformLayer.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/PlatformLayer.h>
 
 #if USE(NICOSIA)
-#include <WebCore/NicosiaPlatformLayer.h>
+#include <CyberCore/NicosiaPlatformLayer.h>
 #elif USE(COORDINATED_GRAPHICS)
-#include <WebCore/TextureMapperPlatformLayerProxyProvider.h>
+#include <CyberCore/TextureMapperPlatformLayerProxyProvider.h>
 #elif USE(TEXTURE_MAPPER)
-#include <WebCore/TextureMapperPlatformLayer.h>
+#include <CyberCore/TextureMapperPlatformLayer.h>
 #endif
 
 namespace WebKit {

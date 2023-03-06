@@ -25,8 +25,8 @@
 
 #pragma once
 
-#include <WebCore/AutocapitalizeTypes.h>
-#include <WebCore/InputMode.h>
+#include <CyberCore/AutocapitalizeTypes.h>
+#include <CyberCore/InputMode.h>
 #include <wtf/EnumTraits.h>
 #include <wtf/OptionSet.h>
 

@@ -29,7 +29,7 @@
 
 #include "AuxiliaryProcessMain.h"
 #include "NetworkProcess.h"
-#include <WebCore/NetworkStorageSession.h>
+#include <CyberCore/NetworkStorageSession.h>
 
 #if USE(GCRYPT)
 #include <pal/crypto/gcrypt/Initialization.h>

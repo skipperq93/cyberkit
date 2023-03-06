@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLAnchorElementPrivate_h
 #define WebKitDOMHTMLAnchorElementPrivate_h
 
-#include <WebCore/HTMLAnchorElement.h>
+#include <CyberCore/HTMLAnchorElement.h>
 #include <webkitdom/WebKitDOMHTMLAnchorElement.h>
 
 namespace WebKit {

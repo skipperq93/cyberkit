@@ -29,7 +29,7 @@
 #if ENABLE(GAMEPAD) && OS(LINUX)
 
 #include "WebPageProxy.h"
-#include <WebCore/ManetteGamepadProvider.h>
+#include <CyberCore/ManetteGamepadProvider.h>
 #include <wtf/ProcessPrivilege.h>
 
 namespace WebKit {

@@ -36,9 +36,9 @@
 #include "WebKitSettingsPrivate.h"
 #include "WebPageProxy.h"
 #include "WebPreferences.h"
-#include <WebCore/HTTPParsers.h>
-#include <WebCore/PlatformScreen.h>
-#include <WebCore/UserAgent.h>
+#include <CyberCore/HTTPParsers.h>
+#include <CyberCore/PlatformScreen.h>
+#include <CyberCore/UserAgent.h>
 #include <cmath>
 #include <glib/gi18n-lib.h>
 #include <pal/text/TextEncodingRegistry.h>
@@ -50,7 +50,7 @@
 #endif
 
 #if PLATFORM(WAYLAND)
-#include <WebCore/PlatformDisplay.h>
+#include <CyberCore/PlatformDisplay.h>
 #endif
 
 using namespace WebKit;

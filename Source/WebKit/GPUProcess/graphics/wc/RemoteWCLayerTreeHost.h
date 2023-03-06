@@ -32,7 +32,7 @@
 #include "MessageSender.h"
 #include "WCLayerTreeHostIdentifier.h"
 #include "WCSharedSceneContextHolder.h"
-#include <WebCore/ProcessIdentifier.h>
+#include <CyberCore/ProcessIdentifier.h>
 
 namespace WebKit {
 class GPUConnectionToWebProcess;

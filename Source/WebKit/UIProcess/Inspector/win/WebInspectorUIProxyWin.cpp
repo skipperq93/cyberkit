@@ -39,13 +39,13 @@
 #include "WebPreferences.h"
 #include "WebProcessPool.h"
 #include "WebView.h"
-#include <WebCore/CertificateInfo.h>
-#include <WebCore/InspectorFrontendClient.h>
-#include <WebCore/InspectorFrontendClientLocal.h>
-#include <WebCore/NotImplemented.h>
-#include <WebCore/WebCoreBundleWin.h>
-#include <WebCore/WebCoreInstanceHandle.h>
-#include <WebCore/WindowMessageBroadcaster.h>
+#include <CyberCore/CertificateInfo.h>
+#include <CyberCore/InspectorFrontendClient.h>
+#include <CyberCore/InspectorFrontendClientLocal.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/WebCoreBundleWin.h>
+#include <CyberCore/WebCoreInstanceHandle.h>
+#include <CyberCore/WindowMessageBroadcaster.h>
 #include <WebKit/WKPage.h>
 
 #if USE(CF)

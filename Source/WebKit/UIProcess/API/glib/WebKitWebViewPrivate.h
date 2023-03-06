@@ -35,10 +35,10 @@
 #include "WebImage.h"
 #include "WebKitWebView.h"
 #include "WebPageProxy.h"
-#include <WebCore/CompositionUnderline.h>
-#include <WebCore/IntRect.h>
-#include <WebCore/LinkIcon.h>
-#include <WebCore/ResourceRequest.h>
+#include <CyberCore/CompositionUnderline.h>
+#include <CyberCore/IntRect.h>
+#include <CyberCore/LinkIcon.h>
+#include <CyberCore/ResourceRequest.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/CString.h>
 

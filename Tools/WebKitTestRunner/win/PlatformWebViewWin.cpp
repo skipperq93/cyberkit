@@ -29,7 +29,7 @@
 #include "config.h"
 #include "PlatformWebView.h"
 
-#include <WebCore/HWndDC.h>
+#include <CyberCore/HWndDC.h>
 #include <cstdio>
 #include <windows.h>
 #include <wtf/RunLoop.h>

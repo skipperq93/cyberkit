@@ -24,10 +24,10 @@
 #include "DOMObjectCache.h"
 #include "WebKitDOMClientRectPrivate.h"
 #include "WebKitDOMPrivate.h"
-#include <WebCore/CSSImportRule.h>
-#include <WebCore/Document.h>
-#include <WebCore/ExceptionCode.h>
-#include <WebCore/JSExecState.h>
+#include <CyberCore/CSSImportRule.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/ExceptionCode.h>
+#include <CyberCore/JSExecState.h>
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 

@@ -20,7 +20,7 @@
 #ifndef WebKitDOMCommentPrivate_h
 #define WebKitDOMCommentPrivate_h
 
-#include <WebCore/Comment.h>
+#include <CyberCore/Comment.h>
 #include <webkitdom/WebKitDOMComment.h>
 
 namespace WebKit {

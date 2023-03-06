@@ -20,7 +20,7 @@
 #ifndef WebKitDOMCSSRuleListPrivate_h
 #define WebKitDOMCSSRuleListPrivate_h
 
-#include <WebCore/CSSRuleList.h>
+#include <CyberCore/CSSRuleList.h>
 #include <webkitdom/WebKitDOMCSSRuleList.h>
 
 namespace WebKit {

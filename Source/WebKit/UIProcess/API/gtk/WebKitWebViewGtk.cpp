@@ -24,11 +24,11 @@
 #include "WebKitScriptDialogImpl.h"
 #include "WebKitWebViewBasePrivate.h"
 #include "WebKitWebViewPrivate.h"
-#include <WebCore/Color.h>
-#include <WebCore/GtkUtilities.h>
-#include <WebCore/GtkVersioning.h>
-#include <WebCore/PlatformDisplay.h>
-#include <WebCore/PlatformScreen.h>
+#include <CyberCore/Color.h>
+#include <CyberCore/GtkUtilities.h>
+#include <CyberCore/GtkVersioning.h>
+#include <CyberCore/PlatformDisplay.h>
+#include <CyberCore/PlatformScreen.h>
 #include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 

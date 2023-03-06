@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebsiteDataStore.h"
 
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/NotImplemented.h>
 #include <wtf/FileSystem.h>
 
 namespace WebKit {

@@ -22,9 +22,9 @@
 
 #include "IconDatabase.h"
 #include "WebKitFaviconDatabasePrivate.h"
-#include <WebCore/Image.h>
-#include <WebCore/IntSize.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/Image.h>
+#include <CyberCore/IntSize.h>
+#include <CyberCore/SharedBuffer.h>
 #include <glib/gi18n-lib.h>
 #include <wtf/FileSystem.h>
 #include <wtf/RunLoop.h>
@@ -34,8 +34,8 @@
 #include <wtf/text/CString.h>
 
 #if PLATFORM(GTK)
-#include <WebCore/GdkCairoUtilities.h>
-#include <WebCore/RefPtrCairo.h>
+#include <CyberCore/GdkCairoUtilities.h>
+#include <CyberCore/RefPtrCairo.h>
 #endif
 
 using namespace WebKit;

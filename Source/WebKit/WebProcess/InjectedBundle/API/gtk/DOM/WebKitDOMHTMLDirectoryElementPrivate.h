@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLDirectoryElementPrivate_h
 #define WebKitDOMHTMLDirectoryElementPrivate_h
 
-#include <WebCore/HTMLDirectoryElement.h>
+#include <CyberCore/HTMLDirectoryElement.h>
 #include <webkitdom/WebKitDOMHTMLDirectoryElement.h>
 
 namespace WebKit {

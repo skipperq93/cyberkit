@@ -52,14 +52,14 @@
 #include "WebKitDOMXPathExpressionPrivate.h"
 #include "WebKitDOMXPathNSResolverPrivate.h"
 #include "WebKitDOMXPathResultPrivate.h"
-#include <WebCore/CSSImportRule.h>
-#include <WebCore/DOMException.h>
-#include <WebCore/DocumentInlines.h>
-#include <WebCore/FullscreenManager.h>
-#include <WebCore/JSDOMPromiseDeferred.h>
-#include <WebCore/JSExecState.h>
-#include <WebCore/SecurityOrigin.h>
-#include <WebCore/VisibilityState.h>
+#include <CyberCore/CSSImportRule.h>
+#include <CyberCore/DOMException.h>
+#include <CyberCore/DocumentInlines.h>
+#include <CyberCore/FullscreenManager.h>
+#include <CyberCore/JSDOMPromiseDeferred.h>
+#include <CyberCore/JSExecState.h>
+#include <CyberCore/SecurityOrigin.h>
+#include <CyberCore/VisibilityState.h>
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 

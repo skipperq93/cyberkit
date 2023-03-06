@@ -20,7 +20,7 @@
 #ifndef WebKitDOMDocumentFragmentPrivate_h
 #define WebKitDOMDocumentFragmentPrivate_h
 
-#include <WebCore/DocumentFragment.h>
+#include <CyberCore/DocumentFragment.h>
 #include <webkitdom/WebKitDOMDocumentFragment.h>
 
 namespace WebKit {

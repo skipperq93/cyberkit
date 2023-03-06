@@ -26,10 +26,10 @@
 #include "config.h"
 #include "WebPage.h"
 
-#include <WebCore/NotImplemented.h>
-#include <WebCore/PointerCharacteristics.h>
-#include <WebCore/Settings.h>
-#include <WebCore/UserAgent.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/PointerCharacteristics.h>
+#include <CyberCore/Settings.h>
+#include <CyberCore/UserAgent.h>
 
 namespace WebKit {
 using namespace WebCore;

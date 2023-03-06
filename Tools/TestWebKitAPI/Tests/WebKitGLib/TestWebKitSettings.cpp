@@ -33,7 +33,7 @@
 #include "TestMain.h"
 #include "WebKitTestServer.h"
 #include "WebViewTest.h"
-#include <WebCore/SoupVersioning.h>
+#include <CyberCore/SoupVersioning.h>
 #include <wtf/glib/GRefPtr.h>
 
 static WebKitTestServer* gServer;

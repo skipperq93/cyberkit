@@ -21,7 +21,7 @@
 #include "WebKitNetworkProxySettings.h"
 
 #include "WebKitNetworkProxySettingsPrivate.h"
-#include <WebCore/SoupNetworkProxySettings.h>
+#include <CyberCore/SoupNetworkProxySettings.h>
 #include <wtf/URL.h>
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/WTFString.h>

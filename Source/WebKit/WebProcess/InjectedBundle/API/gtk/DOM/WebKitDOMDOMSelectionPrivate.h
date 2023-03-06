@@ -20,7 +20,7 @@
 #ifndef WebKitDOMDOMSelectionPrivate_h
 #define WebKitDOMDOMSelectionPrivate_h
 
-#include <WebCore/DOMSelection.h>
+#include <CyberCore/DOMSelection.h>
 #include <webkitdom/WebKitDOMDOMSelection.h>
 
 namespace WebKit {

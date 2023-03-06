@@ -27,7 +27,7 @@
 #include "AcceleratedSurface.h"
 
 #include "WebPage.h"
-#include <WebCore/PlatformDisplay.h>
+#include <CyberCore/PlatformDisplay.h>
 
 #if PLATFORM(X11)
 #include "AcceleratedSurfaceX11.h"

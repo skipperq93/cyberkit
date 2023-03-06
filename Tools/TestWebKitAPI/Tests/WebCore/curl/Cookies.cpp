@@ -27,8 +27,8 @@
 
 #if USE(CURL)
 
-#include <WebCore/CookieJarDB.h>
-#include <WebCore/CookieUtil.h>
+#include <CyberCore/CookieJarDB.h>
+#include <CyberCore/CookieUtil.h>
 #include <memory>
 #include <wtf/FileSystem.h>
 

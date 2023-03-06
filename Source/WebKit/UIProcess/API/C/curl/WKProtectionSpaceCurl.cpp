@@ -31,7 +31,7 @@
 #include "WKAPICast.h"
 #include "WebCredential.h"
 #include "WebProtectionSpace.h"
-#include <WebCore/CertificateInfo.h>
+#include <CyberCore/CertificateInfo.h>
 
 WKCertificateInfoRef WKProtectionSpaceCopyCertificateInfo(WKProtectionSpaceRef protectionSpaceRef)
 {

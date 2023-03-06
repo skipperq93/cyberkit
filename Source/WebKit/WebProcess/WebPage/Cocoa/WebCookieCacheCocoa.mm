@@ -28,7 +28,7 @@
 
 #import "NetworkProcessConnection.h"
 #import "WebProcess.h"
-#import <WebCore/NetworkStorageSession.h>
+#import <CyberCore/NetworkStorageSession.h>
 
 namespace WebKit {
 

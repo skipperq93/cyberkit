@@ -27,8 +27,8 @@
 #include "InputMethodState.h"
 
 #include "ArgumentCoders.h"
-#include <WebCore/ElementInlines.h>
-#include <WebCore/HTMLInputElement.h>
+#include <CyberCore/ElementInlines.h>
+#include <CyberCore/HTMLInputElement.h>
 
 namespace WebKit {
 

@@ -35,9 +35,9 @@
 #include "WebContextMenuProxy.h"
 #include "WebContextMenuProxyWPE.h"
 #include "WebKitPopupMenu.h"
-#include <WebCore/ActivityState.h>
-#include <WebCore/DOMPasteAccess.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/ActivityState.h>
+#include <CyberCore/DOMPasteAccess.h>
+#include <CyberCore/NotImplemented.h>
 
 #if ENABLE(ACCESSIBILITY)
 #include <atk/atk.h>

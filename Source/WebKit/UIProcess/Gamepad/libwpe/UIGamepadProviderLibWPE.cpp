@@ -28,7 +28,7 @@
 
 #if ENABLE(GAMEPAD) && USE(LIBWPE)
 
-#include <WebCore/GamepadProviderLibWPE.h>
+#include <CyberCore/GamepadProviderLibWPE.h>
 
 #if PLATFORM(WPE)
 #include "WPEView.h"

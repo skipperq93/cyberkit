@@ -20,11 +20,11 @@
 #include "config.h"
 #include "WebKitDOMXPathExpression.h"
 
-#include <WebCore/CSSImportRule.h>
+#include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
-#include <WebCore/DOMException.h>
-#include <WebCore/Document.h>
-#include <WebCore/JSExecState.h>
+#include <CyberCore/DOMException.h>
+#include <CyberCore/Document.h>
+#include <CyberCore/JSExecState.h>
 #include "WebKitDOMNodePrivate.h"
 #include "WebKitDOMPrivate.h"
 #include "WebKitDOMXPathExpressionPrivate.h"

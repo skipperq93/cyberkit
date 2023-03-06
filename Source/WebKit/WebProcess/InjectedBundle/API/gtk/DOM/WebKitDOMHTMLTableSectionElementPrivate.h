@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLTableSectionElementPrivate_h
 #define WebKitDOMHTMLTableSectionElementPrivate_h
 
-#include <WebCore/HTMLTableSectionElement.h>
+#include <CyberCore/HTMLTableSectionElement.h>
 #include <webkitdom/WebKitDOMHTMLTableSectionElement.h>
 
 namespace WebKit {

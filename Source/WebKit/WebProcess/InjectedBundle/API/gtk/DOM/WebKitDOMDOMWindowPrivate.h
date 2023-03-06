@@ -20,8 +20,8 @@
 #ifndef WebKitDOMDOMWindowPrivate_h
 #define WebKitDOMDOMWindowPrivate_h
 
-#include <WebCore/DOMWindow.h>
-#include <WebCore/WindowProxy.h>
+#include <CyberCore/DOMWindow.h>
+#include <CyberCore/WindowProxy.h>
 #include <webkitdom/WebKitDOMDOMWindow.h>
 
 namespace WebKit {

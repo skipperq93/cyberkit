@@ -20,7 +20,7 @@
 #ifndef WebKitDOMDOMTokenListPrivate_h
 #define WebKitDOMDOMTokenListPrivate_h
 
-#include <WebCore/DOMTokenList.h>
+#include <CyberCore/DOMTokenList.h>
 #include <webkitdom/WebKitDOMDOMTokenList.h>
 
 namespace WebKit {

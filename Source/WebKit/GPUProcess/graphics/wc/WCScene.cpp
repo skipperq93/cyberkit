@@ -33,10 +33,10 @@
 #include "WCContentBufferManager.h"
 #include "WCSceneContext.h"
 #include "WCUpateInfo.h"
-#include <WebCore/TextureMapperGLHeaders.h>
-#include <WebCore/TextureMapperLayer.h>
-#include <WebCore/TextureMapperPlatformLayer.h>
-#include <WebCore/TextureMapperSparseBackingStore.h>
+#include <CyberCore/TextureMapperGLHeaders.h>
+#include <CyberCore/TextureMapperLayer.h>
+#include <CyberCore/TextureMapperPlatformLayer.h>
+#include <CyberCore/TextureMapperSparseBackingStore.h>
 
 namespace WebKit {
 

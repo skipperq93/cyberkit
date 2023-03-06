@@ -29,7 +29,7 @@
 
 #include "AuxiliaryProcessMain.h"
 #include "WebProcess.h"
-#include <WebCore/GtkVersioning.h>
+#include <CyberCore/GtkVersioning.h>
 #include <libintl.h>
 
 #if PLATFORM(X11)

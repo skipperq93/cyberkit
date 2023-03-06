@@ -28,8 +28,8 @@
 
 #include "EditorState.h"
 #include "WebsiteDataStore.h"
-#include <WebCore/NotImplemented.h>
-#include <WebCore/UserAgent.h>
+#include <CyberCore/NotImplemented.h>
+#include <CyberCore/UserAgent.h>
 
 namespace WebKit {
 

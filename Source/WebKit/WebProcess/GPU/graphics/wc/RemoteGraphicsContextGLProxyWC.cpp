@@ -34,8 +34,8 @@
 #include "RemoteRenderingBackendProxy.h"
 #include "WCPlatformLayerGCGL.h"
 #include "WebProcess.h"
-#include <WebCore/GraphicsLayerContentsDisplayDelegate.h>
-#include <WebCore/TextureMapperPlatformLayer.h>
+#include <CyberCore/GraphicsLayerContentsDisplayDelegate.h>
+#include <CyberCore/TextureMapperPlatformLayer.h>
 
 namespace WebKit {
 

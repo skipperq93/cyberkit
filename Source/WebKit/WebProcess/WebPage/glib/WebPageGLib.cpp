@@ -34,16 +34,16 @@
 #include "WebKitWebExtension.h"
 #include "WebKitWebPagePrivate.h"
 #include "WebPageProxyMessages.h"
-#include <WebCore/Editor.h>
-#include <WebCore/Frame.h>
-#include <WebCore/FrameView.h>
-#include <WebCore/HTMLInputElement.h>
-#include <WebCore/HTMLTextAreaElement.h>
-#include <WebCore/Range.h>
-#include <WebCore/TextIterator.h>
-#include <WebCore/UserAgent.h>
-#include <WebCore/VisiblePosition.h>
-#include <WebCore/VisibleUnits.h>
+#include <CyberCore/Editor.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/FrameView.h>
+#include <CyberCore/HTMLInputElement.h>
+#include <CyberCore/HTMLTextAreaElement.h>
+#include <CyberCore/Range.h>
+#include <CyberCore/TextIterator.h>
+#include <CyberCore/UserAgent.h>
+#include <CyberCore/VisiblePosition.h>
+#include <CyberCore/VisibleUnits.h>
 
 namespace WebKit {
 using namespace WebCore;

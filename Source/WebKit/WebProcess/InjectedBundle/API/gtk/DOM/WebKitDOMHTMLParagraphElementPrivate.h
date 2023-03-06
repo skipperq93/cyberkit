@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLParagraphElementPrivate_h
 #define WebKitDOMHTMLParagraphElementPrivate_h
 
-#include <WebCore/HTMLParagraphElement.h>
+#include <CyberCore/HTMLParagraphElement.h>
 #include <webkitdom/WebKitDOMHTMLParagraphElement.h>
 
 namespace WebKit {

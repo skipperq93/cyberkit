@@ -30,8 +30,8 @@
 #include "WebPopupItem.h"
 #include "WebPopupMenuProxy.h"
 #include <OleAcc.h>
-#include <WebCore/ScrollableArea.h>
-#include <WebCore/Scrollbar.h>
+#include <CyberCore/ScrollableArea.h>
+#include <CyberCore/Scrollbar.h>
 
 namespace WebKit {
 

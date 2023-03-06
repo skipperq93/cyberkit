@@ -28,11 +28,11 @@
 #include "config.h"
 #include "ShareableBitmap.h"
 
-#include <WebCore/BitmapImage.h>
-#include <WebCore/CairoOperations.h>
-#include <WebCore/CairoUtilities.h>
-#include <WebCore/GraphicsContextCairo.h>
-#include <WebCore/NotImplemented.h>
+#include <CyberCore/BitmapImage.h>
+#include <CyberCore/CairoOperations.h>
+#include <CyberCore/CairoUtilities.h>
+#include <CyberCore/GraphicsContextCairo.h>
+#include <CyberCore/NotImplemented.h>
 
 namespace WebKit {
 using namespace WebCore;

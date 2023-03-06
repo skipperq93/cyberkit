@@ -26,8 +26,8 @@
 #pragma once
 
 #include "PrintInfo.h"
-#include <WebCore/RefPtrCairo.h>
-#include <WebCore/SharedBuffer.h>
+#include <CyberCore/RefPtrCairo.h>
+#include <CyberCore/SharedBuffer.h>
 #include <wtf/CompletionHandler.h>
 #include <wtf/FastMalloc.h>
 #include <wtf/glib/GRefPtr.h>

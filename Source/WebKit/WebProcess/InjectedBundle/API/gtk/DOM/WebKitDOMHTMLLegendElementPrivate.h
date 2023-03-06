@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLLegendElementPrivate_h
 #define WebKitDOMHTMLLegendElementPrivate_h
 
-#include <WebCore/HTMLLegendElement.h>
+#include <CyberCore/HTMLLegendElement.h>
 #include <webkitdom/WebKitDOMHTMLLegendElement.h>
 
 namespace WebKit {

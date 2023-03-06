@@ -27,10 +27,10 @@
 #include <JavaScriptCore/APICast.h>
 #include <JavaScriptCore/JSGlobalObjectInlines.h>
 #include <JavaScriptCore/JSLock.h>
-#include <WebCore/Frame.h>
-#include <WebCore/JSNode.h>
-#include <WebCore/Node.h>
-#include <WebCore/ScriptController.h>
+#include <CyberCore/Frame.h>
+#include <CyberCore/JSNode.h>
+#include <CyberCore/Node.h>
+#include <CyberCore/ScriptController.h>
 #include <glib/gi18n-lib.h>
 #include <jsc/JSCContextPrivate.h>
 #include <wtf/glib/GRefPtr.h>

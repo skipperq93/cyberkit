@@ -20,7 +20,7 @@
 #ifndef WebKitDOMHTMLAreaElementPrivate_h
 #define WebKitDOMHTMLAreaElementPrivate_h
 
-#include <WebCore/HTMLAreaElement.h>
+#include <CyberCore/HTMLAreaElement.h>
 #include <webkitdom/WebKitDOMHTMLAreaElement.h>
 
 namespace WebKit {

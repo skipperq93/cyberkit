@@ -21,7 +21,7 @@
 #include "WebKitWebViewSessionState.h"
 
 #include "WebKitWebViewSessionStatePrivate.h"
-#include <WebCore/BackForwardItemIdentifier.h>
+#include <CyberCore/BackForwardItemIdentifier.h>
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 
