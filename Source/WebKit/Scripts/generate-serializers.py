@@ -756,6 +756,10 @@ def parse_serialized_types(file, file_name):
                         headers.append(ConditionalHeader('<wtf/' + name + '.h>', type_condition))
                     elif namespace == 'WebKit::WebGPU':
                         headers.append(ConditionalHeader('"WebGPU' + name + '.h"', type_condition))
+                    elif namespace == 'WebKitLegacy':
+                    	headers.append(ConditionalHeader('<CyberKitLegacy/' + name + '.h>', type_condition))
+                    elif namespace == 'WebCore':
+                    	headers.append(ConditionalHeader('<CyberCore/' + name + '.h>', type_condition))
                     else:
                         headers.append(ConditionalHeader('<' + namespace + '/' + name + '.h>', type_condition))
             attributes = None

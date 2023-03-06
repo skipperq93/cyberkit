@@ -927,6 +927,10 @@ def headers_for_type(type):
 
         if split[0] == 'WebKit' or split[0] == 'IPC':
             headers.append('"%s.h"' % split[1])
+        elif split[0] == 'WebKitLegacy':
+        	headers.append('<CyberKitLegacy/%s.h>' % split[1])
+        elif split[0] == 'WebCore':
+        	headers.append('<CyberCore/%s.h>' % split[1])
         else:
             headers.append('<%s/%s.h>' % tuple(split[0:2]))
 

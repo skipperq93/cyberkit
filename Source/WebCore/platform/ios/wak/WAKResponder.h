@@ -31,6 +31,7 @@
 #if TARGET_OS_IPHONE
 
 #import <CyberCore/WKTypes.h>
+#import <CyberCore/PlatformExportMacros.h>
 
 @class WebEvent;
 
