@@ -36,7 +36,7 @@ _FRAMEWORK_CONFIG_MAP = {
         "macro_prefix": "JSC",
         "namespace": "JSC",
     },
-    "WebCore": {
+    "CyberCore": {
         "macro_prefix": "WEBCORE",
         "namespace": "WebCore",
     },
@@ -81,15 +81,15 @@ class Framework:
         if frameworkString == "JavaScriptCore":
             return Frameworks.JavaScriptCore
 
-        if frameworkString == "WebCore":
-            return Frameworks.WebCore
+        if frameworkString == "CyberCore":
+            return Frameworks.CyberCore
 
         raise ParseException("Unknown framework: %s" % frameworkString)
 
 
 class Frameworks:
     JavaScriptCore = Framework("JavaScriptCore")
-    WebCore = Framework("WebCore")
+    CyberCore = Framework("CyberCore")
 
 
 class BuiltinObject:

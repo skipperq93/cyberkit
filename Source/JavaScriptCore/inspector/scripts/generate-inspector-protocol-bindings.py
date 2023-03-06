@@ -170,7 +170,7 @@ def generate_from_specification(primary_specification_filepath=None,
         generators.append(CppProtocolTypesHeaderGenerator(*generator_arguments))
         generators.append(CppProtocolTypesImplementationGenerator(*generator_arguments))
 
-    elif protocol.framework is Frameworks.WebKit and generate_backend:
+    elif protocol.framework is Frameworks.CyberKit and generate_backend:
         generators.append(CppBackendDispatcherHeaderGenerator(*generator_arguments))
         generators.append(CppBackendDispatcherImplementationGenerator(*generator_arguments))
         generators.append(CppFrontendDispatcherHeaderGenerator(*generator_arguments))
@@ -178,7 +178,7 @@ def generate_from_specification(primary_specification_filepath=None,
         generators.append(CppProtocolTypesHeaderGenerator(*generator_arguments))
         generators.append(CppProtocolTypesImplementationGenerator(*generator_arguments))
 
-    elif protocol.framework is Frameworks.WebKit and generate_frontend:
+    elif protocol.framework is Frameworks.CyberKit and generate_frontend:
         generators.append(ObjCHeaderGenerator(*generator_arguments))
         generators.append(ObjCProtocolTypeConversionsHeaderGenerator(*generator_arguments))
         generators.append(ObjCProtocolTypeConversionsImplementationGenerator(*generator_arguments))
@@ -263,7 +263,7 @@ def generate_from_specification(primary_specification_filepath=None,
 
 
 if __name__ == '__main__':
-    allowed_framework_names = ['JavaScriptCore', 'WebInspector', 'WebInspectorUI', 'WebKit', 'Test']
+    allowed_framework_names = ['JavaScriptCore', 'WebInspector', 'WebInspectorUI', 'CyberKit', 'Test']
     cli_parser = optparse.OptionParser(usage="usage: %prog [options] PrimaryProtocol.json [SupplementalProtocol.json ...]")
     cli_parser.add_option("-o", "--outputDir", help="Directory where generated files should be written.")
     cli_parser.add_option("--framework", type="choice", choices=allowed_framework_names, help="The framework that the primary specification belongs to.")

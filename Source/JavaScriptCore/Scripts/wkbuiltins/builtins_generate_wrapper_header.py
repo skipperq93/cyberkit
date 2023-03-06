@@ -59,12 +59,12 @@ class BuiltinsWrapperHeaderGenerator(BuiltinsGenerator):
 
     def generate_secondary_header_includes(self):
         header_includes = [
-            (["WebCore"],
+            (["CyberCore"],
                 ("JavaScriptCore", "runtime/VM.h"),
             ),
         ]
         for object in self.model().objects:
-            header_includes.append((["WebCore"], ("WebCore", object.object_name + "Builtins.h")))
+            header_includes.append((["CyberCore"], ("CyberCore", object.object_name + "Builtins.h")))
 
         return '\n'.join(self.generate_includes_from_entries(header_includes))
 

@@ -71,7 +71,7 @@ class BuiltinsSeparateHeaderGenerator(BuiltinsGenerator):
         sections.append(self.generate_section_for_code_table_macro())
         sections.append(self.generate_section_for_code_name_macro())
         sections.append(Template(Templates.SeparateHeaderStaticMacros).substitute(args))
-        if self.model().framework is Frameworks.WebCore:
+        if self.model().framework is Frameworks.CyberCore:
             sections.append(Template(Templates.SeparateHeaderWrapperBoilerplate).substitute(args))
             if self.object.annotations.get('internal'):
                 sections.append(Template(Templates.SeparateHeaderInternalFunctionsBoilerplate).substitute(args))
@@ -88,19 +88,19 @@ class FunctionExecutable;
 
     def generate_secondary_header_includes(self):
         header_includes = [
-            (["WebCore"],
+            (["CyberCore"],
                 ("JavaScriptCore", "bytecode/UnlinkedFunctionExecutable.h"),
             ),
 
-            (["WebCore"],
+            (["CyberCore"],
                 ("JavaScriptCore", "builtins/BuiltinUtils.h"),
             ),
 
-            (["WebCore"],
+            (["CyberCore"],
                 ("JavaScriptCore", "runtime/Identifier.h"),
             ),
 
-            (["WebCore"],
+            (["CyberCore"],
                 ("JavaScriptCore", "runtime/JSFunction.h"),
             ),
         ]

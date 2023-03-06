@@ -70,7 +70,7 @@ class BuiltinsSeparateImplementationGenerator(BuiltinsGenerator):
             sections.append(self.generate_embedded_code_string_section_for_data(self.generate_embedded_code_data_for_function(function)))
         if self.model().framework is Frameworks.JavaScriptCore:
             sections.append(Template(Templates.SeparateJSCImplementationStaticMacros).substitute(args))
-        elif self.model().framework is Frameworks.WebCore:
+        elif self.model().framework is Frameworks.CyberCore:
             sections.append(Template(Templates.SeparateWebCoreImplementationStaticMacros).substitute(args))
         sections.append(Template(Templates.NamespaceBottom).substitute(args))
         if conditional_guard is not None:
@@ -83,31 +83,31 @@ class BuiltinsSeparateImplementationGenerator(BuiltinsGenerator):
             (["JavaScriptCore"],
                 ("JavaScriptCore", "builtins/BuiltinExecutables.h"),
             ),
-            (["JavaScriptCore", "WebCore"],
+            (["JavaScriptCore", "CyberCore"],
                 ("JavaScriptCore", "heap/HeapInlines.h"),
             ),
-            (["JavaScriptCore", "WebCore"],
+            (["JavaScriptCore", "CyberCore"],
                 ("JavaScriptCore", "runtime/JSCellInlines.h"),
             ),
-            (["WebCore"],
+            (["CyberCore"],
                 ("JavaScriptCore", "runtime/StructureInlines.h"),
             ),
-            (["WebCore"],
+            (["CyberCore"],
                 ("JavaScriptCore", "runtime/JSCJSValueInlines.h"),
             ),
-            (["JavaScriptCore", "WebCore"],
+            (["JavaScriptCore", "CyberCore"],
                 ("JavaScriptCore", "runtime/VM.h"),
             ),
-            (["WebCore"],
-                ("WebCore", "bindings/js/WebCoreJSClientData.h"),
+            (["CyberCore"],
+                ("CyberCore", "bindings/js/WebCoreJSClientData.h"),
             ),
-            (["JavaScriptCore", "WebCore"],
+            (["JavaScriptCore", "CyberCore"],
                 ("JavaScriptCore", "runtime/IdentifierInlines.h"),
             ),
-            (["JavaScriptCore", "WebCore"],
+            (["JavaScriptCore", "CyberCore"],
                 ("JavaScriptCore", "runtime/ImplementationVisibility.h"),
             ),
-            (["JavaScriptCore", "WebCore"],
+            (["JavaScriptCore", "CyberCore"],
                 ("JavaScriptCore", "runtime/Intrinsic.h"),
             ),
         ]

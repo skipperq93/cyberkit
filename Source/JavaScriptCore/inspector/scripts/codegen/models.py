@@ -67,7 +67,7 @@ _FRAMEWORK_CONFIG_MAP = {
         "export_macro": "JS_EXPORT_PRIVATE",
         "alternate_dispatchers": True,
     },
-    "WebKit": {
+    "CyberKit": {
         "cpp_protocol_group": "Automation",
         "objc_protocol_group": "WD",
         "objc_prefix": "WD",
@@ -115,8 +115,8 @@ class Framework:
         if frameworkString == "JavaScriptCore":
             return Frameworks.JavaScriptCore
 
-        if frameworkString == "WebKit":
-            return Frameworks.WebKit
+        if frameworkString == "CyberKit":
+            return Frameworks.CyberKit
 
         if frameworkString == "WebInspector":
             return Frameworks.WebInspector
@@ -133,7 +133,7 @@ class Framework:
 class Frameworks:
     Global = Framework("Global")
     JavaScriptCore = Framework("JavaScriptCore")
-    WebKit = Framework("WebKit")
+    CyberKit = Framework("CyberKit")
     WebInspector = Framework("WebInspector")
     WebInspectorUI = Framework("WebInspectorUI")
     Test = Framework("Test")

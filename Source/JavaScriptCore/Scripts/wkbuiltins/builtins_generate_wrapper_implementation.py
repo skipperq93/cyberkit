@@ -56,6 +56,6 @@ class BuiltinsWrapperImplementationGenerator(BuiltinsGenerator):
     def generate_section_for_object(self):
         header_includes = []
         for object in self.model().objects:
-            header_includes.append((["WebCore"], ("WebCore", object.object_name + "Builtins.cpp")))
+            header_includes.append((["CyberCore"], ("CyberCore", object.object_name + "Builtins.cpp")))
 
         return '\n'.join(self.generate_includes_from_entries(header_includes))
