@@ -28,7 +28,7 @@ project_name = ENV['PRODUCT_NAME'] or throw "Unable to find PRODUCT_NAME in the 
 is_shallow_bundle = (ENV['SHALLOW_BUNDLE'] || "NO").upcase == "YES"
 
 $INAPPROPRIATE_FILES = {
-  "JavaScriptCore" => {
+  "CyberScriptCore" => {
     "Headers" => ["*.tmp"],
     "Resources" => ["*.txt", "*.in", "*.idl", "*.h"],
   },

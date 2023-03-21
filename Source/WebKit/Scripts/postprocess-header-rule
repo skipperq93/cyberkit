@@ -111,7 +111,7 @@ case "${INPUT_FILE_PATH}" in
     ;;
 */CyberCore.framework/*)
     if [ "${WK_PLATFORM_NAME}" = macosx ]; then
-        SED_OPTIONS+=(-e 's/<WebCore\//<WebKit\//' -e "s/(^ *)WEBCORE_EXPORT /\1/")
+        SED_OPTIONS+=(-e 's/<CyberCore\//<CyberKit\//' -e "s/(^ *)WEBCORE_EXPORT /\1/")
     else
         echo "#import <CyberKitLegacy/${INPUT_FILE_NAME}>" > "${SCRIPT_OUTPUT_FILE_0}"
         exit 0
