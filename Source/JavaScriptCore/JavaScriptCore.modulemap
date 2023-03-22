@@ -1,4 +1,4 @@
-framework module JavaScriptCore [extern_c] {
+framework module CyberScriptCore [extern_c] {
   umbrella header "JavaScriptCore.h"
 
   export *

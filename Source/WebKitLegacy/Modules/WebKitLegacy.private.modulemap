@@ -1,4 +1,4 @@
-framework module WebKitLegacy [system] {
+framework module CyberKitLegacy [system] {
   umbrella "PrivateHeaders"
 
   explicit module * { export * }
