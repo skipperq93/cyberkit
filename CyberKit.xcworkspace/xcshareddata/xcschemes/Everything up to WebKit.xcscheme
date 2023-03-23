@@ -45,7 +45,7 @@
                BlueprintIdentifier = "932F5BE30822A1C700736975"
                BuildableName = "All"
                BlueprintName = "All"
-               ReferencedContainer = "container:Source/JavaScriptCore/CyberScriptCore.xcodeproj">
+               ReferencedContainer = "container:Source/CyberScriptCore/CyberScriptCore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -87,7 +87,7 @@
                BlueprintIdentifier = "41816F7913859C550057AAA4"
                BuildableName = "All"
                BlueprintName = "All"
-               ReferencedContainer = "container:Source/WebCore/CyberCore.xcodeproj">
+               ReferencedContainer = "container:Source/CyberCore/CyberCore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -115,7 +115,7 @@
                BlueprintIdentifier = "9398100A0824BF01008DF038"
                BuildableName = "CyberKitLegacy.framework"
                BlueprintName = "CyberKitLegacy"
-               ReferencedContainer = "container:Source/WebKitLegacy/CyberKitLegacy.xcodeproj">
+               ReferencedContainer = "container:Source/CyberKitLegacy/CyberKitLegacy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -129,7 +129,7 @@
                BlueprintIdentifier = "1A50DB38110A3C13000D3FE5"
                BuildableName = "Framework, XPC Services, and daemons"
                BlueprintName = "Framework, XPC Services, and daemons"
-               ReferencedContainer = "container:Source/WebKit/CyberKit.xcodeproj">
+               ReferencedContainer = "container:Source/CyberKit/CyberKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

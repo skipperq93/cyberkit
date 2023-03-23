@@ -1,0 +1,33 @@
+From: <Saved by CyberKit>
+Subject: A page that contains multiple nested frames
+Date: Mon, 26 Jun 2011 09:09:01 -0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_8D20_8CDAF17B.8E5ECA45"
+
+------=_NextPart_000_8D20_8CDAF17B.8E5ECA45
+Content-Type: text/html
+Content-Transfer-Encoding: binary
+Content-Location: http://localhost/multi_frames.html
+
+<html><head><meta charset="ISO-8859-1">
+
+
+
+<title>A page that contains multiple nested frames</title>
+
+</head><body>
+This page contains several frames.<br>
+<iframe src="resources/frame_0.html"></iframe><br>
+<iframe src="resources/frame_1.html"></iframe><br>
+<iframe src="resources/frame_2.html"></iframe><br>
+And a red square:<br>
+<img src="resources/red_square.png" onerror="document.getElementById('error').innerHTML+='Failed to load image!'">
+<div id="error"></div>
+
+</body></html>------=_NextPart_000_8D20_8CDAF17B.8E5ECA45
+Content-Type: image/png
+Content-Transfer-Encoding: binary
+Content-Location: http://localhost/resources/red_square.png
+
